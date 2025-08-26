@@ -77,10 +77,10 @@ export default function Contact() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <ScrollFadeIn>
-              <Card className="shadow-lg">
+              <Card className="shadow-lg bg-secondary/20 border-border">
                 <CardHeader>
-                  <CardTitle>Contact Form</CardTitle>
-                  <CardDescription>Fill out the form below and we'll get in touch.</CardDescription>
+                  <CardTitle className="text-white">Contact Form</CardTitle>
+                  <CardDescription className="text-foreground/80">Fill out the form below and we'll get in touch.</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <Form {...form}>
@@ -139,7 +139,7 @@ export default function Contact() {
                     alt="Contact illustration"
                     width={800}
                     height={600}
-                    className="rounded-lg shadow-lg"
+                    className="rounded-lg shadow-lg border border-border"
                     data-ai-hint="office workspace"
                 />
             </ScrollFadeIn>

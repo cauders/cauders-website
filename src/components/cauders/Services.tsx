@@ -4,22 +4,22 @@ import ScrollFadeIn from './ScrollFadeIn';
 
 const services = [
   {
-    icon: <PenTool className="w-8 h-8 text-accent" />,
+    icon: <PenTool className="w-8 h-8 text-primary" />,
     title: 'UI/UX Design',
     description: 'Crafting intuitive and beautiful user interfaces that provide an exceptional user experience.',
   },
   {
-    icon: <Code className="w-8 h-8 text-accent" />,
+    icon: <Code className="w-8 h-8 text-primary" />,
     title: 'Web Development',
     description: 'Building responsive, high-performance websites and applications using modern technologies.',
   },
   {
-    icon: <Layers className="w-8 h-8 text-accent" />,
+    icon: <Layers className="w-8 h-8 text-primary" />,
     title: 'Full-Stack Solutions',
     description: 'From database to deployment, we provide end-to-end development for your complex projects.',
   },
   {
-    icon: <Rocket className="w-8 h-8 text-accent" />,
+    icon: <Rocket className="w-8 h-8 text-primary" />,
     title: 'SEO & Performance',
     description: 'Optimizing your digital presence to rank higher and load faster, ensuring maximum reach.',
   },
@@ -39,13 +39,13 @@ export default function Services() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {services.map((service, index) => (
             <ScrollFadeIn key={service.title} delay={`delay-${index * 100}`}>
-              <Card className="h-full text-center border-2 border-transparent hover:border-accent/50 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+              <Card className="h-full text-center border-2 border-transparent hover:border-primary/50 hover:shadow-xl hover:shadow-primary/10 hover:-translate-y-1 transition-all duration-300 bg-secondary/20">
                 <CardHeader className="p-8">
-                  <div className="mx-auto bg-accent/20 rounded-full p-4 w-fit mb-4">
+                  <div className="mx-auto bg-primary/20 rounded-full p-4 w-fit mb-4">
                     {service.icon}
                   </div>
-                  <CardTitle>{service.title}</CardTitle>
-                  <CardDescription className="pt-2">{service.description}</CardDescription>
+                  <CardTitle className="text-white">{service.title}</CardTitle>
+                  <CardDescription className="pt-2 text-foreground/80">{service.description}</CardDescription>
                 </CardHeader>
               </Card>
             </ScrollFadeIn>

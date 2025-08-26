@@ -32,12 +32,12 @@ const ThreeScene = () => {
     });
 
     const shapes: THREE.Mesh[] = [];
-    for (let i = 0; i < 15; i++) {
+    for (let i = 0; i < 25; i++) {
         const mesh = new THREE.Mesh(geometry, material);
         mesh.position.set(
-            (Math.random() - 0.5) * 20,
-            (Math.random() - 0.5) * 20,
-            (Math.random() - 0.5) * 15
+            (Math.random() - 0.5) * 25,
+            (Math.random() - 0.5) * 25,
+            (Math.random() - 0.5) * 20
         );
         mesh.scale.setScalar(Math.random() * 0.4 + 0.2);
         mesh.rotation.set(

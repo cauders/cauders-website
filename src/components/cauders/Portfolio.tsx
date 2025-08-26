@@ -25,11 +25,32 @@ const projects = [
     imageUrl: 'https://picsum.photos/600/400?random=3',
     aiHint: 'corporate business',
   },
+    {
+    title: 'Mobile Banking App',
+    description: 'A secure and intuitive mobile application for a new-age digital bank.',
+    tags: ['React Native', 'Firebase', 'Biometrics'],
+    imageUrl: 'https://picsum.photos/600/400?random=4',
+    aiHint: 'mobile banking',
+  },
+  {
+    title: 'AI-Powered Chatbot',
+    description: 'Customer service chatbot with natural language processing capabilities.',
+    tags: ['Genkit', 'Dialogflow', 'TypeScript'],
+    imageUrl: 'https://picsum.photos/600/400?random=5',
+    aiHint: 'chatbot interface',
+  },
+  {
+    title: 'Real-time Analytics',
+    description: 'A platform for visualizing real-time data streams for IoT devices.',
+    tags: ['Next.js', 'WebSockets', 'BigQuery'],
+    imageUrl: 'https://picsum.photos/600/400?random=6',
+    aiHint: 'data visualization',
+  },
 ];
 
 export default function Portfolio() {
   return (
-    <section id="portfolio" className="py-20 lg:py-32 bg-secondary/50">
+    <section id="portfolio" className="py-20 lg:py-32 bg-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <ScrollFadeIn className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold">Our Recent Work</h2>
@@ -41,7 +62,7 @@ export default function Portfolio() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => (
             <ScrollFadeIn key={project.title} delay={`delay-${index * 100}`}>
-              <Card className="overflow-hidden h-full group transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
+              <Card className="overflow-hidden h-full group transition-all duration-300 hover:shadow-2xl hover:shadow-primary/20 hover:-translate-y-2 bg-secondary/20 border-border">
                 <CardHeader className="p-0">
                    <div className="aspect-video overflow-hidden">
                     <Image
@@ -55,8 +76,8 @@ export default function Portfolio() {
                   </div>
                 </CardHeader>
                 <CardContent className="p-6">
-                  <CardTitle className="mb-2">{project.title}</CardTitle>
-                  <CardDescription>{project.description}</CardDescription>
+                  <CardTitle className="mb-2 text-white">{project.title}</CardTitle>
+                  <CardDescription className="text-foreground/80">{project.description}</CardDescription>
                   <div className="mt-4 flex flex-wrap gap-2">
                     {project.tags.map((tag) => (
                       <Badge key={tag} variant="secondary">{tag}</Badge>
