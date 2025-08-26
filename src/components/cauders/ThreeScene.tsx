@@ -2,11 +2,9 @@
 
 import { useEffect, useRef } from 'react';
 import * as THREE from 'three';
-import { useTheme } from 'next-themes';
 
 const ThreeScene = () => {
   const mountRef = useRef<HTMLDivElement>(null);
-  const { theme } = useTheme();
 
   useEffect(() => {
     if (!mountRef.current) return;
@@ -53,12 +51,11 @@ const ThreeScene = () => {
     pointLight.position.set(0, 0, 4);
     scene.add(pointLight);
 
-    const mouse = new THREE.Vector2();
-    const onMouseMove = (event: MouseEvent) => {
-        mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-        mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+    let scrollY = window.scrollY;
+    const onScroll = () => {
+      scrollY = window.scrollY;
     };
-    window.addEventListener('mousemove', onMouseMove);
+    window.addEventListener('scroll', onScroll);
     
     const onWindowResize = () => {
       camera.aspect = window.innerWidth / window.innerHeight;
@@ -76,11 +73,10 @@ const ThreeScene = () => {
           shape.rotation.y += 0.002;
       });
       
-      const targetX = mouse.x * 0.5;
-      const targetY = mouse.y * 0.5;
-
-      camera.position.x += (targetX - camera.position.x) * 0.05;
-      camera.position.y += (targetY - camera.position.y) * 0.05;
+      // Update camera position based on scroll
+      camera.position.y = -scrollY / window.innerHeight * 2;
+      camera.position.x = 0; // Reset X position or link to another variable if needed
+      
       camera.lookAt(scene.position);
 
       renderer.render(scene, camera);
@@ -90,19 +86,17 @@ const ThreeScene = () => {
     return () => {
       cancelAnimationFrame(frameId);
       window.removeEventListener('resize', onWindowResize);
-      window.removeEventListener('mousemove', onMouseMove);
-      if (mountRef.current) {
-        mountRef.current.removeChild(renderer.domElement);
+      window.removeEventListener('scroll', onScroll);
+      if (mountRef.current && renderer.domElement) {
+        // Check if renderer.domElement is a child of mountRef.current before removing
+        if (mountRef.current.contains(renderer.domElement)) {
+          mountRef.current.removeChild(renderer.domElement);
+        }
       }
       geometry.dispose();
       material.dispose();
     };
   }, []);
-
-  // Use theme to decide if we show the animation or not
-  if (theme === 'light') {
-    return null; // Don't render canvas on light theme for better contrast
-  }
 
   return <div ref={mountRef} className="absolute top-0 left-0 w-full h-full -z-10" />;
 };
