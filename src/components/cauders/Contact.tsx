@@ -69,7 +69,7 @@ export default function Contact() {
     <section id="contact" className="py-20 lg:py-32 bg-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <ScrollFadeIn className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold">Let's Build Together</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground">Let's Build Together</h2>
           <p className="mt-4 text-lg text-foreground/70 max-w-2xl mx-auto">
             Have a project in mind? We'd love to hear about it.
           </p>
@@ -77,9 +77,9 @@ export default function Contact() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <ScrollFadeIn>
-              <Card className="shadow-lg bg-secondary/20 border-border">
+              <Card className="shadow-lg bg-card border">
                 <CardHeader>
-                  <CardTitle className="text-white">Contact Form</CardTitle>
+                  <CardTitle className="text-foreground">Contact Form</CardTitle>
                   <CardDescription className="text-foreground/80">Fill out the form below and we'll get in touch.</CardDescription>
                 </CardHeader>
                 <CardContent>
@@ -90,7 +90,7 @@ export default function Contact() {
                         name="name"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel>Name</FormLabel>
+                            <FormLabel className="text-foreground">Name</FormLabel>
                             <FormControl>
                               <Input placeholder="Your Name" {...field} />
                             </FormControl>
@@ -103,7 +103,7 @@ export default function Contact() {
                         name="email"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel>Email</FormLabel>
+                            <FormLabel className="text-foreground">Email</FormLabel>
                             <FormControl>
                               <Input type="email" placeholder="your.email@example.com" {...field} />
                             </FormControl>
@@ -116,7 +116,7 @@ export default function Contact() {
                         name="message"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel>Message</FormLabel>
+                            <FormLabel className="text-foreground">Message</FormLabel>
                             <FormControl>
                               <Textarea placeholder="Tell us about your project..." className="min-h-[120px]" {...field} />
                             </FormControl>
@@ -139,7 +139,7 @@ export default function Contact() {
                     alt="Contact illustration"
                     width={800}
                     height={600}
-                    className="rounded-lg shadow-lg border border-border"
+                    className="rounded-lg shadow-lg border"
                     data-ai-hint="office workspace"
                 />
             </ScrollFadeIn>

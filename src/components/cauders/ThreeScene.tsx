@@ -2,33 +2,30 @@
 
 import { useEffect, useRef } from 'react';
 import * as THREE from 'three';
+import { useTheme } from 'next-themes';
 
 const ThreeScene = () => {
   const mountRef = useRef<HTMLDivElement>(null);
+  const { theme } = useTheme();
 
   useEffect(() => {
     if (!mountRef.current) return;
     let frameId: number;
 
-    // Scene
     const scene = new THREE.Scene();
-
-    // Camera
     const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
     camera.position.z = 5;
 
-    // Renderer
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     mountRef.current.appendChild(renderer.domElement);
 
-    // Geometry & Material
     const geometry = new THREE.IcosahedronGeometry(1, 0);
-    const material = new THREE.MeshStandardMaterial({ 
-      color: 0x8CEAE5, 
+    const material = new THREE.MeshStandardMaterial({
+      color: 0x8CEAE5,
       metalness: 0.3,
-      roughness: 0.6 
+      roughness: 0.6,
     });
 
     const shapes: THREE.Mesh[] = [];
@@ -48,8 +45,7 @@ const ThreeScene = () => {
         scene.add(mesh);
         shapes.push(mesh);
     }
-
-    // Lights
+    
     const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
     scene.add(ambientLight);
 
@@ -57,7 +53,6 @@ const ThreeScene = () => {
     pointLight.position.set(0, 0, 4);
     scene.add(pointLight);
 
-    // Mouse tracking for light movement and camera parallax
     const mouse = new THREE.Vector2();
     const onMouseMove = (event: MouseEvent) => {
         mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
@@ -65,7 +60,6 @@ const ThreeScene = () => {
     };
     window.addEventListener('mousemove', onMouseMove);
     
-    // Handle resize
     const onWindowResize = () => {
       camera.aspect = window.innerWidth / window.innerHeight;
       camera.updateProjectionMatrix();
@@ -74,14 +68,12 @@ const ThreeScene = () => {
     };
     window.addEventListener('resize', onWindowResize);
 
-    // Animation loop
-    const clock = new THREE.Clock();
     const animate = () => {
       frameId = requestAnimationFrame(animate);
 
-      shapes.forEach((shape, index) => {
-          shape.rotation.x += 0.001 + index * 0.00005;
-          shape.rotation.y += 0.002 + index * 0.00005;
+      shapes.forEach((shape) => {
+          shape.rotation.x += 0.001;
+          shape.rotation.y += 0.002;
       });
       
       const targetX = mouse.x * 0.5;
@@ -95,7 +87,6 @@ const ThreeScene = () => {
     };
     animate();
 
-    // Cleanup
     return () => {
       cancelAnimationFrame(frameId);
       window.removeEventListener('resize', onWindowResize);
@@ -107,6 +98,11 @@ const ThreeScene = () => {
       material.dispose();
     };
   }, []);
+
+  // Use theme to decide if we show the animation or not
+  if (theme === 'light') {
+    return null; // Don't render canvas on light theme for better contrast
+  }
 
   return <div ref={mountRef} className="absolute top-0 left-0 w-full h-full -z-10" />;
 };

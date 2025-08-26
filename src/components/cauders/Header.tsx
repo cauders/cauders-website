@@ -5,8 +5,9 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
-import { Menu, X } from 'lucide-react';
+import { Menu } from 'lucide-react';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { ThemeToggle } from './ThemeToggle';
 
 const navLinks = [
   { href: '/', label: 'Home' },
@@ -38,7 +39,7 @@ export default function Header() {
     )}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          <Link href="/" className="text-2xl font-bold text-white hover:text-primary transition-colors">
+          <Link href="/" className="text-2xl font-bold text-foreground hover:text-primary transition-colors">
             Cauders
           </Link>
 
@@ -47,21 +48,23 @@ export default function Header() {
             {navLinks.map((link) => (
               <Button key={link.href} variant="link" asChild 
                 className={cn(
-                  "text-lg",
-                  pathname === link.href ? 'text-primary font-semibold' : 'text-foreground/80 hover:text-primary'
+                  "text-base font-medium",
+                  pathname === link.href ? 'text-primary' : 'text-foreground/80 hover:text-primary'
                 )}>
                 <Link href={link.href}>{link.label}</Link>
               </Button>
             ))}
-            <Button asChild className="text-lg">
+            <Button asChild className="ml-4">
               <Link href="/contact">
                 Contact Us
               </Link>
             </Button>
+            <ThemeToggle />
           </nav>
 
           {/* Mobile Navigation Trigger */}
-          <div className="md:hidden">
+          <div className="md:hidden flex items-center gap-2">
+            <ThemeToggle />
             <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
               <SheetTrigger asChild>
                 <Button variant="ghost" size="icon">
@@ -72,7 +75,7 @@ export default function Header() {
               <SheetContent side="left" className="w-[300px] sm:w-[400px] bg-background p-0">
                 <div className="flex flex-col h-full">
                   <div className="flex items-center justify-between p-6 border-b">
-                     <Link href="/" className="text-2xl font-bold text-white">
+                     <Link href="/" className="text-2xl font-bold text-foreground">
                         Cauders
                       </Link>
                   </div>

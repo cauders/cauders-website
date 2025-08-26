@@ -8,12 +8,19 @@ import ScrollFadeIn from './ScrollFadeIn';
 const ThreeScene = dynamic(() => import('@/components/cauders/ThreeScene'), { ssr: false });
 
 export default function Hero() {
+  const scrollToServices = () => {
+    const servicesSection = document.getElementById('services-preview');
+    if (servicesSection) {
+      servicesSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
-    <section className="relative w-full h-screen flex flex-col items-center justify-center text-center overflow-hidden">
+    <section className="relative w-full h-screen flex flex-col items-center justify-center text-center overflow-hidden bg-background">
       <ThreeScene />
       <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
         <ScrollFadeIn>
-          <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-white leading-tight">
+          <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-foreground leading-tight">
             Innovative Digital Solutions
           </h1>
         </ScrollFadeIn>
@@ -32,9 +39,9 @@ export default function Hero() {
         </ScrollFadeIn>
       </div>
       <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 animate-bounce">
-         <a href="/services" aria-label="Scroll down">
+         <button onClick={scrollToServices} aria-label="Scroll down">
           <ArrowDown className="w-8 h-8 text-primary" />
-         </a>
+         </button>
       </div>
     </section>
   );

@@ -4,31 +4,26 @@
 
 @layer base {
   :root {
-    --background: 210 29% 97.3%;
-    --foreground: 210 29% 25.1%;
+    --background: 0 0% 97.3%; /* #F8F8F8 */
+    --foreground: 215 28% 17%; /* #2C3E50 */
     --card: 0 0% 100%;
-    --card-foreground: 210 29% 25.1%;
+    --card-foreground: 215 28% 17%;
     --popover: 0 0% 100%;
-    --popover-foreground: 210 29% 25.1%;
-    --primary: 177 71% 79%;
-    --primary-foreground: 210 29% 15%;
-    --secondary: 210 29% 25%;
-    --secondary-foreground: 0 0% 97.3%;
-    --muted: 210 29% 25%;
-    --muted-foreground: 0 0% 63.9%;
-    --accent: 177 71% 79%;
-    --accent-foreground: 210 29% 15%;
-    --destructive: 0 62.8% 30.6%;
+    --popover-foreground: 215 28% 17%;
+    --primary: 177 71% 55%; /* #8CEAE5 toned down slightly */
+    --primary-foreground: 215 28% 17%;
+    --secondary: 0 0% 94%;
+    --secondary-foreground: 215 28% 17%;
+    --muted: 0 0% 90%;
+    --muted-foreground: 0 0% 45.1%;
+    --accent: 0 0% 94%;
+    --accent-foreground: 215 28% 17%;
+    --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
-    --border: 210 29% 25%;
-    --input: 210 29% 25%;
-    --ring: 177 71% 79%;
+    --border: 0 0% 87%;
+    --input: 0 0% 87%;
+    --ring: 177 71% 55%;
     --radius: 0.5rem;
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
   }
 
   .dark {
@@ -38,19 +33,19 @@
     --card-foreground: 0 0% 95%;
     --popover: 0 0% 7.1%;
     --popover-foreground: 0 0% 95%;
-    --primary: 177 71% 79%; /* #8CEAE5 */
+    --primary: 177 71% 55%; /* #8CEAE5 */
     --primary-foreground: 0 0% 7.1%;
     --secondary: 0 0% 15%;
     --secondary-foreground: 0 0% 95%;
     --muted: 0 0% 15%;
     --muted-foreground: 0 0% 63.9%;
-    --accent: 177 71% 79%; /* #8CEAE5 */
-    --accent-foreground: 0 0% 7.1%;
+    --accent: 0 0% 15%;
+    --accent-foreground: 0 0% 95%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 15%;
-    --input: 0 0% 15%;
-    --ring: 177 71% 79%; /* #8CEAE5 */
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 177 71% 55%; /* #8CEAE5 */
   }
 }
 
@@ -63,8 +58,5 @@
   }
   html {
     scroll-behavior: smooth;
-  }
-  h1, h2, h3, h4, h5, h6 {
-    @apply text-white;
   }
 }
