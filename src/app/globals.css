@@ -58,5 +58,9 @@
   }
   html {
     scroll-behavior: smooth;
+    cursor: none;
+  }
+  a, button {
+    cursor: none;
   }
 }

@@ -6,6 +6,7 @@ import Footer from '@/components/cauders/Footer';
 import { Inter } from 'next/font/google';
 import { cn } from '@/lib/utils';
 import { ThemeProvider } from '@/components/cauders/ThemeProvider';
+import CustomCursor from '@/components/cauders/CustomCursor';
 
 export const metadata: Metadata = {
   title: 'Cauders | Innovative Digital Solutions',
@@ -26,6 +27,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={cn(inter.className, 'flex flex-col min-h-screen bg-background antialiased')}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <CustomCursor />
           <Header />
           <main className="flex-grow pt-20">
             {children}
