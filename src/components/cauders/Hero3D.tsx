@@ -22,7 +22,7 @@ function Scene() {
       <pointLight position={[10, 10, 10]} intensity={150} />
       <pointLight position={[-10, -10, -10]} intensity={100} color="hsl(var(--primary))" />
       
-      <TorusKnot ref={meshRef} args={[2.5, 0.4, 256, 32]}>
+      <TorusKnot ref={meshRef} args={[2.8, 0.4, 256, 32]}>
         <meshStandardMaterial 
             color="hsl(var(--primary))" 
             roughness={0.1}

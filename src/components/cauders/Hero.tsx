@@ -17,7 +17,7 @@ export default function Hero() {
   return (
     <section className="relative w-full h-screen overflow-hidden">
       {/* 3D Animation Background */}
-      <div className="absolute top-0 right-0 w-full h-full z-0">
+      <div className="absolute top-0 right-0 w-full md:w-1/2 h-full z-0">
         <Suspense fallback={<Skeleton className="w-full h-full" />}>
           <Hero3D />
         </Suspense>
