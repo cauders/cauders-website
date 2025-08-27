@@ -19,6 +19,7 @@ export default function PortfolioPreview() {
   const [activeCard, setActiveCard] = useState<number | null>(null);
   const [cursorPosition, setCursorPosition] = useState({ x: -100, y: -100 });
   const [isCursorNearCard, setIsCursorNearCard] = useState(false);
+  const animationFrameId = useRef<number | null>(null);
 
   // Smooth vertical-to-horizontal scroll with delay
   useEffect(() => {
@@ -28,15 +29,17 @@ export default function PortfolioPreview() {
 
     let targetScrollLeft = 0;
     let currentScrollLeft = 0;
-    const animationFrameId = useRef<number | null>(null);
 
     const smoothScroll = () => {
       // Linearly interpolate current scroll position towards the target
-      currentScrollLeft += (targetScrollLeft - currentScrollLeft) * 0.1;
+      currentScrollLeft += (targetScrollLeft - currentScrollLeft) * 0.05; // Slower interpolation
       scrollContainer.scrollLeft = currentScrollLeft;
 
       if (Math.abs(targetScrollLeft - currentScrollLeft) > 0.5) {
         animationFrameId.current = requestAnimationFrame(smoothScroll);
+      } else {
+        cancelAnimationFrame(animationFrameId.current as number);
+        animationFrameId.current = null;
       }
     };
 
@@ -56,29 +59,13 @@ export default function PortfolioPreview() {
       }
     };
     
-    const startAnimation = () => {
-      if (animationFrameId.current === null) {
-        animationFrameId.current = requestAnimationFrame(smoothScroll);
-      }
-    }
-    
-    const stopAnimation = () => {
-      if (animationFrameId.current !== null) {
-        cancelAnimationFrame(animationFrameId.current);
-        animationFrameId.current = null;
-      }
-    }
-
     window.addEventListener("scroll", handleScroll);
-    scrollContainer.addEventListener('mouseenter', startAnimation);
-    scrollContainer.addEventListener('mouseleave', stopAnimation);
-
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
-      scrollContainer.removeEventListener('mouseenter', startAnimation);
-      scrollContainer.removeEventListener('mouseleave', stopAnimation);
-      stopAnimation();
+      if (animationFrameId.current) {
+        cancelAnimationFrame(animationFrameId.current);
+      }
     };
   }, []);
 
@@ -91,7 +78,7 @@ export default function PortfolioPreview() {
     const newY = e.clientY - sectionRect.top;
 
     setCursorPosition(prevPos => ({
-      x: prevPos.x + (newX - prevPos.x) * 0.05,
+      x: prevPos.x + (newX - prevPos.x) * 0.05, // Slower follow effect
       y: prevPos.y + (newY - prevPos.y) * 0.05,
     }));
 
