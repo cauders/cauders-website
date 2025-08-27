@@ -72,9 +72,10 @@ export default function Header() {
                     key={link.href}
                     href={link.href}
                     className={cn(
-                        "flex items-center text-3xl md:text-4xl font-light group opacity-0 menu-link-shimmer",
+                        "flex items-center text-3xl md:text-4xl font-light group opacity-0",
                         isMenuOpen ? "animate-fade-in-down" : "",
-                         pathname === link.href ? 'text-primary' : 'text-background'
+                         pathname === link.href ? 'text-primary' : 'text-background',
+                         'menu-link-shimmer'
                     )}
                     style={{ animationDelay: `${400 + index * 150}ms`, animationFillMode: 'forwards' }}
                 >
