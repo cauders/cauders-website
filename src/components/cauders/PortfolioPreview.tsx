@@ -57,15 +57,16 @@ export default function PortfolioPreview() {
         >
           <CarouselContent className="-ml-4">
             {projects.map((project, index) => (
-              <CarouselItem key={project.slug} className="md:basis-1/2 lg:basis-1/3 xl:basis-1/4 pl-4 carousel-item-3d">
-                 <div
-                    className={cn(
-                        "transition-transform duration-500 ease-out",
-                        index === current ? "is-active" : "",
-                        index === (current - 1 + projects.length) % projects.length ? "is-prev" : "",
-                        index === (current + 1) % projects.length ? "is-next" : ""
-                    )}
-                 >
+              <CarouselItem 
+                key={project.slug} 
+                className={cn(
+                    "md:basis-1/2 lg:basis-1/3 xl:basis-1/4 pl-4 carousel-item-3d",
+                    index === current ? "is-active" : "",
+                    index === (current - 1 + projects.length) % projects.length ? "is-prev" : "",
+                    index === (current + 1) % projects.length ? "is-next" : ""
+                )}
+              >
+                <div className="h-full w-full">
                   <Link href={`/portfolio/${project.slug}`} className="block group">
                     <Card className="overflow-hidden h-full transition-all duration-500 bg-card border rounded-lg shadow-lg relative">
                       <div className="aspect-[4/3] overflow-hidden relative">
