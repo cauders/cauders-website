@@ -31,7 +31,7 @@ export default function RootLayout({
           <CustomCursor />
           <AnimatedLogo />
           <Header />
-          <main className="flex-grow pt-20 z-10">
+          <main className="flex-grow pt-24 z-10">
             {children}
           </main>
           <Footer />
