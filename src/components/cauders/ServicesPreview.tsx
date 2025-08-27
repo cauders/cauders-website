@@ -21,7 +21,7 @@ export default function ServicesPreview() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {services.map((service, index) => (
             <ScrollFadeIn key={service.slug} delay={`delay-${index * 100}`} className="h-full">
-              <div className="flip-card h-full">
+              <div className="flip-card h-full min-h-[250px] md:min-h-[280px]">
                 <div className="flip-card-inner relative w-full h-full">
                   {/* Front of the card */}
                   <div className="flip-card-front absolute w-full h-full">
