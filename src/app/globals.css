@@ -166,7 +166,7 @@
   }
 
   .shadow-primary-glow {
-    box-shadow: 0 0 25px 0 hsl(var(--primary) / 0.5);
+    box-shadow: 0 0 40px 0 hsl(var(--primary) / 0.6);
   }
 
   .hide-scrollbar::-webkit-scrollbar {

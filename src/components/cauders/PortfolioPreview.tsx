@@ -15,13 +15,12 @@ export default function PortfolioPreview() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const animationFrameId = useRef<number | null>(null);
-
   const [activeCard, setActiveCard] = useState<number | null>(null);
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
   const [isCursorNearCard, setIsCursorNearCard] = useState<number | null>(null);
+  const animationFrameId = useRef<number | null>(null);
 
-  // Smooth vertical-to-horizontal scroll with requestAnimationFrame
+  // Smooth vertical-to-horizontal scroll
   useEffect(() => {
     const scrollContainer = scrollContainerRef.current;
     const section = sectionRef.current;
@@ -29,20 +28,16 @@ export default function PortfolioPreview() {
 
     let targetScrollLeft = 0;
     let currentScrollLeft = 0;
-
+    
     const smoothScroll = () => {
-      // Linearly interpolate current scroll position towards the target
-      currentScrollLeft += (targetScrollLeft - currentScrollLeft) * 0.05; // Damping factor
-      scrollContainer.scrollLeft = currentScrollLeft;
-
-      if (Math.abs(targetScrollLeft - currentScrollLeft) > 0.5) {
-        animationFrameId.current = requestAnimationFrame(smoothScroll);
-      } else {
-        if (animationFrameId.current) {
-            cancelAnimationFrame(animationFrameId.current);
+        if (Math.abs(targetScrollLeft - currentScrollLeft) < 0.5) {
+            if(animationFrameId.current) cancelAnimationFrame(animationFrameId.current);
             animationFrameId.current = null;
+            return;
         }
-      }
+        currentScrollLeft += (targetScrollLeft - currentScrollLeft) * 0.05;
+        scrollContainer.scrollLeft = currentScrollLeft;
+        animationFrameId.current = requestAnimationFrame(smoothScroll);
     };
 
     const handleScroll = () => {
@@ -61,7 +56,7 @@ export default function PortfolioPreview() {
       }
     };
     
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
@@ -138,7 +133,7 @@ export default function PortfolioPreview() {
             left: `${cursorPosition.x}px`,
             top: `${cursorPosition.y}px`,
             transform: `translate(-50%, -50%)`,
-            filter: 'drop-shadow(0 0 10px hsl(var(--primary)))',
+            filter: 'drop-shadow(0 0 15px hsl(var(--primary) / 0.8))',
           }}
         >
           Drag or click
@@ -153,16 +148,16 @@ export default function PortfolioPreview() {
             <div 
               key={project.slug} 
               ref={el => { cardRefs.current[index] = el; }}
-              className="inline-block w-[95vw] md:w-[60vw] lg:w-[45vw] xl:w-[35vw] relative group"
+              className="inline-block w-[95vw] md:w-[60vw] lg:w-[45vw] xl:w-[35vw] relative"
               onMouseEnter={() => handleCardHover(index, true)}
               onMouseLeave={() => handleCardHover(index, false)}
             >
-              <Link href={`/portfolio/${project.slug}`} className="block h-full w-full">
+              <Link href={`/portfolio/${project.slug}`} className="block h-full w-full group">
                 <Card className={cn(
-                  "overflow-hidden h-full transition-all duration-500 rounded-3xl shadow-lg relative border-none",
+                  "overflow-visible h-full transition-all duration-500 rounded-3xl shadow-lg relative border-none bg-transparent",
                   activeCard === index && "shadow-primary-glow"
                 )}>
-                  <div className="aspect-[4/3] overflow-hidden relative">
+                  <div className="aspect-[4/3] overflow-hidden relative rounded-3xl">
                     <Image
                       src={project.imageUrl}
                       alt={project.title}
@@ -171,19 +166,13 @@ export default function PortfolioPreview() {
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                       data-ai-hint={project.aiHint}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
-                    
-                    <div className="absolute bottom-0 left-0 p-6 z-10 overflow-hidden w-full">
-                      <div className={cn(
-                        "transition-all duration-500 ease-out opacity-0 translate-y-full group-hover:opacity-100 group-hover:translate-y-0"
-                      )}>
-                        <p className="text-white text-base font-inter opacity-70 mb-1">{project.description}</p>
-                        <h3 className="font-bold text-xl text-white font-inter">{project.title}</h3>
-                      </div>
-                    </div>
                   </div>
                 </Card>
               </Link>
+              <div className="mt-4 pl-2 text-left">
+                  <p className="text-lg text-white/70">{project.description}</p>
+                  <h3 className="font-bold text-3xl text-white mt-1">{project.title}</h3>
+              </div>
             </div>
           ))}
         </div>
