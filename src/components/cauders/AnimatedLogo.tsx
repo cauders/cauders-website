@@ -78,7 +78,7 @@ export default function AnimatedLogo() {
   return (
     <div
       ref={containerRef}
-      className="fixed top-1/4 left-1/2 -translate-x-1/2 -z-10 w-64 h-64 md:w-96 md:h-96 opacity-10 dark:opacity-20 pointer-events-auto"
+      className="fixed top-1/4 left-1/2 -translate-x-1/2 z-20 w-64 h-64 md:w-96 md:h-96 opacity-10 dark:opacity-20 pointer-events-none"
       style={{ perspective: '1000px', ...style }}
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={() => setIsHovering(false)}
