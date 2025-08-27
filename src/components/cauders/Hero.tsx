@@ -3,7 +3,6 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { ArrowDown } from 'lucide-react';
 import ScrollFadeIn from './ScrollFadeIn';
-import ThreeScene from './ThreeScene';
 
 export default function Hero() {
   const scrollToServices = () => {
@@ -16,8 +15,7 @@ export default function Hero() {
   return (
     <section className="relative w-full h-screen flex flex-col items-center justify-center text-center overflow-hidden">
       <div className="absolute top-0 left-0 w-full h-full bg-background -z-10">
-        <ThreeScene />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-background/50 to-background"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-background via-background/80 to-secondary/20"></div>
       </div>
       <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
         <ScrollFadeIn>
