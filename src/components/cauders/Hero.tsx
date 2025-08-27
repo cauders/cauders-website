@@ -17,7 +17,7 @@ export default function Hero() {
       <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
         <ScrollFadeIn>
           <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-foreground leading-tight">
-            Innovative Digital Solutions
+            <span className="animated-gradient-text">Innovative Digital Solutions</span>
           </h1>
         </ScrollFadeIn>
         <ScrollFadeIn delay="delay-200">
