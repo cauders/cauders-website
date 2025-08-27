@@ -24,10 +24,10 @@ function Scene() {
       
       <TorusKnot ref={meshRef} args={[3.2, 0.4, 256, 32]}>
         <meshStandardMaterial 
-            color="hsl(var(--foreground))" 
+            color="hsl(var(--primary))" 
             roughness={0.1}
             metalness={0.8}
-            emissive="hsl(var(--foreground))"
+            emissive="hsl(var(--primary))"
             emissiveIntensity={0.1}
         />
       </TorusKnot>
