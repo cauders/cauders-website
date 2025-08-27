@@ -169,4 +169,8 @@
   .explore-button:hover {
     @apply bg-primary text-primary-foreground border-primary scale-110;
   }
+
+  .input-line {
+    @apply bg-transparent border-0 border-b rounded-none px-0 focus-visible:ring-0 focus-visible:ring-offset-0;
+  }
 }

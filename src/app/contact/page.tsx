@@ -1,5 +1,6 @@
-import Contact from '@/components/cauders/Contact';
+
+import ContactPageContent from '@/components/cauders/ContactPageContent';
 
 export default function ContactPage() {
-  return <Contact />;
+  return <ContactPageContent />;
 }
