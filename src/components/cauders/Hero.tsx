@@ -15,34 +15,38 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative w-full h-screen flex flex-col justify-center items-center overflow-hidden">
-      {/* Background 3D Animation */}
-      <div className="absolute top-0 left-0 w-full h-full z-0">
-        <Suspense fallback={<Skeleton className="w-full h-full" />}>
-          <Hero3D />
-        </Suspense>
-      </div>
-
-      {/* Foreground Content */}
-      <div className="relative z-10 text-center container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-3xl mx-auto">
-            <p className="text-lg md:text-xl text-foreground/80 animate-fade-in-up">
-              Unconventional thinking
-            </p>
-            <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-foreground mt-2 inline-block hover:scale-105 transition-transform duration-300 pb-2">
-                <span className="animated-gradient-text">Cauders.</span>
-                <br />
-                <span className="animated-gradient-text" style={{ animationDelay: '0.2s' }}>Innovative Digital Solutions</span>
-            </h1>
-            <div className="mt-8 animate-fade-in-up flex justify-center" style={{ animationDelay: '0.4s' }}>
-              <button 
-                onClick={scrollToServices} 
-                className="explore-button"
-                aria-label="Explore our services"
-              >
-                Explore
-              </button>
+    <section className="relative w-full h-screen overflow-hidden">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 h-full">
+        <div className="grid grid-cols-1 md:grid-cols-2 items-center h-full">
+          {/* Left Side: Content */}
+          <div className="relative z-10 text-left">
+            <div className="max-w-xl">
+                <p className="text-lg md:text-xl text-foreground/80 animate-fade-in-up">
+                  Unconventional thinking
+                </p>
+                <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-foreground mt-2 inline-block hover:scale-105 transition-transform duration-300 pb-2">
+                    <span className="animated-gradient-text">Cauders.</span>
+                    <br />
+                    <span className="animated-gradient-text" style={{ animationDelay: '0.2s' }}>Innovative Digital Solutions</span>
+                </h1>
+                <div className="mt-8 animate-fade-in-up flex justify-start" style={{ animationDelay: '0.4s' }}>
+                  <button 
+                    onClick={scrollToServices} 
+                    className="explore-button"
+                    aria-label="Explore our services"
+                  >
+                    Explore
+                  </button>
+                </div>
             </div>
+          </div>
+
+          {/* Right Side: 3D Animation */}
+          <div className="absolute top-0 right-0 w-full md:w-1/2 h-full z-0">
+            <Suspense fallback={<Skeleton className="w-full h-full" />}>
+              <Hero3D />
+            </Suspense>
+          </div>
         </div>
       </div>
 
