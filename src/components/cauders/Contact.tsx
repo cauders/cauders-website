@@ -69,20 +69,22 @@ function HomePageContact() {
   return (
       <section id="contact" className="py-20 lg:py-32 bg-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <ScrollFadeIn>
-                <h2 className="text-3xl md:text-4xl font-bold text-foreground">Let's Talk!</h2>
-                <p className="mt-4 text-lg text-foreground/70">
-                    The best testimonials paint a picture with words so readers can learn exactly.
-                </p>
-                <div className="mt-8 space-y-2 text-foreground/80">
-                    <p>+1 347-790-1115</p>
-                    <p>contact@exclusiveprs.info</p>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+            <ScrollFadeIn className="h-full flex flex-col justify-center">
+                <div>
+                  <h2 className="text-3xl md:text-4xl font-bold text-foreground">Let's Talk!</h2>
+                  <p className="mt-4 text-lg text-foreground/70">
+                      The best testimonials paint a picture with words so readers can learn exactly.
+                  </p>
+                  <div className="mt-8 space-y-2 text-foreground/80">
+                      <p>+1 347-790-1115</p>
+                      <p>contact@exclusiveprs.info</p>
+                  </div>
                 </div>
             </ScrollFadeIn>
-            <ScrollFadeIn delay="delay-200">
+            <ScrollFadeIn delay="delay-200" className="h-full flex flex-col justify-center">
                 <Form {...form}>
-                    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+                    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 w-full">
                         <FormField
                             control={form.control}
                             name="name"
