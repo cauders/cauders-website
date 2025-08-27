@@ -2,6 +2,8 @@
 import { ArrowDown } from 'lucide-react';
 import Link from 'next/link';
 import Hero3D from './Hero3D';
+import { Suspense } from 'react';
+import { Skeleton } from '../ui/skeleton';
 
 export default function Hero() {
   const scrollToServices = () => {
@@ -39,7 +41,9 @@ export default function Hero() {
           {/* Right Side: Graphic */}
           <div className="relative z-0 h-full w-full hidden md:flex items-center justify-center">
              <div className="w-full h-full absolute -right-1/4">
-                <Hero3D />
+                <Suspense fallback={<Skeleton className="w-full h-full" />}>
+                  <Hero3D />
+                </Suspense>
             </div>
           </div>
         </div>
