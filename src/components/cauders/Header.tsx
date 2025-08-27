@@ -49,38 +49,39 @@ export default function Header() {
         </div>
       </div>
 
-      {isMenuOpen && (
-        <div className="fixed inset-0 z-[100] bg-secondary text-secondary-foreground animate-fade-in-up">
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8 h-full flex flex-col">
-                 <div className="flex items-center justify-between h-24">
-                    <Link href="/" className="text-2xl font-bold">
-                        Cauders
-                    </Link>
-                    <Button onClick={() => setIsMenuOpen(false)} variant="ghost" size="icon">
-                        <X className="h-8 w-8" />
-                    </Button>
-                </div>
-
-                <nav className="flex-grow flex flex-col items-center justify-center space-y-8 text-center">
-                    {navLinks.map((link, index) => (
-                    <Link
-                        key={link.href}
-                        href={link.href}
-                        className={cn(
-                        "text-4xl md:text-5xl font-light transition-colors hover:text-primary group",
-                        pathname === link.href ? 'text-primary' : ''
-                        )}
-                    >
-                        <span className="text-xl md:text-2xl font-mono text-primary/80 group-hover:text-primary transition-colors mr-4">0{index + 1}</span>
-                        {link.label}
-                    </Link>
-                    ))}
-                </nav>
-
-                <div className="h-24"></div>
+      <div className={cn(
+          "fixed inset-0 z-[100] bg-secondary text-secondary-foreground transition-transform duration-500 ease-in-out",
+          isMenuOpen ? 'transform-none' : '-translate-y-full'
+      )}>
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 h-full flex flex-col">
+             <div className="flex items-center justify-between h-24">
+                <Link href="/" className="text-2xl font-bold">
+                    Cauders
+                </Link>
+                <Button onClick={() => setIsMenuOpen(false)} variant="ghost" size="icon" className="group">
+                    <X className="h-8 w-8 transition-transform duration-300 group-hover:rotate-90" />
+                </Button>
             </div>
+
+            <nav className="flex-grow flex flex-col items-start justify-center space-y-8">
+                {navLinks.map((link, index) => (
+                <Link
+                    key={link.href}
+                    href={link.href}
+                    className={cn(
+                    "text-4xl md:text-5xl font-light transition-colors hover:text-primary group",
+                    pathname === link.href ? 'text-primary' : ''
+                    )}
+                >
+                    <span className="text-xl md:text-2xl font-mono text-primary/80 group-hover:text-primary transition-colors mr-4">0{index + 1}</span>
+                    {link.label}
+                </Link>
+                ))}
+            </nav>
+
+            <div className="h-24"></div>
         </div>
-      )}
+      </div>
     </header>
   );
 }
