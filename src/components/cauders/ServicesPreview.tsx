@@ -38,7 +38,7 @@ export default function ServicesPreview() {
                   </div>
                   {/* Back of the card */}
                   <div className="flip-card-back absolute w-full h-full">
-                     <div className={cn("h-full rounded-lg p-0.5", "animated-border-card")}>
+                     <div className={cn("h-full rounded-lg p-[1px]", "animated-border-card")}>
                         <Card className="h-full bg-card flex flex-col justify-between">
                             <CardHeader>
                                 <CardTitle className="text-foreground">{service.title}</CardTitle>

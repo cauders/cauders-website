@@ -122,8 +122,8 @@
     padding-bottom: 200%;
     background: conic-gradient(
       transparent,
-      hsl(var(--primary)),
-      transparent 30%
+      hsl(var(--primary) / 0.8),
+      transparent 15%
     );
     animation: spin 3s linear infinite;
     z-index: -1;
