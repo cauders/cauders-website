@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -60,7 +61,7 @@
     scroll-behavior: smooth;
     cursor: none;
   }
-  a, button {
+  a, button, input, textarea, [role="button"] {
     cursor: none;
   }
 }
