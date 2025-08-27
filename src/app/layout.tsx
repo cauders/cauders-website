@@ -7,6 +7,7 @@ import { Inter } from 'next/font/google';
 import { cn } from '@/lib/utils';
 import { ThemeProvider } from '@/components/cauders/ThemeProvider';
 import CustomCursor from '@/components/cauders/CustomCursor';
+import Chatbot from '@/components/cauders/Chatbot';
 
 export const metadata: Metadata = {
   title: 'Cauders | Innovative Digital Solutions',
@@ -33,6 +34,7 @@ export default function RootLayout({
             {children}
           </main>
           <Footer />
+          <Chatbot />
           <Toaster />
         </ThemeProvider>
       </body>

@@ -2,6 +2,7 @@
 "use server";
 
 import { z } from "zod";
+import { chat, type ChatInput } from "@/ai/flows/chat-flow";
 
 const contactFormSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters." }),
@@ -24,4 +25,8 @@ export async function submitContactForm(data: unknown) {
   await new Promise(resolve => setTimeout(resolve, 1000));
 
   return { success: true, message: "Thank you for your message! We'll get back to you soon." };
+}
+
+export async function submitChatMessage(input: ChatInput) {
+    return await chat(input);
 }
