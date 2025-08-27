@@ -1,3 +1,4 @@
+
 "use client"
 
 import { getProjects } from "@/lib/data";
@@ -35,6 +36,7 @@ export default function PortfolioPreview() {
             animationFrameId.current = null;
             return;
         }
+        // Lerp for smoothness
         currentScrollLeft += (targetScrollLeft - currentScrollLeft) * 0.05;
         scrollContainer.scrollLeft = currentScrollLeft;
         animationFrameId.current = requestAnimationFrame(smoothScroll);
