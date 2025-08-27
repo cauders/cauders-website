@@ -52,7 +52,7 @@ export default function Header() {
       </div>
 
       <div className={cn(
-          "fixed inset-0 z-[100] bg-foreground text-background transition-transform duration-500 ease-in-out",
+          "fixed inset-0 z-[100] bg-foreground text-background transition-transform duration-500 ease-[cubic-bezier(0.23,1,0.32,1)]",
           isMenuOpen ? 'transform-none' : '-translate-y-full'
       )}>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 h-full flex flex-col">
