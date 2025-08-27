@@ -1,7 +1,7 @@
 "use client"
 import { ArrowDown } from 'lucide-react';
-import HeroLottieBackground from './HeroLottieBackground';
 import Link from 'next/link';
+import Hero3D from './Hero3D';
 
 export default function Hero() {
   const scrollToServices = () => {
@@ -39,7 +39,7 @@ export default function Hero() {
           {/* Right Side: Graphic */}
           <div className="relative z-0 h-full w-full hidden md:flex items-center justify-center">
              <div className="w-full h-full absolute -right-1/4">
-                <HeroLottieBackground />
+                <Hero3D />
             </div>
           </div>
         </div>
