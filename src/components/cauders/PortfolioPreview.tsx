@@ -1,4 +1,3 @@
-
 "use client"
 
 import { getProjects } from "@/lib/data";
@@ -128,8 +127,8 @@ export default function PortfolioPreview() {
 
        <div
           className={cn(
-            "absolute w-28 h-28 rounded-full bg-primary flex items-center justify-center text-white text-sm font-semibold pointer-events-none z-20 transition-opacity duration-300",
-            isCursorNearCard !== null ? "opacity-100" : "opacity-0"
+            "absolute w-28 h-28 rounded-full bg-primary flex items-center justify-center text-white text-sm font-semibold pointer-events-none z-20 transition-all duration-300 ease-out",
+            isCursorNearCard !== null ? "opacity-100 scale-100" : "opacity-0 scale-50"
           )}
           style={{
             left: `${cursorPosition.x}px`,
