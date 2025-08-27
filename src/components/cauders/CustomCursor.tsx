@@ -6,7 +6,7 @@ import { cn } from '@/lib/utils';
 const CustomCursor = () => {
   const cursorRef = useRef<HTMLDivElement>(null);
   const [isClient, setIsClient] = useState(false);
-  const [cursorState, setCursorState] = useState<'default' | 'pointer' | 'button'>('default');
+  const [isPointer, setIsPointer] = useState(false);
   const [position, setPosition] = useState({ x: -100, y: -100 });
   const [isVisible, setIsVisible] = useState(false);
 
@@ -21,17 +21,7 @@ const CustomCursor = () => {
       if(!isVisible) setIsVisible(true);
       setPosition({ x: e.clientX, y: e.clientY });
       const target = e.target as HTMLElement;
-      
-      const isButton = !!target.closest('button');
-      const isPointer = !!target.closest('a, [role="button"], input, textarea');
-
-      if (isButton) {
-        setCursorState('button');
-      } else if (isPointer) {
-        setCursorState('pointer');
-      } else {
-        setCursorState('default');
-      }
+      setIsPointer(!!target.closest('a, button, [role="button"], input, textarea'));
     };
     
     const handleMouseLeave = () => {
@@ -74,7 +64,7 @@ const CustomCursor = () => {
             viewBox="0 0 24 24" // The coordinate system is a 24x24 box
             className={cn(
                 "absolute transition-all duration-300",
-                cursorState === 'default' ? "opacity-100 scale-100" : "opacity-0 scale-50"
+                isPointer ? "opacity-0 scale-50" : "opacity-100 scale-100"
             )}
              style={{
                 filter: `drop-shadow(0 0 2px hsl(var(--primary)))`,
@@ -100,7 +90,7 @@ const CustomCursor = () => {
 
         {/* 
           STATE 2: POINTER CURSOR (DOT WITH LINES)
-          This cursor appears when hovering over clickable elements like cards and links.
+          This cursor appears when hovering over clickable elements.
         */}
         <svg
             width="32"
@@ -108,40 +98,35 @@ const CustomCursor = () => {
             viewBox="0 0 32 32" // The coordinate system is a 32x32 box
             fill="none"
             className={cn(
-                "absolute transition-all duration-100",
-                cursorState === 'pointer' ? "opacity-100 scale-100" : "opacity-0 scale-50"
+                "absolute transition-all duration-300",
+                isPointer ? "opacity-100 scale-100" : "opacity-0 scale-50"
             )}
             style={{
                 filter: `drop-shadow(0 0 4px hsl(var(--primary)))`,
             }}
         >
+            {/* This is the central dot. You can change its radius 'r' to make it bigger or smaller. */}
             <circle cx="16" cy="16" r="3" fill="hsl(var(--primary))" />
+            
+            {/*
+              HOW TO CHANGE THE LINES:
+              Each '<path>' is a line. The 'd' attribute defines its start and end points.
+              - "M_ H_" draws a HORIZONTAL line. (M = Move to, H = Horizontal line to)
+              - "M_ V_" draws a VERTICAL line. (M = Move to, V = Vertical line to)
+              
+              Current horizontal lines:
+              - Left line: d="M4 16 H 12" (Starts at x=4, y=16, draws horizontally to x=12)
+              - Right line: d="M20 16 H 28" (Starts at x=20, y=16, draws horizontally to x=28)
+
+              HOW TO ADD MORE LINES:
+              Just copy a <path> element and change its 'd' attribute.
+              
+              Example - To add two VERTICAL lines:
+              <path d="M16 4 V 12" stroke="hsl(var(--primary))" strokeWidth="2" strokeLinecap="round" />
+              <path d="M16 20 V 28" stroke="hsl(var(--primary))" strokeWidth="2" strokeLinecap="round" />
+            */}
             <path d="M4 16 H 12" stroke="hsl(var(--primary))" strokeWidth="2" strokeLinecap="round" />
             <path d="M20 16 H 28" stroke="hsl(var(--primary))" strokeWidth="2" strokeLinecap="round" />
-        </svg>
-
-        {/*
-            STATE 3: BUTTON CURSOR (CONTRASTING CIRCLE)
-            This cursor appears when hovering over buttons.
-        */}
-        <svg
-          width="32"
-          height="32"
-          viewBox="0 0 32 32"
-          fill="none"
-          className={cn(
-            "absolute transition-all duration-100",
-             cursorState === 'button' ? "opacity-100 scale-100" : "opacity-0 scale-50"
-          )}
-        >
-            <circle
-                cx="16"
-                cy="16"
-                r="8"
-                stroke="hsl(var(--background))"
-                strokeWidth="2"
-                fill="transparent"
-            />
         </svg>
     </div>
   );
