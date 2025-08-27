@@ -20,28 +20,66 @@ export default function PortfolioPreview() {
   const [cursorPosition, setCursorPosition] = useState({ x: -100, y: -100 });
   const [isCursorNearCard, setIsCursorNearCard] = useState(false);
 
-  // Smooth vertical-to-horizontal scroll
+  // Smooth vertical-to-horizontal scroll with delay
   useEffect(() => {
-    const handleScroll = () => {
-      if (scrollContainerRef.current && sectionRef.current) {
-        const sectionTop = sectionRef.current.offsetTop;
-        const scrollY = window.scrollY;
-        
-        // Start the horizontal scroll slightly before entering the section
-        const scrollTriggerPoint = sectionTop - window.innerHeight * 0.8; // Start when 80% of viewport height away
-        const scrollProgress = Math.max(0, scrollY - scrollTriggerPoint);
+    const scrollContainer = scrollContainerRef.current;
+    const section = sectionRef.current;
+    if (!scrollContainer || !section) return;
 
-        const maxScroll = scrollContainerRef.current.scrollWidth - scrollContainerRef.current.clientWidth;
-        
-        // Apply a small damping factor for a slow, smooth scroll
-        const scrollAmount = Math.min(maxScroll, scrollProgress * 0.4); 
-        
-        scrollContainerRef.current.scrollLeft = scrollAmount;
+    let targetScrollLeft = 0;
+    let currentScrollLeft = 0;
+    const animationFrameId = useRef<number | null>(null);
+
+    const smoothScroll = () => {
+      // Linearly interpolate current scroll position towards the target
+      currentScrollLeft += (targetScrollLeft - currentScrollLeft) * 0.1;
+      scrollContainer.scrollLeft = currentScrollLeft;
+
+      if (Math.abs(targetScrollLeft - currentScrollLeft) > 0.5) {
+        animationFrameId.current = requestAnimationFrame(smoothScroll);
       }
     };
 
+    const handleScroll = () => {
+      const sectionTop = section.offsetTop;
+      const scrollY = window.scrollY;
+      
+      const scrollTriggerPoint = sectionTop - window.innerHeight * 0.8;
+      const scrollProgress = Math.max(0, scrollY - scrollTriggerPoint);
+
+      const maxScroll = scrollContainer.scrollWidth - scrollContainer.clientWidth;
+      
+      targetScrollLeft = Math.min(maxScroll, scrollProgress * 0.4);
+
+      if (animationFrameId.current === null) {
+        animationFrameId.current = requestAnimationFrame(smoothScroll);
+      }
+    };
+    
+    const startAnimation = () => {
+      if (animationFrameId.current === null) {
+        animationFrameId.current = requestAnimationFrame(smoothScroll);
+      }
+    }
+    
+    const stopAnimation = () => {
+      if (animationFrameId.current !== null) {
+        cancelAnimationFrame(animationFrameId.current);
+        animationFrameId.current = null;
+      }
+    }
+
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    scrollContainer.addEventListener('mouseenter', startAnimation);
+    scrollContainer.addEventListener('mouseleave', stopAnimation);
+
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      scrollContainer.removeEventListener('mouseenter', startAnimation);
+      scrollContainer.removeEventListener('mouseleave', stopAnimation);
+      stopAnimation();
+    };
   }, []);
 
   // Track cursor position across the entire section
@@ -49,18 +87,16 @@ export default function PortfolioPreview() {
     const sectionRect = sectionRef.current?.getBoundingClientRect();
     if (!sectionRect) return;
 
-    // Smooth the cursor movement by a damping factor
     const newX = e.clientX - sectionRect.left;
     const newY = e.clientY - sectionRect.top;
 
     setCursorPosition(prevPos => ({
-      x: prevPos.x + (newX - prevPos.x) * 0.1,
-      y: prevPos.y + (newY - prevPos.y) * 0.1,
+      x: prevPos.x + (newX - prevPos.x) * 0.05,
+      y: prevPos.y + (newY - prevPos.y) * 0.05,
     }));
 
-    // Find if the cursor is near any card
     let isNear = false;
-    const proximityRadius = 250; // Increased interaction area radius
+    const proximityRadius = 250;
 
     cardRefs.current.forEach((card) => {
       if (card) {
@@ -83,7 +119,6 @@ export default function PortfolioPreview() {
     setIsCursorNearCard(false);
   }, []);
 
-  // Handle proper hover state for text animation
   const handleCardHover = useCallback((index: number, isHovering: boolean) => {
     setActiveCard(isHovering ? index : null);
   }, []);
@@ -104,7 +139,6 @@ export default function PortfolioPreview() {
         </ScrollFadeIn>
       </div>
 
-       {/* Custom hover cursor circle that lives outside the scroll container */}
        <div
           className={cn(
             "absolute w-28 h-28 rounded-full bg-primary flex items-center justify-center text-white text-sm font-semibold pointer-events-none z-20 transition-opacity duration-300",
@@ -148,7 +182,6 @@ export default function PortfolioPreview() {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
                     
-                    {/* The text container for animation */}
                     <div className="absolute bottom-0 left-0 p-6 z-10 overflow-hidden w-full">
                       <div className={cn(
                         "transition-all duration-500 ease-out opacity-0 translate-y-full group-hover:opacity-100 group-hover:translate-y-0"
