@@ -1,3 +1,4 @@
+
 "use client"
 import { ArrowDown } from 'lucide-react';
 import Link from 'next/link';
@@ -14,11 +15,17 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative w-full h-screen flex flex-col justify-center overflow-hidden">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-          {/* Left Side: Text Content */}
-          <div className="relative z-10 text-left">
+    <section className="relative w-full h-screen flex flex-col justify-center items-center overflow-hidden">
+      {/* Background 3D Animation */}
+      <div className="absolute top-0 left-0 w-full h-full z-0">
+        <Suspense fallback={<Skeleton className="w-full h-full" />}>
+          <Hero3D />
+        </Suspense>
+      </div>
+
+      {/* Foreground Content */}
+      <div className="relative z-10 text-center container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-3xl mx-auto">
             <p className="text-lg md:text-xl text-foreground/80 animate-fade-in-up">
               Unconventional thinking
             </p>
@@ -27,7 +34,7 @@ export default function Hero() {
                 <br />
                 <span className="animated-gradient-text" style={{ animationDelay: '0.2s' }}>Innovative Digital Solutions</span>
             </h1>
-            <div className="mt-8 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
+            <div className="mt-8 animate-fade-in-up flex justify-center" style={{ animationDelay: '0.4s' }}>
               <button 
                 onClick={scrollToServices} 
                 className="explore-button"
@@ -36,16 +43,6 @@ export default function Hero() {
                 Explore
               </button>
             </div>
-          </div>
-
-          {/* Right Side: Graphic */}
-          <div className="relative z-0 h-full w-full hidden md:flex items-center justify-center">
-             <div className="w-full h-full absolute -right-1/4">
-                <Suspense fallback={<Skeleton className="w-full h-full" />}>
-                  <Hero3D />
-                </Suspense>
-            </div>
-          </div>
         </div>
       </div>
 
