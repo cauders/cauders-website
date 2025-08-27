@@ -16,10 +16,17 @@ export default function Hero() {
 
   return (
     <section className="relative w-full h-screen overflow-hidden">
+      {/* 3D Animation Background */}
+      <div className="absolute top-0 left-0 w-full md:w-2/3 h-full z-0 opacity-50 md:opacity-100">
+        <Suspense fallback={<Skeleton className="w-full h-full" />}>
+          <Hero3D />
+        </Suspense>
+      </div>
+
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 h-full">
-        <div className="grid grid-cols-1 md:grid-cols-2 items-center h-full">
+        <div className="relative z-10 flex items-center h-full -mt-16 md:-mt-24">
           {/* Left Side: Content */}
-          <div className="relative z-10 text-left">
+          <div className="w-full md:w-1/2 text-left">
             <div className="max-w-xl">
                 <p className="text-lg md:text-xl text-foreground/80 animate-fade-in-up">
                   Unconventional thinking
@@ -40,18 +47,11 @@ export default function Hero() {
                 </div>
             </div>
           </div>
-
-          {/* Right Side: 3D Animation */}
-          <div className="absolute top-0 right-0 w-full md:w-1/2 h-full z-0">
-            <Suspense fallback={<Skeleton className="w-full h-full" />}>
-              <Hero3D />
-            </Suspense>
-          </div>
         </div>
       </div>
 
-      {/* Bottom and Right Elements */}
-      <div className="absolute bottom-8 left-8 z-10">
+      {/* Bottom Elements */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 md:left-8 md:translate-x-0 z-10">
         <Link href="/contact" className="text-sm font-medium tracking-widest uppercase hover:text-primary transition-colors">
             Contact Us
         </Link>
