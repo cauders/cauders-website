@@ -8,7 +8,7 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import ScrollFadeIn from "./ScrollFadeIn";
 import { ArrowRight } from "lucide-react";
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect, useCallback } from "react";
 import { cn } from "@/lib/utils";
 
 
@@ -19,15 +19,17 @@ export default function PortfolioPreview() {
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
 
-  // Handle the vertical-to-horizontal scroll effect
+  // Custom scroll animation for vertical-to-horizontal movement
   useEffect(() => {
     const handleScroll = () => {
       if (scrollContainerRef.current && sectionRef.current) {
         const sectionTop = sectionRef.current.offsetTop;
         const scrollY = window.scrollY;
         
-        // Calculate the horizontal scroll based on vertical scroll
-        const scrollAmount = Math.max(0, scrollY - sectionTop);
+        // Calculate a smoother scroll amount with a damping factor
+        const maxScroll = scrollContainerRef.current.scrollWidth - scrollContainerRef.current.clientWidth;
+        const scrollAmount = Math.min(maxScroll, Math.max(0, (scrollY - sectionTop) * 0.5)); // Slower scroll speed
+
         scrollContainerRef.current.scrollLeft = scrollAmount;
       }
     };
@@ -36,13 +38,26 @@ export default function PortfolioPreview() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Handle the custom cursor movement
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+  // Custom cursor movement logic with a slow-down effect
+  const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
     const cardRect = e.currentTarget.getBoundingClientRect();
     const x = e.clientX - cardRect.left;
     const y = e.clientY - cardRect.top;
-    setCursorPosition({ x, y });
-  };
+    
+    // Animate the cursor position with a slight delay
+    setCursorPosition(prevPos => ({
+      x: prevPos.x + (x - prevPos.x) * 0.1, // Damping factor for smooth, slow movement
+      y: prevPos.y + (y - prevPos.y) * 0.1,
+    }));
+  }, []);
+
+  const handleMouseEnter = useCallback((index: number) => {
+    setHoveredCard(index);
+  }, []);
+
+  const handleMouseLeave = useCallback(() => {
+    setHoveredCard(null);
+  }, []);
 
   return (
     <section 
@@ -67,9 +82,9 @@ export default function PortfolioPreview() {
           {projects.map((project, index) => (
             <div 
               key={project.slug} 
-              className="inline-block w-[90vw] md:w-[50vw] lg:w-[30vw] xl:w-[25vw] relative"
-              onMouseEnter={() => setHoveredCard(index)}
-              onMouseLeave={() => setHoveredCard(null)}
+              className="inline-block w-[95vw] md:w-[60vw] lg:w-[45vw] xl:w-[35vw] relative"
+              onMouseEnter={() => handleMouseEnter(index)}
+              onMouseLeave={handleMouseLeave}
               onMouseMove={handleMouseMove}
             >
               <Link href={`/portfolio/${project.slug}`} className="block h-full w-full group">
@@ -84,18 +99,23 @@ export default function PortfolioPreview() {
                       data-ai-hint={project.aiHint}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
-                    <div className="absolute bottom-0 left-0 p-6 z-10">
-                      <p className="text-white text-base font-inter opacity-70 mb-1">{project.description}</p>
-                      <h3 className="font-bold text-xl text-white font-inter">{project.title}</h3>
+                    
+                    {/* The text container for animation */}
+                    <div className="absolute bottom-0 left-0 p-6 z-10 overflow-hidden">
+                      <div className={cn("transition-transform duration-500 ease-out", hoveredCard === index ? "translate-y-0" : "translate-y-full")}>
+                        <p className="text-white text-base font-inter opacity-70 mb-1">{project.description}</p>
+                        <h3 className="font-bold text-xl text-white font-inter">{project.title}</h3>
+                      </div>
                     </div>
-                    {/* Custom hover cursor circle */}
+                    
+                    {/* Custom hover cursor circle with conditional rendering */}
                     {hoveredCard === index && (
                       <div
-                        className="absolute w-24 h-24 rounded-full bg-[#a394f8] flex items-center justify-center text-white text-sm font-semibold pointer-events-none transition-transform duration-100 ease-out z-20"
+                        className="absolute w-24 h-24 rounded-full bg-[#a394f8] flex items-center justify-center text-white text-sm font-semibold pointer-events-none transition-transform duration-300 ease-out z-20"
                         style={{
                           left: `${cursorPosition.x}px`,
                           top: `${cursorPosition.y}px`,
-                          transform: `translate(-50%, -50%)`,
+                          transform: `translate(-50%, -50%) scale(1)`,
                         }}
                       >
                         Drag or click
