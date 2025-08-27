@@ -7,103 +7,114 @@ import Image from "next/image";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import ScrollFadeIn from "./ScrollFadeIn";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  type CarouselApi,
-} from "@/components/ui/carousel"
 import { ArrowRight } from "lucide-react";
-import React from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 
 
 export default function PortfolioPreview() {
   const projects = getProjects().slice(0, 5);
-  const [api, setApi] = React.useState<CarouselApi>()
-  const [current, setCurrent] = React.useState(0)
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const [hoveredCard, setHoveredCard] = useState<number | null>(null);
+  const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
 
-  React.useEffect(() => {
-    if (!api) {
-      return
-    }
+  // Handle the vertical-to-horizontal scroll effect
+  useEffect(() => {
+    const handleScroll = () => {
+      if (scrollContainerRef.current && sectionRef.current) {
+        const sectionTop = sectionRef.current.offsetTop;
+        const scrollY = window.scrollY;
+        
+        // Calculate the horizontal scroll based on vertical scroll
+        const scrollAmount = Math.max(0, scrollY - sectionTop);
+        scrollContainerRef.current.scrollLeft = scrollAmount;
+      }
+    };
 
-    setCurrent(api.selectedScrollSnap())
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
-    api.on("select", () => {
-      setCurrent(api.selectedScrollSnap())
-    })
-  }, [api])
+  // Handle the custom cursor movement
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const cardRect = e.currentTarget.getBoundingClientRect();
+    const x = e.clientX - cardRect.left;
+    const y = e.clientY - cardRect.top;
+    setCursorPosition({ x, y });
+  };
 
   return (
-    <section id="portfolio-preview" className="py-20 lg:py-32 bg-[#0d091a] relative overflow-hidden">
+    <section 
+      id="portfolio-preview" 
+      ref={sectionRef} 
+      className="py-20 lg:py-32 bg-white relative overflow-hidden"
+    >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center md:text-left">
         <ScrollFadeIn>
-          <h2 className="text-2xl md:text-3xl font-normal text-white">
+          <h2 className="text-2xl md:text-3xl font-normal text-black font-inter">
             Enjoy some of our best work in <span className="text-[#a394f8]">immersive web,</span> <span className="text-[#a394f8]">augmented reality</span> and <span className="text-[#a394f8]">virtual reality experiences</span>
           </h2>
         </ScrollFadeIn>
       </div>
 
-      <div className="w-full mt-16 perspective-carousel">
-        <Carousel
-          setApi={setApi}
-          opts={{
-            align: "center",
-            loop: true,
-          }}
-          className="w-full"
-        >
-          <CarouselContent className="-ml-4">
-            {projects.map((project, index) => (
-              <CarouselItem
-                key={project.slug}
-                className={cn(
-                  "basis-[90%] md:basis-1/2 lg:basis-1/3 xl:basis-1/4 pl-4 carousel-item-3d",
-                  index === current ? "is-active" : "",
-                  index === (current - 1 + projects.length) % projects.length ? "is-prev" : "",
-                  index === (current + 1) % projects.length ? "is-next" : ""
-                )}
-              >
-                <div className="h-full w-full">
-                  <Link href={`/portfolio/${project.slug}`} className="block group">
-                    <Card className="overflow-hidden h-full transition-all duration-500 bg-card rounded-2xl shadow-lg relative border-none">
-                      <div className="aspect-[4/3] overflow-hidden relative">
-                        <Image
-                          src={project.imageUrl}
-                          alt={project.title}
-                          width={600}
-                          height={450}
-                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                          data-ai-hint={project.aiHint}
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
-                        <div className="absolute bottom-0 left-0 p-6 z-10">
-                          <p className="text-white text-base opacity-70 mb-1">{project.description}</p>
-                          <h3 className="font-bold text-xl text-white">{project.title}</h3>
-                        </div>
-                        {/* Drag or click overlay */}
-                        <div className="absolute inset-0 flex items-center justify-center transition-opacity duration-300 opacity-0 group-hover:opacity-100">
-                          <div className="w-24 h-24 rounded-full bg-[#a394f8] flex items-center justify-center text-white text-sm font-semibold">
-                            Drag or click
-                          </div>
-                        </div>
+      {/* Main horizontal scroll container */}
+      <div 
+        ref={scrollContainerRef} 
+        className="w-full mt-16 overflow-x-hidden whitespace-nowrap scroll-smooth py-4"
+      >
+        <div className="inline-flex gap-x-8 px-8">
+          {projects.map((project, index) => (
+            <div 
+              key={project.slug} 
+              className="inline-block w-[90vw] md:w-[50vw] lg:w-[30vw] xl:w-[25vw] relative"
+              onMouseEnter={() => setHoveredCard(index)}
+              onMouseLeave={() => setHoveredCard(null)}
+              onMouseMove={handleMouseMove}
+            >
+              <Link href={`/portfolio/${project.slug}`} className="block h-full w-full group">
+                <Card className="overflow-hidden h-full transition-all duration-500 rounded-3xl shadow-lg relative border-none">
+                  <div className="aspect-[4/3] overflow-hidden relative">
+                    <Image
+                      src={project.imageUrl}
+                      alt={project.title}
+                      width={600}
+                      height={450}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      data-ai-hint={project.aiHint}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+                    <div className="absolute bottom-0 left-0 p-6 z-10">
+                      <p className="text-white text-base font-inter opacity-70 mb-1">{project.description}</p>
+                      <h3 className="font-bold text-xl text-white font-inter">{project.title}</h3>
+                    </div>
+                    {/* Custom hover cursor circle */}
+                    {hoveredCard === index && (
+                      <div
+                        className="absolute w-24 h-24 rounded-full bg-[#a394f8] flex items-center justify-center text-white text-sm font-semibold pointer-events-none transition-transform duration-100 ease-out z-20"
+                        style={{
+                          left: `${cursorPosition.x}px`,
+                          top: `${cursorPosition.y}px`,
+                          transform: `translate(-50%, -50%)`,
+                        }}
+                      >
+                        Drag or click
                       </div>
-                    </Card>
-                  </Link>
-                </div>
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-        </Carousel>
+                    )}
+                  </div>
+                </Card>
+              </Link>
+            </div>
+          ))}
+        </div>
       </div>
-
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 mt-16 text-left md:text-left">
+      
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 mt-16">
         <ScrollFadeIn>
-          <Button
-            size="lg"
+          <Button 
+            size="lg" 
             asChild
-            className="rounded-full px-8 py-6 bg-transparent border-2 border-white text-white hover:bg-white hover:text-black transition-colors"
+            className="rounded-full px-8 py-6 bg-transparent border-2 border-slate-700 text-slate-700 hover:bg-slate-700 hover:text-white transition-colors"
           >
             <Link href="/portfolio">
               Discover more of our work <ArrowRight className="ml-2 h-4 w-4" />
