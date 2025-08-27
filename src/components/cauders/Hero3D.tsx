@@ -18,17 +18,17 @@ function Scene() {
 
   return (
     <>
-      <ambientLight intensity={0.5} />
+      <ambientLight intensity={0.8} />
       <pointLight position={[10, 10, 10]} intensity={150} />
       <pointLight position={[-10, -10, -10]} intensity={100} color="hsl(var(--primary))" />
       
-      <TorusKnot ref={meshRef} args={[2.8, 0.4, 256, 32]}>
+      <TorusKnot ref={meshRef} args={[3.2, 0.4, 256, 32]}>
         <meshStandardMaterial 
-            color="hsl(var(--primary))" 
+            color="hsl(var(--foreground))" 
             roughness={0.1}
             metalness={0.8}
-            emissive="hsl(var(--primary))"
-            emissiveIntensity={0.2}
+            emissive="hsl(var(--foreground))"
+            emissiveIntensity={0.1}
         />
       </TorusKnot>
     </>

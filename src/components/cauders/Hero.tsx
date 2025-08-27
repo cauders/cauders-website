@@ -24,7 +24,7 @@ export default function Hero() {
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 h-full">
-        <div className="relative z-10 flex items-center h-full -mt-16 md:-mt-24">
+        <div className="relative z-10 flex items-center h-full -mt-24 md:-mt-32">
           {/* Left Side: Content */}
           <div className="w-full md:w-1/2 text-left">
             <div className="max-w-xl">
