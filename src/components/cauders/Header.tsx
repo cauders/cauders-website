@@ -75,7 +75,7 @@ export default function Header() {
                         isMenuOpen ? "animate-fade-in-down" : "",
                         pathname === link.href ? 'text-primary' : ''
                     )}
-                    style={{ animationDelay: `${200 + index * 100}ms`, animationFillMode: 'forwards' }}
+                    style={{ animationDelay: `${400 + index * 150}ms`, animationFillMode: 'forwards' }}
                 >
                     <span className="text-lg md:text-xl font-mono text-primary/80 group-hover:text-primary transition-colors mr-3">0{index + 1}</span>
                     {link.label}
