@@ -142,7 +142,7 @@ export default function PortfolioPreview() {
 
       <div 
         ref={scrollContainerRef} 
-        className="w-full mt-16 overflow-x-hidden whitespace-nowrap scroll-smooth py-4 hide-scrollbar"
+        className="w-full mt-16 overflow-x-hidden whitespace-nowrap scroll-smooth py-4 hide-scrollbar perspective-carousel"
       >
         <div className="inline-flex gap-x-8 px-8">
           {projects.map((project, index) => (
@@ -156,24 +156,32 @@ export default function PortfolioPreview() {
               <Link href={`/portfolio/${project.slug}`} className="block h-full w-full">
                 <Card className={cn(
                   "overflow-visible h-full transition-all duration-500 rounded-3xl shadow-lg relative border-none bg-transparent",
+                  "card-tilt",
                   activeCard === index && "shadow-primary-glow"
                 )}>
-                  <div className="aspect-[4/3] overflow-hidden relative rounded-3xl">
+                  <div className="aspect-[4/3] relative rounded-3xl overflow-hidden">
                     <Image
                       src={project.imageUrl}
                       alt={project.title}
                       width={600}
                       height={450}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 rounded-3xl"
                       data-ai-hint={project.aiHint}
                     />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+                    
+                    <div className="absolute bottom-0 left-0 p-6 z-10 overflow-hidden">
+                      <div className={cn("transition-all duration-500 ease-out", activeCard === index ? "translate-y-0 opacity-100" : "translate-y-full opacity-0")}>
+                        <p className="text-lg text-white/70 font-inter">{project.description}</p>
+                        <h3 className="font-bold text-3xl text-white mt-1 font-inter">{project.title}</h3>
+                        <p className="text-sm text-gray-400 mt-2 font-inter uppercase tracking-wide">
+                           WEB • 360° PHOTOGRAPHY • 360° VIDEO • 3D
+                        </p>
+                      </div>
+                    </div>
                   </div>
                 </Card>
               </Link>
-              <div className="mt-4 pl-2 text-left opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <p className="text-lg text-white/70">{project.description}</p>
-                  <h3 className="font-bold text-3xl text-white mt-1">{project.title}</h3>
-              </div>
             </div>
           ))}
         </div>
