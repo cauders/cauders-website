@@ -55,7 +55,7 @@ const CustomCursor = () => {
         !isVisible && "opacity-0"
       )}
     >
-        {/* State 1: Default Arrow */}
+        {/* State 1: Default Chevron */}
         <svg
             width="32"
             height="32"
@@ -65,19 +65,20 @@ const CustomCursor = () => {
                 isPointer ? "opacity-0 scale-50" : "opacity-100 scale-100"
             )}
              style={{
-                filter: `drop-shadow(0 0 2px hsl(var(--primary))) drop-shadow(0 0 5px hsl(var(--primary) / 0.5))`,
+                filter: `drop-shadow(0 0 2px hsl(var(--primary)))`,
             }}
         >
             <path
-                d="M4.2 4.2L19.8 19.8L13.2 13.2L19.8 4.2L4.2 19.8L10.8 13.2L4.2 4.2Z"
-                fill="hsl(var(--primary))"
-                stroke="hsl(var(--background))"
-                strokeWidth="1"
+                d="M15 6 L9 12 L15 18"
+                stroke="hsl(var(--primary))"
+                strokeWidth="2"
+                fill="none"
+                strokeLinecap="round"
                 strokeLinejoin="round"
             />
         </svg>
 
-        {/* State 2: Pointer (on hover) */}
+        {/* State 2: Pointer (dot with two lines) */}
         <svg
             width="32"
             height="32"
@@ -88,13 +89,12 @@ const CustomCursor = () => {
                 isPointer ? "opacity-100 scale-100" : "opacity-0 scale-50"
             )}
             style={{
-                filter: `drop-shadow(0 0 3px hsl(var(--primary))) drop-shadow(0 0 8px hsl(var(--primary) / 0.7))`,
+                filter: `drop-shadow(0 0 4px hsl(var(--primary)))`,
             }}
         >
-            <circle cx="16" cy="16" r="4" fill="white" />
-            <path d="M16 8V4" stroke="white" strokeWidth="2" strokeLinecap="round" />
-            <path d="M22.6 9.4L25.4 6.6" stroke="white" strokeWidth="2" strokeLinecap="round" />
-            <path d="M24 16H28" stroke="white" strokeWidth="2" strokeLinecap="round" />
+            <circle cx="16" cy="16" r="3" fill="hsl(var(--primary))" />
+            <path d="M4 16 H 12" stroke="hsl(var(--primary))" strokeWidth="2" strokeLinecap="round" />
+            <path d="M20 16 H 28" stroke="hsl(var(--primary))" strokeWidth="2" strokeLinecap="round" />
         </svg>
     </div>
   );
