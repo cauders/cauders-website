@@ -15,7 +15,7 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative w-full h-[calc(110vh-6rem)] mt-[-6rem] overflow-hidden">
+    <section className="relative w-full h-[calc(100vh-6rem)] mt-[-6rem] overflow-hidden">
       {/* 3D Animation Background */}
       <div className="absolute top-0 right-0 w-full md:w-1/2 h-full z-0">
         <Suspense fallback={<Skeleton className="w-full h-full" />}>
@@ -51,16 +51,15 @@ export default function Hero() {
       </div>
 
       {/* Bottom Elements */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 md:left-8 md:translate-x-0 z-10">
-        <Link href="/contact" className="text-sm font-medium tracking-widest uppercase hover:text-primary transition-colors">
-            Contact Us
-        </Link>
-      </div>
-
-      <div className="absolute bottom-8 right-8 z-10">
-         <button onClick={scrollToServices} aria-label="Scroll down" className="animate-bounce">
-          <ArrowDown className="w-6 h-6 text-foreground" />
-         </button>
+      <div className="absolute bottom-8 left-0 right-0 z-10">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+          <Link href="/contact" className="text-sm font-medium tracking-widest uppercase hover:text-primary transition-colors">
+              Contact Us
+          </Link>
+          <button onClick={scrollToServices} aria-label="Scroll down" className="animate-bounce">
+            <ArrowDown className="w-6 h-6 text-foreground" />
+          </button>
+        </div>
       </div>
     </section>
   );
