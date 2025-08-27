@@ -105,11 +105,6 @@
   .animated-gradient-text:hover {
     background-position: 0%;
   }
-
-  .animate-fade-in-up {
-    animation: fade-in-up 0.8s ease-out forwards;
-    opacity: 0;
-  }
   
   .animated-border-card {
     position: relative;
