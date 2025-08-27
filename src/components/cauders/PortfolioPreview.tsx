@@ -11,15 +11,32 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
+  type CarouselApi,
 } from "@/components/ui/carousel"
 import { ArrowRight } from "lucide-react";
+import React from "react";
+import { cn } from "@/lib/utils";
 
 
 export default function PortfolioPreview() {
   const projects = getProjects().slice(0, 5); 
+  const [api, setApi] = React.useState<CarouselApi>()
+  const [current, setCurrent] = React.useState(0)
+ 
+  React.useEffect(() => {
+    if (!api) {
+      return
+    }
+ 
+    setCurrent(api.selectedScrollSnap())
+ 
+    api.on("select", () => {
+      setCurrent(api.selectedScrollSnap())
+    })
+  }, [api])
 
   return (
-    <section id="portfolio-preview" className="py-20 lg:py-32 bg-background relative overflow-hidden">
+    <section id="portfolio-preview" className="py-20 lg:py-32 bg-secondary/30 relative overflow-hidden backdrop-blur-sm">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-left">
         <ScrollFadeIn>
           <h2 className="text-3xl md:text-4xl font-bold text-foreground">Our Work</h2>
@@ -29,18 +46,26 @@ export default function PortfolioPreview() {
         </ScrollFadeIn>
       </div>
 
-      <div className="pl-4 sm:pl-6 lg:pl-8 xl:pl-16 mt-16">
+      <div className="w-full mt-16 perspective-carousel">
         <Carousel 
+          setApi={setApi}
           opts={{
-            align: "start",
-            dragFree: true,
+            align: "center",
+            loop: true,
           }}
           className="w-full"
         >
           <CarouselContent className="-ml-4">
             {projects.map((project, index) => (
-              <CarouselItem key={project.slug} className="md:basis-1/2 lg:basis-1/3 xl:basis-1/4 pl-4">
-                 <ScrollFadeIn style={{ animationDelay: `${index * 150}ms` }}>
+              <CarouselItem key={project.slug} className="md:basis-1/2 lg:basis-1/3 xl:basis-1/4 pl-4 carousel-item-3d">
+                 <div
+                    className={cn(
+                        "transition-transform duration-500 ease-out",
+                        index === current ? "is-active" : "",
+                        index === (current - 1 + projects.length) % projects.length ? "is-prev" : "",
+                        index === (current + 1) % projects.length ? "is-next" : ""
+                    )}
+                 >
                   <Link href={`/portfolio/${project.slug}`} className="block group">
                     <Card className="overflow-hidden h-full transition-all duration-500 bg-card border rounded-lg shadow-lg relative">
                       <div className="aspect-[4/3] overflow-hidden relative">
@@ -52,18 +77,14 @@ export default function PortfolioPreview() {
                           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                           data-ai-hint={project.aiHint}
                         />
-                        <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-300"></div>
-                        <div className="drag-overlay">
-                          <div className="text-center text-sm">Drag or click</div>
-                        </div>
-                      </div>
-                       <div className="p-4">
-                        <h3 className="font-bold text-xl text-foreground">{project.title}</h3>
-                        <p className="text-sm text-foreground/70 mt-1">{project.description}</p>
+                         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+                         <div className="absolute bottom-0 left-0 p-6">
+                            <h3 className="font-bold text-xl text-white">{project.title}</h3>
+                         </div>
                       </div>
                     </Card>
                   </Link>
-                </ScrollFadeIn>
+                </div>
               </CarouselItem>
             ))}
           </CarouselContent>
