@@ -79,9 +79,9 @@ const CustomCursor = () => {
               - To make it point down (v): Change d to "M6 9 L12 15 L18 9"
             */}
             <path
-                d="M15 6 L9 12 L15 18"
+                d="M12 15 L10 1 L22 10"
                 stroke="hsl(var(--primary))"
-                strokeWidth="2"
+                strokeWidth="1"
                 fill="none"
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -95,10 +95,10 @@ const CustomCursor = () => {
         <svg
             width="32"
             height="32"
-            viewBox="0 0 32 32" // The coordinate system is a 32x32 box
+            viewBox="0 0 24 24" // The coordinate system is a 32x32 box
             fill="none"
             className={cn(
-                "absolute transition-all duration-300",
+                "absolute transition-all duration-100",
                 isPointer ? "opacity-100 scale-100" : "opacity-0 scale-50"
             )}
             style={{
@@ -106,7 +106,7 @@ const CustomCursor = () => {
             }}
         >
             {/* This is the central dot. You can change its radius 'r' to make it bigger or smaller. */}
-            <circle cx="16" cy="16" r="4" fill="hsl(var(--primary))" />
+            <circle cx="9" cy="3" r="3" fill="hsl(var(--primary))" />
             
             {/*
               HOW TO CHANGE THE LINES AND THEIR DIRECTION:
@@ -116,13 +116,14 @@ const CustomCursor = () => {
               
               I've set up two lines below. One is rotated -45 degrees and the other is rotated 135 degrees.
               You can change these values to whatever you like!
-            */}
-            <g transform="rotate(-45, 16, 16)">
-              <path d="M4 16 H 28" stroke="hsl(var(--primary))" strokeWidth="2" strokeLinecap="round" />
-            </g>
-            <g transform="rotate(135, 16, 16)">
-              {/* You could add another line here if you wanted more than two. */}
-            </g>
+            */} 
+ <g transform="rotate(40, 16, 24)">
+    <path d="M4 12 H 14" stroke="hsl(var(--primary))" strokeWidth="2" strokeLinecap="round" />
+  </g>
+   
+  <g transform="rotate(80, 6, 12)">
+    <path d="M4 8 H 14" stroke="hsl(var(--primary))" strokeWidth="2" strokeLinecap="round" />
+  </g>
         </svg>
     </div>
   );
