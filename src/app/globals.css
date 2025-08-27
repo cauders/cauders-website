@@ -236,4 +236,9 @@
   .menu-link-gradient:hover {
     background-position: 0%;
   }
+
+  .drag-overlay {
+    @apply absolute inset-0 flex items-center justify-center bg-primary/20 rounded-full text-primary-foreground opacity-0 group-hover:opacity-100 transition-opacity duration-300 w-32 h-32 m-auto;
+    background-color: hsl(var(--primary) / 0.8);
+  }
 }
