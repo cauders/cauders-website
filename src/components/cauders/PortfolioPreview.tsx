@@ -1,3 +1,6 @@
+
+"use client"
+
 import { getProjects } from "@/lib/data";
 import Link from "next/link";
 import Image from "next/image";
@@ -5,48 +8,65 @@ import { Card, CardContent, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import ScrollFadeIn from "./ScrollFadeIn";
 import { ArrowRight } from "lucide-react";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+} from "@/components/ui/carousel"
+import { cn } from "@/lib/utils";
+import React from "react";
 
 export default function PortfolioPreview() {
-  // Get first 3 projects for the preview
-  const projects = getProjects().slice(0, 3);
+  const projects = getProjects().slice(0, 5); // Get first 5 for the carousel
 
   return (
-    <section id="portfolio-preview" className="py-20 lg:py-32 bg-secondary/30">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <ScrollFadeIn className="text-center mb-16">
+    <section id="portfolio-preview" className="py-20 lg:py-32 bg-secondary/30 relative overflow-hidden">
+      <div className="absolute inset-0 bg-background/80 backdrop-blur-sm z-0"></div>
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+        <ScrollFadeIn>
           <h2 className="text-3xl md:text-4xl font-bold text-foreground">Our Work</h2>
           <p className="mt-4 text-lg text-foreground/70 max-w-2xl mx-auto">
             A glimpse into the innovative solutions we've crafted for our clients.
           </p>
         </ScrollFadeIn>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, index) => (
-            <ScrollFadeIn key={project.slug} delay={`delay-${index * 100}`}>
-              <Link href={`/portfolio/${project.slug}`} className="block group">
-                <Card className="overflow-hidden h-full transition-all duration-300 hover:shadow-2xl hover:shadow-primary/20 hover:-translate-y-2 bg-card border">
-                  <div className="aspect-video overflow-hidden">
-                    <Image
-                      src={project.imageUrl}
-                      alt={project.title}
-                      width={600}
-                      height={400}
-                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                      data-ai-hint={project.aiHint}
-                    />
-                  </div>
-                  <CardContent className="p-6">
-                    <CardTitle className="mb-2 text-foreground">{project.title}</CardTitle>
-                    <p className="text-sm text-foreground/80 line-clamp-2">{project.description}</p>
-                  </CardContent>
-                </Card>
-              </Link>
-            </ScrollFadeIn>
-          ))}
-        </div>
+        <Carousel 
+          opts={{
+            align: "center",
+            loop: true,
+          }}
+          className="w-full max-w-4xl mx-auto mt-16 perspective-carousel"
+        >
+          <CarouselContent>
+            {projects.map((project, index) => (
+              <CarouselItem key={project.slug} className="md:basis-1/2 lg:basis-1/3 carousel-item-3d">
+                <div className="p-1">
+                   <Link href={`/portfolio/${project.slug}`} className="block group">
+                    <Card className="overflow-hidden h-full transition-all duration-500 bg-card border shadow-lg group-hover:shadow-primary/30">
+                      <div className="aspect-video overflow-hidden">
+                        <Image
+                          src={project.imageUrl}
+                          alt={project.title}
+                          width={600}
+                          height={400}
+                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                          data-ai-hint={project.aiHint}
+                        />
+                      </div>
+                      <CardContent className="p-6">
+                        <CardTitle className="mb-2 text-foreground">{project.title}</CardTitle>
+                        <p className="text-sm text-foreground/80 line-clamp-2">{project.description}</p>
+                      </CardContent>
+                    </Card>
+                  </Link>
+                </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+        </Carousel>
 
-        <ScrollFadeIn className="text-center mt-16">
-          <Button size="lg" asChild>
+        <ScrollFadeIn className="text-center mt-20">
+          <Button size="lg" variant="outline" asChild>
             <Link href="/portfolio">
               View All Projects <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
