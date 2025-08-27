@@ -15,7 +15,7 @@ export default function Hero() {
   return (
     <section className="relative w-full h-screen flex flex-col items-center justify-center text-center overflow-hidden">
       <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-foreground leading-tight animate-fade-in-up">
+          <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-foreground leading-tight">
             <span className="animated-gradient-text">Innovative Digital Solutions</span>
           </h1>
         <p className="mt-4 max-w-2xl mx-auto text-lg md:text-xl text-foreground/80 animate-fade-in-up" style={{ animationDelay: '0.5s' }}>
