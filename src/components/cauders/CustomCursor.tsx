@@ -6,7 +6,7 @@ import { cn } from '@/lib/utils';
 const CustomCursor = () => {
   const cursorRef = useRef<HTMLDivElement>(null);
   const [isClient, setIsClient] = useState(false);
-  const [isPointer, setIsPointer] = useState(false);
+  const [cursorState, setCursorState] = useState<'default' | 'pointer' | 'button'>('default');
   const [position, setPosition] = useState({ x: -100, y: -100 });
   const [isVisible, setIsVisible] = useState(false);
 
@@ -21,7 +21,17 @@ const CustomCursor = () => {
       if(!isVisible) setIsVisible(true);
       setPosition({ x: e.clientX, y: e.clientY });
       const target = e.target as HTMLElement;
-      setIsPointer(!!target.closest('a, button, [role="button"], input, textarea'));
+      
+      const isButton = !!target.closest('button');
+      const isPointer = !!target.closest('a, [role="button"], input, textarea');
+
+      if (isButton) {
+        setCursorState('button');
+      } else if (isPointer) {
+        setCursorState('pointer');
+      } else {
+        setCursorState('default');
+      }
     };
     
     const handleMouseLeave = () => {
@@ -32,7 +42,7 @@ const CustomCursor = () => {
     document.addEventListener('mouseleave', handleMouseLeave);
 
     return () => {
-      window.removeEventListener('mousemove', handleMouseLeave);
+      window.removeEventListener('mousemove', handleMouseMove);
       document.removeEventListener('mouseleave', handleMouseLeave);
     };
   }, [isClient, isVisible]);
@@ -64,7 +74,7 @@ const CustomCursor = () => {
             viewBox="0 0 24 24" // The coordinate system is a 24x24 box
             className={cn(
                 "absolute transition-all duration-300",
-                isPointer ? "opacity-0 scale-50" : "opacity-100 scale-100"
+                cursorState === 'default' ? "opacity-100 scale-100" : "opacity-0 scale-50"
             )}
              style={{
                 filter: `drop-shadow(0 0 2px hsl(var(--primary)))`,
@@ -79,9 +89,9 @@ const CustomCursor = () => {
               - To make it point down (v): Change d to "M6 9 L12 15 L18 9"
             */}
             <path
-                d="M12 15 L10 1 L22 10"
+                d="M15 6 L9 12 L15 18"
                 stroke="hsl(var(--primary))"
-                strokeWidth="1"
+                strokeWidth="2"
                 fill="none"
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -90,40 +100,48 @@ const CustomCursor = () => {
 
         {/* 
           STATE 2: POINTER CURSOR (DOT WITH LINES)
-          This cursor appears when hovering over clickable elements.
+          This cursor appears when hovering over clickable elements like cards and links.
         */}
         <svg
             width="32"
             height="32"
-            viewBox="0 0 24 24" // The coordinate system is a 32x32 box
+            viewBox="0 0 32 32" // The coordinate system is a 32x32 box
             fill="none"
             className={cn(
                 "absolute transition-all duration-100",
-                isPointer ? "opacity-100 scale-100" : "opacity-0 scale-50"
+                cursorState === 'pointer' ? "opacity-100 scale-100" : "opacity-0 scale-50"
             )}
             style={{
                 filter: `drop-shadow(0 0 4px hsl(var(--primary)))`,
             }}
         >
-            {/* This is the central dot. You can change its radius 'r' to make it bigger or smaller. */}
-            <circle cx="9" cy="3" r="3" fill="hsl(var(--primary))" />
-            
-            {/*
-              HOW TO CHANGE THE LINES AND THEIR DIRECTION:
-              Each '<path>' is a line. A simple way to change direction is to use `transform="rotate(angle, cx, cy)"`.
-              - 'angle' is the degrees of rotation (e.g., 45, 90, etc.).
-              - 'cx' and 'cy' are the center of rotation. For this SVG, it's '16 16'.
-              
-              I've set up two lines below. One is rotated -45 degrees and the other is rotated 135 degrees.
-              You can change these values to whatever you like!
-            */} 
- <g transform="rotate(40, 16, 24)">
-    <path d="M4 12 H 14" stroke="hsl(var(--primary))" strokeWidth="2" strokeLinecap="round" />
-  </g>
-   
-  <g transform="rotate(80, 6, 12)">
-    <path d="M4 8 H 14" stroke="hsl(var(--primary))" strokeWidth="2" strokeLinecap="round" />
-  </g>
+            <circle cx="16" cy="16" r="3" fill="hsl(var(--primary))" />
+            <path d="M4 16 H 12" stroke="hsl(var(--primary))" strokeWidth="2" strokeLinecap="round" />
+            <path d="M20 16 H 28" stroke="hsl(var(--primary))" strokeWidth="2" strokeLinecap="round" />
+        </svg>
+
+        {/*
+            STATE 3: BUTTON CURSOR (CONTRASTING CIRCLE)
+            This cursor appears when hovering over buttons.
+        */}
+        <svg
+          width="32"
+          height="32"
+          viewBox="0 0 32 32"
+          fill="none"
+          className={cn(
+            "absolute transition-all duration-100",
+             cursorState === 'button' ? "opacity-100 scale-100" : "opacity-0 scale-50"
+          )}
+        >
+            <circle
+                cx="16"
+                cy="16"
+                r="8"
+                stroke="hsl(var(--background))"
+                strokeWidth="2"
+                fill="transparent"
+            />
         </svg>
     </div>
   );
