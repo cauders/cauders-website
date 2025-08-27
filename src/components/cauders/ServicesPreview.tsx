@@ -38,30 +38,28 @@ export default function ServicesPreview() {
                   </div>
                   {/* Back of the card */}
                   <div className="flip-card-back absolute w-full h-full">
-                     <div className={cn("h-full rounded-lg p-[1px]", "animated-border-card")}>
-                        <Card className="h-full bg-card flex flex-col justify-between">
-                            <CardHeader>
-                                <CardTitle className="text-foreground">{service.title}</CardTitle>
-                            </CardHeader>
-                            <CardContent>
-                                <ul className="space-y-2 text-left">
-                                {service.included.slice(0, 3).map((item, i) => (
-                                    <li key={i} className="flex items-start text-sm">
-                                    <CheckCircle className="w-4 h-4 text-primary mr-2 mt-0.5 shrink-0" />
-                                    <span className="text-foreground/80">{item}</span>
-                                    </li>
-                                ))}
-                                </ul>
-                            </CardContent>
-                            <div className="p-6 pt-0">
-                                <Button asChild className="w-full">
-                                <Link href={`/services/${service.slug}`}>
-                                    Learn More <ArrowRight className="ml-2 h-4 w-4" />
-                                </Link>
-                                </Button>
-                            </div>
-                        </Card>
-                     </div>
+                    <Card className={cn("h-full bg-card flex flex-col justify-between animated-border-card")}>
+                        <CardHeader>
+                            <CardTitle className="text-foreground">{service.title}</CardTitle>
+                        </CardHeader>
+                        <CardContent>
+                            <ul className="space-y-2 text-left">
+                            {service.included.slice(0, 3).map((item, i) => (
+                                <li key={i} className="flex items-start text-sm">
+                                <CheckCircle className="w-4 h-4 text-primary mr-2 mt-0.5 shrink-0" />
+                                <span className="text-foreground/80">{item}</span>
+                                </li>
+                            ))}
+                            </ul>
+                        </CardContent>
+                        <div className="p-6 pt-0">
+                            <Button asChild className="w-full">
+                            <Link href={`/services/${service.slug}`}>
+                                Learn More <ArrowRight className="ml-2 h-4 w-4" />
+                            </Link>
+                            </Button>
+                        </div>
+                    </Card>
                   </div>
                 </div>
               </div>
