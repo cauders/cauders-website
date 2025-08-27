@@ -32,7 +32,7 @@ const CustomCursor = () => {
     document.addEventListener('mouseleave', handleMouseLeave);
 
     return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('mousemove', handleMouseLeave);
       document.removeEventListener('mouseleave', handleMouseLeave);
     };
   }, [isClient, isVisible]);
@@ -106,27 +106,23 @@ const CustomCursor = () => {
             }}
         >
             {/* This is the central dot. You can change its radius 'r' to make it bigger or smaller. */}
-            <circle cx="16" cy="16" r="3" fill="hsl(var(--primary))" />
+            <circle cx="16" cy="16" r="4" fill="hsl(var(--primary))" />
             
             {/*
-              HOW TO CHANGE THE LINES:
-              Each '<path>' is a line. The 'd' attribute defines its start and end points.
-              - "M_ H_" draws a HORIZONTAL line. (M = Move to, H = Horizontal line to)
-              - "M_ V_" draws a VERTICAL line. (M = Move to, V = Vertical line to)
+              HOW TO CHANGE THE LINES AND THEIR DIRECTION:
+              Each '<path>' is a line. A simple way to change direction is to use `transform="rotate(angle, cx, cy)"`.
+              - 'angle' is the degrees of rotation (e.g., 45, 90, etc.).
+              - 'cx' and 'cy' are the center of rotation. For this SVG, it's '16 16'.
               
-              Current horizontal lines:
-              - Left line: d="M4 16 H 12" (Starts at x=4, y=16, draws horizontally to x=12)
-              - Right line: d="M20 16 H 28" (Starts at x=20, y=16, draws horizontally to x=28)
-
-              HOW TO ADD MORE LINES:
-              Just copy a <path> element and change its 'd' attribute.
-              
-              Example - To add two VERTICAL lines:
-              <path d="M16 4 V 12" stroke="hsl(var(--primary))" strokeWidth="2" strokeLinecap="round" />
-              <path d="M16 20 V 28" stroke="hsl(var(--primary))" strokeWidth="2" strokeLinecap="round" />
+              I've set up two lines below. One is rotated -45 degrees and the other is rotated 135 degrees.
+              You can change these values to whatever you like!
             */}
-            <path d="M4 16 H 12" stroke="hsl(var(--primary))" strokeWidth="2" strokeLinecap="round" />
-            <path d="M20 16 H 28" stroke="hsl(var(--primary))" strokeWidth="2" strokeLinecap="round" />
+            <g transform="rotate(-45, 16, 16)">
+              <path d="M4 16 H 28" stroke="hsl(var(--primary))" strokeWidth="2" strokeLinecap="round" />
+            </g>
+            <g transform="rotate(135, 16, 16)">
+              {/* You could add another line here if you wanted more than two. */}
+            </g>
         </svg>
     </div>
   );
