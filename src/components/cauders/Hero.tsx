@@ -16,8 +16,11 @@ export default function Hero() {
   return (
     <section className="relative w-full h-screen flex flex-col items-center justify-center text-center overflow-hidden">
       <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-foreground leading-tight">
-            <span className={cn("animated-gradient-text inline-block transition-transform duration-300 ease-out hover:scale-105")}>Innovative Digital Solutions</span>
+          <h1 className={cn(
+              "text-4xl md:text-6xl font-extrabold tracking-tight text-foreground leading-snug",
+              "animated-gradient-text inline-block transition-transform duration-300 ease-out hover:scale-105"
+            )}>
+            Innovative Digital Solutions
           </h1>
         <p className="mt-4 max-w-2xl mx-auto text-lg md:text-xl text-foreground/80 animate-fade-in-up" style={{ animationDelay: '0.5s' }}>
             We are Cauders. We build beautiful, functional, and scalable web applications that drive results.
