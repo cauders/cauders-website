@@ -60,9 +60,9 @@ export default function Header() {
                 <Link href="/" className="text-2xl font-bold">
                     Cauders
                 </Link>
-                <Button onClick={() => setIsMenuOpen(false)} variant="ghost" size="icon" className="group hover:bg-transparent">
-                    <X className="h-25 w-25 transition-transform duration-300 group-hover:rotate-90" />
-                </Button>
+                <div className="group" onClick={() => setIsMenuOpen(false)}>
+                  <X className="h-12 w-12 text-background transition-transform duration-300 group-hover:rotate-90" />
+                </div>
             </div>
 
             <nav className="flex-grow flex items-center justify-center space-x-12">
