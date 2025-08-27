@@ -72,13 +72,13 @@ export default function Header() {
                     key={link.href}
                     href={link.href}
                     className={cn(
-                        "text-3xl md:text-4xl font-light transition-colors hover:text-primary group opacity-0",
+                        "flex items-center text-3xl md:text-4xl font-light group opacity-0 menu-link-shimmer",
                         isMenuOpen ? "animate-fade-in-down" : "",
-                        pathname === link.href ? 'text-primary' : ''
+                         pathname === link.href ? 'text-primary' : 'text-background'
                     )}
                     style={{ animationDelay: `${400 + index * 150}ms`, animationFillMode: 'forwards' }}
                 >
-                    <span className="text-lg md:text-xl font-mono text-primary/80 group-hover:text-primary transition-colors mr-3">0{index + 1}</span>
+                    <span className={cn("text-lg md:text-xl font-mono mr-3", pathname === link.href ? 'text-primary/80' : 'text-background/70 group-hover:text-background/90 transition-colors')}>0{index + 1}</span>
                     {link.label}
                 </Link>
                 ))}
