@@ -17,14 +17,14 @@ export default function Hero() {
   return (
     <section className="relative w-full h-screen overflow-hidden">
       {/* 3D Animation Background */}
-      <div className="absolute top-0 right-0 w-full md:w-1/2 h-full z-0">
+      <div className="absolute top-0 right-0 w-full md:w-1/2 h-full z-0 -mt-16">
         <Suspense fallback={<Skeleton className="w-full h-full" />}>
           <Hero3D />
         </Suspense>
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 h-full">
-        <div className="relative z-10 flex items-center h-full -mt-24 md:-mt-48">
+        <div className="relative z-10 flex items-center h-full">
           {/* Left Side: Content */}
           <div className="w-full md:w-1/2 text-left">
             <div className="max-w-xl">
