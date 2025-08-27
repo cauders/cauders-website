@@ -23,7 +23,9 @@ export default function ScrollFadeIn({ children, className, delay = '', threshol
           if (entry.isIntersecting) {
             entry.target.classList.add('opacity-100', 'translate-y-0', 'scale-100');
             entry.target.classList.remove('opacity-0', 'translate-y-10', 'scale-95');
-            observer.unobserve(entry.target);
+          } else {
+            entry.target.classList.add('opacity-0', 'translate-y-10', 'scale-95');
+            entry.target.classList.remove('opacity-100', 'translate-y-0', 'scale-100');
           }
         });
       },
@@ -33,7 +35,9 @@ export default function ScrollFadeIn({ children, className, delay = '', threshol
     observer.observe(currentRef);
 
     return () => {
-      observer.unobserve(currentRef);
+        if(currentRef) {
+            observer.unobserve(currentRef);
+        }
     };
   }, [threshold]);
 
