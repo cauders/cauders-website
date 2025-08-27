@@ -3,7 +3,14 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { ArrowDown } from 'lucide-react';
 import ScrollFadeIn from './ScrollFadeIn';
-import IconCloud from './IconCloud';
+import dynamic from 'next/dynamic';
+import { Skeleton } from '../ui/skeleton';
+
+const Hero3DBackground = dynamic(() => import('./Hero3DBackground'), {
+  ssr: false,
+  loading: () => <Skeleton className="absolute inset-0 w-full h-full" />,
+});
+
 
 export default function Hero() {
   const scrollToServices = () => {
@@ -16,7 +23,7 @@ export default function Hero() {
   return (
     <section className="relative w-full h-screen flex flex-col items-center justify-center text-center overflow-hidden">
       <div className="absolute top-0 left-0 w-full h-full bg-background -z-10">
-        <IconCloud />
+        <Hero3DBackground />
       </div>
       <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
         <ScrollFadeIn>

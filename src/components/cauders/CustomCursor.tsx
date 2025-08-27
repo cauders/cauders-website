@@ -79,7 +79,7 @@ const CustomCursor = () => {
               - To make it point down (v): Change d to "M6 9 L12 15 L18 9"
             */}
             <path
-                d="M15 6 L9 12 L15 18"
+                d="M12 15 L10 1 L22 10"
                 stroke="hsl(var(--primary))"
                 strokeWidth="2"
                 fill="none"
@@ -106,7 +106,7 @@ const CustomCursor = () => {
             }}
         >
             {/* This is the central dot. You can change its radius 'r' to make it bigger or smaller. */}
-            <circle cx="16" cy="16" r="3" fill="hsl(var(--primary))" />
+            <circle  cx="9" cy="3" r="3.2" fill="hsl(var(--primary))" />
             
             {/*
               HOW TO CHANGE THE LINES:
@@ -125,9 +125,16 @@ const CustomCursor = () => {
               <path d="M16 4 V 12" stroke="hsl(var(--primary))" strokeWidth="2" strokeLinecap="round" />
               <path d="M16 20 V 28" stroke="hsl(var(--primary))" strokeWidth="2" strokeLinecap="round" />
             */}
-            <path d="M4 16 H 12" stroke="hsl(var(--primary))" strokeWidth="2" strokeLinecap="round" />
-            <path d="M20 16 H 28" stroke="hsl(var(--primary))" strokeWidth="2" strokeLinecap="round" />
+    <g transform="rotate(40, 16, 24)">
+    <path d="M4 12 H 14" stroke="hsl(var(--primary))" strokeWidth="2" strokeLinecap="round" />
+  </g>
+   
+  <g transform="rotate(80, 6, 12)">
+    <path d="M4 8 H 14" stroke="hsl(var(--primary))" strokeWidth="2" strokeLinecap="round" />
+  </g>
         </svg>
+
+        
     </div>
   );
 };
