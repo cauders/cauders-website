@@ -4,6 +4,7 @@ import { getServices } from '@/lib/data';
 import Link from 'next/link';
 import { ArrowRight, CheckCircle } from 'lucide-react';
 import { Button } from '../ui/button';
+import { cn } from '@/lib/utils';
 
 export default function Services() {
   const services = getServices();
@@ -25,7 +26,7 @@ export default function Services() {
                 <div className="flip-card-inner relative w-full h-full">
                   {/* Front of the card */}
                   <div className="flip-card-front absolute w-full h-full">
-                    <Card className="h-full text-center border-2 border-transparent bg-card flex flex-col">
+                    <Card className="h-full text-center bg-card flex flex-col">
                       <CardHeader className="p-8 flex-grow">
                         <div className="mx-auto bg-primary/10 rounded-full p-4 w-fit mb-4">
                           <service.icon className="w-8 h-8 text-primary" />
@@ -38,28 +39,30 @@ export default function Services() {
 
                   {/* Back of the card */}
                   <div className="flip-card-back absolute w-full h-full">
-                    <Card className="h-full bg-card border-2 border-primary/50 flex flex-col">
-                      <CardHeader>
-                        <CardTitle className="text-foreground">{service.title}</CardTitle>
-                      </CardHeader>
-                      <CardContent className="flex-grow">
-                        <ul className="space-y-2 text-left">
-                          {service.included.slice(0, 3).map((item, i) => (
-                            <li key={i} className="flex items-start text-sm">
-                              <CheckCircle className="w-4 h-4 text-primary mr-2 mt-0.5 shrink-0" />
-                              <span className="text-foreground/80">{item}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </CardContent>
-                      <div className="p-6 pt-0 mt-auto">
-                        <Button asChild className="w-full">
-                          <Link href={`/services/${service.slug}`}>
-                            Learn More <ArrowRight className="ml-2 h-4 w-4" />
-                          </Link>
-                        </Button>
-                      </div>
-                    </Card>
+                     <div className={cn("h-full rounded-lg p-1", "animated-border-card")}>
+                        <Card className="h-full bg-card flex flex-col">
+                        <CardHeader>
+                            <CardTitle className="text-foreground">{service.title}</CardTitle>
+                        </CardHeader>
+                        <CardContent className="flex-grow">
+                            <ul className="space-y-2 text-left">
+                            {service.included.slice(0, 3).map((item, i) => (
+                                <li key={i} className="flex items-start text-sm">
+                                <CheckCircle className="w-4 h-4 text-primary mr-2 mt-0.5 shrink-0" />
+                                <span className="text-foreground/80">{item}</span>
+                                </li>
+                            ))}
+                            </ul>
+                        </CardContent>
+                        <div className="p-6 pt-0 mt-auto">
+                            <Button asChild className="w-full">
+                            <Link href={`/services/${service.slug}`}>
+                                Learn More <ArrowRight className="ml-2 h-4 w-4" />
+                            </Link>
+                            </Button>
+                        </div>
+                        </Card>
+                    </div>
                   </div>
                 </div>
               </div>

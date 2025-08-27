@@ -107,6 +107,28 @@
     animation: fade-in-up 0.8s ease-out forwards;
     opacity: 0;
   }
+  
+  .animated-border-card {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+  }
+  .animated-border-card::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 200%; /* Make it larger to cover the card during rotation */
+    padding-bottom: 200%;
+    background: conic-gradient(
+      hsl(var(--primary) / 0.8),
+      hsl(var(--primary) / 0.3),
+      hsl(var(--primary) / 0.8)
+    );
+    animation: spin 3s linear infinite;
+    z-index: -1;
+    transform: translate(-50%, -50%);
+  }
 
   @keyframes shimmer {
     from {
@@ -125,6 +147,15 @@
     to {
       opacity: 1;
       transform: translateY(0);
+    }
+  }
+
+  @keyframes spin {
+    from {
+      transform: translate(-50%, -50%) rotate(0deg);
+    }
+    to {
+      transform: translate(-50%, -50%) rotate(360deg);
     }
   }
 }
