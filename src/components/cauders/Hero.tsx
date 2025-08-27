@@ -15,16 +15,12 @@ export default function Hero() {
   return (
     <section className="relative w-full h-screen flex flex-col items-center justify-center text-center overflow-hidden">
       <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
-        <ScrollFadeIn>
           <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-foreground leading-tight">
             <span className="animated-gradient-text">Innovative Digital Solutions</span>
           </h1>
-        </ScrollFadeIn>
-        <ScrollFadeIn delay="delay-200">
-          <p className="mt-4 max-w-2xl mx-auto text-lg md:text-xl text-foreground/80">
+        <p className="mt-4 max-w-2xl mx-auto text-lg md:text-xl text-foreground/80 animate-fade-in-up" style={{ animationDelay: '0.5s' }}>
             We are Cauders. We build beautiful, functional, and scalable web applications that drive results.
-          </p>
-        </ScrollFadeIn>
+        </p>
         <ScrollFadeIn delay="delay-400" className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
           <Button size="lg" asChild>
             <Link href="/portfolio">View Our Work</Link>
