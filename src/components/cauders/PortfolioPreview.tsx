@@ -1,4 +1,3 @@
-
 "use client"
 
 import { getProjects } from "@/lib/data";
@@ -11,25 +10,31 @@ import { ArrowRight } from "lucide-react";
 import React, { useRef, useState, useEffect, useCallback } from "react";
 import { cn } from "@/lib/utils";
 
-
 export default function PortfolioPreview() {
   const projects = getProjects().slice(0, 5);
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
-  const [hoveredCard, setHoveredCard] = useState<number | null>(null);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const [activeCard, setActiveCard] = useState<number | null>(null);
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
+  const [isCursorNearCard, setIsCursorNearCard] = useState<number | null>(null);
 
-  // Custom scroll animation for vertical-to-horizontal movement
+  // Smooth vertical-to-horizontal scroll
   useEffect(() => {
     const handleScroll = () => {
       if (scrollContainerRef.current && sectionRef.current) {
         const sectionTop = sectionRef.current.offsetTop;
         const scrollY = window.scrollY;
         
-        // Calculate a smoother scroll amount with a damping factor
-        const maxScroll = scrollContainerRef.current.scrollWidth - scrollContainerRef.current.clientWidth;
-        const scrollAmount = Math.min(maxScroll, Math.max(0, (scrollY - sectionTop) * 0.5)); // Slower scroll speed
+        // Start the horizontal scroll slightly before entering the section
+        const scrollTriggerPoint = sectionTop - window.innerHeight / 2;
+        const scrollProgress = Math.max(0, scrollY - scrollTriggerPoint);
 
+        const maxScroll = scrollContainerRef.current.scrollWidth - scrollContainerRef.current.clientWidth;
+        
+        // Apply a small damping factor for a slow, smooth scroll
+        const scrollAmount = Math.min(maxScroll, scrollProgress * 0.4); 
+        
         scrollContainerRef.current.scrollLeft = scrollAmount;
       }
     };
@@ -38,42 +43,63 @@ export default function PortfolioPreview() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Custom cursor movement logic with a slow-down effect
+  // Track cursor position across the entire section
   const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
-    const cardRect = e.currentTarget.getBoundingClientRect();
-    const x = e.clientX - cardRect.left;
-    const y = e.clientY - cardRect.top;
-    
-    // Animate the cursor position with a slight delay
+    const sectionRect = sectionRef.current?.getBoundingClientRect();
+    if (!sectionRect) return;
+
+    // Smooth the cursor movement by a damping factor
+    const newX = e.clientX - sectionRect.left;
+    const newY = e.clientY - sectionRect.top;
+
     setCursorPosition(prevPos => ({
-      x: prevPos.x + (x - prevPos.x) * 0.1, // Damping factor for smooth, slow movement
-      y: prevPos.y + (y - prevPos.y) * 0.1,
+      x: prevPos.x + (newX - prevPos.x) * 0.1,
+      y: prevPos.y + (newY - prevPos.y) * 0.1,
     }));
+
+    // Find the nearest card to show the cursor
+    let nearestCardIndex: number | null = null;
+    let minDistance = 200; // Increased interaction area radius
+
+    cardRefs.current.forEach((card, index) => {
+      if (card) {
+        const cardRect = card.getBoundingClientRect();
+        const cardCenterX = cardRect.left + cardRect.width / 2;
+        const cardCenterY = cardRect.top + cardRect.height / 2;
+        const distance = Math.sqrt(Math.pow(e.clientX - cardCenterX, 2) + Math.pow(e.clientY - cardCenterY, 2));
+
+        if (distance < minDistance) {
+          minDistance = distance;
+          nearestCardIndex = index;
+        }
+      }
+    });
+
+    setIsCursorNearCard(nearestCardIndex);
+    
   }, []);
 
-  const handleMouseEnter = useCallback((index: number) => {
-    setHoveredCard(index);
-  }, []);
-
-  const handleMouseLeave = useCallback(() => {
-    setHoveredCard(null);
+  // Handle proper hover state for text animation
+  const handleCardHover = useCallback((index: number, isHovering: boolean) => {
+    setActiveCard(isHovering ? index : null);
   }, []);
 
   return (
     <section 
       id="portfolio-preview" 
       ref={sectionRef} 
-      className="py-20 lg:py-32 bg-white relative overflow-hidden"
+      className="py-20 lg:py-32 bg-[#0d091a] relative overflow-hidden"
+      onMouseMove={handleMouseMove}
+      onMouseLeave={() => setIsCursorNearCard(null)}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center md:text-left">
         <ScrollFadeIn>
-          <h2 className="text-2xl md:text-3xl font-normal text-black font-inter">
+          <h2 className="text-2xl md:text-3xl font-normal text-white font-inter">
             Enjoy some of our best work in <span className="text-[#a394f8]">immersive web,</span> <span className="text-[#a394f8]">augmented reality</span> and <span className="text-[#a394f8]">virtual reality experiences</span>
           </h2>
         </ScrollFadeIn>
       </div>
 
-      {/* Main horizontal scroll container */}
       <div 
         ref={scrollContainerRef} 
         className="w-full mt-16 overflow-x-hidden whitespace-nowrap scroll-smooth py-4"
@@ -82,12 +108,12 @@ export default function PortfolioPreview() {
           {projects.map((project, index) => (
             <div 
               key={project.slug} 
-              className="inline-block w-[95vw] md:w-[60vw] lg:w-[45vw] xl:w-[35vw] relative"
-              onMouseEnter={() => handleMouseEnter(index)}
-              onMouseLeave={handleMouseLeave}
-              onMouseMove={handleMouseMove}
+              ref={el => { cardRefs.current[index] = el; }}
+              className="inline-block w-[95vw] md:w-[60vw] lg:w-[45vw] xl:w-[35vw] relative group"
+              onMouseEnter={() => handleCardHover(index, true)}
+              onMouseLeave={() => handleCardHover(index, false)}
             >
-              <Link href={`/portfolio/${project.slug}`} className="block h-full w-full group">
+              <Link href={`/portfolio/${project.slug}`} className="block h-full w-full">
                 <Card className="overflow-hidden h-full transition-all duration-500 rounded-3xl shadow-lg relative border-none">
                   <div className="aspect-[4/3] overflow-hidden relative">
                     <Image
@@ -102,25 +128,23 @@ export default function PortfolioPreview() {
                     
                     {/* The text container for animation */}
                     <div className="absolute bottom-0 left-0 p-6 z-10 overflow-hidden">
-                      <div className={cn("transition-transform duration-500 ease-out", hoveredCard === index ? "translate-y-0" : "translate-y-full")}>
+                      <div className={cn("transition-transform duration-500 ease-out", activeCard === index ? "translate-y-0" : "translate-y-full")}>
                         <p className="text-white text-base font-inter opacity-70 mb-1">{project.description}</p>
                         <h3 className="font-bold text-xl text-white font-inter">{project.title}</h3>
                       </div>
                     </div>
                     
-                    {/* Custom hover cursor circle with conditional rendering */}
-                    {hoveredCard === index && (
-                      <div
-                        className="absolute w-24 h-24 rounded-full bg-[#a394f8] flex items-center justify-center text-white text-sm font-semibold pointer-events-none transition-transform duration-300 ease-out z-20"
-                        style={{
-                          left: `${cursorPosition.x}px`,
-                          top: `${cursorPosition.y}px`,
-                          transform: `translate(-50%, -50%) scale(1)`,
-                        }}
-                      >
-                        Drag or click
-                      </div>
-                    )}
+                    {/* Custom hover cursor circle with smoother animation */}
+                    <div
+                      className={cn("absolute w-24 h-24 rounded-full bg-[#a394f8] flex items-center justify-center text-white text-sm font-semibold pointer-events-none z-20 transition-all duration-300 ease-out", isCursorNearCard === index ? "opacity-100" : "opacity-0")}
+                      style={{
+                        left: `${cursorPosition.x}px`,
+                        top: `${cursorPosition.y}px`,
+                        transform: `translate(-50%, -50%)`,
+                      }}
+                    >
+                      Drag or click
+                    </div>
                   </div>
                 </Card>
               </Link>
@@ -134,7 +158,7 @@ export default function PortfolioPreview() {
           <Button 
             size="lg" 
             asChild
-            className="rounded-full px-8 py-6 bg-transparent border-2 border-slate-700 text-slate-700 hover:bg-slate-700 hover:text-white transition-colors"
+            className="rounded-full px-8 py-6 bg-transparent border-2 border-white text-white hover:bg-white hover:text-black transition-colors"
           >
             <Link href="/portfolio">
               Discover more of our work <ArrowRight className="ml-2 h-4 w-4" />
