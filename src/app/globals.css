@@ -98,14 +98,10 @@
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    animation: fade-in-up 0.8s ease-out forwards;
-    opacity: 0;
-  }
-  
-  .animated-gradient-text:hover {
     animation: 
       fade-in-up 0.8s ease-out forwards,
-      shimmer 2.5s ease-out forwards;
+      shimmer 2.5s ease-out 0.8s forwards;
+    opacity: 0;
   }
 
   .animate-fade-in-up {
