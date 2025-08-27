@@ -128,7 +128,7 @@
   }
 
   .flip-card:hover .animated-border-card::before {
-    animation: draw-border 1.2s ease-out forwards;
+    animation: draw-border 1.8s ease-out forwards;
   }
 
   @keyframes shimmer {
