@@ -165,6 +165,19 @@
     z-index: 5;
   }
 
+  .shadow-primary-glow {
+    box-shadow: 0 0 25px 0 hsl(var(--primary) / 0.5);
+  }
+
+  .hide-scrollbar::-webkit-scrollbar {
+      display: none;
+  }
+
+  .hide-scrollbar {
+      -ms-overflow-style: none;  /* IE and Edge */
+      scrollbar-width: none;  /* Firefox */
+  }
+
   @keyframes shimmer {
     to {
       background-position: 200% center;

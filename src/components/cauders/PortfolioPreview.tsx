@@ -1,4 +1,3 @@
-
 "use client"
 
 import { getProjects } from "@/lib/data";
@@ -16,12 +15,13 @@ export default function PortfolioPreview() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const [activeCard, setActiveCard] = useState<number | null>(null);
-  const [cursorPosition, setCursorPosition] = useState({ x: -100, y: -100 });
-  const [isCursorNearCard, setIsCursorNearCard] = useState(false);
   const animationFrameId = useRef<number | null>(null);
 
-  // Smooth vertical-to-horizontal scroll with delay
+  const [activeCard, setActiveCard] = useState<number | null>(null);
+  const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
+  const [isCursorNearCard, setIsCursorNearCard] = useState<number | null>(null);
+
+  // Smooth vertical-to-horizontal scroll with requestAnimationFrame
   useEffect(() => {
     const scrollContainer = scrollContainerRef.current;
     const section = sectionRef.current;
@@ -32,14 +32,16 @@ export default function PortfolioPreview() {
 
     const smoothScroll = () => {
       // Linearly interpolate current scroll position towards the target
-      currentScrollLeft += (targetScrollLeft - currentScrollLeft) * 0.05; // Slower interpolation
+      currentScrollLeft += (targetScrollLeft - currentScrollLeft) * 0.05; // Damping factor
       scrollContainer.scrollLeft = currentScrollLeft;
 
       if (Math.abs(targetScrollLeft - currentScrollLeft) > 0.5) {
         animationFrameId.current = requestAnimationFrame(smoothScroll);
       } else {
-        cancelAnimationFrame(animationFrameId.current as number);
-        animationFrameId.current = null;
+        if (animationFrameId.current) {
+            cancelAnimationFrame(animationFrameId.current);
+            animationFrameId.current = null;
+        }
       }
     };
 
@@ -78,32 +80,33 @@ export default function PortfolioPreview() {
     const newY = e.clientY - sectionRect.top;
 
     setCursorPosition(prevPos => ({
-      x: prevPos.x + (newX - prevPos.x) * 0.05, // Slower follow effect
+      x: prevPos.x + (newX - prevPos.x) * 0.05,
       y: prevPos.y + (newY - prevPos.y) * 0.05,
     }));
 
-    let isNear = false;
-    const proximityRadius = 250;
+    let nearestCardIndex: number | null = null;
+    let minDistance = 250; 
 
-    cardRefs.current.forEach((card) => {
+    cardRefs.current.forEach((card, index) => {
       if (card) {
         const cardRect = card.getBoundingClientRect();
         const cardCenterX = cardRect.left + cardRect.width / 2;
         const cardCenterY = cardRect.top + cardRect.height / 2;
         const distance = Math.sqrt(Math.pow(e.clientX - cardCenterX, 2) + Math.pow(e.clientY - cardCenterY, 2));
 
-        if (distance < proximityRadius) {
-          isNear = true;
+        if (distance < minDistance) {
+          minDistance = distance;
+          nearestCardIndex = index;
         }
       }
     });
 
-    setIsCursorNearCard(isNear);
+    setIsCursorNearCard(nearestCardIndex);
     
   }, []);
 
   const handleMouseLeave = useCallback(() => {
-    setIsCursorNearCard(false);
+    setIsCursorNearCard(null);
   }, []);
 
   const handleCardHover = useCallback((index: number, isHovering: boolean) => {
@@ -129,12 +132,13 @@ export default function PortfolioPreview() {
        <div
           className={cn(
             "absolute w-28 h-28 rounded-full bg-primary flex items-center justify-center text-white text-sm font-semibold pointer-events-none z-20 transition-opacity duration-300",
-            isCursorNearCard ? "opacity-100" : "opacity-0"
+            isCursorNearCard !== null ? "opacity-100" : "opacity-0"
           )}
           style={{
             left: `${cursorPosition.x}px`,
             top: `${cursorPosition.y}px`,
             transform: `translate(-50%, -50%)`,
+            filter: 'drop-shadow(0 0 10px hsl(var(--primary)))',
           }}
         >
           Drag or click
@@ -142,7 +146,7 @@ export default function PortfolioPreview() {
 
       <div 
         ref={scrollContainerRef} 
-        className="w-full mt-16 overflow-x-hidden whitespace-nowrap scroll-smooth py-4"
+        className="w-full mt-16 overflow-x-hidden whitespace-nowrap scroll-smooth py-4 hide-scrollbar"
       >
         <div className="inline-flex gap-x-8 px-8">
           {projects.map((project, index) => (
