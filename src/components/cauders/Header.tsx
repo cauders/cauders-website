@@ -13,7 +13,7 @@ const navLinks = [
   { href: '/', label: 'Home' },
   { href: '/services', label: 'Services' },
   { href: '/portfolio', label: 'Portfolio' },
-  { href: '/contact', label: 'Contact' }
+  { href: '/contact',label: 'Contact' }
 ];
 
 export default function Header() {
@@ -72,7 +72,7 @@ export default function Header() {
                     key={link.href}
                     href={link.href}
                     className={cn(
-                        "flex items-center text-2xl md:text-3xl font-light group opacity-0",
+                        "flex items-center text-3xl font-light group opacity-0",
                         isMenuOpen ? "animate-fade-in-down" : "",
                          pathname === link.href ? 'text-primary' : 'text-background',
                          'menu-link-shimmer'
