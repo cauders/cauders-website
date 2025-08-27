@@ -28,7 +28,8 @@ const LogoSVG = () => (
             d="M85,115l-17-17l17-17" 
             stroke="hsl(var(--foreground))" 
             strokeWidth="10" 
-            fill="none" d strokeLinecap="round" 
+            fill="none" 
+            strokeLinecap="round" 
             strokeLinejoin="round" 
         />
         <path 
