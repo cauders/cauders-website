@@ -61,7 +61,7 @@ export default function Header() {
                     Cauders
                 </Link>
                 <Button onClick={() => setIsMenuOpen(false)} variant="ghost" size="icon" className="group hover:bg-transparent">
-                    <X className="h-10 w-10 transition-transform duration-300 group-hover:rotate-90" />
+                    <X className="h-25 w-25 transition-transform duration-300 group-hover:rotate-90" />
                 </Button>
             </div>
 
