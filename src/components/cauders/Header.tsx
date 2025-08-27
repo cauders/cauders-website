@@ -61,7 +61,7 @@ export default function Header() {
                     Cauders
                 </Link>
                 <div className="group" onClick={() => setIsMenuOpen(false)}>
-                  <X className="h-12 w-12 text-background transition-transform duration-300 group-hover:rotate-90" />
+                  <X className="h-10 w-10 text-background transition-transform duration-300 group-hover:rotate-90" />
                 </div>
             </div>
 
