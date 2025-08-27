@@ -89,9 +89,10 @@
     background-image: linear-gradient(
       -225deg,
       hsl(var(--foreground)) 0%,
-      hsl(var(--primary)) 29%,
-      hsl(var(--foreground)) 67%,
-      hsl(var(--primary)) 100%
+      hsl(var(--primary)) 25%,
+      hsl(var(--primary)) 35%,
+      hsl(var(--foreground)) 50%,
+      hsl(var(--foreground)) 100%
     );
     background-size: 200% auto;
     background-clip: text;
@@ -154,11 +155,12 @@
   @keyframes fade-in-up {
     from {
       opacity: 0;
-      transform: translateY(20px);
+      transform: translateY(40px) scale(0.95);
     }
     to {
       opacity: 1;
-      transform: translateY(0);
+      transform: translateY(0) scale(1);
     }
   }
 }
+
