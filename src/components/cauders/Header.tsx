@@ -50,7 +50,7 @@ export default function Header() {
       </div>
 
       <div className={cn(
-          "fixed inset-0 z-[100] bg-secondary text-secondary-foreground transition-transform duration-500 ease-in-out",
+          "fixed inset-0 z-[100] bg-foreground text-background transition-transform duration-500 ease-in-out",
           isMenuOpen ? 'transform-none' : '-translate-y-full'
       )}>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 h-full flex flex-col">
@@ -63,15 +63,16 @@ export default function Header() {
                 </Button>
             </div>
 
-            <nav className="flex-grow flex flex-col items-start justify-center space-y-8">
+            <nav className="flex-grow flex items-center justify-center space-x-12">
                 {navLinks.map((link, index) => (
                 <Link
                     key={link.href}
                     href={link.href}
                     className={cn(
-                    "text-4xl md:text-5xl font-light transition-colors hover:text-primary group",
-                    pathname === link.href ? 'text-primary' : ''
+                        "text-4xl md:text-5xl font-light transition-colors hover:text-primary group opacity-0 animate-fade-in-down",
+                        pathname === link.href ? 'text-primary' : ''
                     )}
+                    style={{ animationDelay: `${200 + index * 100}ms` }}
                 >
                     <span className="text-xl md:text-2xl font-mono text-primary/80 group-hover:text-primary transition-colors mr-4">0{index + 1}</span>
                     {link.label}
