@@ -1,3 +1,4 @@
+
 "use client"
 
 import { getProjects } from "@/lib/data";
@@ -16,8 +17,8 @@ export default function PortfolioPreview() {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
   const [activeCard, setActiveCard] = useState<number | null>(null);
-  const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
-  const [isCursorNearCard, setIsCursorNearCard] = useState<number | null>(null);
+  const [cursorPosition, setCursorPosition] = useState({ x: -100, y: -100 });
+  const [isCursorNearCard, setIsCursorNearCard] = useState(false);
 
   // Smooth vertical-to-horizontal scroll
   useEffect(() => {
@@ -27,7 +28,7 @@ export default function PortfolioPreview() {
         const scrollY = window.scrollY;
         
         // Start the horizontal scroll slightly before entering the section
-        const scrollTriggerPoint = sectionTop - window.innerHeight / 2;
+        const scrollTriggerPoint = sectionTop - window.innerHeight * 0.8; // Start when 80% of viewport height away
         const scrollProgress = Math.max(0, scrollY - scrollTriggerPoint);
 
         const maxScroll = scrollContainerRef.current.scrollWidth - scrollContainerRef.current.clientWidth;
@@ -57,26 +58,29 @@ export default function PortfolioPreview() {
       y: prevPos.y + (newY - prevPos.y) * 0.1,
     }));
 
-    // Find the nearest card to show the cursor
-    let nearestCardIndex: number | null = null;
-    let minDistance = 200; // Increased interaction area radius
+    // Find if the cursor is near any card
+    let isNear = false;
+    const proximityRadius = 250; // Increased interaction area radius
 
-    cardRefs.current.forEach((card, index) => {
+    cardRefs.current.forEach((card) => {
       if (card) {
         const cardRect = card.getBoundingClientRect();
         const cardCenterX = cardRect.left + cardRect.width / 2;
         const cardCenterY = cardRect.top + cardRect.height / 2;
         const distance = Math.sqrt(Math.pow(e.clientX - cardCenterX, 2) + Math.pow(e.clientY - cardCenterY, 2));
 
-        if (distance < minDistance) {
-          minDistance = distance;
-          nearestCardIndex = index;
+        if (distance < proximityRadius) {
+          isNear = true;
         }
       }
     });
 
-    setIsCursorNearCard(nearestCardIndex);
+    setIsCursorNearCard(isNear);
     
+  }, []);
+
+  const handleMouseLeave = useCallback(() => {
+    setIsCursorNearCard(false);
   }, []);
 
   // Handle proper hover state for text animation
@@ -88,17 +92,32 @@ export default function PortfolioPreview() {
     <section 
       id="portfolio-preview" 
       ref={sectionRef} 
-      className="py-20 lg:py-32 bg-[#0d091a] relative overflow-hidden"
+      className="py-20 lg:py-32 bg-[#0d091a] text-white relative overflow-hidden"
       onMouseMove={handleMouseMove}
-      onMouseLeave={() => setIsCursorNearCard(null)}
+      onMouseLeave={handleMouseLeave}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center md:text-left">
         <ScrollFadeIn>
           <h2 className="text-2xl md:text-3xl font-normal text-white font-inter">
-            Enjoy some of our best work in <span className="text-[#a394f8]">immersive web,</span> <span className="text-[#a394f8]">augmented reality</span> and <span className="text-[#a394f8]">virtual reality experiences</span>
+            Enjoy some of our best work in <span className="text-primary">immersive web,</span> <span className="text-primary">augmented reality</span> and <span className="text-primary">virtual reality experiences</span>
           </h2>
         </ScrollFadeIn>
       </div>
+
+       {/* Custom hover cursor circle that lives outside the scroll container */}
+       <div
+          className={cn(
+            "absolute w-28 h-28 rounded-full bg-primary flex items-center justify-center text-white text-sm font-semibold pointer-events-none z-20 transition-opacity duration-300",
+            isCursorNearCard ? "opacity-100" : "opacity-0"
+          )}
+          style={{
+            left: `${cursorPosition.x}px`,
+            top: `${cursorPosition.y}px`,
+            transform: `translate(-50%, -50%)`,
+          }}
+        >
+          Drag or click
+        </div>
 
       <div 
         ref={scrollContainerRef} 
@@ -114,7 +133,10 @@ export default function PortfolioPreview() {
               onMouseLeave={() => handleCardHover(index, false)}
             >
               <Link href={`/portfolio/${project.slug}`} className="block h-full w-full">
-                <Card className="overflow-hidden h-full transition-all duration-500 rounded-3xl shadow-lg relative border-none">
+                <Card className={cn(
+                  "overflow-hidden h-full transition-all duration-500 rounded-3xl shadow-lg relative border-none",
+                  activeCard === index && "shadow-primary-glow"
+                )}>
                   <div className="aspect-[4/3] overflow-hidden relative">
                     <Image
                       src={project.imageUrl}
@@ -127,23 +149,13 @@ export default function PortfolioPreview() {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
                     
                     {/* The text container for animation */}
-                    <div className="absolute bottom-0 left-0 p-6 z-10 overflow-hidden">
-                      <div className={cn("transition-transform duration-500 ease-out", activeCard === index ? "translate-y-0" : "translate-y-full")}>
+                    <div className="absolute bottom-0 left-0 p-6 z-10 overflow-hidden w-full">
+                      <div className={cn(
+                        "transition-all duration-500 ease-out opacity-0 translate-y-full group-hover:opacity-100 group-hover:translate-y-0"
+                      )}>
                         <p className="text-white text-base font-inter opacity-70 mb-1">{project.description}</p>
                         <h3 className="font-bold text-xl text-white font-inter">{project.title}</h3>
                       </div>
-                    </div>
-                    
-                    {/* Custom hover cursor circle with smoother animation */}
-                    <div
-                      className={cn("absolute w-24 h-24 rounded-full bg-[#a394f8] flex items-center justify-center text-white text-sm font-semibold pointer-events-none z-20 transition-all duration-300 ease-out", isCursorNearCard === index ? "opacity-100" : "opacity-0")}
-                      style={{
-                        left: `${cursorPosition.x}px`,
-                        top: `${cursorPosition.y}px`,
-                        transform: `translate(-50%, -50%)`,
-                      }}
-                    >
-                      Drag or click
                     </div>
                   </div>
                 </Card>

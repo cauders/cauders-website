@@ -1,3 +1,4 @@
+
 import type {Config} from 'tailwindcss';
 
 export default {
@@ -16,6 +17,9 @@ export default {
       },
     },
     extend: {
+      boxShadow: {
+        'primary-glow': '0 0 25px 0 hsl(var(--primary) / 0.5)',
+      },
       fontFamily: {
         body: ['Poppins', 'sans-serif'],
         headline: ['Poppins', 'sans-serif'],
