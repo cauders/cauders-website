@@ -1,14 +1,15 @@
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { cn } from '@/lib/utils';
 import { useTheme } from 'next-themes';
 
 const CustomCursor = () => {
-  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const cursorDotRef = useRef<HTMLDivElement>(null);
+  const cursorOutlineRef = useRef<HTMLDivElement>(null);
+  const [isClient, setIsClient] = useState(false);
   const [isPointer, setIsPointer] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
-  const [isClient, setIsClient] = useState(false);
   const { theme } = useTheme();
 
   useEffect(() => {
@@ -16,72 +17,82 @@ const CustomCursor = () => {
   }, []);
 
   useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      setPosition({ x: e.clientX, y: e.clientY });
-
-      const target = e.target as HTMLElement;
-      if (target.closest('a, button, [role="button"]')) {
-        setIsPointer(true);
-      } else {
-        setIsPointer(false);
-      }
-    };
-
-    const handleMouseOver = (e: MouseEvent) => {
-       const target = e.target as HTMLElement;
-       if (target.closest('a, button, [role="button"], input, textarea')) {
-         setIsHovering(true);
-       }
-    };
+    let animationFrameId: number;
+    let lastX = 0;
+    let lastY = 0;
     
-    const handleMouseOut = (e: MouseEvent) => {
-       const target = e.target as HTMLElement;
-       if (target.closest('a, button, [role="button"], input, textarea')) {
-         setIsHovering(false);
-       }
+    const handleMouseMove = (e: MouseEvent) => {
+      const { clientX, clientY } = e;
+      const target = e.target as HTMLElement;
+
+      const newIsPointer = !!target.closest('a, button, [role="button"]');
+      const newIsHovering = !!target.closest('a, button, [role="button"], input, textarea');
+
+      if (newIsPointer !== isPointer) setIsPointer(newIsPointer);
+      if (newIsHovering !== isHovering) setIsHovering(newIsHovering);
+
+      if (cursorDotRef.current) {
+        cursorDotRef.current.style.transform = `translate3d(${clientX}px, ${clientY}px, 0)`;
+      }
+
+      lastX = clientX;
+      lastY = clientY;
+    };
+
+    const animateOutline = () => {
+      if (cursorOutlineRef.current) {
+        const { style } = cursorOutlineRef.current;
+        const currentTransform = style.transform || 'translate3d(0px, 0px, 0)';
+        const match = currentTransform.match(/translate3d\(([^,]+)px, ([^,]+)px/);
+        
+        let currentX = 0;
+        let currentY = 0;
+        if (match) {
+            currentX = parseFloat(match[1]);
+            currentY = parseFloat(match[2]);
+        }
+
+        const dx = lastX - currentX;
+        const dy = lastY - currentY;
+        
+        const newX = currentX + dx * 0.1;
+        const newY = currentY + dy * 0.1;
+
+        style.transform = `translate3d(${newX}px, ${newY}px, 0)`;
+      }
+      animationFrameId = requestAnimationFrame(animateOutline);
     };
 
     window.addEventListener('mousemove', handleMouseMove);
-    document.body.addEventListener('mouseover', handleMouseOver);
-    document.body.addEventListener('mouseout', handleMouseOut);
+    animationFrameId = requestAnimationFrame(animateOutline);
 
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
-      document.body.removeEventListener('mouseover', handleMouseOver);
-      document.body.removeEventListener('mouseout', handleMouseOut);
+      cancelAnimationFrame(animationFrameId);
     };
-  }, []);
+  }, [isPointer, isHovering]);
 
   if (!isClient) return null;
 
   return (
     <>
       <div
+        ref={cursorOutlineRef}
         className={cn(
-          "fixed pointer-events-none z-[9999] rounded-full mix-blend-difference transition-transform duration-300 ease-out",
-          isHovering ? "scale-0" : "scale-100",
+          "fixed pointer-events-none z-[9999] rounded-full transition-transform duration-100 ease-out",
+          "w-10 h-10 border-2 -left-5 -top-5",
+          isHovering ? "scale-0" : "scale-100"
         )}
         style={{
-          left: `${position.x}px`,
-          top: `${position.y}px`,
-          transform: `translate(-50%, -50%)`,
-          width: '40px',
-          height: '40px',
-          border: `2px solid ${theme === 'dark' ? '#fff' : '#000'}`,
+          borderColor: theme === 'dark' ? '#fff' : '#000',
         }}
       />
       <div
+        ref={cursorDotRef}
         className={cn(
           "fixed pointer-events-none z-[9999] rounded-full bg-primary transition-all duration-200 ease-out",
+           isPointer ? "w-3 h-3 -left-1.5 -top-1.5 opacity-50" : "w-2 h-2 -left-1 -top-1 opacity-100",
         )}
-        style={{
-          left: `${position.x}px`,
-          top: `${position.y}px`,
-          transform: `translate(-50%, -50%) scale(${isPointer ? 1.5 : 1})`,
-          width: isPointer ? '12px' : '8px',
-          height: isPointer ? '12px' : '8px',
-          opacity: isPointer ? 0.5 : 1
-        }}
       />
     </>
   );
