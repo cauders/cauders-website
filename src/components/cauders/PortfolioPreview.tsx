@@ -12,12 +12,29 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
+  type CarouselApi,
 } from "@/components/ui/carousel"
 import { cn } from "@/lib/utils";
 import React from "react";
 
 export default function PortfolioPreview() {
   const projects = getProjects().slice(0, 5); // Get first 5 for the carousel
+  const [api, setApi] = React.useState<CarouselApi>()
+  const [current, setCurrent] = React.useState(0)
+  const [count, setCount] = React.useState(0)
+ 
+  React.useEffect(() => {
+    if (!api) {
+      return
+    }
+ 
+    setCount(api.scrollSnapList().length)
+    setCurrent(api.selectedScrollSnap() + 1)
+ 
+    api.on("select", () => {
+      setCurrent(api.selectedScrollSnap() + 1)
+    })
+  }, [api])
 
   return (
     <section id="portfolio-preview" className="py-20 lg:py-32 bg-secondary/30 relative overflow-hidden">
@@ -31,6 +48,7 @@ export default function PortfolioPreview() {
         </ScrollFadeIn>
 
         <Carousel 
+          setApi={setApi}
           opts={{
             align: "center",
             loop: true,
@@ -39,7 +57,12 @@ export default function PortfolioPreview() {
         >
           <CarouselContent>
             {projects.map((project, index) => (
-              <CarouselItem key={project.slug} className="md:basis-1/2 lg:basis-1/3 carousel-item-3d">
+              <CarouselItem key={project.slug} className={cn(
+                "md:basis-1/2 lg:basis-1/3 carousel-item-3d",
+                {"is-active": current === index + 1},
+                {"is-prev": current === index + 2 || (current === 1 && index === projects.length - 1)},
+                {"is-next": current === index || (current === projects.length && index === 0)}
+              )}>
                 <div className="p-1">
                    <Link href={`/portfolio/${project.slug}`} className="block group">
                     <Card className="overflow-hidden h-full transition-all duration-500 bg-card border shadow-lg group-hover:shadow-primary/30">
