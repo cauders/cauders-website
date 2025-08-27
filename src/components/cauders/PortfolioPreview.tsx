@@ -75,8 +75,8 @@ export default function PortfolioPreview() {
     const newY = e.clientY - sectionRect.top;
 
     setCursorPosition(prevPos => ({
-      x: prevPos.x + (newX - prevPos.x) * 0.05,
-      y: prevPos.y + (newY - prevPos.y) * 0.05,
+      x: prevPos.x + (newX - prevPos.x) * 0.02,
+      y: prevPos.y + (newY - prevPos.y) * 0.02,
     }));
 
     let nearestCardIndex: number | null = null;
@@ -148,11 +148,11 @@ export default function PortfolioPreview() {
             <div 
               key={project.slug} 
               ref={el => { cardRefs.current[index] = el; }}
-              className="inline-block w-[95vw] md:w-[60vw] lg:w-[45vw] xl:w-[35vw] relative"
+              className="inline-block w-[95vw] md:w-[60vw] lg:w-[45vw] xl:w-[35vw] relative group"
               onMouseEnter={() => handleCardHover(index, true)}
               onMouseLeave={() => handleCardHover(index, false)}
             >
-              <Link href={`/portfolio/${project.slug}`} className="block h-full w-full group">
+              <Link href={`/portfolio/${project.slug}`} className="block h-full w-full">
                 <Card className={cn(
                   "overflow-visible h-full transition-all duration-500 rounded-3xl shadow-lg relative border-none bg-transparent",
                   activeCard === index && "shadow-primary-glow"
@@ -169,7 +169,7 @@ export default function PortfolioPreview() {
                   </div>
                 </Card>
               </Link>
-              <div className="mt-4 pl-2 text-left">
+              <div className="mt-4 pl-2 text-left opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <p className="text-lg text-white/70">{project.description}</p>
                   <h3 className="font-bold text-3xl text-white mt-1">{project.title}</h3>
               </div>
