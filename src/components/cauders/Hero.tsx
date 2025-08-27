@@ -3,7 +3,6 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { ArrowDown } from 'lucide-react';
 import ScrollFadeIn from './ScrollFadeIn';
-import AnimatedC from './AnimatedC';
 
 export default function Hero() {
   const scrollToServices = () => {
@@ -15,7 +14,6 @@ export default function Hero() {
 
   return (
     <section className="relative w-full h-screen flex flex-col items-center justify-center text-center overflow-hidden">
-      <AnimatedC />
       <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
         <ScrollFadeIn>
           <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-foreground leading-tight">

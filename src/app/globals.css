@@ -84,44 +84,4 @@
   .flip-card-back {
     transform: rotateY(180deg);
   }
-
-  .animate-float {
-    animation-name: float;
-    animation-iteration-count: infinite;
-    animation-timing-function: ease-in-out;
-  }
-  
-  .c-container {
-    perspective: 1000px;
-  }
-
-  .c-shape {
-    width: 250px;
-    height: 400px;
-    position: relative;
-    transform-style: preserve-3d;
-    transition: transform 0.2s ease-out;
-  }
-
-  .c-face {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    border: 30px solid hsl(var(--primary) / 0.5);
-    border-right: none;
-    border-radius: 150px 0 0 150px;
-    backface-visibility: hidden;
-  }
-
-  @keyframes float {
-    0% {
-      transform: translateY(0px) rotate(0deg);
-    }
-    50% {
-      transform: translateY(-20px) rotate(5deg);
-    }
-    100% {
-      transform: translateY(0px) rotate(0deg);
-    }
-  }
 }

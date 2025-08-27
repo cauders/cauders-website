@@ -7,6 +7,7 @@ import { Inter } from 'next/font/google';
 import { cn } from '@/lib/utils';
 import { ThemeProvider } from '@/components/cauders/ThemeProvider';
 import CustomCursor from '@/components/cauders/CustomCursor';
+import AnimatedLogo from '@/components/cauders/AnimatedLogo';
 
 export const metadata: Metadata = {
   title: 'Cauders | Innovative Digital Solutions',
@@ -25,11 +26,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={cn(inter.className, 'flex flex-col min-h-screen bg-background antialiased')}>
+      <body className={cn(inter.className, 'flex flex-col min-h-screen bg-background antialiased relative')}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <CustomCursor />
+          <AnimatedLogo />
           <Header />
-          <main className="flex-grow pt-20">
+          <main className="flex-grow pt-20 z-10">
             {children}
           </main>
           <Footer />
