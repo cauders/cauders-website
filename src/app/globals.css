@@ -118,12 +118,12 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 200%; /* Make it larger to cover the card during rotation */
+    width: 200%;
     padding-bottom: 200%;
     background: conic-gradient(
-      hsl(var(--primary) / 0.8),
-      hsl(var(--primary) / 0.3),
-      hsl(var(--primary) / 0.8)
+      transparent,
+      hsl(var(--primary)),
+      transparent 30%
     );
     animation: spin 3s linear infinite;
     z-index: -1;
