@@ -53,8 +53,13 @@ const LogoSVG = () => (
 
 export default function AnimatedLogo() {
   const [style, setStyle] = useState({});
+  const [isClient, setIsClient] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -75,6 +80,10 @@ export default function AnimatedLogo() {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
+  
+  if (!isClient) {
+    return null;
+  }
 
   return (
     <div
