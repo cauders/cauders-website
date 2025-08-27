@@ -7,7 +7,6 @@ import { Inter } from 'next/font/google';
 import { cn } from '@/lib/utils';
 import { ThemeProvider } from '@/components/cauders/ThemeProvider';
 import CustomCursor from '@/components/cauders/CustomCursor';
-import AnimatedLogo from '@/components/cauders/AnimatedLogo';
 import ScrollProgress from '@/components/cauders/ScrollProgress';
 
 export const metadata: Metadata = {
@@ -30,7 +29,6 @@ export default function RootLayout({
       <body className={cn(inter.className, 'flex flex-col min-h-screen bg-background antialiased relative')}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <CustomCursor />
-          <AnimatedLogo />
           <Header />
           <main className="flex-grow pt-24 z-10">
             {children}
