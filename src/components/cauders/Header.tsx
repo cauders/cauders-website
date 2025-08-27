@@ -60,8 +60,8 @@ export default function Header() {
                 <Link href="/" className="text-2xl font-bold">
                     Cauders
                 </Link>
-                <Button onClick={() => setIsMenuOpen(false)} variant="ghost" size="icon" className="group">
-                    <X className="h-8 w-8 transition-transform duration-300 group-hover:rotate-90" />
+                <Button onClick={() => setIsMenuOpen(false)} variant="ghost" size="icon" className="group hover:bg-transparent">
+                    <X className="h-10 w-10 transition-transform duration-300 group-hover:rotate-90" />
                 </Button>
             </div>
 
@@ -71,12 +71,12 @@ export default function Header() {
                     key={link.href}
                     href={link.href}
                     className={cn(
-                        "text-4xl md:text-5xl font-light transition-colors hover:text-primary group opacity-0 animate-fade-in-down",
+                        "text-3xl md:text-4xl font-light transition-colors hover:text-primary group opacity-0 animate-fade-in-down",
                         pathname === link.href ? 'text-primary' : ''
                     )}
                     style={{ animationDelay: `${200 + index * 100}ms` }}
                 >
-                    <span className="text-xl md:text-2xl font-mono text-primary/80 group-hover:text-primary transition-colors mr-4">0{index + 1}</span>
+                    <span className="text-lg md:text-xl font-mono text-primary/80 group-hover:text-primary transition-colors mr-3">0{index + 1}</span>
                     {link.label}
                 </Link>
                 ))}
