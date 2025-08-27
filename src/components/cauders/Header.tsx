@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { X } from 'lucide-react';
+import { ThemeToggle } from './ThemeToggle';
 
 const navLinks = [
   { href: '/', label: 'Home' },
@@ -42,6 +43,7 @@ export default function Header() {
           </Link>
           
           <div className="flex items-center gap-4">
+            <ThemeToggle />
             <Button onClick={() => setIsMenuOpen(true)} variant="ghost" className="text-lg font-semibold tracking-widest">
               MENU
             </Button>
