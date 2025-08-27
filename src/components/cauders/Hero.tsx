@@ -17,7 +17,7 @@ export default function Hero() {
     <section className="relative w-full h-screen flex flex-col items-center justify-center text-center overflow-hidden">
       <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
           <h1 className={cn(
-              "text-4xl md:text-6xl font-extrabold tracking-tight text-foreground leading-snug",
+              "text-4xl md:text-6xl font-extrabold tracking-tight text-foreground",
               "animated-gradient-text inline-block transition-transform duration-300 ease-out hover:scale-105"
             )}>
             Innovative Digital Solutions
