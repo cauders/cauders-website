@@ -72,13 +72,17 @@ export default function Header() {
                     key={link.href}
                     href={link.href}
                     className={cn(
-                        "flex items-center text-3xl font-light group opacity-0 transition-colors",
-                        isMenuOpen ? "animate-fade-in-down" : "",
-                         pathname === link.href ? 'text-primary' : 'text-background hover:text-primary'
+                        "text-3xl font-light opacity-0",
+                        isMenuOpen ? "animate-fade-in-down" : ""
                     )}
                     style={{ animationDelay: `${400 + index * 150}ms`, animationFillMode: 'forwards' }}
                 >
-                    {link.label}
+                    <span className={cn(
+                      "menu-link-gradient",
+                      pathname === link.href ? 'text-primary' : 'text-background'
+                    )}>
+                      {link.label}
+                    </span>
                 </Link>
                 ))}
             </nav>

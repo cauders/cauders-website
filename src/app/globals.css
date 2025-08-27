@@ -187,4 +187,25 @@
   .input-line {
     @apply bg-transparent border-0 border-b rounded-none px-0 focus-visible:ring-0 focus-visible:ring-offset-0;
   }
+  
+  .menu-link-gradient {
+    background-image: linear-gradient(
+      to right,
+      hsl(var(--primary)),
+      hsl(var(--primary)) 50%,
+      hsl(var(--background)) 50%
+    );
+    background-size: 200% 100%;
+    background-position: -100%;
+    display: inline-block;
+    position: relative;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: background-position 0.3s ease-in-out;
+  }
+
+  .menu-link-gradient:hover {
+    background-position: 0%;
+  }
 }
