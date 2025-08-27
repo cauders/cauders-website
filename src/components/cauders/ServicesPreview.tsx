@@ -13,18 +13,20 @@ export default function ServicesPreview() {
   return (
     <section id="services-preview" className="py-20 lg:py-32 bg-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <ScrollFadeIn className="mb-4">
+        <ScrollFadeIn>
           <h2 className="text-3xl md:text-4xl font-bold text-foreground">What We Offer</h2>
-        </ScrollFadeIn>
-        <ScrollFadeIn className="mb-16">
           <p className="mt-4 text-lg text-foreground/70 max-w-2xl mx-auto">
             Our expertise spans the entire development lifecycle, delivering excellence at every step.
           </p>
         </ScrollFadeIn>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-16">
           {services.map((service, index) => (
-            <ScrollFadeIn key={service.slug} className="h-full">
+            <ScrollFadeIn
+              key={service.slug}
+              className="h-full"
+              style={{ animationDelay: `${index * 150}ms` }}
+            >
               <div className="flip-card h-full min-h-[300px] md:min-h-[320px]">
                 <div className="flip-card-inner relative w-full h-full">
                   {/* Front of the card */}

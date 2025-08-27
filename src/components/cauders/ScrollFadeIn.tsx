@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useRef, useEffect, type ReactNode } from 'react';
@@ -6,11 +7,11 @@ import { cn } from '@/lib/utils';
 interface ScrollFadeInProps {
   children: ReactNode;
   className?: string;
-  delay?: string;
+  style?: React.CSSProperties;
   threshold?: number;
 }
 
-export default function ScrollFadeIn({ children, className, delay = '', threshold = 0.1 }: ScrollFadeInProps) {
+export default function ScrollFadeIn({ children, className, style, threshold = 0.1 }: ScrollFadeInProps) {
   const elementRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -21,11 +22,9 @@ export default function ScrollFadeIn({ children, className, delay = '', threshol
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add('opacity-100', 'translate-y-0', 'scale-100');
-            entry.target.classList.remove('opacity-0', 'translate-y-10', 'scale-95');
-          } else {
-            entry.target.classList.add('opacity-0', 'translate-y-10', 'scale-95');
-            entry.target.classList.remove('opacity-100', 'translate-y-0', 'scale-100');
+            entry.target.classList.add('animate-fade-in-up');
+            entry.target.classList.remove('opacity-0');
+            observer.unobserve(entry.target);
           }
         });
       },
@@ -44,11 +43,8 @@ export default function ScrollFadeIn({ children, className, delay = '', threshol
   return (
     <div
       ref={elementRef}
-      className={cn(
-        'opacity-0 transform translate-y-10 scale-95 transition-all duration-700 ease-out',
-        delay,
-        className
-      )}
+      className={cn('opacity-0', className)}
+      style={style}
     >
       {children}
     </div>
