@@ -64,3 +64,20 @@
     cursor: none;
   }
 }
+
+@layer utilities {
+  @keyframes float {
+    0% {
+      transform: translateY(0) rotate(0deg);
+      opacity: 0.8;
+    }
+    50% {
+      transform: translateY(-30px) rotate(10deg);
+      opacity: 0.3;
+    }
+    100% {
+      transform: translateY(0) rotate(0deg);
+      opacity: 0.8;
+    }
+  }
+}
