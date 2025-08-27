@@ -1,3 +1,4 @@
+
 import { getServices } from "@/lib/data";
 import Link from "next/link";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
@@ -21,49 +22,51 @@ export default function ServicesPreview() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {services.map((service, index) => (
-            <ScrollFadeIn key={service.slug} delay={`delay-${index * 100}`} className="h-full">
-              <div className="flip-card h-full min-h-[300px] md:min-h-[320px]">
-                <div className="flip-card-inner relative w-full h-full">
-                  {/* Front of the card */}
-                  <div className="flip-card-front absolute w-full h-full">
-                    <Card className="h-full text-center bg-card flex flex-col">
-                      <CardHeader className="p-8 flex-grow">
-                        <div className="mx-auto bg-primary/10 rounded-full p-4 w-fit mb-4">
-                          <service.icon className="w-8 h-8 text-primary" />
-                        </div>
-                        <CardTitle className="text-foreground">{service.title}</CardTitle>
-                        <CardDescription className="pt-2 text-foreground/80 line-clamp-3">{service.description}</CardDescription>
-                      </CardHeader>
-                    </Card>
-                  </div>
-                  {/* Back of the card */}
-                  <div className="flip-card-back absolute w-full h-full">
-                    <Card className={cn("h-full bg-card flex flex-col justify-between animated-border-card")}>
-                        <CardHeader>
+            <div key={service.slug}>
+                <ScrollFadeIn delay={`delay-${index * 100}`} className="h-full">
+                <div className="flip-card h-full min-h-[300px] md:min-h-[320px]">
+                    <div className="flip-card-inner relative w-full h-full">
+                    {/* Front of the card */}
+                    <div className="flip-card-front absolute w-full h-full">
+                        <Card className="h-full text-center bg-card flex flex-col">
+                        <CardHeader className="p-8 flex-grow">
+                            <div className="mx-auto bg-primary/10 rounded-full p-4 w-fit mb-4">
+                            <service.icon className="w-8 h-8 text-primary" />
+                            </div>
                             <CardTitle className="text-foreground">{service.title}</CardTitle>
+                            <CardDescription className="pt-2 text-foreground/80 line-clamp-3">{service.description}</CardDescription>
                         </CardHeader>
-                        <CardContent>
-                            <ul className="space-y-2 text-left">
-                            {service.included.slice(0, 3).map((item, i) => (
-                                <li key={i} className="flex items-start text-sm">
-                                <CheckCircle className="w-4 h-4 text-primary mr-2 mt-0.5 shrink-0" />
-                                <span className="text-foreground/80">{item}</span>
-                                </li>
-                            ))}
-                            </ul>
-                        </CardContent>
-                        <div className="p-6 pt-0">
-                            <Button asChild className="w-full">
-                            <Link href={`/services/${service.slug}`}>
-                                Learn More <ArrowRight className="ml-2 h-4 w-4" />
-                            </Link>
-                            </Button>
-                        </div>
-                    </Card>
-                  </div>
+                        </Card>
+                    </div>
+                    {/* Back of the card */}
+                    <div className="flip-card-back absolute w-full h-full">
+                        <Card className={cn("h-full bg-card flex flex-col justify-between animated-border-card")}>
+                            <CardHeader>
+                                <CardTitle className="text-foreground">{service.title}</CardTitle>
+                            </CardHeader>
+                            <CardContent>
+                                <ul className="space-y-2 text-left">
+                                {service.included.slice(0, 3).map((item, i) => (
+                                    <li key={i} className="flex items-start text-sm">
+                                    <CheckCircle className="w-4 h-4 text-primary mr-2 mt-0.5 shrink-0" />
+                                    <span className="text-foreground/80">{item}</span>
+                                    </li>
+                                ))}
+                                </ul>
+                            </CardContent>
+                            <div className="p-6 pt-0">
+                                <Button asChild className="w-full">
+                                <Link href={`/services/${service.slug}`}>
+                                    Learn More <ArrowRight className="ml-2 h-4 w-4" />
+                                </Link>
+                                </Button>
+                            </div>
+                        </Card>
+                    </div>
+                    </div>
                 </div>
-              </div>
-            </ScrollFadeIn>
+                </ScrollFadeIn>
+            </div>
           ))}
         </div>
         
