@@ -1,10 +1,7 @@
 "use client"
-import Link from 'next/link';
-import { Button } from '@/components/ui/button';
 import { ArrowDown } from 'lucide-react';
-import ScrollFadeIn from './ScrollFadeIn';
-import { cn } from '@/lib/utils';
 import HeroLottieBackground from './HeroLottieBackground';
+import Link from 'next/link';
 
 export default function Hero() {
   const scrollToServices = () => {
@@ -15,33 +12,51 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative w-full h-screen flex items-center justify-center overflow-hidden">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                <div className="text-left">
-                     <h1 className={cn(
-                        "text-4xl md:text-6xl font-extrabold tracking-tight text-foreground pb-2",
-                        "animated-gradient-text inline-block transition-transform duration-300 ease-out hover:scale-105"
-                        )}>
-                        Innovative Digital Solutions
-                    </h1>
-                    <p className="mt-4 max-w-xl text-lg md:text-xl text-foreground/80 animate-fade-in-up" style={{ animationDelay: '0.5s' }}>
-                        We are Cauders. We build beautiful, functional, and scalable web applications that drive results.
-                    </p>
-                    <ScrollFadeIn delay="delay-400" className="mt-8 flex flex-col sm:flex-row items-start gap-4">
-                      <Button size="lg" asChild>
-                        <Link href="/portfolio">View Our Work</Link>
-                      </Button>
-                      <Button size="lg" variant="outline" asChild>
-                        <Link href="/contact">Get a Quote</Link>
-                      </Button>
-                    </ScrollFadeIn>
-                </div>
-                 <div className="relative w-full h-full min-h-[300px] md:min-h-[500px]">
-                  <HeroLottieBackground />
-                </div>
+    <section className="relative w-full h-screen flex flex-col justify-center overflow-hidden">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+          {/* Left Side: Text Content */}
+          <div className="relative z-10 text-left">
+            <p className="text-lg md:text-xl text-foreground/80 animate-fade-in-up">
+              Unconventional thinking
+            </p>
+            <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-foreground mt-2 inline-block hover:scale-105 transition-transform duration-300 pb-2">
+                <span className="animated-gradient-text">Cauders.</span>
+                <br />
+                <span className="animated-gradient-text" style={{ animationDelay: '0.2s' }}>Innovative Digital Solutions</span>
+            </h1>
+            <div className="mt-8 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
+              <button 
+                onClick={scrollToServices} 
+                className="explore-button"
+                aria-label="Explore our services"
+              >
+                Explore
+              </button>
             </div>
+          </div>
+
+          {/* Right Side: Graphic */}
+          <div className="relative z-0 h-full w-full hidden md:flex items-center justify-center">
+             <div className="w-full h-full absolute -right-1/4">
+                <HeroLottieBackground />
+            </div>
+          </div>
         </div>
+      </div>
+
+      {/* Bottom and Right Elements */}
+      <div className="absolute bottom-8 left-8 z-10">
+        <Link href="/contact" className="text-sm font-medium tracking-widest uppercase hover:text-primary transition-colors">
+            Contact Us
+        </Link>
+      </div>
+
+      <div className="absolute bottom-8 right-8 z-10">
+         <button onClick={scrollToServices} aria-label="Scroll down" className="animate-bounce">
+          <ArrowDown className="w-6 h-6 text-foreground" />
+         </button>
+      </div>
     </section>
   );
 }

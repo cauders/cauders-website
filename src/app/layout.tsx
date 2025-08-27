@@ -8,6 +8,7 @@ import { cn } from '@/lib/utils';
 import { ThemeProvider } from '@/components/cauders/ThemeProvider';
 import CustomCursor from '@/components/cauders/CustomCursor';
 import AnimatedLogo from '@/components/cauders/AnimatedLogo';
+import ScrollProgress from '@/components/cauders/ScrollProgress';
 
 export const metadata: Metadata = {
   title: 'Cauders | Innovative Digital Solutions',
@@ -36,6 +37,7 @@ export default function RootLayout({
           </main>
           <Footer />
           <Toaster />
+          <ScrollProgress />
         </ThemeProvider>
       </body>
     </html>
