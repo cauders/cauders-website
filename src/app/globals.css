@@ -113,21 +113,26 @@
     overflow: hidden;
     z-index: 1;
   }
+
   .animated-border-card::before {
     content: '';
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 200%;
-    padding-bottom: 200%;
+    width: 250%;
+    padding-bottom: 250%;
     background: conic-gradient(
       transparent,
-      hsl(var(--primary) / 0.8),
-      transparent 15%
+      hsl(var(--primary)),
+      hsl(var(--foreground)),
+      transparent 20%
     );
-    animation: spin 3s linear infinite;
     z-index: -1;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+
+  .flip-card:hover .animated-border-card::before {
+    animation: spin 1.5s linear 1;
   }
 
   @keyframes shimmer {
