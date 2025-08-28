@@ -218,7 +218,7 @@
       to right,
       hsl(var(--primary)),
       hsl(var(--primary)) 50%,
-      hsl(var(--background) / 0.9) 50%
+      hsl(var(--background) / 0.7) 50%
     );
     background-size: 200% 100%;
     background-position: -100%;
