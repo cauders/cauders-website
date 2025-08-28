@@ -30,8 +30,8 @@ export default function PortfolioPreview() {
     const animateFollower = () => {
       if (followerRef.current) {
         // Interpolate position for smooth delay
-        followerPosition.current.x += (cursorPosition.current.x - followerPosition.current.x) * 0.1;
-        followerPosition.current.y += (cursorPosition.current.y - followerPosition.current.y) * 0.1;
+        followerPosition.current.x += (cursorPosition.current.x - followerPosition.current.x) * 0.02;
+        followerPosition.current.y += (cursorPosition.current.y - followerPosition.current.y) * 0.02;
         
         followerRef.current.style.transform = `translate(-50%, -50%) translate3d(${followerPosition.current.x}px, ${followerPosition.current.y}px, 0)`;
       }
@@ -138,7 +138,7 @@ export default function PortfolioPreview() {
     <section 
       id="portfolio-preview" 
       ref={sectionRef} 
-      className="py-20 lg:py-32 bg-[#0d091a] text-white relative overflow-hidden"
+      className="py-20 lg:py-32 bg-[#0d091a] text-white relative"
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >
@@ -183,8 +183,8 @@ export default function PortfolioPreview() {
                   activeCard === index && "shadow-primary-glow"
                 )}
               >
-                <Card className="h-full w-full bg-[#1A1629] border-none">
-                  <div className="aspect-[4/3] relative rounded-3xl overflow-hidden">
+                <Card className="h-full w-full bg-[#1A1629] border-none overflow-hidden rounded-3xl">
+                  <div className="aspect-[4/3] relative">
                     <Image
                       src={project.imageUrl}
                       alt={project.title}
