@@ -12,16 +12,17 @@ import React, { useRef, useState, useEffect, useCallback } from "react";
 import { cn } from "@/lib/utils";
 
 const CARD_ANGLE = 45; // Angle between each card in the carousel
-const TILT_AMOUNT = 5; // How much the card tilts on hover
 
 export default function PortfolioPreview() {
   const projects = getProjects().slice(0, 5);
   const sectionRef = useRef<HTMLDivElement>(null);
   const carouselWrapRef = useRef<HTMLDivElement>(null);
   const followerRef = useRef<HTMLDivElement>(null);
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   const [activeCard, setActiveCard] = useState<number | null>(null);
-  
+  const [isCursorNearCard, setIsCursorNearCard] = useState<number | null>(null);
+
   // Refs for animation and dragging
   const cursorPosition = useRef({ x: 0, y: 0 });
   const followerPosition = useRef({ x: 0, y: 0 });
@@ -80,6 +81,28 @@ export default function PortfolioPreview() {
       const walk = (e.pageX - startX.current) * 0.5; // Drag sensitivity
       targetRotateY.current = startRotateY.current + walk;
     }
+    
+    let nearestCardIndex: number | null = null;
+    let minDistance = 250;
+
+    cardRefs.current.forEach((card, index) => {
+      if (card) {
+        const cardRect = card.getBoundingClientRect();
+        const cardCenterX = cardRect.left + cardRect.width / 2;
+        const cardCenterY = cardRect.top + cardRect.height / 2;
+        const distance = Math.sqrt(
+          Math.pow(e.clientX - cardCenterX, 2) +
+            Math.pow(e.clientY - cardCenterY, 2)
+        );
+
+        if (distance < minDistance) {
+          minDistance = distance;
+          nearestCardIndex = index;
+        }
+      }
+    });
+
+    setIsCursorNearCard(nearestCardIndex);
   }, []);
 
   const handleMouseDown = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
@@ -94,13 +117,14 @@ export default function PortfolioPreview() {
   
   const handleMouseLeave = useCallback(() => {
     isDragging.current = false;
+    setIsCursorNearCard(null);
   }, []);
 
   return (
     <section
       id="portfolio-preview"
       ref={sectionRef}
-      className="py-20 lg:py-32 bg-background relative min-h-[100vh]"
+      className="py-20 lg:py-32 bg-background relative"
       onMouseMove={handleMouseMove}
       onMouseDown={handleMouseDown}
       onMouseUp={handleMouseUp}
@@ -117,11 +141,11 @@ export default function PortfolioPreview() {
         </ScrollFadeIn>
       </div>
 
-      <div
+       <div
         ref={followerRef}
         className={cn(
           "fixed w-28 h-28 rounded-full bg-primary flex items-center justify-center text-primary-foreground text-sm font-semibold pointer-events-none z-20 transition-opacity duration-300 ease-out top-0 left-0",
-          isDragging.current ? "opacity-100 scale-100" : "opacity-0 scale-50"
+          (isCursorNearCard !== null || isDragging.current) ? "opacity-100 scale-100" : "opacity-0 scale-50"
         )}
         style={{ filter: "drop-shadow(0 0 15px hsl(var(--primary) / 0.8))" }}
       >
@@ -136,6 +160,7 @@ export default function PortfolioPreview() {
             return (
               <div
                 key={project.slug}
+                ref={(el) => { cardRefs.current[index] = el; }}
                 className="absolute w-[95vw] md:w-[60vw] lg:w-[45vw] xl:w-[35vw] h-full group top-0 left-0 right-0 mx-auto"
                 onMouseEnter={() => setActiveCard(index)}
                 onMouseLeave={() => setActiveCard(null)}
