@@ -38,7 +38,7 @@ export default function PortfolioPreview() {
   // Main animation loop for smoothing transforms
   useEffect(() => {
     const animate = () => {
-      // Animate cursor follower
+      // Animate cursor follower with offset
       if (followerRef.current) {
         followerPosition.current.x += (cursorPosition.current.x - followerPosition.current.x) * 0.02;
         followerPosition.current.y += (cursorPosition.current.y - followerPosition.current.y) * 0.02;
