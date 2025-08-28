@@ -208,7 +208,7 @@
   }
 
   .explore-button {
-    @apply w-24 h-24 rounded-full border border-foreground/50 flex items-center justify-center text-foreground uppercase text-sm tracking-widest transition-all duration-300;
+    @apply w-24 h-24 rounded-full border border-foreground/50 flex items-center justify-center text-foreground uppercase text-xs tracking-widest transition-all duration-300;
   }
   .explore-button:hover {
     @apply bg-primary text-primary-foreground border-primary scale-110;
