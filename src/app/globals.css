@@ -135,7 +135,8 @@
   }
 
   .perspective-carousel {
-    perspective: 1000px;
+    perspective: 1500px;
+    perspective-origin: center center;
   }
 
   .carousel-item-3d {
@@ -181,6 +182,7 @@
   .card-tilt {
     transform-style: preserve-3d;
     transform: rotateX(4deg) rotateY(4deg);
+    transition: transform 0.5s ease-out;
   }
 
   .group:hover .card-tilt {
