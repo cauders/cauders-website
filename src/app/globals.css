@@ -145,6 +145,10 @@
     perspective: 1500px;
     perspective-origin: center center;
   }
+  
+  .carousel-wrap {
+    transform-style: preserve-3d;
+  }
 
   .card-tilt {
     transform: rotateX(4deg) rotateY(4deg);
