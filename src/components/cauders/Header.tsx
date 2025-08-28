@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, useEffect } from 'react';
@@ -72,10 +71,10 @@ export default function Header() {
                     key={link.href}
                     href={link.href}
                     className={cn(
-                        "text-3xl font-semibold",
-                        isMenuOpen ? "opacity-100 animate-fade-in-down" : "opacity-0"
+                        "text-3xl font-semibold opacity-0",
+                        isMenuOpen && "animate-fade-in-down"
                     )}
-                     style={{ animationDelay: `${500 + index * 300}ms` }}
+                     style={{ animationDelay: `${500 + index * 400}ms` }}
                 >
                     <span className="menu-link-gradient">
                       {link.label}
