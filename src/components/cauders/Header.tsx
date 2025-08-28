@@ -72,10 +72,10 @@ export default function Header() {
                     key={link.href}
                     href={link.href}
                     className={cn(
-                        "text-3xl font-light",
+                        "text-3xl font-bold",
                         isMenuOpen ? "opacity-100 animate-fade-in-down" : "opacity-0"
                     )}
-                     style={{ animationDelay: `${500 + index * 200}ms` }}
+                     style={{ animationDelay: `${500 + index * 300}ms` }}
                 >
                     <span className="menu-link-gradient">
                       {link.label}
