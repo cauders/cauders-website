@@ -1,3 +1,4 @@
+
 "use client"
 
 import { getProjects } from "@/lib/data";
@@ -79,8 +80,8 @@ export default function PortfolioPreview() {
     const newY = e.clientY - sectionRect.top;
 
     setCursorPosition(prevPos => ({
-      x: prevPos.x + (newX - prevPos.x) * 0.02,
-      y: prevPos.y + (newY - prevPos.y) * 0.02,
+      x: prevPos.x + (newX - prevPos.x) * 0.1,
+      y: prevPos.y + (newY - prevPos.y) * 0.1,
     }));
 
     let nearestCardIndex: number | null = null;
