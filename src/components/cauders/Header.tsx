@@ -66,16 +66,18 @@ export default function Header() {
                 </div>
             </div>
 
-            <nav className="flex-grow flex items-center justify-center space-x-12">
-                {navLinks.map((link, index) => (
+            <nav 
+              className={cn(
+                "flex-grow flex items-center justify-center space-x-12",
+                isMenuOpen ? "opacity-100 animate-fade-in-down" : "opacity-0"
+              )}
+              style={{ animationDelay: '400ms' }}
+            >
+                {navLinks.map((link) => (
                 <Link
                     key={link.href}
                     href={link.href}
-                    className={cn(
-                        "text-3xl font-light opacity-0",
-                        isMenuOpen ? "animate-fade-in-up" : ""
-                    )}
-                    style={{ animationDelay: `${400 + index * 150}ms`, animationFillMode: 'forwards' }}
+                    className="text-3xl font-light"
                 >
                     <span className="menu-link-gradient">
                       {link.label}
