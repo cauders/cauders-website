@@ -75,7 +75,7 @@ export default function Header() {
                         "text-3xl font-light",
                         isMenuOpen ? "opacity-100 animate-fade-in-down" : "opacity-0"
                     )}
-                     style={{ animationDelay: `${500 + index * 100}ms` }}
+                     style={{ animationDelay: `${500 + index * 150}ms` }}
                 >
                     <span className="menu-link-gradient">
                       {link.label}
