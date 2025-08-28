@@ -30,8 +30,8 @@ export default function PortfolioPreview() {
     const animateFollower = () => {
       if (followerRef.current) {
         // Interpolate position for smooth delay
-        followerPosition.current.x += (cursorPosition.current.x - followerPosition.current.x) * 0.02;
-        followerPosition.current.y += (cursorPosition.current.y - followerPosition.current.y) * 0.02;
+        followerPosition.current.x += (cursorPosition.current.x - followerPosition.current.x) * 0.1;
+        followerPosition.current.y += (cursorPosition.current.y - followerPosition.current.y) * 0.1;
         
         followerRef.current.style.transform = `translate(-50%, -50%) translate3d(${followerPosition.current.x}px, ${followerPosition.current.y}px, 0)`;
       }
@@ -176,29 +176,25 @@ export default function PortfolioPreview() {
               onMouseEnter={() => handleCardHover(index, true)}
               onMouseLeave={() => handleCardHover(index, false)}
             >
-              {/* Apply tilt and hover transform directly to the Link component */}
               <Link 
                 href={`/portfolio/${project.slug}`} 
                 className={cn(
-                  "block h-full w-full transform transition-all duration-500 ease-out card-tilt"
+                  "block h-full w-full transform transition-all duration-500 ease-out card-tilt rounded-3xl shadow-lg",
+                  activeCard === index && "shadow-primary-glow"
                 )}
               >
-                <Card className={cn(
-                  "overflow-hidden h-full rounded-3xl shadow-lg relative border-none bg-transparent",
-                  activeCard === index && "shadow-primary-glow"
-                )}>
+                <Card className="h-full w-full bg-[#1A1629] border-none">
                   <div className="aspect-[4/3] relative rounded-3xl overflow-hidden">
                     <Image
                       src={project.imageUrl}
                       alt={project.title}
                       width={600}
                       height={450}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 rounded-3xl"
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                       data-ai-hint={project.aiHint}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
                     
-                    {/* The text container for animation, now placed correctly on top */}
                     <div className="absolute bottom-0 left-0 p-6 z-10 w-full">
                       <div className={cn("transition-all duration-500 ease-out", activeCard === index ? "translate-y-0 opacity-100" : "translate-y-full opacity-0")}>
                         <p className="text-sm text-gray-400 font-inter uppercase tracking-wide">
