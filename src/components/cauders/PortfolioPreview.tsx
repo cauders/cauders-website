@@ -32,21 +32,21 @@ export default function PortfolioPreview() {
   const targetRotateY = useRef(0);
   const animationFrameId = useRef<number | null>(null);
 
-  const carouselRadius = 800 / (2 * Math.tan(Math.PI / projects.length));
+  const carouselRadius = 1200 / (2 * Math.tan(Math.PI / projects.length));
 
   // Main animation loop for smoothing transforms
   useEffect(() => {
     const animate = () => {
       // Animate cursor follower
       if (followerRef.current) {
-        followerPosition.current.x += (cursorPosition.current.x - followerPosition.current.x) * 0.1;
-        followerPosition.current.y += (cursorPosition.current.y - followerPosition.current.y) * 0.1;
+        followerPosition.current.x += (cursorPosition.current.x - followerPosition.current.x) * 0.02;
+        followerPosition.current.y += (cursorPosition.current.y - followerPosition.current.y) * 0.02;
         followerRef.current.style.transform = `translate(-50%, -50%) translate3d(${followerPosition.current.x}px, ${followerPosition.current.y}px, 0)`;
       }
 
-      // Animate carousel rotation
+      // Animate carousel rotation with a delay of 0.1
       if (carouselWrapRef.current) {
-        currentRotateY.current += (targetRotateY.current - currentRotateY.current) * 0.05;
+        currentRotateY.current += (targetRotateY.current - currentRotateY.current) * 0.1;
         carouselWrapRef.current.style.transform = `translateZ(-${carouselRadius}px) rotateY(${currentRotateY.current}deg)`;
       }
 
@@ -74,9 +74,6 @@ export default function PortfolioPreview() {
   }, []);
   
   const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
-    const sectionRect = sectionRef.current?.getBoundingClientRect();
-    if (!sectionRect) return;
-
     cursorPosition.current = { x: e.clientX, y: e.clientY };
 
     if (isDragging.current) {
