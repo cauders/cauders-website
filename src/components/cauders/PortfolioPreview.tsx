@@ -32,7 +32,7 @@ export default function PortfolioPreview() {
   const targetRotateY = useRef(0);
   const animationFrameId = useRef<number | null>(null);
 
-  const carouselRadius = 400 / (2 * Math.tan(Math.PI / projects.length));
+  const carouselRadius = 800 / (2 * Math.tan(Math.PI / projects.length));
 
   // Main animation loop for smoothing transforms
   useEffect(() => {
@@ -154,7 +154,7 @@ export default function PortfolioPreview() {
                   )}
                   draggable={false}
                 >
-                  <Card className="h-full w-full bg-card border-none overflow-hidden rounded-3xl shadow-lg">
+                  <Card className="h-full w-full bg-card overflow-hidden rounded-3xl shadow-lg">
                     <div className="w-full h-full relative overflow-hidden rounded-3xl transition-transform duration-500 group-hover:scale-105">
                        <Image
                         src={project.imageUrl}
