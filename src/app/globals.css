@@ -60,6 +60,11 @@
   html {
     scroll-behavior: smooth;
     cursor: none;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+  html::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, and Opera */
   }
   a, button, input, textarea, [role="button"] {
     cursor: none;
