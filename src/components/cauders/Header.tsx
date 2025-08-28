@@ -53,7 +53,7 @@ export default function Header() {
       </div>
 
       <div className={cn(
-          "fixed inset-0 z-[100] bg-foreground text-background transition-transform duration-500 ease-[cubic-bezier(0.23,1,0.32,1)]",
+          "fixed inset-0 z-[100] bg-foreground text-background transition-transform duration-700 ease-[cubic-bezier(0.23,1,0.32,1)]",
           isMenuOpen ? 'transform-none' : '-translate-y-full'
       )}>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 h-full flex flex-col">
@@ -71,7 +71,7 @@ export default function Header() {
                 "flex-grow flex items-center justify-center space-x-12",
                 isMenuOpen ? "opacity-100 animate-fade-in-down" : "opacity-0"
               )}
-              style={{ animationDelay: '400ms' }}
+              style={{ animationDelay: '600ms' }}
             >
                 {navLinks.map((link) => (
                 <Link
