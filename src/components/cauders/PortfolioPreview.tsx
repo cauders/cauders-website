@@ -71,7 +71,7 @@ export default function PortfolioPreview() {
                 return;
             }
             // Lerp for smoothness (creates the delay effect)
-            currentScrollLeft += (targetScrollLeft - currentScrollLeft) * 0.05;
+            currentScrollLeft += (targetScrollLeft - currentScrollLeft) * 0.02;
             scrollContainer.scrollLeft = currentScrollLeft;
         }
         scrollAnimationId.current = requestAnimationFrame(smoothScroll);
@@ -87,7 +87,7 @@ export default function PortfolioPreview() {
       const maxScroll = scrollContainer.scrollWidth - scrollContainer.clientWidth;
       
       // Update the target position based on vertical scroll
-      targetScrollLeft = Math.min(maxScroll, scrollProgress * 1.0);
+      targetScrollLeft = Math.min(maxScroll, scrollProgress * 0.4);
 
       // Update current scroll left for the animation loop
       currentScrollLeft = scrollContainer.scrollLeft;
@@ -176,8 +176,8 @@ export default function PortfolioPreview() {
       onMouseDown={handleMouseDown}
       onMouseUp={handleMouseUp}
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center md:text-left">
-        <ScrollFadeIn>
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <ScrollFadeIn className="text-center md:text-left">
           <h2 className="text-2xl md:text-3xl font-normal text-white font-inter">
             Enjoy some of our best work in <span className="text-primary">immersive web,</span> <span className="text-primary">augmented reality</span> and <span className="text-primary">virtual reality experiences</span>
           </h2>
