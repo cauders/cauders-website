@@ -73,7 +73,7 @@ export default function Header() {
                     href={link.href}
                     className={cn(
                         "text-3xl font-light opacity-0",
-                        isMenuOpen ? "animate-fade-in-down" : ""
+                        isMenuOpen ? "animate-fade-in-up" : ""
                     )}
                     style={{ animationDelay: `${400 + index * 150}ms`, animationFillMode: 'forwards' }}
                 >
