@@ -1,4 +1,3 @@
-
 "use client";
 
 import { getProjects } from "@/lib/data";
@@ -122,7 +121,7 @@ export default function PortfolioPreview() {
     // Dragging logic
     if (isDragging.current && scrollContainerRef.current) {
       e.preventDefault();
-      const x = e.pageX - scrollContainerRef.current.offsetLeft;
+      const x = e.pageX - (scrollContainerRef.current.offsetParent as HTMLElement)?.offsetLeft;
       const walk = (x - startX.current) * 2; // The multiplier increases drag speed
       scrollContainerRef.current.scrollLeft = scrollLeftStart.current - walk;
     }
@@ -150,7 +149,7 @@ export default function PortfolioPreview() {
     setIsCursorNearCard(nearestCardIndex);
   }, []);
 
-  const handleMouseLeave = useCallback(() => {
+  const handleMouseLeave = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
     setIsCursorNearCard(null);
     isDragging.current = false;
   }, []);
@@ -162,11 +161,11 @@ export default function PortfolioPreview() {
   const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!scrollContainerRef.current) return;
     isDragging.current = true;
-    startX.current = e.pageX - scrollContainerRef.current.offsetLeft;
+    startX.current = e.pageX - (scrollContainerRef.current.offsetParent as HTMLElement)?.offsetLeft;
     scrollLeftStart.current = scrollContainerRef.current.scrollLeft;
   };
 
-  const handleMouseUp = () => {
+  const handleMouseUp = (e: React.MouseEvent<HTMLDivElement>) => {
     isDragging.current = false;
   };
 
@@ -177,8 +176,6 @@ export default function PortfolioPreview() {
       className="py-20 lg:py-32 bg-background relative"
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      onMouseDown={handleMouseDown}
-      onMouseUp={handleMouseUp}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* All content is now within this single container */}
@@ -212,6 +209,10 @@ export default function PortfolioPreview() {
         {/* Carousel */}
         <div
           ref={scrollContainerRef}
+          onMouseDown={handleMouseDown}
+          onMouseUp={handleMouseUp}
+          onMouseMove={handleMouseMove}
+          onMouseLeave={handleMouseLeave}
           className={cn(
             "w-full mt-16 whitespace-nowrap scroll-smooth py-4 hide-scrollbar perspective-carousel",
             isDragging.current ? "cursor-grabbing" : "cursor-grab"
@@ -231,12 +232,12 @@ export default function PortfolioPreview() {
                 <Link
                   href={`/portfolio/${project.slug}`}
                   className={cn(
-                    "block h-full w-full transform transition-all duration-500 ease-out card-tilt rounded-3xl",
+                    "block h-full w-full transform transition-all duration-500 ease-out card-tilt",
                     activeCard === index && "shadow-primary-glow"
                   )}
                   draggable={false}
                 >
-                  <Card className="h-full w-full bg-card border-none overflow-hidden rounded-3xl shadow-lg">
+                  <Card className="h-full w-full bg-card border-none overflow-visible rounded-3xl shadow-lg">
                     <div className="aspect-[4/3] relative overflow-hidden rounded-3xl transition-transform duration-500 group-hover:scale-105">
                       <Image
                         src={project.imageUrl}
