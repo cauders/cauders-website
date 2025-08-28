@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useEffect } from 'react';
@@ -17,12 +18,7 @@ const navLinks = [
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const pathname = usePathname();
   
-  useEffect(() => {
-    setIsMenuOpen(false);
-  }, [pathname]);
-
   useEffect(() => {
     if (isMenuOpen) {
       document.body.style.overflow = 'hidden';
@@ -57,7 +53,7 @@ export default function Header() {
       )}>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 h-full flex flex-col">
              <div className="flex items-center justify-between h-24">
-                <Link href="/" className="text-2xl font-bold">
+                <Link href="/" onClick={() => setIsMenuOpen(false)} className="text-2xl font-bold">
                     Cauders
                 </Link>
                 <div className="group cursor-pointer" onClick={() => setIsMenuOpen(false)}>
@@ -70,6 +66,7 @@ export default function Header() {
                 <Link
                     key={link.href}
                     href={link.href}
+                    onClick={() => setIsMenuOpen(false)}
                     className={cn(
                         "text-3xl font-semibold opacity-0",
                         isMenuOpen && "animate-fade-in-down"
