@@ -16,10 +16,35 @@ export default function PortfolioPreview() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const followerRef = useRef<HTMLDivElement>(null);
   const [activeCard, setActiveCard] = useState<number | null>(null);
-  const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
   const [isCursorNearCard, setIsCursorNearCard] = useState<number | null>(null);
+
+  const cursorPosition = useRef({ x: 0, y: 0 });
+  const followerPosition = useRef({ x: 0, y: 0 });
   const animationFrameId = useRef<number | null>(null);
+  const scrollAnimationId = useRef<number | null>(null);
+
+  // Animation loop for the cursor follower
+  useEffect(() => {
+    const animateFollower = () => {
+      if (followerRef.current) {
+        // Interpolate position for smooth delay
+        followerPosition.current.x += (cursorPosition.current.x - followerPosition.current.x) * 0.1;
+        followerPosition.current.y += (cursorPosition.current.y - followerPosition.current.y) * 0.1;
+        
+        followerRef.current.style.transform = `translate(-50%, -50%) translate3d(${followerPosition.current.x}px, ${followerPosition.current.y}px, 0)`;
+      }
+      animationFrameId.current = requestAnimationFrame(animateFollower);
+    };
+    animationFrameId.current = requestAnimationFrame(animateFollower);
+
+    return () => {
+      if (animationFrameId.current) {
+        cancelAnimationFrame(animationFrameId.current);
+      }
+    };
+  }, []);
 
   // Smooth vertical-to-horizontal scroll
   useEffect(() => {
@@ -33,14 +58,14 @@ export default function PortfolioPreview() {
     const smoothScroll = () => {
         // If the difference is negligible, stop the animation
         if (Math.abs(targetScrollLeft - currentScrollLeft) < 0.5) {
-            if(animationFrameId.current) cancelAnimationFrame(animationFrameId.current);
-            animationFrameId.current = null;
+            if(scrollAnimationId.current) cancelAnimationFrame(scrollAnimationId.current);
+            scrollAnimationId.current = null;
             return;
         }
         // Lerp for smoothness (creates the delay effect)
         currentScrollLeft += (targetScrollLeft - currentScrollLeft) * 0.05;
         scrollContainer.scrollLeft = currentScrollLeft;
-        animationFrameId.current = requestAnimationFrame(smoothScroll);
+        scrollAnimationId.current = requestAnimationFrame(smoothScroll);
     };
 
     const handleScroll = () => {
@@ -56,8 +81,8 @@ export default function PortfolioPreview() {
       targetScrollLeft = Math.min(maxScroll, scrollProgress * 1.0);
 
       // If animation is not running, start it
-      if (animationFrameId.current === null) {
-        animationFrameId.current = requestAnimationFrame(smoothScroll);
+      if (scrollAnimationId.current === null) {
+        scrollAnimationId.current = requestAnimationFrame(smoothScroll);
       }
     };
     
@@ -65,25 +90,21 @@ export default function PortfolioPreview() {
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
-      if (animationFrameId.current) {
-        cancelAnimationFrame(animationFrameId.current);
+      if (scrollAnimationId.current) {
+        cancelAnimationFrame(scrollAnimationId.current);
       }
     };
   }, []);
 
-  // Track cursor position across the entire section
   const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
     const sectionRect = sectionRef.current?.getBoundingClientRect();
     if (!sectionRect) return;
 
-    const newX = e.clientX - sectionRect.left;
-    const newY = e.clientY - sectionRect.top;
-
-    setCursorPosition(prevPos => ({
-      x: prevPos.x + (newX - prevPos.x) * 0.1,
-      y: prevPos.y + (newY - prevPos.y) * 0.1,
-    }));
-
+    cursorPosition.current = {
+      x: e.clientX - sectionRect.left,
+      y: e.clientY - sectionRect.top,
+    };
+    
     let nearestCardIndex: number | null = null;
     let minDistance = 250; 
 
@@ -130,14 +151,12 @@ export default function PortfolioPreview() {
       </div>
 
        <div
+          ref={followerRef}
           className={cn(
-            "absolute w-28 h-28 rounded-full bg-primary flex items-center justify-center text-white text-sm font-semibold pointer-events-none z-20 transition-all duration-300 ease-out",
+            "absolute w-28 h-28 rounded-full bg-primary flex items-center justify-center text-white text-sm font-semibold pointer-events-none z-20 transition-opacity duration-300 ease-out top-0 left-0",
             isCursorNearCard !== null ? "opacity-100 scale-100" : "opacity-0 scale-50"
           )}
           style={{
-            left: `${cursorPosition.x}px`,
-            top: `${cursorPosition.y}px`,
-            transform: `translate(-50%, -50%)`,
             filter: 'drop-shadow(0 0 15px hsl(var(--primary) / 0.8))',
           }}
         >
