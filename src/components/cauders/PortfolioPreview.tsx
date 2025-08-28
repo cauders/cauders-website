@@ -1,3 +1,4 @@
+
 "use client";
 
 import { getProjects } from "@/lib/data";
@@ -117,15 +118,9 @@ export default function PortfolioPreview() {
       x: e.clientX - sectionRect.left,
       y: e.clientY - sectionRect.top,
     };
-
-    // Dragging logic
-    if (isDragging.current && scrollContainerRef.current) {
-      e.preventDefault();
-      const x = e.pageX - (scrollContainerRef.current.offsetParent as HTMLElement)?.offsetLeft;
-      const walk = (x - startX.current) * 2; // The multiplier increases drag speed
-      scrollContainerRef.current.scrollLeft = scrollLeftStart.current - walk;
-    }
-
+    
+    // Dragging logic is now in its own handler on the scroll container
+    
     let nearestCardIndex: number | null = null;
     let minDistance = 250;
 
@@ -148,6 +143,15 @@ export default function PortfolioPreview() {
 
     setIsCursorNearCard(nearestCardIndex);
   }, []);
+
+  const handleContainerMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+     if (isDragging.current && scrollContainerRef.current) {
+      e.preventDefault();
+      const x = e.pageX - (scrollContainerRef.current.offsetParent as HTMLElement)?.offsetLeft;
+      const walk = (x - startX.current) * 2; // The multiplier increases drag speed
+      scrollContainerRef.current.scrollLeft = scrollLeftStart.current - walk;
+    }
+  };
 
   const handleMouseLeave = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
     setIsCursorNearCard(null);
@@ -211,7 +215,7 @@ export default function PortfolioPreview() {
           ref={scrollContainerRef}
           onMouseDown={handleMouseDown}
           onMouseUp={handleMouseUp}
-          onMouseMove={handleMouseMove}
+          onMouseMove={handleContainerMouseMove}
           onMouseLeave={handleMouseLeave}
           className={cn(
             "w-full mt-16 whitespace-nowrap scroll-smooth py-4 hide-scrollbar perspective-carousel",
@@ -232,12 +236,12 @@ export default function PortfolioPreview() {
                 <Link
                   href={`/portfolio/${project.slug}`}
                   className={cn(
-                    "block h-full w-full transform transition-all duration-500 ease-out card-tilt",
+                    "block h-full w-full transform transition-all duration-500 ease-out card-tilt rounded-3xl shadow-lg",
                     activeCard === index && "shadow-primary-glow"
                   )}
                   draggable={false}
                 >
-                  <Card className="h-full w-full bg-card border-none overflow-visible rounded-3xl shadow-lg">
+                  <Card className="h-full w-full bg-card border-none overflow-hidden rounded-3xl">
                     <div className="aspect-[4/3] relative overflow-hidden rounded-3xl transition-transform duration-500 group-hover:scale-105">
                       <Image
                         src={project.imageUrl}
