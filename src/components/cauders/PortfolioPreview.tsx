@@ -126,7 +126,7 @@ export default function PortfolioPreview() {
       ref={sectionRef}
       className="py-20 lg:py-32 relative"
       style={{
-        background: 'linear-gradient(to bottom, hsl(var(--background)) 0%, hsl(var(--foreground)) 15%, hsl(var(--foreground)) 85%, hsl(var(--background)) 100%)'
+        background: 'linear-gradient(to bottom, hsl(var(--background)) 0%, hsl(var(--foreground)) 25%, hsl(var(--foreground)) 75%, hsl(var(--background)) 100%)'
       }}
       onMouseMove={handleMouseMove}
       onMouseDown={handleMouseDown}
