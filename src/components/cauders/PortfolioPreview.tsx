@@ -1,4 +1,3 @@
-
 "use client";
 
 import { getProjects } from "@/lib/data";
