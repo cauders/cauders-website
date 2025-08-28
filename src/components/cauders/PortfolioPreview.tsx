@@ -33,19 +33,19 @@ export default function PortfolioPreview() {
   const targetRotateY = useRef(0);
   const animationFrameId = useRef<number | null>(null);
 
-  const carouselRadius = 1200 / (2 * Math.tan(Math.PI / projects.length));
+  const carouselRadius = 2000 / (2 * Math.tan(Math.PI / projects.length));
 
   // Main animation loop for smoothing transforms
   useEffect(() => {
     const animate = () => {
       // Animate cursor follower with offset
       if (followerRef.current) {
-        followerPosition.current.x += (cursorPosition.current.x - followerPosition.current.x) * 0.02;
-        followerPosition.current.y += (cursorPosition.current.y - followerPosition.current.y) * 0.02;
+        followerPosition.current.x += (cursorPosition.current.x - followerPosition.current.x - 20) * 0.1;
+        followerPosition.current.y += (cursorPosition.current.y - followerPosition.current.y - 20) * 0.1;
         followerRef.current.style.transform = `translate(-50%, -50%) translate3d(${followerPosition.current.x}px, ${followerPosition.current.y}px, 0)`;
       }
 
-      // Animate carousel rotation with a delay of 0.1
+      // Animate carousel rotation with a delay
       if (carouselWrapRef.current) {
         currentRotateY.current += (targetRotateY.current - currentRotateY.current) * 0.1;
         carouselWrapRef.current.style.transform = `translateZ(-${carouselRadius}px) rotateY(${currentRotateY.current}deg)`;
@@ -124,7 +124,10 @@ export default function PortfolioPreview() {
     <section
       id="portfolio-preview"
       ref={sectionRef}
-      className="py-20 lg:py-32 bg-background relative"
+      className="py-20 lg:py-32 relative"
+      style={{
+        background: 'linear-gradient(to bottom, hsl(var(--background)) 0%, hsl(var(--foreground)) 15%, hsl(var(--foreground)) 85%, hsl(var(--background)) 100%)'
+      }}
       onMouseMove={handleMouseMove}
       onMouseDown={handleMouseDown}
       onMouseUp={handleMouseUp}
@@ -132,7 +135,7 @@ export default function PortfolioPreview() {
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <ScrollFadeIn className="text-center md:text-left mb-16">
-          <h2 className="text-2xl md:text-3xl font-normal text-foreground font-inter">
+          <h2 className="text-2xl md:text-3xl font-normal text-background font-inter">
             Enjoy some of our best work in{" "}
             <span className="text-primary">immersive web,</span>{" "}
             <span className="text-primary">augmented reality</span> and{" "}
@@ -147,82 +150,86 @@ export default function PortfolioPreview() {
           "fixed w-28 h-28 rounded-full bg-primary flex items-center justify-center text-primary-foreground text-sm font-semibold pointer-events-none z-20 transition-opacity duration-300 ease-out top-0 left-0",
           (isCursorNearCard !== null || isDragging.current) ? "opacity-100 scale-100" : "opacity-0 scale-50"
         )}
-        style={{ filter: "drop-shadow(0 0 15px hsl(var(--primary) / 0.8))" }}
+        style={{ filter: "drop-shadow(0 0 35px hsl(var(--primary) / 0.6))" }}
       >
         Drag
       </div>
 
-      {/* 3D Carousel Area */}
-      <div className="h-[60vh] mt-16 perspective-carousel">
-        <div ref={carouselWrapRef} className="relative w-full h-full carousel-wrap">
-          {projects.map((project, index) => {
-            const cardRotation = index * CARD_ANGLE;
-            return (
-              <div
-                key={project.slug}
-                ref={(el) => { cardRefs.current[index] = el; }}
-                className="absolute w-[95vw] md:w-[60vw] lg:w-[45vw] xl:w-[35vw] h-full group top-0 left-0 right-0 mx-auto"
-                onMouseEnter={() => setActiveCard(index)}
-                onMouseLeave={() => setActiveCard(null)}
-                style={{
-                  transform: `rotateY(${cardRotation}deg) translateZ(${carouselRadius}px)`,
-                }}
+
+    {/* 3D Carousel Area */}
+    <div className="h-[60vh] mt-16 perspective-carousel">
+      <div ref={carouselWrapRef} className="relative w-full h-full carousel-wrap">
+        {projects.map((project, index) => {
+          const cardRotation = index * CARD_ANGLE;
+          return (
+            <div
+              key={project.slug}
+              ref={(el) => { cardRefs.current[index] = el; }}
+              className="absolute w-[95vw] md:w-[60vw] lg:w-[45vw] xl:w-[35vw] h-full group top-0 left-0 right-0 mx-auto"
+              onMouseEnter={() => setActiveCard(index)}
+              onMouseLeave={() => setActiveCard(null)}
+              style={{
+                transform: `rotateY(${cardRotation}deg) translateZ(${carouselRadius}px)`,
+              }}
+            >
+              {/* This Link wraps the card itself */}
+              <Link
+                href={`/portfolio/${project.slug}`}
+                className={cn(
+                  "block h-full w-full transition-all duration-500 ease-out rounded-3xl",
+                  activeCard === index && "shadow-primary-glow"
+                )}
+                draggable={false}
               >
-                <Link
-                  href={`/portfolio/${project.slug}`}
-                  className={cn(
-                    "block h-full w-full transition-all duration-500 ease-out rounded-3xl",
-                    activeCard === index && "shadow-primary-glow"
-                  )}
-                  draggable={false}
-                >
-                  <Card className="h-full w-full bg-card overflow-hidden rounded-3xl shadow-lg">
-                    <div className="w-full h-full relative overflow-hidden rounded-3xl transition-transform duration-500 group-hover:scale-105">
-                       <Image
-                        src={project.imageUrl}
-                        alt={project.title}
-                        width={600}
-                        height={450}
-                        className="w-full h-full object-cover pointer-events-none"
-                        data-ai-hint={project.aiHint}
-                        draggable={false}
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
-                      <div className="absolute bottom-0 left-0 p-6 z-10 w-full">
-                        <div
-                          className={cn(
-                            "transition-all duration-500 ease-out",
-                            activeCard === index
-                              ? "translate-y-0 opacity-100"
-                              : "translate-y-full opacity-0"
-                          )}
-                        >
-                          <p className="text-sm text-muted uppercase tracking-wide">
-                            WEB • 360° PHOTOGRAPHY • 360° VIDEO • 3D
-                          </p>
-                          <h3 className="font-bold text-2xl md:text-3xl text-white mt-1 font-inter">
-                            {project.title}
-                          </h3>
-                          <p className="text-lg text-white/70 font-inter">
-                            {project.description}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </Card>
-                </Link>
-              </div>
-            );
-          })}
-        </div>
+                <Card className="h-full w-full bg-card overflow-hidden rounded-3xl shadow-lg">
+                  <div className="w-full h-full relative overflow-hidden rounded-3xl transition-transform duration-500 group-hover:scale-105">
+                    <Image
+                      src={project.imageUrl}
+                      alt={project.title}
+                      width={600}
+                      height={450}
+                      className="w-full h-full object-cover pointer-events-none"
+                      data-ai-hint={project.aiHint}
+                      draggable={false}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+                  </div>
+                </Card>
+              </Link>
+
+{/* THIS IS THE NEW TEXT CONTAINER POSITION */}
+<div
+  className={cn(
+    "absolute w-[90%] -bottom-16 p-6 z-20 transition-all duration-500 ease-out text-left",
+    activeCard === index ? "translate-y-0 opacity-100" : "translate-y-full opacity-0"
+  )}
+>
+  {/* The category text needs to be bolder and visible */}
+  <p className="text-sm text-white font-semibold uppercase tracking-wide drop-shadow-md">
+    WEB • 360° PHOTOGRAPHY • 360° VIDEO • 3D
+  </p>
+  {/* The title text gets an even heavier font weight and a stronger shadow */}
+  <h3 className="font-extrabold text-4xl md:text-5xl text-white mt-1 font-inter drop-shadow-2xl">
+    {project.title}
+  </h3>
+  {/* The description text also gets a bit more weight for clarity */}
+  <p className="text-lg text-white font-medium font-inter drop-shadow-md">
+    {project.description}
+  </p>
+</div>
+            </div>
+          );
+        })}
       </div>
+    </div>
+    
       
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 mt-16">
         <ScrollFadeIn>
           <Button
             size="lg"
             asChild
-            className="rounded-full px-8 py-6 bg-transparent border-2 border-foreground text-foreground hover:bg-foreground hover:text-background transition-colors"
+            className="rounded-full px-8 py-6 bg-transparent border-2 border-background text-background hover:bg-background hover:text-foreground transition-colors"
           >
             <Link href="/portfolio">
               Discover more of our work <ArrowRight className="ml-2 h-4 w-4" />
