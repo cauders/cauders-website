@@ -72,7 +72,7 @@ export default function Header() {
                     key={link.href}
                     href={link.href}
                     className={cn(
-                        "text-3xl font-bold",
+                        "text-3xl font-semibold",
                         isMenuOpen ? "opacity-100 animate-fade-in-down" : "opacity-0"
                     )}
                      style={{ animationDelay: `${500 + index * 300}ms` }}
