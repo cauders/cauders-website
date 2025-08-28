@@ -50,7 +50,7 @@ export default function PortfolioPreview() {
 
       const maxScroll = scrollContainer.scrollWidth - scrollContainer.clientWidth;
       
-      targetScrollLeft = Math.min(maxScroll, scrollProgress * 0.4);
+      targetScrollLeft = Math.min(maxScroll, scrollProgress * 1.0);
 
       if (animationFrameId.current === null) {
         animationFrameId.current = requestAnimationFrame(smoothScroll);
@@ -157,8 +157,7 @@ export default function PortfolioPreview() {
               <Link 
                 href={`/portfolio/${project.slug}`} 
                 className={cn(
-                  "block h-full w-full transform transition-all duration-500 ease-out",
-                  "card-tilt"
+                  "block h-full w-full transform transition-all duration-500 ease-out card-tilt"
                 )}
               >
                 <Card className={cn(
