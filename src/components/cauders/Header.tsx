@@ -77,10 +77,7 @@ export default function Header() {
                     )}
                     style={{ animationDelay: `${400 + index * 150}ms`, animationFillMode: 'forwards' }}
                 >
-                    <span className={cn(
-                      "menu-link-gradient",
-                      pathname === link.href ? 'text-primary' : 'text-background'
-                    )}>
+                    <span className="menu-link-gradient">
                       {link.label}
                     </span>
                 </Link>
