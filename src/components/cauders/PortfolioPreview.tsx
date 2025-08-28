@@ -30,12 +30,13 @@ export default function PortfolioPreview() {
     let currentScrollLeft = 0;
     
     const smoothScroll = () => {
+        // If the difference is negligible, stop the animation
         if (Math.abs(targetScrollLeft - currentScrollLeft) < 0.5) {
             if(animationFrameId.current) cancelAnimationFrame(animationFrameId.current);
             animationFrameId.current = null;
             return;
         }
-        // Lerp for smoothness
+        // Lerp for smoothness (creates the delay effect)
         currentScrollLeft += (targetScrollLeft - currentScrollLeft) * 0.05;
         scrollContainer.scrollLeft = currentScrollLeft;
         animationFrameId.current = requestAnimationFrame(smoothScroll);
@@ -50,8 +51,10 @@ export default function PortfolioPreview() {
 
       const maxScroll = scrollContainer.scrollWidth - scrollContainer.clientWidth;
       
+      // Update the target position based on vertical scroll
       targetScrollLeft = Math.min(maxScroll, scrollProgress * 1.0);
 
+      // If animation is not running, start it
       if (animationFrameId.current === null) {
         animationFrameId.current = requestAnimationFrame(smoothScroll);
       }
