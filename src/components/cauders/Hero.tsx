@@ -31,7 +31,7 @@ export default function Hero() {
                 <p className="text-lg md:text-xl text-foreground/80 animate-fade-in-up">
                   Unconventional thinking
                 </p>
-                <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-foreground mt-2 block hover:scale-105 transition-transform duration-300 pb-2">
+                <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-foreground mt-2 block hover:scale-105 transition-transform duration-300 pb-2 leading-snug">
                     <span className="animated-gradient-text">Cauders.</span>
                     <br />
                     <span className="animated-gradient-text" style={{ animationDelay: '0.2s' }}>Innovative Digital Solutions</span>
