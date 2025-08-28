@@ -68,7 +68,7 @@ export default function Header() {
                     href={link.href}
                     onClick={() => setIsMenuOpen(false)}
                     className={cn(
-                        "text-3xl font-semibold opacity-0",
+                        "text-3xl font-medium opacity-0",
                         isMenuOpen && "animate-fade-in-down"
                     )}
                      style={{ animationDelay: `${500 + index * 400}ms` }}

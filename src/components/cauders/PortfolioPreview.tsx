@@ -30,8 +30,8 @@ export default function PortfolioPreview() {
     const animateFollower = () => {
       if (followerRef.current) {
         // Interpolate position for smooth delay
-        followerPosition.current.x += (cursorPosition.current.x - followerPosition.current.x) * 0.1;
-        followerPosition.current.y += (cursorPosition.current.y - followerPosition.current.y) * 0.1;
+        followerPosition.current.x += (cursorPosition.current.x - followerPosition.current.x) * 0.02;
+        followerPosition.current.y += (cursorPosition.current.y - followerPosition.current.y) * 0.02;
         
         followerRef.current.style.transform = `translate(-50%, -50%) translate3d(${followerPosition.current.x}px, ${followerPosition.current.y}px, 0)`;
       }
