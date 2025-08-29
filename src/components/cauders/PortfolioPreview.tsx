@@ -1,3 +1,4 @@
+
 "use client";
 
 import { getProjects } from "@/lib/data";
@@ -142,7 +143,7 @@ export default function PortfolioPreview() {
       ref={sectionRef}
       className="py-20 lg:py-32 relative"
       style={{
-        background: 'radial-gradient(circle at center, hsl(var(--foreground)) 0%, hsl(var(--foreground)) 20%, #000 100%)'
+        background: 'radial-gradient(circle at center, hsl(222, 47%, 11%) 0%, hsl(222, 47%, 11%) 20%, hsl(0, 0%, 0%) 100%)'
       }}
       onMouseMove={handleMouseMove}
       onMouseDown={handleMouseDown}
