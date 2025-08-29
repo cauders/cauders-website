@@ -74,6 +74,10 @@
 }
 
 @layer utilities {
+  .scrolled-header {
+    @apply bg-background/80 shadow-md backdrop-blur-sm;
+  }
+
   .flip-card {
     perspective: 1000px;
   }

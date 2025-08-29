@@ -18,7 +18,21 @@ const navLinks = [
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [hasScrolled, setHasScrolled] = useState(false);
   
+  useEffect(() => {
+    const handleScroll = () => {
+      setHasScrolled(window.scrollY > 50);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    
+    // Clean up the event listener on component unmount
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   useEffect(() => {
     if (isMenuOpen) {
       document.body.style.overflow = 'hidden';
@@ -31,7 +45,10 @@ export default function Header() {
   }, [isMenuOpen]);
 
   return (
-     <header className="fixed top-0 left-0 z-50 w-full">
+     <header className={cn(
+        "fixed top-0 left-0 z-50 w-full transition-all duration-300 ease-in-out",
+        hasScrolled ? "scrolled-header" : "bg-transparent"
+      )}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-24">
           <Link href="/" className="text-2xl font-bold text-foreground hover:text-primary transition-colors">
