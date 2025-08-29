@@ -14,7 +14,7 @@ import { cn } from "@/lib/utils";
 const CARD_ANGLE = 45; // Angle between each card in the carousel
 
 export default function PortfolioPreview() {
-  const projects = getProjects();
+  const projects = getProjects().slice(0, 5);
   const sectionRef = useRef<HTMLDivElement>(null);
   const carouselWrapRef = useRef<HTMLDivElement>(null);
   const followerRef = useRef<HTMLDivElement>(null);
@@ -152,7 +152,7 @@ export default function PortfolioPreview() {
         )}
         style={{ filter: "drop-shadow(0 0 35px hsl(var(--primary) / 0.6))" }}
       >
-        Drag
+        Drag or Click
       </div>
 
 

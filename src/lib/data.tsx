@@ -69,16 +69,6 @@ const projects = [
     gallery: []
   },
   {
-    title: 'Real-time Analytics',
-    description: 'A platform for visualizing real-time data streams for IoT devices.',
-    tags: ['Next.js', 'WebSockets', 'BigQuery', 'Grafana'],
-    imageUrl: 'https://picsum.photos/600/400?random=6',
-    aiHint: 'data visualization',
-    details: `<p>We created a high-performance platform for visualizing real-time data from a network of IoT devices. The frontend was built with Next.js, and we used WebSockets to push live data to the client, ensuring that the visualizations were always up-to-date.</p><p>Data was processed and stored in Google BigQuery, and we used Grafana for creating powerful, customizable dashboards. The platform is designed to handle massive data streams while remaining fast and responsive.</p>`,
-    testimonial: null,
-    gallery: []
-  },
-  {
     title: 'VR Training Simulation',
     description: 'An immersive VR simulation for training industrial machine operators.',
     tags: ['Unity', 'Oculus SDK', 'C#', '3D Modeling'],
@@ -150,6 +140,16 @@ const projects = [
       author: 'Marketing Head, AdWave',
       text: 'This platform gave us the insights we were missing. We can now make data-driven decisions with confidence.'
     },
+    gallery: []
+  },
+  {
+    title: 'Real-time Collaboration Tool',
+    description: 'A web-based platform for teams to collaborate on documents in real-time, similar to Google Docs.',
+    tags: ['WebSockets', 'React', 'Node.js', 'MongoDB'],
+    imageUrl: 'https://picsum.photos/600/400?random=6',
+    aiHint: 'collaboration software interface',
+    details: `<p>We built a real-time document collaboration platform enabling multiple users to edit the same document simultaneously. The application uses WebSockets for instant communication between clients and a Node.js server. A React frontend provides a responsive and intuitive editing experience, while MongoDB stores document data. The platform supports rich text formatting, comments, and revision history.</p>`,
+    testimonial: null,
     gallery: []
   }
 ].map(p => ({...p, slug: toSlug(p.title)}));
