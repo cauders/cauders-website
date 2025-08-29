@@ -74,6 +74,13 @@
 }
 
 @layer utilities {
+  .floating-header-styles {
+    @apply mx-auto w-full max-w-5xl rounded-full border border-border/20 shadow-lg;
+    background: hsl(var(--background) / 0.5);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+
   .scrolled-header {
     @apply bg-background/70 shadow-lg backdrop-blur-lg border-b;
   }
