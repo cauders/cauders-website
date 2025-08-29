@@ -21,7 +21,7 @@ export default function Hero() {
         <Suspense fallback={<Skeleton className="w-full h-full" />}>
           <Hero3D />
         </Suspense>
-      </div>
+      </div>sudo npm install -g pm2
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 h-full">
         <div className="relative z-10 flex items-center h-full">
