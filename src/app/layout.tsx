@@ -1,3 +1,4 @@
+
 import type { Metadata } from 'next';
 import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
@@ -12,6 +13,9 @@ import Chatbot from '@/components/cauders/Chatbot';
 export const metadata: Metadata = {
   title: 'Cauders | Innovative Digital Solutions',
   description: 'Cauders crafts premium, modern, and dynamic websites and applications.',
+  icons: {
+    icon: '/icon.png',
+  },
 };
 
 const inter = Inter({
