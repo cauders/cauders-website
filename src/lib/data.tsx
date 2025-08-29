@@ -1,3 +1,4 @@
+
 import { toSlug } from "./utils";
 import { Code, Layers, PenTool, Rocket } from 'lucide-react';
 
@@ -77,6 +78,80 @@ const projects = [
     testimonial: null,
     gallery: []
   },
+  {
+    title: 'VR Training Simulation',
+    description: 'An immersive VR simulation for training industrial machine operators.',
+    tags: ['Unity', 'Oculus SDK', 'C#', '3D Modeling'],
+    imageUrl: 'https://picsum.photos/600/400?random=7',
+    aiHint: 'virtual reality simulation',
+    details: `<p>Developed a highly realistic virtual reality simulation to train operators of complex industrial machinery. Using Unity and the Oculus SDK, we created a safe, controlled environment where trainees can learn procedures and handle emergency scenarios without risk. C# scripting powers the interactive elements and training modules. Our team also handled the complete 3D modeling and texturing of the machinery and environment.</p>`,
+    testimonial: {
+        author: 'Safety Manager, IndusCorp',
+        text: 'This VR training has drastically reduced onboarding time and improved safety compliance. The realism is astounding.'
+    },
+    gallery: [
+        { url: 'https://picsum.photos/800/600?random=15', alt: 'User in VR headset', aiHint: 'vr headset' },
+        { url: 'https://picsum.photos/800/600?random=16', alt: 'Machine interface in VR', aiHint: 'vr interface' },
+    ]
+  },
+  {
+    title: 'Cloud Migration & DevOps',
+    description: 'Migrated a monolithic legacy system to a microservices architecture on AWS.',
+    tags: ['AWS', 'Docker', 'Kubernetes', 'Jenkins'],
+    imageUrl: 'https://picsum.photos/600/400?random=8',
+    aiHint: 'cloud infrastructure',
+    details: `<p>We led the complete overhaul of a legacy enterprise application, migrating it from an on-premise monolith to a modern, cloud-native microservices architecture on Amazon Web Services. We containerized services using Docker, orchestrated them with Kubernetes (EKS), and built a full CI/CD pipeline with Jenkins to automate testing and deployment. The result was improved scalability, reliability, and development velocity.</p>`,
+    testimonial: null,
+    gallery: []
+  },
+  {
+    title: 'Healthcare Management',
+    description: 'A HIPAA-compliant electronic health record (EHR) system for clinics.',
+    tags: ['Angular', '.NET Core', 'SQL Server', 'Azure'],
+    imageUrl: 'https://picsum.photos/600/400?random=9',
+    aiHint: 'healthcare system',
+    details: `<p>This project involved the creation of a secure and comprehensive Electronic Health Record (EHR) system for medical clinics. Built with a robust .NET Core backend and an Angular frontend, the platform is fully HIPAA-compliant. Hosted on Microsoft Azure, it ensures data security and availability. Features include patient records management, appointment scheduling, and billing integration.</p>`,
+    testimonial: {
+      author: 'Dr. Alisha Chen',
+      text: 'The EHR system is intuitive and has streamlined our clinic\'s entire workflow. Data security was our biggest concern, and Cauders delivered.'
+    },
+    gallery: []
+  },
+  {
+    title: 'Logistics Optimization',
+    description: 'An AI-driven mobile app for optimizing delivery routes in real-time.',
+    tags: ['Python', 'Flutter', 'Google Maps API', 'AI/ML'],
+    imageUrl: 'https://picsum.photos/600/400?random=10',
+    aiHint: 'delivery route map',
+    details: `<p>We developed an intelligent mobile application for a logistics company to optimize their delivery routes dynamically. The backend, built in Python, uses a machine learning model to calculate the most efficient routes based on traffic, delivery windows, and vehicle capacity. The cross-platform mobile app was built with Flutter, providing a native experience on both iOS and Android, with live map integration using the Google Maps API.</p>`,
+    testimonial: null,
+    gallery: [
+        { url: 'https://picsum.photos/800/600?random=17', alt: 'App showing optimized route', aiHint: 'map route' },
+    ]
+  },
+  {
+    title: 'Fintech Security Suite',
+    description: 'A multi-factor authentication and fraud detection system for financial apps.',
+    tags: ['Java', 'Spring Boot', 'Kafka', 'Cybersecurity'],
+    imageUrl: 'https://picsum.photos/600/400?random=11',
+    aiHint: 'cyber security',
+    details: `<p>We engineered a high-performance security suite for a fintech client. Using Java and Spring Boot, we built a scalable system for multi-factor authentication (MFA) and real-time fraud detection. Apache Kafka was implemented to process millions of transactions asynchronously, feeding data into a rules engine that flags suspicious activity instantly. The suite provides a set of APIs that can be easily integrated into any financial application.</p>`,
+    testimonial: null,
+    gallery: []
+  },
+  {
+    title: 'Data Analytics Platform',
+    description: 'A big data platform for processing and visualizing marketing campaign data.',
+    tags: ['Spark', 'Hadoop', 'Tableau', 'Data Science'],
+    imageUrl: 'https://picsum.photos/600/400?random=12',
+    aiHint: 'data analytics chart',
+    details: `<p>We constructed a powerful data platform to help a major marketing firm analyze campaign performance. The backend utilizes Apache Spark and Hadoop to process terabytes of data efficiently. We then integrated Tableau to create rich, interactive visualizations and dashboards, enabling the client to derive actionable insights and measure ROI effectively. Our data science team also developed models to predict campaign success.</p>`,
+    testimonial: {
+      author: 'Marketing Head, AdWave',
+      text: 'This platform gave us the insights we were missing. We can now make data-driven decisions with confidence.'
+    },
+    gallery: []
+  }
 ].map(p => ({...p, slug: toSlug(p.title)}));
 
 const services = [

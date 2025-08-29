@@ -14,7 +14,7 @@ import { cn } from "@/lib/utils";
 const CARD_ANGLE = 45; // Angle between each card in the carousel
 
 export default function PortfolioPreview() {
-  const projects = getProjects().slice(0, 5);
+  const projects = getProjects();
   const sectionRef = useRef<HTMLDivElement>(null);
   const carouselWrapRef = useRef<HTMLDivElement>(null);
   const followerRef = useRef<HTMLDivElement>(null);
@@ -40,12 +40,12 @@ export default function PortfolioPreview() {
     const animate = () => {
       // Animate cursor follower with offset
       if (followerRef.current) {
-        followerPosition.current.x += (cursorPosition.current.x - followerPosition.current.x - 20) * 0.1;
-        followerPosition.current.y += (cursorPosition.current.y - followerPosition.current.y - 20) * 0.1;
+        followerPosition.current.x += (cursorPosition.current.x - followerPosition.current.x - 20) * 0.02;
+        followerPosition.current.y += (cursorPosition.current.y - followerPosition.current.y - 20) * 0.02;
         followerRef.current.style.transform = `translate(-50%, -50%) translate3d(${followerPosition.current.x}px, ${followerPosition.current.y}px, 0)`;
       }
 
-      // Animate carousel rotation with a delay
+      // Animate carousel rotation with a delay of  
       if (carouselWrapRef.current) {
         currentRotateY.current += (targetRotateY.current - currentRotateY.current) * 0.1;
         carouselWrapRef.current.style.transform = `translateZ(-${carouselRadius}px) rotateY(${currentRotateY.current}deg)`;
@@ -124,9 +124,9 @@ export default function PortfolioPreview() {
     <section
       id="portfolio-preview"
       ref={sectionRef}
-      className="py-20 lg:py-32 relative"
+      className="py-20 lg:py-32 relative text-foreground"
       style={{
-        background: 'linear-gradient(to bottom, hsl(var(--background)) 0%, hsl(var(--foreground)) 25%, hsl(var(--foreground)) 75%, hsl(var(--background)) 100%)'
+        background: 'linear-gradient(to bottom, hsl(var(--background)) 0%, #2C3E50 25%, #2C3E50 75%, hsl(var(--background)) 100%)'
       }}
       onMouseMove={handleMouseMove}
       onMouseDown={handleMouseDown}
