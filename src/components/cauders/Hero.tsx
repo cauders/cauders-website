@@ -14,6 +14,29 @@ export default function Hero() {
     }
   };
 
+  const headingLine1 = "Cauders.";
+  const headingLine2 = "Innovative Digital Solutions";
+
+  const renderAnimatedText = (text: string, delayStart: number) => {
+    return text.split(' ').map((word, wordIndex) => (
+      <div key={wordIndex} className="inline-block mr-4">
+        {word.split('').map((char, charIndex) => {
+          const totalDelay = delayStart + (wordIndex * 0.1) + (charIndex * 0.03);
+          return (
+            <span
+              key={charIndex}
+              className="animate-char-in inline-block"
+              style={{ animationDelay: `${totalDelay}s` }}
+            >
+              {char}
+            </span>
+          );
+        })}
+      </div>
+    ));
+  };
+
+
   return (
     <section className="relative w-full h-[calc(110vh-6rem)] mt-[-6rem] overflow-hidden">
       {/* 3D Animation Background */}
@@ -31,12 +54,15 @@ export default function Hero() {
                 <p className="text-lg md:text-xl text-foreground/80 animate-fade-in-up">
                   Unconventional thinking
                 </p>
-                <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-foreground mt-2 block hover:scale-105 transition-transform duration-300 pb-2 leading-snug">
-                    <span className="animated-gradient-text">Cauders.</span>
-                    <br />
-                    <span className="animated-gradient-text" style={{ animationDelay: '0.2s' }}>Innovative Digital Solutions</span>
+                <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-foreground mt-2 block pb-2 leading-tight">
+                  <div className="h-[1.2em] overflow-hidden">
+                    <span className="inline-block">{renderAnimatedText(headingLine1, 0.1)}</span>
+                  </div>
+                  <div className="h-[1.2em] overflow-hidden">
+                    <span className="inline-block">{renderAnimatedText(headingLine2, 0.4)}</span>
+                  </div>
                 </h1>
-                <div className="mt-8 animate-fade-in-up flex justify-start" style={{ animationDelay: '0.4s' }}>
+                <div className="mt-8 animate-fade-in-up flex justify-start" style={{ animationDelay: '1s' }}>
                   <button 
                     onClick={scrollToServices} 
                     className="explore-button"

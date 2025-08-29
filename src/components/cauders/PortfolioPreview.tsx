@@ -1,4 +1,3 @@
-
 "use client";
 
 import { getProjects } from "@/lib/data";
@@ -11,10 +10,10 @@ import { ArrowRight } from "lucide-react";
 import React, { useRef, useState, useEffect, useCallback } from "react";
 import { cn } from "@/lib/utils";
 
-const CARD_ANGLE = 45; // Angle between each card in the carousel
+const CARD_ANGLE = 30; // Angle between each card in the carousel
 
 export default function PortfolioPreview() {
-  const projects = getProjects().slice(0, 5);
+  const projects = getProjects().slice(0, 12);
   const sectionRef = useRef<HTMLDivElement>(null);
   const carouselWrapRef = useRef<HTMLDivElement>(null);
   const followerRef = useRef<HTMLDivElement>(null);
@@ -23,32 +22,42 @@ export default function PortfolioPreview() {
   const [activeCard, setActiveCard] = useState<number | null>(null);
   const [isCursorNearCard, setIsCursorNearCard] = useState<number | null>(null);
 
+  // Calculate the initial rotation to center the middle card dynamically
+  const middleCardIndex = Math.floor(projects.length / 2);
+  const initialRotation = -middleCardIndex * CARD_ANGLE;
+
   // Refs for animation and dragging
   const cursorPosition = useRef({ x: 0, y: 0 });
   const followerPosition = useRef({ x: 0, y: 0 });
   const isDragging = useRef(false);
   const startX = useRef(0);
-  const startRotateY = useRef(0);
-  const currentRotateY = useRef(0);
-  const targetRotateY = useRef(0);
+  const startRotateY = useRef(initialRotation);
+  const currentRotateY = useRef(initialRotation);
+  const targetRotateY = useRef(initialRotation);
   const animationFrameId = useRef<number | null>(null);
 
-  const carouselRadius = 2000 / (2 * Math.tan(Math.PI / projects.length));
+  // New ref to track previous scroll position
+  const lastScrollY = useRef(0);
+
+  const carouselRadius = -630 / (2 * Math.tan(Math.PI / projects.length));
 
   // Main animation loop for smoothing transforms
   useEffect(() => {
     const animate = () => {
       // Animate cursor follower with offset
       if (followerRef.current) {
-        followerPosition.current.x += (cursorPosition.current.x - followerPosition.current.x - 20) * 0.02;
-        followerPosition.current.y += (cursorPosition.current.y - followerPosition.current.y - 20) * 0.02;
+        followerPosition.current.x += (cursorPosition.current.x - followerPosition.current.x - 20) * 0.01;
+        followerPosition.current.y += (cursorPosition.current.y - followerPosition.current.y - 20) * 0.01;
         followerRef.current.style.transform = `translate(-50%, -50%) translate3d(${followerPosition.current.x}px, ${followerPosition.current.y}px, 0)`;
       }
 
-      // Animate carousel rotation with a delay of  
+      // Animate carousel rotation with different damping for drag and scroll
       if (carouselWrapRef.current) {
-        currentRotateY.current += (targetRotateY.current - currentRotateY.current) * 0.1;
-        carouselWrapRef.current.style.transform = `translateZ(-${carouselRadius}px) rotateY(${currentRotateY.current}deg)`;
+        // Adjust the damping for a more subtle scroll effect
+        const damping = isDragging.current ? 0.1 : 0.02;
+
+        currentRotateY.current += (targetRotateY.current - currentRotateY.current) * damping;
+        carouselWrapRef.current.style.transform = `translateZ(${Math.abs(carouselRadius)}px) rotateY(${currentRotateY.current}deg) rotateX(0deg)`;
       }
 
       animationFrameId.current = requestAnimationFrame(animate);
@@ -62,23 +71,30 @@ export default function PortfolioPreview() {
   // Handle vertical page scroll to rotate carousel
   useEffect(() => {
     const handleScroll = () => {
-      if (isDragging.current || !sectionRef.current) return;
-      const sectionRect = sectionRef.current.getBoundingClientRect();
-      const scrollProgress = Math.max(0, -sectionRect.top / (sectionRect.height - window.innerHeight));
+      if (isDragging.current) return;
       
-      const rotation = scrollProgress * 180;
-      targetRotateY.current = rotation;
-    };
+      // Calculate the change in scroll position
+      const deltaScroll = window.scrollY - lastScrollY.current;
+      
+      // Update the target rotation based on the scroll change. Adjust 0.5 for sensitivity.
+      targetRotateY.current -= deltaScroll * 0.1;
 
+      // Update the last scroll position for the next frame
+      lastScrollY.current = window.scrollY;
+    };
+    
     window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
   
   const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
     cursorPosition.current = { x: e.clientX, y: e.clientY };
 
     if (isDragging.current) {
-      const walk = (e.pageX - startX.current) * 0.5; // Drag sensitivity
+      const walk = (e.pageX - startX.current) * -0.5; // Drag sensitivity
       targetRotateY.current = startRotateY.current + walk;
     }
     
@@ -92,7 +108,7 @@ export default function PortfolioPreview() {
         const cardCenterY = cardRect.top + cardRect.height / 2;
         const distance = Math.sqrt(
           Math.pow(e.clientX - cardCenterX, 2) +
-            Math.pow(e.clientY - cardCenterY, 2)
+          Math.pow(e.clientY - cardCenterY, 2)
         );
 
         if (distance < minDistance) {
@@ -124,9 +140,9 @@ export default function PortfolioPreview() {
     <section
       id="portfolio-preview"
       ref={sectionRef}
-      className="py-20 lg:py-32 relative text-foreground"
+      className="py-20 lg:py-32 relative"
       style={{
-        background: 'linear-gradient(to bottom, hsl(var(--background)) 0%, #2C3E50 25%, #2C3E50 75%, hsl(var(--background)) 100%)'
+        background: 'radial-gradient(circle at center, hsl(var(--foreground)) 0%, hsl(var(--foreground)) 20%, #000 100%)'
       }}
       onMouseMove={handleMouseMove}
       onMouseDown={handleMouseDown}
@@ -144,7 +160,7 @@ export default function PortfolioPreview() {
         </ScrollFadeIn>
       </div>
 
-       <div
+      <div
         ref={followerRef}
         className={cn(
           "fixed w-28 h-28 rounded-full bg-primary flex items-center justify-center text-primary-foreground text-sm font-semibold pointer-events-none z-20 transition-opacity duration-300 ease-out top-0 left-0",
@@ -152,84 +168,82 @@ export default function PortfolioPreview() {
         )}
         style={{ filter: "drop-shadow(0 0 35px hsl(var(--primary) / 0.6))" }}
       >
-        Drag or Click
+        Drag
       </div>
 
 
-    {/* 3D Carousel Area */}
-    <div className="h-[60vh] mt-16 perspective-carousel">
-      <div ref={carouselWrapRef} className="relative w-full h-full carousel-wrap">
-        {projects.map((project, index) => {
-          const cardRotation = index * CARD_ANGLE;
-          return (
-            <div
-              key={project.slug}
-              ref={(el) => { cardRefs.current[index] = el; }}
-              className="absolute w-[95vw] md:w-[60vw] lg:w-[45vw] xl:w-[35vw] h-full group top-0 left-0 right-0 mx-auto"
-              onMouseEnter={() => setActiveCard(index)}
-              onMouseLeave={() => setActiveCard(null)}
-              style={{
-                transform: `rotateY(${cardRotation}deg) translateZ(${carouselRadius}px)`,
-              }}
-            >
-              {/* This Link wraps the card itself */}
-              <Link
-                href={`/portfolio/${project.slug}`}
-                className={cn(
-                  "block h-full w-full transition-all duration-500 ease-out rounded-3xl",
-                  activeCard === index && "shadow-primary-glow"
-                )}
-                draggable={false}
+      {/* 3D Carousel Area */}
+      <div className="h-[35vh] mt-16 perspective-carousel">
+        <div ref={carouselWrapRef} className="relative w-full h-full carousel-wrap">
+          {projects.map((project, index) => {
+            const cardRotation = index * CARD_ANGLE;
+            return (
+              <div
+                key={project.slug}
+                ref={(el) => { cardRefs.current[index] = el; }}
+                className="absolute w-[95vw] md:w-[60vw] lg:w-[45vw] xl:w-[35vw] h-full group top-0 left-0 right-0 mx-auto"
+                onMouseEnter={() => setActiveCard(index)}
+                onMouseLeave={() => setActiveCard(null)}
+                style={{
+                  transform: `rotateY(${cardRotation}deg) translateZ(${carouselRadius}px)`,
+                }}
               >
-                <Card className="h-full w-full bg-card overflow-hidden rounded-3xl shadow-lg">
-                  <div className="w-full h-full relative overflow-hidden rounded-3xl transition-transform duration-500 group-hover:scale-105">
-                    <Image
-                      src={project.imageUrl}
-                      alt={project.title}
-                      width={600}
-                      height={450}
-                      className="w-full h-full object-cover pointer-events-none"
-                      data-ai-hint={project.aiHint}
-                      draggable={false}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
-                  </div>
-                </Card>
-              </Link>
-
-{/* THIS IS THE NEW TEXT CONTAINER POSITION */}
-<div
-  className={cn(
-    "absolute w-[90%] -bottom-16 p-6 z-20 transition-all duration-500 ease-out text-left",
-    activeCard === index ? "translate-y-0 opacity-100" : "translate-y-full opacity-0"
-  )}
->
-  {/* The category text needs to be bolder and visible */}
-  <p className="text-sm text-white font-semibold uppercase tracking-wide drop-shadow-md">
-    WEB • 360° PHOTOGRAPHY • 360° VIDEO • 3D
-  </p>
-  {/* The title text gets an even heavier font weight and a stronger shadow */}
-  <h3 className="font-extrabold text-4xl md:text-5xl text-white mt-1 font-inter drop-shadow-2xl">
-    {project.title}
-  </h3>
-  {/* The description text also gets a bit more weight for clarity */}
-  <p className="text-lg text-white font-medium font-inter drop-shadow-md">
-    {project.description}
-  </p>
-</div>
-            </div>
-          );
-        })}
+                {/* This Link wraps the card itself */}
+                <Link
+                  href={`/portfolio/${project.slug}`}
+                  className={cn(
+                    "block h-full w-full transition-all duration-500 ease-out rounded-3xl",
+                    activeCard === index && "shadow-primary-glow"
+                  )}
+                  draggable={false}
+                >
+                  <Card className="h-full w-full overflow-hidden rounded-3xl shadow-lg">
+                    <div className="w-full h-full bg-foreground relative overflow-hidden rounded-3xl transition-transform duration-500 group-hover:scale-105">
+                      <Image
+                        src={project.imageUrl}
+                        alt={project.title}
+                        width={600}
+                        height={450}
+                        className="w-full h-full object-cover pointer-events-none"
+                        data-ai-hint={project.aiHint}
+                        draggable={false}
+                      />
+                      <div className="absolute inset-0"></div>
+                    </div>
+                  </Card>
+                </Link>
+                {/* THIS IS THE NEW TEXT CONTAINER POSITION */}
+                <div
+                  className={cn(
+                    "absolute w-[95%] -bottom-32 p-7 z-20 transition-all duration-700 ease-out text-left",
+                    activeCard === index ? "translate-y-0 opacity-100" : "translate-y-full opacity-0"
+                  )}
+                >
+                  {/* The description text also gets a bit more weight for clarity */}
+                  <p className="text-lg text-white font-medium font-inter drop-shadow-md">
+                    {project.description}
+                  </p>
+                  {/* The title text gets an even heavier font weight and a stronger shadow */}
+                  <h3 className="font-black text-4xl md:text-5xl text-white mt-1 font-inter drop-shadow-2xl">
+                    {project.title}
+                  </h3>
+                  {/* Add a top margin (e.g., mt-4) to create space above this element */}
+                  <p className="mt-4 text-xs text-primary font-semibold uppercase tracking-wide drop-shadow-md">
+                    WEB • 360° PHOTOGRAPHY • 360° VIDEO • 3D
+                  </p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
       </div>
-    </div>
-    
       
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 mt-16">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 mt-44">
         <ScrollFadeIn>
           <Button
             size="lg"
             asChild
-            className="rounded-full px-8 py-6 bg-transparent border-2 border-background text-background hover:bg-background hover:text-foreground transition-colors"
+            className="rounded-full px-8 py-6 bg-transparent border-2 border-primary text-white font-semibold hover:border-black hover:text-black transition-colors"
           >
             <Link href="/portfolio">
               Discover more of our work <ArrowRight className="ml-2 h-4 w-4" />
