@@ -10,6 +10,7 @@ import ScrollFadeIn from "./ScrollFadeIn";
 import { ArrowRight } from "lucide-react";
 import React, { useRef, useState, useEffect, useCallback } from "react";
 import { cn } from "@/lib/utils";
+import { useTheme } from "next-themes";
 
 const CARD_ANGLE = 30; // Angle between each card in the carousel
 
@@ -20,6 +21,7 @@ export default function PortfolioPreview() {
   const followerRef = useRef<HTMLDivElement>(null);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
 
+  const { theme } = useTheme();
   const [activeCard, setActiveCard] = useState<number | null>(null);
   const [isCursorNearCard, setIsCursorNearCard] = useState<number | null>(null);
 
@@ -137,13 +139,22 @@ export default function PortfolioPreview() {
     setIsCursorNearCard(null);
   }, []);
 
+  const getBackgroundStyle = () => {
+    if (theme === "dark") {
+      // Dark theme background
+      return 'radial-gradient(circle at center, hsl(222, 47%, 11%) 0%, hsl(222, 47%, 11%) 20%, hsl(0, 0%, 0%) 100%)';
+    }
+    // Light theme background (using foreground which is dark in light mode)
+    return 'radial-gradient(circle at center, hsl(var(--foreground)) 0%, hsl(var(--foreground)) 20%, hsl(0, 0%, 0%) 100%)';
+  };
+
   return (
     <section
       id="portfolio-preview"
       ref={sectionRef}
       className="py-20 lg:py-32 relative"
       style={{
-        background: 'radial-gradient(circle at center, hsl(222, 47%, 11%) 0%, hsl(222, 47%, 11%) 20%, hsl(0, 0%, 0%) 100%)'
+        background: getBackgroundStyle(),
       }}
       onMouseMove={handleMouseMove}
       onMouseDown={handleMouseDown}
