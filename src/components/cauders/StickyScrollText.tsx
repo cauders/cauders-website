@@ -33,23 +33,20 @@ const StickyScrollText = () => {
     const { top, height } = containerRef.current.getBoundingClientRect();
     const scrollableHeight = height - window.innerHeight;
     
-    // Calculate raw progress. The animation will be mapped to a specific window within this progress.
-    const rawProgress = Math.max(0, Math.min(1, -top / scrollableHeight));
+    // We want the animation to happen over a large scroll distance.
+    // Let's use a smaller portion of the container for the animation window
+    // to make the scroll feel longer.
+    const animationStartProgress = 0.1; // Start animation after 10% scroll
+    const animationEndProgress = 0.6; // End animation at 60% scroll
     
-    // We want the animation to happen between 33% and 80% of the scroll through the container
-    const animationStart = 0.33; 
-    const animationEnd = 0.8;
-    const animationWindow = animationEnd - animationStart;
-
-    // Remap raw progress to our animation window
-    const progress = Math.max(0, Math.min(1, (rawProgress - animationStart) / animationWindow));
+    const progress = Math.max(0, Math.min(1, ((-top / scrollableHeight) - animationStartProgress) / (animationEndProgress - animationStartProgress) ));
 
     const numLines = textLines.length;
-    const progressPerLine = 1 / (numLines + 1); // Add more spacing between triggers
+    const progressPerLine = 1 / numLines; 
 
     const newTransforms = textLines.map((line, index) => {
       const lineStartProgress = index * progressPerLine;
-      const animationDuration = progressPerLine * 1.5; // Each animation takes this much progress to complete
+      const animationDuration = progressPerLine; // Each animation takes this much progress to complete
       const lineEndProgress = lineStartProgress + animationDuration;
 
       // Calculate the progress for this specific line's animation (0 to 1)
@@ -78,15 +75,15 @@ const StickyScrollText = () => {
   }, []);
 
   return (
-    <div ref={containerRef} className="relative flex flex-col h-[300vh] bg-background">
+    <div ref={containerRef} className="relative flex flex-col h-[400vh] bg-background">
       {/* Sticky container for the animated text */}
       <div className="sticky top-0 flex-shrink-0 flex items-center justify-center overflow-hidden h-[100vh]">
-        <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             {textLines.map((line, index) => (
                 <div key={index} className="overflow-hidden py-1">
                     <h2
                         className={cn(
-                            "text-4xl md:text-6xl font-extrabold text-foreground uppercase tracking-tight transition-transform duration-300 ease-out",
+                            "text-5xl md:text-6xl font-extrabold text-foreground uppercase tracking-tight transition-transform duration-300 ease-out",
                             line.className
                         )}
                         style={{ transform: transforms[index] }}
