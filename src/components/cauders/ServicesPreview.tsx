@@ -96,7 +96,7 @@ export default function ServicesPreview() {
   }, [scrollHandler, handleMouseMove]);
 
   return (
-    <section id="services-preview" ref={containerRef} className="relative h-[350vh] bg-background">
+    <section id="services-preview" ref={containerRef} className="relative h-[400vh] bg-background">
       <div className="sticky top-0 h-screen flex flex-col items-center justify-center overflow-hidden">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <div className="overflow-hidden py-2">
@@ -133,7 +133,7 @@ export default function ServicesPreview() {
                     <div className={cn("flip-card-inner relative w-full h-full", hoveredCard === index && "is-flipped")}>
                     {/* Front of the card */}
                     <div className="flip-card-front absolute w-full h-full">
-                        <Card className="h-full text-center bg-card flex flex-col">
+                        <Card className="h-full text-center flex flex-col glass-effect">
                         <CardHeader className="p-8 flex-grow">
                             <div className="mx-auto bg-primary/10 rounded-full p-4 w-fit mb-4">
                             <service.icon className="w-8 h-8 text-primary" />
@@ -145,7 +145,7 @@ export default function ServicesPreview() {
                     </div>
                     {/* Back of the card */}
                     <div className="flip-card-back absolute w-full h-full">
-                        <Card className={cn("h-full bg-card flex flex-col justify-between animated-border-card")}>
+                        <Card className={cn("h-full flex flex-col justify-between animated-border-card glass-effect")}>
                         <CardHeader>
                             <CardTitle className="text-foreground">{service.title}</CardTitle>
                         </CardHeader>
