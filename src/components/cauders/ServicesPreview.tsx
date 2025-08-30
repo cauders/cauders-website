@@ -8,7 +8,6 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useRef, useState, useEffect, useCallback, Suspense } from "react";
-import StickyScroll3D from "./StickyScroll3D";
 import { Skeleton } from "../ui/skeleton";
 import ServiceCard3DIcon from "./ServiceCard3DIcon";
 
@@ -20,7 +19,6 @@ export default function ServicesPreview() {
   const [subtitleTransform, setSubtitleTransform] = useState('translateY(100%)');
   const [cardTransforms, setCardTransforms] = useState(services.map(() => 'rotateY(-90deg)'));
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
-  const [progress, setProgress] = useState(0);
 
   const scrollHandler = useCallback(() => {
     if (!containerRef.current) return;
@@ -29,7 +27,6 @@ export default function ServicesPreview() {
     const scrollableHeight = height - window.innerHeight;
     
     const currentProgress = Math.max(0, Math.min(1, -top / scrollableHeight));
-    setProgress(currentProgress);
 
     // --- Text Animation ---
     const titleProgress = Math.max(0, Math.min(1, currentProgress * 4));
@@ -66,11 +63,6 @@ export default function ServicesPreview() {
 
   return (
     <section id="services-preview" ref={containerRef} className="relative h-[400vh] bg-background">
-       <div className="absolute inset-0 z-0">
-         <Suspense fallback={<Skeleton className="w-full h-full" />}>
-           <StickyScroll3D scrollProgress={progress} />
-         </Suspense>
-      </div>
       <div className="sticky top-0 h-screen flex flex-col items-center justify-center overflow-hidden">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <div className="overflow-hidden py-2">
