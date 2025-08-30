@@ -32,15 +32,19 @@ const StickyScrollText = () => {
     const { top, height } = containerRef.current.getBoundingClientRect();
     const scrollableHeight = height - window.innerHeight;
     
+    // Ensure progress is 0 when at the top and 1 when at the bottom.
     const progress = Math.max(0, Math.min(1, -top / scrollableHeight));
 
     const numLines = textLines.length;
-    const progressPerLine = 1 / numLines;
+    // Animate over the first 50% of the scroll progress
+    const animationEndProgress = 0.5;
+    const progressPerLine = animationEndProgress / numLines;
 
     const newTransforms = textLines.map((line, index) => {
       const lineStartProgress = index * progressPerLine;
-      const lineEndProgress = (index + 1) * progressPerLine;
+      const lineEndProgress = lineStartProgress + progressPerLine;
 
+      // Calculate the progress for this specific line's animation (0 to 1)
       const lineProgress = Math.max(0, Math.min(1, (progress - lineStartProgress) / (lineEndProgress - lineStartProgress)));
       
       let x = 0;
@@ -64,7 +68,7 @@ const StickyScrollText = () => {
 
   return (
     <div ref={containerRef} id="services-preview" className="relative h-[200vh] bg-background">
-      <div className="sticky top-0 h-screen flex items-center justify-center overflow-hidden z-10">
+      <div className="sticky top-0 h-screen flex items-center justify-center overflow-hidden">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             {textLines.map((line, index) => (
                 <div key={index} className="overflow-hidden">
@@ -81,7 +85,7 @@ const StickyScrollText = () => {
             ))}
         </div>
       </div>
-      <div className="absolute bottom-0 left-0 right-0 py-20 lg:py-32">
+      <div className="absolute bottom-0 left-0 w-full pb-20 lg:pb-32">
          <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {services.map((service, index) => (
