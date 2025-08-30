@@ -18,7 +18,7 @@ const textLines = [
 ];
 
 const StickyScrollText = () => {
-  const containerRef = useRef(null);
+  const containerRef = useRef<HTMLDivElement>(null);
   const [transforms, setTransforms] = useState(
     textLines.map(line => line.direction === 'left' ? 'translateX(-100%)' : 'translateX(100%)')
   );
@@ -29,6 +29,8 @@ const StickyScrollText = () => {
     if (!containerRef.current) return;
 
     const { top, height } = containerRef.current.getBoundingClientRect();
+    // Start animation when the top of the container is at the top of the viewport
+    // and end when the container is scrolled past.
     const scrollableHeight = height - window.innerHeight;
     
     // Ensure progress is 0 when at the top and 1 when at the bottom.
@@ -36,12 +38,12 @@ const StickyScrollText = () => {
 
     const numLines = textLines.length;
     // Animate over the first 50% of the scroll progress
-    const animationEndProgress = 0.2;
+    const animationEndProgress = 0.5; // Text animation should finish halfway through the container
     const progressPerLine = animationEndProgress / numLines;
 
     const newTransforms = textLines.map((line, index) => {
       const lineStartProgress = index * progressPerLine;
-      const lineEndProgress = lineStartProgress + progressPerLine;
+      const lineEndProgress = lineStartProgress + progressPerLine * 2; // Make animation overlap a bit
 
       // Calculate the progress for this specific line's animation (0 to 1)
       const lineProgress = Math.max(0, Math.min(1, (progress - lineStartProgress) / (lineEndProgress - lineStartProgress)));
@@ -61,14 +63,16 @@ const StickyScrollText = () => {
 
   useEffect(() => {
     window.addEventListener('scroll', scrollHandler, { passive: true });
+    // Run handler once on mount to set initial positions
     scrollHandler(); 
     return () => window.removeEventListener('scroll', scrollHandler);
   }, []);
 
   return (
-    <div className="flex flex-col h-screen bg-background" id="services-preview">
-      <div ref={containerRef} className="sticky top-0 flex-shrink-0 flex items-center justify-center overflow-hidden h-[50vh]">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <div ref={containerRef} className="relative flex flex-col h-[200vh] bg-background" id="services-preview">
+      {/* Sticky container for the animated text */}
+      <div className="sticky top-0 flex-shrink-0 flex items-center justify-center overflow-hidden h-[100vh]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             {textLines.map((line, index) => (
                 <div key={index} className="overflow-hidden">
                     <h2
@@ -84,7 +88,9 @@ const StickyScrollText = () => {
             ))}
         </div>
       </div>
-      <div className="flex-grow w-full pb-20 lg:pb-32 overflow-y-auto">
+
+      {/* Services cards container that appears after the text animation */}
+      <div className="relative z-10 w-full pt-16 pb-20 lg:pb-32 bg-background">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {services.map((service, index) => (
