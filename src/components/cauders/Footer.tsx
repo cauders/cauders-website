@@ -7,9 +7,12 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="bg-background border-t">
-      <div className="container mx-auto py-8 px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+    <footer className="bg-background border-t min-h-screen flex flex-col items-center justify-center">
+      <div className="container mx-auto py-8 px-4 sm:px-6 lg:px-8 text-center">
+        <div className="flex flex-col items-center justify-center gap-4">
+           <Link href="/" className="text-4xl font-bold text-foreground hover:text-primary transition-colors">
+              Cauders
+            </Link>
           <p className="text-sm text-foreground/70">
             &copy; {year} Cauders. All Rights Reserved.
           </p>

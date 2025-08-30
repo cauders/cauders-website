@@ -1,3 +1,4 @@
+
 "use client";
 
 import { getProjects } from "@/lib/data";
@@ -140,7 +141,7 @@ export default function PortfolioPreview() {
     <section
       id="portfolio-preview"
       ref={sectionRef}
-      className="py-20 lg:py-32 relative"
+      className="relative min-h-screen flex flex-col justify-center"
       style={{  
         background: 'radial-gradient(ellipse 100% 50% at center,   hsl(211, 34.10%, 16.70%) 10%, hsl(222, 47%, 11%) 60%)'
           }}
