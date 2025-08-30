@@ -26,12 +26,15 @@ const StickyScrollText = () => {
     const progress = Math.max(0, Math.min(1, -top / scrollableHeight));
 
     const numLines = textLines.length;
-    const animationEndProgress = 0.9;
+    const animationEndProgress = 0.8; // Give more scroll room for animation
     const progressPerLine = animationEndProgress / numLines;
 
     const newTransforms = textLines.map((line, index) => {
+      // Stagger the start of each line's animation
       const lineStartProgress = index * progressPerLine;
-      const lineEndProgress = lineStartProgress + progressPerLine * 2;
+      // Define how long each animation takes
+      const animationDuration = progressPerLine * 2.5; // Make animation slower
+      const lineEndProgress = lineStartProgress + animationDuration;
 
       const lineProgress = Math.max(0, Math.min(1, (progress - lineStartProgress) / (lineEndProgress - lineStartProgress)));
       
@@ -55,7 +58,7 @@ const StickyScrollText = () => {
   }, []);
 
   return (
-    <div ref={containerRef} className="relative flex flex-col h-[200vh] bg-background" id="services-preview">
+    <div ref={containerRef} className="relative flex flex-col h-[200vh] bg-background">
       {/* Sticky container for the animated text */}
       <div className="sticky top-0 flex-shrink-0 flex items-center justify-center overflow-hidden h-[100vh]">
         <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -63,7 +66,7 @@ const StickyScrollText = () => {
                 <div key={index} className="overflow-hidden">
                     <h2
                         className={cn(
-                            "text-4xl md:text-5xl font-extrabold text-foreground uppercase tracking-tight transition-transform duration-300 ease-out",
+                            "text-5xl md:text-6xl font-extrabold text-foreground uppercase tracking-tight transition-transform duration-300 ease-out",
                             line.className
                         )}
                         style={{ transform: transforms[index] }}
