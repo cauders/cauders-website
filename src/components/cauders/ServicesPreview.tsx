@@ -13,7 +13,9 @@ import { useRef, useState, useEffect } from "react";
 export default function ServicesPreview() {
   const services = getServices();
   const containerRef = useRef<HTMLDivElement>(null);
-  const [transform, setTransform] = useState('translateY(100%)');
+  const [titleTransform, setTitleTransform] = useState('translateY(100%)');
+  const [subtitleTransform, setSubtitleTransform] = useState('translateY(100%)');
+
 
   const scrollHandler = () => {
     if (!containerRef.current) return;
@@ -21,16 +23,22 @@ export default function ServicesPreview() {
     const { top, height } = containerRef.current.getBoundingClientRect();
     const windowHeight = window.innerHeight;
     
-    // Start animation when bottom of the element is visible
-    const startPoint = top + height - windowHeight;
-    // End when the top is slightly above center
-    const endPoint = top + height / 2;
+    // Start animation when the element is entering the viewport
+    const startPoint = top - windowHeight;
+    // End when the element is at the top of the viewport
+    const endPoint = top + height;
     
-    const progress = Math.max(0, Math.min(1, 1 - (startPoint / (startPoint - endPoint))));
+    const progress = Math.max(0, Math.min(1, 1 - (top / windowHeight)));
     
-    let y = 100 - (progress * 100);
-    
-    setTransform(`translateY(${y}%)`);
+    // Animate title first
+    const titleProgress = Math.max(0, Math.min(1, progress * 2));
+    const titleY = 100 - (titleProgress * 100);
+    setTitleTransform(`translateY(${titleY}%)`);
+
+    // Animate subtitle after title is mostly visible
+    const subtitleProgress = Math.max(0, Math.min(1, (progress - 0.25) * 2));
+    const subtitleY = 100 - (subtitleProgress * 100);
+    setSubtitleTransform(`translateY(${subtitleY}%)`);
   };
 
   useEffect(() => {
@@ -46,7 +54,7 @@ export default function ServicesPreview() {
         <div className="overflow-hidden py-2">
             <h2 
                 className="text-3xl md:text-4xl font-bold text-foreground transition-transform duration-300 ease-out"
-                style={{ transform }}
+                style={{ transform: titleTransform }}
             >
                 What We Offer
             </h2>
@@ -54,7 +62,7 @@ export default function ServicesPreview() {
         <div className="overflow-hidden py-1">
             <p 
                 className="mt-4 text-lg text-foreground/70 max-w-2xl mx-auto transition-transform duration-300 ease-out"
-                style={{ transform, transitionDelay: '150ms' }}
+                style={{ transform: subtitleTransform, transitionDelay: '50ms' }}
             >
                 Our expertise spans the entire development lifecycle, delivering excellence at every step.
             </p>
