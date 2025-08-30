@@ -1,4 +1,3 @@
-
 "use client"
 
 import { useRef, useEffect, useState } from 'react';
@@ -30,22 +29,27 @@ const StickyScrollText = () => {
     if (!containerRef.current) return;
 
     const { top, height } = containerRef.current.getBoundingClientRect();
+    // Calculate the scrollable height within the container.
+    // This is the total height of the container minus the height of the viewport.
     const scrollableHeight = height - window.innerHeight;
     
-    // Ensure progress is 0 when at the top and 1 when at the bottom.
+    // Calculate progress:
+    // -top is the distance scrolled into the container.
+    // Progress is 0 when the top of the container is at the top of the viewport.
+    // Progress is 1 when the bottom of the container is at the bottom of the viewport.
     const progress = Math.max(0, Math.min(1, -top / scrollableHeight));
 
     const numLines = textLines.length;
     // Animate over the first 50% of the scroll progress
-    const animationEndProgress = 0.5;
+    const animationEndProgress = 0.2;
     const progressPerLine = animationEndProgress / numLines;
 
     const newTransforms = textLines.map((line, index) => {
       const lineStartProgress = index * progressPerLine;
-      const lineEndProgress = lineStartProgress + progressPerLine;
-
+      
       // Calculate the progress for this specific line's animation (0 to 1)
-      const lineProgress = Math.max(0, Math.min(1, (progress - lineStartProgress) / (lineEndProgress - lineStartProgress)));
+      // This ensures lines animate one after the other.
+      const lineProgress = Math.max(0, Math.min(1, (progress - lineStartProgress) / progressPerLine));
       
       let x = 0;
       if (line.direction === 'left') {
@@ -62,13 +66,14 @@ const StickyScrollText = () => {
 
   useEffect(() => {
     window.addEventListener('scroll', scrollHandler, { passive: true });
+    // Run handler once on mount to set initial state
     scrollHandler(); 
     return () => window.removeEventListener('scroll', scrollHandler);
   }, []);
 
   return (
-    <div ref={containerRef} id="services-preview" className="relative h-[200vh] bg-background">
-      <div className="sticky top-0 h-screen flex items-center justify-center overflow-hidden">
+    <div ref={containerRef} className="relative h-[200vh] bg-background">
+      <div className="sticky top-0 h-[100vh] flex items-center justify-center overflow-hidden">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             {textLines.map((line, index) => (
                 <div key={index} className="overflow-hidden">
@@ -85,7 +90,7 @@ const StickyScrollText = () => {
             ))}
         </div>
       </div>
-      <div className="absolute bottom-0 left-0 w-full pb-20 lg:pb-32">
+      <div className="absolute bottom-0 w-full pb-20 lg:pb-32">
          <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {services.map((service, index) => (
