@@ -90,7 +90,16 @@ const StickyScrollText = () => {
                         )}
                         style={{ transform: transforms[index] }}
                     >
+                      <span
+                        className="inline-block px-4 py-2 rounded-md"
+                        style={{
+                          backgroundColor: 'hsl(var(--background) / 0.5)',
+                          backdropFilter: 'blur(8px)',
+                          WebkitBackdropFilter: 'blur(8px)',
+                        }}
+                      >
                         {line.text}
+                      </span>
                     </h2>
                 </div>
             ))}
