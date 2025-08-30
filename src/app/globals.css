@@ -206,7 +206,7 @@
 
   @keyframes gradient-wipe-in {
     from {
-      background-position: -100%;
+      background-position: 0%;
     }
     to {
       background-position: -99.99%; /* Ends on primary color */
