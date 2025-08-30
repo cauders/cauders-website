@@ -244,7 +244,7 @@ export default function PortfolioPreview() {
           <Button
             size="lg"
             asChild
-            className="rounded-full px-8 py-6 bg-transparent border-2 border-primary text-white font-semibold hover:border-black hover:text-black transition-colors"
+            className="rounded-full px-8 py-6 bg-transparent border-2 border-primary text-white font-semibold hover:border-white hover:text-white transition-colors"
           >
             <Link href="/portfolio">
               Discover more of our work <ArrowRight className="ml-2 h-4 w-4" />
