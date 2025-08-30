@@ -67,7 +67,7 @@ const StickyScrollText = () => {
   }, []);
 
   return (
-    <div ref={containerRef} className="relative h-[200vh] bg-background">
+    <div ref={containerRef} id="services-preview" className="relative h-[200vh] bg-background">
       <div className="sticky top-0 h-screen flex items-center justify-center overflow-hidden">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             {textLines.map((line, index) => (
@@ -85,7 +85,7 @@ const StickyScrollText = () => {
             ))}
         </div>
       </div>
-      <div id="services-preview" className="container mx-auto px-4 sm:px-6 lg:px-8 text-center absolute bottom-0 left-0 right-0 py-20 lg:py-32">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center absolute bottom-0 left-0 right-0 py-20 lg:py-32">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {services.map((service, index) => (
             <ScrollFadeIn
