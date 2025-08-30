@@ -20,23 +20,24 @@ export default function ServicesPreview() {
   const scrollHandler = () => {
     if (!containerRef.current) return;
 
-    const { top, height } = containerRef.current.getBoundingClientRect();
+    const { top } = containerRef.current.getBoundingClientRect();
     const windowHeight = window.innerHeight;
     
-    // Start animation when the element is entering the viewport
-    const startPoint = top - windowHeight;
-    // End when the element is at the top of the viewport
-    const endPoint = top + height;
-    
-    const progress = Math.max(0, Math.min(1, 1 - (top / windowHeight)));
+    // Start animation when the top of the element is halfway up the screen
+    // and end it when it has scrolled 20% past the top.
+    const animationStartPoint = windowHeight * 0.5;
+    const animationEndPoint = -windowHeight * 0.2;
+    const scrollDistance = animationStartPoint - animationEndPoint;
+    const currentPosition = top - animationEndPoint;
+    const progress = Math.max(0, Math.min(1, 1 - (currentPosition / scrollDistance)));
     
     // Animate title first
-    const titleProgress = Math.max(0, Math.min(1, progress * 2));
+    const titleProgress = Math.max(0, Math.min(1, progress * 1.5));
     const titleY = 100 - (titleProgress * 100);
     setTitleTransform(`translateY(${titleY}%)`);
 
     // Animate subtitle after title is mostly visible
-    const subtitleProgress = Math.max(0, Math.min(1, (progress - 0.25) * 2));
+    const subtitleProgress = Math.max(0, Math.min(1, (progress - 0.2) * 1.5));
     const subtitleY = 100 - (subtitleProgress * 100);
     setSubtitleTransform(`translateY(${subtitleY}%)`);
   };
