@@ -1,3 +1,4 @@
+
 import { Github, Twitter, Linkedin, Facebook, Instagram, Youtube, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '../ui/button';
@@ -12,6 +13,11 @@ export default function Footer() {
       <FooterCurve />
       <div className="container mx-auto py-12 px-4 sm:px-6 lg:px-8">
         <div className="md:grid md:grid-cols-12 gap-8 md:gap-16 lg:gap-32">
+          {/* Branding in middle - hidden on mobile, shown on md+ */}
+          <div className="hidden md:flex md:col-span-2 lg:col-span-2 items-center justify-center mb-12 md:mb-0">
+             <h3 className="text-4xl font-bold -rotate-90 md:rotate-0">Cauders</h3>
+          </div>
+
           {/* Newsletter */}
           <div className="md:col-span-5 lg:col-span-5 mb-12 md:mb-0">
             <span className="text-sm uppercase tracking-widest opacity-80">Stay up to date</span>
@@ -31,11 +37,6 @@ export default function Footer() {
                 <ArrowRight />
               </Button>
             </form>
-          </div>
-
-          {/* Branding in middle */}
-          <div className="md:col-span-2 lg:col-span-2 flex items-center justify-center mb-12 md:mb-0">
-            <h3 className="text-4xl font-bold -rotate-90 md:rotate-0">Cauders</h3>
           </div>
 
           {/* Get in touch */}
