@@ -74,6 +74,15 @@
 }
 
 @layer utilities {
+  .svg-container {
+    position: absolute;
+    top: -198px; /* Adjust this value to position the SVG correctly */
+    right: 0;
+    left: 0;
+    z-index: 10;
+    pointer-events: none;
+  }
+
   .floating-header-styles {
     @apply mx-auto w-full max-w-5xl rounded-full border border-border/20 shadow-lg;
     background: hsl(var(--background) / 0.5);
