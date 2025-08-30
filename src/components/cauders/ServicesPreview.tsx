@@ -7,16 +7,42 @@ import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/com
 import { Button } from "@/components/ui/button";
 import { ArrowRight, CheckCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect, useCallback } from "react";
 
 export default function ServicesPreview() {
   const services = getServices();
   const containerRef = useRef<HTMLDivElement>(null);
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
   const [titleTransform, setTitleTransform] = useState('translateY(100%)');
   const [subtitleTransform, setSubtitleTransform] = useState('translateY(100%)');
   const [cardTransforms, setCardTransforms] = useState(services.map(() => 'rotateY(-90deg)'));
+  const [hoveredCard, setHoveredCard] = useState<number | null>(null);
 
-  const scrollHandler = () => {
+  const handleMouseMove = useCallback((e: MouseEvent) => {
+    let nearestCardIndex: number | null = null;
+    let minDistance = 200; // Proximity radius in pixels
+
+    cardRefs.current.forEach((card, index) => {
+      if (card) {
+        const cardRect = card.getBoundingClientRect();
+        const cardCenterX = cardRect.left + cardRect.width / 2;
+        const cardCenterY = cardRect.top + cardRect.height / 2;
+        const distance = Math.sqrt(
+          Math.pow(e.clientX - cardCenterX, 2) +
+          Math.pow(e.clientY - cardCenterY, 2)
+        );
+
+        if (distance < minDistance) {
+          minDistance = distance;
+          nearestCardIndex = index;
+        }
+      }
+    });
+
+    setHoveredCard(nearestCardIndex);
+  }, []);
+
+  const scrollHandler = useCallback(() => {
     if (!containerRef.current) return;
 
     const { top, height } = containerRef.current.getBoundingClientRect();
@@ -46,14 +72,28 @@ export default function ServicesPreview() {
         return `rotateY(${rotation}deg)`;
     });
     setCardTransforms(newCardTransforms);
-  };
-
-  useEffect(() => {
-    window.addEventListener('scroll', scrollHandler, { passive: true });
-    scrollHandler(); // Initial call
-    return () => window.removeEventListener('scroll', scrollHandler);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(() => {
+    const currentContainer = containerRef.current;
+    
+    const handleMouseLeave = () => {
+      setHoveredCard(null);
+    }
+    
+    currentContainer?.addEventListener('mousemove', handleMouseMove);
+    currentContainer?.addEventListener('mouseleave', handleMouseLeave);
+
+    window.addEventListener('scroll', scrollHandler, { passive: true });
+    scrollHandler(); // Initial call
+    
+    return () => {
+      currentContainer?.removeEventListener('mousemove', handleMouseMove);
+      currentContainer?.removeEventListener('mouseleave', handleMouseLeave);
+      window.removeEventListener('scroll', scrollHandler);
+    }
+  }, [scrollHandler, handleMouseMove]);
 
   return (
     <section id="services-preview" ref={containerRef} className="relative h-[300vh] bg-background">
@@ -80,6 +120,7 @@ export default function ServicesPreview() {
             {services.map((service, index) => (
                 <div
                 key={service.slug}
+                ref={el => cardRefs.current[index] = el}
                 className="h-full"
                 style={{
                     perspective: '1000px',
@@ -88,8 +129,8 @@ export default function ServicesPreview() {
                     transform: cardTransforms[index],
                 }}
                 >
-                <div className="flip-card h-full min-h-[300px] md:min-h-[320px]">
-                    <div className="flip-card-inner relative w-full h-full">
+                <div className={cn("flip-card h-full min-h-[300px] md:min-h-[320px]")}>
+                    <div className={cn("flip-card-inner relative w-full h-full", hoveredCard === index && "is-flipped")}>
                     {/* Front of the card */}
                     <div className="flip-card-front absolute w-full h-full">
                         <Card className="h-full text-center bg-card flex flex-col">
