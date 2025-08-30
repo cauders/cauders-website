@@ -96,7 +96,7 @@ export default function ServicesPreview() {
   }, [scrollHandler, handleMouseMove]);
 
   return (
-    <section id="services-preview" ref={containerRef} className="relative h-[300vh] bg-background">
+    <section id="services-preview" ref={containerRef} className="relative h-[350vh] bg-background">
       <div className="sticky top-0 h-screen flex flex-col items-center justify-center overflow-hidden">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <div className="overflow-hidden py-2">
