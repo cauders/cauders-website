@@ -11,14 +11,15 @@ const textLines = [
   { text: "DOMINATE THE DIGITAL LANDSCAPE.", direction: "left" },
 ];
 
-// Easing function for a bouncy effect
+// Easing function for a more pronounced bouncy effect
 const easeOutElastic = (x: number): number => {
-    const c4 = (2 * Math.PI) / 3;
+    const c5 = (2 * Math.PI) / 4.5; // Adjusted for a bouncier feel
+
     return x === 0
       ? 0
       : x === 1
       ? 1
-      : Math.pow(2, -10 * x) * Math.sin((x * 10 - 0.75) * c4) + 1;
+      : Math.pow(2, -10 * x) * Math.sin((x * 10 - 0.75) * c5) + 1;
 };
 
 const StickyScrollText = () => {
@@ -33,24 +34,20 @@ const StickyScrollText = () => {
     const { top, height } = containerRef.current.getBoundingClientRect();
     const scrollableHeight = height - window.innerHeight;
     
-    // We want the animation to happen over a large scroll distance.
-    // Let's use a smaller portion of the container for the animation window
-    // to make the scroll feel longer.
-    const animationStartProgress = 0.1; // Start animation after 10% scroll
-    const animationEndProgress = 0.6; // End animation at 60% scroll
-    
-    const progress = Math.max(0, Math.min(1, ((-top / scrollableHeight) - animationStartProgress) / (animationEndProgress - animationStartProgress) ));
+    // Start animation when the component is well into view
+    const animationStartPoint = window.innerHeight * 0.5;
+    const progress = Math.max(0, Math.min(1, (-top - animationStartPoint) / (scrollableHeight + animationStartPoint)));
 
     const numLines = textLines.length;
     const progressPerLine = 1 / numLines; 
 
     const newTransforms = textLines.map((line, index) => {
+      // Each line starts animating after the previous one is mostly done.
       const lineStartProgress = index * progressPerLine;
-      const animationDuration = progressPerLine; // Each animation takes this much progress to complete
-      const lineEndProgress = lineStartProgress + animationDuration;
-
-      // Calculate the progress for this specific line's animation (0 to 1)
-      const lineProgress = Math.max(0, Math.min(1, (progress - lineStartProgress) / (lineEndProgress - lineStartProgress)));
+      // Spread out the animation duration for each line.
+      const animationDuration = progressPerLine * 1.5;
+      
+      const lineProgress = Math.max(0, Math.min(1, (progress - lineStartProgress) / animationDuration));
       
       // Apply the bounce effect
       const easedProgress = easeOutElastic(lineProgress);
@@ -75,7 +72,7 @@ const StickyScrollText = () => {
   }, []);
 
   return (
-    <div ref={containerRef} className="relative flex flex-col h-[400vh] bg-background">
+    <div ref={containerRef} className="relative flex flex-col h-[500vh] bg-background">
       {/* Sticky container for the animated text */}
       <div className="sticky top-0 flex-shrink-0 flex items-center justify-center overflow-hidden h-[100vh]">
         <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
