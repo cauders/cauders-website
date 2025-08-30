@@ -10,7 +10,6 @@ import { cn } from "@/lib/utils";
 import { useRef, useState, useEffect, useCallback, Suspense } from "react";
 import StickyScroll3D from "./StickyScroll3D";
 import { Skeleton } from "../ui/skeleton";
-import { Canvas } from "@react-three/fiber";
 import ServiceCard3DIcon from "./ServiceCard3DIcon";
 
 export default function ServicesPreview() {
@@ -103,10 +102,12 @@ export default function ServicesPreview() {
                         transformStyle: 'preserve-3d',
                         transform: cardTransforms[index],
                     }}
+                >
+                <div 
+                    className={cn("flip-card h-full min-h-[300px] md:min-h-[320px]")}
                     onMouseEnter={() => setHoveredCard(index)}
                     onMouseLeave={() => setHoveredCard(null)}
                 >
-                <div className={cn("flip-card h-full min-h-[300px] md:min-h-[320px]")}>
                     <div className={cn("flip-card-inner relative w-full h-full", hoveredCard === index && "is-flipped")}>
                     {/* Front of the card */}
                     <div className="flip-card-front absolute w-full h-full">
@@ -114,9 +115,7 @@ export default function ServicesPreview() {
                             <CardHeader className="p-8 flex-grow">
                                 <div className="mx-auto w-24 h-24 mb-4">
                                   <Suspense fallback={<Skeleton className="w-full h-full rounded-full" />}>
-                                    <Canvas>
-                                      <service.icon />
-                                    </Canvas>
+                                    <ServiceCard3DIcon geometry={service.iconGeometry} />
                                   </Suspense>
                                 </div>
                                 <CardTitle className="text-foreground">{service.title}</CardTitle>

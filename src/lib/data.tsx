@@ -1,6 +1,10 @@
 
 import { toSlug } from "./utils";
-import { Code, Layers, PenTool, Rocket } from 'lucide-react';
+import { Code, Layers, PenTool, Rocket, type LucideProps } from 'lucide-react';
+import { type ModelProps } from "@/components/cauders/ServiceCard3DIcon";
+import type { ComponentType, FC } from "react";
+
+type ServiceIcon = ComponentType<LucideProps> | ComponentType<ModelProps>;
 
 const projects = [
   {
@@ -157,6 +161,7 @@ const projects = [
 const services = [
   {
     icon: PenTool,
+    iconGeometry: 'Torus' as ModelProps['geometry'],
     title: 'UI/UX Design',
     slug: 'ui-ux-design',
     description: 'Crafting intuitive and beautiful user interfaces that provide an exceptional user experience.',
@@ -171,6 +176,7 @@ const services = [
   },
   {
     icon: Code,
+    iconGeometry: 'Box' as ModelProps['geometry'],
     title: 'Web Development',
     slug: 'web-development',
     description: 'Building responsive, high-performance websites and applications using modern technologies.',
@@ -185,6 +191,7 @@ const services = [
   },
   {
     icon: Layers,
+    iconGeometry: 'Octahedron' as ModelProps['geometry'],
     title: 'Full-Stack Solutions',
     slug: 'full-stack-solutions',
     description: 'From database to deployment, we provide end-to-end development for your complex projects.',
@@ -199,10 +206,11 @@ const services = [
   },
   {
     icon: Rocket,
+    iconGeometry: 'Cone' as ModelProps['geometry'],
     title: 'SEO & Performance',
     slug: 'seo-performance',
     description: 'Optimizing your digital presence to rank higher and load faster, ensuring maximum reach.',
-    details: `<p>A great website is only effective if people can find it. Our SEO and performance optimization services are designed to increase your visibility in search engine rankings and provide a lightning-fast user experience. We conduct comprehensive technical SEO audits, optimize on-page content, and implement strategies to improve site speed and Core Web Vitals.</p><p>By focusing on both technical and content aspects of SEO, we help you attract more organic traffic and convert visitors into customers.</p>`,
+    details: `<p>A great website is only effective if people can find it. Our SEO and performance optimization services are designed to increase your visibility in an search engine rankings and provide a lightning-fast user experience. We conduct comprehensive technical SEO audits, optimize on-page content, and implement strategies to improve site speed and Core Web Vitals.</p><p>By focusing on both technical and content aspects of SEO, we help you attract more organic traffic and convert visitors into customers.</p>`,
     included: ['Technical SEO Audits', 'On-Page SEO', 'Performance Analysis', 'Image Optimization', 'Core Web Vitals Improvement'],
     caseStudy: null
   },
