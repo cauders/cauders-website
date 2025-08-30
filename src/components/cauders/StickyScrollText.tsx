@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useRef, useEffect, useState } from 'react';
@@ -11,15 +12,9 @@ const textLines = [
   { text: "DOMINATE THE DIGITAL LANDSCAPE.", direction: "left" },
 ];
 
-// Easing function for a more pronounced bouncy effect
-const easeOutElastic = (x: number): number => {
-    const c5 = (2 * Math.PI) / 4.5; // Adjusted for a bouncier feel
-
-    return x === 0
-      ? 0
-      : x === 1
-      ? 1
-      : Math.pow(2, -10 * x) * Math.sin((x * 10 - 0.75) * c5) + 1;
+// Easing function for a smooth slide with settle
+const easeOutExpo = (x: number): number => {
+  return x === 1 ? 1 : 1 - Math.pow(2, -10 * x);
 };
 
 const StickyScrollText = () => {
@@ -35,7 +30,7 @@ const StickyScrollText = () => {
     const scrollableHeight = height - window.innerHeight;
     
     // Start animation when the component is well into view
-    const animationStartPoint = window.innerHeight * 0.5;
+    const animationStartPoint = window.innerHeight * 0.8;
     const progress = Math.max(0, Math.min(1, (-top - animationStartPoint) / (scrollableHeight + animationStartPoint)));
 
     const numLines = textLines.length;
@@ -45,12 +40,12 @@ const StickyScrollText = () => {
       // Each line starts animating after the previous one is mostly done.
       const lineStartProgress = index * progressPerLine;
       // Spread out the animation duration for each line.
-      const animationDuration = progressPerLine * 1.5;
+      const animationDuration = progressPerLine * 1.8;
       
       const lineProgress = Math.max(0, Math.min(1, (progress - lineStartProgress) / animationDuration));
       
-      // Apply the bounce effect
-      const easedProgress = easeOutElastic(lineProgress);
+      // Apply the ease out expo effect
+      const easedProgress = easeOutExpo(lineProgress);
 
       let x = 0;
       if (line.direction === 'left') {
@@ -72,7 +67,7 @@ const StickyScrollText = () => {
   }, []);
 
   return (
-    <div ref={containerRef} className="relative flex flex-col h-[500vh] bg-background">
+    <div ref={containerRef} className="relative flex flex-col h-[600vh] bg-background">
       {/* Sticky container for the animated text */}
       <div className="sticky top-0 flex-shrink-0 flex items-center justify-center overflow-hidden h-[100vh]">
         <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
