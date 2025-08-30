@@ -15,8 +15,8 @@ export default function ServicesPreview() {
   const services = getServices();
   const containerRef = useRef<HTMLDivElement>(null);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const [titleTransform, setTitleTransform] = useState('translateY(100%)');
-  const [subtitleTransform, setSubtitleTransform] = useState('translateY(100%)');
+  const [titleTransform, setTitleTransform] = useState('translateY(101%)');
+  const [subtitleTransform, setSubtitleTransform] = useState('translateY(101%)');
   const [cardTransforms, setCardTransforms] = useState(services.map(() => 'rotateY(-90deg)'));
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
 
@@ -30,11 +30,11 @@ export default function ServicesPreview() {
 
     // --- Text Animation ---
     const titleProgress = Math.max(0, Math.min(1, currentProgress * 4));
-    const titleY = 100 - (titleProgress * 100);
+    const titleY = 101 - (titleProgress * 101);
     setTitleTransform(`translateY(${titleY}%)`);
 
     const subtitleProgress = Math.max(0, Math.min(1, (currentProgress - 0.1) * 4));
-    const subtitleY = 100 - (subtitleProgress * 100);
+    const subtitleY = 101 - (subtitleProgress * 101);
     setSubtitleTransform(`translateY(${subtitleY}%)`);
 
     // --- Cards Animation ---
@@ -67,7 +67,7 @@ export default function ServicesPreview() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <div className="overflow-hidden py-2">
             <h2
-                className="text-5xl md:text-6xl font-extrabold text-foreground transition-transform duration-300 ease-out"
+                className="text-5xl md:text-7xl font-extrabold text-foreground transition-transform duration-300 ease-out font-headline"
                 style={{ transform: titleTransform }}
             >
                 What We Offer

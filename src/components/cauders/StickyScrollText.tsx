@@ -85,7 +85,7 @@ const StickyScrollText = () => {
                 <div key={index} className="overflow-hidden py-1">
                     <h2
                         className={cn(
-                            "text-5xl md:text-6xl font-extrabold text-foreground uppercase tracking-tight transition-transform duration-300 ease-out",
+                            "text-5xl md:text-7xl font-extrabold text-foreground uppercase tracking-tight transition-transform duration-300 ease-out font-headline",
                             line.className
                         )}
                         style={{ transform: transforms[index] }}

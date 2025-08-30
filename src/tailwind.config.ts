@@ -22,7 +22,7 @@ export default {
       },
       fontFamily: {
         body: ['Poppins', 'sans-serif'],
-        headline: ['Poppins', 'sans-serif'],
+        headline: ['Inter', 'sans-serif'],
         inter: ['Inter', 'sans-serif'],
       },
       colors: {

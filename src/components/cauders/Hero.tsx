@@ -31,7 +31,7 @@ export default function Hero() {
                 <p className="text-lg md:text-xl text-foreground/80 animate-fade-in-down">
                   Unconventional thinking
                 </p>
-                <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight text-foreground mt-4">
+                <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight text-foreground mt-4 font-headline">
                   <span className="block animated-gradient-text">Cauders.</span>
                   <span className="block animated-gradient-text">Innovative Digital Solutions</span>
                 </h1>
