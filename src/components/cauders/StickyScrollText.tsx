@@ -10,8 +10,8 @@ const textLines = [
   { text: "WE ENGINEER", direction: "left" },
   { text: "HIGH-PERFORMANCE,", className: "text-primary", direction: "right" },
   { text: "CUTTING-EDGE PLATFORMS", className: "text-primary", direction: "left" },
-  { text: "THAT EMPOWER BUSINESSES TO", direction: "right" },
-  { text: "DOMINATE THE DIGITAL LANDSCAPE.", direction: "left" },
+  { text: "THAT EMPOWER BUSINESSES", direction: "right" },
+  { text: "TO DOMINATE THE DIGITAL LANDSCAPE.", direction: "left" },
 ];
 
 // Easing function for a smooth slide with settle
