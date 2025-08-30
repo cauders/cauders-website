@@ -10,6 +10,7 @@ import ScrollFadeIn from "./ScrollFadeIn";
 import { ArrowRight } from "lucide-react";
 import React, { useRef, useState, useEffect, useCallback } from "react";
 import { cn } from "@/lib/utils";
+import PortfolioScrollText from "./PortfolioScrollText";
 
 const CARD_ANGLE = 30; // Angle between each card in the carousel
 
@@ -141,25 +142,13 @@ export default function PortfolioPreview() {
     <section
       id="portfolio-preview"
       ref={sectionRef}
-      className="relative min-h-screen flex flex-col justify-center"
-      style={{  
-        background: 'radial-gradient(ellipse 100% 50% at center,   hsl(211, 34.10%, 16.70%) 10%, hsl(222, 47%, 11%) 60%)'
-          }}
+      className="relative flex flex-col justify-center bg-background py-20"
       onMouseMove={handleMouseMove}
       onMouseDown={handleMouseDown}
       onMouseUp={handleMouseUp}
       onMouseLeave={handleMouseLeave}
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <ScrollFadeIn className="text-center md:text-left mb-16">
-          <h2 className="text-2xl md:text-3xl font-normal text-background font-inter">
-            Enjoy some of our best work in{" "}
-            <span className="text-primary">immersive web,</span>{" "}
-            <span className="text-primary">augmented reality</span> and{" "}
-            <span className="text-primary">virtual reality experiences</span>
-          </h2>
-        </ScrollFadeIn>
-      </div>
+      <PortfolioScrollText />
 
       <div
         ref={followerRef}
@@ -174,7 +163,7 @@ export default function PortfolioPreview() {
 
 
       {/* 3D Carousel Area */}
-      <div className="h-[35vh] mt-16 perspective-carousel">
+      <div className="h-[45vh] mt-16 perspective-carousel">
         <div ref={carouselWrapRef} className="relative w-full h-full carousel-wrap">
           {projects.map((project, index) => {
             const cardRotation = index * CARD_ANGLE;
@@ -239,12 +228,12 @@ export default function PortfolioPreview() {
         </div>
       </div>
       
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 mt-44">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 mt-44 text-center">
         <ScrollFadeIn>
           <Button
             size="lg"
             asChild
-            className="rounded-full px-8 py-6 bg-transparent border-2 border-primary text-white font-semibold hover:border-white hover:text-white transition-colors"
+            className="rounded-full px-8 py-6 bg-primary text-primary-foreground hover:bg-foreground hover:text-background transition-colors"
           >
             <Link href="/portfolio">
               Discover more of our work <ArrowRight className="ml-2 h-4 w-4" />
