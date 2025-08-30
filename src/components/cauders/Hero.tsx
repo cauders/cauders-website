@@ -14,6 +14,11 @@ export default function Hero() {
     }
   };
 
+  const headingLine1 = "Cauders.";
+  const headingLine2 = "Innovative Digital Solutions";
+  const words1 = headingLine1.split(" ");
+  const words2 = headingLine2.split(" ");
+
   return (
     <section className="relative w-full h-screen mt-[-6rem] overflow-hidden">
       {/* 3D Animation Background */}
@@ -32,11 +37,29 @@ export default function Hero() {
                   Unconventional thinking
                 </p>
                 <h1 className="text-6xl md:text-8xl font-extrabold tracking-tight text-foreground mt-4 font-headline">
-                  <div className="overflow-hidden">
-                      <span className="block animated-gradient-text animate-fade-in-up" style={{ animationDelay: '400ms' }}>Cauders.</span>
+                  <div>
+                    {words1.map((word, wordIndex) => (
+                      <div key={wordIndex} className="overflow-hidden inline-block">
+                        <span 
+                          className="inline-block animated-gradient-text animate-fade-in-up" 
+                          style={{ animationDelay: `${400 + wordIndex * 50}ms` }}
+                        >
+                          {word}&nbsp;
+                        </span>
+                      </div>
+                    ))}
                   </div>
-                  <div className="overflow-hidden">
-                      <span className="block animated-gradient-text animate-fade-in-up" style={{ animationDelay: '600ms' }}>Innovative Digital Solutions</span>
+                   <div>
+                    {words2.map((word, wordIndex) => (
+                       <div key={wordIndex} className="overflow-hidden inline-block">
+                          <span 
+                            className="inline-block animated-gradient-text animate-fade-in-up" 
+                            style={{ animationDelay: `${400 + (wordIndex + words1.length) * 50}ms` }}
+                          >
+                            {word}&nbsp;
+                          </span>
+                       </div>
+                    ))}
                   </div>
                 </h1>
                 <div className="mt-8 animate-fade-in-down flex justify-start" style={{ animationDelay: '1s' }}>
