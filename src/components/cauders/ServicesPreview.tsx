@@ -14,10 +14,9 @@ export default function ServicesPreview() {
     <section id="services-preview" className="py-20 lg:py-32 bg-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <ScrollFadeIn>
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground">What We Offer</h2>
-          <p className="mt-4 text-lg text-foreground/70 max-w-2xl mx-auto">
-            Our expertise spans the entire development lifecycle, delivering excellence at every step.
-          </p>
+            <h2 className="text-4xl md:text-5xl font-extrabold text-foreground uppercase tracking-tight max-w-4xl mx-auto">
+              We Engineer <span className="text-primary">High-Performance</span>, <span className="text-primary">Cutting-Edge Platforms</span> That Empower Businesses to Dominate The Digital Landscape.
+            </h2>
         </ScrollFadeIn>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-16">
