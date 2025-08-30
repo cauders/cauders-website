@@ -5,9 +5,13 @@ import { getServices } from "@/lib/data";
 import Link from "next/link";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, CheckCircle } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { useRef, useState, useEffect, useCallback } from "react";
+import { useRef, useState, useEffect, useCallback, Suspense } from "react";
+import StickyScroll3D from "./StickyScroll3D";
+import { Skeleton } from "../ui/skeleton";
+import { Canvas } from "@react-three/fiber";
+import ServiceCard3DIcon from "./ServiceCard3DIcon";
 
 export default function ServicesPreview() {
   const services = getServices();
@@ -17,46 +21,23 @@ export default function ServicesPreview() {
   const [subtitleTransform, setSubtitleTransform] = useState('translateY(100%)');
   const [cardTransforms, setCardTransforms] = useState(services.map(() => 'rotateY(-90deg)'));
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
-
-  const handleMouseMove = useCallback((e: MouseEvent) => {
-    let nearestCardIndex: number | null = null;
-    let minDistance = 200; // Proximity radius in pixels
-
-    cardRefs.current.forEach((card, index) => {
-      if (card) {
-        const cardRect = card.getBoundingClientRect();
-        const cardCenterX = cardRect.left + cardRect.width / 2;
-        const cardCenterY = cardRect.top + cardRect.height / 2;
-        const distance = Math.sqrt(
-          Math.pow(e.clientX - cardCenterX, 2) +
-          Math.pow(e.clientY - cardCenterY, 2)
-        );
-
-        if (distance < minDistance) {
-          minDistance = distance;
-          nearestCardIndex = index;
-        }
-      }
-    });
-
-    setHoveredCard(nearestCardIndex);
-  }, []);
+  const [progress, setProgress] = useState(0);
 
   const scrollHandler = useCallback(() => {
     if (!containerRef.current) return;
 
     const { top, height } = containerRef.current.getBoundingClientRect();
-    const windowHeight = window.innerHeight;
-    const scrollableHeight = height - windowHeight;
+    const scrollableHeight = height - window.innerHeight;
     
-    const progress = Math.max(0, Math.min(1, -top / scrollableHeight));
+    const currentProgress = Math.max(0, Math.min(1, -top / scrollableHeight));
+    setProgress(currentProgress);
 
     // --- Text Animation ---
-    const titleProgress = Math.max(0, Math.min(1, progress * 4));
+    const titleProgress = Math.max(0, Math.min(1, currentProgress * 4));
     const titleY = 100 - (titleProgress * 100);
     setTitleTransform(`translateY(${titleY}%)`);
 
-    const subtitleProgress = Math.max(0, Math.min(1, (progress - 0.1) * 4));
+    const subtitleProgress = Math.max(0, Math.min(1, (currentProgress - 0.1) * 4));
     const subtitleY = 100 - (subtitleProgress * 100);
     setSubtitleTransform(`translateY(${subtitleY}%)`);
 
@@ -67,7 +48,7 @@ export default function ServicesPreview() {
 
     const newCardTransforms = services.map((_, index) => {
         const cardStart = cardsStartProgress + (index * progressPerCard);
-        const cardProgress = Math.max(0, Math.min(1, (progress - cardStart) / progressPerCard));
+        const cardProgress = Math.max(0, Math.min(1, (currentProgress - cardStart) / progressPerCard));
         const rotation = -90 + (cardProgress * 90);
         return `rotateY(${rotation}deg)`;
     });
@@ -76,27 +57,21 @@ export default function ServicesPreview() {
   }, []);
 
   useEffect(() => {
-    const currentContainer = containerRef.current;
-    
-    const handleMouseLeave = () => {
-      setHoveredCard(null);
-    }
-    
-    currentContainer?.addEventListener('mousemove', handleMouseMove);
-    currentContainer?.addEventListener('mouseleave', handleMouseLeave);
-
     window.addEventListener('scroll', scrollHandler, { passive: true });
     scrollHandler(); // Initial call
     
     return () => {
-      currentContainer?.removeEventListener('mousemove', handleMouseMove);
-      currentContainer?.removeEventListener('mouseleave', handleMouseLeave);
       window.removeEventListener('scroll', scrollHandler);
     }
-  }, [scrollHandler, handleMouseMove]);
+  }, [scrollHandler]);
 
   return (
     <section id="services-preview" ref={containerRef} className="relative h-[400vh] bg-background">
+       <div className="absolute inset-0 z-0">
+         <Suspense fallback={<Skeleton className="w-full h-full" />}>
+           <StickyScroll3D scrollProgress={progress} />
+         </Suspense>
+      </div>
       <div className="sticky top-0 h-screen flex flex-col items-center justify-center overflow-hidden">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <div className="overflow-hidden py-2">
@@ -119,33 +94,39 @@ export default function ServicesPreview() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-16">
             {services.map((service, index) => (
                 <div
-                key={service.slug}
-                ref={el => cardRefs.current[index] = el}
-                className="h-full"
-                style={{
-                    perspective: '1000px',
-                    transition: 'transform 0.5s ease-out',
-                    transformStyle: 'preserve-3d',
-                    transform: cardTransforms[index],
-                }}
+                    key={service.slug}
+                    ref={el => cardRefs.current[index] = el}
+                    className="h-full"
+                    style={{
+                        perspective: '1000px',
+                        transition: 'transform 0.5s ease-out',
+                        transformStyle: 'preserve-3d',
+                        transform: cardTransforms[index],
+                    }}
+                    onMouseEnter={() => setHoveredCard(index)}
+                    onMouseLeave={() => setHoveredCard(null)}
                 >
                 <div className={cn("flip-card h-full min-h-[300px] md:min-h-[320px]")}>
                     <div className={cn("flip-card-inner relative w-full h-full", hoveredCard === index && "is-flipped")}>
                     {/* Front of the card */}
                     <div className="flip-card-front absolute w-full h-full">
-                        <Card className="h-full text-center flex flex-col glass-effect">
-                        <CardHeader className="p-8 flex-grow">
-                            <div className="mx-auto bg-primary/10 rounded-full p-4 w-fit mb-4">
-                            <service.icon className="w-8 h-8 text-primary" />
-                            </div>
-                            <CardTitle className="text-foreground">{service.title}</CardTitle>
-                            <CardDescription className="pt-2 text-foreground/80 line-clamp-3">{service.description}</CardDescription>
-                        </CardHeader>
+                        <Card className="h-full text-center flex flex-col bg-card border">
+                            <CardHeader className="p-8 flex-grow">
+                                <div className="mx-auto w-24 h-24 mb-4">
+                                  <Suspense fallback={<Skeleton className="w-full h-full rounded-full" />}>
+                                    <Canvas>
+                                      <service.icon />
+                                    </Canvas>
+                                  </Suspense>
+                                </div>
+                                <CardTitle className="text-foreground">{service.title}</CardTitle>
+                                <CardDescription className="pt-2 text-foreground/80 line-clamp-3">{service.description}</CardDescription>
+                            </CardHeader>
                         </Card>
                     </div>
                     {/* Back of the card */}
                     <div className="flip-card-back absolute w-full h-full">
-                        <Card className={cn("h-full flex flex-col justify-between animated-border-card glass-effect")}>
+                        <Card className={cn("h-full flex flex-col justify-between animated-border-card bg-card border")}>
                         <CardHeader>
                             <CardTitle className="text-foreground">{service.title}</CardTitle>
                         </CardHeader>
@@ -153,7 +134,7 @@ export default function ServicesPreview() {
                             <ul className="space-y-2 text-left">
                             {service.included.slice(0, 3).map((item, i) => (
                                 <li key={i} className="flex items-start text-sm">
-                                <CheckCircle className="w-4 h-4 text-primary mr-2 mt-0.5 shrink-0" />
+                                <ArrowRight className="w-4 h-4 text-primary mr-2 mt-0.5 shrink-0" />
                                 <span className="text-foreground/80">{item}</span>
                                 </li>
                             ))}
