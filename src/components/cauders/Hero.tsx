@@ -36,13 +36,13 @@ export default function Hero() {
                 <p className="text-lg md:text-xl text-foreground/80 animate-fade-in-down">
                   Unconventional thinking
                 </p>
-                <h1 className="text-6xl md:text-8xl font-extrabold tracking-tight text-foreground mt-4 font-headline">
+                <h1 className="text-6xl md:text-8xl font-extrabold tracking-tight text-foreground mt-2 leading-tight font-headline">
                   <div>
                     {words1.map((word, wordIndex) => (
                       <div key={wordIndex} className="overflow-hidden inline-block">
                         <span 
                           className="inline-block animated-gradient-text animate-fade-in-up" 
-                          style={{ animationDelay: `${400 + wordIndex * 50}ms` }}
+                          style={{ animationDelay: `${wordIndex * 50}ms` }}
                         >
                           {word}&nbsp;
                         </span>
@@ -54,7 +54,7 @@ export default function Hero() {
                        <div key={wordIndex} className="overflow-hidden inline-block">
                           <span 
                             className="inline-block animated-gradient-text animate-fade-in-up" 
-                            style={{ animationDelay: `${400 + (wordIndex + words1.length) * 50}ms` }}
+                            style={{ animationDelay: `${(wordIndex + words1.length) * 50}ms` }}
                           >
                             {word}&nbsp;
                           </span>
