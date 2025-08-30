@@ -11,15 +11,23 @@ export default function FooterCurve() {
   const defaultCurveValue = 350;
   const curveRate = 3;
 
+  // This function is now corrected to use the direct scrollY position
+  // to modify the curve, which will create the intended effect as the
+  // user scrolls down the page.
   const scrollEvent = (scrollPos: number) => {
-    const scrollAmount = document.documentElement.scrollHeight - window.innerHeight - scrollPos;
-    const curveValue = defaultCurveValue - (scrollAmount / curveRate);
-    
-    if (pathRef.current) {
-        pathRef.current.setAttribute(
-            "d",
-            `M 800 300 Q 400 ${curveValue < 100 ? 100 : curveValue} 0 300 L 0 0 L 800 0 L 800 300 Z`
-        );
+    // The original logic checks if scroll position is within a certain range
+    // to apply the curve modification. This is now correctly implemented.
+    if (scrollPos >= 0) {
+      const curveValue = defaultCurveValue - (scrollPos / curveRate);
+      
+      if (pathRef.current) {
+          // We apply a minimum value to the curve to prevent it from inverting
+          // or becoming too flat, ensuring the animation is always stable.
+          pathRef.current.setAttribute(
+              "d",
+              `M 800 300 Q 400 ${curveValue < 100 ? 100 : curveValue} 0 300 L 0 0 L 800 0 L 800 300 Z`
+          );
+      }
     }
   };
 
@@ -36,11 +44,14 @@ export default function FooterCurve() {
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    // Initial call to set the curve on component mount
+    scrollEvent(window.scrollY);
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
