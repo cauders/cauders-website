@@ -64,7 +64,7 @@ const StickyScrollText = () => {
 
   return (
     <div ref={containerRef} id="services-preview" className="relative h-[200vh] bg-background">
-      <div className="sticky top-0 h-screen flex items-center justify-center overflow-hidden">
+      <div className="sticky top-0 h-screen flex items-center justify-center overflow-hidden z-10">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             {textLines.map((line, index) => (
                 <div key={index} className="overflow-hidden">
