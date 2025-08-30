@@ -21,130 +21,125 @@ export default function ServicesPreview() {
 
     const { top, height } = containerRef.current.getBoundingClientRect();
     const windowHeight = window.innerHeight;
+    const scrollableHeight = height - windowHeight;
+    
+    const progress = Math.max(0, Math.min(1, -top / scrollableHeight));
 
-    // --- Title Animation ---
-    const titleAnimationStart = windowHeight * 0.8;
-    const titleAnimationEnd = windowHeight * 0.4;
-    const titleScrollDist = titleAnimationStart - titleAnimationEnd;
-    const titleProgress = Math.max(0, Math.min(1, (titleAnimationStart - top) / titleScrollDist));
-
+    // --- Text Animation ---
+    const titleProgress = Math.max(0, Math.min(1, progress * 4));
     const titleY = 100 - (titleProgress * 100);
     setTitleTransform(`translateY(${titleY}%)`);
 
-    const subtitleProgress = Math.max(0, Math.min(1, (titleProgress - 0.2) * 1.2));
+    const subtitleProgress = Math.max(0, Math.min(1, (progress - 0.1) * 4));
     const subtitleY = 100 - (subtitleProgress * 100);
     setSubtitleTransform(`translateY(${subtitleY}%)`);
 
-
     // --- Cards Animation ---
-    if (titleProgress >= 1) {
-      const cardsAnimationStart = top - windowHeight * 0.1;
-      const cardsAnimationEnd = top + height - windowHeight;
-      const cardsScrollDist = Math.abs(cardsAnimationEnd - cardsAnimationStart);
-      
-      const newCardTransforms = services.map((_, index) => {
-        const cardStartOffset = (windowHeight * 0.6) * index;
-        const cardProgress = Math.max(0, Math.min(1, (-(top - windowHeight * 0.8) - cardStartOffset) / 400));
-        
+    const cardsStartProgress = 0.25;
+    const totalCardsProgress = 1 - cardsStartProgress;
+    const progressPerCard = totalCardsProgress / services.length;
+
+    const newCardTransforms = services.map((_, index) => {
+        const cardStart = cardsStartProgress + (index * progressPerCard);
+        const cardProgress = Math.max(0, Math.min(1, (progress - cardStart) / progressPerCard));
         const rotation = -90 + (cardProgress * 90);
         return `rotateY(${rotation}deg)`;
-      });
-      setCardTransforms(newCardTransforms);
-    } else {
-       // Reset cards if scrolling back up before title is fully visible
-       setCardTransforms(services.map(() => 'rotateY(-90deg)'));
-    }
+    });
+    setCardTransforms(newCardTransforms);
   };
 
   useEffect(() => {
     window.addEventListener('scroll', scrollHandler, { passive: true });
-    scrollHandler();
+    scrollHandler(); // Initial call
     return () => window.removeEventListener('scroll', scrollHandler);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
-    <section id="services-preview" ref={containerRef} className="py-20 lg:py-32 bg-background overflow-hidden">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <div className="overflow-hidden py-2">
-          <h2
-            className="text-4xl md:text-5xl font-extrabold text-foreground transition-transform duration-300 ease-out"
-            style={{ transform: titleTransform }}
-          >
-            What We Offer
-          </h2>
-        </div>
-        <div className="overflow-hidden py-1">
-          <p
-            className="mt-4 text-lg text-foreground/70 max-w-2xl mx-auto transition-transform duration-300 ease-out"
-            style={{ transform: subtitleTransform, transitionDelay: '50ms' }}
-          >
-            Our expertise spans the entire development lifecycle, delivering excellence at every step.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-16">
-          {services.map((service, index) => (
-            <div
-              key={service.slug}
-              className="h-full"
-              style={{
-                perspective: '1000px',
-                transition: 'transform 0.5s ease-out',
-                transformStyle: 'preserve-3d',
-                transform: cardTransforms[index],
-              }}
+    <section id="services-preview" ref={containerRef} className="relative h-[300vh] bg-background">
+      <div className="sticky top-0 h-screen flex flex-col items-center justify-center overflow-hidden">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div className="overflow-hidden py-2">
+            <h2
+                className="text-5xl md:text-6xl font-extrabold text-foreground transition-transform duration-300 ease-out"
+                style={{ transform: titleTransform }}
             >
-              <div className="flip-card h-full min-h-[300px] md:min-h-[320px]">
-                <div className="flip-card-inner relative w-full h-full">
-                  {/* Front of the card */}
-                  <div className="flip-card-front absolute w-full h-full">
-                    <Card className="h-full text-center bg-card flex flex-col">
-                      <CardHeader className="p-8 flex-grow">
-                        <div className="mx-auto bg-primary/10 rounded-full p-4 w-fit mb-4">
-                          <service.icon className="w-8 h-8 text-primary" />
-                        </div>
-                        <CardTitle className="text-foreground">{service.title}</CardTitle>
-                        <CardDescription className="pt-2 text-foreground/80 line-clamp-3">{service.description}</CardDescription>
-                      </CardHeader>
-                    </Card>
-                  </div>
-                  {/* Back of the card */}
-                  <div className="flip-card-back absolute w-full h-full">
-                    <Card className={cn("h-full bg-card flex flex-col justify-between animated-border-card")}>
-                      <CardHeader>
-                        <CardTitle className="text-foreground">{service.title}</CardTitle>
-                      </CardHeader>
-                      <CardContent>
-                        <ul className="space-y-2 text-left">
-                          {service.included.slice(0, 3).map((item, i) => (
-                            <li key={i} className="flex items-start text-sm">
-                              <CheckCircle className="w-4 h-4 text-primary mr-2 mt-0.5 shrink-0" />
-                              <span className="text-foreground/80">{item}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </CardContent>
-                      <div className="p-6 pt-0">
-                        <Button asChild className="w-full">
-                          <Link href={`/services/${service.slug}`}>
-                            Learn More <ArrowRight className="ml-2 h-4 w-4" />
-                          </Link>
-                        </Button>
-                      </div>
-                    </Card>
-                  </div>
-                </div>
-              </div>
+                What We Offer
+            </h2>
             </div>
-          ))}
-        </div>
-        
-        <div className="text-center mt-16">
-          <Button size="lg" asChild>
-            <Link href="/services">
-              Explore All Services <ArrowRight className="ml-2 h-4 w-4" />
-            </Link>
-          </Button>
+            <div className="overflow-hidden py-1">
+            <p
+                className="mt-4 text-lg text-foreground/70 max-w-2xl mx-auto transition-transform duration-300 ease-out"
+                style={{ transform: subtitleTransform, transitionDelay: '50ms' }}
+            >
+                Our expertise spans the entire development lifecycle, delivering excellence at every step.
+            </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-16">
+            {services.map((service, index) => (
+                <div
+                key={service.slug}
+                className="h-full"
+                style={{
+                    perspective: '1000px',
+                    transition: 'transform 0.5s ease-out',
+                    transformStyle: 'preserve-3d',
+                    transform: cardTransforms[index],
+                }}
+                >
+                <div className="flip-card h-full min-h-[300px] md:min-h-[320px]">
+                    <div className="flip-card-inner relative w-full h-full">
+                    {/* Front of the card */}
+                    <div className="flip-card-front absolute w-full h-full">
+                        <Card className="h-full text-center bg-card flex flex-col">
+                        <CardHeader className="p-8 flex-grow">
+                            <div className="mx-auto bg-primary/10 rounded-full p-4 w-fit mb-4">
+                            <service.icon className="w-8 h-8 text-primary" />
+                            </div>
+                            <CardTitle className="text-foreground">{service.title}</CardTitle>
+                            <CardDescription className="pt-2 text-foreground/80 line-clamp-3">{service.description}</CardDescription>
+                        </CardHeader>
+                        </Card>
+                    </div>
+                    {/* Back of the card */}
+                    <div className="flip-card-back absolute w-full h-full">
+                        <Card className={cn("h-full bg-card flex flex-col justify-between animated-border-card")}>
+                        <CardHeader>
+                            <CardTitle className="text-foreground">{service.title}</CardTitle>
+                        </CardHeader>
+                        <CardContent>
+                            <ul className="space-y-2 text-left">
+                            {service.included.slice(0, 3).map((item, i) => (
+                                <li key={i} className="flex items-start text-sm">
+                                <CheckCircle className="w-4 h-4 text-primary mr-2 mt-0.5 shrink-0" />
+                                <span className="text-foreground/80">{item}</span>
+                                </li>
+                            ))}
+                            </ul>
+                        </CardContent>
+                        <div className="p-6 pt-0">
+                            <Button asChild className="w-full">
+                            <Link href={`/services/${service.slug}`}>
+                                Learn More <ArrowRight className="ml-2 h-4 w-4" />
+                            </Link>
+                            </Button>
+                        </div>
+                        </Card>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            ))}
+            </div>
+            
+            <div className="text-center mt-16">
+            <Button size="lg" asChild>
+                <Link href="/services">
+                Explore All Services <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+            </Button>
+            </div>
         </div>
       </div>
     </section>
