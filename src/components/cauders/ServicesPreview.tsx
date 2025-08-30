@@ -5,7 +5,6 @@ import { getServices } from "@/lib/data";
 import Link from "next/link";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import ScrollFadeIn from "./ScrollFadeIn";
 import { ArrowRight, CheckCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useRef, useState, useEffect } from "react";
@@ -15,66 +14,85 @@ export default function ServicesPreview() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [titleTransform, setTitleTransform] = useState('translateY(100%)');
   const [subtitleTransform, setSubtitleTransform] = useState('translateY(100%)');
-
+  const [cardTransforms, setCardTransforms] = useState(services.map(() => 'rotateY(-90deg)'));
 
   const scrollHandler = () => {
     if (!containerRef.current) return;
 
-    const { top } = containerRef.current.getBoundingClientRect();
+    const { top, height } = containerRef.current.getBoundingClientRect();
     const windowHeight = window.innerHeight;
-    
-    // Start animation when the top of the element is halfway up the screen
-    // and end it when it has scrolled 20% past the top.
-    const animationStartPoint = windowHeight * 0.5;
-    const animationEndPoint = -windowHeight * 0.2;
-    const scrollDistance = animationStartPoint - animationEndPoint;
-    const currentPosition = top - animationEndPoint;
-    const progress = Math.max(0, Math.min(1, 1 - (currentPosition / scrollDistance)));
-    
-    // Animate title first
-    const titleProgress = Math.max(0, Math.min(1, progress * 1.5));
+
+    // --- Title Animation ---
+    const titleAnimationStart = windowHeight * 0.8;
+    const titleAnimationEnd = windowHeight * 0.4;
+    const titleScrollDist = titleAnimationStart - titleAnimationEnd;
+    const titleProgress = Math.max(0, Math.min(1, (titleAnimationStart - top) / titleScrollDist));
+
     const titleY = 100 - (titleProgress * 100);
     setTitleTransform(`translateY(${titleY}%)`);
 
-    // Animate subtitle after title is mostly visible
-    const subtitleProgress = Math.max(0, Math.min(1, (progress - 0.2) * 1.5));
+    const subtitleProgress = Math.max(0, Math.min(1, (titleProgress - 0.2) * 1.2));
     const subtitleY = 100 - (subtitleProgress * 100);
     setSubtitleTransform(`translateY(${subtitleY}%)`);
+
+
+    // --- Cards Animation ---
+    if (titleProgress >= 1) {
+      const cardsAnimationStart = top - windowHeight * 0.1;
+      const cardsAnimationEnd = top + height - windowHeight;
+      const cardsScrollDist = Math.abs(cardsAnimationEnd - cardsAnimationStart);
+      
+      const newCardTransforms = services.map((_, index) => {
+        const cardStartOffset = (windowHeight * 0.6) * index;
+        const cardProgress = Math.max(0, Math.min(1, (-(top - windowHeight * 0.8) - cardStartOffset) / 400));
+        
+        const rotation = -90 + (cardProgress * 90);
+        return `rotateY(${rotation}deg)`;
+      });
+      setCardTransforms(newCardTransforms);
+    } else {
+       // Reset cards if scrolling back up before title is fully visible
+       setCardTransforms(services.map(() => 'rotateY(-90deg)'));
+    }
   };
 
   useEffect(() => {
     window.addEventListener('scroll', scrollHandler, { passive: true });
-    scrollHandler(); 
+    scrollHandler();
     return () => window.removeEventListener('scroll', scrollHandler);
   }, []);
 
   return (
     <section id="services-preview" ref={containerRef} className="py-20 lg:py-32 bg-background overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-
         <div className="overflow-hidden py-2">
-            <h2 
-                className="text-3xl md:text-4xl font-bold text-foreground transition-transform duration-300 ease-out"
-                style={{ transform: titleTransform }}
-            >
-                What We Offer
-            </h2>
+          <h2
+            className="text-4xl md:text-5xl font-extrabold text-foreground transition-transform duration-300 ease-out"
+            style={{ transform: titleTransform }}
+          >
+            What We Offer
+          </h2>
         </div>
         <div className="overflow-hidden py-1">
-            <p 
-                className="mt-4 text-lg text-foreground/70 max-w-2xl mx-auto transition-transform duration-300 ease-out"
-                style={{ transform: subtitleTransform, transitionDelay: '50ms' }}
-            >
-                Our expertise spans the entire development lifecycle, delivering excellence at every step.
-            </p>
+          <p
+            className="mt-4 text-lg text-foreground/70 max-w-2xl mx-auto transition-transform duration-300 ease-out"
+            style={{ transform: subtitleTransform, transitionDelay: '50ms' }}
+          >
+            Our expertise spans the entire development lifecycle, delivering excellence at every step.
+          </p>
         </div>
-
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-16">
           {services.map((service, index) => (
-            <ScrollFadeIn
+            <div
               key={service.slug}
               className="h-full"
+              style={{
+                perspective: '1000px',
+                transition: 'transform 0.5s ease-out',
+                transformStyle: 'preserve-3d',
+                transform: cardTransforms[index],
+              }}
             >
               <div className="flip-card h-full min-h-[300px] md:min-h-[320px]">
                 <div className="flip-card-inner relative w-full h-full">
@@ -117,17 +135,17 @@ export default function ServicesPreview() {
                   </div>
                 </div>
               </div>
-            </ScrollFadeIn>
+            </div>
           ))}
         </div>
         
-        <ScrollFadeIn className="text-center mt-16">
+        <div className="text-center mt-16">
           <Button size="lg" asChild>
             <Link href="/services">
               Explore All Services <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
           </Button>
-        </ScrollFadeIn>
+        </div>
       </div>
     </section>
   );
