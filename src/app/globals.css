@@ -115,9 +115,9 @@
   .animated-gradient-text {
     background-image: linear-gradient(
       to right,
-      hsl(var(--foreground)),
-      hsl(var(--foreground)) 50%,
-      hsl(var(--primary)) 50%
+      hsl(var(--primary)),
+      hsl(var(--primary)) 50%,
+      hsl(var(--foreground)) 50%
     );
     background-size: 200% 100%;
     background-position: -100%;
@@ -209,7 +209,7 @@
       background-position: 0%;
     }
     to {
-      background-position: -99.99%; /* Ends on primary color */
+      background-position: -99.99%; /* Ends on foreground color */
     }
   }
 
