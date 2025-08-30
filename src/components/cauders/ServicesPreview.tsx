@@ -11,25 +11,25 @@ export default function ServicesPreview() {
   const services = getServices();
 
   return (
-    <section id="services-preview" className="py-20 lg:py-32 bg-background">
+    <section id="services-preview" className="py-20 lg:py-32 bg-background overflow-x-hidden">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div className="max-w-4xl mx-auto">
-            <ScrollFadeIn>
+            <ScrollFadeIn direction="left">
               <h2 className="text-4xl md:text-5xl font-extrabold text-foreground uppercase tracking-tight">
                 We Engineer <span className="text-primary">High-Performance</span>,
               </h2>
             </ScrollFadeIn>
-            <ScrollFadeIn style={{ animationDelay: '200ms' }}>
+            <ScrollFadeIn direction="right">
               <h2 className="text-4xl md:text-5xl font-extrabold text-foreground uppercase tracking-tight">
                 <span className="text-primary">Cutting-Edge Platforms</span>
               </h2>
             </ScrollFadeIn>
-            <ScrollFadeIn style={{ animationDelay: '400ms' }}>
+            <ScrollFadeIn direction="left">
                <h2 className="text-4xl md:text-5xl font-extrabold text-foreground uppercase tracking-tight">
                 That Empower Businesses to
               </h2>
             </ScrollFadeIn>
-            <ScrollFadeIn style={{ animationDelay: '600ms' }}>
+            <ScrollFadeIn direction="right">
                <h2 className="text-4xl md:text-5xl font-extrabold text-foreground uppercase tracking-tight">
                 Dominate The Digital Landscape.
               </h2>
@@ -41,7 +41,6 @@ export default function ServicesPreview() {
             <ScrollFadeIn
               key={service.slug}
               className="h-full"
-              style={{ animationDelay: `${index * 150}ms` }}
             >
               <div className="flip-card h-full min-h-[300px] md:min-h-[320px]">
                 <div className="flip-card-inner relative w-full h-full">
