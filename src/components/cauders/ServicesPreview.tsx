@@ -1,4 +1,6 @@
 
+"use client";
+
 import { getServices } from "@/lib/data";
 import Link from "next/link";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
@@ -6,13 +8,58 @@ import { Button } from "@/components/ui/button";
 import ScrollFadeIn from "./ScrollFadeIn";
 import { ArrowRight, CheckCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useRef, useState, useEffect } from "react";
 
 export default function ServicesPreview() {
   const services = getServices();
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [transform, setTransform] = useState('translateY(100%)');
+
+  const scrollHandler = () => {
+    if (!containerRef.current) return;
+
+    const { top, height } = containerRef.current.getBoundingClientRect();
+    const windowHeight = window.innerHeight;
+    
+    // Start animation when bottom of the element is visible
+    const startPoint = top + height - windowHeight;
+    // End when the top is slightly above center
+    const endPoint = top + height / 2;
+    
+    const progress = Math.max(0, Math.min(1, 1 - (startPoint / (startPoint - endPoint))));
+    
+    let y = 100 - (progress * 100);
+    
+    setTransform(`translateY(${y}%)`);
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', scrollHandler, { passive: true });
+    scrollHandler(); 
+    return () => window.removeEventListener('scroll', scrollHandler);
+  }, []);
 
   return (
-    <section id="services-preview" className="py-20 lg:py-32 bg-background overflow-x-hidden">
+    <section id="services-preview" ref={containerRef} className="py-20 lg:py-32 bg-background overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+
+        <div className="overflow-hidden py-2">
+            <h2 
+                className="text-3xl md:text-4xl font-bold text-foreground transition-transform duration-300 ease-out"
+                style={{ transform }}
+            >
+                What We Offer
+            </h2>
+        </div>
+        <div className="overflow-hidden py-1">
+            <p 
+                className="mt-4 text-lg text-foreground/70 max-w-2xl mx-auto transition-transform duration-300 ease-out"
+                style={{ transform, transitionDelay: '150ms' }}
+            >
+                Our expertise spans the entire development lifecycle, delivering excellence at every step.
+            </p>
+        </div>
+
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-16">
           {services.map((service, index) => (
