@@ -31,10 +31,12 @@ export default function Hero() {
                 <p className="text-lg md:text-xl text-foreground/80 animate-fade-in-down">
                   Unconventional thinking
                 </p>
-                <h1 className="text-6xl md:text-8xl font-extrabold tracking-tight text-foreground mt-4 font-headline">
-                  <span className="block animated-gradient-text">Cauders.</span>
-                  <span className="block animated-gradient-text">Innovative Digital Solutions</span>
-                </h1>
+                <div className="overflow-hidden">
+                  <h1 className="text-6xl md:text-8xl font-extrabold tracking-tight text-foreground mt-4 font-headline">
+                    <span className="block animated-gradient-text animate-slide-in-left">Cauders.</span>
+                    <span className="block animated-gradient-text animate-slide-in-right" style={{ animationDelay: '200ms' }}>Innovative Digital Solutions</span>
+                  </h1>
+                </div>
                 <div className="mt-8 animate-fade-in-down flex justify-start" style={{ animationDelay: '0.8s' }}>
                   <button 
                     onClick={scrollToServices} 
