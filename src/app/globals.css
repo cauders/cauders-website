@@ -115,9 +115,9 @@
   .animated-gradient-text {
     background-image: linear-gradient(
       to right,
-      hsl(var(--primary)),
-      hsl(var(--primary)) 50%,
-      hsl(var(--foreground)) 50%
+      hsl(var(--foreground)),
+      hsl(var(--foreground)) 50%,
+      hsl(var(--primary)) 50%
     );
     background-size: 200% 100%;
     background-position: -100%;
@@ -129,6 +129,10 @@
     transition: background-position 0.3s ease-in-out;
   }
 
+  .animated-gradient-text.animate {
+    animation: gradient-wipe-in 0.8s ease-out forwards;
+  }
+  
   .animated-gradient-text:hover {
     background-position: 0%;
   }
@@ -198,6 +202,15 @@
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     @apply border border-white/20;
+  }
+
+  @keyframes gradient-wipe-in {
+    from {
+      background-position: -100%;
+    }
+    to {
+      background-position: -99.99%; /* Ends on primary color */
+    }
   }
 
   @keyframes shimmer {

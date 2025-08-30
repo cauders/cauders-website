@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Hero3D from './Hero3D';
 import { Suspense } from 'react';
 import { Skeleton } from '../ui/skeleton';
+import { cn } from '@/lib/utils';
 
 export default function Hero() {
   const scrollToServices = () => {
@@ -39,26 +40,28 @@ export default function Hero() {
                 <h1 className="text-6xl md:text-8xl font-extrabold tracking-tight text-foreground mt-2 leading-tight font-headline">
                   <div>
                     {words1.map((word, wordIndex) => (
-                      <div key={wordIndex} className="overflow-hidden inline-block">
+                      <span key={wordIndex}>
                         <span 
-                          className="inline-block animated-gradient-text animate-fade-in-up" 
-                          style={{ animationDelay: `${wordIndex * 50}ms` }}
+                          className="animated-gradient-text animate"
+                          style={{ animationDelay: `${(wordIndex) * 150}ms` }}
                         >
-                          {word}&nbsp;
+                          {word}
                         </span>
-                      </div>
+                        {' '}
+                      </span>
                     ))}
                   </div>
                    <div>
                     {words2.map((word, wordIndex) => (
-                       <div key={wordIndex} className="overflow-hidden inline-block">
+                       <span key={wordIndex}>
                           <span 
-                            className="inline-block animated-gradient-text animate-fade-in-up" 
-                            style={{ animationDelay: `${(wordIndex + words1.length) * 50}ms` }}
+                           className="animated-gradient-text animate"
+                           style={{ animationDelay: `${(wordIndex + words1.length) * 150}ms` }}
                           >
-                            {word}&nbsp;
+                            {word}
                           </span>
-                       </div>
+                          {' '}
+                       </span>
                     ))}
                   </div>
                 </h1>
