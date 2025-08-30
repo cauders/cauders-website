@@ -177,7 +177,7 @@
   
   @keyframes gradient-wipe-hover {
     from {
-      background-position: -100%;
+      background-position: -99.99%;
     }
     to {
       background-position: 0%;
