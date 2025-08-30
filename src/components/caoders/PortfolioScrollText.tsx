@@ -64,6 +64,7 @@ const PortfolioScrollText = () => {
     window.addEventListener('scroll', scrollHandler, { passive: true });
     scrollHandler(); 
     return () => window.removeEventListener('scroll', scrollHandler);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
