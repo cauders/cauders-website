@@ -218,12 +218,15 @@
   @keyframes fade-in-up {
     from {
       opacity: 0;
-      transform: translateY(40px) scale(0.95);
+      transform: translateY(100%);
     }
     to {
       opacity: 1;
-      transform: translateY(0) scale(1);
+      transform: translateY(0);
     }
+  }
+  .animate-fade-in-up {
+    animation: fade-in-up 1s ease-out forwards;
   }
 
   @keyframes fade-in-down {
@@ -238,36 +241,6 @@
   }
   .animate-fade-in-down {
       animation: fade-in-down 0.5s ease-out forwards;
-  }
-
-  @keyframes slide-in-left {
-    from {
-      transform: translateX(-100%);
-      opacity: 0;
-    }
-    to {
-      transform: translateX(0);
-      opacity: 1;
-    }
-  }
-
-  @keyframes slide-in-right {
-    from {
-      transform: translateX(100%);
-      opacity: 0;
-    }
-    to {
-      transform: translateX(0);
-      opacity: 1;
-    }
-  }
-
-  .animate-slide-in-left {
-    animation: slide-in-left 1s ease-out forwards;
-  }
-
-  .animate-slide-in-right {
-    animation: slide-in-right 1s ease-out forwards;
   }
 
   .explore-button {
