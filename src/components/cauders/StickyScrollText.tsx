@@ -67,7 +67,7 @@ const StickyScrollText = () => {
   }, []);
 
   return (
-    <div ref={containerRef} className="relative flex flex-col h-[600vh] bg-background">
+    <div ref={containerRef} className="relative flex flex-col h-[400vh] bg-background">
       {/* Sticky container for the animated text */}
       <div className="sticky top-0 flex-shrink-0 flex items-center justify-center overflow-hidden h-[100vh]">
         <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
