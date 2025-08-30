@@ -1,8 +1,10 @@
 
 "use client";
 
-import { useRef, useEffect, useState } from 'react';
+import { useRef, useEffect, useState, Suspense } from 'react';
 import { cn } from '@/lib/utils';
+import StickyScroll3D from './StickyScroll3D';
+import { Skeleton } from '../ui/skeleton';
 
 const textLines = [
   { text: "WE ENGINEER", direction: "left" },
@@ -22,6 +24,7 @@ const StickyScrollText = () => {
   const [transforms, setTransforms] = useState(
     textLines.map(line => line.direction === 'left' ? 'translateX(-100%)' : 'translateX(100%)')
   );
+  const [progress, setProgress] = useState(0);
 
   const scrollHandler = () => {
     if (!containerRef.current) return;
@@ -31,7 +34,9 @@ const StickyScrollText = () => {
     
     // Start animation when the component is well into view
     const animationStartPoint = window.innerHeight * 0.8;
-    const progress = Math.max(0, Math.min(1, (-top - animationStartPoint) / (scrollableHeight + animationStartPoint)));
+    const currentProgress = Math.max(0, Math.min(1, (window.scrollY - containerRef.current.offsetTop + animationStartPoint) / (scrollableHeight + animationStartPoint)));
+    
+    setProgress(currentProgress);
 
     const numLines = textLines.length;
     const progressPerLine = 1 / numLines; 
@@ -42,7 +47,7 @@ const StickyScrollText = () => {
       // Spread out the animation duration for each line.
       const animationDuration = progressPerLine * 1.8;
       
-      const lineProgress = Math.max(0, Math.min(1, (progress - lineStartProgress) / animationDuration));
+      const lineProgress = Math.max(0, Math.min(1, (currentProgress - lineStartProgress) / animationDuration));
       
       // Apply the ease out expo effect
       const easedProgress = easeOutExpo(lineProgress);
@@ -68,9 +73,14 @@ const StickyScrollText = () => {
 
   return (
     <div ref={containerRef} className="relative flex flex-col h-[400vh] bg-background">
+      <div className="absolute inset-0 z-0">
+         <Suspense fallback={<Skeleton className="w-full h-full" />}>
+           <StickyScroll3D scrollProgress={progress} />
+         </Suspense>
+      </div>
       {/* Sticky container for the animated text */}
       <div className="sticky top-0 flex-shrink-0 flex items-center justify-center overflow-hidden h-[100vh]">
-        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             {textLines.map((line, index) => (
                 <div key={index} className="overflow-hidden py-1">
                     <h2
