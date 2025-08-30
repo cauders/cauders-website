@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { useRef, useEffect, useState } from 'react';
 import { cn } from '@/lib/utils';
@@ -18,8 +18,8 @@ const textLines = [
 ];
 
 const StickyScrollText = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [transforms, setTransforms] = useState<string[]>(
+  const containerRef = useRef(null);
+  const [transforms, setTransforms] = useState(
     textLines.map(line => line.direction === 'left' ? 'translateX(-100%)' : 'translateX(100%)')
   );
 
@@ -30,15 +30,21 @@ const StickyScrollText = () => {
 
     const { top, height } = containerRef.current.getBoundingClientRect();
     const scrollableHeight = height - window.innerHeight;
+    
+    // Ensure progress is 0 when at the top and 1 when at the bottom.
     const progress = Math.max(0, Math.min(1, -top / scrollableHeight));
 
     const numLines = textLines.length;
-    const animationEndProgress = 0.5;
+    // Animate over the first 50% of the scroll progress
+    const animationEndProgress = 0.2;
     const progressPerLine = animationEndProgress / numLines;
 
     const newTransforms = textLines.map((line, index) => {
       const lineStartProgress = index * progressPerLine;
-      const lineProgress = Math.max(0, Math.min(1, (progress - lineStartProgress) / progressPerLine));
+      const lineEndProgress = lineStartProgress + progressPerLine;
+
+      // Calculate the progress for this specific line's animation (0 to 1)
+      const lineProgress = Math.max(0, Math.min(1, (progress - lineStartProgress) / (lineEndProgress - lineStartProgress)));
       
       let x = 0;
       if (line.direction === 'left') {
@@ -60,8 +66,8 @@ const StickyScrollText = () => {
   }, []);
 
   return (
-    <div ref={containerRef} className="relative h-[200vh] bg-background">
-      <div className="sticky top-0 h-screen flex items-center justify-center overflow-hidden">
+    <div className="flex flex-col h-screen bg-background" id="services-preview">
+      <div ref={containerRef} className="sticky top-0 flex-shrink-0 flex items-center justify-center overflow-hidden h-[50vh]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             {textLines.map((line, index) => (
                 <div key={index} className="overflow-hidden">
@@ -78,8 +84,8 @@ const StickyScrollText = () => {
             ))}
         </div>
       </div>
-      <div className="absolute bottom-0 w-full pb-20 lg:pb-32">
-         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div className="flex-grow w-full pb-20 lg:pb-32 overflow-y-auto">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {services.map((service, index) => (
                 <ScrollFadeIn

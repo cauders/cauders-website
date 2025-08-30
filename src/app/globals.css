@@ -184,6 +184,13 @@
       scrollbar-width: none;  /* Firefox */
   }
 
+  .glass-effect {
+    background-color: hsl(var(--primary) / 0.2);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    @apply border border-white/20;
+  }
+
   @keyframes shimmer {
     to {
       background-position: 200% center;
