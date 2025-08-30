@@ -6,7 +6,7 @@ import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
 import Header from '@/components/cauders/Header';
 import Footer from '@/components/cauders/Footer';
-import { Inter } from 'next/font/google';
+import { Montserrat } from 'next/font/google';
 import { cn } from '@/lib/utils';
 import { ThemeProvider } from '@/components/cauders/ThemeProvider';
 import CustomCursor from '@/components/cauders/CustomCursor';
@@ -22,9 +22,10 @@ import Loader from '@/components/cauders/Loader';
 //   },
 // };
 
-const inter = Inter({
+const montserrat = Montserrat({
   subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700', '800'],
+  weight: ['300', '400', '500', '600', '700', '800', '900'],
+  variable: '--font-headline',
 });
 
 export default function RootLayout({
@@ -41,7 +42,7 @@ export default function RootLayout({
 
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={cn(inter.className, 'flex flex-col min-h-screen bg-background antialiased relative')}>
+      <body className={cn(montserrat.variable, 'flex flex-col min-h-screen bg-background antialiased relative font-body')}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
            {loading ? (
             <Loader onLoaded={() => setLoading(false)} />

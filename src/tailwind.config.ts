@@ -1,5 +1,6 @@
 
 import type {Config} from 'tailwindcss';
+import { fontFamily } from 'tailwindcss/defaultTheme';
 
 export default {
   darkMode: ['class'],
@@ -21,9 +22,8 @@ export default {
         'primary-glow': '0 0 25px 0 hsl(var(--primary) / 0.5)',
       },
       fontFamily: {
-        body: ['Poppins', 'sans-serif'],
-        headline: ['Inter', 'sans-serif'],
-        inter: ['Inter', 'sans-serif'],
+        body: ['var(--font-body)', ...fontFamily.sans],
+        headline: ['var(--font-headline)', ...fontFamily.sans],
       },
       colors: {
         background: 'hsl(var(--background))',
