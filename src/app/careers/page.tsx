@@ -115,46 +115,25 @@ export default function CareersPage() {
           <div className="max-w-4xl mx-auto">
             <div className="space-y-6">
               {jobOpenings.map((job, index) => (
-                <ScrollFadeIn key={job.title} delay={`delay-${index * 100}`}>
-                    <div className="flip-card min-h-[190px]">
-                        <div className="flip-card-inner relative w-full h-full">
-                            <div className="flip-card-front absolute w-full h-full">
-                                <Card className="bg-card border h-full">
-                                    <CardHeader className="grid grid-cols-1 md:grid-cols-3 gap-4 items-start">
-                                    <div className="md:col-span-2">
-                                        <CardTitle className="text-foreground">{job.title}</CardTitle>
-                                        <CardDescription className="text-foreground/70">{job.location} &middot; {job.type}</CardDescription>
-                                    </div>
-                                    <div className="md:text-right">
-                                        <Button asChild>
-                                            <Link href="/contact">
-                                                Apply Now <ArrowRight className="ml-2" />
-                                            </Link>
-                                        </Button>
-                                    </div>
-                                    </CardHeader>
-                                    <CardContent>
-                                    <p className="text-foreground/80">{job.description}</p>
-                                    </CardContent>
-                                </Card>
-                            </div>
-                             <div className="flip-card-back absolute w-full h-full">
-                                <Card className="bg-card border animated-border-card flex flex-col justify-center items-center h-full">
-                                    <CardHeader>
-                                        <CardTitle className="text-foreground">{job.title}</CardTitle>
-                                    </CardHeader>
-                                    <CardContent className="text-center">
-                                        <p className="text-foreground/80 mb-4">Think you're a good fit? We'd love to hear from you.</p>
-                                        <Button asChild>
-                                            <Link href="/contact">
-                                                Apply Now <ArrowRight className="ml-2" />
-                                            </Link>
-                                        </Button>
-                                    </CardContent>
-                                </Card>
-                            </div>
-                        </div>
-                    </div>
+                <ScrollFadeIn key={job.title} delay={`delay-${index * 100}`} className="group">
+                  <Card className="bg-card border transition-all duration-300 ease-out hover:scale-[1.03] hover:border-primary hover:shadow-lg hover:shadow-primary/10">
+                      <CardHeader className="grid grid-cols-1 md:grid-cols-3 gap-4 items-start">
+                      <div className="md:col-span-2">
+                          <CardTitle className="text-foreground">{job.title}</CardTitle>
+                          <CardDescription className="text-foreground/70">{job.location} &middot; {job.type}</CardDescription>
+                      </div>
+                      <div className="md:text-right">
+                          <Button asChild>
+                              <Link href="/contact">
+                                  Apply Now <ArrowRight className="ml-2" />
+                              </Link>
+                          </Button>
+                      </div>
+                      </CardHeader>
+                      <CardContent>
+                      <p className="text-foreground/80">{job.description}</p>
+                      </CardContent>
+                  </Card>
                 </ScrollFadeIn>
               ))}
             </div>
