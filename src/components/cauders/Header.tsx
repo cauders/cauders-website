@@ -1,13 +1,13 @@
 
 "use client";
 
-import { useState, useEffect, useRef, type ReactNode, type FC } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { X } from 'lucide-react';
 import { ThemeToggle } from './ThemeToggle';
-import { useMagneticEffect } from '@/hooks/useMagneticEffect';
+import MagneticLink from './MagneticLink';
 
 const navLinks = [
   { href: '/', label: 'Home' },
@@ -15,48 +15,6 @@ const navLinks = [
   { href: '/portfolio', label: 'Portfolio' },
   { href: '/contact',label: 'Contact' }
 ];
-
-const MagneticLink: FC<{href: string, onClick: () => void, children: ReactNode, style?: React.CSSProperties, className?:string}> = ({ href, onClick, children, ...props }) => {
-  const ref = useRef<HTMLDivElement>(null);
-  const { x, y } = useMagneticEffect(ref);
-
-  return (
-    <div
-      ref={ref}
-      style={{
-        transform: `translate(${x}px, ${y}px)`,
-        transition: 'transform 0.2s cubic-bezier(0.165, 0.84, 0.44, 1)',
-      }}
-      className="relative group w-24 h-24 flex items-center justify-center"
-    >
-      <Link
-        href={href}
-        onClick={onClick}
-        className={cn(
-            "relative text-xl font-medium text-background z-10 transition-colors duration-300 flex items-center justify-center w-full h-full text-center",
-            props.className
-        )}
-        style={props.style}
-      >
-        {children}
-      </Link>
-      <svg
-        className="absolute top-0 left-0 w-full h-full pointer-events-none z-0"
-        viewBox="0 0 60 60"
-        preserveAspectRatio="xMidYMid meet"
-      >
-        <circle
-          className="outline-circle"
-          cx="30" cy="30"
-          r="29"
-          fill="none"
-          strokeWidth="2"
-        />
-      </svg>
-    </div>
-  );
-};
-
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -128,17 +86,17 @@ export default function Header() {
                 </div>
             </div>
 
-            <nav ref={navRef} className="flex-grow flex items-center justify-center space-x-12">
+            <nav ref={navRef} className="flex-grow flex items-center justify-center flex-wrap gap-4 md:gap-12">
                 {navLinks.map((link, index) => (
                 <MagneticLink
                     key={link.href}
                     href={link.href}
                     onClick={() => setIsMenuOpen(false)}
                     className={cn(
-                        "opacity-0",
+                        "opacity-0 text-background",
                         isMenuOpen && "animate-fade-in-down"
                     )}
-                     style={{ animationDelay: `${500 + index * 400}ms` }}
+                     style={{ animationDelay: `${500 + index * 100}ms` }}
                 >
                     {link.label}
                 </MagneticLink>
