@@ -37,7 +37,6 @@ export default function Portfolio() {
                               width={600}
                               height={400}
                               className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                              data-ai-hint={project.aiHint}
                             />
                           </Link>
                         </CardHeader>

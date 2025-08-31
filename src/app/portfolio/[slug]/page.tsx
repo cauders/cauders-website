@@ -48,16 +48,13 @@ export default function ProjectPage({ params }: ProjectPageParams) {
               width={1200}
               height={675}
               className="rounded-lg shadow-lg border"
-              data-ai-hint={project.aiHint}
             />
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
             <div className="md:col-span-2">
               <h2 className="text-2xl font-bold text-foreground mb-4">About the Project</h2>
-              <div className="prose prose-lg dark:prose-invert text-foreground/80 max-w-none">
-                {project.details}
-              </div>
+              <div className="prose prose-lg dark:prose-invert text-foreground/80 max-w-none" dangerouslySetInnerHTML={{ __html: project.details }} />
             </div>
             <div>
               <h3 className="text-xl font-bold text-foreground mb-4">Technologies Used</h3>
@@ -90,7 +87,6 @@ export default function ProjectPage({ params }: ProjectPageParams) {
                         width={800}
                         height={600}
                         className="rounded-lg shadow-md border"
-                        data-ai-hint={image.aiHint}
                     />
                     </div>
                 ))}

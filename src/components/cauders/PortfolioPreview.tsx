@@ -188,7 +188,6 @@ export default function PortfolioPreview() {
                         width={600}
                         height={450}
                         className="w-full h-full object-cover pointer-events-none"
-                        data-ai-hint={project.aiHint}
                         draggable={false}
                       />
                       <div className="absolute inset-0"></div>

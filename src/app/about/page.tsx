@@ -11,25 +11,25 @@ const teamMembers = [
   {
     name: 'Alex Johnson',
     role: 'Founder & CEO',
-    imageUrl: 'https://picsum.photos/400/400?random=21',
+    imageUrl: 'https://placehold.co/400x400/171c24/8ceae5?text=Alex+J.',
     aiHint: 'professional headshot',
   },
   {
     name: 'Samantha Lee',
     role: 'Lead Developer',
-    imageUrl: 'https://picsum.photos/400/400?random=22',
+    imageUrl: 'https://placehold.co/400x400/171c24/8ceae5?text=Samantha+L.',
     aiHint: 'developer portrait',
   },
   {
     name: 'David Chen',
     role: 'UI/UX Design Lead',
-    imageUrl: 'https://picsum.photos/400/400?random=23',
+    imageUrl: 'https://placehold.co/400x400/171c24/8ceae5?text=David+C.',
     aiHint: 'designer photo',
   },
   {
     name: 'Maria Garcia',
     role: 'Project Manager',
-    imageUrl: 'https://picsum.photos/400/400?random=24',
+    imageUrl: 'https://placehold.co/400x400/171c24/8ceae5?text=Maria+G.',
     aiHint: 'manager headshot',
   },
 ];
@@ -69,7 +69,7 @@ export default function AboutPage() {
             </ScrollFadeIn>
             <ScrollFadeIn delay="delay-200">
                 <Image
-                    src="https://picsum.photos/800/600?random=20"
+                    src="https://placehold.co/800x600/171c24/8ceae5?text=Team"
                     alt="Our team collaborating"
                     width={800}
                     height={600}

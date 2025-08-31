@@ -49,9 +49,7 @@ export default function ServicePage({ params }: ServicePageParams) {
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-12">
             <div className="lg:col-span-3">
               <h2 className="text-2xl font-bold text-foreground mb-4">Service Details</h2>
-              <div className="prose prose-lg dark:prose-invert text-foreground/80 max-w-none">
-                {service.details}
-              </div>
+              <div className="prose prose-lg dark:prose-invert text-foreground/80 max-w-none" dangerouslySetInnerHTML={{ __html: service.details }} />
             </div>
             <div className="lg:col-span-2">
                 <Card className="bg-card border shadow-lg">
