@@ -125,8 +125,10 @@ export default function Chatbot() {
                 <ScrollArea className="h-80 pr-4" ref={scrollAreaRef}>
                     <div className="space-y-4">
                      {!hasStartedChat && (
-                        <div className="flex flex-col items-center justify-center h-full text-center">
-                            <Lottie animationData={robotAnimation} loop={true} className="w-48 h-48 animate-spin-and-zoom-in" />
+                        <div className="flex flex-col items-center justify-center h-full text-center" style={{ perspective: '1000px' }}>
+                            <div className="animate-spin-and-zoom-in" style={{ transformStyle: 'preserve-3d' }}>
+                                <Lottie animationData={robotAnimation} loop={true} className="w-48 h-48" />
+                            </div>
                             <p className="text-foreground/80 mt-2 animate-fade-in-up">Hello! How can I help you today?</p>
                         </div>
                      )}
