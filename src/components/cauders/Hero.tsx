@@ -44,8 +44,7 @@ export default function Hero() {
                     {words1.map((word, wordIndex) => (
                       <span key={wordIndex} className="inline-block overflow-hidden">
                         <span 
-                          className="animated-gradient-text animate inline-block"
-                          style={{ animationDelay: `${(wordIndex) * 150}ms` }}
+                          className="animated-gradient-text"
                         >
                           {word}
                         </span>
@@ -57,8 +56,7 @@ export default function Hero() {
                     {words2.map((word, wordIndex) => (
                        <span key={wordIndex} className="inline-block overflow-hidden">
                           <span 
-                           className="animated-gradient-text animate inline-block"
-                           style={{ animationDelay: `${(wordIndex + words1.length) * 150}ms` }}
+                           className="animated-gradient-text"
                           >
                             {word}
                           </span>
