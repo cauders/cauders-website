@@ -192,7 +192,7 @@
       background-position: 0%;
     }
     to {
-      background-position: -99.99%; /* Ends on foreground color */
+      background-position: -100%; /* Ends on foreground color */
     }
   }
 
