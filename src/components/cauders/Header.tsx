@@ -17,22 +17,26 @@ const navLinks = [
 ];
 
 const MagneticLink: FC<{href: string, onClick: () => void, children: ReactNode, style?: React.CSSProperties, className?:string}> = ({ href, onClick, children, ...props }) => {
-  const ref = useRef<HTMLAnchorElement>(null);
+  const ref = useRef<HTMLDivElement>(null);
   const { x, y } = useMagneticEffect(ref);
 
   return (
-    <Link 
-      ref={ref} 
-      href={href}
-      onClick={onClick}
-      className={props.className}
+    <div
+      ref={ref}
       style={{
-        ...props.style,
-        transform: `translate(${x}px, ${y}px)`
+        transform: `translate(${x}px, ${y}px)`,
+        transition: 'transform 0.1s linear',
       }}
     >
-      {children}
-    </Link>
+      <Link 
+        href={href}
+        onClick={onClick}
+        className={props.className}
+        style={props.style}
+      >
+        {children}
+      </Link>
+    </div>
   );
 };
 
@@ -113,7 +117,7 @@ export default function Header() {
                     href={link.href}
                     onClick={() => setIsMenuOpen(false)}
                     className={cn(
-                        "text-3xl font-medium opacity-0 transition-transform duration-200 ease-out",
+                        "text-3xl font-medium opacity-0",
                         isMenuOpen && "animate-fade-in-down"
                     )}
                      style={{ animationDelay: `${500 + index * 400}ms` }}
@@ -131,3 +135,4 @@ export default function Header() {
     </header>
   );
 }
+
