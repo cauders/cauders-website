@@ -121,7 +121,7 @@ export default function Chatbot() {
 
       {isOpen && (
         <div className="fixed bottom-28 right-8 z-50">
-            <Card className="w-[90vw] max-w-md h-[80vh] max-h-[600px] flex flex-col shadow-2xl rounded-2xl animate-zoom-in bg-background/70 backdrop-blur-lg">
+            <Card className="w-[90vw] max-w-md h-[80vh] max-h-[600px] flex flex-col shadow-2xl rounded-2xl bg-background/70 backdrop-blur-lg">
                 <CardHeader className="flex flex-row items-center justify-between">
                     <div className="flex items-center gap-2">
                         <div
@@ -147,7 +147,7 @@ export default function Chatbot() {
                             <div className="w-48 h-48">
                                 <Lottie animationData={robotAnimation} loop={true} />
                             </div>
-                            <p className="text-foreground/80 drop-shadow-sm font-bold" style={{filter: 'drop-shadow(0 1px 1px hsl(var(--background)))'}}>Hello! How can I help you today?</p>
+                            <p className="text-foreground/80 font-bold drop-shadow-sm" style={{filter: 'drop-shadow(0 1px 1px hsl(var(--background)))'}}>Hello! How can I help you today?</p>
                             <div className="mt-4 flex flex-col items-center gap-2 w-full max-w-xs">
                                 {iceBreakers.map(q => (
                                     <Button 
@@ -187,14 +187,14 @@ export default function Chatbot() {
                 <CardFooter className="pt-4">
                   <form 
                     onSubmit={handleSubmit} 
-                    className="flex w-full items-center space-x-2 bg-background rounded-full p-1 shadow-lg border border-transparent focus-within:border-primary focus-within:shadow-lg focus-within:border-2 transition-all duration-300"
+                    className="flex w-full items-center space-x-2 bg-background rounded-full p-1 shadow-lg border border-input focus-within:border-primary focus-within:ring-2 focus-within:ring-primary/20 transition-all duration-300"
                   >
                     <Input
                       value={input}
                       onChange={(e) => setInput(e.target.value)}
                       placeholder="Ask a question..."
                       disabled={isLoading}
-                      className="flex-grow bg-transparent border-0 focus:ring-0 focus-visible:ring-offset-0 px-3 text-foreground placeholder:text-muted-foreground"
+                      className="flex-grow bg-transparent focus:ring-0 focus-visible:ring-offset-0 px-3 text-foreground placeholder:text-muted-foreground border-0"
                     />
                     <Button 
                       type="submit" 
@@ -203,7 +203,7 @@ export default function Chatbot() {
                       className="h-9 w-9 text-primary disabled:opacity-50" 
                       disabled={isLoading || !input.trim()}
                     >
-                      <Send className="h-5 w-5" />
+                      <Send className="h-5 w-5 stroke-[2.5]" />
                       <span className="sr-only">Send</span>
                     </Button>
                   </form>
