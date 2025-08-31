@@ -337,7 +337,7 @@
   }
 
   .input-gradient-border-inner {
-    @apply w-full border-0 bg-foreground text-background placeholder:text-background/70 rounded-full px-4;
+    @apply w-full border-0 bg-foreground/90 text-background placeholder:text-primary/60 rounded-full px-4;
   }
 
   .input-gradient-border-inner:focus {

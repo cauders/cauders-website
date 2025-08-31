@@ -169,7 +169,7 @@ export default function Chatbot() {
                         className="input-gradient-border-inner h-12 pr-12"
                         />
                         <Button type="submit" variant="ghost" size="icon" className="absolute right-2 top-1/2 -translate-y-1/2 h-10 w-10 text-primary" disabled={isLoading || !input.trim()}>
-                            <Send className="h-5 w-5" />
+                            <Send className="h-5 w-5" strokeWidth={2.5} />
                             <span className="sr-only">Send</span>
                         </Button>
                     </div>
