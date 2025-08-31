@@ -1,6 +1,7 @@
 
+
 import { toSlug } from "./utils";
-import { Code, Layers, PenTool, Rocket, type LucideProps } from 'lucide-react';
+import { Code, Layers, PenTool, Rocket, type LucideProps, Bot, AppWindow } from 'lucide-react';
 import type { ComponentType, FC } from "react";
 
 type ServiceIcon = ComponentType<LucideProps>;
@@ -212,20 +213,84 @@ const projects: Project[] = [
   }
 ].map(p => ({...p, slug: toSlug(p.title)} as Project));
 
-const services: {
-  icon: ServiceIcon;
-  title: string;
-  slug: string;
-  description: string;
-  details: string;
-  included: string[];
-  caseStudy: {
-    title: string;
-    projectSlug: string;
-    description: string;
-    imageUrl: string;
-  } | null;
-}[] = [];
+const services = [
+    {
+        icon: Code,
+        title: 'Web & Mobile Development',
+        description: 'Creating high-performance, scalable, and secure applications for web and mobile platforms.',
+        details: 'Our development team specializes in building custom solutions from the ground up. Using modern frameworks like Next.js and React Native, we deliver applications that are not only fast and reliable but also tailored to your specific business needs. We handle everything from backend architecture to frontend development, ensuring a seamless digital experience.',
+        included: [
+            'Custom Web Applications',
+            'Native & Cross-Platform Mobile Apps',
+            'API Development & Integration',
+            'Cloud-Based Solutions',
+            'Performance Optimization'
+        ],
+        caseStudy: {
+            title: 'E-commerce Platform',
+            projectSlug: 'e-commerce-platform',
+            description: 'This scalable online store, built with Next.js, showcases our ability to deliver robust, high-conversion web applications.',
+            imageUrl: 'https://picsum.photos/seed/ecom/800/450'
+        }
+    },
+    {
+        icon: PenTool,
+        title: 'UI/UX Design',
+        description: 'Designing intuitive, engaging, and visually stunning interfaces that users love.',
+        details: 'A great product starts with a great user experience. Our UI/UX design process is centered around the user, from initial wireframes and prototypes to final visual design. We focus on creating interfaces that are not only beautiful but also intuitive and easy to navigate, leading to higher user satisfaction and engagement.',
+        included: [
+            'User Research & Analysis',
+            'Wireframing & Prototyping',
+            'Visual Design & Branding',
+            'Interaction Design',
+            'Usability Testing'
+        ],
+        caseStudy: {
+            title: 'Corporate Website',
+            projectSlug: 'corporate-website',
+            description: 'The design for this financial services firm focused on a clean, professional aesthetic to build trust and credibility.',
+            imageUrl: 'https://picsum.photos/seed/corp/800/450'
+        }
+    },
+    {
+        icon: Bot,
+        title: 'AI Integration',
+        description: 'Leveraging artificial intelligence to build smarter, more efficient, and personalized applications.',
+        details: 'We integrate cutting-edge AI and machine learning technologies to unlock new capabilities for your business. From intelligent chatbots that enhance customer service to predictive analytics that drive business decisions, our AI solutions are designed to automate processes, personalize experiences, and provide valuable insights.',
+        included: [
+            'AI-Powered Chatbots',
+            'Machine Learning Models',
+            'Natural Language Processing (NLP)',
+            'Computer Vision',
+            'Predictive Analytics'
+        ],
+        caseStudy: {
+            title: 'AI-Powered Chatbot',
+            projectSlug: 'ai-powered-chatbot',
+            description: 'This chatbot uses Genkit to understand and respond to customer queries, significantly improving support efficiency.',
+            imageUrl: 'https://picsum.photos/seed/chatbot/800/450'
+        }
+    },
+     {
+        icon: AppWindow,
+        title: 'Enterprise Solutions',
+        description: 'Developing robust, scalable, and secure enterprise-grade software for complex business needs.',
+        details: 'We build large-scale enterprise applications that streamline operations, improve efficiency, and drive growth. Our expertise covers everything from ERP systems and CRM platforms to complex financial software. We prioritize security, scalability, and seamless integration with your existing IT infrastructure.',
+        included: [
+            'Custom ERP & CRM Systems',
+            'Fintech & Banking Solutions',
+            'Supply Chain Management',
+            'Data Analytics Platforms',
+            'HIPAA-Compliant Healthcare Systems'
+        ],
+        caseStudy: {
+            title: 'Healthcare Management',
+            projectSlug: 'healthcare-management',
+            description: 'A HIPAA-compliant EHR system that demonstrates our capability in building secure, large-scale enterprise applications.',
+            imageUrl: 'https://picsum.photos/seed/health/800/450'
+        }
+    }
+].map(s => ({...s, slug: toSlug(s.title)}));
 
 export const getProjects = (): Project[] => projects.map(p => ({ ...p }));
 export const getProjectBySlug = (slug: string): Project | undefined => projects.find(p => p.slug === slug);
