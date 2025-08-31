@@ -41,7 +41,6 @@ const ServiceSection = ({ service, index }: { service: ReturnType<typeof getServ
                             style={{
                                 opacity: textOpacity,
                                 transform: `translateX(${textTranslateX}px)`,
-                                transition: 'opacity 0.1s ease-out, transform 0.1s ease-out',
                             }}
                             className={cn("flex flex-col justify-center", isEven ? 'md:order-1' : 'md:order-2')}
                         >
@@ -60,7 +59,6 @@ const ServiceSection = ({ service, index }: { service: ReturnType<typeof getServ
                              style={{
                                 opacity: cardOpacity,
                                 transform: `scale(${cardScale})`,
-                                transition: 'opacity 0.1s ease-out, transform 0.1s ease-out',
                             }}
                              className={cn("flex items-center justify-center", isEven ? 'md:order-2' : 'md:order-1')}
                         >
