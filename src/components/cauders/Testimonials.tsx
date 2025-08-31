@@ -58,8 +58,8 @@ export default function Testimonials() {
                         <CarouselItem key={index}>
                             <div className="p-1 h-[320px]">
                                 <div className="relative w-full h-full bg-foreground/90 rounded-2xl overflow-hidden">
-                                     <div className="absolute top-[-80px] left-[-80px] w-64 h-64 bg-primary/20 rounded-full blur-3xl opacity-80"></div>
-                                     <div className="absolute bottom-[-80px] right-[-80px] w-64 h-64 bg-primary/20 rounded-full blur-3xl opacity-80"></div>
+                                     <div className="absolute top-[-80px] left-[-80px] w-64 h-64 bg-primary/30 rounded-full blur-3xl opacity-80"></div>
+                                     <div className="absolute bottom-[-80px] right-[-80px] w-64 h-64 bg-primary/30 rounded-full blur-3xl opacity-80"></div>
                                     <Card className="glass-effect w-full h-full rounded-2xl border-border/20">
                                         <CardContent className="flex flex-col items-center justify-center p-6 text-center h-full">
                                             <p className="text-lg font-medium text-background/90 max-w-3xl mb-4 z-10">

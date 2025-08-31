@@ -113,17 +113,17 @@
   }
 
   .animated-gradient-text {
-    color: hsl(var(--foreground));
     background: linear-gradient(to right, hsl(var(--primary)), hsl(var(--primary))) no-repeat;
     background-size: 0% 100%;
     background-clip: text;
     -webkit-background-clip: text;
+    color: hsl(var(--foreground));
     transition: background-size 0.5s cubic-bezier(0.23, 1, 0.32, 1);
   }
   
   .animated-gradient-text:hover {
-    color: transparent;
     background-size: 100% 100%;
+    color: transparent;
   }
 
   .animated-gradient-text.animate {
@@ -163,9 +163,9 @@
   }
 
   .glass-effect {
-    background-color: hsl(var(--card) / 0.2);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    background-color: hsl(var(--card) / 0.15);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     @apply border;
   }
   
