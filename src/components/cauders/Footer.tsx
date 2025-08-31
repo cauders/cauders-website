@@ -13,24 +13,33 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="bg-foreground text-background border-t min-h-screen flex flex-col items-center justify-center relative">
-      <div className="container mx-auto py-8 px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center justify-center z-10">
-        <div className="flex-grow flex flex-col items-center justify-center gap-4">
-           <Link href="/" className="text-4xl font-bold hover:text-primary transition-colors">
-              Cauders
-            </Link>
-          <p className="text-sm text-background/70 mt-4">
-            &copy; {year} Cauders. All Rights Reserved.
-          </p>
-        </div>
+    <footer className="bg-foreground text-background border-t relative">
+      <div className="container mx-auto py-16 px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Column 1: Logo and Copyright */}
+            <div className="flex flex-col items-center md:items-start text-center md:text-left">
+                <Link href="/" className="text-4xl font-bold hover:text-primary transition-colors mb-4">
+                    Cauders
+                </Link>
+                <p className="text-sm text-background/70">
+                    &copy; {year} Cauders. All Rights Reserved.
+                </p>
+                 <p className="text-sm text-background/70 mt-2 max-w-xs">
+                    Crafting premium, modern, and dynamic websites and applications.
+                </p>
+            </div>
 
-        <nav className="flex items-center justify-center flex-wrap gap-4 md:gap-8 mt-16">
-            {socialLinks.map((link) => (
-                <MagneticLink key={link.label} href={link.href} className="text-background !text-base">
-                    {link.label}
-                </MagneticLink>
-            ))}
-        </nav>
+            {/* Column 2: Social Links */}
+             <div className="col-span-1 md:col-span-2 flex items-center justify-center md:justify-end">
+                <nav className="flex items-center justify-center flex-wrap gap-4 md:gap-8">
+                    {socialLinks.map((link) => (
+                        <MagneticLink key={link.label} href={link.href} className="text-background !text-base">
+                            {link.label}
+                        </MagneticLink>
+                    ))}
+                </nav>
+            </div>
+        </div>
       </div>
     </footer>
   );
