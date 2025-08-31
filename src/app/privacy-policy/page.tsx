@@ -25,18 +25,21 @@ export default function PrivacyPolicyPage() {
                 <p>
                   We may collect personal and non-personal information through various methods, including:
                 </p>
-                <p><strong>Information you provide to us:</strong> This includes data you voluntarily submit when you contact us, request a quote, subscribe to a newsletter, or fill out a form. This may include your name, company name, email address, phone number, and any other information you choose to provide.</p>
-                <p><strong>Information we collect automatically:</strong> When you visit our website, we may automatically collect certain technical data about your device and browsing activity. This may include your IP address, browser type, operating system, pages viewed, and the duration of your visit. This data is collected using standard technologies such as cookies and log files.</p>
+                <ul>
+                  <li><strong>Information you provide to us:</strong> This includes data you voluntarily submit when you contact us, request a quote, subscribe to a newsletter, or fill out a form. This may include your name, company name, email address, phone number, and any other information you choose to provide.</li>
+                  <li><strong>Information we collect automatically:</strong> When you visit our website, we may automatically collect certain technical data about your device and browsing activity. This may include your IP address, browser type, operating system, pages viewed, and the duration of your visit. This data is collected using standard technologies such as cookies and log files.</li>
+                </ul>
 
                 <h2>2. How We Use Your Information</h2>
                 <p>
                   We use the collected information for a variety of purposes, including:
                 </p>
-                <p><strong>To provide and improve our services:</strong> We use your information to fulfill your requests, manage our relationship with you, and enhance the functionality and quality of our services.</p>
-                <p><strong>For communication:</strong> We may use your contact details to respond to your inquiries, send you project updates, and provide you with information about our services.</p>
-                <p><strong>For marketing and analytics:</strong> We may use non-personal data to analyze website traffic, understand user behavior, and improve our marketing strategies. We may also use your contact information to send you promotional materials about our services, which you can opt-out of at any time.</p>
-                <p><strong>For security and legal compliance:</strong> We use your data to detect and prevent fraud, protect the security of our systems, and comply with our legal obligations.</p>
-
+                <ul>
+                  <li><strong>To provide and improve our services:</strong> We use your information to fulfill your requests, manage our relationship with you, and enhance the functionality and quality of our services.</li>
+                  <li><strong>For communication:</strong> We may use your contact details to respond to your inquiries, send you project updates, and provide you with information about our services.</li>
+                  <li><strong>For marketing and analytics:</strong> We may use non-personal data to analyze website traffic, understand user behavior, and improve our marketing strategies. We may also use your contact information to send you promotional materials about our services, which you can opt-out of at any time.</li>
+                  <li><strong>For security and legal compliance:</strong> We use your data to detect and prevent fraud, protect the security of our systems, and comply with our legal obligations.</li>
+                </ul>
 
                 <h2>3. Data Sharing and Disclosure</h2>
                 <p>
