@@ -282,4 +282,13 @@
   .animate-chat-icon-float {
     animation: chat-icon-float 4s ease-in-out infinite;
   }
+
+  @keyframes peek-and-hide {
+    0% { transform: translate(-50%, 100%); opacity: 0; }
+    20%, 80% { transform: translate(-50%, -40%); opacity: 1; }
+    100% { transform: translate(-50%, 100%); opacity: 0; }
+  }
+  .animate-peek {
+    animation: peek-and-hide 3s ease-in-out forwards;
+  }
 }

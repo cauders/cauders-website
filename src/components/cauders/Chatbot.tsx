@@ -7,7 +7,7 @@ import { Card, CardHeader, CardTitle, CardContent, CardFooter } from '../ui/card
 import { Input } from '../ui/input';
 import { ScrollArea } from '../ui/scroll-area';
 import ChatIcon from './ChatIcon';
-import { Loader2, Send, X, ArrowUp } from 'lucide-react';
+import { Loader2, ArrowUp, X } from 'lucide-react';
 import { submitChatMessage } from '@/app/actions';
 import { cn } from '@/lib/utils';
 import type { ChatInput } from '@/ai/flows/chat-flow';
@@ -21,6 +21,7 @@ type Message = {
 
 export default function Chatbot() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isPeeking, setIsPeeking] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -37,6 +38,20 @@ export default function Chatbot() {
         }, 100);
     }
   }, [messages, isOpen]);
+
+  useEffect(() => {
+    if (isOpen) {
+      setIsPeeking(false);
+      return;
+    }
+
+    const peekTimer = setInterval(() => {
+      setIsPeeking(true);
+      setTimeout(() => setIsPeeking(false), 3000); // Peek duration
+    }, 10000); // Time between peeks
+
+    return () => clearInterval(peekTimer);
+  }, [isOpen]);
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -69,9 +84,20 @@ export default function Chatbot() {
   return (
     <>
       <div className="fixed bottom-8 right-8 z-50">
+        {isPeeking && (
+          <div className="absolute bottom-0 left-1/2 w-32 h-24 pointer-events-none z-0">
+             <div className="animate-peek">
+                <Lottie 
+                    animationData={robotAnimation} 
+                    loop={true} 
+                    className="w-full h-full"
+                />
+             </div>
+          </div>
+        )}
         <Button
           size="icon"
-          className="rounded-full w-16 h-16 shadow-lg group animate-chat-icon-float"
+          className="rounded-full w-16 h-16 shadow-lg group animate-chat-icon-float relative z-10"
           onClick={() => setIsOpen(!isOpen)}
           aria-label="Toggle chat"
         >
@@ -100,7 +126,7 @@ export default function Chatbot() {
                     <div className="space-y-4">
                      {!hasStartedChat && (
                         <div className="flex flex-col items-center justify-center h-full text-center animate-fade-in-up">
-                            <Lottie animationData={robotAnimation} loop={true} className="w-28 h-28" />
+                            <Lottie animationData={robotAnimation} loop={true} className="w-40 h-40" />
                             <p className="text-foreground/80 mt-2">Hello! How can I help you today?</p>
                         </div>
                      )}
