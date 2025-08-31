@@ -25,7 +25,7 @@ const MagneticLink: FC<{href: string, onClick: () => void, children: ReactNode, 
       ref={ref} 
       href={href}
       onClick={onClick}
-      {...props}
+      className={props.className}
       style={{
         ...props.style,
         transform: `translate(${x}px, ${y}px)`
