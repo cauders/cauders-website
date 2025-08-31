@@ -12,6 +12,7 @@ import {
 import { Card, CardContent } from "@/components/ui/card";
 import { Quote } from "lucide-react";
 import ScrollFadeIn from "./ScrollFadeIn";
+import Autoplay from "embla-carousel-autoplay";
 
 export default function Testimonials() {
   const testimonials = getProjects()
@@ -23,7 +24,7 @@ export default function Testimonials() {
   }
 
   return (
-    <section className="py-20 lg:py-32 bg-background">
+    <section className="py-16 lg:py-24 bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <ScrollFadeIn className="text-center mb-16">
                 <h2 className="text-3xl md:text-4xl font-bold text-foreground">What Our Clients Say</h2>
@@ -38,6 +39,12 @@ export default function Testimonials() {
                         align: "start",
                         loop: true,
                     }}
+                    plugins={[
+                        Autoplay({
+                          delay: 5000,
+                          stopOnInteraction: true,
+                        }),
+                    ]}
                     className="w-full max-w-4xl mx-auto"
                 >
                     <CarouselContent>
