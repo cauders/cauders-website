@@ -13,11 +13,16 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Quote } from "lucide-react";
 import ScrollFadeIn from "./ScrollFadeIn";
 import Autoplay from "embla-carousel-autoplay";
+import Link from "next/link";
 
 export default function Testimonials() {
   const testimonials = getProjects()
-    .map(p => p.testimonial)
-    .filter(t => t !== null);
+    .map(p => ({
+        ...p.testimonial,
+        projectTitle: p.title,
+        projectSlug: p.slug
+    }))
+    .filter(t => t.author && t.text);
 
   if (testimonials.length === 0) {
     return null;
@@ -50,14 +55,18 @@ export default function Testimonials() {
                     <CarouselContent>
                         {testimonials.map((testimonial, index) => (
                         <CarouselItem key={index}>
-                            <div className="p-1">
-                                <Card className="bg-card border-none shadow-none">
-                                    <CardContent className="flex flex-col items-center justify-center p-6 text-center">
-                                        <Quote className="w-12 h-12 text-primary mb-6" />
-                                        <p className="text-xl md:text-2xl font-medium text-foreground/90 max-w-3xl mb-4">
+                            <div className="p-1 h-[320px]">
+                                <Card className="bg-card border-none shadow-none h-full">
+                                    <CardContent className="flex flex-col items-center justify-center p-6 text-center h-full relative">
+                                        <Quote className="absolute top-6 left-6 w-16 h-16 text-primary/10 -z-0" strokeWidth={1}/>
+                                        <Quote className="absolute bottom-6 right-6 w-16 h-16 text-primary/10 -z-0 transform -scale-x-100 -scale-y-100" strokeWidth={1}/>
+                                        <p className="text-lg font-medium text-foreground/90 max-w-3xl mb-4 z-10">
                                             "{testimonial!.text}"
                                         </p>
-                                        <cite className="font-semibold text-foreground not-italic">— {testimonial!.author}</cite>
+                                        <cite className="font-semibold text-foreground not-italic z-10">— {testimonial!.author}</cite>
+                                        <p className="text-sm text-foreground/60 mt-1 z-10">
+                                            From the <Link href={`/portfolio/${testimonial.projectSlug}`} className="text-primary hover:underline">{testimonial.projectTitle}</Link> project
+                                        </p>
                                     </CardContent>
                                 </Card>
                             </div>
