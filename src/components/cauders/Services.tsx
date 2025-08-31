@@ -24,13 +24,16 @@ const ServiceSection = ({ service, index }: { service: ReturnType<typeof getServ
 
     const isEven = index % 2 === 0;
 
-    const cardScale = 0.9 + progress * 0.1;
-    const cardOpacity = progress;
-    const textTranslateX = (1 - progress) * (isEven ? -1 : 1) * 50;
-    const textOpacity = progress;
+    // The animation will now complete when progress is 1 and stay that way.
+    const easedProgress = progress; // Can apply an easing function here if desired
+
+    const cardScale = 0.9 + easedProgress * 0.1;
+    const cardOpacity = easedProgress;
+    const textTranslateX = (1 - easedProgress) * (isEven ? -1 : 1) * 50;
+    const textOpacity = easedProgress;
 
     return (
-        <div ref={ref} className="h-[150vh] relative">
+        <div ref={ref} className="h-[120vh] relative">
             <div className="sticky top-0 h-screen flex items-center justify-center overflow-hidden">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                      <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16 items-center">
@@ -38,7 +41,7 @@ const ServiceSection = ({ service, index }: { service: ReturnType<typeof getServ
                             style={{
                                 opacity: textOpacity,
                                 transform: `translateX(${textTranslateX}px)`,
-                                transition: 'opacity 0.3s ease-out, transform 0.3s ease-out',
+                                transition: 'opacity 0.1s ease-out, transform 0.1s ease-out',
                             }}
                             className={cn("flex flex-col justify-center", isEven ? 'md:order-1' : 'md:order-2')}
                         >
@@ -57,7 +60,7 @@ const ServiceSection = ({ service, index }: { service: ReturnType<typeof getServ
                              style={{
                                 opacity: cardOpacity,
                                 transform: `scale(${cardScale})`,
-                                transition: 'opacity 0.3s ease-out, transform 0.3s ease-out',
+                                transition: 'opacity 0.1s ease-out, transform 0.1s ease-out',
                             }}
                              className={cn("flex items-center justify-center", isEven ? 'md:order-2' : 'md:order-1')}
                         >
