@@ -83,7 +83,7 @@ export default function PrivacyPolicyPage() {
         </ScrollFadeIn>
 
         <div className="max-w-4xl mx-auto">
-            <Card className="glass-effect shadow-lg">
+            <Card className="glass-effect shadow-lg rounded-2xl">
                 <CardContent className="p-8 md:p-12 space-y-10">
                     <ScrollFadeIn>
                         <WordHighlighter text="Your privacy is critically important to us. Cauders ('we,' 'us,' or 'our') is committed to protecting the confidentiality and security of your personal information. This Privacy Policy outlines how we collect, use, and safeguard the information you provide when you interact with our website, services, and digital platforms." />
