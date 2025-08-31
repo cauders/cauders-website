@@ -322,7 +322,7 @@
     background: linear-gradient(
       115deg,
       transparent 40%,
-      hsl(var(--primary) / 0.8),
+      hsl(var(--primary)),
       transparent 60%
     );
     z-index: -1;
@@ -332,7 +332,7 @@
   }
   
   .input-gradient-border:focus-within::before {
-    animation: shimmer-border 1.8s cubic-bezier(0.23, 1, 0.32, 1) infinite;
+    animation: shimmer-border 1.5s cubic-bezier(0.23, 1, 0.32, 1) infinite;
     opacity: 1;
   }
 
