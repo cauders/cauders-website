@@ -34,20 +34,10 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 3000);
-    return () => clearTimeout(timer);
-  }, []);
-
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={cn(montserrat.variable, 'flex flex-col min-h-screen bg-background antialiased relative font-body')}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-           {loading ? (
-            <Loader onLoaded={() => setLoading(false)} />
-          ) : (
             <>
               <CustomCursor />
               <Header />
@@ -60,7 +50,6 @@ export default function RootLayout({
               <Chatbot />
               <Toaster />
             </>
-          )}
         </ThemeProvider>
       </body>
     </html>
