@@ -1,5 +1,4 @@
 
-
 "use client";
 
 import { getServices } from "@/lib/data";
@@ -8,8 +7,7 @@ import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/com
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { useRef, useState, useEffect, useCallback, Suspense } from "react";
-import { Skeleton } from "../ui/skeleton";
+import { useRef, useState, useEffect, useCallback } from "react";
 
 export default function ServicesPreview() {
   const services = getServices().slice(0, 4); // Get top 4 services
