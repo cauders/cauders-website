@@ -1,4 +1,3 @@
-
 'use client';
 
 import { getProjects } from "@/lib/data";
@@ -53,15 +52,16 @@ export default function Testimonials() {
                     }}
                     className="w-full max-w-4xl mx-auto"
                 >
-                    <CarouselContent className="-ml-4 carousel-item-container">
+                    <CarouselContent className="-ml-4">
                         {testimonials.map((testimonial, index) => (
-                        <CarouselItem key={index} className="md:basis-1/3 lg:basis-1/3 pl-4">
+                        <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3 pl-4">
                             <div className="p-1 h-full">
                                 <div className="relative w-full h-[320px] bg-foreground/90 rounded-2xl overflow-hidden">
                                      <div className="absolute top-[-80px] left-[-80px] w-64 h-64 bg-primary/30 rounded-full blur-3xl opacity-80"></div>
                                      <div className="absolute bottom-[-80px] right-[-80px] w-64 h-64 bg-primary/30 rounded-full blur-3xl opacity-80"></div>
                                     <Card className="glass-effect w-full h-full rounded-2xl border-border/20">
                                         <CardContent className="flex flex-col items-center justify-center p-6 text-center h-full">
+                                            <Quote className="w-8 h-8 text-primary/80 mb-4" />
                                             <p className="text-base font-medium text-background/90 max-w-3xl mb-4">
                                                 "{testimonial!.text}"
                                             </p>

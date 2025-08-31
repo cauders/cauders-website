@@ -100,32 +100,6 @@ const Carousel = React.forwardRef<
     )
 
     React.useEffect(() => {
-        if (!api) {
-            return;
-        }
-    
-        const onSelect = () => {
-            api.slideNodes().forEach((slide, index) => {
-                if (api.selectedScrollSnap() === index) {
-                    slide.classList.add('is-active');
-                } else {
-                    slide.classList.remove('is-active');
-                }
-            });
-        };
-    
-        api.on('select', onSelect);
-        api.on('reInit', onSelect);
-    
-        // Initial setup
-        onSelect();
-    
-        return () => {
-            api.off('select', onSelect);
-        };
-    }, [api]);
-
-    React.useEffect(() => {
       if (!api || !setApi) {
         return
       }
@@ -211,7 +185,7 @@ const CarouselItem = React.forwardRef<
       role="group"
       aria-roledescription="slide"
       className={cn(
-        "min-w-0 shrink-0 grow-0 basis-full embla-carousel__slide",
+        "min-w-0 shrink-0 grow-0 basis-full",
         orientation === "horizontal" ? "" : "pt-4",
         className
       )}
