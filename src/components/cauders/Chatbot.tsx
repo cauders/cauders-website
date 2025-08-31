@@ -107,7 +107,7 @@ export default function Chatbot() {
 
       {isOpen && (
         <div className="fixed bottom-28 right-8 z-50">
-            <Card className="w-[90vw] max-w-md h-[80vh] max-h-[600px] flex flex-col shadow-2xl backdrop-blur-2xl rounded-2xl animate-zoom-in text-background">
+            <Card className="w-[90vw] max-w-md h-[80vh] max-h-[600px] flex flex-col shadow-2xl backdrop-blur-2xl rounded-2xl animate-zoom-in text-foreground">
                 <CardHeader className="flex flex-row items-center justify-between">
                     <div className="flex items-center gap-2">
                         <div
@@ -122,7 +122,7 @@ export default function Chatbot() {
                                 loop={true}
                             />
                         </div>
-                        <CardTitle>CaudBot</CardTitle>
+                        <CardTitle className="text-foreground">CaudBot</CardTitle>
                     </div>
                 </CardHeader>
                 <CardContent className="flex-grow flex flex-col overflow-hidden">
@@ -133,7 +133,7 @@ export default function Chatbot() {
                             <div className="w-48 h-48 animate-zoom-in">
                                 <Lottie animationData={robotAnimation} loop={true} />
                             </div>
-                            <p className="text-background/80 mt-2">Hello! How can I help you today?</p>
+                            <p className="text-foreground/80 mt-2">Hello! How can I help you today?</p>
                         </div>
                      )}
                     {messages.map((message, index) => (
