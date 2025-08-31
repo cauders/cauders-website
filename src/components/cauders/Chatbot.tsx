@@ -107,7 +107,7 @@ export default function Chatbot() {
 
       {isOpen && (
         <div className="fixed bottom-28 right-8 z-50">
-            <Card className="w-[90vw] max-w-md h-[80vh] max-h-[600px] flex flex-col shadow-2xl backdrop-blur-2xl rounded-2xl animate-zoom-in text-foreground">
+            <Card className="w-[90vw] max-w-md h-[80vh] max-h-[600px] flex flex-col shadow-2xl rounded-2xl animate-zoom-in bg-background/70 backdrop-blur-lg">
                 <CardHeader className="flex flex-row items-center justify-between">
                     <div className="flex items-center gap-2">
                         <div
@@ -133,7 +133,7 @@ export default function Chatbot() {
                             <div className="w-48 h-48 animate-zoom-in">
                                 <Lottie animationData={robotAnimation} loop={true} />
                             </div>
-                            <p className="text-foreground/80 mt-2">Hello! How can I help you today?</p>
+                            <p className="text-foreground/80 mt-2 drop-shadow-sm">Hello! How can I help you today?</p>
                         </div>
                      )}
                     {messages.map((message, index) => (
@@ -152,7 +152,7 @@ export default function Chatbot() {
                      {isLoading && (
                         <div className="flex items-center space-x-2">
                           <Loader2 className="h-4 w-4 animate-spin text-primary" />
-                          <span className="text-sm">Thinking...</span>
+                          <span className="text-sm text-foreground">Thinking...</span>
                         </div>
                       )}
                     </div>
@@ -165,7 +165,7 @@ export default function Chatbot() {
                     onChange={(e) => setInput(e.target.value)}
                     placeholder="Ask about our services..."
                     disabled={isLoading}
-                    className="bg-foreground/50 border-background/20 placeholder:text-background/60"
+                    className="bg-muted border-background/20 placeholder:text-muted-foreground/60 text-foreground"
                     />
                     <Button type="submit" size="icon" disabled={isLoading || !input.trim()}>
                         <ArrowUp className="h-4 w-4" />
