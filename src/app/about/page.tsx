@@ -1,192 +1,108 @@
 
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import ScrollFadeIn from '@/components/cauders/ScrollFadeIn';
-import { Check, Target, Users, Zap, ArrowRight } from 'lucide-react';
-import Image from 'next/image';
-import Link from 'next/link';
-import { cn } from '@/lib/utils';
+'use client';
 
-const teamMembers = [
+import { useRef, useState, useEffect } from 'react';
+import Image from 'next/image';
+import { cn } from '@/lib/utils';
+import { useScrollProgress } from '@/hooks/useScrollProgress';
+
+const contentSections = [
   {
-    name: 'Alex Johnson',
-    role: 'Founder & CEO',
-    imageUrl: 'https://picsum.photos/seed/alex/400/400',
-    aiHint: 'professional headshot',
+    title: "Redefining Digital Innovation",
+    text: "At Cauders, we are redefining the future of digital innovation. As a modern IT solutions company, we specialize in creating intelligent, scalable, and high-performance digital ecosystems that empower businesses to grow, adapt, and lead in competitive markets.",
+    imageUrl: 'https://picsum.photos/seed/innovation/1000/1200',
+    aiHint: 'abstract technology',
   },
   {
-    name: 'Samantha Lee',
-    role: 'Lead Developer',
-    imageUrl: 'https://picsum.photos/seed/samantha/400/400',
-    aiHint: 'developer portrait',
+    title: "Our Core Expertise",
+    text: "Our expertise spans custom software development, enterprise grade web and mobile applications, UI/UX design, cloud-based solutions, API integrations, AI integrations and performance optimization delivering technology that is secure, user-centric, and built for long-term impact.",
+    imageUrl: 'https://picsum.photos/seed/expertise/1000/1200',
+    aiHint: 'software development team',
   },
   {
-    name: 'David Chen',
-    role: 'UI/UX Design Lead',
-    imageUrl: 'https://picsum.photos/seed/david/400/400',
-    aiHint: 'designer photo',
-  },
-  {
-    name: 'Maria Garcia',
-    role: 'Project Manager',
-    imageUrl: 'https://picsum.photos/seed/maria/400/400',
-    aiHint: 'manager headshot',
+    title: "Vision for the Future",
+    text: "Driven by a passion for innovation and excellence, Cauders transforms ideas into powerful digital experiences for startups, enterprises, and global brands. We don’t just build solutions we create future-ready platforms that elevate businesses and inspire growth.",
+    imageUrl: 'https://picsum.photos/seed/vision/1000/1200',
+    aiHint: 'futuristic city',
   },
 ];
 
-const values = [
-    {
-        icon: Zap,
-        title: "Innovation",
-        description: "We constantly push the boundaries of technology to create novel and effective solutions."
-    },
-    {
-        icon: Users,
-        title: "Collaboration",
-        description: "We believe the best results come from working closely with our clients and each other."
-    },
-    {
-        icon: Target,
-        title: "Excellence",
-        description: "We are committed to the highest standards of quality in every project we undertake."
-    }
-]
-
 export default function AboutPage() {
-  return (
-    <div className="bg-background text-foreground">
-      {/* Hero Section */}
-      <section className="py-20 lg:py-32">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <ScrollFadeIn>
-              <h1 className="text-4xl md:text-6xl font-bold text-foreground leading-tight">
-                We are the architects of the digital future.
-              </h1>
-              <p className="mt-6 text-lg text-foreground/70">
-                At Cauders, we blend creative vision with technical expertise to build digital experiences that are not only beautiful and intuitive but also powerful and scalable. We are more than just developers; we are your partners in innovation.
-              </p>
-            </ScrollFadeIn>
-            <ScrollFadeIn delay="delay-200">
-                <Image
-                    src="https://picsum.photos/seed/teamwork/800/600"
-                    alt="Our team collaborating"
-                    width={800}
-                    height={600}
-                    className="rounded-lg shadow-lg"
-                    data-ai-hint="team collaboration"
-                />
-            </ScrollFadeIn>
-          </div>
-        </div>
-      </section>
+    const scrollRef = useRef<HTMLDivElement>(null);
+    const [progress, setProgress] = useState(0);
 
-      {/* Our Mission Section */}
-      <section className="py-20 lg:py-32 bg-secondary/30">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-             <ScrollFadeIn>
-                <h2 className="text-3xl md:text-4xl font-bold text-foreground">Our Mission & Values</h2>
-                <p className="mt-4 text-lg text-foreground/70 max-w-3xl mx-auto">
-                    Our mission is to empower businesses by transforming their ideas into high-performance, cutting-edge digital platforms that dominate the landscape. Our work is guided by these core values.
-                </p>
-             </ScrollFadeIn>
-             <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
-                 {values.map((value, index) => (
-                     <ScrollFadeIn key={value.title} delay={`delay-${index * 100}`} className="h-full">
-                         <div className="flip-card h-full min-h-[300px] md:min-h-[320px]">
-                            <div className="flip-card-inner relative w-full h-full">
-                                <div className="flip-card-front absolute w-full h-full">
-                                    <Card className="bg-card h-full text-center border flex flex-col">
-                                        <CardHeader className="flex-grow">
-                                            <div className="mx-auto bg-primary/10 rounded-full p-4 w-fit mb-4">
-                                                <value.icon className="w-8 h-8 text-primary" />
-                                            </div>
-                                            <CardTitle className="text-foreground">{value.title}</CardTitle>
-                                        </CardHeader>
-                                        <CardContent>
-                                            <p className="text-foreground/80">{value.description}</p>
-                                        </CardContent>
-                                    </Card>
-                                </div>
-                                <div className="flip-card-back absolute w-full h-full">
-                                    <Card className={cn("h-full bg-card flex flex-col justify-center items-center animated-border-card")}>
-                                        <CardContent className="text-center">
-                                            <p className="text-foreground/80">{value.description}</p>
-                                        </CardContent>
-                                    </Card>
-                                </div>
+    useEffect(() => {
+        const handleScroll = () => {
+            if (scrollRef.current) {
+                const { top, height } = scrollRef.current.getBoundingClientRect();
+                const scrollableHeight = height - window.innerHeight;
+                if (scrollableHeight > 0) {
+                    const currentProgress = Math.max(0, Math.min(1, -top / scrollableHeight));
+                    setProgress(currentProgress);
+                }
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
+    const activeIndex = Math.min(
+        contentSections.length - 1,
+        Math.floor(progress * contentSections.length)
+    );
+
+    return (
+        <div className="bg-background text-foreground" ref={scrollRef}>
+             <section className="relative py-20 lg:py-32 h-[300vh]">
+                <div className="sticky top-0 h-screen">
+                    <div className="container mx-auto px-4 sm:px-6 lg:px-8 h-full">
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center h-full">
+                            {/* Left Column: Text Content */}
+                            <div className="flex flex-col gap-16">
+                                {contentSections.map((section, index) => (
+                                    <div key={index} className="min-h-[60vh] flex items-center">
+                                        <div 
+                                            className={cn(
+                                                "transition-opacity duration-500",
+                                                activeIndex === index ? "opacity-100" : "opacity-20"
+                                            )}
+                                        >
+                                            <h2 className="text-3xl md:text-5xl font-bold text-foreground font-headline mb-6">
+                                                {section.title}
+                                            </h2>
+                                            <p className="text-lg text-foreground/80">
+                                                {section.text}
+                                            </p>
+                                        </div>
+                                    </div>
+                                ))}
                             </div>
-                         </div>
-                     </ScrollFadeIn>
-                 ))}
-             </div>
-          </div>
-      </section>
 
-      {/* Team Section */}
-      <section className="py-20 lg:py-32">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <ScrollFadeIn className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground">Meet Our Team</h2>
-            <p className="mt-4 text-lg text-foreground/70 max-w-2xl mx-auto">
-              We are a collective of passionate designers, developers, and strategists dedicated to our craft.
-            </p>
-          </ScrollFadeIn>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
-            {teamMembers.map((member, index) => (
-              <ScrollFadeIn key={member.name} delay={`delay-${index * 100}`} className="h-full">
-                 <div className="flip-card h-full min-h-[400px]">
-                    <div className="flip-card-inner relative w-full h-full">
-                        <div className="flip-card-front absolute w-full h-full">
-                            <Card className="text-center overflow-hidden border bg-card h-full">
-                                <div className="aspect-square">
-                                    <Image
-                                        src={member.imageUrl}
-                                        alt={`Portrait of ${member.name}`}
-                                        width={400}
-                                        height={400}
-                                        className="w-full h-full object-cover"
-                                        data-ai-hint={member.aiHint}
-                                    />
-                                </div>
-                                <CardContent className="p-6">
-                                    <CardTitle className="text-xl text-foreground">{member.name}</CardTitle>
-                                    <p className="text-primary font-medium">{member.role}</p>
-                                </CardContent>
-                            </Card>
-                        </div>
-                         <div className="flip-card-back absolute w-full h-full">
-                            <Card className={cn("h-full bg-card flex flex-col justify-center items-center animated-border-card text-center p-6")}>
-                               <CardTitle className="text-xl text-foreground">{member.name}</CardTitle>
-                               <p className="text-primary font-medium mb-4">{member.role}</p>
-                               <p className="text-foreground/80 text-sm">Further details about {member.name} could go here, describing their expertise and contribution to the team.</p>
-                            </Card>
+                            {/* Right Column: Sticky Images */}
+                            <div className="relative w-full h-full hidden lg:block">
+                                {contentSections.map((section, index) => (
+                                    <div
+                                        key={index}
+                                        className={cn(
+                                            'absolute inset-0 w-full h-full transition-opacity duration-1000 ease-in-out',
+                                            activeIndex === index ? 'opacity-100' : 'opacity-0'
+                                        )}
+                                    >
+                                        <Image
+                                            src={section.imageUrl}
+                                            alt={section.title}
+                                            fill
+                                            className="object-cover rounded-2xl shadow-2xl"
+                                            data-ai-hint={section.aiHint}
+                                        />
+                                    </div>
+                                ))}
+                            </div>
                         </div>
                     </div>
-                 </div>
-              </ScrollFadeIn>
-            ))}
-          </div>
-        </div>
-      </section>
-
-       {/* CTA Section */}
-        <section className="py-20">
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                <ScrollFadeIn>
-                <div className="bg-primary/10 rounded-lg p-12 text-center border border-primary/20">
-                    <h2 className="text-3xl font-bold text-foreground">Have a Project in Mind?</h2>
-                    <p className="mt-4 text-lg text-foreground/70 max-w-xl mx-auto">
-                    We're ready to bring your vision to life. Let's discuss how we can build something amazing together.
-                    </p>
-                    <Button asChild size="lg" className="mt-8">
-                        <Link href="/contact">Let's Talk</Link>
-                    </Button>
                 </div>
-                </ScrollFadeIn>
-            </div>
-        </section>
-    </div>
-  );
+            </section>
+        </div>
+    );
 }
