@@ -235,6 +235,17 @@
   .flip-card:hover .animated-border-card::before {
     animation: shimmer-border 1.8s cubic-bezier(0.23, 1, 0.32, 1) forwards;
   }
+  
+  .flip-card .flip-card-back .button {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease-out 0.4s, transform 0.3s ease-out 0.4s;
+  }
+
+  .flip-card:hover .flip-card-back .button {
+    opacity: 1;
+    transform: translateY(0);
+  }
 
   @keyframes shimmer-border {
     from {

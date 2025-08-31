@@ -33,7 +33,7 @@ const ServiceSection = ({ service, index }: { service: ReturnType<typeof getServ
     const textOpacity = easedProgress;
 
     return (
-        <div ref={ref} className="h-[50vh] relative">
+        <div ref={ref} className="h-[60vh] relative">
             <div className="sticky top-0 h-screen flex items-center justify-center overflow-hidden">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                      <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16 items-center">
@@ -77,16 +77,14 @@ const ServiceSection = ({ service, index }: { service: ReturnType<typeof getServ
                                   </div>
                                   {/* Back of the card */}
                                   <div className="flip-card-back absolute w-full h-full">
-                                      <Card className={cn("h-full flex flex-col justify-between animated-border-card bg-card border text-left p-6")}>
-                                          <div>
-                                            <CardTitle className="text-foreground mb-2">{service.title}</CardTitle>
-                                            <p className="text-foreground/80 line-clamp-6">{service.details}</p>
+                                      <Card className={cn("h-full flex flex-col justify-center animated-border-card bg-card border text-left p-6")}>
+                                          <div className="flex-grow flex flex-col justify-center items-center text-center">
+                                            <Button asChild>
+                                                <Link href={`/services/${service.slug}`}>
+                                                    Learn More <ArrowRight className="ml-2 h-4 w-4" />
+                                                </Link>
+                                            </Button>
                                           </div>
-                                          <Button asChild>
-                                            <Link href={`/services/${service.slug}`}>
-                                                Learn More <ArrowRight className="ml-2 h-4 w-4" />
-                                            </Link>
-                                          </Button>
                                       </Card>
                                   </div>
                               </div>
