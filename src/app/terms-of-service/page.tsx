@@ -14,6 +14,7 @@ export default function TermsOfServicePage() {
         </ScrollFadeIn>
 
         <div className="max-w-4xl mx-auto">
+         <ScrollFadeIn delay="delay-200">
           <Card className="bg-card border shadow-sm">
             <CardContent className="p-8 prose prose-lg dark:prose-invert text-foreground/80 max-w-none">
               <p>
@@ -61,6 +62,7 @@ export default function TermsOfServicePage() {
               </p>
             </CardContent>
           </Card>
+          </ScrollFadeIn>
         </div>
       </div>
     </div>
