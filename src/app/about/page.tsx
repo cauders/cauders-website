@@ -1,30 +1,24 @@
 
 'use client';
 
-import Image from 'next/image';
 import { cn } from '@/lib/utils';
 import ScrollFadeIn from '@/components/cauders/ScrollFadeIn';
+import AnimatedLine from '@/components/cauders/AnimatedLine';
 
 const contentSections = [
   {
     title: "Redefining Digital Innovation",
     text: "At Cauders, we are redefining the future of digital innovation. As a modern IT solutions company, we specialize in creating intelligent, scalable, and high-performance digital ecosystems that empower businesses to grow, adapt, and lead in competitive markets.",
-    imageUrl: 'https://picsum.photos/seed/innovation-alt/1000/800',
-    aiHint: 'abstract technology',
     layout: 'text-left'
   },
   {
     title: "Our Core Expertise",
     text: "Our expertise spans custom software development, enterprise grade web and mobile applications, UI/UX design, cloud-based solutions, API integrations, AI integrations and performance optimization delivering technology that is secure, user-centric, and built for long-term impact.",
-    imageUrl: 'https://picsum.photos/seed/expertise-alt/1000/800',
-    aiHint: 'software development team',
     layout: 'text-right'
   },
   {
     title: "Vision for the Future",
     text: "Driven by a passion for innovation and excellence, Cauders transforms ideas into powerful digital experiences for startups, enterprises, and global brands. We don’t just build solutions we create future-ready platforms that elevate businesses and inspire growth.",
-    imageUrl: 'https://picsum.photos/seed/vision-alt/1000/800',
-    aiHint: 'futuristic city',
     layout: 'text-left'
   },
 ];
@@ -56,16 +50,9 @@ export default function AboutPage() {
                                     </div>
                                 </div>
                                 <div className={cn("lg:order-2", section.layout === 'text-right' && "lg:order-1")}>
-                                    <ScrollFadeIn direction="up">
-                                        <div className="overflow-hidden rounded-2xl shadow-2xl">
-                                             <Image
-                                                src={section.imageUrl}
-                                                alt={section.title}
-                                                width={1000}
-                                                height={800}
-                                                className="object-cover"
-                                                data-ai-hint={section.aiHint}
-                                            />
+                                   <ScrollFadeIn direction="up">
+                                        <div className="flex items-center justify-center h-64">
+                                            <AnimatedLine reverse={section.layout === 'text-right'} />
                                         </div>
                                     </ScrollFadeIn>
                                 </div>
