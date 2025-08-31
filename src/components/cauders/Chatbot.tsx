@@ -107,7 +107,7 @@ export default function Chatbot() {
 
       {isOpen && (
         <div className="fixed bottom-28 right-8 z-50">
-            <Card className="w-[90vw] max-w-md h-[80vh] max-h-[700px] flex flex-col shadow-2xl bg-foreground/80 backdrop-blur-xl border border-primary/20 rounded-2xl animate-zoom-in text-background">
+            <Card className="w-[90vw] max-w-md h-[80vh] max-h-[700px] flex flex-col shadow-2xl backdrop-blur-xl border border-primary/20 rounded-2xl animate-zoom-in text-background">
                 <CardHeader className="flex flex-row items-center justify-between">
                     <div className="flex items-center gap-2">
                         <Lottie 
