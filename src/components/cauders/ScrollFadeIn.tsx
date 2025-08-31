@@ -42,12 +42,10 @@ export default function ScrollFadeIn({ children, className, style, direction = '
   
   if (direction === 'stretch-up') {
       return (
-        <div ref={elementRef} className={cn(className)}>
-          {isVisible && (
-            <div className='animate-footer-slide-in' style={style}>
+        <div ref={elementRef} className={cn(className, 'opacity-0', isVisible && 'opacity-100')}>
+          <div className={cn(isVisible && 'animate-footer-slide-in')} style={style}>
               {children}
-            </div>
-          )}
+          </div>
         </div>
       )
   }
