@@ -82,7 +82,10 @@ export default function Hero() {
       </div>
 
       {/* Bottom Elements */}
-      <div className="absolute bottom-8 left-0 right-0 z-10">
+      <div 
+        className="absolute bottom-8 left-0 right-0 z-10 animate-fade-in-up"
+        style={{ animationDelay: '1s' }}
+      >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
           <Link href="/contact" className="text-sm font-medium tracking-widest uppercase hover:text-primary transition-colors">
               Contact Us
