@@ -4,7 +4,10 @@
 import { cn } from '@/lib/utils';
 import ScrollFadeIn from '@/components/cauders/ScrollFadeIn';
 import AnimatedLine from '@/components/cauders/AnimatedLine';
-import Contact from '@/components/cauders/Contact';
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
+import { ArrowRight } from 'lucide-react';
+import { Card } from '@/components/ui/card';
 
 const contentSections = [
   {
@@ -62,7 +65,23 @@ export default function AboutPage() {
                     </div>
                 </div>
             </section>
-            <Contact />
+             <section className="py-20 lg:py-32">
+                <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+                    <ScrollFadeIn>
+                        <Card className="p-8 md:p-12 text-center bg-secondary/30">
+                            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Let's Create Together</h2>
+                            <p className="max-w-2xl mx-auto text-foreground/70 mb-8">
+                                Have an idea that could redefine your industry? We're the team to help you build it. Let's start a conversation.
+                            </p>
+                            <Button asChild size="lg">
+                                <Link href="/contact">
+                                    Get in Touch <ArrowRight className="ml-2" />
+                                </Link>
+                            </Button>
+                        </Card>
+                    </ScrollFadeIn>
+                </div>
+            </section>
         </div>
     );
 }
