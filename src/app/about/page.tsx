@@ -4,7 +4,6 @@
 import { useRef, useState, useEffect } from 'react';
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
-import { useScrollProgress } from '@/hooks/useScrollProgress';
 
 const contentSections = [
   {
@@ -28,59 +27,76 @@ const contentSections = [
 ];
 
 export default function AboutPage() {
-    const scrollRef = useRef<HTMLDivElement>(null);
-    const [progress, setProgress] = useState(0);
+    const textSectionsRef = useRef<(HTMLDivElement | null)[]>([]);
+    const [activeIndex, setActiveIndex] = useState(0);
 
     useEffect(() => {
         const handleScroll = () => {
-            if (scrollRef.current) {
-                const { top, height } = scrollRef.current.getBoundingClientRect();
-                const scrollableHeight = height - window.innerHeight;
-                if (scrollableHeight > 0) {
-                    const currentProgress = Math.max(0, Math.min(1, -top / scrollableHeight));
-                    setProgress(currentProgress);
+            const sections = textSectionsRef.current;
+            if (!sections) return;
+
+            let currentActiveIndex = -1;
+
+            sections.forEach((section, index) => {
+                if (section) {
+                    const { top, bottom, height } = section.getBoundingClientRect();
+                    const viewportHeight = window.innerHeight;
+                    
+                    // Determine which section is most "in view"
+                    const visibleHeight = Math.max(0, Math.min(bottom, viewportHeight) - Math.max(top, 0));
+                    
+                    if (visibleHeight / height > 0.3 || (top < viewportHeight / 2 && bottom > viewportHeight / 2)) {
+                       currentActiveIndex = index;
+                    }
                 }
+            });
+
+            if (currentActiveIndex !== -1) {
+                setActiveIndex(currentActiveIndex);
             }
         };
 
         window.addEventListener('scroll', handleScroll, { passive: true });
+        handleScroll(); // Initial check
+
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    const activeIndex = Math.min(
-        contentSections.length - 1,
-        Math.floor(progress * contentSections.length)
-    );
 
     return (
-        <div className="bg-background text-foreground" ref={scrollRef}>
-             <section className="relative py-20 lg:py-32 h-[300vh]">
-                <div className="sticky top-0 h-screen">
-                    <div className="container mx-auto px-4 sm:px-6 lg:px-8 h-full">
-                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center h-full">
-                            {/* Left Column: Text Content */}
-                            <div className="flex flex-col gap-16">
-                                {contentSections.map((section, index) => (
-                                    <div key={index} className="min-h-[60vh] flex items-center">
-                                        <div 
-                                            className={cn(
-                                                "transition-opacity duration-500",
-                                                activeIndex === index ? "opacity-100" : "opacity-20"
-                                            )}
-                                        >
-                                            <h2 className="text-3xl md:text-5xl font-bold text-foreground font-headline mb-6">
-                                                {section.title}
-                                            </h2>
-                                            <p className="text-lg text-foreground/80">
-                                                {section.text}
-                                            </p>
-                                        </div>
+        <div className="bg-background text-foreground">
+             <section className="relative py-20 lg:py-32">
+                <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+                        
+                        {/* Left Column: Text Content */}
+                        <div className="flex flex-col gap-16">
+                            {contentSections.map((section, index) => (
+                                <div 
+                                    key={index}
+                                    ref={el => textSectionsRef.current[index] = el}
+                                    className="min-h-[60vh] flex items-center"
+                                >
+                                    <div 
+                                        className={cn(
+                                            "transition-opacity duration-500",
+                                            activeIndex === index ? "opacity-100" : "opacity-20"
+                                        )}
+                                    >
+                                        <h2 className="text-3xl md:text-5xl font-bold text-foreground font-headline mb-6">
+                                            {section.title}
+                                        </h2>
+                                        <p className="text-lg text-foreground/80">
+                                            {section.text}
+                                        </p>
                                     </div>
-                                ))}
-                            </div>
+                                </div>
+                            ))}
+                        </div>
 
-                            {/* Right Column: Sticky Images */}
-                            <div className="relative w-full h-full hidden lg:block">
+                        {/* Right Column: Sticky Images */}
+                        <div className="sticky top-32 w-full h-[80vh] hidden lg:block">
+                            <div className="relative w-full h-full">
                                 {contentSections.map((section, index) => (
                                     <div
                                         key={index}
