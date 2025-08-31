@@ -107,7 +107,7 @@ export default function Chatbot() {
 
       {isOpen && (
         <div className="fixed bottom-28 right-8 z-50">
-            <Card className="w-[400px] h-[600px] flex flex-col shadow-2xl bg-background/95 backdrop-blur-xl border-primary/20 rounded-2xl animate-zoom-in">
+            <Card className="w-[90vw] max-w-md h-[80vh] max-h-[700px] flex flex-col shadow-2xl bg-foreground/80 backdrop-blur-xl border border-primary/20 rounded-2xl animate-zoom-in text-background">
                 <CardHeader className="flex flex-row items-center justify-between">
                     <div className="flex items-center gap-2">
                         <Lottie 
@@ -118,7 +118,7 @@ export default function Chatbot() {
                                 hasStartedChat ? "w-10 h-10" : "w-0 h-10"
                             )}
                         />
-                        <CardTitle className="text-foreground">CaudBot</CardTitle>
+                        <CardTitle>CaudBot</CardTitle>
                     </div>
                 </CardHeader>
                 <CardContent className="flex-grow flex flex-col">
@@ -126,10 +126,10 @@ export default function Chatbot() {
                     <div className="space-y-4 flex flex-col min-h-full">
                      {!hasStartedChat && (
                         <div className="flex flex-col items-center justify-center flex-grow text-center">
-                            <div className="animate-zoom-in w-48 h-48">
+                            <div className="w-48 h-48">
                                 <Lottie animationData={robotAnimation} loop={true} />
                             </div>
-                            <p className="text-foreground/80 mt-2 animate-fade-in-up">Hello! How can I help you today?</p>
+                            <p className="text-background/80 mt-2">Hello! How can I help you today?</p>
                         </div>
                      )}
                     {messages.map((message, index) => (
@@ -139,7 +139,7 @@ export default function Chatbot() {
                             'flex w-max max-w-[75%] flex-col gap-2 rounded-lg px-3 py-2 text-sm',
                              message.role === 'user'
                             ? 'ml-auto bg-primary text-primary-foreground'
-                            : 'bg-muted'
+                            : 'bg-muted text-muted-foreground'
                         )}
                         >
                         {message.content[0].text}
@@ -148,7 +148,7 @@ export default function Chatbot() {
                      {isLoading && (
                         <div className="flex items-center space-x-2">
                           <Loader2 className="h-4 w-4 animate-spin text-primary" />
-                          <span className="text-muted-foreground text-sm">Thinking...</span>
+                          <span className="text-sm">Thinking...</span>
                         </div>
                       )}
                     </div>
@@ -161,6 +161,7 @@ export default function Chatbot() {
                     onChange={(e) => setInput(e.target.value)}
                     placeholder="Ask about our services..."
                     disabled={isLoading}
+                    className="bg-foreground/50 border-background/20 placeholder:text-background/60"
                     />
                     <Button type="submit" size="icon" disabled={isLoading || !input.trim()}>
                         <ArrowUp className="h-4 w-4" />
