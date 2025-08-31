@@ -7,7 +7,7 @@ import { Card, CardHeader, CardTitle, CardContent, CardFooter } from '../ui/card
 import { Input } from '../ui/input';
 import { ScrollArea } from '../ui/scroll-area';
 import ChatIcon from './ChatIcon';
-import { Loader2, Send, X } from 'lucide-react';
+import { Loader2, Send, X, ArrowUp } from 'lucide-react';
 import { submitChatMessage } from '@/app/actions';
 import { cn } from '@/lib/utils';
 import type { ChatInput } from '@/ai/flows/chat-flow';
@@ -25,6 +25,7 @@ export default function Chatbot() {
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const scrollAreaRef = useRef<HTMLDivElement>(null);
+  const hasStartedChat = messages.length > 0;
 
   useEffect(() => {
     if (isOpen && scrollAreaRef.current) {
@@ -83,13 +84,26 @@ export default function Chatbot() {
             <Card className="w-full max-w-sm shadow-2xl animate-fade-in-up bg-card/60 backdrop-blur-xl border-primary/20 rounded-2xl">
                 <CardHeader className="flex flex-row items-center justify-between">
                     <div className="flex items-center gap-2">
-                        <Lottie animationData={robotAnimation} loop={true} className="w-10 h-10" />
+                        <Lottie 
+                            animationData={robotAnimation} 
+                            loop={true} 
+                            className={cn(
+                                "transition-all duration-500",
+                                hasStartedChat ? "w-10 h-10" : "w-0 h-10"
+                            )}
+                        />
                         <CardTitle className="text-foreground">CaudBot</CardTitle>
                     </div>
                 </CardHeader>
                 <CardContent>
                 <ScrollArea className="h-80 pr-4" ref={scrollAreaRef}>
                     <div className="space-y-4">
+                     {!hasStartedChat && (
+                        <div className="flex flex-col items-center justify-center h-full text-center animate-fade-in-up">
+                            <Lottie animationData={robotAnimation} loop={true} className="w-28 h-28" />
+                            <p className="text-foreground/80 mt-2">Hello! How can I help you today?</p>
+                        </div>
+                     )}
                     {messages.map((message, index) => (
                         <div
                         key={index}
@@ -120,8 +134,8 @@ export default function Chatbot() {
                     placeholder="Ask about our services..."
                     disabled={isLoading}
                     />
-                    <Button type="submit" size="icon" disabled={isLoading}>
-                        <Send className="h-4 w-4" />
+                    <Button type="submit" size="icon" disabled={isLoading || !input.trim()}>
+                        <ArrowUp className="h-4 w-4" />
                         <span className="sr-only">Send</span>
                     </Button>
                 </form>
