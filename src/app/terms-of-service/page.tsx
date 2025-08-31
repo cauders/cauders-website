@@ -1,7 +1,6 @@
 
 'use client';
 
-import { Card, CardContent } from '@/components/ui/card';
 import ScrollFadeIn from '@/components/cauders/ScrollFadeIn';
 
 export default function TermsOfServicePage() {

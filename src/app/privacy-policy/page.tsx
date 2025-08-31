@@ -1,7 +1,6 @@
 
 'use client';
 
-import { Card, CardContent } from '@/components/ui/card';
 import ScrollFadeIn from '@/components/cauders/ScrollFadeIn';
 
 export default function PrivacyPolicyPage() {
@@ -51,7 +50,7 @@ export default function PrivacyPolicyPage() {
 
                 <h2>5. Your Rights</h2>
                 <p>
-                  You have the right to access, update, and request the deletion of your personal information that we hold. If you wish to exercise these rights, please contact us at info@cauders.com. We will respond to your request in a timely manner and in accordance with applicable laws.
+                  You have the right to access, update, and request the deletion of your personal information that we hold. If you wish to exercise these rights, please contact us at <a href="mailto:info@cauders.com" className="text-primary hover:underline">info@cauders.com</a>. We will respond to your request in a timely manner and in accordance with applicable laws.
                 </p>
                 
                 <h2>6. Changes to this Privacy Policy</h2>
