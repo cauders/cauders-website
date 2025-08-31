@@ -62,11 +62,11 @@ export default function Testimonials() {
                                      <div className="absolute bottom-[-80px] right-[-80px] w-64 h-64 bg-primary/30 rounded-full blur-3xl opacity-80"></div>
                                     <Card className="glass-effect w-full h-full rounded-2xl border-border/20">
                                         <CardContent className="flex flex-col items-center justify-center p-6 text-center h-full">
-                                            <p className="text-lg font-medium text-background/90 max-w-3xl mb-4 z-10">
+                                            <p className="text-lg font-medium text-background/90 max-w-3xl mb-4">
                                                 "{testimonial!.text}"
                                             </p>
-                                            <cite className="font-semibold text-background not-italic z-10">— {testimonial!.author}</cite>
-                                            <p className="text-sm text-background/60 mt-1 z-10">
+                                            <cite className="font-semibold text-background not-italic">— {testimonial!.author}</cite>
+                                            <p className="text-sm text-background/60 mt-1">
                                                 From the <Link href={`/portfolio/${testimonial.projectSlug}`} className="text-primary/90 hover:underline">{testimonial.projectTitle}</Link> project
                                             </p>
                                         </CardContent>
