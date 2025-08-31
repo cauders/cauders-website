@@ -107,7 +107,7 @@ export default function Chatbot() {
 
       {isOpen && (
         <div className="fixed bottom-28 right-8 z-50">
-            <Card className="w-full max-w-sm shadow-2xl bg-card/80 backdrop-blur-xl border-primary/20 rounded-2xl animate-zoom-in">
+            <Card className="w-[400px] h-[600px] flex flex-col shadow-2xl bg-background/95 backdrop-blur-xl border-primary/20 rounded-2xl animate-zoom-in">
                 <CardHeader className="flex flex-row items-center justify-between">
                     <div className="flex items-center gap-2">
                         <Lottie 
@@ -121,13 +121,13 @@ export default function Chatbot() {
                         <CardTitle className="text-foreground">CaudBot</CardTitle>
                     </div>
                 </CardHeader>
-                <CardContent>
-                <ScrollArea className="h-80 pr-4" ref={scrollAreaRef}>
-                    <div className="space-y-4">
+                <CardContent className="flex-grow flex flex-col">
+                <ScrollArea className="flex-grow pr-4" ref={scrollAreaRef}>
+                    <div className="space-y-4 flex flex-col min-h-full">
                      {!hasStartedChat && (
-                        <div className="flex flex-col items-center justify-center h-full text-center">
-                            <div className="animate-zoom-in">
-                                <Lottie animationData={robotAnimation} loop={true} className="w-48 h-48" />
+                        <div className="flex flex-col items-center justify-center flex-grow text-center">
+                            <div className="animate-zoom-in w-48 h-48">
+                                <Lottie animationData={robotAnimation} loop={true} />
                             </div>
                             <p className="text-foreground/80 mt-2 animate-fade-in-up">Hello! How can I help you today?</p>
                         </div>
