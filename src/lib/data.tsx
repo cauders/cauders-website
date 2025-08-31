@@ -1,7 +1,7 @@
 
 
 import { toSlug } from "./utils";
-import { Code, Layers, PenTool, Rocket, type LucideProps, Bot, AppWindow } from 'lucide-react';
+import { Code, Layers, PenTool, Rocket, type LucideProps, Bot, AppWindow, ShoppingCart, TrendingUp, Shield, Server } from 'lucide-react';
 import type { ComponentType, FC } from "react";
 
 type ServiceIcon = ComponentType<LucideProps>;
@@ -216,15 +216,15 @@ const projects: Project[] = [
 const services = [
     {
         icon: Code,
-        title: 'Web & Mobile Development',
-        description: 'Creating high-performance, scalable, and secure applications for web and mobile platforms.',
+        title: 'Web Development',
+        description: 'We build high-performance, secure, and scalable web applications using cutting-edge technologies. From custom portals to enterprise-grade solutions, we create seamless digital experiences that drive engagement and conversion.',
         details: 'Our development team specializes in building custom solutions from the ground up. Using modern frameworks like Next.js and React Native, we deliver applications that are not only fast and reliable but also tailored to your specific business needs. We handle everything from backend architecture to frontend development, ensuring a seamless digital experience.',
         included: [
             'Custom Web Applications',
-            'Native & Cross-Platform Mobile Apps',
+            'Scalable Architectures',
             'API Development & Integration',
-            'Cloud-Based Solutions',
-            'Performance Optimization'
+            'Cloud-Native Solutions',
+            'Ongoing Performance Optimization'
         ],
         caseStudy: {
             title: 'E-commerce Platform',
@@ -234,16 +234,73 @@ const services = [
         }
     },
     {
+        icon: AppWindow,
+        title: 'Mobile App Development',
+        description: 'Our mobile apps are designed for iOS and Android with a focus on speed, usability, and flawless performance. Whether it’s a startup MVP or a fully-featured enterprise application, we ensure smooth navigation and optimized functionality for end users.',
+        details: 'We build native and cross-platform mobile applications that offer a rich user experience. From ideation to launch, we cover the entire development lifecycle, including backend development, API integration, and post-launch support. Our focus is on creating apps that are not only functional but also engaging and intuitive.',
+        included: [
+            'iOS & Android App Development',
+            'React Native & Flutter Expertise',
+            'User-Centric Design',
+            'Seamless API Integration',
+            'App Store Deployment & Support'
+        ],
+        caseStudy: {
+            title: 'Mobile Banking App',
+            projectSlug: 'mobile-banking-app',
+            description: 'A secure, intuitive mobile banking app built with React Native, demonstrating our expertise in creating reliable mobile solutions.',
+            imageUrl: 'https://picsum.photos/seed/mobile-bank/800/450'
+        }
+    },
+    {
+        icon: Shield,
+        title: 'Fintech Solutions',
+        description: 'We develop secure, compliant, and intelligent fintech platforms for banking, payments, and digital finance. With advanced encryption, API integrations, and AI-driven insights, we empower businesses to deliver next-generation financial services.',
+        details: 'In the highly regulated fintech industry, security and compliance are paramount. We build robust solutions that meet these standards while delivering innovative features. Our expertise includes payment gateways, digital wallets, lending platforms, and insure-tech, all designed for scalability and security.',
+        included: [
+            'Secure Payment Gateway Integration',
+            'Digital Wallet & P2P Payments',
+            'AI-driven Fraud Detection',
+            'Regulatory Compliance (e.g., PCI DSS)',
+            'Blockchain & Crypto Solutions'
+        ],
+        caseStudy: {
+            title: 'Fintech Security Suite',
+            projectSlug: 'fintech-security-suite',
+            description: 'This MFA and fraud detection system for financial apps showcases our deep understanding of fintech security challenges.',
+            imageUrl: 'https://picsum.photos/seed/fintech/800/450'
+        }
+    },
+    {
+        icon: Bot,
+        title: 'AI Integrations',
+        description: 'Our AI-powered solutions bring automation, personalization, and predictive analytics to your digital products. From chatbots and machine learning models to business intelligence systems, we turn data into intelligent business outcomes.',
+        details: 'We integrate cutting-edge AI and machine learning technologies to unlock new capabilities for your business. From intelligent chatbots that enhance customer service to predictive analytics that drive business decisions, our AI solutions are designed to automate processes, personalize experiences, and provide valuable insights.',
+        included: [
+            'AI-Powered Chatbots & Virtual Assistants',
+            'Custom Machine Learning Models',
+            'Natural Language Processing (NLP)',
+            'Computer Vision & Image Analysis',
+            'Predictive Analytics & Data Insights'
+        ],
+        caseStudy: {
+            title: 'AI-Powered Chatbot',
+            projectSlug: 'ai-powered-chatbot',
+            description: 'This chatbot uses Genkit to understand and respond to customer queries, significantly improving support efficiency.',
+            imageUrl: 'https://picsum.photos/seed/chatbot/800/450'
+        }
+    },
+    {
         icon: PenTool,
-        title: 'UI/UX Design',
-        description: 'Designing intuitive, engaging, and visually stunning interfaces that users love.',
+        title: 'UI/UX Designing',
+        description: 'User experience defines product success. Our UI/UX design team creates intuitive, engaging, and visually stunning interfaces that elevate user satisfaction while driving conversions and brand loyalty.',
         details: 'A great product starts with a great user experience. Our UI/UX design process is centered around the user, from initial wireframes and prototypes to final visual design. We focus on creating interfaces that are not only beautiful but also intuitive and easy to navigate, leading to higher user satisfaction and engagement.',
         included: [
-            'User Research & Analysis',
-            'Wireframing & Prototyping',
-            'Visual Design & Branding',
-            'Interaction Design',
-            'Usability Testing'
+            'User Research & Persona Development',
+            'Interactive Wireframing & Prototyping',
+            'Pixel-Perfect Visual Design',
+            'Mobile-First & Responsive Design',
+            'Comprehensive Usability Testing'
         ],
         caseStudy: {
             title: 'Corporate Website',
@@ -253,41 +310,60 @@ const services = [
         }
     },
     {
-        icon: Bot,
-        title: 'AI Integration',
-        description: 'Leveraging artificial intelligence to build smarter, more efficient, and personalized applications.',
-        details: 'We integrate cutting-edge AI and machine learning technologies to unlock new capabilities for your business. From intelligent chatbots that enhance customer service to predictive analytics that drive business decisions, our AI solutions are designed to automate processes, personalize experiences, and provide valuable insights.',
+        icon: ShoppingCart,
+        title: 'E-commerce Development',
+        description: 'We build feature-rich online stores with secure payment systems, inventory management, and personalized shopping experiences. Our e-commerce solutions are optimized for speed, SEO, and scalability, ensuring higher sales and smoother customer journeys.',
+        details: 'We create end-to-end e-commerce solutions that drive sales and provide a seamless shopping experience. Our platforms include custom features like advanced search, product recommendations, and loyalty programs. We integrate with major payment gateways and shipping providers to streamline your operations.',
         included: [
-            'AI-Powered Chatbots',
-            'Machine Learning Models',
-            'Natural Language Processing (NLP)',
-            'Computer Vision',
-            'Predictive Analytics'
+            'Custom E-commerce Storefronts',
+            'Secure Payment Integrations',
+            'Inventory & Order Management',
+            'SEO & Performance Optimization',
+            'Personalized Shopping Experiences'
         ],
         caseStudy: {
-            title: 'AI-Powered Chatbot',
-            projectSlug: 'ai-powered-chatbot',
-            description: 'This chatbot uses Genkit to understand and respond to customer queries, significantly improving support efficiency.',
-            imageUrl: 'https://picsum.photos/seed/chatbot/800/450'
+            title: 'E-commerce Platform',
+            projectSlug: 'e-commerce-platform',
+            description: 'A scalable Next.js e-commerce platform that boosted online sales through a seamless user experience and robust features.',
+            imageUrl: 'https://picsum.photos/seed/ecom/800/450'
         }
     },
-     {
-        icon: AppWindow,
-        title: 'Enterprise Solutions',
-        description: 'Developing robust, scalable, and secure enterprise-grade software for complex business needs.',
-        details: 'We build large-scale enterprise applications that streamline operations, improve efficiency, and drive growth. Our expertise covers everything from ERP systems and CRM platforms to complex financial software. We prioritize security, scalability, and seamless integration with your existing IT infrastructure.',
+    {
+        icon: TrendingUp,
+        title: 'Banking Solutions',
+        description: 'Our enterprise-grade banking solutions focus on security, compliance, and seamless customer experience. From core banking systems to digital wallets and mobile banking apps, we help financial institutions stay ahead of innovation.',
+        details: 'We specialize in developing secure and scalable solutions for the banking sector. Our offerings include core banking modernization, digital account opening, loan origination systems, and treasury management. We ensure compliance with industry regulations while delivering a superior customer experience.',
         included: [
-            'Custom ERP & CRM Systems',
-            'Fintech & Banking Solutions',
-            'Supply Chain Management',
-            'Data Analytics Platforms',
-            'HIPAA-Compliant Healthcare Systems'
+            'Core Banking System Modernization',
+            'Digital & Mobile Banking Platforms',
+            'Loan & Mortgage Origination Systems',
+            'Compliance & Regulatory Reporting',
+            'Wealth & Asset Management Tools'
         ],
         caseStudy: {
-            title: 'Healthcare Management',
-            projectSlug: 'healthcare-management',
-            description: 'A HIPAA-compliant EHR system that demonstrates our capability in building secure, large-scale enterprise applications.',
-            imageUrl: 'https://picsum.photos/seed/health/800/450'
+            title: 'Mobile Banking App',
+            projectSlug: 'mobile-banking-app',
+            description: 'This secure mobile banking app provides a seamless user experience for managing accounts, transfers, and payments.',
+            imageUrl: 'https://picsum.photos/seed/mobile-bank/800/450'
+        }
+    },
+    {
+        icon: Server,
+        title: 'ERP Systems',
+        description: 'Our enterprise-grade ERP systems streamline operations by integrating core business processes such as finance, inventory, HR, and supply chain into a single, intelligent platform.',
+        details: 'We develop custom Enterprise Resource Planning (ERP) systems that unify your business processes and provide a single source of truth. Our ERP solutions are modular, scalable, and tailored to your industry, helping you improve efficiency, reduce costs, and make data-driven decisions.',
+        included: [
+            'Custom ERP Module Development',
+            'Finance & Accounting Integration',
+            'HR & Payroll Management',
+            'Supply Chain & Inventory Control',
+            'Business Intelligence & Reporting'
+        ],
+        caseStudy: {
+            title: 'SaaS Dashboard',
+            projectSlug: 'saas-dashboard',
+            description: 'While not a full ERP, this analytics dashboard showcases our ability to handle complex data and business logic, a core component of any ERP.',
+            imageUrl: 'https://picsum.photos/seed/saas/800/450'
         }
     }
 ].map(s => ({...s, slug: toSlug(s.title)}));

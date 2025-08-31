@@ -12,9 +12,8 @@ import { useRef, useState, useEffect, useCallback, Suspense } from "react";
 import { Skeleton } from "../ui/skeleton";
 
 export default function ServicesPreview() {
-  const services = getServices();
+  const services = getServices().slice(0, 4); // Get top 4 services
   const containerRef = useRef<HTMLDivElement>(null);
-  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
   const [titleTransform, setTitleTransform] = useState('translateY(101%)');
   const [subtitleTransform, setSubtitleTransform] = useState('translateY(101%)');
   const [cardTransforms, setCardTransforms] = useState(services.map(() => 'rotateY(-90deg)'));
@@ -86,7 +85,6 @@ export default function ServicesPreview() {
             {services.map((service, index) => (
                 <div
                     key={service.slug}
-                    ref={el => cardRefs.current[index] = el}
                     className="h-full"
                     style={{
                         perspective: '1000px',
