@@ -276,21 +276,6 @@
       animation: fade-in-down 0.5s ease-out forwards;
   }
   
-  @keyframes footer-slide-in {
-    from {
-      opacity: 0;
-      transform: translateY(50px) scaleY(0.9);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0) scaleY(1);
-    }
-  }
-  .animate-footer-slide-in {
-      animation: footer-slide-in 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards;
-  }
-
-
   .explore-button {
     @apply w-20 h-20 rounded-full border border-foreground/50 flex items-center justify-center text-foreground uppercase text-xs tracking-widest transition-all duration-300;
   }
