@@ -107,26 +107,30 @@ export default function Chatbot() {
 
       {isOpen && (
         <div className="fixed bottom-28 right-8 z-50">
-            <Card className="w-[90vw] max-w-md h-[80vh] max-h-[700px] flex flex-col shadow-2xl backdrop-blur-xl border border-primary/20 rounded-2xl animate-zoom-in text-background">
+            <Card className="w-[90vw] max-w-md h-[80vh] max-h-[600px] flex flex-col shadow-2xl backdrop-blur-2xl border border-primary/20 rounded-2xl animate-zoom-in text-background">
                 <CardHeader className="flex flex-row items-center justify-between">
                     <div className="flex items-center gap-2">
-                        <Lottie 
-                            animationData={robotAnimation} 
-                            loop={true} 
+                        <div
                             className={cn(
                                 "transition-all duration-500",
                                 hasStartedChat ? "w-10 h-10" : "w-0 h-10"
                             )}
-                        />
+                            style={{ transitionDelay: hasStartedChat ? '0ms' : '300ms' }}
+                        >
+                            <Lottie 
+                                animationData={robotAnimation} 
+                                loop={true}
+                            />
+                        </div>
                         <CardTitle>CaudBot</CardTitle>
                     </div>
                 </CardHeader>
-                <CardContent className="flex-grow flex flex-col">
-                <ScrollArea className="flex-grow pr-4" ref={scrollAreaRef}>
+                <CardContent className="flex-grow flex flex-col overflow-hidden">
+                <ScrollArea className="flex-grow pr-4 max-w-full" ref={scrollAreaRef}>
                     <div className="space-y-4 flex flex-col min-h-full">
                      {!hasStartedChat && (
                         <div className="flex flex-col items-center justify-center flex-grow text-center">
-                            <div className="w-48 h-48">
+                            <div className="w-48 h-48 animate-zoom-in">
                                 <Lottie animationData={robotAnimation} loop={true} />
                             </div>
                             <p className="text-background/80 mt-2">Hello! How can I help you today?</p>
