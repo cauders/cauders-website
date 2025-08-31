@@ -2,19 +2,6 @@
 import Link from 'next/link';
 import MagneticLink from './MagneticLink';
 
-const quickLinks = [
-    { href: '/', label: 'Home' },
-    { href: '/services', label: 'Services' },
-    { href: '/portfolio', label: 'Portfolio' },
-    { href: '/contact', label: 'Contact' },
-];
-
-const legalLinks = [
-    { href: '#', label: 'Privacy Policy' },
-    { href: '#', label: 'Terms of Service' },
-];
-
-
 const socialLinks = [
     { href: '#', label: 'Facebook' },
     { href: '#', label: 'Instagram' },
