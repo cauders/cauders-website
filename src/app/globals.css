@@ -325,14 +325,14 @@
       hsl(var(--primary) / 0.8),
       transparent 60%
     );
-    z-index: 1;
+    z-index: -1;
     transform: skewX(-25deg);
-    animation: shimmer-border 1.8s cubic-bezier(0.23, 1, 0.32, 1) infinite;
     opacity: 0;
     transition: opacity 0.5s ease;
   }
   
   .input-gradient-border:focus-within::before {
+    animation: shimmer-border 1.8s cubic-bezier(0.23, 1, 0.32, 1) infinite;
     opacity: 1;
   }
 
