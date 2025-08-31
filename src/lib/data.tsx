@@ -19,6 +19,7 @@ export interface Project {
         text: string;
     } | null;
     gallery: {
+        type: 'web' | 'mobile';
         url: string;
         alt: string;
         aiHint: string;
@@ -40,8 +41,8 @@ const projects: Project[] = [
         text: 'Cauders delivered an exceptional platform that has significantly boosted our online sales. Their attention to detail and technical expertise were evident throughout the project.'
     },
     gallery: [
-        { url: 'https://picsum.photos/seed/ecom-gallery1/800/600', alt: 'Product page view', aiHint: 'product page' },
-        { url: 'https://picsum.photos/seed/ecom-gallery2/800/600', alt: 'Shopping cart interface', aiHint: 'shopping cart' },
+        { type: 'web', url: 'https://picsum.photos/seed/ecom-gallery1/1200/800', alt: 'Product page view', aiHint: 'product page' },
+        { type: 'web', url: 'https://picsum.photos/seed/ecom-gallery2/1200/800', alt: 'Shopping cart interface', aiHint: 'shopping cart' },
     ]
   },
   {
@@ -68,8 +69,8 @@ const projects: Project[] = [
         text: 'The new website has elevated our online presence. Cauders team was professional, creative, and delivered a product that exceeded our expectations.'
     },
     gallery: [
-        { url: 'https://picsum.photos/seed/corp-gallery1/800/600', alt: 'Homepage hero section', aiHint: 'website homepage' },
-        { url: 'https://picsum.photos/seed/corp-gallery2/800/600', alt: 'About us page', aiHint: 'team page' },
+        { type: 'web', url: 'https://picsum.photos/seed/corp-gallery1/1200/800', alt: 'Homepage hero section', aiHint: 'website homepage' },
+        { type: 'web', url: 'https://picsum.photos/seed/corp-gallery2/1200/800', alt: 'About us page', aiHint: 'team page' },
     ]
   },
     {
@@ -79,13 +80,13 @@ const projects: Project[] = [
     tags: ['React Native', 'Firebase', 'Biometrics', 'TypeScript'],
     imageUrl: 'https://picsum.photos/seed/mobile-bank/1200/800',
     aiHint: 'mobile banking',
-    details: `<p>We built a secure and user-friendly mobile banking application for a modern digital bank. The app was developed using React Native, allowing for a single codebase to target both iOS and Android platforms. Firebase was used for the backend, providing services like Authentication, Firestore database, and Cloud Functions.</p><p>Security was a top priority, so we integrated biometric authentication (Face ID and Touch ID) for secure login and transactions. TypeScript was used throughout the project to ensure code quality and maintainability.</p>`,
+    details: `<p>We built a secure and user-friendly mobile banking application for a modern digital bank. The app was developed using React Native, allowing for a single codebase to target both iOS and Android platforms. This project also included a web-based admin panel for bank employees to manage users and view analytics.</p><p>Security was a top priority, so we integrated biometric authentication (Face ID and Touch ID) for secure login and transactions. Firebase was used for the backend, providing services like Authentication, Firestore database, and Cloud Functions.</p>`,
     testimonial: null,
     gallery: [
-        { url: 'https://picsum.photos/seed/mobile-gallery1/400/800', alt: 'App login screen', aiHint: 'mobile login' },
-        { url: 'https://picsum.photos/seed/mobile-gallery2/400/800', alt: 'Account dashboard screen', aiHint: 'mobile dashboard' },
-        { url: 'https://picsum.photos/seed/mobile-gallery3/400/800', alt: 'Transaction history screen', aiHint: 'mobile transactions' },
-        { url: 'https://picsum.photos/seed/mobile-gallery4/400/800', alt: 'Fund transfer screen', aiHint: 'mobile transfer' },
+        { type: 'mobile', url: 'https://picsum.photos/seed/mobile-gallery1/400/800', alt: 'App login screen', aiHint: 'mobile login' },
+        { type: 'web', url: 'https://picsum.photos/seed/bank-admin-panel/1200/800', alt: 'Admin panel dashboard', aiHint: 'admin dashboard' },
+        { type: 'mobile', url: 'https://picsum.photos/seed/mobile-gallery2/400/800', alt: 'Account dashboard screen', aiHint: 'mobile dashboard' },
+        { type: 'mobile', url: 'https://picsum.photos/seed/mobile-gallery3/400/800', alt: 'Transaction history screen', aiHint: 'mobile transactions' },
     ]
   },
   {
@@ -115,8 +116,8 @@ const projects: Project[] = [
         text: 'This VR training has drastically reduced onboarding time and improved safety compliance. The realism is astounding.'
     },
     gallery: [
-        { url: 'https://picsum.photos/seed/vr-gallery1/800/600', alt: 'User in VR headset', aiHint: 'vr headset' },
-        { url: 'https://picsum.photos/seed/vr-gallery2/800/600', alt: 'Machine interface in VR', aiHint: 'vr interface' },
+        { type: 'web', url: 'https://picsum.photos/seed/vr-gallery1/1200/800', alt: 'User in VR headset', aiHint: 'vr headset' },
+        { type: 'web', url: 'https://picsum.photos/seed/vr-gallery2/1200/800', alt: 'Machine interface in VR', aiHint: 'vr interface' },
     ]
   },
   {
@@ -154,9 +155,9 @@ const projects: Project[] = [
     details: `<p>We developed an intelligent mobile application for a logistics company to optimize their delivery routes dynamically. The backend, built in Python, uses a machine learning model to calculate the most efficient routes based on traffic, delivery windows, and vehicle capacity. The cross-platform mobile app was built with Flutter, providing a native experience on both iOS and Android, with live map integration using the Google Maps API.</p>`,
     testimonial: null,
     gallery: [
-        { url: 'https://picsum.photos/seed/logistics-gallery1/400/800', alt: 'App showing optimized route on a map', aiHint: 'map route app' },
-        { url: 'https://picsum.photos/seed/logistics-gallery2/400/800', alt: 'Delivery list screen', aiHint: 'delivery list' },
-        { url: 'https://picsum.photos/seed/logistics-gallery3/400/800', alt: 'Driver dashboard', aiHint: 'driver dashboard' },
+        { type: 'mobile', url: 'https://picsum.photos/seed/logistics-gallery1/400/800', alt: 'App showing optimized route on a map', aiHint: 'map route app' },
+        { type: 'mobile', url: 'https://picsum.photos/seed/logistics-gallery2/400/800', alt: 'Delivery list screen', aiHint: 'delivery list' },
+        { type: 'mobile', url: 'https://picsum.photos/seed/logistics-gallery3/400/800', alt: 'Driver dashboard', aiHint: 'driver dashboard' },
     ]
   },
   {
