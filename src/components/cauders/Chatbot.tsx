@@ -68,17 +68,17 @@ export default function Chatbot() {
       <div className="fixed bottom-8 right-8 z-50">
         <Button
           size="icon"
-          className="rounded-full w-16 h-16 shadow-lg"
+          className="rounded-full w-16 h-16 shadow-lg group"
           onClick={() => setIsOpen(!isOpen)}
           aria-label="Toggle chat"
         >
-          {isOpen ? <X className="w-8 h-8 text-background" /> : <ChatIcon />}
+          {isOpen ? <X className="w-8 h-8 text-background transition-transform duration-300 group-hover:rotate-90" /> : <ChatIcon />}
         </Button>
       </div>
 
       {isOpen && (
         <div className="fixed bottom-28 right-8 z-50">
-            <Card className="w-full max-w-sm shadow-2xl animate-fade-in-up">
+            <Card className="w-full max-w-sm shadow-2xl animate-fade-in-up glass-effect border-primary/20">
                 <CardHeader className="flex flex-row items-center justify-between">
                     <CardTitle className="text-foreground">Cauders Assistant</CardTitle>
                 </CardHeader>
