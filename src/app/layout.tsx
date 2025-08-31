@@ -54,7 +54,7 @@ export default function RootLayout({
               <main className="flex-grow pt-24 z-10">
                 {children}
               </main>
-              <ScrollFadeIn>
+              <ScrollFadeIn direction="stretch-up">
                 <Footer />
               </ScrollFadeIn>
               <Chatbot />

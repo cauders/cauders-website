@@ -8,35 +8,12 @@ interface ScrollFadeInProps {
   children: ReactNode;
   className?: string;
   style?: React.CSSProperties;
-  direction?: 'up' | 'left' | 'right';
+  direction?: 'up' | 'left' | 'right' | 'stretch-up';
 }
 
 export default function ScrollFadeIn({ children, className, style, direction = 'up' }: ScrollFadeInProps) {
   const elementRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
-
-  const getInitialTransform = () => {
-    switch (direction) {
-      case 'left':
-        return 'translateX(-100px)';
-      case 'right':
-        return 'translateX(100px)';
-      case 'up':
-      default:
-        return 'translateY(40px) scale(0.95)';
-    }
-  };
-
-  const getVisibleTransform = () => {
-    switch (direction) {
-      case 'left':
-      case 'right':
-        return 'translateX(0)';
-      case 'up':
-      default:
-        return 'translateY(0) scale(1)';
-    }
-  };
 
   useEffect(() => {
     const currentRef = elementRef.current;
@@ -62,6 +39,41 @@ export default function ScrollFadeIn({ children, className, style, direction = '
       }
     };
   }, []);
+  
+  if (direction === 'stretch-up') {
+      return (
+        <div ref={elementRef} className={cn(className)}>
+          {isVisible && (
+            <div className='animate-footer-slide-in' style={style}>
+              {children}
+            </div>
+          )}
+        </div>
+      )
+  }
+
+  const getInitialTransform = () => {
+    switch (direction) {
+      case 'left':
+        return 'translateX(-100px)';
+      case 'right':
+        return 'translateX(100px)';
+      case 'up':
+      default:
+        return 'translateY(40px) scale(0.95)';
+    }
+  };
+
+  const getVisibleTransform = () => {
+    switch (direction) {
+      case 'left':
+      case 'right':
+        return 'translateX(0)';
+      case 'up':
+      default:
+        return 'translateY(0) scale(1)';
+    }
+  };
 
   return (
     <div
