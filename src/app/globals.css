@@ -163,7 +163,7 @@
   }
 
   .glass-effect {
-    background-color: hsl(var(--card) / 0.8);
+    background-color: hsl(var(--card) / 0.1);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     @apply border;

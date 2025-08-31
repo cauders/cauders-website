@@ -14,6 +14,7 @@ import { Quote } from "lucide-react";
 import ScrollFadeIn from "./ScrollFadeIn";
 import Autoplay from "embla-carousel-autoplay";
 import Link from "next/link";
+import { cn } from "@/lib/utils";
 
 export default function Testimonials() {
   const testimonials = getProjects()
@@ -56,19 +57,21 @@ export default function Testimonials() {
                         {testimonials.map((testimonial, index) => (
                         <CarouselItem key={index}>
                             <div className="p-1 h-[320px]">
-                                <Card className="bg-card border-none shadow-none h-full">
-                                    <CardContent className="flex flex-col items-center justify-center p-6 text-center h-full relative">
-                                        <Quote className="absolute top-6 left-6 w-16 h-16 text-primary/10 -z-0" strokeWidth={1}/>
-                                        <Quote className="absolute bottom-6 right-6 w-16 h-16 text-primary/10 -z-0 transform -scale-x-100 -scale-y-100" strokeWidth={1}/>
-                                        <p className="text-lg font-medium text-foreground/90 max-w-3xl mb-4 z-10">
-                                            "{testimonial!.text}"
-                                        </p>
-                                        <cite className="font-semibold text-foreground not-italic z-10">— {testimonial!.author}</cite>
-                                        <p className="text-sm text-foreground/60 mt-1 z-10">
-                                            From the <Link href={`/portfolio/${testimonial.projectSlug}`} className="text-primary hover:underline">{testimonial.projectTitle}</Link> project
-                                        </p>
-                                    </CardContent>
-                                </Card>
+                                <div className="relative w-full h-full bg-foreground/90 rounded-2xl overflow-hidden p-2">
+                                     <div className="absolute top-[-80px] left-[-80px] w-64 h-64 bg-primary/20 rounded-full blur-3xl opacity-80"></div>
+                                     <div className="absolute bottom-[-80px] right-[-80px] w-64 h-64 bg-primary/20 rounded-full blur-3xl opacity-80"></div>
+                                    <Card className="glass-effect w-full h-full rounded-xl border-border/20">
+                                        <CardContent className="flex flex-col items-center justify-center p-6 text-center h-full">
+                                            <p className="text-lg font-medium text-background/90 max-w-3xl mb-4 z-10">
+                                                "{testimonial!.text}"
+                                            </p>
+                                            <cite className="font-semibold text-background not-italic z-10">— {testimonial!.author}</cite>
+                                            <p className="text-sm text-background/60 mt-1 z-10">
+                                                From the <Link href={`/portfolio/${testimonial.projectSlug}`} className="text-primary/90 hover:underline">{testimonial.projectTitle}</Link> project
+                                            </p>
+                                        </CardContent>
+                                    </Card>
+                                </div>
                             </div>
                         </CarouselItem>
                         ))}
