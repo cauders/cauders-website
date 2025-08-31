@@ -19,7 +19,7 @@ import { Card } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
 import { submitContactForm } from "@/app/actions";
 import ScrollFadeIn from "./ScrollFadeIn";
-import { Loader2, Mail, MapPin, Phone, Github, Twitter, Linkedin } from "lucide-react";
+import { Loader2, Mail, MapPin, Phone, Github, Instagram, Linkedin } from "lucide-react";
 import Link from "next/link";
 import { Separator } from "../ui/separator";
 
@@ -103,17 +103,17 @@ export default function ContactPageContent() {
                         <Separator className="my-8" />
                         <div className="flex items-center gap-2">
                            <Button variant="ghost" size="icon" asChild>
-                                <Link href="#" aria-label="Twitter">
-                                    <Twitter className="h-5 w-5 text-foreground/70 hover:text-primary transition-colors" />
+                                <Link href="https://www.instagram.com/ccauders/" aria-label="Instagram">
+                                    <Instagram className="h-5 w-5 text-foreground/70 hover:text-primary transition-colors" />
                                 </Link>
                             </Button>
                             <Button variant="ghost" size="icon" asChild>
-                                <Link href="#" aria-label="GitHub">
+                                <Link href="https://github.com/cauders" aria-label="GitHub">
                                     <Github className="h-5 w-5 text-foreground/70 hover:text-primary transition-colors" />
                                 </Link>
                             </Button>
                             <Button variant="ghost" size="icon" asChild>
-                                <Link href="#" aria-label="LinkedIn">
+                                <Link href="https://www.linkedin.com/company/108785409/admin/dashboard/" aria-label="LinkedIn">
                                     <Linkedin className="h-5 w-5 text-foreground/70 hover:text-primary transition-colors" />
                                 </Link>
                             </Button>
