@@ -140,7 +140,7 @@ export default function PortfolioPreview() {
   return (
     <div
       ref={sectionRef}
-      className="relative flex flex-col justify-center py-20"
+      className="relative flex flex-col justify-center py-20 h-full"
       onMouseMove={handleMouseMove}
       onMouseDown={handleMouseDown}
       onMouseUp={handleMouseUp}
