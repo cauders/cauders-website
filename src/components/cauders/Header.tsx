@@ -42,14 +42,14 @@ const MagneticLink: FC<{href: string, onClick: () => void, children: ReactNode, 
       </Link>
       <svg
         className="absolute top-0 left-0 w-full h-full pointer-events-none z-0"
-        viewBox="0 0 100 40"
+        viewBox="0 0 120 50"
         preserveAspectRatio="none"
       >
         <rect
           className="outline-pill"
           x="1" y="1"
-          width="98" height="38"
-          rx="19" 
+          width="118" height="48"
+          rx="24" 
           fill="none"
           strokeWidth="2"
         />
