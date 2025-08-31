@@ -9,14 +9,14 @@ const quickLinks = [
 ];
 
 const companyLinks = [
-    { href: '#', label: 'About Us' },
+    { href: '/about', label: 'About Us' },
     { href: '/contact', label: 'Contact' },
-    { href: '#', label: 'Careers' },
+    { href: '/careers', label: 'Careers' },
 ]
 
 const legalLinks = [
-    { href: '#', label: 'Privacy Policy' },
-    { href: '#', label: 'Terms of Service' },
+    { href: '/#', label: 'Privacy Policy' },
+    { href: '/#', label: 'Terms of Service' },
 ]
 
 const socialLinks = [
