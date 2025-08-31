@@ -3,8 +3,9 @@
 
 import { useRef, useEffect, useState, Suspense } from 'react';
 import { cn } from '@/lib/utils';
-import StickyScroll3D from './StickyScroll3D';
+import StickyScroll3D from '@/components/cauders/StickyScroll3D';
 import { Skeleton } from '../ui/skeleton';
+import PortfolioPreview from '../cauders/PortfolioPreview';
 
 const textLines = [
   { text: "WE ARCHITECT", direction: "left" },
@@ -68,39 +69,42 @@ const PortfolioScrollText = () => {
   }, []);
 
   return (
-    <div ref={containerRef} className="relative flex flex-col h-[400vh] bg-background">
-      <div className="absolute inset-0 z-0">
-         <Suspense fallback={<Skeleton className="w-full h-full" />}>
-           <StickyScroll3D scrollProgress={progress} />
-         </Suspense>
-      </div>
-      <div className="sticky top-0 flex-shrink-0 flex items-center justify-center overflow-hidden h-[100vh]">
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            {textLines.map((line, index) => (
-                <div key={index} className="overflow-hidden py-1">
-                    <h2
-                        className={cn(
-                            "text-5xl md:text-7xl font-extrabold text-foreground uppercase tracking-tight transition-transform duration-300 ease-out font-headline",
-                            line.className
-                        )}
-                        style={{ transform: transforms[index] }}
-                    >
-                      <span
-                        className="inline-block px-4 py-2 rounded-md"
-                        style={{
-                          backgroundColor: 'hsl(var(--background) / 0.5)',
-                          backdropFilter: 'blur(8px)',
-                          WebkitBackdropFilter: 'blur(8px)',
-                        }}
-                      >
-                        {line.text}
-                      </span>
-                    </h2>
+    <section id="portfolio-preview" className="bg-background">
+        <div ref={containerRef} className="relative flex flex-col h-[400vh] bg-background">
+            <div className="absolute inset-0 z-0">
+                <Suspense fallback={<Skeleton className="w-full h-full" />}>
+                <StickyScroll3D scrollProgress={progress} />
+                </Suspense>
+            </div>
+            <div className="sticky top-0 flex-shrink-0 flex items-center justify-center overflow-hidden h-[100vh]">
+                <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                    {textLines.map((line, index) => (
+                        <div key={index} className="overflow-hidden py-1">
+                            <h2
+                                className={cn(
+                                    "text-5xl md:text-7xl font-extrabold text-foreground uppercase tracking-tight transition-transform duration-300 ease-out font-headline",
+                                    line.className
+                                )}
+                                style={{ transform: transforms[index] }}
+                            >
+                            <span
+                                className="inline-block px-4 py-2 rounded-md"
+                                style={{
+                                backgroundColor: 'hsl(var(--background) / 0.5)',
+                                backdropFilter: 'blur(8px)',
+                                WebkitBackdropFilter: 'blur(8px)',
+                                }}
+                            >
+                                {line.text}
+                            </span>
+                            </h2>
+                        </div>
+                    ))}
                 </div>
-            ))}
+            </div>
         </div>
-      </div>
-    </div>
+        <PortfolioPreview />
+    </section>
   );
 };
 

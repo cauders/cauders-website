@@ -10,7 +10,6 @@ import ScrollFadeIn from "./ScrollFadeIn";
 import { ArrowRight } from "lucide-react";
 import React, { useRef, useState, useEffect, useCallback } from "react";
 import { cn } from "@/lib/utils";
-import PortfolioScrollText from "./PortfolioScrollText";
 
 const CARD_ANGLE = 30; // Angle between each card in the carousel
 
@@ -139,8 +138,7 @@ export default function PortfolioPreview() {
   }, []);
 
   return (
-    <section
-      id="portfolio-preview"
+    <div
       ref={sectionRef}
       className="relative flex flex-col justify-center bg-background py-20"
       onMouseMove={handleMouseMove}
@@ -148,8 +146,6 @@ export default function PortfolioPreview() {
       onMouseUp={handleMouseUp}
       onMouseLeave={handleMouseLeave}
     >
-      <PortfolioScrollText />
-
       <div
         ref={followerRef}
         className={cn(
@@ -241,6 +237,6 @@ export default function PortfolioPreview() {
           </Button>
         </ScrollFadeIn>
       </div>
-    </section>
+    </div>
   );
 }
