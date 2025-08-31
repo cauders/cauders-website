@@ -16,16 +16,26 @@ const navLinks = [
   { href: '/contact',label: 'Contact' }
 ];
 
-const MagneticLink: FC<{children: ReactNode, href: string, onClick: () => void, className?: string, style?: React.CSSProperties}> = ({ children, ...props }) => {
+const MagneticLink: FC<{href: string, onClick: () => void, children: ReactNode, style?: React.CSSProperties, className?:string}> = ({ href, onClick, children, ...props }) => {
   const ref = useRef<HTMLAnchorElement>(null);
   const { x, y } = useMagneticEffect(ref);
 
   return (
-    <Link ref={ref} {...props} style={{...props.style, transform: `translate(${x}px, ${y}px)`}}>
+    <Link 
+      ref={ref} 
+      href={href}
+      onClick={onClick}
+      {...props}
+      style={{
+        ...props.style,
+        transform: `translate(${x}px, ${y}px)`
+      }}
+    >
       {children}
     </Link>
-  )
-}
+  );
+};
+
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
