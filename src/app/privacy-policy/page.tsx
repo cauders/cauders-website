@@ -3,6 +3,7 @@
 
 import ScrollFadeIn from '@/components/cauders/ScrollFadeIn';
 import { Card, CardContent } from '@/components/ui/card';
+import { cn } from '@/lib/utils';
 import { ShieldCheck } from 'lucide-react';
 
 const policySections = [
@@ -56,7 +57,13 @@ const policySections = [
 
 export default function PrivacyPolicyPage() {
   return (
-    <div className="bg-background text-foreground">
+    <div className="bg-background text-foreground relative overflow-hidden">
+        {/* Background decorative elements */}
+        <div className="absolute top-[-10rem] right-[-10rem] w-96 h-96 bg-primary/10 rounded-full blur-3xl -z-10"></div>
+        <div className="absolute bottom-[-15rem] left-[-15rem] w-96 h-96 bg-primary/10 rounded-full blur-3xl -z-10"></div>
+        <div className="absolute top-1/2 right-1/4 w-64 h-64 bg-primary/5 rounded-full blur-2xl -z-10"></div>
+
+
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
         <ScrollFadeIn>
           <header className="mb-16 text-center">
@@ -66,12 +73,14 @@ export default function PrivacyPolicyPage() {
         </ScrollFadeIn>
 
         <div className="max-w-4xl mx-auto">
-            <Card className="bg-card border shadow-lg">
+            <Card className="glass-effect shadow-lg">
                 <CardContent className="p-8 md:p-12 space-y-10">
                     <ScrollFadeIn>
-                        <p className="text-lg text-foreground/80">
-                            Your privacy is critically important to us. Cauders ("we," "us," or "our") is committed to protecting the confidentiality and security of your personal information. This Privacy Policy outlines how we collect, use, and safeguard the information you provide when you interact with our website, services, and digital platforms.
-                        </p>
+                        <div className="text-highlight-group">
+                            <p className="text-lg text-foreground/80">
+                                Your privacy is critically important to us. Cauders ("we," "us," or "our") is committed to protecting the confidentiality and security of your personal information. This Privacy Policy outlines how we collect, use, and safeguard the information you provide when you interact with our website, services, and digital platforms.
+                            </p>
+                        </div>
                     </ScrollFadeIn>
                     
                     {policySections.map((section, index) => (
@@ -83,7 +92,7 @@ export default function PrivacyPolicyPage() {
                                     </div>
                                     <div>
                                         <h2 className="text-2xl font-bold text-foreground mb-3">{section.title}</h2>
-                                        <div className="text-foreground/80 space-y-4">
+                                        <div className="text-foreground/80 space-y-4 text-highlight-group">
                                             {section.content}
                                         </div>
                                     </div>
