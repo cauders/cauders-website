@@ -9,7 +9,7 @@ import React from 'react';
 
 const WordHighlighter = ({ text }: { text: string }) => {
   return (
-    <p>
+    <p className="text-highlight-group">
       {text.split(' ').map((word, index) => (
         <React.Fragment key={index}>
           <span className="word-highlight">{word}</span>{' '}
@@ -25,12 +25,10 @@ const policySections = [
     title: "Information We Collect",
     content: (
       <>
-        <p className="text-highlight-group">
-          We may collect personal and non-personal information through various methods, including:
-        </p>
+        <WordHighlighter text="We may collect personal and non-personal information through various methods, including:" />
         <ul className="list-disc list-outside space-y-2 pl-6 mt-4">
-          <li><strong className="word-highlight">Information you provide to us:</strong> <span className="text-highlight-group">This includes data you voluntarily submit when you contact us, request a quote, subscribe to a newsletter, or fill out a form. This may include your name, company name, email address, phone number, and any other information you choose to provide.</span></li>
-          <li><strong className="word-highlight">Information we collect automatically:</strong> <span className="text-highlight-group">When you visit our website, we may automatically collect certain technical data about your device and browsing activity. This may include your IP address, browser type, operating system, pages viewed, and the duration of your visit. This data is collected using standard technologies such as cookies and log files.</span></li>
+          <li><strong className="word-highlight">Information you provide to us:</strong> <WordHighlighter text="This includes data you voluntarily submit when you contact us, request a quote, subscribe to a newsletter, or fill out a form. This may include your name, company name, email address, phone number, and any other information you choose to provide." /></li>
+          <li><strong className="word-highlight">Information we collect automatically:</strong> <WordHighlighter text="When you visit our website, we may automatically collect certain technical data about your device and browsing activity. This may include your IP address, browser type, operating system, pages viewed, and the duration of your visit. This data is collected using standard technologies such as cookies and log files." /></li>
         </ul>
       </>
     )
@@ -39,33 +37,31 @@ const policySections = [
     title: "How We Use Your Information",
     content: (
         <>
-            <p className="text-highlight-group">
-                We use the collected information for a variety of purposes, including:
-            </p>
+            <WordHighlighter text="We use the collected information for a variety of purposes, including:" />
             <ul className="list-disc list-outside space-y-2 pl-6 mt-4">
-                <li><strong className="word-highlight">To provide and improve our services:</strong> <span className="text-highlight-group">We use your information to fulfill your requests, manage our relationship with you, and enhance the functionality and quality of our services.</span></li>
-                <li><strong className="word-highlight">For communication:</strong> <span className="text-highlight-group">We may use your contact details to respond to your inquiries, send you project updates, and provide you with information about our services.</span></li>
-                <li><strong className="word-highlight">For marketing and analytics:</strong> <span className="text-highlight-group">We may use non-personal data to analyze website traffic, understand user behavior, and improve our marketing strategies. We may also use your contact information to send you promotional materials about our services, which you can opt-out of at any time.</span></li>
-                <li><strong className="word-highlight">For security and legal compliance:</strong> <span className="text-highlight-group">We use your data to detect and prevent fraud, protect the security of our systems, and to comply with our legal obligations.</span></li>
+                <li><strong className="word-highlight">To provide and improve our services:</strong> <WordHighlighter text="We use your information to fulfill your requests, manage our relationship with you, and enhance the functionality and quality of our services." /></li>
+                <li><strong className="word-highlight">For communication:</strong> <WordHighlighter text="We may use your contact details to respond to your inquiries, send you project updates, and provide you with information about our services." /></li>
+                <li><strong className="word-highlight">For marketing and analytics:</strong> <WordHighlighter text="We may use non-personal data to analyze website traffic, understand user behavior, and improve our marketing strategies. We may also use your contact information to send you promotional materials about our services, which you can opt-out of at any time." /></li>
+                <li><strong className="word-highlight">For security and legal compliance:</strong> <WordHighlighter text="We use your data to detect and prevent fraud, protect the security of our systems, and to comply with our legal obligations." /></li>
             </ul>
       </>
     )
   },
   {
     title: "Data Sharing and Disclosure",
-    content: <p className="text-highlight-group">Cauders will not sell, rent, or lease your personal information to third parties. We may, however, share your information with trusted third-party service providers who assist us in operating our business and delivering our services, such as web hosting, analytics, and payment processing. These providers are bound by strict confidentiality agreements and are only permitted to use your information for the purposes for which it was shared. We may also disclose your information if required by law or a valid legal process.</p>
+    content: <WordHighlighter text="Cauders will not sell, rent, or lease your personal information to third parties. We may, however, share your information with trusted third-party service providers who assist us in operating our business and delivering our services, such as web hosting, analytics, and payment processing. These providers are bound by strict confidentiality agreements and are only permitted to use your information for the purposes for which it was shared. We may also disclose your information if required by law or a valid legal process." />
   },
   {
     title: "Data Security",
-    content: <p className="text-highlight-group">We implement a range of industry-standard security measures, including encryption, firewalls, and secure access controls, to protect your personal information from unauthorized access, loss, or misuse. While we strive to protect your data, no method of transmission over the internet or electronic storage is 100% secure. Therefore, we cannot guarantee its absolute security.</p>
+    content: <WordHighlighter text="We implement a range of industry-standard security measures, including encryption, firewalls, and secure access controls, to protect your personal information from unauthorized access, loss, or misuse. While we strive to protect your data, no method of transmission over the internet or electronic storage is 100% secure. Therefore, we cannot guarantee its absolute security." />
   },
   {
     title: "Your Rights",
-    content: <p className="text-highlight-group">You have the right to access, update, and request the deletion of your personal information that we hold. If you wish to exercise these rights, please contact us at <a href="mailto:info@cauders.com" className="text-primary hover:underline">info@cauders.com</a>. We will respond to your request in a timely manner and in accordance with applicable laws.</p>
+    content: <WordHighlighter text="You have the right to access, update, and request the deletion of your personal information that we hold. If you wish to exercise these rights, please contact us at info@cauders.com. We will respond to your request in a timely manner and in accordance with applicable laws." />
   },
   {
     title: "Changes to this Privacy Policy",
-    content: <p className="text-highlight-group">We may update this Privacy Policy from time to time. Any changes will be posted on this page with a revised "Last Updated" date. We encourage you to review this policy periodically to stay informed about how we are protecting your information.</p>
+    content: <WordHighlighter text="We may update this Privacy Policy from time to time. Any changes will be posted on this page with a revised 'Last Updated' date. We encourage you to review this policy periodically to stay informed about how we are protecting your information." />
   }
 ];
 
@@ -90,13 +86,11 @@ export default function PrivacyPolicyPage() {
             <Card className="glass-effect shadow-lg">
                 <CardContent className="p-8 md:p-12 space-y-10">
                     <ScrollFadeIn>
-                        <p className="text-lg text-foreground/80 text-highlight-group">
-                            Your privacy is critically important to us. Cauders ("we," "us," or "our") is committed to protecting the confidentiality and security of your personal information. This Privacy Policy outlines how we collect, use, and safeguard the information you provide when you interact with our website, services, and digital platforms.
-                        </p>
+                        <WordHighlighter text="Your privacy is critically important to us. Cauders ('we,' 'us,' or 'our') is committed to protecting the confidentiality and security of your personal information. This Privacy Policy outlines how we collect, use, and safeguard the information you provide when you interact with our website, services, and digital platforms." />
                     </ScrollFadeIn>
                     
                     {policySections.map((section, index) => (
-                         <ScrollFadeIn key={index} delay={`delay-${(index + 1) * 100}`}>
+                         <ScrollFadeIn key={index} style={{ animationDelay: `${(index + 1) * 100}ms`}}>
                             <section>
                                 <div className="flex items-start gap-4">
                                     <div className="flex-shrink-0 text-primary font-bold text-2xl mt-1">
