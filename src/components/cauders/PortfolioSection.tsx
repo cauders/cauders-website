@@ -88,7 +88,7 @@ export default function PortfolioSection() {
                     <AnimatedTextSection lines={textLinesBottom} scrollProgress={bottomTextProgress} />
                 </div>
             </div>
-             <div className="container mx-auto px-4 sm:px-6 lg:px-8 pb-32 text-center -mt-24">
+             <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32 text-center -mt-24">
                 <ScrollFadeIn>
                 <Button
                     size="lg"
