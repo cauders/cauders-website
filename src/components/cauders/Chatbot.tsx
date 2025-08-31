@@ -185,21 +185,28 @@ export default function Chatbot() {
                 </ScrollArea>
                 </CardContent>
                 <CardFooter className="pt-4">
-                <form onSubmit={handleSubmit} className="flex w-full items-center space-x-2">
-                    <div className="input-gradient-border relative flex-grow">
-                        <Input
-                        value={input}
-                        onChange={(e) => setInput(e.target.value)}
-                        placeholder="Ask about our services..."
-                        disabled={isLoading}
-                        className="input-gradient-border-inner h-12 pr-12"
-                        />
-                        <Button type="submit" variant="ghost" size="icon" className="absolute right-2 top-1/2 -translate-y-1/2 h-10 w-10 text-primary" disabled={isLoading || !input.trim()}>
-                            <Send className="h-5 w-5" strokeWidth={2.5} />
-                            <span className="sr-only">Send</span>
-                        </Button>
-                    </div>
-                </form>
+                  <form 
+                    onSubmit={handleSubmit} 
+                    className="flex w-full items-center space-x-2 bg-background rounded-full p-1 shadow-sm border border-transparent focus-within:border-primary focus-within:shadow-none focus-within:border-2 transition-all duration-300"
+                  >
+                    <Input
+                      value={input}
+                      onChange={(e) => setInput(e.target.value)}
+                      placeholder="Ask a question..."
+                      disabled={isLoading}
+                      className="flex-grow bg-transparent border-0 focus:ring-0 focus-visible:ring-offset-0 px-3 text-foreground placeholder:text-muted-foreground"
+                    />
+                    <Button 
+                      type="submit" 
+                      variant="ghost" 
+                      size="icon" 
+                      className="h-9 w-9 text-primary disabled:opacity-50" 
+                      disabled={isLoading || !input.trim()}
+                    >
+                      <Send className="h-5 w-5" />
+                      <span className="sr-only">Send</span>
+                    </Button>
+                  </form>
                 </CardFooter>
             </Card>
         </div>
