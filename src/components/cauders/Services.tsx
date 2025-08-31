@@ -7,9 +7,10 @@ import { Button } from '../ui/button';
 import { cn } from '@/lib/utils';
 import { ArrowRight, CheckCircle } from 'lucide-react';
 import ScrollFadeIn from './ScrollFadeIn';
-import { Card, CardTitle } from '../ui/card';
+import { Card, CardTitle, CardContent } from '../ui/card';
 import { useRef } from 'react';
 import { useScrollProgress } from '@/hooks/useScrollProgress';
+import Image from 'next/image';
 
 const whyChooseUs = [
   'Future-ready digital solutions',
@@ -59,25 +60,32 @@ const ServiceSection = ({ service, index }: { service: ReturnType<typeof getServ
                              style={{
                                 opacity: cardOpacity,
                                 transform: `scale(${cardScale})`,
-                            }}
+                             }}
                              className={cn("flex items-center justify-center", isEven ? 'md:order-2' : 'md:order-1')}
                         >
                            <div className="flip-card h-[400px] w-full max-w-sm">
                               <div className="flip-card-inner relative w-full h-full">
                                   {/* Front of the card */}
                                   <div className="flip-card-front absolute w-full h-full">
-                                      <Card className="h-full text-center flex flex-col justify-center items-center bg-card border shadow-lg">
-                                          <div className="bg-primary/10 rounded-full p-4 w-fit mb-4">
-                                              <service.icon className="w-12 h-12 text-primary" />
-                                          </div>
-                                          <CardTitle className="text-foreground text-2xl">{service.title}</CardTitle>
+                                      <Card className="h-full bg-card border shadow-lg overflow-hidden">
+                                        {service.caseStudy?.imageUrl && (
+                                            <div className="relative w-full h-full">
+                                                <Image 
+                                                    src={service.caseStudy.imageUrl} 
+                                                    alt={service.title} 
+                                                    fill
+                                                    className="object-cover"
+                                                />
+                                            </div>
+                                        )}
                                       </Card>
                                   </div>
                                   {/* Back of the card */}
                                   <div className="flip-card-back absolute w-full h-full">
                                       <Card className={cn("h-full flex flex-col justify-center animated-border-card bg-card border text-left p-6")}>
                                           <div className="flex-grow flex flex-col justify-center items-center text-center">
-                                            <Button asChild>
+                                            <CardTitle className="text-foreground text-2xl mb-4">{service.title}</CardTitle>
+                                            <Button asChild className="button">
                                                 <Link href={`/services/${service.slug}`}>
                                                     Learn More <ArrowRight className="ml-2 h-4 w-4" />
                                                 </Link>
