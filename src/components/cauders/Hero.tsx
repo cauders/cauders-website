@@ -39,8 +39,8 @@ export default function Hero() {
                         Unconventional thinking
                     </p>
                 </div>
-                <h1 className="text-6xl md:text-8xl font-extrabold tracking-tight text-foreground mt-2 leading-tight font-headline">
-                  <div className='py-2'>
+                <h1 className="text-6xl md:text-8xl font-extrabold tracking-tight text-foreground mt-2 leading-snug font-headline">
+                  <div>
                     {words1.map((word, wordIndex) => (
                       <span key={wordIndex} className="inline-block overflow-hidden">
                         <span 
@@ -53,7 +53,7 @@ export default function Hero() {
                       </span>
                     ))}
                   </div>
-                   <div className='py-2'>
+                   <div>
                     {words2.map((word, wordIndex) => (
                        <span key={wordIndex} className="inline-block overflow-hidden">
                           <span 
