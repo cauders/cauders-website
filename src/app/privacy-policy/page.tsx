@@ -38,7 +38,7 @@ export default function PrivacyPolicyPage() {
                   <li><strong>To provide and improve our services:</strong> We use your information to fulfill your requests, manage our relationship with you, and enhance the functionality and quality of our services.</li>
                   <li><strong>For communication:</strong> We may use your contact details to respond to your inquiries, send you project updates, and provide you with information about our services.</li>
                   <li><strong>For marketing and analytics:</strong> We may use non-personal data to analyze website traffic, understand user behavior, and improve our marketing strategies. We may also use your contact information to send you promotional materials about our services, which you can opt-out of at any time.</li>
-                  <li><strong>For security and legal compliance:</strong> We use your data to detect and prevent fraud, protect the security of our systems, and comply with our legal obligations.</li>
+                  <li><strong>For security and legal compliance:</strong> We use your data to detect and prevent fraud, protect the security of our systems, and to comply with our legal obligations.</li>
                 </ul>
 
                 <h2>3. Data Sharing and Disclosure</h2>
