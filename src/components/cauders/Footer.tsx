@@ -71,7 +71,7 @@ export default function Footer() {
             {/* Column 3: Contact & Legal */}
             <div className="lg:col-span-4">
                  <h3 className="font-semibold tracking-wider uppercase mb-4">Get in Touch</h3>
-                 <a href="mailto:hello@cauders.com" className="block hover:text-primary transition-colors mb-8">hello@cauders.com</a>
+                 <a href="mailto:info@cauders.com" className="block hover:text-primary transition-colors mb-8">info@cauders.com</a>
 
                  <h3 className="font-semibold tracking-wider uppercase mb-4">Legal</h3>
                  <nav className="flex flex-col gap-3">

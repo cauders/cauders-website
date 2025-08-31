@@ -108,7 +108,7 @@ export default function CareersPage() {
           <ScrollFadeIn className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground">Current Openings</h2>
             <p className="mt-4 text-lg text-foreground/70 max-w-2xl mx-auto">
-              Find your next challenge. If you don't see a role that fits, feel free to reach out. We're always looking for great talent.
+              Find your next challenge. If you don't see a role that fits, feel free to reach out at hr@cauders.com. We're always looking for great talent.
             </p>
           </ScrollFadeIn>
 

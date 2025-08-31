@@ -78,7 +78,7 @@ function HomePageContact() {
                   </p>
                   <div className="mt-8 space-y-2 text-foreground/80">
                       <p>+1 347-790-1115</p>
-                      <p>contact@exclusiveprs.info</p>
+                      <p>info@cauders.com</p>
                   </div>
                 </div>
             </ScrollFadeIn>

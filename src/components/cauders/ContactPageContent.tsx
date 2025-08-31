@@ -89,7 +89,7 @@ export default function ContactPageContent() {
                         <div className="space-y-6">
                             <div className="flex items-center gap-4">
                                 <Mail className="w-6 h-6 text-primary" />
-                                <a href="mailto:hello@cauders.com" className="text-foreground/80 hover:text-primary transition-colors">hello@cauders.com</a>
+                                <a href="mailto:info@cauders.com" className="text-foreground/80 hover:text-primary transition-colors">info@cauders.com</a>
                             </div>
                             <div className="flex items-center gap-4">
                                 <Phone className="w-6 h-6 text-primary" />
