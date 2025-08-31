@@ -4,6 +4,7 @@
 import { cn } from '@/lib/utils';
 import ScrollFadeIn from '@/components/cauders/ScrollFadeIn';
 import AnimatedLine from '@/components/cauders/AnimatedLine';
+import Contact from '@/components/cauders/Contact';
 
 const contentSections = [
   {
@@ -61,6 +62,7 @@ export default function AboutPage() {
                     </div>
                 </div>
             </section>
+            <Contact />
         </div>
     );
 }

@@ -72,9 +72,9 @@ function HomePageContact() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
             <ScrollFadeIn className="h-full flex flex-col justify-center">
                 <div>
-                  <h2 className="text-3xl md:text-4xl font-bold text-foreground">Let's Talk!</h2>
+                  <h2 className="text-3xl md:text-4xl font-bold text-foreground">Let's Discuss Your Project</h2>
                   <p className="mt-4 text-lg text-foreground/70">
-                      The best testimonials paint a picture with words so readers can learn exactly.
+                      Have an idea? We'd love to hear about it. Fill out the form, and we'll get back to you to schedule a consultation.
                   </p>
                   <div className="mt-8 space-y-2 text-foreground/80">
                       <p>+1 347-790-1115</p>
