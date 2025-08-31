@@ -27,20 +27,33 @@ const MagneticLink: FC<{href: string, onClick: () => void, children: ReactNode, 
         transform: `translate(${x}px, ${y}px)`,
         transition: 'transform 0.2s cubic-bezier(0.165, 0.84, 0.44, 1)',
       }}
-       className="relative group"
+      className="relative group"
     >
       <Link
         href={href}
         onClick={onClick}
         className={cn(
-            "relative text-3xl font-medium text-background z-10 transition-colors duration-300 group-hover:text-primary-foreground",
+            "relative text-3xl font-medium text-background z-10 transition-colors duration-300 px-8 py-4",
             props.className
         )}
         style={props.style}
       >
         {children}
       </Link>
-       <span className="absolute inset-0 bg-primary rounded-full scale-0 transition-transform duration-300 ease-out group-hover:scale-100 z-0"></span>
+      <svg
+        className="absolute top-0 left-0 w-full h-full pointer-events-none z-0"
+        viewBox="0 0 100 40"
+        preserveAspectRatio="none"
+      >
+        <rect
+          className="outline-pill"
+          x="1" y="1"
+          width="98" height="38"
+          rx="19" 
+          fill="none"
+          strokeWidth="2"
+        />
+      </svg>
     </div>
   );
 };
@@ -49,6 +62,7 @@ const MagneticLink: FC<{href: string, onClick: () => void, children: ReactNode, 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [hasScrolled, setHasScrolled] = useState(false);
+  const navRef = useRef<HTMLElement>(null);
   
   useEffect(() => {
     const handleScroll = () => {
@@ -115,14 +129,14 @@ export default function Header() {
                 </div>
             </div>
 
-            <nav className="flex-grow flex items-center justify-center space-x-12">
+            <nav ref={navRef} className="flex-grow flex items-center justify-center space-x-12">
                 {navLinks.map((link, index) => (
                 <MagneticLink
                     key={link.href}
                     href={link.href}
                     onClick={() => setIsMenuOpen(false)}
                     className={cn(
-                        "opacity-0 px-8 py-4",
+                        "opacity-0",
                         isMenuOpen && "animate-fade-in-down"
                     )}
                      style={{ animationDelay: `${500 + index * 400}ms` }}
