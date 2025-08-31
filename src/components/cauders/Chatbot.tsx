@@ -80,7 +80,7 @@ export default function Chatbot() {
         <div className="fixed bottom-28 right-8 z-50">
             <Card className="w-full max-w-sm shadow-2xl animate-fade-in-up glass-effect border-primary/20">
                 <CardHeader className="flex flex-row items-center justify-between">
-                    <CardTitle className="text-foreground">Cauders Assistant</CardTitle>
+                    <CardTitle className="text-foreground">Cauders Bot</CardTitle>
                 </CardHeader>
                 <CardContent>
                 <ScrollArea className="h-80 pr-4" ref={scrollAreaRef}>
