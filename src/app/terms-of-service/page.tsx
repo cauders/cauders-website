@@ -16,8 +16,7 @@ export default function TermsOfServicePage() {
 
         <div className="max-w-4xl mx-auto">
          <ScrollFadeIn delay="delay-200">
-          <Card className="bg-card border shadow-sm">
-            <CardContent className="p-8 prose prose-lg dark:prose-invert text-foreground/80 max-w-none">
+            <div className="prose prose-lg dark:prose-invert text-foreground/80 max-w-none">
               
               <h2>1. Definitions</h2>
               <p><strong>"Cauders," "we," "us," or "our"</strong> refers to the IT company, Cauders.</p>
@@ -65,8 +64,7 @@ export default function TermsOfServicePage() {
               <p>
                 If you have any questions about these Terms and Conditions, please contact us at <a href="mailto:info@cauders.com" className="text-primary hover:underline">info@cauders.com</a>.
               </p>
-            </CardContent>
-          </Card>
+            </div>
           </ScrollFadeIn>
         </div>
       </div>

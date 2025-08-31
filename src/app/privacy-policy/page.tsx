@@ -17,8 +17,7 @@ export default function PrivacyPolicyPage() {
 
         <div className="max-w-4xl mx-auto">
           <ScrollFadeIn delay="delay-200">
-            <Card className="bg-card border shadow-sm">
-              <CardContent className="p-8 prose prose-lg dark:prose-invert text-foreground/80 max-w-none">
+            <div className="prose prose-lg dark:prose-invert text-foreground/80 max-w-none">
                 <p>
                   Your privacy is critically important to us. Cauders ("we," "us," or "our") is committed to protecting the confidentiality and security of your personal information. This Privacy Policy outlines how we collect, use, and safeguard the information you provide when you interact with our website, services, and digital platforms.
                 </p>
@@ -60,8 +59,7 @@ export default function PrivacyPolicyPage() {
                   We may update this Privacy Policy from time to time. Any changes will be posted on this page with a revised "Last Updated" date. We encourage you to review this policy periodically to stay informed about how we are protecting your information.
                 </p>
 
-              </CardContent>
-            </Card>
+            </div>
           </ScrollFadeIn>
         </div>
       </div>
