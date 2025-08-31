@@ -2,8 +2,9 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import ScrollFadeIn from '@/components/cauders/ScrollFadeIn';
-import { ArrowRight, Briefcase, Coffee, Puzzle } from 'lucide-react';
+import { ArrowRight, Briefcase, Coffee, Puzzle, CheckCircle } from 'lucide-react';
 import Link from 'next/link';
+import { cn } from '@/lib/utils';
 
 const jobOpenings = [
   {
@@ -70,18 +71,31 @@ export default function CareersPage() {
             </ScrollFadeIn>
              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                  {benefits.map((benefit, index) => (
-                     <ScrollFadeIn key={benefit.title} delay={`delay-${index * 100}`}>
-                        <Card className="bg-card h-full text-center border">
-                            <CardHeader>
-                                <div className="mx-auto bg-primary/10 rounded-full p-4 w-fit mb-4">
-                                    <benefit.icon className="w-8 h-8 text-primary" />
+                     <ScrollFadeIn key={benefit.title} delay={`delay-${index * 100}`} className="h-full">
+                        <div className="flip-card h-full min-h-[300px] md:min-h-[320px]">
+                            <div className="flip-card-inner relative w-full h-full">
+                                <div className="flip-card-front absolute w-full h-full">
+                                    <Card className="bg-card h-full text-center border flex flex-col">
+                                        <CardHeader className="flex-grow">
+                                            <div className="mx-auto bg-primary/10 rounded-full p-4 w-fit mb-4">
+                                                <benefit.icon className="w-8 h-8 text-primary" />
+                                            </div>
+                                            <CardTitle className="text-foreground">{benefit.title}</CardTitle>
+                                        </CardHeader>
+                                        <CardContent>
+                                            <p className="text-foreground/80">{benefit.description}</p>
+                                        </CardContent>
+                                    </Card>
                                 </div>
-                                <CardTitle className="text-foreground">{benefit.title}</CardTitle>
-                            </CardHeader>
-                            <CardContent>
-                                <p className="text-foreground/80">{benefit.description}</p>
-                            </CardContent>
-                        </Card>
+                                <div className="flip-card-back absolute w-full h-full">
+                                    <Card className={cn("h-full bg-card flex flex-col justify-center items-center animated-border-card")}>
+                                        <CardContent className="text-center">
+                                            <p className="text-foreground/80">{benefit.description}</p>
+                                        </CardContent>
+                                    </Card>
+                                </div>
+                            </div>
+                        </div>
                      </ScrollFadeIn>
                  ))}
              </div>
@@ -102,24 +116,45 @@ export default function CareersPage() {
             <div className="space-y-6">
               {jobOpenings.map((job, index) => (
                 <ScrollFadeIn key={job.title} delay={`delay-${index * 100}`}>
-                   <Card className="hover:shadow-lg hover:border-primary/50 transition-all duration-300 bg-card border">
-                     <CardHeader className="grid grid-cols-1 md:grid-cols-3 gap-4 items-start">
-                       <div className="md:col-span-2">
-                          <CardTitle className="text-foreground">{job.title}</CardTitle>
-                          <CardDescription className="text-foreground/70">{job.location} &middot; {job.type}</CardDescription>
-                       </div>
-                        <div className="md:text-right">
-                          <Button asChild>
-                              <Link href="/contact">
-                                Apply Now <ArrowRight className="ml-2" />
-                              </Link>
-                          </Button>
+                    <div className="flip-card">
+                        <div className="flip-card-inner relative">
+                            <div className="flip-card-front absolute w-full h-full">
+                                <Card className="bg-card border">
+                                    <CardHeader className="grid grid-cols-1 md:grid-cols-3 gap-4 items-start">
+                                    <div className="md:col-span-2">
+                                        <CardTitle className="text-foreground">{job.title}</CardTitle>
+                                        <CardDescription className="text-foreground/70">{job.location} &middot; {job.type}</CardDescription>
+                                    </div>
+                                    <div className="md:text-right">
+                                        <Button asChild>
+                                            <Link href="/contact">
+                                                Apply Now <ArrowRight className="ml-2" />
+                                            </Link>
+                                        </Button>
+                                    </div>
+                                    </CardHeader>
+                                    <CardContent>
+                                    <p className="text-foreground/80">{job.description}</p>
+                                    </CardContent>
+                                </Card>
+                            </div>
+                             <div className="flip-card-back absolute w-full h-full">
+                                <Card className="bg-card border animated-border-card flex flex-col justify-center items-center h-full">
+                                    <CardHeader>
+                                        <CardTitle className="text-foreground">{job.title}</CardTitle>
+                                    </CardHeader>
+                                    <CardContent className="text-center">
+                                        <p className="text-foreground/80 mb-4">Think you're a good fit? We'd love to hear from you.</p>
+                                        <Button asChild>
+                                            <Link href="/contact">
+                                                Apply Now <ArrowRight className="ml-2" />
+                                            </Link>
+                                        </Button>
+                                    </CardContent>
+                                </Card>
+                            </div>
                         </div>
-                     </CardHeader>
-                     <CardContent>
-                       <p className="text-foreground/80">{job.description}</p>
-                     </CardContent>
-                   </Card>
+                    </div>
                 </ScrollFadeIn>
               ))}
             </div>

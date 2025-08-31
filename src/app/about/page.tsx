@@ -2,9 +2,10 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import ScrollFadeIn from '@/components/cauders/ScrollFadeIn';
-import { Check, Target, Users, Zap } from 'lucide-react';
+import { Check, Target, Users, Zap, ArrowRight } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { cn } from '@/lib/utils';
 
 const teamMembers = [
   {
@@ -91,18 +92,31 @@ export default function AboutPage() {
              </ScrollFadeIn>
              <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
                  {values.map((value, index) => (
-                     <ScrollFadeIn key={value.title} delay={`delay-${index * 100}`}>
-                        <Card className="bg-card h-full text-center border">
-                            <CardHeader>
-                                <div className="mx-auto bg-primary/10 rounded-full p-4 w-fit mb-4">
-                                    <value.icon className="w-8 h-8 text-primary" />
+                     <ScrollFadeIn key={value.title} delay={`delay-${index * 100}`} className="h-full">
+                         <div className="flip-card h-full min-h-[300px] md:min-h-[320px]">
+                            <div className="flip-card-inner relative w-full h-full">
+                                <div className="flip-card-front absolute w-full h-full">
+                                    <Card className="bg-card h-full text-center border flex flex-col">
+                                        <CardHeader className="flex-grow">
+                                            <div className="mx-auto bg-primary/10 rounded-full p-4 w-fit mb-4">
+                                                <value.icon className="w-8 h-8 text-primary" />
+                                            </div>
+                                            <CardTitle className="text-foreground">{value.title}</CardTitle>
+                                        </CardHeader>
+                                        <CardContent>
+                                            <p className="text-foreground/80">{value.description}</p>
+                                        </CardContent>
+                                    </Card>
                                 </div>
-                                <CardTitle className="text-foreground">{value.title}</CardTitle>
-                            </CardHeader>
-                            <CardContent>
-                                <p className="text-foreground/80">{value.description}</p>
-                            </CardContent>
-                        </Card>
+                                <div className="flip-card-back absolute w-full h-full">
+                                    <Card className={cn("h-full bg-card flex flex-col justify-center items-center animated-border-card")}>
+                                        <CardContent className="text-center">
+                                            <p className="text-foreground/80">{value.description}</p>
+                                        </CardContent>
+                                    </Card>
+                                </div>
+                            </div>
+                         </div>
                      </ScrollFadeIn>
                  ))}
              </div>
@@ -121,23 +135,36 @@ export default function AboutPage() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
             {teamMembers.map((member, index) => (
-              <ScrollFadeIn key={member.name} delay={`delay-${index * 100}`}>
-                <Card className="text-center overflow-hidden border bg-card hover:shadow-primary/20 hover:-translate-y-2 transition-all duration-300">
-                  <div className="aspect-square">
-                     <Image
-                        src={member.imageUrl}
-                        alt={`Portrait of ${member.name}`}
-                        width={400}
-                        height={400}
-                        className="w-full h-full object-cover"
-                        data-ai-hint={member.aiHint}
-                    />
-                  </div>
-                  <CardContent className="p-6">
-                    <CardTitle className="text-xl text-foreground">{member.name}</CardTitle>
-                    <p className="text-primary font-medium">{member.role}</p>
-                  </CardContent>
-                </Card>
+              <ScrollFadeIn key={member.name} delay={`delay-${index * 100}`} className="h-full">
+                 <div className="flip-card h-full min-h-[400px]">
+                    <div className="flip-card-inner relative w-full h-full">
+                        <div className="flip-card-front absolute w-full h-full">
+                            <Card className="text-center overflow-hidden border bg-card h-full">
+                                <div className="aspect-square">
+                                    <Image
+                                        src={member.imageUrl}
+                                        alt={`Portrait of ${member.name}`}
+                                        width={400}
+                                        height={400}
+                                        className="w-full h-full object-cover"
+                                        data-ai-hint={member.aiHint}
+                                    />
+                                </div>
+                                <CardContent className="p-6">
+                                    <CardTitle className="text-xl text-foreground">{member.name}</CardTitle>
+                                    <p className="text-primary font-medium">{member.role}</p>
+                                </CardContent>
+                            </Card>
+                        </div>
+                         <div className="flip-card-back absolute w-full h-full">
+                            <Card className={cn("h-full bg-card flex flex-col justify-center items-center animated-border-card text-center p-6")}>
+                               <CardTitle className="text-xl text-foreground">{member.name}</CardTitle>
+                               <p className="text-primary font-medium mb-4">{member.role}</p>
+                               <p className="text-foreground/80 text-sm">Further details about {member.name} could go here, describing their expertise and contribution to the team.</p>
+                            </Card>
+                        </div>
+                    </div>
+                 </div>
               </ScrollFadeIn>
             ))}
           </div>
