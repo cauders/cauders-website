@@ -12,6 +12,8 @@ type ProjectPageParams = {
   };
 };
 
+export const dynamic = 'force-static';
+
 // Generate static paths for all projects
 export function generateStaticParams() {
   const projects = getProjects();

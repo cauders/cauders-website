@@ -12,6 +12,8 @@ type ServicePageParams = {
   };
 };
 
+export const dynamic = 'force-static';
+
 export function generateStaticParams() {
   const services = getServices();
   return services.map((service) => ({
