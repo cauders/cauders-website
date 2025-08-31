@@ -130,10 +130,10 @@ export default function Chatbot() {
                     <div className="space-y-4 flex flex-col min-h-full">
                      {!hasStartedChat && (
                         <div className="flex flex-col items-center justify-center flex-grow text-center">
-                            <div className="w-48 h-48 animate-zoom-in">
+                            <div className="w-48 h-48">
                                 <Lottie animationData={robotAnimation} loop={true} />
                             </div>
-                            <p className="text-foreground/80 mt-2 drop-shadow-sm">Hello! How can I help you today?</p>
+                            <p className="text-foreground/80 mt-2 drop-shadow-sm font-bold">Hello! How can I help you today?</p>
                         </div>
                      )}
                     {messages.map((message, index) => (
@@ -165,7 +165,7 @@ export default function Chatbot() {
                     onChange={(e) => setInput(e.target.value)}
                     placeholder="Ask about our services..."
                     disabled={isLoading}
-                    className="bg-muted border-background/20 placeholder:text-muted-foreground/60 text-foreground"
+                    className="input-line text-foreground placeholder:text-foreground/60 border-b-foreground/50"
                     />
                     <Button type="submit" size="icon" disabled={isLoading || !input.trim()}>
                         <ArrowUp className="h-4 w-4" />
