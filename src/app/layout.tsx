@@ -13,6 +13,7 @@ import CustomCursor from '@/components/cauders/CustomCursor';
 import Chatbot from '@/components/cauders/Chatbot';
 import { useState, useEffect } from 'react';
 import Loader from '@/components/cauders/Loader';
+import ScrollFadeIn from '@/components/cauders/ScrollFadeIn';
 
 // export const metadata: Metadata = {
 //   title: 'Cauders | Innovative Digital Solutions',
@@ -53,7 +54,9 @@ export default function RootLayout({
               <main className="flex-grow pt-24 z-10">
                 {children}
               </main>
-              <Footer />
+              <ScrollFadeIn>
+                <Footer />
+              </ScrollFadeIn>
               <Chatbot />
               <Toaster />
             </>
