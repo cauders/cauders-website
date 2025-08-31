@@ -212,59 +212,20 @@ const projects: Project[] = [
   }
 ].map(p => ({...p, slug: toSlug(p.title)} as Project));
 
-const services = [
-  {
-    icon: PenTool,
-    title: 'UI/UX Design',
-    slug: 'ui-ux-design',
-    description: 'Crafting intuitive and beautiful user interfaces that provide an exceptional user experience.',
-    details: `<p>Our UI/UX design process is centered around the user. We begin with in-depth research to understand your audience's needs and behaviors. From there, we create wireframes and prototypes to map out user flows and information architecture. The result is a visually stunning and highly functional design that not only looks great but also drives user engagement and conversions.</p><p>We use modern design tools like Figma to collaborate and iterate, ensuring the final product is polished and pixel-perfect.</p>`,
-    included: ['User Research & Personas', 'Wireframing & Prototyping', 'High-Fidelity UI Design', 'Interaction Design', 'Usability Testing'],
-    caseStudy: {
-      title: 'Corporate Website Redesign',
-      projectSlug: toSlug('Corporate Website'),
-      description: 'See how our UI/UX expertise transformed a dated website into a modern, user-friendly platform.',
-      imageUrl: 'https://picsum.photos/seed/corp-casestudy/800/450'
-    }
-  },
-  {
-    icon: Code,
-    title: 'Web Development',
-    slug: 'web-development',
-    description: 'Building responsive, high-performance websites and applications using modern technologies.',
-    details: `<p>We specialize in building robust and scalable web solutions. Our development team is proficient in a wide range of modern technologies, including Next.js, React, and Node.js. We follow best practices to write clean, maintainable, and well-documented code.</p><p>Whether you need a simple marketing website or a complex web application, we have the skills and experience to deliver a product that meets your needs and exceeds your expectations. Performance, security, and scalability are at the core of everything we build.</p>`,
-    included: ['Frontend Development', 'Backend Development', 'API Integration', 'CMS Implementation', 'Performance Optimization'],
-    caseStudy: {
-      title: 'E-commerce Platform Development',
-      projectSlug: toSlug('E-commerce Platform'),
-      description: 'Discover how we built a scalable e-commerce solution from the ground up.',
-      imageUrl: 'https://picsum.photos/seed/ecom-casestudy/800/450'
-    }
-  },
-  {
-    icon: Layers,
-    title: 'Full-Stack Solutions',
-    slug: 'full-stack-solutions',
-    description: 'From database to deployment, we provide end-to-end development for your complex projects.',
-    details: `<p>Our full-stack development services cover the entire application lifecycle. We handle everything from database design and server-side logic to client-side development and deployment. This holistic approach ensures that all parts of your application work together seamlessly.</p><p>We are experienced in a variety of database technologies, both SQL and NoSQL, and are experts in cloud deployment on platforms like Vercel and AWS. We take care of the technical details so you can focus on your business.</p>`,
-    included: ['Database Architecture', 'Server-side Logic', 'Client-side Development', 'CI/CD & DevOps', 'Cloud Deployment'],
-     caseStudy: {
-      title: 'SaaS Dashboard Creation',
-      projectSlug: toSlug('SaaS Dashboard'),
-      description: 'Learn about the end-to-end development of a complex B2B analytics platform.',
-      imageUrl: 'https://picsum.photos/seed/saas-casestudy/800/450'
-    }
-  },
-  {
-    icon: Rocket,
-    title: 'SEO & Performance',
-    slug: 'seo-performance',
-    description: 'Optimizing your digital presence to rank higher and load faster, ensuring maximum reach.',
-    details: `<p>A great website is only effective if people can find it. Our SEO and performance optimization services are designed to increase your visibility in an search engine rankings and provide a lightning-fast user experience. We conduct comprehensive technical SEO audits, optimize on-page content, and implement strategies to improve site speed and Core Web Vitals.</p><p>By focusing on both technical and content aspects of SEO, we help you attract more organic traffic and convert visitors into customers.</p>`,
-    included: ['Technical SEO Audits', 'On-Page SEO', 'Performance Analysis', 'Image Optimization', 'Core Web Vitals Improvement'],
-    caseStudy: null
-  },
-];
+const services: {
+  icon: ServiceIcon;
+  title: string;
+  slug: string;
+  description: string;
+  details: string;
+  included: string[];
+  caseStudy: {
+    title: string;
+    projectSlug: string;
+    description: string;
+    imageUrl: string;
+  } | null;
+}[] = [];
 
 export const getProjects = (): Project[] => projects.map(p => ({ ...p }));
 export const getProjectBySlug = (slug: string): Project | undefined => projects.find(p => p.slug === slug);

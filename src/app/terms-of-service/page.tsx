@@ -1,5 +1,7 @@
 
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+'use client';
+
+import { Card, CardContent } from '@/components/ui/card';
 import ScrollFadeIn from '@/components/cauders/ScrollFadeIn';
 
 export default function TermsOfServicePage() {
@@ -8,8 +10,7 @@ export default function TermsOfServicePage() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
         <ScrollFadeIn>
           <header className="mb-12 text-center">
-            <h1 className="text-4xl md:text-5xl font-bold text-foreground">Terms of Service</h1>
-            <p className="mt-4 text-lg text-foreground/70">Last Updated: {new Date().toLocaleDateString()}</p>
+            <h1 className="text-4xl md:text-5xl font-bold text-foreground">Terms and Conditions</h1>
           </header>
         </ScrollFadeIn>
 
@@ -17,48 +18,52 @@ export default function TermsOfServicePage() {
          <ScrollFadeIn delay="delay-200">
           <Card className="bg-card border shadow-sm">
             <CardContent className="p-8 prose prose-lg dark:prose-invert text-foreground/80 max-w-none">
-              <p>
-                Please read these Terms of Service ("Terms", "Terms of Service") carefully before using the Cauders website (the "Service") operated by Cauders ("us", "we", or "our").
-              </p>
+              
+              <h2>1. Definitions</h2>
+              <p><strong>"Cauders," "we," "us," or "our"</strong> refers to the IT company, Cauders.</p>
+              <p><strong>"Client" or "you"</strong> refers to the individual or entity engaging with our services.</p>
+              <p><strong>"Services"</strong> refers to all IT services provided by Cauders, including but not limited to software development, network solutions, cybersecurity, and consulting, as outlined in the Statement of Work (SOW).</p>
+              <p><strong>"Project"</strong> refers to the specific work or engagement detailed in the SOW.</p>
+              <p><strong>"Intellectual Property Rights"</strong> refers to all patents, copyrights, trademarks, trade secrets, and other proprietary rights.</p>
 
-              <h2>1. Agreement to Terms</h2>
+              <h2>2. Scope of Services</h2>
               <p>
-                By accessing or using our Service, you agree to be bound by these Terms. If you disagree with any part of the terms, then you may not access the Service.
-              </p>
-
-              <h2>2. Use of Our Service</h2>
-              <p>
-                You agree not to use the Service for any unlawful purpose or in any way that interrupts, damages, or impairs the service. You agree not to attempt any unauthorized access to any part of the Service.
+                The scope of all services will be precisely defined in a formal Statement of Work (SOW) or a separate contractual agreement. Any requests for changes or additions to the scope of work will be managed through a formal Change Order process, which may impact the project timeline and cost.
               </p>
 
               <h2>3. Intellectual Property</h2>
               <p>
-                The Service and its original content, features, and functionality are and will remain the exclusive property of Cauders and its licensors. The Service is protected by copyright, trademark, and other laws of both the United States and foreign countries.
+                Upon receiving full and final payment for a Project, all Intellectual Property Rights for any custom software, code, and other deliverables created specifically for the Client will be transferred to you, unless otherwise stated in the SOW. Cauders retains the right to use its pre-existing tools, libraries, and frameworks that are not unique to your Project.
               </p>
 
-              <h2>4. Links To Other Web Sites</h2>
+              <h2>4. Confidentiality</h2>
               <p>
-                Our Service may contain links to third-party web sites or services that are not owned or controlled by Cauders. We have no control over, and assume no responsibility for, the content, privacy policies, or practices of any third-party web sites or services.
+                Both parties agree to treat all non-public information—including business plans, technical data, financial information, and client data as strictly confidential.
               </p>
               
-              <h2>5. Limitation of Liability</h2>
+              <h2>5. Data Protection and Security</h2>
               <p>
-                In no event shall Cauders, nor its directors, employees, partners, agents, suppliers, or affiliates, be liable for any indirect, incidental, special, consequential or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses, resulting from your access to or use of or inability to access or use the Service.
+                Cauders is committed to protecting the integrity and confidentiality of your data. We implement industry-standard security protocols and best practices to guard against unauthorized access, disclosure, or alteration. However, Cauders is not liable for data loss caused by factors beyond our reasonable control, such as third-party actions or force majeure events.
               </p>
 
               <h2>6. Governing Law</h2>
               <p>
-                These Terms shall be governed and construed in accordance with the laws of the United States, without regard to its conflict of law provisions.
+                This agreement shall be governed by and interpreted in accordance with the laws of Pakistan. Any disputes arising from these terms and conditions will be subject to the exclusive jurisdiction of the courts located in Islamabad, Pakistan.
               </p>
               
-              <h2>7. Changes</h2>
+              <h2>7. Termination</h2>
               <p>
-                We reserve the right, at our sole discretion, to modify or replace these Terms at any time. We will provide notice of any changes by posting the new Terms of Service on this page.
+                Either party may terminate a Project or the agreement with 30 days' written notice, provided all outstanding payments and obligations are settled. Upon termination, the Client will be responsible for payment for all services rendered up to the date of termination.
               </p>
 
-              <h2>8. Contact Us</h2>
+              <h2>8. Entire Agreement</h2>
               <p>
-                If you have any questions about these Terms, please contact us at: <a href="mailto:info@cauders.com" className="text-primary hover:underline">info@cauders.com</a>
+                These Terms and Conditions, along with the executed SOW and any other mutually agreed-upon contractual documents, constitute the entire agreement between the parties and supersede all prior discussions or understandings.
+              </p>
+
+              <h2>9. Contact Us</h2>
+              <p>
+                If you have any questions about these Terms and Conditions, please contact us at <a href="mailto:info@cauders.com" className="text-primary hover:underline">info@cauders.com</a>.
               </p>
             </CardContent>
           </Card>
