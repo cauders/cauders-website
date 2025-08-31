@@ -4,11 +4,13 @@ import { Code, Layers, PenTool, Rocket, type LucideProps } from 'lucide-react';
 import type { ComponentType, FC } from "react";
 
 type ServiceIcon = ComponentType<LucideProps>;
+type ProjectCategory = 'Web App' | 'Mobile App' | 'Website' | 'AI/ML' | 'Cloud & DevOps' | 'VR';
 
 export interface Project {
     title: string;
     slug: string;
     type: 'web' | 'mobile';
+    category: ProjectCategory;
     description: string;
     tags: string[];
     imageUrl: string;
@@ -31,6 +33,7 @@ const projects: Project[] = [
   {
     title: 'E-commerce Platform',
     type: 'web',
+    category: 'Web App',
     description: 'A scalable online store with a custom CMS and integrated payment gateways.',
     tags: ['Next.js', 'Stripe', 'Tailwind CSS', 'PostgreSQL'],
     imageUrl: 'https://picsum.photos/seed/ecom/1200/800',
@@ -48,6 +51,7 @@ const projects: Project[] = [
   {
     title: 'SaaS Dashboard',
     type: 'web',
+    category: 'Web App',
     description: 'An analytics dashboard for a B2B software-as-a-service product.',
     tags: ['React', 'D3.js', 'Node.js', 'Express'],
     imageUrl: 'https://picsum.photos/seed/saas/1200/800',
@@ -59,6 +63,7 @@ const projects: Project[] = [
   {
     title: 'Corporate Website',
     type: 'web',
+    category: 'Website',
     description: 'A modern, professional website for a leading financial services firm.',
     tags: ['Gatsby', 'Contentful', 'Animation', 'GraphQL'],
     imageUrl: 'https://picsum.photos/seed/corp/1200/800',
@@ -76,6 +81,7 @@ const projects: Project[] = [
     {
     title: 'Mobile Banking App',
     type: 'mobile',
+    category: 'Mobile App',
     description: 'A secure and intuitive mobile application for a new-age digital bank.',
     tags: ['React Native', 'Firebase', 'Biometrics', 'TypeScript'],
     imageUrl: 'https://picsum.photos/seed/mobile-bank/1200/800',
@@ -92,6 +98,7 @@ const projects: Project[] = [
   {
     title: 'AI-Powered Chatbot',
     type: 'web',
+    category: 'AI/ML',
     description: 'Customer service chatbot with natural language processing capabilities.',
     tags: ['Genkit', 'Dialogflow', 'TypeScript', 'Next.js'],
     imageUrl: 'https://picsum.photos/seed/chatbot/1200/800',
@@ -105,7 +112,8 @@ const projects: Project[] = [
   },
   {
     title: 'VR Training Simulation',
-    type: 'web', // VR is a unique category, but 'web' fits best for portfolio display
+    type: 'web',
+    category: 'VR',
     description: 'An immersive VR simulation for training industrial machine operators.',
     tags: ['Unity', 'Oculus SDK', 'C#', '3D Modeling'],
     imageUrl: 'https://picsum.photos/seed/vr/1200/800',
@@ -123,6 +131,7 @@ const projects: Project[] = [
   {
     title: 'Cloud Migration & DevOps',
     type: 'web',
+    category: 'Cloud & DevOps',
     description: 'Migrated a monolithic legacy system to a microservices architecture on AWS.',
     tags: ['AWS', 'Docker', 'Kubernetes', 'Jenkins'],
     imageUrl: 'https://picsum.photos/seed/cloud/1200/800',
@@ -134,6 +143,7 @@ const projects: Project[] = [
   {
     title: 'Healthcare Management',
     type: 'web',
+    category: 'Web App',
     description: 'A HIPAA-compliant electronic health record (EHR) system for clinics.',
     tags: ['Angular', '.NET Core', 'SQL Server', 'Azure'],
     imageUrl: 'https://picsum.photos/seed/health/1200/800',
@@ -148,6 +158,7 @@ const projects: Project[] = [
   {
     title: 'Logistics Optimization',
     type: 'mobile',
+    category: 'Mobile App',
     description: 'An AI-driven mobile app for optimizing delivery routes in real-time.',
     tags: ['Python', 'Flutter', 'Google Maps API', 'AI/ML'],
     imageUrl: 'https://picsum.photos/seed/logistics/1200/800',
@@ -163,6 +174,7 @@ const projects: Project[] = [
   {
     title: 'Fintech Security Suite',
     type: 'web',
+    category: 'Web App',
     description: 'A multi-factor authentication and fraud detection system for financial apps.',
     tags: ['Java', 'Spring Boot', 'Kafka', 'Cybersecurity'],
     imageUrl: 'https://picsum.photos/seed/fintech/1200/800',
@@ -174,6 +186,7 @@ const projects: Project[] = [
   {
     title: 'Data Analytics Platform',
     type: 'web',
+    category: 'AI/ML',
     description: 'A big data platform for processing and visualizing marketing campaign data.',
     tags: ['Spark', 'Hadoop', 'Tableau', 'Data Science'],
     imageUrl: 'https://picsum.photos/seed/data-platform/1200/800',
@@ -188,6 +201,7 @@ const projects: Project[] = [
   {
     title: 'Real-time Collaboration Tool',
     type: 'web',
+    category: 'Web App',
     description: 'A web-based platform for teams to collaborate on documents in real-time, similar to Google Docs.',
     tags: ['WebSockets', 'React', 'Node.js', 'MongoDB'],
     imageUrl: 'https://picsum.photos/seed/collab/1200/800',
@@ -257,3 +271,8 @@ export const getProjectBySlug = (slug: string): Project | undefined => projects.
 
 export const getServices = () => services;
 export const getServiceBySlug = (slug: string) => services.find(s => s.slug === slug);
+
+export const getProjectCategories = (): ProjectCategory[] => {
+    const categories = projects.map(p => p.category);
+    return [...new Set(categories)];
+}
