@@ -52,7 +52,7 @@ export default function PortfolioSection() {
 
     // Animation progress for different parts of the section
     const topTextProgress = Math.max(0, Math.min(1, progress * 4)); // Animates from 0% to 25% of scroll
-    const portfolioProgress = Math.max(0, Math.min(1, (progress - 0.2) / 0.6)); // Animates from 20% to 80%
+    const portfolioProgress = Math.max(0, Math.min(1, (progress - 0.3) / 0.4)); // Animates from 30% to 70%
     const bottomTextProgress = Math.max(0, Math.min(1, (progress - 0.75) * 4)); // Animates from 75% to 100%
 
     // Opacity and scale for the portfolio section for a fade/zoom effect
