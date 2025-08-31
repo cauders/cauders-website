@@ -40,19 +40,23 @@ export default function AboutPage() {
 
                     <div className="flex flex-col gap-24 lg:gap-32">
                         {contentSections.map((section, index) => (
-                            <ScrollFadeIn key={index}>
-                                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-                                    <div className={cn("lg:order-1", section.layout === 'text-right' && "lg:order-2")}>
-                                        <div className="max-w-lg mx-auto">
+                            <div key={index} className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+                                <div className={cn("lg:order-1", section.layout === 'text-right' && "lg:order-2")}>
+                                    <div className="max-w-lg mx-auto">
+                                        <ScrollFadeIn direction={section.layout === 'text-left' ? 'left' : 'right'}>
                                             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6 font-headline">
                                                 {section.title}
                                             </h2>
+                                        </ScrollFadeIn>
+                                        <ScrollFadeIn direction="up" style={{ animationDelay: '200ms' }}>
                                             <p className="text-lg text-foreground/80">
                                                 {section.text}
                                             </p>
-                                        </div>
+                                        </ScrollFadeIn>
                                     </div>
-                                    <div className={cn("lg:order-2", section.layout === 'text-right' && "lg:order-1")}>
+                                </div>
+                                <div className={cn("lg:order-2", section.layout === 'text-right' && "lg:order-1")}>
+                                    <ScrollFadeIn direction="up">
                                         <div className="overflow-hidden rounded-2xl shadow-2xl">
                                              <Image
                                                 src={section.imageUrl}
@@ -63,9 +67,9 @@ export default function AboutPage() {
                                                 data-ai-hint={section.aiHint}
                                             />
                                         </div>
-                                    </div>
+                                    </ScrollFadeIn>
                                 </div>
-                            </ScrollFadeIn>
+                            </div>
                         ))}
                     </div>
                 </div>
