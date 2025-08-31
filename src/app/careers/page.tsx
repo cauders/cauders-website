@@ -116,10 +116,10 @@ export default function CareersPage() {
             <div className="space-y-6">
               {jobOpenings.map((job, index) => (
                 <ScrollFadeIn key={job.title} delay={`delay-${index * 100}`}>
-                    <div className="flip-card">
-                        <div className="flip-card-inner relative">
+                    <div className="flip-card min-h-[190px]">
+                        <div className="flip-card-inner relative w-full h-full">
                             <div className="flip-card-front absolute w-full h-full">
-                                <Card className="bg-card border">
+                                <Card className="bg-card border h-full">
                                     <CardHeader className="grid grid-cols-1 md:grid-cols-3 gap-4 items-start">
                                     <div className="md:col-span-2">
                                         <CardTitle className="text-foreground">{job.title}</CardTitle>
