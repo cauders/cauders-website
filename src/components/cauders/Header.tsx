@@ -27,13 +27,13 @@ const MagneticLink: FC<{href: string, onClick: () => void, children: ReactNode, 
         transform: `translate(${x}px, ${y}px)`,
         transition: 'transform 0.2s cubic-bezier(0.165, 0.84, 0.44, 1)',
       }}
-      className="relative group"
+      className="relative group w-24 h-24 flex items-center justify-center"
     >
       <Link
         href={href}
         onClick={onClick}
         className={cn(
-            "relative text-3xl font-medium text-background z-10 transition-colors duration-300 px-8 py-4",
+            "relative text-xl font-medium text-background z-10 transition-colors duration-300 flex items-center justify-center w-full h-full text-center",
             props.className
         )}
         style={props.style}
@@ -42,14 +42,13 @@ const MagneticLink: FC<{href: string, onClick: () => void, children: ReactNode, 
       </Link>
       <svg
         className="absolute top-0 left-0 w-full h-full pointer-events-none z-0"
-        viewBox="0 0 120 50"
-        preserveAspectRatio="none"
+        viewBox="0 0 60 60"
+        preserveAspectRatio="xMidYMid meet"
       >
-        <rect
-          className="outline-pill"
-          x="1" y="1"
-          width="118" height="48"
-          rx="24" 
+        <circle
+          className="outline-circle"
+          cx="30" cy="30"
+          r="29"
           fill="none"
           strokeWidth="2"
         />
