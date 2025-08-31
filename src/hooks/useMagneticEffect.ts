@@ -3,8 +3,8 @@
 
 import { useState, useEffect, useRef, type RefObject } from 'react';
 
-const LERP_FACTOR = 0.15; // Increased for a slightly faster, more responsive feel
-const MAGNET_RADIUS = 100; // Increased radius to activate the effect sooner
+const LERP_FACTOR = 0.1; 
+const MAGNET_RADIUS = 80;
 
 export function useMagneticEffect(ref: RefObject<HTMLElement>) {
   const [position, setPosition] = useState({ x: 0, y: 0 });
@@ -13,6 +13,9 @@ export function useMagneticEffect(ref: RefObject<HTMLElement>) {
   useEffect(() => {
     const element = ref.current;
     if (!element) return;
+
+    const parent = element.parentElement;
+    if (!parent) return;
 
     const handleMouseMove = (e: MouseEvent) => {
       const rect = element.getBoundingClientRect();
@@ -27,21 +30,21 @@ export function useMagneticEffect(ref: RefObject<HTMLElement>) {
       let targetY = 0;
 
       if (distance < MAGNET_RADIUS) {
-        // We are within the magnetic field
         const dx = clientX - centerX;
         const dy = clientY - centerY;
-        // Move the element towards the cursor, but not all the way
-        targetX = dx * 0.4; // Increased multiplier for a stronger pull
-        targetY = dy * 0.4;
+        targetX = dx * 0.5;
+        targetY = dy * 0.5;
       }
 
-      // Animate to the target position using linear interpolation (lerp)
+      if (animationFrameRef.current) {
+        cancelAnimationFrame(animationFrameRef.current);
+      }
+      
       const animate = () => {
         setPosition(prevPos => {
           const newX = prevPos.x + (targetX - prevPos.x) * LERP_FACTOR;
           const newY = prevPos.y + (targetY - prevPos.y) * LERP_FACTOR;
 
-          // Stop animating if we are very close to the target
           if (Math.abs(targetX - newX) < 0.1 && Math.abs(targetY - newY) < 0.1) {
             if(animationFrameRef.current) cancelAnimationFrame(animationFrameRef.current);
             return { x: targetX, y: targetY };
@@ -51,43 +54,40 @@ export function useMagneticEffect(ref: RefObject<HTMLElement>) {
           return { x: newX, y: newY };
         });
       };
-      
-      if (animationFrameRef.current) {
-        cancelAnimationFrame(animationFrameRef.current);
-      }
       animationFrameRef.current = requestAnimationFrame(animate);
     };
 
     const handleMouseLeave = () => {
-        // Animate back to center when mouse leaves the window
-        const targetX = 0;
-        const targetY = 0;
-        const animate = () => {
-        setPosition(prevPos => {
-          const newX = prevPos.x + (targetX - prevPos.x) * LERP_FACTOR;
-          const newY = prevPos.y + (targetY - prevPos.y) * LERP_FACTOR;
+        let targetX = 0;
+        let targetY = 0;
 
-          if (Math.abs(targetX - newX) < 0.1 && Math.abs(targetY - newY) < 0.1) {
-            if(animationFrameRef.current) cancelAnimationFrame(animationFrameRef.current);
-            return { x: 0, y: 0 };
-          }
-          
-          animationFrameRef.current = requestAnimationFrame(animate);
-          return { x: newX, y: newY };
-        });
-      };
-       if (animationFrameRef.current) {
-        cancelAnimationFrame(animationFrameRef.current);
-      }
-      animationFrameRef.current = requestAnimationFrame(animate);
+        if (animationFrameRef.current) {
+          cancelAnimationFrame(animationFrameRef.current);
+        }
+
+        const animate = () => {
+            setPosition(prevPos => {
+            const newX = prevPos.x + (targetX - prevPos.x) * LERP_FACTOR;
+            const newY = prevPos.y + (targetY - prevPos.y) * LERP_FACTOR;
+
+            if (Math.abs(targetX - newX) < 0.1 && Math.abs(targetY - newY) < 0.1) {
+                if(animationFrameRef.current) cancelAnimationFrame(animationFrameRef.current);
+                return { x: 0, y: 0 };
+            }
+            
+            animationFrameRef.current = requestAnimationFrame(animate);
+            return { x: newX, y: newY };
+            });
+        };
+        animationFrameRef.current = requestAnimationFrame(animate);
     }
 
-    window.addEventListener('mousemove', handleMouseMove);
-    document.body.addEventListener('mouseleave', handleMouseLeave);
+    parent.addEventListener('mousemove', handleMouseMove);
+    parent.addEventListener('mouseleave', handleMouseLeave);
     
     return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-      document.body.removeEventListener('mouseleave', handleMouseLeave);
+      parent.removeEventListener('mousemove', handleMouseMove);
+      parent.removeEventListener('mouseleave', handleMouseLeave);
       if (animationFrameRef.current) {
         cancelAnimationFrame(animationFrameRef.current);
       }

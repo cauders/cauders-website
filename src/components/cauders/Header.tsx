@@ -25,10 +25,10 @@ const MagneticLink: FC<{href: string, onClick: () => void, children: ReactNode, 
       ref={ref}
       style={{
         transform: `translate(${x}px, ${y}px)`,
-        transition: 'transform 0.1s linear',
+        transition: 'transform 0.2s cubic-bezier(0.165, 0.84, 0.44, 1)',
       }}
     >
-      <Link 
+      <Link
         href={href}
         onClick={onClick}
         className={props.className}
@@ -135,4 +135,3 @@ export default function Header() {
     </header>
   );
 }
-
