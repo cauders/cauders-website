@@ -126,7 +126,7 @@ export default function Chatbot() {
                     <div className="space-y-4">
                      {!hasStartedChat && (
                         <div className="flex flex-col items-center justify-center h-full text-center animate-fade-in-up">
-                            <Lottie animationData={robotAnimation} loop={true} className="w-40 h-40" />
+                            <Lottie animationData={robotAnimation} loop={true} className="w-48 h-48" />
                             <p className="text-foreground/80 mt-2">Hello! How can I help you today?</p>
                         </div>
                      )}
