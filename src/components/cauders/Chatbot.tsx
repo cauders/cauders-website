@@ -19,6 +19,12 @@ type Message = {
   content: { text: string }[];
 };
 
+const iceBreakers = [
+    "What services do you offer?",
+    "Tell me about your projects.",
+    "How can I contact you?",
+]
+
 export default function Chatbot() {
   const [isOpen, setIsOpen] = useState(false);
   const [isPeeking, setIsPeeking] = useState(false);
@@ -52,20 +58,19 @@ export default function Chatbot() {
 
     return () => clearInterval(peekTimer);
   }, [isOpen]);
+  
+  const processMessage = async (messageText: string) => {
+    if (!messageText.trim() || isLoading) return;
 
-  const handleSubmit = async (e: FormEvent) => {
-    e.preventDefault();
-    if (!input.trim() || isLoading) return;
-
-    const userMessage: Message = { role: 'user', content: [{ text: input }] };
+    const userMessage: Message = { role: 'user', content: [{ text: messageText }] };
     setMessages((prev) => [...prev, userMessage]);
     setInput('');
     setIsLoading(true);
 
     try {
         const chatInput: ChatInput = {
-            history: messages,
-            message: input,
+            history: [...messages, userMessage],
+            message: messageText,
         }
       const response = await submitChatMessage(chatInput);
       const modelMessage: Message = { role: 'model', content: [{ text: response }] };
@@ -79,6 +84,15 @@ export default function Chatbot() {
     } finally {
       setIsLoading(false);
     }
+  }
+
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    processMessage(input);
+  };
+  
+  const handleIcebreakerClick = (question: string) => {
+    processMessage(question);
   };
 
   return (
@@ -134,6 +148,18 @@ export default function Chatbot() {
                                 <Lottie animationData={robotAnimation} loop={true} />
                             </div>
                             <p className="text-foreground/80 drop-shadow-sm font-bold" style={{filter: 'drop-shadow(0 1px 1px hsl(var(--background)))'}}>Hello! How can I help you today?</p>
+                            <div className="mt-4 flex flex-col items-center gap-2 w-full max-w-xs">
+                                {iceBreakers.map(q => (
+                                    <Button 
+                                        key={q}
+                                        variant="outline"
+                                        className="w-full rounded-full bg-background/50 hover:bg-background/80 border-foreground/20 text-foreground/80"
+                                        onClick={() => handleIcebreakerClick(q)}
+                                    >
+                                        {q}
+                                    </Button>
+                                ))}
+                            </div>
                         </div>
                      )}
                     {messages.map((message, index) => (
