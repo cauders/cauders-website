@@ -37,13 +37,12 @@ export default function AnimatedLine({ className, reverse = false }: AnimatedLin
   }, []);
 
   const pathVariants = {
-    // A simple wavy line path
-    default: "M 0 50 Q 75 0, 150 50 T 300 50",
     // A more complex, overlapping path
     complex: "M 0 50 C 50 0, 100 100, 150 50 S 250 0, 300 50",
   }
 
   const d = pathVariants.complex;
+  const pathLength = 500; // Estimated length for the complex path
 
   return (
     <div ref={ref} className={cn("w-full max-w-sm h-full", className)}>
@@ -57,15 +56,14 @@ export default function AnimatedLine({ className, reverse = false }: AnimatedLin
           d={d}
           fill="none"
           stroke="hsl(var(--primary))"
-          strokeWidth="4"
+          strokeWidth="2" // Made the line slightly thinner for a more refined look
           strokeLinecap="round"
           className={cn(
-            "transition-all duration-[2000ms] ease-out",
-            inView ? "animate-draw" : "stroke-dashoffset-full"
+            "transition-all duration-[2000ms] ease-out"
           )}
           style={{
-            strokeDasharray: 500, // A safe, large value to cover path length
-            strokeDashoffset: inView ? 0 : 500,
+            strokeDasharray: pathLength,
+            strokeDashoffset: inView ? 0 : pathLength,
             transform: reverse ? 'scaleX(-1) translate(-300px, 0)' : 'none',
           }}
         />
@@ -73,19 +71,3 @@ export default function AnimatedLine({ className, reverse = false }: AnimatedLin
     </div>
   );
 }
-
-// Add keyframes to globals.css if they don't exist
-/* In globals.css:
-@keyframes draw {
-  to {
-    stroke-dashoffset: 0;
-  }
-}
-.animate-draw {
-  animation: draw 2s ease-out forwards;
-}
-.stroke-dashoffset-full {
-  stroke-dashoffset: 500; // Match the JS value
-}
-
-*/
