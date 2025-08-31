@@ -15,6 +15,7 @@ import ScrollFadeIn from "./ScrollFadeIn";
 import Autoplay from "embla-carousel-autoplay";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import React from "react";
 
 export default function Testimonials() {
   const testimonials = getProjects()
@@ -24,6 +25,10 @@ export default function Testimonials() {
         projectSlug: p.slug
     }))
     .filter(t => t.author && t.text);
+
+  const plugin = React.useRef(
+    Autoplay({ delay: 5000, stopOnInteraction: true })
+  );
 
   if (testimonials.length === 0) {
     return null;
@@ -41,28 +46,23 @@ export default function Testimonials() {
 
             <ScrollFadeIn delay="delay-200">
                 <Carousel
+                    plugins={[plugin.current]}
                     opts={{
-                        align: "start",
+                        align: "center",
                         loop: true,
                     }}
-                    plugins={[
-                        Autoplay({
-                          delay: 5000,
-                          stopOnInteraction: true,
-                        }),
-                    ]}
                     className="w-full max-w-4xl mx-auto"
                 >
-                    <CarouselContent>
+                    <CarouselContent className="-ml-4 carousel-item-container">
                         {testimonials.map((testimonial, index) => (
-                        <CarouselItem key={index}>
-                            <div className="p-1 h-[320px]">
-                                <div className="relative w-full h-full bg-foreground/90 rounded-2xl overflow-hidden">
+                        <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/2 pl-4">
+                            <div className="p-1 h-full">
+                                <div className="relative w-full h-[320px] bg-foreground/90 rounded-2xl overflow-hidden">
                                      <div className="absolute top-[-80px] left-[-80px] w-64 h-64 bg-primary/30 rounded-full blur-3xl opacity-80"></div>
                                      <div className="absolute bottom-[-80px] right-[-80px] w-64 h-64 bg-primary/30 rounded-full blur-3xl opacity-80"></div>
                                     <Card className="glass-effect w-full h-full rounded-2xl border-border/20">
                                         <CardContent className="flex flex-col items-center justify-center p-6 text-center h-full">
-                                            <p className="text-lg font-medium text-background/90 max-w-3xl mb-4">
+                                            <p className="text-base font-medium text-background/90 max-w-3xl mb-4">
                                                 "{testimonial!.text}"
                                             </p>
                                             <cite className="font-semibold text-background not-italic">— {testimonial!.author}</cite>
@@ -76,8 +76,8 @@ export default function Testimonials() {
                         </CarouselItem>
                         ))}
                     </CarouselContent>
-                    <CarouselPrevious />
-                    <CarouselNext />
+                    <CarouselPrevious className="bg-primary/80 text-primary-foreground border-0 hover:bg-primary" />
+                    <CarouselNext className="bg-primary/80 text-primary-foreground border-0 hover:bg-primary" />
                 </Carousel>
             </ScrollFadeIn>
         </div>

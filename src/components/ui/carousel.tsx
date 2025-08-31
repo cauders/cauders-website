@@ -100,6 +100,32 @@ const Carousel = React.forwardRef<
     )
 
     React.useEffect(() => {
+        if (!api) {
+            return;
+        }
+    
+        const onSelect = () => {
+            api.slides.forEach((slide, index) => {
+                if (api.selectedScrollSnap() === index) {
+                    slide.classList.add('is-active');
+                } else {
+                    slide.classList.remove('is-active');
+                }
+            });
+        };
+    
+        api.on('select', onSelect);
+        api.on('reInit', onSelect);
+    
+        // Initial setup
+        onSelect();
+    
+        return () => {
+            api.off('select', onSelect);
+        };
+    }, [api]);
+
+    React.useEffect(() => {
       if (!api || !setApi) {
         return
       }
@@ -163,7 +189,7 @@ const CarouselContent = React.forwardRef<
         ref={ref}
         className={cn(
           "flex",
-          orientation === "horizontal" ? "-ml-4" : "-mt-4 flex-col",
+          orientation === "horizontal" ? "" : "-mt-4 flex-col",
           className
         )}
         {...props}
@@ -185,8 +211,8 @@ const CarouselItem = React.forwardRef<
       role="group"
       aria-roledescription="slide"
       className={cn(
-        "min-w-0 shrink-0 grow-0 basis-full",
-        orientation === "horizontal" ? "pl-4" : "pt-4",
+        "min-w-0 shrink-0 grow-0 basis-full embla-carousel__slide",
+        orientation === "horizontal" ? "p-0" : "pt-4",
         className
       )}
       {...props}
@@ -207,9 +233,9 @@ const CarouselPrevious = React.forwardRef<
       variant={variant}
       size={size}
       className={cn(
-        "absolute  h-8 w-8 rounded-full",
+        "absolute h-10 w-10 rounded-full z-10",
         orientation === "horizontal"
-          ? "-left-12 top-1/2 -translate-y-1/2"
+          ? "left-0 top-1/2 -translate-y-1/2"
           : "-top-12 left-1/2 -translate-x-1/2 rotate-90",
         className
       )}
@@ -217,7 +243,7 @@ const CarouselPrevious = React.forwardRef<
       onClick={scrollPrev}
       {...props}
     >
-      <ArrowLeft className="h-4 w-4" />
+      <ArrowLeft className="h-5 w-5" />
       <span className="sr-only">Previous slide</span>
     </Button>
   )
@@ -236,9 +262,9 @@ const CarouselNext = React.forwardRef<
       variant={variant}
       size={size}
       className={cn(
-        "absolute h-8 w-8 rounded-full",
+        "absolute h-10 w-10 rounded-full z-10",
         orientation === "horizontal"
-          ? "-right-12 top-1/2 -translate-y-1/2"
+          ? "right-0 top-1/2 -translate-y-1/2"
           : "-bottom-12 left-1/2 -translate-x-1/2 rotate-90",
         className
       )}
@@ -246,7 +272,7 @@ const CarouselNext = React.forwardRef<
       onClick={scrollNext}
       {...props}
     >
-      <ArrowRight className="h-4 w-4" />
+      <ArrowRight className="h-5 w-5" />
       <span className="sr-only">Next slide</span>
     </Button>
   )
