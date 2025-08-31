@@ -4,7 +4,7 @@
 import { useState, useEffect, useRef, type RefObject } from 'react';
 
 const LERP_FACTOR = 0.1;
-const MAGNET_RADIUS = 150; // pixels
+const MAGNET_RADIUS = 80; // The radius in pixels around the element to activate the effect
 
 export function useMagneticEffect(ref: RefObject<HTMLElement>) {
   const [position, setPosition] = useState({ x: 0, y: 0 });
@@ -31,51 +31,37 @@ export function useMagneticEffect(ref: RefObject<HTMLElement>) {
         const dx = clientX - centerX;
         const dy = clientY - centerY;
         // Move the element towards the cursor, but not all the way
-        targetX = dx * 0.3; // Adjust multiplier for strength
-        targetY = dy * 0.3;
+        targetX = dx * 0.2; // Adjust multiplier for strength
+        targetY = dy * 0.2;
       }
 
-      // Smoothly animate to the target position using linear interpolation (lerp)
-      if (animationFrameRef.current) {
-        cancelAnimationFrame(animationFrameRef.current);
-      }
-      
+      // Animate to the target position using linear interpolation (lerp)
       const animate = () => {
         setPosition(prevPos => {
           const newX = prevPos.x + (targetX - prevPos.x) * LERP_FACTOR;
           const newY = prevPos.y + (targetY - prevPos.y) * LERP_FACTOR;
+
+          // Stop animating if we are very close to the target
+          if (Math.abs(targetX - newX) < 0.1 && Math.abs(targetY - newY) < 0.1) {
+            if(animationFrameRef.current) cancelAnimationFrame(animationFrameRef.current);
+            return { x: targetX, y: targetY };
+          }
+          
+          animationFrameRef.current = requestAnimationFrame(animate);
           return { x: newX, y: newY };
         });
-        animationFrameRef.current = requestAnimationFrame(animate);
       };
       
-      animate();
+      if (animationFrameRef.current) {
+        cancelAnimationFrame(animationFrameRef.current);
+      }
+      animationFrameRef.current = requestAnimationFrame(animate);
     };
 
-    const handleMouseLeave = () => {
-        // When mouse leaves the whole document, reset position
-        const animate = () => {
-            setPosition(prevPos => {
-                const newX = prevPos.x + (0 - prevPos.x) * LERP_FACTOR;
-                const newY = prevPos.y + (0 - prevPos.y) * LERP_FACTOR;
-                if (Math.abs(newX) < 0.01 && Math.abs(newY) < 0.01) {
-                    if (animationFrameRef.current) cancelAnimationFrame(animationFrameRef.current);
-                    return { x: 0, y: 0 };
-                }
-                return { x: newX, y: newY };
-            });
-            animationFrameRef.current = requestAnimationFrame(animate);
-        };
-        animate();
-    }
-
     window.addEventListener('mousemove', handleMouseMove);
-    document.documentElement.addEventListener('mouseleave', handleMouseLeave);
     
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
-      document.documentElement.removeEventListener('mouseleave', handleMouseLeave);
-
       if (animationFrameRef.current) {
         cancelAnimationFrame(animationFrameRef.current);
       }

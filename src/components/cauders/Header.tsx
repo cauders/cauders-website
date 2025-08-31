@@ -16,7 +16,7 @@ const navLinks = [
   { href: '/contact',label: 'Contact' }
 ];
 
-const MagneticLink: FC<{children: ReactNode, href: string, onClick: () => void, style: React.CSSProperties}> = ({ children, ...props }) => {
+const MagneticLink: FC<{children: ReactNode, href: string, onClick: () => void, className?: string, style?: React.CSSProperties}> = ({ children, ...props }) => {
   const ref = useRef<HTMLAnchorElement>(null);
   const { x, y } = useMagneticEffect(ref);
 
