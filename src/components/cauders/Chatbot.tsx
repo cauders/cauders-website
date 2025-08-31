@@ -158,21 +158,21 @@ export default function Chatbot() {
                     </div>
                 </ScrollArea>
                 </CardContent>
-                <CardFooter className="pt-4 pb-0">
-                <form onSubmit={handleSubmit} className="flex w-full items-center space-x-2 pb-4">
-                  <div className="input-gradient-border flex-grow">
-                    <Input
-                      value={input}
-                      onChange={(e) => setInput(e.target.value)}
-                      placeholder="Ask about our services..."
-                      disabled={isLoading}
-                      className="input-gradient-border-inner h-12"
-                    />
-                  </div>
-                  <Button type="submit" size="icon" className="h-12 w-12" disabled={isLoading || !input.trim()}>
-                      <Send className="h-5 w-5" />
-                      <span className="sr-only">Send</span>
-                  </Button>
+                <CardFooter className="pt-4">
+                <form onSubmit={handleSubmit} className="flex w-full items-center space-x-2">
+                    <div className="input-gradient-border relative flex-grow">
+                        <Input
+                        value={input}
+                        onChange={(e) => setInput(e.target.value)}
+                        placeholder="Ask about our services..."
+                        disabled={isLoading}
+                        className="input-gradient-border-inner h-12 pr-12"
+                        />
+                        <Button type="submit" size="icon" className="absolute right-1 top-1/2 -translate-y-1/2 h-10 w-10" disabled={isLoading || !input.trim()}>
+                            <Send className="h-5 w-5" />
+                            <span className="sr-only">Send</span>
+                        </Button>
+                    </div>
                 </form>
                 </CardFooter>
             </Card>

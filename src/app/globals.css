@@ -307,13 +307,33 @@
   }
   
   .input-gradient-border {
-    @apply p-px rounded-full;
+    @apply p-px rounded-full relative overflow-hidden;
     background: linear-gradient(90deg, hsl(var(--primary)), hsl(var(--primary) / 0.6), hsl(var(--primary)));
     transition: all 0.3s ease;
   }
 
-  .input-gradient-border:focus-within {
-    background: linear-gradient(90deg, hsl(var(--primary) / 0.8), hsl(var(--primary)), hsl(var(--primary) / 0.8));
+  .input-gradient-border::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -150%;
+    width: 150%;
+    height: 100%;
+    background: linear-gradient(
+      115deg,
+      transparent 40%,
+      hsl(var(--primary) / 0.8),
+      transparent 60%
+    );
+    z-index: 1;
+    transform: skewX(-25deg);
+    animation: shimmer-border 1.8s cubic-bezier(0.23, 1, 0.32, 1) infinite;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+  
+  .input-gradient-border:focus-within::before {
+    opacity: 1;
   }
 
   .input-gradient-border-inner {
