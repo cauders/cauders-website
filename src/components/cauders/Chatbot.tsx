@@ -133,7 +133,7 @@ export default function Chatbot() {
                             <div className="w-48 h-48">
                                 <Lottie animationData={robotAnimation} loop={true} />
                             </div>
-                            <p className="text-foreground/80 mt-2 drop-shadow-sm font-bold" style={{filter: 'drop-shadow(0 1px 1px hsl(var(--background)))'}}>Hello! How can I help you today?</p>
+                            <p className="text-foreground/80 drop-shadow-sm font-bold" style={{filter: 'drop-shadow(0 1px 1px hsl(var(--background)))'}}>Hello! How can I help you today?</p>
                         </div>
                      )}
                     {messages.map((message, index) => (
@@ -168,7 +168,7 @@ export default function Chatbot() {
                         disabled={isLoading}
                         className="input-gradient-border-inner h-12 pr-12"
                         />
-                        <Button type="submit" variant="ghost" size="icon" className="absolute right-1 top-1/2 -translate-y-1/2 h-10 w-10 text-primary" disabled={isLoading || !input.trim()}>
+                        <Button type="submit" variant="ghost" size="icon" className="absolute right-2 top-1/2 -translate-y-1/2 h-10 w-10 text-primary" disabled={isLoading || !input.trim()}>
                             <Send className="h-5 w-5" />
                             <span className="sr-only">Send</span>
                         </Button>
