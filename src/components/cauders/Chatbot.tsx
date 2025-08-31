@@ -187,7 +187,7 @@ export default function Chatbot() {
                 <CardFooter className="pt-4">
                   <form 
                     onSubmit={handleSubmit} 
-                    className="flex w-full items-center space-x-2 bg-background rounded-full p-1 shadow-sm border border-transparent focus-within:border-primary focus-within:shadow-none focus-within:border-2 transition-all duration-300"
+                    className="flex w-full items-center space-x-2 bg-background rounded-full p-1 shadow-lg border border-transparent focus-within:border-primary focus-within:shadow-lg focus-within:border-2 transition-all duration-300"
                   >
                     <Input
                       value={input}
