@@ -113,24 +113,13 @@
   }
 
   .animated-gradient-text {
-    background-image: linear-gradient(
-      to right,
-      hsl(var(--primary)),
-      hsl(var(--primary)) 50%,
-      hsl(var(--foreground)) 50%
-    );
-    background-size: 200% 100%;
-    background-position: -100%;
-    display: inline-block;
-    position: relative;
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: hsl(var(--foreground));
+    -webkit-text-stroke: 1.5px transparent;
     transition: all 0.5s ease-out;
   }
   
   .animated-gradient-text:hover {
-    background-position: 0%;
+    -webkit-text-stroke: 1.5px hsl(var(--primary));
     text-shadow: 0 0 8px hsl(var(--primary) / 0.5), 0 0 20px hsl(var(--primary) / 0.3);
   }
 
@@ -190,10 +179,12 @@
 
   @keyframes gradient-wipe-in {
     from {
-      background-position: 0%;
+      color: hsl(var(--primary));
+      -webkit-text-stroke: 1.5px hsl(var(--primary));
     }
     to {
-      background-position: -100%; /* Ends on foreground color */
+      color: hsl(var(--foreground));
+      -webkit-text-stroke: 1.5px transparent;
     }
   }
 
