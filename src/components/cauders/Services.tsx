@@ -6,18 +6,11 @@ import Link from 'next/link';
 import { ArrowRight, CheckCircle } from 'lucide-react';
 import { Button } from '../ui/button';
 import { cn } from '@/lib/utils';
-import { Canvas } from '@react-three/fiber';
-import ServiceCard3DIcon from './ServiceCard3DIcon';
 import { Suspense } from 'react';
 import { Skeleton } from '../ui/skeleton';
 
 export default function Services() {
   const services = getServices();
-
-  const is3DIcon = (icon: any): icon is React.FC<{geometry: any}> => {
-    // A simple check to see if it's one of our 3D icon components
-    return 'displayName' in icon && icon.displayName === 'ServiceCard3DIcon';
-  }
 
   return (
     <section id="services" className="py-20 lg:py-32 bg-background">
@@ -38,18 +31,10 @@ export default function Services() {
                   <div className="flip-card-front absolute w-full h-full">
                     <Card className="h-full text-center bg-card flex flex-col">
                       <CardHeader className="p-8 flex-grow">
-                         <div className="mx-auto w-24 h-24 mb-4">
-                           {service.iconGeometry ? (
-                              <Suspense fallback={<Skeleton className="w-full h-full rounded-full" />}>
-                                <Canvas>
-                                  <ServiceCard3DIcon geometry={service.iconGeometry} />
-                                </Canvas>
-                              </Suspense>
-                            ) : (
-                              <div className="bg-primary/10 rounded-full p-4 w-fit mx-auto">
-                                <service.icon className="w-8 h-8 text-primary" />
-                              </div>
-                            )}
+                         <div className="mx-auto w-24 h-24 mb-4 flex items-center justify-center">
+                           <div className="bg-primary/10 rounded-full p-4 w-fit mx-auto">
+                             <service.icon className="w-8 h-8 text-primary" />
+                           </div>
                         </div>
                         <CardTitle className="text-foreground">{service.title}</CardTitle>
                         <CardDescription className="pt-2 text-foreground/80">{service.description}</CardDescription>

@@ -1,10 +1,9 @@
 
 import { toSlug } from "./utils";
 import { Code, Layers, PenTool, Rocket, type LucideProps } from 'lucide-react';
-import { type ModelProps } from "@/components/cauders/ServiceCard3DIcon";
 import type { ComponentType, FC } from "react";
 
-type ServiceIcon = ComponentType<LucideProps> | ComponentType<ModelProps>;
+type ServiceIcon = ComponentType<LucideProps>;
 
 const projects = [
   {
@@ -161,7 +160,6 @@ const projects = [
 const services = [
   {
     icon: PenTool,
-    iconGeometry: 'Torus' as ModelProps['geometry'],
     title: 'UI/UX Design',
     slug: 'ui-ux-design',
     description: 'Crafting intuitive and beautiful user interfaces that provide an exceptional user experience.',
@@ -176,7 +174,6 @@ const services = [
   },
   {
     icon: Code,
-    iconGeometry: 'Box' as ModelProps['geometry'],
     title: 'Web Development',
     slug: 'web-development',
     description: 'Building responsive, high-performance websites and applications using modern technologies.',
@@ -191,7 +188,6 @@ const services = [
   },
   {
     icon: Layers,
-    iconGeometry: 'Octahedron' as ModelProps['geometry'],
     title: 'Full-Stack Solutions',
     slug: 'full-stack-solutions',
     description: 'From database to deployment, we provide end-to-end development for your complex projects.',
@@ -206,7 +202,6 @@ const services = [
   },
   {
     icon: Rocket,
-    iconGeometry: 'Cone' as ModelProps['geometry'],
     title: 'SEO & Performance',
     slug: 'seo-performance',
     description: 'Optimizing your digital presence to rank higher and load faster, ensuring maximum reach.',

@@ -9,7 +9,6 @@ import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useRef, useState, useEffect, useCallback, Suspense } from "react";
 import { Skeleton } from "../ui/skeleton";
-import ServiceCard3DIcon from "./ServiceCard3DIcon";
 
 export default function ServicesPreview() {
   const services = getServices();
@@ -105,10 +104,10 @@ export default function ServicesPreview() {
                     <div className="flip-card-front absolute w-full h-full">
                         <Card className="h-full text-center flex flex-col bg-card border">
                             <CardHeader className="p-8 flex-grow">
-                                <div className="mx-auto w-24 h-24 mb-4">
-                                  <Suspense fallback={<Skeleton className="w-full h-full rounded-full" />}>
-                                    <ServiceCard3DIcon geometry={service.iconGeometry} />
-                                  </Suspense>
+                                <div className="mx-auto w-24 h-24 mb-4 flex items-center justify-center">
+                                    <div className="bg-primary/10 rounded-full p-4 w-fit mx-auto">
+                                        <service.icon className="w-8 h-8 text-primary" />
+                                    </div>
                                 </div>
                                 <CardTitle className="text-foreground">{service.title}</CardTitle>
                                 <CardDescription className="pt-2 text-foreground/80 line-clamp-3">{service.description}</CardDescription>
