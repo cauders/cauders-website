@@ -1,12 +1,13 @@
 
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef, type ReactNode, type FC } from 'react';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { X } from 'lucide-react';
 import { ThemeToggle } from './ThemeToggle';
+import { useMagneticEffect } from '@/hooks/useMagneticEffect';
 
 const navLinks = [
   { href: '/', label: 'Home' },
@@ -14,6 +15,17 @@ const navLinks = [
   { href: '/portfolio', label: 'Portfolio' },
   { href: '/contact',label: 'Contact' }
 ];
+
+const MagneticLink: FC<{children: ReactNode, href: string, onClick: () => void, style: React.CSSProperties}> = ({ children, ...props }) => {
+  const ref = useRef<HTMLAnchorElement>(null);
+  const { x, y } = useMagneticEffect(ref);
+
+  return (
+    <Link ref={ref} {...props} style={{...props.style, transform: `translate(${x}px, ${y}px)`}}>
+      {children}
+    </Link>
+  )
+}
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -86,12 +98,12 @@ export default function Header() {
 
             <nav className="flex-grow flex items-center justify-center space-x-12">
                 {navLinks.map((link, index) => (
-                <Link
+                <MagneticLink
                     key={link.href}
                     href={link.href}
                     onClick={() => setIsMenuOpen(false)}
                     className={cn(
-                        "text-3xl font-medium opacity-0",
+                        "text-3xl font-medium opacity-0 transition-transform duration-200 ease-out",
                         isMenuOpen && "animate-fade-in-down"
                     )}
                      style={{ animationDelay: `${500 + index * 400}ms` }}
@@ -99,7 +111,7 @@ export default function Header() {
                     <span className="menu-link-gradient">
                       {link.label}
                     </span>
-                </Link>
+                </MagneticLink>
                 ))}
             </nav>
 
