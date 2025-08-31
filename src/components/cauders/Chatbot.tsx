@@ -121,7 +121,7 @@ export default function Chatbot() {
 
       {isOpen && (
         <div className="fixed bottom-28 right-8 z-50">
-            <Card className="w-[90vw] max-w-md h-[80vh] max-h-[600px] flex flex-col shadow-2xl rounded-2xl bg-background/70 backdrop-blur-lg">
+            <Card className="w-[90vw] max-w-md h-[80vh] max-h-[600px] flex flex-col shadow-2xl rounded-2xl bg-background/70 backdrop-blur-lg border-0">
                 <CardHeader className="flex flex-row items-center justify-between">
                     <div className="flex items-center gap-2">
                         <div
@@ -187,14 +187,14 @@ export default function Chatbot() {
                 <CardFooter className="pt-4">
                   <form 
                     onSubmit={handleSubmit} 
-                    className="flex w-full items-center space-x-2 bg-background rounded-full p-1 shadow-lg border border-input focus-within:border-primary focus-within:ring-2 focus-within:ring-primary/20 transition-all duration-300"
+                    className="chat-input-container"
                   >
                     <Input
                       value={input}
                       onChange={(e) => setInput(e.target.value)}
                       placeholder="Ask a question..."
                       disabled={isLoading}
-                      className="flex-grow bg-transparent focus:ring-0 focus-visible:ring-offset-0 px-3 text-foreground placeholder:text-muted-foreground border-0"
+                      className="flex-grow bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 px-3 text-foreground placeholder:text-muted-foreground border-0"
                     />
                     <Button 
                       type="submit" 
