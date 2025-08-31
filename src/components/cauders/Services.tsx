@@ -8,7 +8,7 @@ import { cn } from '@/lib/utils';
 import { ArrowRight, CheckCircle } from 'lucide-react';
 import ScrollFadeIn from './ScrollFadeIn';
 import { Card, CardTitle, CardContent } from '../ui/card';
-import { useRef, useState, useEffect, useCallback } from 'react';
+import { useRef } from 'react';
 import { useScrollProgress } from '@/hooks/useScrollProgress';
 import Image from 'next/image';
 
@@ -30,21 +30,13 @@ const ServiceSection = ({ service, index }: { service: ReturnType<typeof getServ
 
     const cardScale = 0.9 + easedProgress * 0.1;
     const cardOpacity = easedProgress;
-    const textTranslateX = (1 - easedProgress) * (isEven ? -1 : 1) * 50;
-    const textOpacity = easedProgress;
-
+    
     return (
-        <div ref={ref} className="h-[60vh] relative">
+        <div ref={ref} className="h-[90vh] relative">
             <div className="sticky top-0 h-screen flex items-center justify-center overflow-hidden">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                      <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16 items-center">
-                        <div
-                            style={{
-                                opacity: textOpacity,
-                                transform: `translateX(${textTranslateX}px)`,
-                            }}
-                            className={cn("flex flex-col justify-center", isEven ? 'md:order-1' : 'md:order-2')}
-                        >
+                        <ScrollFadeIn direction={isEven ? 'left' : 'right'} className={cn("flex flex-col justify-center", isEven ? 'md:order-1' : 'md:order-2')}>
                             <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4 font-headline">{service.title}</h2>
                             <p className="text-lg text-foreground/80 mb-6">{service.description}</p>
                             <ul className="space-y-3">
@@ -55,7 +47,7 @@ const ServiceSection = ({ service, index }: { service: ReturnType<typeof getServ
                                     </li>
                                 ))}
                             </ul>
-                        </div>
+                        </ScrollFadeIn>
                         <div
                              style={{
                                 opacity: cardOpacity,
@@ -120,14 +112,12 @@ const AnimatedHeroText = () => {
     return (
         <div ref={sectionRef} className="h-[100vh] relative text-center flex flex-col justify-center">
             <div className="sticky top-1/2 -translate-y-1/2">
-                <div style={{ opacity: titleOpacity, transform: `translateY(${titleTranslateY}px)`}}>
+                <ScrollFadeIn>
                     <h1 className="text-4xl md:text-6xl font-bold text-foreground font-headline">Our Services</h1>
-                </div>
-                <div style={{ opacity: descriptionOpacity, transform: `translateY(${descriptionTranslateY}px)`}}>
                     <p className="mt-6 text-lg text-foreground/70 max-w-3xl mx-auto">
                         At Cauders, we deliver future-ready digital solutions that combine innovation, performance, and scalability. Our expertise spans across multiple domains to help businesses thrive in the evolving tech landscape.
                     </p>
-                </div>
+                </ScrollFadeIn>
             </div>
         </div>
     )
