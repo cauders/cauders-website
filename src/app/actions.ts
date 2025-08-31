@@ -3,6 +3,7 @@
 
 import { z } from "zod";
 import { chat, type ChatInput } from "@/ai/flows/chat-flow";
+import { generateImage } from "@/ai/flows/generate-image-flow";
 
 const contactFormSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters." }),
@@ -29,4 +30,8 @@ export async function submitContactForm(data: unknown) {
 
 export async function submitChatMessage(input: ChatInput) {
     return await chat(input);
+}
+
+export async function generateImageAction(prompt: string) {
+    return await generateImage(prompt);
 }
