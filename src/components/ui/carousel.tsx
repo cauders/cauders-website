@@ -105,7 +105,7 @@ const Carousel = React.forwardRef<
         }
     
         const onSelect = () => {
-            api.slides.forEach((slide, index) => {
+            api.slideNodes().forEach((slide, index) => {
                 if (api.selectedScrollSnap() === index) {
                     slide.classList.add('is-active');
                 } else {
