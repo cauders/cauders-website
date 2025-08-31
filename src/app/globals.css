@@ -330,10 +330,11 @@
   .animate-zoom-in {
     animation: zoom-in 0.3s ease-out forwards;
   }
-  .text-highlight-group > * {
+
+  .text-highlight-group .word-highlight {
     transition: color 0.3s ease-out, text-shadow 0.3s ease-out;
   }
-  .text-highlight-group:hover > * {
+  .text-highlight-group .word-highlight:hover {
     color: hsl(var(--primary));
     text-shadow: 0 0 8px hsl(var(--primary) / 0.7);
   }
