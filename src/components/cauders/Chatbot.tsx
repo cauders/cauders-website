@@ -7,7 +7,7 @@ import { Card, CardHeader, CardTitle, CardContent, CardFooter } from '../ui/card
 import { Input } from '../ui/input';
 import { ScrollArea } from '../ui/scroll-area';
 import ChatIcon from './ChatIcon';
-import { Loader2, ArrowUp, X } from 'lucide-react';
+import { Loader2, ArrowUp, X, Send } from 'lucide-react';
 import { submitChatMessage } from '@/app/actions';
 import { cn } from '@/lib/utils';
 import type { ChatInput } from '@/ai/flows/chat-flow';
@@ -158,19 +158,21 @@ export default function Chatbot() {
                     </div>
                 </ScrollArea>
                 </CardContent>
-                <CardFooter>
-                <form onSubmit={handleSubmit} className="flex w-full items-center space-x-2">
+                <CardFooter className="pt-4 pb-0">
+                <form onSubmit={handleSubmit} className="flex w-full items-center space-x-2 pb-4">
+                  <div className="input-gradient-border flex-grow">
                     <Input
-                    value={input}
-                    onChange={(e) => setInput(e.target.value)}
-                    placeholder="Ask about our services..."
-                    disabled={isLoading}
-                    className="input-line text-foreground placeholder:text-foreground/60 border-b-foreground/50"
+                      value={input}
+                      onChange={(e) => setInput(e.target.value)}
+                      placeholder="Ask about our services..."
+                      disabled={isLoading}
+                      className="input-gradient-border-inner h-12"
                     />
-                    <Button type="submit" size="icon" disabled={isLoading || !input.trim()}>
-                        <ArrowUp className="h-4 w-4" />
-                        <span className="sr-only">Send</span>
-                    </Button>
+                  </div>
+                  <Button type="submit" size="icon" className="h-12 w-12" disabled={isLoading || !input.trim()}>
+                      <Send className="h-5 w-5" />
+                      <span className="sr-only">Send</span>
+                  </Button>
                 </form>
                 </CardFooter>
             </Card>
