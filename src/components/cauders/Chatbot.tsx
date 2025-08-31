@@ -11,6 +11,8 @@ import { Loader2, Send, X } from 'lucide-react';
 import { submitChatMessage } from '@/app/actions';
 import { cn } from '@/lib/utils';
 import type { ChatInput } from '@/ai/flows/chat-flow';
+import Lottie from 'lottie-react';
+import robotAnimation from '@/../public/lottie/robot-animation.json';
 
 type Message = {
   role: 'user' | 'model';
@@ -68,7 +70,7 @@ export default function Chatbot() {
       <div className="fixed bottom-8 right-8 z-50">
         <Button
           size="icon"
-          className="rounded-full w-16 h-16 shadow-lg group"
+          className="rounded-full w-16 h-16 shadow-lg group animate-chat-icon-float"
           onClick={() => setIsOpen(!isOpen)}
           aria-label="Toggle chat"
         >
@@ -78,9 +80,12 @@ export default function Chatbot() {
 
       {isOpen && (
         <div className="fixed bottom-28 right-8 z-50">
-            <Card className="w-full max-w-sm shadow-2xl animate-fade-in-up glass-effect border-primary/20">
+            <Card className="w-full max-w-sm shadow-2xl animate-fade-in-up bg-card/60 backdrop-blur-xl border-primary/20 rounded-2xl">
                 <CardHeader className="flex flex-row items-center justify-between">
-                    <CardTitle className="text-foreground">Cauders Bot</CardTitle>
+                    <div className="flex items-center gap-2">
+                        <Lottie animationData={robotAnimation} loop={true} className="w-10 h-10" />
+                        <CardTitle className="text-foreground">CaudBot</CardTitle>
+                    </div>
                 </CardHeader>
                 <CardContent>
                 <ScrollArea className="h-80 pr-4" ref={scrollAreaRef}>

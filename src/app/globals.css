@@ -275,21 +275,11 @@
     background-color: hsl(var(--primary) / 0.8);
   }
 
-  @keyframes chat-icon-bubble {
-    0%, 100% { transform: translateY(0) scale(1); }
-    50% { transform: translateY(-3px) scale(1.05); }
+  @keyframes chat-icon-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
   }
-  .animate-chat-icon-bubble {
-    animation: chat-icon-bubble 4s ease-in-out infinite;
-  }
-
-  @keyframes chat-icon-dots {
-    0%, 100% { opacity: 1; transform: translateX(0); }
-    25% { opacity: 0; transform: translateX(-5px); }
-    50% { opacity: 1; transform: translateX(0); }
-    75% { opacity: 0; transform: translateX(5px); }
-  }
-  .animate-chat-icon-dots {
-      animation: chat-icon-dots 3s ease-in-out infinite 1s;
+  .animate-chat-icon-float {
+    animation: chat-icon-float 4s ease-in-out infinite;
   }
 }
