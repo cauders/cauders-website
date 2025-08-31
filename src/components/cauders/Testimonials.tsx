@@ -55,7 +55,7 @@ export default function Testimonials() {
                 >
                     <CarouselContent className="-ml-4 carousel-item-container">
                         {testimonials.map((testimonial, index) => (
-                        <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/2 pl-4">
+                        <CarouselItem key={index} className="md:basis-1/3 lg:basis-1/3 pl-4">
                             <div className="p-1 h-full">
                                 <div className="relative w-full h-[320px] bg-foreground/90 rounded-2xl overflow-hidden">
                                      <div className="absolute top-[-80px] left-[-80px] w-64 h-64 bg-primary/30 rounded-full blur-3xl opacity-80"></div>
