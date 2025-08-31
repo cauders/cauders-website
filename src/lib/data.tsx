@@ -253,25 +253,6 @@ const services = [
         }
     },
     {
-        icon: Shield,
-        title: 'Fintech Solutions',
-        description: 'We develop secure, compliant, and intelligent fintech platforms for banking, payments, and digital finance. With advanced encryption, API integrations, and AI-driven insights, we empower businesses to deliver next-generation financial services.',
-        details: 'In the highly regulated fintech industry, security and compliance are paramount. We build robust solutions that meet these standards while delivering innovative features. Our expertise includes payment gateways, digital wallets, lending platforms, and insure-tech, all designed for scalability and security.',
-        included: [
-            'Secure Payment Gateway Integration',
-            'Digital Wallet & P2P Payments',
-            'AI-driven Fraud Detection',
-            'Regulatory Compliance (e.g., PCI DSS)',
-            'Blockchain & Crypto Solutions'
-        ],
-        caseStudy: {
-            title: 'Fintech Security Suite',
-            projectSlug: 'fintech-security-suite',
-            description: 'This MFA and fraud detection system for financial apps showcases our deep understanding of fintech security challenges.',
-            imageUrl: 'https://picsum.photos/seed/fintech/800/450'
-        }
-    },
-    {
         icon: Bot,
         title: 'AI Integrations',
         description: 'Our AI-powered solutions bring automation, personalization, and predictive analytics to your digital products. From chatbots and machine learning models to business intelligence systems, we turn data into intelligent business outcomes.',
@@ -291,22 +272,22 @@ const services = [
         }
     },
     {
-        icon: PenTool,
-        title: 'UI/UX Designing',
-        description: 'User experience defines product success. Our UI/UX design team creates intuitive, engaging, and visually stunning interfaces that elevate user satisfaction while driving conversions and brand loyalty.',
-        details: 'A great product starts with a great user experience. Our UI/UX design process is centered around the user, from initial wireframes and prototypes to final visual design. We focus on creating interfaces that are not only beautiful but also intuitive and easy to navigate, leading to higher user satisfaction and engagement.',
+        icon: Shield,
+        title: 'Fintech Solutions',
+        description: 'We develop secure, compliant, and intelligent fintech platforms for banking, payments, and digital finance. With advanced encryption, API integrations, and AI-driven insights, we empower businesses to deliver next-generation financial services.',
+        details: 'In the highly regulated fintech industry, security and compliance are paramount. We build robust solutions that meet these standards while delivering innovative features. Our expertise includes payment gateways, digital wallets, lending platforms, and insure-tech, all designed for scalability and security.',
         included: [
-            'User Research & Persona Development',
-            'Interactive Wireframing & Prototyping',
-            'Pixel-Perfect Visual Design',
-            'Mobile-First & Responsive Design',
-            'Comprehensive Usability Testing'
+            'Secure Payment Gateway Integration',
+            'Digital Wallet & P2P Payments',
+            'AI-driven Fraud Detection',
+            'Regulatory Compliance (e.g., PCI DSS)',
+            'Blockchain & Crypto Solutions'
         ],
         caseStudy: {
-            title: 'Corporate Website',
-            projectSlug: 'corporate-website',
-            description: 'The design for this financial services firm focused on a clean, professional aesthetic to build trust and credibility.',
-            imageUrl: 'https://picsum.photos/seed/corp/800/450'
+            title: 'Fintech Security Suite',
+            projectSlug: 'fintech-security-suite',
+            description: 'This MFA and fraud detection system for financial apps showcases our deep understanding of fintech security challenges.',
+            imageUrl: 'https://picsum.photos/seed/fintech/800/450'
         }
     },
     {
@@ -329,6 +310,25 @@ const services = [
         }
     },
     {
+        icon: Server,
+        title: 'ERP Systems',
+        description: 'Our enterprise-grade ERP systems streamline operations by integrating core business processes such as finance, inventory, HR, and supply chain into a single, intelligent platform.',
+        details: 'We develop custom Enterprise Resource Planning (ERP) systems that unify your business processes and provide a single source of truth. Our ERP solutions are modular, scalable, and tailored to your industry, helping you improve efficiency, reduce costs, and make data-driven decisions.',
+        included: [
+            'Custom ERP Module Development',
+            'Finance & Accounting Integration',
+            'HR & Payroll Management',
+            'Supply Chain & Inventory Control',
+            'Business Intelligence & Reporting'
+        ],
+        caseStudy: {
+            title: 'SaaS Dashboard',
+            projectSlug: 'saas-dashboard',
+            description: 'While not a full ERP, this analytics dashboard showcases our ability to handle complex data and business logic, a core component of any ERP.',
+            imageUrl: 'https://picsum.photos/seed/saas/800/450'
+        }
+    },
+    {
         icon: TrendingUp,
         title: 'Banking Solutions',
         description: 'Our enterprise-grade banking solutions focus on security, compliance, and seamless customer experience. From core banking systems to digital wallets and mobile banking apps, we help financial institutions stay ahead of innovation.',
@@ -348,22 +348,22 @@ const services = [
         }
     },
     {
-        icon: Server,
-        title: 'ERP Systems',
-        description: 'Our enterprise-grade ERP systems streamline operations by integrating core business processes such as finance, inventory, HR, and supply chain into a single, intelligent platform.',
-        details: 'We develop custom Enterprise Resource Planning (ERP) systems that unify your business processes and provide a single source of truth. Our ERP solutions are modular, scalable, and tailored to your industry, helping you improve efficiency, reduce costs, and make data-driven decisions.',
+        icon: PenTool,
+        title: 'UI/UX Designing',
+        description: 'User experience defines product success. Our UI/UX design team creates intuitive, engaging, and visually stunning interfaces that elevate user satisfaction while driving conversions and brand loyalty.',
+        details: 'A great product starts with a great user experience. Our UI/UX design process is centered around the user, from initial wireframes and prototypes to final visual design. We focus on creating interfaces that are not only beautiful but also intuitive and easy to navigate, leading to higher user satisfaction and engagement.',
         included: [
-            'Custom ERP Module Development',
-            'Finance & Accounting Integration',
-            'HR & Payroll Management',
-            'Supply Chain & Inventory Control',
-            'Business Intelligence & Reporting'
+            'User Research & Persona Development',
+            'Interactive Wireframing & Prototyping',
+            'Pixel-Perfect Visual Design',
+            'Mobile-First & Responsive Design',
+            'Comprehensive Usability Testing'
         ],
         caseStudy: {
-            title: 'SaaS Dashboard',
-            projectSlug: 'saas-dashboard',
-            description: 'While not a full ERP, this analytics dashboard showcases our ability to handle complex data and business logic, a core component of any ERP.',
-            imageUrl: 'https://picsum.photos/seed/saas/800/450'
+            title: 'Corporate Website',
+            projectSlug: 'corporate-website',
+            description: 'The design for this financial services firm focused on a clean, professional aesthetic to build trust and credibility.',
+            imageUrl: 'https://picsum.photos/seed/corp/800/450'
         }
     }
 ].map(s => ({...s, slug: toSlug(s.title)}));
