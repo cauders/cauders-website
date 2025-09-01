@@ -6,13 +6,13 @@ import { Button } from '../ui/button';
 import { Card, CardHeader, CardTitle, CardContent, CardFooter } from '../ui/card';
 import { Input } from '../ui/input';
 import { ScrollArea } from '../ui/scroll-area';
-import ChatIcon from './ChatIcon';
-import { Loader2, ArrowUp, X, Send, RefreshCw } from 'lucide-react';
+import { Loader2, ArrowUp, X, Send, RefreshCw, User } from 'lucide-react';
 import { submitChatMessage } from '@/app/actions';
 import { cn } from '@/lib/utils';
 import type { ChatInput } from '@/ai/flows/chat-flow';
 import Lottie from 'lottie-react';
 import robotAnimation from '@/../public/lottie/robot-animation.json';
+import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
 
 type Message = {
   role: 'user' | 'bot';
@@ -117,6 +117,7 @@ export default function Chatbot() {
   const clearChat = () => {
     setMessages([]);
     setCurrentState('initial');
+    processMessage('clear-chat');
   }
   
   const lastBotMessage = messages.filter(m => m.role === 'bot').pop();
@@ -142,7 +143,32 @@ export default function Chatbot() {
           onClick={() => setIsOpen(!isOpen)}
           aria-label="Toggle Caudbot"
         >
-          {isOpen ? <X className="w-8 h-8 text-background transition-transform duration-300 group-hover:rotate-90" /> : <ChatIcon />}
+          {isOpen ? <X className="w-8 h-8 text-background transition-transform duration-300 group-hover:rotate-90" /> :  <div className="w-8 h-8 relative group-hover:[&>svg]:scale-110 group-hover:[&>svg]:-rotate-12">
+            <svg
+                className="absolute inset-0 w-full h-full text-background transition-transform duration-300 ease-out"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                xmlns="http://www.w3.org/2000/svg"
+            >
+                <path
+                d="M21 11.5C21 16.7467 16.7467 21 11.5 21C11.1991 21 10.9014 20.9893 10.608 20.9684C7.8893 22.0427 4.5 22.4999 4.5 22.4999C4.5 22.4999 4.87329 20.245 5.5 18.2C3.20062 16.3333 2 14.0333 2 11.5C2 6.25329 6.25329 2 11.5 2S21 6.25329 21 11.5Z"
+                stroke="hsl(var(--background))"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                />
+            </svg>
+            <svg
+                className="absolute inset-0 w-full h-full text-background transition-transform duration-300 ease-out"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                xmlns="http://www.w3.org/2000/svg"
+            >
+                <circle cx="8" cy="12" r="1.5" />
+                <circle cx="12" cy="12" r="1.5" />
+                <circle cx="16" cy="12" r="1.5" />
+            </svg>
+            </div>}
         </Button>
       </div>
 
@@ -195,14 +221,31 @@ export default function Chatbot() {
                         <div
                         key={index}
                         className={cn(
-                            'flex w-max max-w-[85%] flex-col gap-2 rounded-lg px-3 py-2 text-sm animate-fade-in-up',
+                            'flex items-end gap-2 w-full animate-fade-in-up',
                              message.role === 'user'
-                            ? 'ml-auto bg-primary text-primary-foreground'
-                            : 'bg-muted text-muted-foreground self-start'
+                            ? 'flex-row-reverse'
+                            : 'flex-row'
                         )}
                         style={{animationDelay: `${index * 50}ms`}}
                         >
-                        {message.content}
+                            <Avatar className="w-8 h-8">
+                                <AvatarFallback className={cn(message.role === 'bot' ? 'bg-primary/20' : 'bg-foreground/10')}>
+                                    {message.role === 'bot' ? (
+                                        <div className="w-6 h-6">
+                                            <Lottie animationData={robotAnimation} loop={true} />
+                                        </div>
+                                    ) : (
+                                        <User className="w-4 h-4 text-foreground/80" />
+                                    )}
+                                </AvatarFallback>
+                            </Avatar>
+                            <div className={cn('max-w-[80%] px-3 py-2 text-sm',
+                                message.role === 'user'
+                                ? 'bg-primary text-primary-foreground chat-bubble-user'
+                                : 'bg-muted text-muted-foreground chat-bubble-bot'
+                            )}>
+                                {message.content}
+                            </div>
                         </div>
                     ))}
                     {lastBotMessage?.options && (
