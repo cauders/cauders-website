@@ -18,8 +18,9 @@ import { useToast } from "@/hooks/use-toast";
 import { submitContactForm } from "@/app/actions";
 import ScrollFadeIn from "./ScrollFadeIn";
 import { Loader2 } from "lucide-react";
-import { usePathname } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 import ContactPageContent from "./ContactPageContent";
+import { Suspense } from "react";
 
 
 const formSchema = z.object({
@@ -135,11 +136,20 @@ function HomePageContact() {
   )
 }
 
+
+function ContactPage() {
+    return (
+        <Suspense fallback={<div>Loading...</div>}>
+            <ContactPageContent />
+        </Suspense>
+    )
+}
+
 export default function Contact() {
     const pathname = usePathname();
     
     if (pathname === '/contact') {
-        return <ContactPageContent />;
+        return <ContactPage />;
     }
 
     return <HomePageContact />;

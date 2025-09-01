@@ -8,22 +8,22 @@ import { cn } from '@/lib/utils';
 
 const jobOpenings = [
   {
-    title: 'Senior Frontend Developer (Next.js)',
+    title: 'Flutter Developer',
     location: 'Remote',
     type: 'Full-time',
-    description: 'We are looking for an experienced frontend developer to lead the development of our client-facing applications using Next.js and Tailwind CSS.'
+    description: 'We are seeking a skilled Flutter Developer to create high-quality, cross-platform mobile applications for our clients.'
   },
   {
-    title: 'Full-Stack Engineer (Node.js & React)',
+    title: 'Frontend Developer',
     location: 'New York, NY',
     type: 'Full-time',
-    description: 'Join our core team to build and maintain our SaaS platform. Expertise in Node.js, React, and cloud services is required.'
+    description: 'Join our team to build beautiful and performant user interfaces for our web applications using Next.js and React.'
   },
   {
     title: 'UI/UX Designer',
     location: 'Remote',
     type: 'Contract',
-    description: 'We need a creative UI/UX designer to help us craft beautiful and intuitive interfaces for our upcoming mobile and web projects.'
+    description: 'We are looking for a creative UI/UX designer to craft intuitive and visually appealing interfaces for our web and mobile projects.'
   }
 ];
 
@@ -124,7 +124,7 @@ export default function CareersPage() {
                       </div>
                       <div className="md:text-right">
                           <Button asChild>
-                              <Link href="/contact">
+                              <Link href={`/contact?job=${encodeURIComponent(job.title)}`}>
                                   Apply Now <ArrowRight className="ml-2" />
                               </Link>
                           </Button>
