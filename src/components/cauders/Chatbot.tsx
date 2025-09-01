@@ -27,42 +27,42 @@ const icebreakers = [
 
 const mockResponses: { [key: string]: { text: string; options?: string[], newState?: string } } = {
     'initial': {
-        text: "Hello! I'm Caudbot, your virtual assistant. How can I help you today?",
+        text: "Hello! I'm the virtual assistant for Cauders. How can I help you today?",
         options: ["Our Services", "Our Portfolio", "Contact Us"],
         newState: 'main_menu',
     },
     'services': {
-        text: "We offer a range of services including Web Development, Mobile App Development, AI Integrations, and UI/UX Design. Which area interests you the most?",
+        text: "Cauders offers a range of services including Web Development, Mobile App Development, AI Integrations, and UI/UX Design. Which area interests you the most?",
         options: ["Web Development", "Mobile Apps", "AI Integrations", "UI/UX Design", "Go back"],
         newState: 'services_menu',
     },
     'portfolio': {
-        text: "You can view our recent work on the portfolio page. It showcases projects in web, mobile, and AI. Would you like me to take you there?",
+        text: "You can view Cauders' recent work on the portfolio page. It showcases projects in web, mobile, and AI. Would you like me to take you there?",
         options: ["Yes, take me to the portfolio", "No, thanks"],
         newState: 'portfolio_link',
     },
     'contact': {
-        text: "You can reach us via our contact page for project inquiries, or email us directly at info@cauders.com for other questions. What would you like to do?",
+        text: "You can reach Cauders via the contact page for project inquiries, or email directly at info@cauders.com for other questions. What would you like to do?",
         options: ["Go to Contact Page", "Ask another question"],
         newState: 'contact_link',
     },
     'web_development': {
-        text: "We build high-performance, secure, and scalable web applications using cutting-edge technologies. From custom portals to enterprise-grade solutions, we create seamless digital experiences that drive engagement and conversion.",
+        text: "Cauders builds high-performance, secure, and scalable web applications using cutting-edge technologies. From custom portals to enterprise-grade solutions, we create seamless digital experiences that drive engagement and conversion.",
         options: ["Tell me about Mobile Apps", "What about AI?", "Go back"],
         newState: 'services_menu',
     },
     'mobile_apps': {
-        text: "Our mobile apps are designed for iOS and Android with a focus on speed, usability, and flawless performance. Whether it’s a startup MVP or a fully-featured enterprise application, we ensure smooth navigation and optimized functionality for end users.",
+        text: "Cauders' mobile apps are designed for iOS and Android with a focus on speed, usability, and flawless performance. Whether it’s a startup MVP or a fully-featured enterprise application, we ensure smooth navigation and optimized functionality for end users.",
         options: ["Tell me about Web Development", "What about AI?", "Go back"],
         newState: 'services_menu',
     },
     'ai_integrations': {
-        text: "Our AI-powered solutions bring automation, personalization, and predictive analytics to your digital products. From chatbots and machine learning models to business intelligence systems, we turn data into intelligent business outcomes.",
+        text: "Cauders' AI-powered solutions bring automation, personalization, and predictive analytics to your digital products. From chatbots and machine learning models to business intelligence systems, we turn data into intelligent business outcomes.",
         options: ["Tell me about Web Development", "What about Mobile Apps?", "Go back"],
         newState: 'services_menu',
     },
     'ui/ux_design': {
-        text: "User experience defines product success. Our UI/UX design team creates intuitive, engaging, and visually stunning interfaces that elevate user satisfaction while driving conversions and brand loyalty.",
+        text: "User experience defines product success. The UI/UX design team at Cauders creates intuitive, engaging, and visually stunning interfaces that elevate user satisfaction while driving conversions and brand loyalty.",
         options: ["Tell me about Web Development", "What about Mobile Apps?", "Go back"],
         newState: 'services_menu',
     },
@@ -217,7 +217,7 @@ export default function Chatbot() {
           size="icon"
           className="rounded-full w-16 h-16 shadow-lg group animate-chat-icon-float relative z-10"
           onClick={() => setIsOpen(!isOpen)}
-          aria-label="Toggle Caudbot"
+          aria-label="Toggle Cauders Chatbot"
         >
           {isOpen ? <X className="w-8 h-8 text-background transition-transform duration-300 group-hover:rotate-90" /> :  <div className="w-8 h-8 relative group-hover:[&>svg]:scale-110 group-hover:[&>svg]:-rotate-12">
             <svg
@@ -262,7 +262,7 @@ export default function Chatbot() {
                           </div>
                        )}
                        <div>
-                         <CardTitle className="text-foreground">Caudbot</CardTitle>
+                         <CardTitle className="text-foreground">Cauders</CardTitle>
                          <div className="flex items-center gap-1.5 mt-1">
                            <span className="relative flex h-2 w-2">
                              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
@@ -284,7 +284,7 @@ export default function Chatbot() {
                             <div className="w-32 h-32 mb-4">
                                 <Lottie animationData={robotAnimation} loop={true} />
                             </div>
-                            <p className="text-lg font-semibold text-foreground">Welcome to Caudbot!</p>
+                            <p className="text-lg font-semibold text-foreground">Welcome to Cauders!</p>
                             <p className="text-sm text-foreground/70">Start by selecting an option below, or ask a question.</p>
                              <div className="flex flex-col items-start gap-2 pt-4 animate-fade-in-up">
                                  {icebreakers.map(q => (
