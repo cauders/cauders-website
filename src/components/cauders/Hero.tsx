@@ -34,11 +34,6 @@ export default function Hero() {
           {/* Left Side: Content */}
           <div className="w-full md:w-1/2 text-left">
             <div className="max-w-xl">
-                <div className="overflow-hidden">
-                    <p className="text-lg md:text-xl text-foreground/80 animate-fade-in-down">
-                        Unconventional thinking
-                    </p>
-                </div>
                 <h1 className="text-6xl md:text-8xl font-extrabold tracking-tight text-foreground mt-2 leading-snug font-headline">
                   <div>
                     {words1.map((word, wordIndex) => (
