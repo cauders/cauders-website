@@ -61,9 +61,6 @@ const conversationFlow: Record<string, (message: string, history: any[]) => Prom
         newState: 'contact_name',
       };
     }
-    if (message.toLowerCase().includes('clear-chat')) {
-        return conversationFlow['initial'](message, []);
-    }
     return {
       text: "I'm sorry, I didn't understand that. Please select an option from the menu.",
       options: ["Our Services", "Our Projects", "Contact Us"],
@@ -136,6 +133,9 @@ const conversationFlow: Record<string, (message: string, history: any[]) => Prom
 
 
 export async function chat(input: ChatInput): Promise<ChatResponse> {
+  if (input.message.toLowerCase() === 'clear-chat') {
+    return conversationFlow['initial'](input.message, []);
+  }
   const handler = conversationFlow[input.currentState] || conversationFlow['initial'];
   return handler(input.message, input.history);
 }

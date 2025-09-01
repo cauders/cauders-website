@@ -66,11 +66,11 @@ export default function Chatbot() {
     if (isLoading) return;
     
     // Start with a clean slate if it's the first message
-    const initialHistory = messages.length === 0 ? [] : messages;
+    const initialHistory = hasStartedChat ? messages : [];
 
     if (messageText.trim()) {
       const userMessage: Message = { role: 'user', content: messageText, state: currentState };
-      setMessages((prev) => [...(prev.length === 0 ? [] : prev), userMessage]);
+      setMessages((prev) => [...(hasStartedChat ? prev : []), userMessage]);
     }
     
     setInput('');
@@ -117,7 +117,6 @@ export default function Chatbot() {
   const clearChat = () => {
     setMessages([]);
     setCurrentState('initial');
-    processMessage('clear-chat');
   }
   
   const lastBotMessage = messages.filter(m => m.role === 'bot').pop();
