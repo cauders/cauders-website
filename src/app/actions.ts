@@ -5,7 +5,7 @@ import { z } from "zod";
 import { chat, type ChatInput } from "@/ai/flows/chat-flow";
 import { generateImage } from "@/ai/flows/generate-image-flow";
 import app from "@/lib/firebase";
-import { getFirestore, collection, addDoc } from "firebase/firestore";
+import { getFirestore, collection, addDoc, doc, setDoc } from "firebase/firestore";
 
 const contactFormSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters." }),
@@ -92,4 +92,67 @@ export async function submitChatMessage(input: ChatInput) {
 
 export async function generateImageAction(prompt: string) {
     return await generateImage(prompt);
+}
+
+export async function setupCompanyData(secret: string) {
+    if (secret !== 'cauders-secret') {
+        return { success: false, message: 'Invalid secret.' };
+    }
+
+    const companyData = {
+        contact: {
+            email: 'info@cauders.com',
+            hrEmail: 'hr@cauders.com',
+            location: 'Pakistan',
+        },
+        socials: [
+            { label: 'Facebook', href: 'https://web.facebook.com/profile.php?id=61580041683735' },
+            { label: 'Instagram', href: 'https://www.instagram.com/ccauders/' },
+            { label: 'Github', href: 'https://github.com/cauders' },
+            { label: 'LinkedIn', href: 'https://www.linkedin.com/company/108785409/admin/dashboard/' },
+        ],
+        legal: {
+            lastUpdated: 'September 1, 2025',
+            privacyPolicyUrl: '/privacy-policy',
+            termsOfServiceUrl: '/terms-of-service',
+        },
+        navigation: {
+            header: [
+              { href: '/', label: 'Home' },
+              { href: '/services', label: 'Services' },
+              { href: '/portfolio', label: 'Portfolio' },
+              { href: '/contact',label: 'Contact' }
+            ],
+            footerQuick: [
+                { href: '/', label: 'Home' },
+                { href: '/services', label: 'Services' },
+                { href: '/portfolio', label: 'Portfolio' },
+            ],
+            footerCompany: [
+                { href: '/about', label: 'About Us' },
+                { href: '/contact', label: 'Contact' },
+                { href: '/careers', label: 'Careers' },
+            ],
+            footerLegal: [
+                { href: '/privacy-policy', label: 'Privacy Policy' },
+                { href: '/terms-of-service', label: 'Terms of Service' },
+            ],
+        },
+        site: {
+            name: 'Cauders',
+            description: 'Crafting premium, modern, and dynamic websites and applications to elevate your digital presence.'
+        }
+    };
+
+    try {
+        const db = getFirestore(app);
+        // Use a specific ID 'main' for the single document that holds company info
+        const docRef = doc(db, 'companyInfo', 'main');
+        await setDoc(docRef, companyData);
+        console.log("Company info document successfully written!");
+        return { success: true, message: 'Company data has been saved to Firestore successfully!' };
+    } catch (e) {
+        console.error("Error writing company info document: ", e);
+        return { success: false, message: 'Could not save company data to Firestore.' };
+    }
 }
