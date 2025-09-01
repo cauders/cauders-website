@@ -1,6 +1,4 @@
 
-"use client";
-
 import type { Metadata } from 'next';
 import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
@@ -10,19 +8,17 @@ import { Montserrat } from 'next/font/google';
 import { cn } from '@/lib/utils';
 import { ThemeProvider } from '@/components/cauders/ThemeProvider';
 import CustomCursor from '@/components/cauders/CustomCursor';
-import { useState, useEffect } from 'react';
-import Loader from '@/components/cauders/Loader';
 import ScrollFadeIn from '@/components/cauders/ScrollFadeIn';
 import Chatbot from '@/components/cauders/Chatbot';
 
 
-// export const metadata: Metadata = {
-//   title: 'Cauders | Innovative Digital Solutions',
-//   description: 'Cauders crafts premium, modern, and dynamic websites and applications.',
-//   icons: {
-//     icon: '/icon.png',
-//   },
-// };
+export const metadata: Metadata = {
+  title: 'Cauders | Innovative Digital Solutions',
+  description: 'Cauders crafts premium, modern, and dynamic websites and applications.',
+  icons: {
+    icon: '/icon.png',
+  },
+};
 
 const montserrat = Montserrat({
   subsets: ['latin'],
