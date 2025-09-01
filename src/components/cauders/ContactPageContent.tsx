@@ -65,7 +65,7 @@ export default function ContactPageContent() {
             </ScrollFadeIn>
   
           <ScrollFadeIn delay="delay-200">
-             <Card className="overflow-hidden shadow-lg bg-card/80 backdrop-blur-lg border rounded-2xl">
+             <Card className="overflow-hidden shadow-lg rounded-2xl glass-effect">
                   <div className="grid grid-cols-1 md:grid-cols-2">
                       {/* Left Side: Info */}
                       <div className="p-8 md:p-12">
@@ -106,7 +106,7 @@ export default function ContactPageContent() {
                       </div>
   
                       {/* Right Side: Form */}
-                      <div className={cn("p-8 md:p-12", "glass-effect rounded-none border-0 md:border-l")}>
+                      <div className={cn("p-8 md:p-12 md:border-l border-border/20")}>
                           {jobTitle ? <ApplicationForm jobTitle={jobTitle} /> : <GeneralContactForm />}
                       </div>
                   </div>
