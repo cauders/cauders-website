@@ -3,11 +3,11 @@
 
 import { useRef, useState, useEffect } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { Sphere } from '@react-three/drei';
+import { Circle } from '@react-three/drei';
 import * as THREE from 'three';
 import type { Mesh } from 'three';
 
-function AnimatedSphere({ position, color, radius = 1 }: { position: [number, number, number], color: string, radius?: number }) {
+function AnimatedCircle({ position, color, radius = 1 }: { position: [number, number, number], color: string, radius?: number }) {
     const meshRef = useRef<Mesh>(null!);
 
     useFrame((state) => {
@@ -19,15 +19,16 @@ function AnimatedSphere({ position, color, radius = 1 }: { position: [number, nu
     });
 
     return (
-        <Sphere ref={meshRef} args={[radius, 32, 32]} position={position}>
+        <Circle ref={meshRef} args={[radius, 64]} position={position}>
             <meshStandardMaterial 
                 color={color}
                 roughness={0.1}
                 metalness={0.9}
                 emissive={color}
                 emissiveIntensity={0.4}
+                side={THREE.DoubleSide}
             />
-        </Sphere>
+        </Circle>
     )
 }
 
@@ -38,23 +39,27 @@ function Scene({ sphereColor }: { sphereColor: string }) {
       <pointLight position={[10, 10, 10]} intensity={200} />
       <pointLight position={[-10, -10, -10]} intensity={150} color={sphereColor} />
       
-      <AnimatedSphere position={[-2.5, -1, -5]} color={sphereColor} radius={2.5} />
-      <AnimatedSphere position={[3, 2, -6]} color={sphereColor} radius={2.2} />
-      <AnimatedSphere position={[1, -2.5, -4]} color={sphereColor} radius={2} />
+      <AnimatedCircle position={[-4, -1, -5]} color={sphereColor} radius={2.5} />
+      <AnimatedCircle position={[4, 2, -6]} color={sphereColor} radius={2.2} />
+      <AnimatedCircle position={[2, -3.5, -4]} color={sphereColor} radius={2} />
     </>
   );
 }
 
 export default function Contact3DBackground() {
-  const [backgroundColor, setBackgroundColor] = useState('#F8F8F8'); // Default light theme background
+  const [backgroundColor, setBackgroundColor] = useState('transparent');
+  const [primaryColor, setPrimaryColor] = useState('#8CEAE5'); // Default primary
 
   useEffect(() => {
     // This code runs only on the client, after the component mounts
     const bgHsl = getComputedStyle(document.documentElement).getPropertyValue('--background').trim();
     if (bgHsl) {
-        // three.js can handle HSL strings directly, e.g., 'hsl(0, 0%, 97.3%)'
-        const colorString = `hsl(${bgHsl})`;
-        setBackgroundColor(colorString);
+        setBackgroundColor(`hsl(${bgHsl})`);
+    }
+
+    const primaryHsl = getComputedStyle(document.documentElement).getPropertyValue('--primary').trim();
+    if(primaryHsl) {
+        setPrimaryColor(`hsl(${primaryHsl})`);
     }
   }, []);
 
@@ -64,7 +69,7 @@ export default function Contact3DBackground() {
       style={{ width: '100%', height: '100%' }}
     >
       <color attach="background" args={[backgroundColor]} />
-      <Scene sphereColor="#FFFFFF" />
+      <Scene sphereColor={primaryColor} />
     </Canvas>
   );
 }
