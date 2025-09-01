@@ -4,6 +4,8 @@
 import { z } from "zod";
 import { chat, type ChatInput } from "@/ai/flows/chat-flow";
 import { generateImage } from "@/ai/flows/generate-image-flow";
+import app from "@/lib/firebase";
+import { getFirestore, collection, addDoc } from "firebase/firestore";
 
 const contactFormSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters." }),
@@ -13,26 +15,33 @@ const contactFormSchema = z.object({
 
 export async function submitContactForm(data: unknown) {
   const parsedData = contactFormSchema.safeParse(data);
+  let submissionData: { name: string; email: string; message: string; };
 
   if (!parsedData.success) {
-    // For chatbot submissions, we can be more lenient with validation
     const lenientParsed = z.object({ name: z.string(), email: z.string(), message: z.string() }).safeParse(data);
     if (!lenientParsed.success) {
-      console.error("Chatbot contact form error:", lenientParsed.error.flatten().fieldErrors);
-      return { success: false, message: "Invalid data from chatbot." };
+      console.error("Contact form error:", lenientParsed.error.flatten().fieldErrors);
+      return { success: false, message: "Invalid data provided." };
     }
-     console.log("Form data (from chatbot) received:", lenientParsed.data);
+    submissionData = lenientParsed.data;
+     console.log("Form data (from chatbot) received:", submissionData);
   } else {
-    console.log("Form data received:", parsedData.data);
+    submissionData = parsedData.data;
+    console.log("Form data received:", submissionData);
   }
 
-  // Here you would typically send an email, save to a database, etc.
-  // For this example, we'll just log it and simulate a success response.
-  
-  // Simulate network delay
-  await new Promise(resolve => setTimeout(resolve, 1000));
-
-  return { success: true, message: "Thank you for your message! We'll get back to you soon." };
+  try {
+    const db = getFirestore(app);
+    const docRef = await addDoc(collection(db, "contactSubmissions"), {
+      ...submissionData,
+      timestamp: new Date(),
+    });
+    console.log("Document written with ID: ", docRef.id);
+    return { success: true, message: "Thank you for your message! We'll get back to you soon." };
+  } catch (e) {
+    console.error("Error adding document: ", e);
+    return { success: false, message: "Could not save your message. Please try again later." };
+  }
 }
 
 const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
