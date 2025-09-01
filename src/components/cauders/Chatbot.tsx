@@ -90,8 +90,8 @@ const mockResponses: { [key: string]: { text: string; options?: string[], newSta
         newState: 'main_menu',
     },
     'default': {
-        text: "This is a demo response. Full chat functionality is not enabled in this prototype. Please select an option to see how the conversation flows.",
-        options: ["Our Services", "Our Portfolio", "Contact Us"],
+        text: "I'm not sure how to answer that. Would you like to be directed to our contact page to speak with a human?",
+        options: ["Yes, take me to the contact page", "No, thanks"],
         newState: 'main_menu',
     }
 };
@@ -161,7 +161,7 @@ export default function Chatbot() {
              setIsLoading(false);
              return;
         }
-        if(response.newState === 'redirect_contact'){
+        if(response.newState === 'redirect_contact' || responseKey === 'yes,_take_me_to_the_contact_page'){
              window.location.href = '/contact';
              setIsLoading(false);
              return;
@@ -251,7 +251,7 @@ export default function Chatbot() {
       {isOpen && (
         <div className="fixed bottom-28 right-8 z-50">
             <Card className="w-[90vw] max-w-md h-[80vh] max-h-[600px] flex flex-col shadow-2xl rounded-2xl bg-background/70 backdrop-blur-lg border-0 animate-zoom-in">
-                <CardHeader className="flex flex-row items-center justify-between border-b">
+                <CardHeader className="flex flex-row items-center justify-between border-b p-4">
                     <div className="flex items-center gap-2">
                        {hasStartedChat && (
                          <div className="w-10 h-10 animate-fade-in-down">
@@ -276,9 +276,9 @@ export default function Chatbot() {
                         <RefreshCw className="w-5 h-5 text-foreground/70 transition-transform duration-300 hover:rotate-180" />
                     </Button>
                 </CardHeader>
-                <CardContent className="flex-grow flex flex-col overflow-hidden">
+                <CardContent className="flex-grow flex flex-col overflow-hidden p-0">
                 <ScrollArea className="flex-grow pr-4 max-w-full" ref={scrollAreaRef}>
-                    <div className="space-y-4 flex flex-col min-h-full">
+                    <div className="space-y-4 flex flex-col min-h-full p-4">
                     {!hasStartedChat && (
                          <div className="flex flex-col items-center justify-center flex-grow gap-2 p-4 text-center animate-fade-in-up">
                             <div className="w-32 h-32 mb-4">
@@ -360,7 +360,7 @@ export default function Chatbot() {
                     </div>
                 </ScrollArea>
                 </CardContent>
-                <CardFooter className="pt-4">
+                <CardFooter className="p-4 border-t">
                   {(showInput || hasStartedChat) && (
                     <form 
                       onSubmit={handleSubmit} 
