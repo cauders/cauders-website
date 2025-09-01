@@ -3,7 +3,6 @@
 
 import Link from 'next/link';
 import MagneticLink from './MagneticLink';
-import { useMousePosition } from '@/hooks/useMousePosition';
 import { cn } from '@/lib/utils';
 import { useEffect, useState } from 'react';
 
@@ -33,39 +32,19 @@ const socialLinks = [
 
 export default function Footer() {
   const year = new Date().getFullYear();
-  const { x, y } = useMousePosition();
-  const [isMounted, setIsMounted] = useState(false);
-  const [isHovered, setIsHovered] = useState(false);
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
-  const followerStyle = isMounted ? {
-    transform: `translate(${x}px, ${y}px) translate(-50%, -50%)`,
-    transition: 'transform 0.3s cubic-bezier(0.23, 1, 0.32, 1)',
-  } : {};
 
   return (
     <div 
         className="relative bg-foreground text-background overflow-hidden"
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
+        data-footer-hover="true"
     >
       <div 
-        className="absolute top-[-80px] left-[-80px] w-64 h-64 bg-primary/30 rounded-full blur-3xl opacity-80"
+        className="absolute top-[-120px] left-[-80px] w-64 h-64 bg-primary/30 rounded-full blur-3xl opacity-80"
       ></div>
       <div 
-        className="absolute bottom-[-80px] right-[-80px] w-96 h-96 bg-primary/30 rounded-full blur-3xl opacity-80"
+        className="absolute bottom-[-120px] right-[-80px] w-96 h-96 bg-primary/30 rounded-full blur-3xl opacity-80"
       ></div>
-      <div 
-        className={cn(
-            "absolute top-0 left-0 w-48 h-48 bg-primary/40 rounded-full blur-3xl opacity-0 transition-opacity duration-300 pointer-events-none",
-            isHovered && "opacity-100"
-        )}
-        style={followerStyle}
-      ></div>
-
+      
       <footer className="glass-effect relative z-10">
         <div className="container mx-auto py-24 px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
