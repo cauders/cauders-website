@@ -1,7 +1,7 @@
 
 'use client';
 
-import { useRef, useState, useEffect } from 'react';
+import { useRef } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Circle } from '@react-three/drei';
 import * as THREE from 'three';
@@ -47,21 +47,8 @@ function Scene({ sphereColor }: { sphereColor: string }) {
 }
 
 export default function Contact3DBackground() {
-  const [backgroundColor, setBackgroundColor] = useState('transparent');
-  const [primaryColor, setPrimaryColor] = useState('#8CEAE5'); // Default primary
-
-  useEffect(() => {
-    // This code runs only on the client, after the component mounts
-    const bgHsl = getComputedStyle(document.documentElement).getPropertyValue('--background').trim();
-    if (bgHsl) {
-        setBackgroundColor(`hsl(${bgHsl})`);
-    }
-
-    const primaryHsl = getComputedStyle(document.documentElement).getPropertyValue('--primary').trim();
-    if(primaryHsl) {
-        setPrimaryColor(`hsl(${primaryHsl})`);
-    }
-  }, []);
+  const primaryColor = 'hsl(var(--primary))';
+  const backgroundColor = 'hsl(var(--background))';
 
   return (
     <Canvas 
