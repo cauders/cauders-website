@@ -101,10 +101,10 @@ export async function setupCompanyData(secret: string) {
             location: 'Pakistan',
         },
         socials: [
-            { label: 'Facebook', href: 'https://web.facebook.com/profile.php?id=61580041683735' },
-            { label: 'Instagram', href: 'https://www.instagram.com/ccauders/' },
-            { label: 'Github', href: 'https://github.com/cauders' },
-            { label: 'LinkedIn', href: 'https://www.linkedin.com/company/108785409/admin/dashboard/' },
+            { label: 'Facebook', href: '#' },
+            { label: 'Instagram', href: '#' },
+            { label: 'Github', href: '#' },
+            { label: 'LinkedIn', href: '#' },
         ],
         legal: {
             lastUpdated: 'September 1, 2025',

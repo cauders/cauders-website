@@ -84,17 +84,17 @@ export default function ContactPageContent() {
                                 <Separator className="my-8 bg-foreground/20" />
                                 <div className="flex items-center gap-2">
                                     <Button variant="ghost" size="icon" asChild>
-                                        <Link href="https://www.instagram.com/ccauders/" aria-label="Instagram">
+                                        <Link href="#" aria-label="Instagram">
                                             <Instagram className="h-5 w-5 text-foreground/70 hover:text-primary transition-colors" />
                                         </Link>
                                     </Button>
                                     <Button variant="ghost" size="icon" asChild>
-                                        <Link href="https://github.com/cauders" aria-label="GitHub">
+                                        <Link href="#" aria-label="GitHub">
                                             <Github className="h-5 w-5 text-foreground/70 hover:text-primary transition-colors" />
                                         </Link>
                                     </Button>
                                     <Button variant="ghost" size="icon" asChild>
-                                        <Link href="https://www.linkedin.com/company/108785409/admin/dashboard/" aria-label="LinkedIn">
+                                        <Link href="#" aria-label="LinkedIn">
                                             <Linkedin className="h-5 w-5 text-foreground/70 hover:text-primary transition-colors" />
                                         </Link>
                                     </Button>
