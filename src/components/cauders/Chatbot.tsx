@@ -65,9 +65,12 @@ export default function Chatbot() {
   const processMessage = async (messageText: string) => {
     if (isLoading) return;
     
+    // Start with a clean slate if it's the first message
+    const initialHistory = messages.length === 0 ? [] : messages;
+
     if (messageText.trim()) {
       const userMessage: Message = { role: 'user', content: messageText, state: currentState };
-      setMessages((prev) => [...prev, userMessage]);
+      setMessages((prev) => [...(prev.length === 0 ? [] : prev), userMessage]);
     }
     
     setInput('');
@@ -75,7 +78,7 @@ export default function Chatbot() {
 
     try {
         const chatInput: ChatInput = {
-            history: messages.map(m => ({ role: m.role, content: m.content, state: m.state })),
+            history: initialHistory.map(m => ({ role: m.role, content: m.content, state: m.state })),
             message: messageText,
             currentState: messageText ? currentState : 'initial',
         }
@@ -148,12 +151,14 @@ export default function Chatbot() {
             <Card className="w-[90vw] max-w-md h-[80vh] max-h-[600px] flex flex-col shadow-2xl rounded-2xl bg-background/70 backdrop-blur-lg border-0 animate-zoom-in">
                 <CardHeader className="flex flex-row items-center justify-between">
                     <div className="flex items-center gap-2">
-                       <div className="w-10 h-10">
-                            <Lottie 
-                                animationData={robotAnimation} 
-                                loop={true}
-                            />
-                        </div>
+                       {hasStartedChat && (
+                         <div className="w-10 h-10 animate-fade-in-down">
+                              <Lottie 
+                                  animationData={robotAnimation} 
+                                  loop={true}
+                              />
+                          </div>
+                       )}
                         <CardTitle className="text-foreground">Caudbot</CardTitle>
                     </div>
                     <Button variant="ghost" size="icon" onClick={clearChat} aria-label="Clear chat">
@@ -165,7 +170,7 @@ export default function Chatbot() {
                     <div className="space-y-4 flex flex-col min-h-full">
                     {!hasStartedChat && (
                          <div className="flex flex-col items-center justify-center flex-grow gap-2 p-4 text-center animate-fade-in-up">
-                            <div className="w-24 h-24 mb-4">
+                            <div className="w-32 h-32 mb-4">
                                 <Lottie animationData={robotAnimation} loop={true} />
                             </div>
                             <p className="text-lg font-semibold text-foreground">Welcome to Caudbot!</p>
