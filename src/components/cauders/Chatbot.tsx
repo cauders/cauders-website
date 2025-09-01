@@ -27,14 +27,6 @@ const icebreakers = [
     "I need to contact support.",
 ];
 
-const initialBotMessage: Message = {
-    role: 'bot',
-    content: "Hello! How can I help you today? Please choose an option below or ask me a question.",
-    options: ["Our Services", "Our Projects", "Contact Us"],
-    state: 'main_menu',
-};
-
-
 export default function Chatbot() {
   const [isOpen, setIsOpen] = useState(false);
   const [isPeeking, setIsPeeking] = useState(false);
@@ -47,9 +39,7 @@ export default function Chatbot() {
 
   useEffect(() => {
     if (isOpen && !hasStartedChat) {
-        // Start with the initial bot message and options
-        setMessages([initialBotMessage]);
-        setCurrentState('main_menu');
+      processMessage(''); // Start the conversation
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen]);
@@ -82,7 +72,6 @@ export default function Chatbot() {
   const processMessage = async (messageText: string) => {
     if (isLoading) return;
     
-    // Don't add empty user messages
     if (messageText.trim()) {
       const userMessage: Message = { role: 'user', content: messageText, state: currentState };
       setMessages((prev) => [...prev, userMessage]);
@@ -95,7 +84,7 @@ export default function Chatbot() {
         const chatInput: ChatInput = {
             history: messages.map(m => ({ role: m.role, content: m.content, state: m.state })),
             message: messageText,
-            currentState: currentState,
+            currentState: messageText ? currentState : 'initial',
         }
       const response = await submitChatMessage(chatInput);
       const botMessage: Message = { role: 'bot', content: response.text, options: response.options, state: response.newState };
@@ -125,6 +114,7 @@ export default function Chatbot() {
   };
 
   const handleIcebreakerClick = (question: string) => {
+    if (!isOpen) setIsOpen(true);
     processMessage(question);
   };
   
@@ -149,7 +139,7 @@ export default function Chatbot() {
           size="icon"
           className="rounded-full w-16 h-16 shadow-lg group animate-chat-icon-float relative z-10"
           onClick={() => setIsOpen(!isOpen)}
-          aria-label="Toggle chat"
+          aria-label="Toggle Caudbot"
         >
           {isOpen ? <X className="w-8 h-8 text-background transition-transform duration-300 group-hover:rotate-90" /> : <ChatIcon />}
         </Button>
@@ -166,26 +156,33 @@ export default function Chatbot() {
                                 loop={true}
                             />
                         </div>
-                        <CardTitle className="text-foreground">Cauders Support</CardTitle>
+                        <CardTitle className="text-foreground">Caudbot</CardTitle>
                     </div>
                 </CardHeader>
                 <CardContent className="flex-grow flex flex-col overflow-hidden">
                 <ScrollArea className="flex-grow pr-4 max-w-full" ref={scrollAreaRef}>
                     <div className="space-y-4 flex flex-col min-h-full">
                     {!hasStartedChat && (
-                         <div className="flex flex-col items-start gap-2 pt-2 animate-fade-in-up">
-                             {icebreakers.map(q => (
-                                 <Button
-                                     key={q}
-                                     variant="outline"
-                                     size="sm"
-                                     className="rounded-full bg-background/50 hover:bg-background/80 border-foreground/20 text-foreground/80"
-                                     onClick={() => handleIcebreakerClick(q)}
-                                     disabled={isLoading}
-                                 >
-                                     {q}
-                                 </Button>
-                             ))}
+                         <div className="flex flex-col items-center justify-center flex-grow gap-2 p-4 text-center animate-fade-in-up">
+                            <div className="w-24 h-24 mb-4">
+                                <Lottie animationData={robotAnimation} loop={true} />
+                            </div>
+                            <p className="text-lg font-semibold text-foreground">Welcome to Caudbot!</p>
+                            <p className="text-sm text-foreground/70">Start by selecting an option below, or ask a question.</p>
+                             <div className="flex flex-col items-start gap-2 pt-4 animate-fade-in-up">
+                                 {icebreakers.map(q => (
+                                     <Button
+                                         key={q}
+                                         variant="outline"
+                                         size="sm"
+                                         className="rounded-full bg-background/50 hover:bg-background/80 border-foreground/20 text-foreground/80"
+                                         onClick={() => handleIcebreakerClick(q)}
+                                         disabled={isLoading}
+                                     >
+                                         {q}
+                                     </Button>
+                                 ))}
+                             </div>
                          </div>
                     )}
                     {messages.map((message, index) => (
