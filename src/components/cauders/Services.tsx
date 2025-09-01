@@ -77,13 +77,15 @@ const ServiceSection = ({ service, index }: { service: ReturnType<typeof getServ
                                     <div className="relative w-full h-full bg-foreground/90 rounded-lg overflow-hidden">
                                       <div className="absolute top-[-80px] left-[-80px] w-64 h-64 bg-primary/30 rounded-full blur-3xl opacity-80"></div>
                                       <div className="absolute bottom-[-80px] right-[-80px] w-64 h-64 bg-primary/30 rounded-full blur-3xl opacity-80"></div>
-                                      <Card className={cn("relative z-10 h-full flex flex-col justify-center items-center text-center glass-effect animated-border-card border-border/20 p-6")}>
-                                          <CardTitle className="text-background text-2xl mb-4">{service.title}</CardTitle>
-                                          <Button asChild className="button">
-                                              <Link href={`/services/${service.slug}`}>
-                                                  Learn More <ArrowRight className="ml-2 h-4 w-4" />
-                                              </Link>
-                                          </Button>
+                                      <Card className={cn("relative z-10 h-full flex flex-col justify-between items-center text-center glass-effect animated-border-card border-border/20 p-6")}>
+                                          <CardTitle className="text-background text-3xl">{service.title}</CardTitle>
+                                          <div className="w-full">
+                                            <Button asChild className="button w-full">
+                                                <Link href={`/services/${service.slug}`}>
+                                                    Learn More <ArrowRight className="ml-2 h-4 w-4" />
+                                                </Link>
+                                            </Button>
+                                          </div>
                                       </Card>
                                     </div>
                                   </div>
