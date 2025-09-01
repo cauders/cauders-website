@@ -113,6 +113,7 @@
   }
 
   .animated-gradient-text {
+    display: inline;
     -webkit-background-clip: text;
     background-clip: text;
     background: linear-gradient(to right, hsl(var(--primary)), hsl(var(--primary))) no-repeat;

@@ -42,7 +42,7 @@ export default function Hero() {
                 <h1 className="text-6xl md:text-8xl font-extrabold tracking-tight text-foreground mt-2 leading-snug font-headline group">
                   <div>
                     {words1.map((word, wordIndex) => (
-                      <span key={wordIndex} className="inline-block overflow-hidden">
+                      <span key={wordIndex}>
                         <span 
                           className="animated-gradient-text"
                         >
@@ -54,7 +54,7 @@ export default function Hero() {
                   </div>
                    <div>
                     {words2.map((word, wordIndex) => (
-                       <span key={wordIndex} className="inline-block overflow-hidden">
+                       <span key={wordIndex}>
                           <span 
                            className="animated-gradient-text"
                           >
