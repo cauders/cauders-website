@@ -122,7 +122,7 @@
     transition: background-position 0.5s cubic-bezier(0.23, 1, 0.32, 1);
   }
   
-  .group:hover .animated-gradient-text {
+  .animated-gradient-text:hover {
     background-position: 0 100%;
   }
 
