@@ -1,3 +1,4 @@
+
 'use client';
 
 import { getProjects } from "@/lib/data";
@@ -13,7 +14,6 @@ import { Quote } from "lucide-react";
 import ScrollFadeIn from "./ScrollFadeIn";
 import Autoplay from "embla-carousel-autoplay";
 import Link from "next/link";
-import { cn } from "@/lib/utils";
 import React from "react";
 
 export default function Testimonials() {
@@ -62,15 +62,13 @@ export default function Testimonials() {
                                     <Card className="glass-effect w-full h-full rounded-2xl border-border/20">
                                         <CardContent className="relative flex flex-col items-center justify-center p-8 text-center h-full">
                                             <Quote className="absolute top-6 left-6 w-8 h-8 text-primary/80" />
-                                            <p className="text-sm font-medium text-background/90 max-w-3xl mb-4 line-clamp-5">
+                                            <p className="text-sm font-medium text-background/90 max-w-3xl line-clamp-5">
                                                 "{testimonial!.text}"
                                             </p>
-                                            <div className="mt-auto">
-                                                <cite className="font-semibold text-xs text-background not-italic">— {testimonial!.author}</cite>
-                                                <p className="text-xs text-background/60 mt-1">
-                                                    From the <Link href={`/portfolio/${testimonial.projectSlug}`} className="text-primary/90 hover:underline">{testimonial.projectTitle}</Link> project
-                                                </p>
-                                            </div>
+                                            <cite className="font-semibold text-xs text-background not-italic mt-4">— {testimonial!.author}</cite>
+                                            <p className="text-xs text-background/60 mt-1">
+                                                From the <Link href={`/portfolio/${testimonial.projectSlug}`} className="text-primary/90 hover:underline">{testimonial.projectTitle}</Link> project
+                                            </p>
                                         </CardContent>
                                     </Card>
                                 </div>
