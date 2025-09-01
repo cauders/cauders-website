@@ -10,12 +10,9 @@ import { Montserrat } from 'next/font/google';
 import { cn } from '@/lib/utils';
 import { ThemeProvider } from '@/components/cauders/ThemeProvider';
 import CustomCursor from '@/components/cauders/CustomCursor';
-import Chatbot from '@/components/cauders/Chatbot';
 import { useState, useEffect } from 'react';
 import Loader from '@/components/cauders/Loader';
 import ScrollFadeIn from '@/components/cauders/ScrollFadeIn';
-import { getAnalytics } from 'firebase/analytics';
-import app from '@/lib/firebase';
 
 
 // export const metadata: Metadata = {
@@ -37,11 +34,6 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-    useEffect(() => {
-        if (typeof window !== "undefined") {
-            getAnalytics(app);
-        }
-    }, []);
 
   return (
     <html lang="en" suppressHydrationWarning>
@@ -56,7 +48,6 @@ export default function RootLayout({
               <ScrollFadeIn direction="stretch-up">
                 <Footer />
               </ScrollFadeIn>
-              <Chatbot />
               <Toaster />
             </>
         </ThemeProvider>
