@@ -59,7 +59,7 @@
   }
   html {
     scroll-behavior: smooth;
-    cursor: none;
+    cursor: none !important;
   }
   html::-webkit-scrollbar {
     display: none;
@@ -69,7 +69,7 @@
     scrollbar-width: none;  /* Firefox */
   }
   a, button, input, textarea, [role="button"] {
-    cursor: none;
+    cursor: none !important;
   }
 }
 
@@ -85,9 +85,9 @@
 
   .floating-header-styles {
     @apply mx-auto w-full max-w-5xl rounded-full border border-border/20 shadow-lg;
-    background: hsl(var(--background) / 0.5);
-    backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px);
+    background: hsl(var(--background) / 0.5);
   }
 
   .scrolled-header {
@@ -113,10 +113,10 @@
   }
 
   .animated-gradient-text {
+    -webkit-background-clip: text;
+    background-clip: text;
     background: linear-gradient(to right, hsl(var(--primary)), hsl(var(--primary))) no-repeat;
     background-size: 0% 100%;
-    background-clip: text;
-    -webkit-background-clip: text;
     color: hsl(var(--foreground));
     transition: background-size 0.5s cubic-bezier(0.23, 1, 0.32, 1);
   }
@@ -163,9 +163,9 @@
   }
 
   .glass-effect {
-    background-color: hsl(var(--card) / 0.02);
-    backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px);
+    background-color: hsl(var(--card) / 0.02);
     @apply border;
   }
   

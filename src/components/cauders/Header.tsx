@@ -64,7 +64,7 @@ export default function Header() {
             
             <div className="flex items-center gap-4">
               <ThemeToggle />
-              <Button onClick={() => setIsMenuOpen(true)} variant="ghost" className="text-lg font-semibold tracking-widest">
+              <Button onClick={() => setIsMenuOpen(true)} variant="ghost" className="text-lg font-semibold tracking-widest" aria-label="Open menu">
                 MENU
               </Button>
             </div>

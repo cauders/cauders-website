@@ -202,6 +202,7 @@ export default function Chatbot() {
                       size="icon" 
                       className="h-9 w-9 text-primary disabled:opacity-50" 
                       disabled={isLoading || !input.trim()}
+                      aria-label="Send message"
                     >
                       <Send className="h-5 w-5 stroke-[2.5]" />
                       <span className="sr-only">Send</span>

@@ -10,7 +10,7 @@ import { cn } from "@/lib/utils";
 const GalleryItem = ({ item, index }: { item: Project['gallery'][0], index: number }) => {
     if (item.type === 'mobile') {
         return (
-            <ScrollFadeIn key={index} delay={`delay-${index * 100}`}>
+            <ScrollFadeIn key={index} style={{ animationDelay: `${index * 100}ms`}}>
                 <div className={cn(
                     "mx-auto w-full max-w-[300px] rounded-3xl overflow-hidden shadow-2xl border-4 border-foreground",
                     index % 2 !== 0 && "lg:ml-auto lg:mr-0"
@@ -30,7 +30,7 @@ const GalleryItem = ({ item, index }: { item: Project['gallery'][0], index: numb
 
     if (item.type === 'web') {
         return (
-             <ScrollFadeIn key={index} delay={`delay-${index * 100}`}>
+             <ScrollFadeIn key={index} style={{ animationDelay: `${index * 100}ms`}}>
                 <div className="my-16 lg:my-24 rounded-lg overflow-hidden shadow-lg border">
                     <Image
                         src={item.url}
