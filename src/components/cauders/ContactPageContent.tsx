@@ -46,12 +46,8 @@ export default function ContactPageContent() {
     const jobTitle = searchParams.get('job');
   
     return (
-      <section id="contact" className="py-20 lg:py-32 bg-background relative overflow-hidden">
-        <div className="absolute top-[-10rem] right-[-10rem] w-96 h-96 bg-primary/10 rounded-full blur-3xl -z-10"></div>
-        <div className="absolute bottom-[-15rem] left-[-15rem] w-96 h-96 bg-primary/10 rounded-full blur-3xl -z-10"></div>
-        <div className="absolute top-1/2 right-1/4 w-64 h-64 bg-primary/5 rounded-full blur-2xl -z-10"></div>
-        
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <section id="contact" className="py-20 lg:py-32 bg-background">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <ScrollFadeIn className="text-center mb-16">
                 <h2 className="text-3xl md:text-4xl font-bold text-foreground">
                     {jobTitle ? `Apply for ${jobTitle}` : "Let's Build Together"}
@@ -65,52 +61,59 @@ export default function ContactPageContent() {
             </ScrollFadeIn>
   
           <ScrollFadeIn delay="delay-200">
-             <Card className="overflow-hidden shadow-lg rounded-2xl glass-effect">
-                  <div className="grid grid-cols-1 md:grid-cols-2">
-                      {/* Left Side: Info */}
-                      <div className="p-8 md:p-12">
-                          <div className="flex flex-col justify-center h-full text-foreground">
-                              <h3 className="text-2xl font-bold mb-4">Get in Touch</h3>
-                              <p className="text-foreground/80 mb-8">
-                                  We're here to help and answer any question you might have. We look forward to hearing from you.
-                              </p>
-                              <div className="space-y-6 text-foreground/90">
-                                  <div className="flex items-center gap-4">
-                                      <Mail className="w-6 h-6 text-primary" />
-                                      <a href="mailto:info@cauders.com" className="hover:text-primary transition-colors">info@cauders.com</a>
-                                  </div>
-                                  <div className="flex items-start gap-4">
-                                      <MapPin className="w-6 h-6 text-primary mt-1" />
-                                      <span>Pakistan</span>
-                                  </div>
-                              </div>
-                              <Separator className="my-8 bg-foreground/20" />
-                              <div className="flex items-center gap-2">
-                                 <Button variant="ghost" size="icon" asChild>
-                                      <Link href="https://www.instagram.com/ccauders/" aria-label="Instagram">
-                                          <Instagram className="h-5 w-5 text-foreground/70 hover:text-primary transition-colors" />
-                                      </Link>
-                                  </Button>
-                                  <Button variant="ghost" size="icon" asChild>
-                                      <Link href="https://github.com/cauders" aria-label="GitHub">
-                                          <Github className="h-5 w-5 text-foreground/70 hover:text-primary transition-colors" />
-                                      </Link>
-                                  </Button>
-                                  <Button variant="ghost" size="icon" asChild>
-                                      <Link href="https://www.linkedin.com/company/108785409/admin/dashboard/" aria-label="LinkedIn">
-                                          <Linkedin className="h-5 w-5 text-foreground/70 hover:text-primary transition-colors" />
-                                      </Link>
-                                  </Button>
-                              </div>
-                          </div>
-                      </div>
-  
-                      {/* Right Side: Form */}
-                      <div className={cn("p-8 md:p-12 md:border-l border-border/20")}>
-                          {jobTitle ? <ApplicationForm jobTitle={jobTitle} /> : <GeneralContactForm />}
-                      </div>
-                  </div>
-             </Card>
+             <div className="relative">
+                <div className="absolute inset-0 overflow-hidden rounded-2xl">
+                    <div className="absolute top-[-10rem] right-[-10rem] w-96 h-96 bg-primary/10 rounded-full blur-3xl"></div>
+                    <div className="absolute bottom-[-15rem] left-[-15rem] w-96 h-96 bg-primary/10 rounded-full blur-3xl"></div>
+                    <div className="absolute top-1/2 right-1/4 w-64 h-64 bg-primary/5 rounded-full blur-2xl"></div>
+                </div>
+                <Card className="relative overflow-hidden shadow-lg rounded-2xl glass-effect">
+                    <div className="grid grid-cols-1 md:grid-cols-2">
+                        {/* Left Side: Info */}
+                        <div className="p-8 md:p-12">
+                            <div className="flex flex-col justify-center h-full text-foreground">
+                                <h3 className="text-2xl font-bold mb-4">Get in Touch</h3>
+                                <p className="text-foreground/80 mb-8">
+                                    We're here to help and answer any question you might have. We look forward to hearing from you.
+                                </p>
+                                <div className="space-y-6 text-foreground/90">
+                                    <div className="flex items-center gap-4">
+                                        <Mail className="w-6 h-6 text-primary" />
+                                        <a href="mailto:info@cauders.com" className="hover:text-primary transition-colors">info@cauders.com</a>
+                                    </div>
+                                    <div className="flex items-start gap-4">
+                                        <MapPin className="w-6 h-6 text-primary mt-1" />
+                                        <span>Pakistan</span>
+                                    </div>
+                                </div>
+                                <Separator className="my-8 bg-foreground/20" />
+                                <div className="flex items-center gap-2">
+                                    <Button variant="ghost" size="icon" asChild>
+                                        <Link href="https://www.instagram.com/ccauders/" aria-label="Instagram">
+                                            <Instagram className="h-5 w-5 text-foreground/70 hover:text-primary transition-colors" />
+                                        </Link>
+                                    </Button>
+                                    <Button variant="ghost" size="icon" asChild>
+                                        <Link href="https://github.com/cauders" aria-label="GitHub">
+                                            <Github className="h-5 w-5 text-foreground/70 hover:text-primary transition-colors" />
+                                        </Link>
+                                    </Button>
+                                    <Button variant="ghost" size="icon" asChild>
+                                        <Link href="https://www.linkedin.com/company/108785409/admin/dashboard/" aria-label="LinkedIn">
+                                            <Linkedin className="h-5 w-5 text-foreground/70 hover:text-primary transition-colors" />
+                                        </Link>
+                                    </Button>
+                                </div>
+                            </div>
+                        </div>
+    
+                        {/* Right Side: Form */}
+                        <div className="p-8 md:p-12 md:border-l border-border/20">
+                            {jobTitle ? <ApplicationForm jobTitle={jobTitle} /> : <GeneralContactForm />}
+                        </div>
+                    </div>
+                </Card>
+            </div>
           </ScrollFadeIn>
         </div>
       </section>
