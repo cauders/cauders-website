@@ -25,6 +25,7 @@ import { Separator } from "../ui/separator";
 import { useSearchParams } from "next/navigation";
 import { Suspense, useEffect } from "react";
 import { Skeleton } from "../ui/skeleton";
+import { cn } from "@/lib/utils";
 
 const contactFormSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters." }),
@@ -48,6 +49,7 @@ export default function ContactPageContent() {
       <section id="contact" className="py-20 lg:py-32 bg-background relative overflow-hidden">
         <div className="absolute top-[-10rem] right-[-10rem] w-96 h-96 bg-primary/10 rounded-full blur-3xl -z-10"></div>
         <div className="absolute bottom-[-15rem] left-[-15rem] w-96 h-96 bg-primary/10 rounded-full blur-3xl -z-10"></div>
+        <div className="absolute top-1/2 right-1/4 w-64 h-64 bg-primary/5 rounded-full blur-2xl -z-10"></div>
         
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <ScrollFadeIn className="text-center mb-16">
@@ -104,7 +106,7 @@ export default function ContactPageContent() {
                       </div>
   
                       {/* Right Side: Form */}
-                      <div className="p-8 md:p-12 bg-secondary/30">
+                      <div className={cn("p-8 md:p-12", "glass-effect rounded-none border-0 md:border-l")}>
                           {jobTitle ? <ApplicationForm jobTitle={jobTitle} /> : <GeneralContactForm />}
                       </div>
                   </div>
@@ -331,5 +333,3 @@ function ApplicationForm({ jobTitle }: { jobTitle: string }) {
         </>
     );
 }
-
-    
