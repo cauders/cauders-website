@@ -48,9 +48,6 @@ const CustomCursor = () => {
 
   if (!isClient) return null;
 
-  const showDefaultCursor = !isPointer;
-  const showPointerCursor = isPointer;
-
   return (
     <div
       ref={cursorRef}
@@ -67,7 +64,7 @@ const CustomCursor = () => {
             viewBox="0 0 24 24"
             className={cn(
                 "absolute transition-all duration-300",
-                showDefaultCursor ? "opacity-100 scale-100" : "opacity-0 scale-50"
+                !isPointer ? "opacity-100 scale-100" : "opacity-0 scale-50"
             )}
              style={{
                 filter: `drop-shadow(0 0 2px hsl(var(--primary)))`,
@@ -91,7 +88,7 @@ const CustomCursor = () => {
             fill="none"
             className={cn(
                 "absolute transition-all duration-300",
-                showPointerCursor ? "opacity-100 scale-100" : "opacity-0 scale-50"
+                isPointer ? "opacity-100 scale-100" : "opacity-0 scale-50"
             )}
             style={{
                 filter: `drop-shadow(0 0 4px hsl(var(--primary)))`,
@@ -108,7 +105,7 @@ const CustomCursor = () => {
         
         {/* STATE 3: FOOTER FOLLOWER */}
          <div className={cn(
-            "absolute top-0 left-[-2rem] w-48 h-48 bg-primary/40 rounded-full blur-3xl transition-all duration-500 ease-out",
+            "absolute top-[-2rem] left-[-2rem] w-48 h-48 bg-primary/40 rounded-full blur-3xl transition-all duration-500 ease-out",
             isFooterHovered ? "opacity-100 scale-100" : "opacity-0 scale-0"
         )}>
         </div>
