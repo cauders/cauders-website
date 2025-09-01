@@ -1,6 +1,11 @@
 
+'use client';
+
 import Link from 'next/link';
 import MagneticLink from './MagneticLink';
+import { useMousePosition } from '@/hooks/useMousePosition';
+import { cn } from '@/lib/utils';
+import { useEffect, useState } from 'react';
 
 const quickLinks = [
     { href: '/', label: 'Home' },
@@ -28,11 +33,31 @@ const socialLinks = [
 
 export default function Footer() {
   const year = new Date().getFullYear();
+  const { x, y } = useMousePosition();
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  const getTransform = (multiplier: number) => {
+    if (!isMounted) return {};
+    return {
+        transform: `translate(${x * multiplier}px, ${y * multiplier}px)`,
+        transition: 'transform 0.1s ease-out',
+    }
+  }
 
   return (
     <div className="relative bg-foreground text-background overflow-hidden">
-      <div className="absolute top-[-80px] left-[-80px] w-64 h-64 bg-primary/30 rounded-full blur-3xl opacity-80 animate-float-1"></div>
-      <div className="absolute bottom-[-80px] right-[-80px] w-96 h-96 bg-primary/30 rounded-full blur-3xl opacity-80 animate-float-2"></div>
+      <div 
+        className="absolute top-[-80px] left-[-80px] w-64 h-64 bg-primary/30 rounded-full blur-3xl opacity-80"
+        style={getTransform(0.01)}
+      ></div>
+      <div 
+        className="absolute bottom-[-80px] right-[-80px] w-96 h-96 bg-primary/30 rounded-full blur-3xl opacity-80"
+        style={getTransform(0.02)}
+      ></div>
       <footer className="glass-effect relative z-10">
         <div className="container mx-auto py-24 px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
