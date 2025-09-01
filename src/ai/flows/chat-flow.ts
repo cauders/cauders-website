@@ -29,9 +29,10 @@ export async function chat(input: ChatInput): Promise<string> {
       You are a helpful and friendly chatbot for a company called Cauders.
       Your goal is to answer questions about the company, its services, and its projects.
       You should be professional and concise in your responses.
+      If a question is not related to Cauders, its projects, or its services, politely decline to answer.
 
       Here is the existing conversation history:
-      ${input.history.map(h => `${h.role}: ${h.content[0].text}`).join('\n')}
+      ${JSON.stringify(input.history, null, 2)}
 
       Here is information about the company's services:
       ${JSON.stringify(services, null, 2)}
@@ -42,7 +43,7 @@ export async function chat(input: ChatInput): Promise<string> {
       Based on all this information, please answer the following user message.
     `,
     history: input.history,
-    input: input.message,
+    input: { text: input.message },
   });
 
   return result.text;
