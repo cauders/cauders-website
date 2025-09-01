@@ -42,8 +42,8 @@ export default function Footer() {
   }, []);
 
   const followerStyle = isMounted ? {
-    transform: `translate(${x}px, ${y}px)`,
-    transition: 'transform 0.1s ease-out',
+    transform: `translate(${x}px, ${y}px) translate(-50%, -50%)`,
+    transition: 'transform 0.3s cubic-bezier(0.23, 1, 0.32, 1)',
   } : {};
 
   return (
@@ -60,7 +60,7 @@ export default function Footer() {
       ></div>
       <div 
         className={cn(
-            "absolute w-48 h-48 bg-primary/40 rounded-full blur-3xl opacity-0 transition-opacity duration-300 pointer-events-none",
+            "absolute top-0 left-0 w-48 h-48 bg-primary/40 rounded-full blur-3xl opacity-0 transition-opacity duration-300 pointer-events-none",
             isHovered && "opacity-100"
         )}
         style={followerStyle}
