@@ -14,6 +14,9 @@ import Chatbot from '@/components/cauders/Chatbot';
 import { useState, useEffect } from 'react';
 import Loader from '@/components/cauders/Loader';
 import ScrollFadeIn from '@/components/cauders/ScrollFadeIn';
+import { getAnalytics } from 'firebase/analytics';
+import app from '@/lib/firebase';
+
 
 // export const metadata: Metadata = {
 //   title: 'Cauders | Innovative Digital Solutions',
@@ -34,6 +37,12 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+    useEffect(() => {
+        if (typeof window !== "undefined") {
+            getAnalytics(app);
+        }
+    }, []);
+
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={cn(montserrat.variable, 'flex flex-col min-h-screen bg-background antialiased relative font-body')}>
