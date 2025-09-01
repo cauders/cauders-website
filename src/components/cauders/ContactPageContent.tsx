@@ -72,13 +72,9 @@ export default function ContactPageContent() {
                                   <Mail className="w-6 h-6 text-primary" />
                                   <a href="mailto:info@cauders.com" className="text-foreground/80 hover:text-primary transition-colors">info@cauders.com</a>
                               </div>
-                              <div className="flex items-center gap-4">
-                                  <Phone className="w-6 h-6 text-primary" />
-                                  <span className="text-foreground/80">(123) 456-7890</span>
-                              </div>
                               <div className="flex items-start gap-4">
                                   <MapPin className="w-6 h-6 text-primary mt-1" />
-                                  <span className="text-foreground/80">123 Design Street, Creative City, 10101</span>
+                                  <span className="text-foreground/80">Pakistan. 52250</span>
                               </div>
                           </div>
                           <Separator className="my-8" />
