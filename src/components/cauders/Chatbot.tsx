@@ -7,7 +7,7 @@ import { Card, CardHeader, CardTitle, CardContent, CardFooter } from '../ui/card
 import { Input } from '../ui/input';
 import { ScrollArea } from '../ui/scroll-area';
 import ChatIcon from './ChatIcon';
-import { Loader2, ArrowUp, X, Send } from 'lucide-react';
+import { Loader2, ArrowUp, X, Send, RefreshCw } from 'lucide-react';
 import { submitChatMessage } from '@/app/actions';
 import { cn } from '@/lib/utils';
 import type { ChatInput } from '@/ai/flows/chat-flow';
@@ -36,13 +36,6 @@ export default function Chatbot() {
   const [currentState, setCurrentState] = useState('initial');
   const scrollAreaRef = useRef<HTMLDivElement>(null);
   const hasStartedChat = messages.length > 0;
-
-  useEffect(() => {
-    if (isOpen && !hasStartedChat) {
-      processMessage(''); // Start the conversation
-    }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isOpen]);
 
   useEffect(() => {
     if (isOpen && scrollAreaRef.current) {
@@ -117,6 +110,11 @@ export default function Chatbot() {
     if (!isOpen) setIsOpen(true);
     processMessage(question);
   };
+
+  const clearChat = () => {
+    setMessages([]);
+    setCurrentState('initial');
+  }
   
   const lastBotMessage = messages.filter(m => m.role === 'bot').pop();
   const showInput = !lastBotMessage?.options || lastBotMessage.options.length === 0;
@@ -158,6 +156,9 @@ export default function Chatbot() {
                         </div>
                         <CardTitle className="text-foreground">Caudbot</CardTitle>
                     </div>
+                    <Button variant="ghost" size="icon" onClick={clearChat} aria-label="Clear chat">
+                        <RefreshCw className="w-5 h-5 text-foreground/70 transition-transform duration-300 hover:rotate-180" />
+                    </Button>
                 </CardHeader>
                 <CardContent className="flex-grow flex flex-col overflow-hidden">
                 <ScrollArea className="flex-grow pr-4 max-w-full" ref={scrollAreaRef}>
@@ -227,7 +228,7 @@ export default function Chatbot() {
                 </ScrollArea>
                 </CardContent>
                 <CardFooter className="pt-4">
-                  {showInput && hasStartedChat && (
+                  {(showInput || hasStartedChat) && (
                     <form 
                       onSubmit={handleSubmit} 
                       className="chat-input-container w-full"

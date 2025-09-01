@@ -61,6 +61,9 @@ const conversationFlow: Record<string, (message: string, history: any[]) => Prom
         newState: 'contact_name',
       };
     }
+    if (message.toLowerCase().includes('clear-chat')) {
+        return conversationFlow['initial'](message, []);
+    }
     return {
       text: "I'm sorry, I didn't understand that. Please select an option from the menu.",
       options: ["Our Services", "Our Projects", "Contact Us"],
