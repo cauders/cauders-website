@@ -47,22 +47,22 @@ const mockResponses: { [key: string]: { text: string; options?: string[], newSta
         newState: 'contact_link',
     },
     'web_development': {
-        text: "Our Web Development services focus on creating high-performance, scalable web applications. We use modern technologies like Next.js and React to build everything from e-commerce platforms to complex SaaS dashboards.",
+        text: "We build high-performance, secure, and scalable web applications using cutting-edge technologies. From custom portals to enterprise-grade solutions, we create seamless digital experiences that drive engagement and conversion.",
         options: ["Tell me about Mobile Apps", "What about AI?", "Go back"],
         newState: 'services_menu',
     },
     'mobile_apps': {
-        text: "We develop beautiful and performant mobile apps for both iOS and Android using technologies like React Native and Flutter. We handle the full lifecycle, from design to deployment.",
+        text: "Our mobile apps are designed for iOS and Android with a focus on speed, usability, and flawless performance. Whether it’s a startup MVP or a fully-featured enterprise application, we ensure smooth navigation and optimized functionality for end users.",
         options: ["Tell me about Web Development", "What about AI?", "Go back"],
         newState: 'services_menu',
     },
     'ai_integrations': {
-        text: "We can integrate AI-powered features into your products, such as intelligent chatbots, recommendation engines, and data analytics tools to drive business growth.",
+        text: "Our AI-powered solutions bring automation, personalization, and predictive analytics to your digital products. From chatbots and machine learning models to business intelligence systems, we turn data into intelligent business outcomes.",
         options: ["Tell me about Web Development", "What about Mobile Apps?", "Go back"],
         newState: 'services_menu',
     },
     'ui/ux_design': {
-        text: "Our UI/UX design process is user-centric. We create intuitive, engaging, and visually stunning interfaces that enhance user satisfaction and drive conversion.",
+        text: "User experience defines product success. Our UI/UX design team creates intuitive, engaging, and visually stunning interfaces that elevate user satisfaction while driving conversions and brand loyalty.",
         options: ["Tell me about Web Development", "What about Mobile Apps?", "Go back"],
         newState: 'services_menu',
     },
@@ -72,11 +72,11 @@ const mockResponses: { [key: string]: { text: string; options?: string[], newSta
         newState: 'main_menu',
     },
     'yes,_take_me_to_the_portfolio': {
-        text: "Redirecting you to the portfolio...",
+        text: "Excellent! I'll redirect you to our portfolio page now. You'll see a range of our projects there.",
         newState: 'redirect_portfolio'
     },
     'go_to_contact_page': {
-        text: "Redirecting you to the contact page...",
+        text: "Perfect. Taking you to the contact page where you can send us a message directly.",
         newState: 'redirect_contact'
     },
     'no,_thanks': {
@@ -261,7 +261,16 @@ export default function Chatbot() {
                               />
                           </div>
                        )}
-                        <CardTitle className="text-foreground">Caudbot</CardTitle>
+                       <div>
+                         <CardTitle className="text-foreground">Caudbot</CardTitle>
+                         <div className="flex items-center gap-1.5 mt-1">
+                           <span className="relative flex h-2 w-2">
+                             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                             <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                           </span>
+                           <p className="text-xs text-green-500 font-medium">Online</p>
+                         </div>
+                       </div>
                     </div>
                     <Button variant="ghost" size="icon" onClick={clearChat} aria-label="Clear chat">
                         <RefreshCw className="w-5 h-5 text-foreground/70 transition-transform duration-300 hover:rotate-180" />
@@ -305,7 +314,7 @@ export default function Chatbot() {
                         style={{animationDelay: `${index * 50}ms`}}
                         >
                             <Avatar className="w-8 h-8">
-                                <AvatarFallback className={cn(message.role === 'bot' ? 'bg-foreground' : 'bg-foreground/10')}>
+                                <AvatarFallback className={cn(message.role === 'bot' ? 'bg-black' : 'bg-foreground/10')}>
                                     {message.role === 'bot' ? (
                                         <div className="w-6 h-6">
                                             <Lottie animationData={robotAnimation} loop={true} />
@@ -384,5 +393,3 @@ export default function Chatbot() {
     </>
   );
 }
-
-    
