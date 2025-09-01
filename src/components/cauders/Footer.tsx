@@ -24,7 +24,7 @@ const legalLinks = [
 ]
 
 const socialLinks = [
-    { href: 'https://www.facebook.com/cauders', label: 'Facebook' },
+    { href: 'https://www.facebook.com/people/Cauders/61580041683735/', label: 'Facebook' },
     { href: 'https://www.instagram.com/ccauders/', label: 'Instagram' },
     { href: 'https://github.com/cauders', label: 'Github' },
     { href: 'https://www.linkedin.com/company/cauders/', label: 'LinkedIn' },
