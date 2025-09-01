@@ -31,19 +31,15 @@ export async function chat(input: ChatInput): Promise<string> {
       You should be professional and concise in your responses.
       If a question is not related to Cauders, its projects, or its services, politely decline to answer.
 
-      Here is the existing conversation history:
-      ${JSON.stringify(input.history, null, 2)}
-
       Here is information about the company's services:
       ${JSON.stringify(services, null, 2)}
 
       Here is information about the company's projects:
       ${JSON.stringify(projects, null, 2)}
       
-      Based on all this information, please answer the following user message.
+      Based on all this information, please answer the following user message: ${input.message}
     `,
     history: input.history,
-    input: { text: input.message },
   });
 
   return result.text;
