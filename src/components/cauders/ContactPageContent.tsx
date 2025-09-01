@@ -23,7 +23,9 @@ import { Loader2, Mail, MapPin, Phone, Github, Instagram, Linkedin, Briefcase } 
 import Link from "next/link";
 import { Separator } from "../ui/separator";
 import { useSearchParams } from "next/navigation";
-import { useEffect } from "react";
+import { Suspense, useEffect } from "react";
+import Contact3DBackground from "./Contact3DBackground";
+import { Skeleton } from "../ui/skeleton";
 
 const contactFormSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters." }),
@@ -64,10 +66,11 @@ export default function ContactPageContent() {
                       {/* Left Side: Info */}
                       <div className="relative p-8 md:p-12 overflow-hidden">
                           <div className="absolute inset-0 z-0">
-                            <div className="absolute top-[-80px] left-[-80px] w-64 h-64 bg-primary/30 rounded-full opacity-80"></div>
-                            <div className="absolute bottom-[-80px] right-[-80px] w-64 h-64 bg-primary/30 rounded-full opacity-80"></div>
+                            <Suspense fallback={<Skeleton className="w-full h-full" />}>
+                                <Contact3DBackground />
+                            </Suspense>
                           </div>
-                          <Card className="bg-card/95 w-full h-full rounded-2xl border-border/20 relative z-10">
+                          <Card className="glass-effect w-full h-full rounded-2xl border-border/20 relative z-10">
                             <CardContent className="flex flex-col justify-center p-8 h-full text-foreground">
                                 <h3 className="text-2xl font-bold mb-4">Get in Touch</h3>
                                 <p className="text-foreground/80 mb-8">
