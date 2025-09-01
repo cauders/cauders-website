@@ -7,7 +7,7 @@ import { Card, CardHeader, CardTitle, CardContent, CardFooter } from '../ui/card
 import { Input } from '../ui/input';
 import { ScrollArea } from '../ui/scroll-area';
 import { Loader2, ArrowUp, X, Send, RefreshCw, User } from 'lucide-react';
-import { submitChatMessage } from '@/app/actions';
+import { submitChatMessage } from '@/app/chat-actions';
 import { cn } from '@/lib/utils';
 import type { ChatInput } from '@/ai/flows/chat-flow';
 import Lottie from 'lottie-react';

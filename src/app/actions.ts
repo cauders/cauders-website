@@ -2,7 +2,6 @@
 "use server";
 
 import { z } from "zod";
-import { chat, type ChatInput } from "@/ai/flows/chat-flow";
 import { generateImage } from "@/ai/flows/generate-image-flow";
 import app from "@/lib/firebase";
 import { getFirestore, collection, addDoc, doc, setDoc } from "firebase/firestore";
@@ -84,10 +83,6 @@ export async function submitApplicationForm(formData: FormData) {
     await new Promise(resolve => setTimeout(resolve, 1000));
   
     return { success: true, message: "Thank you for your application! We have received your CV and will be in touch if your profile matches our requirements." };
-}
-
-export async function submitChatMessage(input: ChatInput) {
-    return await chat(input);
 }
 
 export async function generateImageAction(prompt: string) {
