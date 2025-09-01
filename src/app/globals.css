@@ -113,18 +113,17 @@
   }
 
   .animated-gradient-text {
-    display: inline;
+    background: linear-gradient(to right, hsl(var(--primary)), hsl(var(--primary)) 50%, hsl(var(--foreground)) 50%);
+    background-size: 200% 100%;
+    background-position: 100%;
     -webkit-background-clip: text;
     background-clip: text;
-    background: linear-gradient(to right, hsl(var(--primary)), hsl(var(--primary))) no-repeat;
-    background-size: 0% 100%;
-    color: hsl(var(--foreground));
-    transition: background-size 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    -webkit-text-fill-color: transparent;
+    transition: background-position 0.5s cubic-bezier(0.23, 1, 0.32, 1);
   }
   
   .group:hover .animated-gradient-text {
-    background-size: 100% 100%;
-    color: transparent;
+    background-position: 0 100%;
   }
 
   .animated-gradient-text.animate {
