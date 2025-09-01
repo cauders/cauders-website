@@ -30,7 +30,7 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <div className="relative bg-foreground text-background overflow-hidden rounded-t-2xl">
+    <div className="relative bg-foreground text-background overflow-hidden">
       <div className="absolute top-[-80px] left-[-80px] w-64 h-64 bg-primary/30 rounded-full blur-3xl opacity-80 animate-float-1"></div>
       <div className="absolute bottom-[-80px] right-[-80px] w-96 h-96 bg-primary/30 rounded-full blur-3xl opacity-80 animate-float-2"></div>
       <footer className="glass-effect relative z-10">
