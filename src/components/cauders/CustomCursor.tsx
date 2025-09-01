@@ -105,7 +105,7 @@ const CustomCursor = () => {
         
         {/* STATE 3: FOOTER FOLLOWER */}
          <div className={cn(
-            "absolute top-[-4rem] left-[-2rem] w-48 h-48 bg-primary/40 rounded-full blur-3xl transition-all duration-500 ease-out",
+            "absolute top-[-4rem] left-[-4rem] w-48 h-48 bg-primary/40 rounded-full blur-3xl transition-all duration-500 ease-out",
             isFooterHovered ? "opacity-100 scale-100" : "opacity-0 scale-0"
         )}>
         </div>
