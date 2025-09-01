@@ -78,6 +78,7 @@ const ServiceSection = ({ service, index }: { service: ReturnType<typeof getServ
                                       <div className="absolute top-[-80px] left-[-80px] w-64 h-64 bg-primary/30 rounded-full blur-3xl opacity-80"></div>
                                       <div className="absolute bottom-[-80px] right-[-80px] w-64 h-64 bg-primary/30 rounded-full blur-3xl opacity-80"></div>
                                       <Card className={cn("relative z-10 h-full flex flex-col justify-center items-center text-center glass-effect animated-border-card border-border/20 p-6")}>
+                                          <service.icon className="w-12 h-12 text-background mb-4" />
                                           <CardTitle className="text-background text-5xl font-extrabold">{service.title}</CardTitle>
                                           <div className="absolute bottom-6 left-6 right-6">
                                             <Button asChild className="button w-full">
