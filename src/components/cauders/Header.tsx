@@ -72,11 +72,21 @@ export default function Header() {
         </div>
       </div>
 
-      <div className={cn(
-          "fixed inset-0 z-[100] bg-foreground text-background transition-transform duration-700 ease-[cubic-bezier(0.23,1,0.32,1)]",
-          isMenuOpen ? 'transform-none' : '-translate-y-full'
-      )}>
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 h-full flex flex-col">
+      <div 
+          className={cn(
+              "fixed inset-0 z-[100] bg-foreground text-background transition-transform duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] overflow-hidden",
+              isMenuOpen ? 'transform-none' : '-translate-y-full'
+          )}
+          data-menu-hover="true"
+      >
+        <div 
+          className="absolute top-[-120px] left-[-80px] w-64 h-64 bg-primary/30 rounded-full blur-3xl opacity-80"
+        ></div>
+        <div 
+          className="absolute bottom-[-120px] right-[-80px] w-96 h-96 bg-primary/30 rounded-full blur-3xl opacity-80"
+        ></div>
+
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 h-full flex flex-col relative z-10">
              <div className="flex items-center justify-between h-24">
                 <Link href="/" onClick={() => setIsMenuOpen(false)} className="text-2xl font-bold">
                     Cauders

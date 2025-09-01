@@ -9,6 +9,7 @@ const CustomCursor = () => {
   const [isClient, setIsClient] = useState(false);
   const [isPointer, setIsPointer] = useState(false);
   const [isFooterHovered, setIsFooterHovered] = useState(false);
+  const [isMenuHovered, setIsMenuHovered] = useState(false);
   const [position, setPosition] = useState({ x: -100, y: -100 });
   const [isVisible, setIsVisible] = useState(false);
 
@@ -25,6 +26,7 @@ const CustomCursor = () => {
       const target = e.target as HTMLElement;
       setIsPointer(!!target.closest('a, button, [role="button"], input, textarea'));
       setIsFooterHovered(!!target.closest('[data-footer-hover="true"]'));
+      setIsMenuHovered(!!target.closest('[data-menu-hover="true"]'));
     };
     
     const handleMouseLeave = () => {
@@ -47,6 +49,8 @@ const CustomCursor = () => {
   }, [position]);
 
   if (!isClient) return null;
+
+  const showSpecialCursor = isFooterHovered || isMenuHovered;
 
   return (
     <div
@@ -103,10 +107,10 @@ const CustomCursor = () => {
             </g>
         </svg>
         
-        {/* STATE 3: FOOTER FOLLOWER */}
+        {/* STATE 3: FOOTER/MENU FOLLOWER */}
          <div className={cn(
             "absolute top-[-4rem] left-[-4rem] w-48 h-48 bg-primary/40 rounded-full blur-3xl transition-all duration-500 ease-out",
-            isFooterHovered ? "opacity-100 scale-100" : "opacity-0 scale-0"
+            showSpecialCursor ? "opacity-100 scale-100" : "opacity-0 scale-0"
         )}>
         </div>
     </div>
