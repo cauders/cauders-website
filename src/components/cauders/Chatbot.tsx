@@ -1,194 +1,328 @@
 
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Bot, Send, User, X } from 'lucide-react';
+import { useState, useRef, useEffect, type FormEvent } from 'react';
+import { Button } from '../ui/button';
+import { Card, CardHeader, CardTitle, CardContent, CardFooter } from '../ui/card';
+import { Input } from '../ui/input';
+import { ScrollArea } from '../ui/scroll-area';
+import { Loader2, ArrowUp, X, Send, RefreshCw, User } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import Lottie from 'lottie-react';
+import robotAnimation from '@/../public/lottie/robot-animation.json';
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
 
 type Message = {
-  id: string;
   role: 'user' | 'bot';
-  text: string;
-  options?: { label: string; value: string }[];
+  content: string;
+  options?: string[];
+  state?: string;
 };
 
-const initialBotMessage: Message = {
-    id: 'intro',
-    role: 'bot',
-    text: "Hello! I'm the Cauders virtual assistant. How can I help you today?",
-    options: [
-        { label: 'Our Services', value: 'services' },
-        { label: 'Our Portfolio', value: 'portfolio' },
-        { label: 'Contact Us', value: 'contact' },
-    ],
+const icebreakers = [
+    "What services do you offer?",
+    "Tell me about your projects.",
+    "I need to contact support.",
+];
+
+const mockResponses: { [key: string]: { text: string; options?: string[], newState: string } } = {
+    'initial': {
+        text: "Hello! I'm Caudbot. How can I help you today?",
+        options: ["Our Services", "Our Portfolio", "Contact Us"],
+        newState: 'main_menu',
+    },
+    'services': {
+        text: "We offer a range of services including Web Development, Mobile App Development, and AI Integrations. Which would you like to know more about?",
+        options: ["Web Development", "Mobile Apps", "AI"],
+        newState: 'services_menu',
+    },
+    'portfolio': {
+        text: "You can view our recent work on the portfolio page. Would you like me to take you there?",
+        options: ["Yes, take me there", "No, thanks"],
+        newState: 'portfolio_link',
+    },
+    'contact': {
+        text: "You can reach us via the contact page or email us at info@cauders.com.",
+        options: [],
+        newState: 'initial',
+    },
+    'default': {
+        text: "This is a demo response. Full chat functionality is not enabled. Please select an option.",
+        options: ["Our Services", "Our Portfolio", "Contact Us"],
+        newState: 'main_menu',
+    }
 };
 
 export default function Chatbot() {
   const [isOpen, setIsOpen] = useState(false);
-  const [messages, setMessages] = useState<Message[]>([initialBotMessage]);
-  const [inputValue, setInputValue] = useState('');
-  const [isTyping, setIsTyping] = useState(false);
-  const messagesEndRef = useRef<HTMLDivElement>(null);
-
-  const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-  };
+  const [isPeeking, setIsPeeking] = useState(false);
+  const [messages, setMessages] = useState<Message[]>([]);
+  const [input, setInput] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [currentState, setCurrentState] = useState('initial');
+  const scrollAreaRef = useRef<HTMLDivElement>(null);
+  const hasStartedChat = messages.length > 0;
 
   useEffect(() => {
-    scrollToBottom();
-  }, [messages, isTyping]);
+    if (isOpen && scrollAreaRef.current) {
+        setTimeout(() => {
+            const viewport = scrollAreaRef.current?.querySelector('[data-radix-scroll-area-viewport]');
+            if (viewport) {
+                viewport.scrollTop = viewport.scrollHeight;
+            }
+        }, 100);
+    }
+  }, [messages, isOpen]);
 
+  useEffect(() => {
+    if (isOpen) {
+      setIsPeeking(false);
+      return;
+    }
 
-  const handleOptionClick = (value: string, label: string) => {
-    const userMessage: Message = {
-      id: `user-${Date.now()}`,
-      role: 'user',
-      text: label,
-    };
-    setMessages(prev => [...prev, userMessage]);
+    const peekTimer = setInterval(() => {
+      setIsPeeking(true);
+      setTimeout(() => setIsPeeking(false), 3000); // Peek duration
+    }, 10000); // Time between peeks
+
+    return () => clearInterval(peekTimer);
+  }, [isOpen]);
+  
+  const processMessage = async (messageText: string) => {
+    if (isLoading) return;
     
-    setIsTyping(true);
+    // Start with a clean slate if it's the first message
+    if (messageText.trim()) {
+      const userMessage: Message = { role: 'user', content: messageText, state: currentState };
+      setMessages((prev) => [...(hasStartedChat ? prev : []), userMessage]);
+    }
+    
+    setInput('');
+    setIsLoading(true);
+
+    // Simulate backend call
     setTimeout(() => {
-        const botResponse: Message = {
-            id: `bot-${Date.now()}`,
-            role: 'bot',
-            text: `This is a demo. To learn more about "${label}", please visit the corresponding page.`
-        };
-        setIsTyping(false);
-        setMessages(prev => [...prev, botResponse]);
+        let responseKey = messageText.toLowerCase().replace(/ /g, '_');
+        if(responseKey.includes('service')) responseKey = 'services';
+        if(responseKey.includes('portfolio') || responseKey.includes('project')) responseKey = 'portfolio';
+        if(responseKey.includes('contact')) responseKey = 'contact';
+
+        const response = mockResponses[responseKey as keyof typeof mockResponses] || mockResponses['default'];
+
+        const botMessage: Message = { role: 'bot', content: response.text, options: response.options, state: response.newState };
+        setMessages((prev) => [...prev, botMessage]);
+        setCurrentState(response.newState);
+        setIsLoading(false);
     }, 1000);
+  }
+
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    if (!input.trim()) return;
+    processMessage(input);
   };
   
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!inputValue.trim()) return;
-
-    const userMessage: Message = {
-        id: `user-${Date.now()}`,
-        role: 'user',
-        text: inputValue,
-    };
-    setMessages(prev => [...prev, userMessage]);
-    setInputValue('');
-
-    setIsTyping(true);
-    setTimeout(() => {
-        const botResponse: Message = {
-            id: `bot-${Date.now()}`,
-            role: 'bot',
-            text: "This is a demo response. Full chat functionality is not enabled."
-        };
-        setIsTyping(false);
-        setMessages(prev => [...prev, botResponse]);
-    }, 1000);
+  const handleOptionClick = (option: string) => {
+    processMessage(option);
   };
+
+  const handleIcebreakerClick = (question: string) => {
+    if (!isOpen) setIsOpen(true);
+    processMessage(question);
+  };
+
+  const clearChat = () => {
+    setMessages([]);
+    setCurrentState('initial');
+  }
+  
+  const lastBotMessage = messages.filter(m => m.role === 'bot').pop();
+  const showInput = !lastBotMessage?.options || lastBotMessage.options.length === 0;
 
   return (
     <>
-      {/* Chat Bubble FAB */}
       <div className="fixed bottom-8 right-8 z-50">
+        {isPeeking && !isOpen && (
+          <div className="absolute bottom-0 left-1/2 w-32 h-24 pointer-events-none z-0">
+             <div className="animate-peek">
+                <Lottie 
+                    animationData={robotAnimation} 
+                    loop={true} 
+                    className="w-full h-full"
+                />
+             </div>
+          </div>
+        )}
         <Button
           size="icon"
-          className="rounded-full w-16 h-16 shadow-lg shadow-primary/30 animate-chat-icon-float"
-          onClick={() => setIsOpen(true)}
+          className="rounded-full w-16 h-16 shadow-lg group animate-chat-icon-float relative z-10"
+          onClick={() => setIsOpen(!isOpen)}
+          aria-label="Toggle Caudbot"
         >
-          <Bot className="w-8 h-8" />
+          {isOpen ? <X className="w-8 h-8 text-background transition-transform duration-300 group-hover:rotate-90" /> :  <div className="w-8 h-8 relative group-hover:[&>svg]:scale-110 group-hover:[&>svg]:-rotate-12">
+            <svg
+                className="absolute inset-0 w-full h-full text-background transition-transform duration-300 ease-out"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                xmlns="http://www.w3.org/2000/svg"
+            >
+                <path
+                d="M21 11.5C21 16.7467 16.7467 21 11.5 21C11.1991 21 10.9014 20.9893 10.608 20.9684C7.8893 22.0427 4.5 22.4999 4.5 22.4999C4.5 22.4999 4.87329 20.245 5.5 18.2C3.20062 16.3333 2 14.0333 2 11.5C2 6.25329 6.25329 2 11.5 2S21 6.25329 21 11.5Z"
+                stroke="hsl(var(--background))"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                />
+            </svg>
+            <svg
+                className="absolute inset-0 w-full h-full text-background transition-transform duration-300 ease-out"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                xmlns="http://www.w3.org/2000/svg"
+            >
+                <circle cx="8" cy="12" r="1.5" />
+                <circle cx="12" cy="12" r="1.5" />
+                <circle cx="16" cy="12" r="1.5" />
+            </svg>
+            </div>}
         </Button>
       </div>
 
-      {/* Chat Panel */}
-      <div
-        className={cn(
-          'fixed bottom-28 right-8 z-50 w-[calc(100%-4rem)] max-w-sm h-[60vh] bg-card border shadow-xl rounded-2xl flex flex-col transition-all duration-500 ease-out',
-          isOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10 pointer-events-none'
-        )}
-      >
-        {/* Header */}
-        <div className="flex items-center justify-between p-4 border-b">
-          <div className="flex items-center gap-3">
-            <Avatar>
-              <AvatarFallback className="bg-primary text-primary-foreground">
-                <Bot className="w-6 h-6" />
-              </AvatarFallback>
-            </Avatar>
-            <div>
-              <h3 className="font-bold text-foreground">Cauders Assistant</h3>
-              <p className="text-xs text-foreground/70">Online</p>
-            </div>
-          </div>
-          <Button variant="ghost" size="icon" onClick={() => setIsOpen(false)}>
-            <X className="h-5 w-5" />
-          </Button>
-        </div>
-
-        {/* Messages */}
-        <div className="flex-grow p-4 overflow-y-auto hide-scrollbar">
-            <div className="space-y-4">
-                {messages.map((message) => (
-                    <div key={message.id} className={cn(
-                        "flex items-end gap-2",
-                        message.role === 'user' ? 'justify-end' : 'justify-start'
-                    )}>
-                        {message.role === 'bot' && <Avatar className="h-8 w-8"><AvatarFallback className="bg-primary/20"><Bot className="w-5 h-5 text-primary" /></AvatarFallback></Avatar>}
-                        <div className={cn(
-                            "max-w-[80%] p-3 rounded-2xl text-sm",
-                            message.role === 'user' ? 'bg-primary text-primary-foreground chat-bubble-user' : 'bg-secondary text-secondary-foreground chat-bubble-bot'
-                        )}>
-                            <p>{message.text}</p>
-                            {message.options && (
-                                <div className="mt-3 flex flex-col gap-2">
-                                    {message.options.map(option => (
-                                        <Button
-                                            key={option.value}
-                                            variant="outline"
-                                            size="sm"
-                                            className="bg-card/50"
-                                            onClick={() => handleOptionClick(option.value, option.label)}
-                                        >
-                                            {option.label}
-                                        </Button>
-                                    ))}
-                                </div>
-                            )}
-                        </div>
-                         {message.role === 'user' && <Avatar className="h-8 w-8"><AvatarFallback><User className="w-5 h-5" /></AvatarFallback></Avatar>}
+      {isOpen && (
+        <div className="fixed bottom-28 right-8 z-50">
+            <Card className="w-[90vw] max-w-md h-[80vh] max-h-[600px] flex flex-col shadow-2xl rounded-2xl bg-background/70 backdrop-blur-lg border-0 animate-zoom-in">
+                <CardHeader className="flex flex-row items-center justify-between">
+                    <div className="flex items-center gap-2">
+                       {hasStartedChat && (
+                         <div className="w-10 h-10 animate-fade-in-down">
+                              <Lottie 
+                                  animationData={robotAnimation} 
+                                  loop={true}
+                              />
+                          </div>
+                       )}
+                        <CardTitle className="text-foreground">Caudbot</CardTitle>
                     </div>
-                ))}
-                 {isTyping && (
-                    <div className="flex items-end gap-2 justify-start">
-                        <Avatar className="h-8 w-8"><AvatarFallback className="bg-primary/20"><Bot className="w-5 h-5 text-primary" /></AvatarFallback></Avatar>
-                        <div className="bg-secondary text-secondary-foreground p-3 rounded-2xl chat-bubble-bot">
-                            <div className="flex items-center gap-1">
-                                <span className="h-2 w-2 rounded-full bg-foreground/50 animate-bounce [animation-delay:-0.3s]"></span>
-                                <span className="h-2 w-2 rounded-full bg-foreground/50 animate-bounce [animation-delay:-0.15s]"></span>
-                                <span className="h-2 w-2 rounded-full bg-foreground/50 animate-bounce"></span>
+                    <Button variant="ghost" size="icon" onClick={clearChat} aria-label="Clear chat">
+                        <RefreshCw className="w-5 h-5 text-foreground/70 transition-transform duration-300 hover:rotate-180" />
+                    </Button>
+                </CardHeader>
+                <CardContent className="flex-grow flex flex-col overflow-hidden">
+                <ScrollArea className="flex-grow pr-4 max-w-full" ref={scrollAreaRef}>
+                    <div className="space-y-4 flex flex-col min-h-full">
+                    {!hasStartedChat && (
+                         <div className="flex flex-col items-center justify-center flex-grow gap-2 p-4 text-center animate-fade-in-up">
+                            <div className="w-32 h-32 mb-4">
+                                <Lottie animationData={robotAnimation} loop={true} />
+                            </div>
+                            <p className="text-lg font-semibold text-foreground">Welcome to Caudbot!</p>
+                            <p className="text-sm text-foreground/70">Start by selecting an option below, or ask a question.</p>
+                             <div className="flex flex-col items-start gap-2 pt-4 animate-fade-in-up">
+                                 {icebreakers.map(q => (
+                                     <Button
+                                         key={q}
+                                         variant="outline"
+                                         size="sm"
+                                         className="rounded-full bg-background/50 hover:bg-background/80 border-foreground/20 text-foreground/80"
+                                         onClick={() => handleIcebreakerClick(q)}
+                                         disabled={isLoading}
+                                     >
+                                         {q}
+                                     </Button>
+                                 ))}
+                             </div>
+                         </div>
+                    )}
+                    {messages.map((message, index) => (
+                        <div
+                        key={index}
+                        className={cn(
+                            'flex items-end gap-2 w-full animate-fade-in-up',
+                             message.role === 'user'
+                            ? 'flex-row-reverse'
+                            : 'flex-row'
+                        )}
+                        style={{animationDelay: `${index * 50}ms`}}
+                        >
+                            <Avatar className="w-8 h-8">
+                                <AvatarFallback className={cn(message.role === 'bot' ? 'bg-primary/20' : 'bg-foreground/10')}>
+                                    {message.role === 'bot' ? (
+                                        <div className="w-6 h-6">
+                                            <Lottie animationData={robotAnimation} loop={true} />
+                                        </div>
+                                    ) : (
+                                        <User className="w-4 h-4 text-foreground/80" />
+                                    )}
+                                </AvatarFallback>
+                            </Avatar>
+                            <div className={cn('max-w-[80%] px-3 py-2 text-sm',
+                                message.role === 'user'
+                                ? 'bg-primary text-primary-foreground chat-bubble-user'
+                                : 'bg-muted text-muted-foreground chat-bubble-bot'
+                            )}>
+                                {message.content}
                             </div>
                         </div>
+                    ))}
+                    {lastBotMessage?.options && (
+                        <div className="flex flex-wrap gap-2 pt-2 animate-fade-in-up" style={{animationDelay: `${messages.length * 50}ms`}}>
+                            {lastBotMessage.options.map(option => (
+                                <Button
+                                    key={option}
+                                    variant="outline"
+                                    size="sm"
+                                    className="rounded-full bg-background/50 hover:bg-background/80 border-foreground/20 text-foreground/80"
+                                    onClick={() => handleOptionClick(option)}
+                                    disabled={isLoading}
+                                >
+                                    {option}
+                                </Button>
+                            ))}
+                        </div>
+                    )}
+                     {isLoading && (
+                        <div className="flex items-center space-x-2 self-start animate-fade-in-up">
+                          <div className="w-8 h-8">
+                            <Lottie animationData={robotAnimation} loop={true} />
+                          </div>
+                          <span className="text-sm text-foreground">Thinking...</span>
+                        </div>
+                      )}
                     </div>
-                )}
-                <div ref={messagesEndRef} />
-            </div>
+                </ScrollArea>
+                </CardContent>
+                <CardFooter className="pt-4">
+                  {(showInput || hasStartedChat) && (
+                    <form 
+                      onSubmit={handleSubmit} 
+                      className="chat-input-container w-full"
+                    >
+                      <Input
+                        value={input}
+                        onChange={(e) => setInput(e.target.value)}
+                        placeholder="Type your message..."
+                        disabled={isLoading}
+                        className="flex-grow bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 px-3 text-foreground placeholder:text-muted-foreground border-0"
+                      />
+                      <Button 
+                        type="submit" 
+                        variant="ghost" 
+                        size="icon" 
+                        className="h-9 w-9 text-primary disabled:opacity-50" 
+                        disabled={isLoading || !input.trim()}
+                        aria-label="Send message"
+                      >
+                        <Send className="h-5 w-5 stroke-[2.5]" />
+                        <span className="sr-only">Send</span>
+                      </Button>
+                    </form>
+                  )}
+                </CardFooter>
+            </Card>
         </div>
-
-        {/* Input */}
-        <div className="p-4 border-t">
-          <form onSubmit={handleSubmit} className="flex items-center gap-2">
-            <Input
-              value={inputValue}
-              onChange={(e) => setInputValue(e.target.value)}
-              placeholder="Type a message..."
-              className="flex-grow"
-              autoComplete="off"
-            />
-            <Button type="submit" size="icon" className="rounded-full flex-shrink-0">
-              <Send className="h-5 w-5" />
-            </Button>
-          </form>
-        </div>
-      </div>
+      )}
     </>
   );
 }
+
+    
