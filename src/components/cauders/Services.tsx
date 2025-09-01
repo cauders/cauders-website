@@ -5,17 +5,29 @@ import { getServices } from '@/lib/data';
 import Link from 'next/link';
 import { Button } from '../ui/button';
 import { cn } from '@/lib/utils';
-import { ArrowRight, CheckCircle } from 'lucide-react';
+import { ArrowRight, Award, CheckCircle, Rocket, ShieldCheck } from 'lucide-react';
 import ScrollFadeIn from './ScrollFadeIn';
-import { Card, CardTitle, CardContent } from '../ui/card';
+import { Card, CardTitle, CardContent, CardHeader } from '../ui/card';
 import { useRef } from 'react';
 import { useScrollProgress } from '@/hooks/useScrollProgress';
 import Image from 'next/image';
 
 const whyChooseUs = [
-  'Future-ready digital solutions',
-  'Industry-focused expertise',
-  'Secure, scalable, and user-driven approach'
+  {
+      icon: Rocket,
+      title: 'Future-Ready Solutions',
+      description: 'We build with tomorrow’s technology, ensuring your digital assets are scalable, adaptable, and prepared for future innovation.'
+  },
+  {
+      icon: Award,
+      title: 'Industry-Focused Expertise',
+      description: 'Our team possesses deep industry knowledge, allowing us to deliver solutions that solve real-world challenges and drive tangible results.'
+  },
+  {
+      icon: ShieldCheck,
+      title: 'User-Driven Approach',
+      description: 'Security, scalability, and user experience are at the core of our development process, guaranteeing a product that is both robust and intuitive.'
+  }
 ];
 
 
@@ -144,18 +156,26 @@ export default function Services() {
 
         <section className="py-20 lg:py-32">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                <ScrollFadeIn className="text-center mb-12">
+                <ScrollFadeIn className="text-center mb-16">
                     <h2 className="text-3xl md:text-4xl font-bold text-foreground">Why Choose Cauders?</h2>
+                     <p className="mt-4 text-lg text-foreground/70 max-w-2xl mx-auto">
+                        Our commitment to excellence is reflected in every project we undertake. We don't just build products; we build partnerships.
+                    </p>
                 </ScrollFadeIn>
-                <div className="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
+                <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
                     {whyChooseUs.map((reason, index) => (
-                        <ScrollFadeIn key={reason} style={{ animationDelay: `${index * 150}ms`}}>
-                            <div className="flex flex-col items-center">
-                                <div className="bg-primary/10 rounded-full p-4 mb-4">
-                                    <CheckCircle className="w-8 h-8 text-primary" />
-                                </div>
-                                <p className="text-lg text-foreground/80">{reason}</p>
-                            </div>
+                        <ScrollFadeIn key={reason.title} style={{ animationDelay: `${index * 150}ms`}} className="h-full">
+                             <Card className="h-full text-center bg-card border hover:border-primary hover:-translate-y-2 transition-transform duration-300 group">
+                                <CardHeader>
+                                    <div className="mx-auto bg-primary/10 rounded-full p-4 w-fit mb-4 border border-primary/20 group-hover:bg-primary/20 transition-colors">
+                                        <reason.icon className="w-8 h-8 text-primary" />
+                                    </div>
+                                    <CardTitle className="text-foreground text-xl">{reason.title}</CardTitle>
+                                </CardHeader>
+                                <CardContent>
+                                    <p className="text-foreground/80">{reason.description}</p>
+                                </CardContent>
+                            </Card>
                         </ScrollFadeIn>
                     ))}
                 </div>
