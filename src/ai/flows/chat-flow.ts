@@ -28,10 +28,10 @@ export async function chat(input: ChatInput): Promise<string> {
   const projects = getProjects().map(p => ({title: p.title, description: p.description, tags: p.tags}));
   const services = getServices().map(s => ({title: s.title, description: s.description, included: s.included}));
   
-  // Construct the full chat history
+  // Construct the full chat history in the format Genkit expects.
   const history = [
     ...input.history,
-    { role: 'user', content: [{ text: input.message }] },
+    { role: 'user' as const, content: [{ text: input.message }] },
   ];
 
   const result = await generate({
