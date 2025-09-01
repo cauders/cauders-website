@@ -22,36 +22,80 @@ type Message = {
 const icebreakers = [
     "What services do you offer?",
     "Tell me about your projects.",
-    "I need to contact support.",
+    "How can I contact you?",
 ];
 
-const mockResponses: { [key: string]: { text: string; options?: string[], newState: string } } = {
+const mockResponses: { [key: string]: { text: string; options?: string[], newState?: string } } = {
     'initial': {
-        text: "Hello! I'm Caudbot. How can I help you today?",
+        text: "Hello! I'm Caudbot, your virtual assistant. How can I help you today?",
         options: ["Our Services", "Our Portfolio", "Contact Us"],
         newState: 'main_menu',
     },
     'services': {
-        text: "We offer a range of services including Web Development, Mobile App Development, and AI Integrations. Which would you like to know more about?",
-        options: ["Web Development", "Mobile Apps", "AI"],
+        text: "We offer a range of services including Web Development, Mobile App Development, AI Integrations, and UI/UX Design. Which area interests you the most?",
+        options: ["Web Development", "Mobile Apps", "AI Integrations", "UI/UX Design", "Go back"],
         newState: 'services_menu',
     },
     'portfolio': {
-        text: "You can view our recent work on the portfolio page. Would you like me to take you there?",
-        options: ["Yes, take me there", "No, thanks"],
+        text: "You can view our recent work on the portfolio page. It showcases projects in web, mobile, and AI. Would you like me to take you there?",
+        options: ["Yes, take me to the portfolio", "No, thanks"],
         newState: 'portfolio_link',
     },
     'contact': {
-        text: "You can reach us via the contact page or email us at info@cauders.com.",
-        options: [],
-        newState: 'initial',
+        text: "You can reach us via our contact page for project inquiries, or email us directly at info@cauders.com for other questions. What would you like to do?",
+        options: ["Go to Contact Page", "Ask another question"],
+        newState: 'contact_link',
+    },
+    'web_development': {
+        text: "Our Web Development services focus on creating high-performance, scalable web applications. We use modern technologies like Next.js and React to build everything from e-commerce platforms to complex SaaS dashboards.",
+        options: ["Tell me about Mobile Apps", "What about AI?", "Go back"],
+        newState: 'services_menu',
+    },
+    'mobile_apps': {
+        text: "We develop beautiful and performant mobile apps for both iOS and Android using technologies like React Native and Flutter. We handle the full lifecycle, from design to deployment.",
+        options: ["Tell me about Web Development", "What about AI?", "Go back"],
+        newState: 'services_menu',
+    },
+    'ai_integrations': {
+        text: "We can integrate AI-powered features into your products, such as intelligent chatbots, recommendation engines, and data analytics tools to drive business growth.",
+        options: ["Tell me about Web Development", "What about Mobile Apps?", "Go back"],
+        newState: 'services_menu',
+    },
+    'ui/ux_design': {
+        text: "Our UI/UX design process is user-centric. We create intuitive, engaging, and visually stunning interfaces that enhance user satisfaction and drive conversion.",
+        options: ["Tell me about Web Development", "What about Mobile Apps?", "Go back"],
+        newState: 'services_menu',
+    },
+    'go_back': {
+        text: "Is there anything else I can help you with?",
+        options: ["Our Services", "Our Portfolio", "Contact Us"],
+        newState: 'main_menu',
+    },
+    'yes,_take_me_to_the_portfolio': {
+        text: "Redirecting you to the portfolio...",
+        newState: 'redirect_portfolio'
+    },
+    'go_to_contact_page': {
+        text: "Redirecting you to the contact page...",
+        newState: 'redirect_contact'
+    },
+    'no,_thanks': {
+        text: "No problem! Is there anything else I can help you with?",
+        options: ["Our Services", "Our Portfolio", "Contact Us"],
+        newState: 'main_menu',
+    },
+    'ask_another_question': {
+        text: "Of course. What would you like to know?",
+        options: ["Our Services", "Our Portfolio", "Contact Us"],
+        newState: 'main_menu',
     },
     'default': {
-        text: "This is a demo response. Full chat functionality is not enabled. Please select an option.",
+        text: "This is a demo response. Full chat functionality is not enabled in this prototype. Please select an option to see how the conversation flows.",
         options: ["Our Services", "Our Portfolio", "Contact Us"],
         newState: 'main_menu',
     }
 };
+
 
 export default function Chatbot() {
   const [isOpen, setIsOpen] = useState(false);
@@ -102,16 +146,32 @@ export default function Chatbot() {
 
     // Simulate backend call
     setTimeout(() => {
-        let responseKey = messageText.toLowerCase().replace(/ /g, '_');
+        let responseKey = messageText.toLowerCase().replace(/\s/g, '_').replace(/[?/]/g, '');
+        
         if(responseKey.includes('service')) responseKey = 'services';
         if(responseKey.includes('portfolio') || responseKey.includes('project')) responseKey = 'portfolio';
         if(responseKey.includes('contact')) responseKey = 'contact';
+        if(responseKey.includes('back')) responseKey = 'go_back';
+
 
         const response = mockResponses[responseKey as keyof typeof mockResponses] || mockResponses['default'];
 
+        if(response.newState === 'redirect_portfolio'){
+             window.location.href = '/portfolio';
+             setIsLoading(false);
+             return;
+        }
+        if(response.newState === 'redirect_contact'){
+             window.location.href = '/contact';
+             setIsLoading(false);
+             return;
+        }
+
         const botMessage: Message = { role: 'bot', content: response.text, options: response.options, state: response.newState };
         setMessages((prev) => [...prev, botMessage]);
-        setCurrentState(response.newState);
+        if (response.newState) {
+            setCurrentState(response.newState);
+        }
         setIsLoading(false);
     }, 1000);
   }
@@ -245,7 +305,7 @@ export default function Chatbot() {
                         style={{animationDelay: `${index * 50}ms`}}
                         >
                             <Avatar className="w-8 h-8">
-                                <AvatarFallback className={cn(message.role === 'bot' ? 'bg-primary/20' : 'bg-foreground/10')}>
+                                <AvatarFallback className={cn(message.role === 'bot' ? 'bg-foreground' : 'bg-foreground/10')}>
                                     {message.role === 'bot' ? (
                                         <div className="w-6 h-6">
                                             <Lottie animationData={robotAnimation} loop={true} />
