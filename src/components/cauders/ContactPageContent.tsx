@@ -64,10 +64,10 @@ export default function ContactPageContent() {
                       {/* Left Side: Info */}
                       <div className="relative p-8 md:p-12 overflow-hidden">
                           <div className="absolute inset-0 z-0">
-                            <div className="absolute top-[-80px] left-[-80px] w-64 h-64 bg-primary/30 rounded-full blur-3xl opacity-80"></div>
-                            <div className="absolute bottom-[-80px] right-[-80px] w-64 h-64 bg-primary/30 rounded-full blur-3xl opacity-80"></div>
+                            <div className="absolute top-[-80px] left-[-80px] w-64 h-64 bg-primary/30 rounded-full opacity-80"></div>
+                            <div className="absolute bottom-[-80px] right-[-80px] w-64 h-64 bg-primary/30 rounded-full opacity-80"></div>
                           </div>
-                          <Card className="glass-effect w-full h-full rounded-2xl border-border/20 relative z-10">
+                          <Card className="bg-card/95 w-full h-full rounded-2xl border-border/20 relative z-10">
                             <CardContent className="flex flex-col justify-center p-8 h-full text-foreground">
                                 <h3 className="text-2xl font-bold mb-4">Get in Touch</h3>
                                 <p className="text-foreground/80 mb-8">
@@ -333,3 +333,5 @@ function ApplicationForm({ jobTitle }: { jobTitle: string }) {
         </>
     );
 }
+
+    
