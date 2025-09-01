@@ -121,7 +121,7 @@
     transition: background-size 0.5s cubic-bezier(0.23, 1, 0.32, 1);
   }
   
-  .animated-gradient-text:hover {
+  .group:hover .animated-gradient-text {
     background-size: 100% 100%;
     color: transparent;
   }

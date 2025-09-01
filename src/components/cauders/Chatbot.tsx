@@ -21,6 +21,12 @@ type Message = {
   state?: string;
 };
 
+const icebreakers = [
+    "What services do you offer?",
+    "Tell me about your projects.",
+    "I need to contact support.",
+];
+
 export default function Chatbot() {
   const [isOpen, setIsOpen] = useState(false);
   const [isPeeking, setIsPeeking] = useState(false);
@@ -107,6 +113,10 @@ export default function Chatbot() {
   const handleOptionClick = (option: string) => {
     processMessage(option);
   };
+
+  const handleIcebreakerClick = (question: string) => {
+    processMessage(question);
+  };
   
   const lastBotMessage = messages.filter(m => m.role === 'bot').pop();
   const showInput = !lastBotMessage?.options || lastBotMessage.options.length === 0;
@@ -146,7 +156,7 @@ export default function Chatbot() {
                                 loop={true}
                             />
                         </div>
-                        <CardTitle className="text-foreground">Cauders Assistant</CardTitle>
+                        <CardTitle className="text-foreground">Cauders Support</CardTitle>
                     </div>
                 </CardHeader>
                 <CardContent className="flex-grow flex flex-col overflow-hidden">
@@ -166,6 +176,22 @@ export default function Chatbot() {
                         {message.content}
                         </div>
                     ))}
+                    {!hasStartedChat && (
+                        <div className="flex flex-col items-start gap-2 pt-2 animate-fade-in-up">
+                            {icebreakers.map(q => (
+                                <Button
+                                    key={q}
+                                    variant="outline"
+                                    size="sm"
+                                    className="rounded-full bg-background/50 hover:bg-background/80 border-foreground/20 text-foreground/80"
+                                    onClick={() => handleIcebreakerClick(q)}
+                                    disabled={isLoading}
+                                >
+                                    {q}
+                                </Button>
+                            ))}
+                        </div>
+                    )}
                     {lastBotMessage?.options && (
                         <div className="flex flex-wrap gap-2 pt-2 animate-fade-in-up" style={{animationDelay: `${messages.length * 50}ms`}}>
                             {lastBotMessage.options.map(option => (
@@ -194,7 +220,7 @@ export default function Chatbot() {
                 </ScrollArea>
                 </CardContent>
                 <CardFooter className="pt-4">
-                  {showInput && (
+                  {showInput && hasStartedChat && (
                     <form 
                       onSubmit={handleSubmit} 
                       className="chat-input-container w-full"
