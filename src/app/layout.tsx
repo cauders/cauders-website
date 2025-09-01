@@ -13,6 +13,7 @@ import CustomCursor from '@/components/cauders/CustomCursor';
 import { useState, useEffect } from 'react';
 import Loader from '@/components/cauders/Loader';
 import ScrollFadeIn from '@/components/cauders/ScrollFadeIn';
+import Chatbot from '@/components/cauders/Chatbot';
 
 
 // export const metadata: Metadata = {
@@ -49,6 +50,7 @@ export default function RootLayout({
                 <Footer />
               </ScrollFadeIn>
               <Toaster />
+              <Chatbot />
             </>
         </ThemeProvider>
       </body>
