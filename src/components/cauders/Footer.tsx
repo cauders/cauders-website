@@ -31,8 +31,8 @@ export default function Footer() {
 
   return (
     <div className="relative bg-foreground text-background overflow-hidden rounded-t-2xl">
-      <div className="absolute top-[-80px] left-[-80px] w-64 h-64 bg-primary/30 rounded-full blur-3xl opacity-80"></div>
-      <div className="absolute bottom-[-80px] right-[-80px] w-96 h-96 bg-primary/30 rounded-full blur-3xl opacity-80"></div>
+      <div className="absolute top-[-80px] left-[-80px] w-64 h-64 bg-primary/30 rounded-full blur-3xl opacity-80 animate-float-1"></div>
+      <div className="absolute bottom-[-80px] right-[-80px] w-96 h-96 bg-primary/30 rounded-full blur-3xl opacity-80 animate-float-2"></div>
       <footer className="glass-effect relative z-10">
         <div className="container mx-auto py-24 px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
