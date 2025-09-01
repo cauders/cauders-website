@@ -48,8 +48,8 @@ const CustomCursor = () => {
 
   if (!isClient) return null;
 
-  const showDefaultCursor = !isPointer && !isFooterHovered;
-  const showPointerCursor = isPointer && !isFooterHovered;
+  const showDefaultCursor = !isPointer;
+  const showPointerCursor = isPointer;
 
   return (
     <div
