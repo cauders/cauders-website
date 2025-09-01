@@ -15,12 +15,19 @@ export async function submitContactForm(data: unknown) {
   const parsedData = contactFormSchema.safeParse(data);
 
   if (!parsedData.success) {
-    return { success: false, message: "Invalid data provided.", errors: parsedData.error.flatten().fieldErrors };
+    // For chatbot submissions, we can be more lenient with validation
+    const lenientParsed = z.object({ name: z.string(), email: z.string(), message: z.string() }).safeParse(data);
+    if (!lenientParsed.success) {
+      console.error("Chatbot contact form error:", lenientParsed.error.flatten().fieldErrors);
+      return { success: false, message: "Invalid data from chatbot." };
+    }
+     console.log("Form data (from chatbot) received:", lenientParsed.data);
+  } else {
+    console.log("Form data received:", parsedData.data);
   }
 
   // Here you would typically send an email, save to a database, etc.
   // For this example, we'll just log it and simulate a success response.
-  console.log("Form data received:", parsedData.data);
   
   // Simulate network delay
   await new Promise(resolve => setTimeout(resolve, 1000));
