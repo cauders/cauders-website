@@ -251,7 +251,7 @@ export default function Chatbot() {
       {isOpen && (
         <div className="fixed bottom-28 right-8 z-50">
             <Card className="w-[90vw] max-w-md h-[80vh] max-h-[600px] flex flex-col shadow-2xl rounded-2xl bg-background/70 backdrop-blur-lg border-0 animate-zoom-in">
-                <CardHeader className="flex flex-row items-center justify-between">
+                <CardHeader className="flex flex-row items-center justify-between border-b">
                     <div className="flex items-center gap-2">
                        {hasStartedChat && (
                          <div className="w-10 h-10 animate-fade-in-down">
