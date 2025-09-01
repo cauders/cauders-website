@@ -27,6 +27,14 @@ const icebreakers = [
     "I need to contact support.",
 ];
 
+const initialBotMessage: Message = {
+    role: 'bot',
+    content: "Hello! How can I help you today? Please choose an option below or ask me a question.",
+    options: ["Our Services", "Our Projects", "Contact Us"],
+    state: 'main_menu',
+};
+
+
 export default function Chatbot() {
   const [isOpen, setIsOpen] = useState(false);
   const [isPeeking, setIsPeeking] = useState(false);
@@ -39,7 +47,9 @@ export default function Chatbot() {
 
   useEffect(() => {
     if (isOpen && !hasStartedChat) {
-      processMessage(''); // Start the conversation
+        // Start with the initial bot message and options
+        setMessages([initialBotMessage]);
+        setCurrentState('main_menu');
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen]);
@@ -72,8 +82,8 @@ export default function Chatbot() {
   const processMessage = async (messageText: string) => {
     if (isLoading) return;
     
-    // Don't add empty user messages, except for the initial one
-    if (messageText.trim() || messages.length === 0) {
+    // Don't add empty user messages
+    if (messageText.trim()) {
       const userMessage: Message = { role: 'user', content: messageText, state: currentState };
       setMessages((prev) => [...prev, userMessage]);
     }
@@ -162,7 +172,23 @@ export default function Chatbot() {
                 <CardContent className="flex-grow flex flex-col overflow-hidden">
                 <ScrollArea className="flex-grow pr-4 max-w-full" ref={scrollAreaRef}>
                     <div className="space-y-4 flex flex-col min-h-full">
-                    {messages.filter(m => m.role !== 'user' || m.content.trim() !== '').map((message, index) => (
+                    {!hasStartedChat && (
+                         <div className="flex flex-col items-start gap-2 pt-2 animate-fade-in-up">
+                             {icebreakers.map(q => (
+                                 <Button
+                                     key={q}
+                                     variant="outline"
+                                     size="sm"
+                                     className="rounded-full bg-background/50 hover:bg-background/80 border-foreground/20 text-foreground/80"
+                                     onClick={() => handleIcebreakerClick(q)}
+                                     disabled={isLoading}
+                                 >
+                                     {q}
+                                 </Button>
+                             ))}
+                         </div>
+                    )}
+                    {messages.map((message, index) => (
                         <div
                         key={index}
                         className={cn(
@@ -176,22 +202,6 @@ export default function Chatbot() {
                         {message.content}
                         </div>
                     ))}
-                    {!hasStartedChat && (
-                        <div className="flex flex-col items-start gap-2 pt-2 animate-fade-in-up">
-                            {icebreakers.map(q => (
-                                <Button
-                                    key={q}
-                                    variant="outline"
-                                    size="sm"
-                                    className="rounded-full bg-background/50 hover:bg-background/80 border-foreground/20 text-foreground/80"
-                                    onClick={() => handleIcebreakerClick(q)}
-                                    disabled={isLoading}
-                                >
-                                    {q}
-                                </Button>
-                            ))}
-                        </div>
-                    )}
                     {lastBotMessage?.options && (
                         <div className="flex flex-wrap gap-2 pt-2 animate-fade-in-up" style={{animationDelay: `${messages.length * 50}ms`}}>
                             {lastBotMessage.options.map(option => (
