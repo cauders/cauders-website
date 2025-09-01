@@ -45,8 +45,11 @@ export default function ContactPageContent() {
     const jobTitle = searchParams.get('job');
   
     return (
-      <section id="contact" className="py-20 lg:py-32 bg-background">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <section id="contact" className="py-20 lg:py-32 bg-background relative overflow-hidden">
+        <div className="absolute top-[-10rem] right-[-10rem] w-96 h-96 bg-primary/10 rounded-full blur-3xl -z-10"></div>
+        <div className="absolute bottom-[-15rem] left-[-15rem] w-96 h-96 bg-primary/10 rounded-full blur-3xl -z-10"></div>
+        
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <ScrollFadeIn className="text-center mb-16">
                 <h2 className="text-3xl md:text-4xl font-bold text-foreground">
                     {jobTitle ? `Apply for ${jobTitle}` : "Let's Build Together"}
@@ -60,10 +63,10 @@ export default function ContactPageContent() {
             </ScrollFadeIn>
   
           <ScrollFadeIn delay="delay-200">
-             <Card className="overflow-hidden shadow-lg bg-card border rounded-2xl">
+             <Card className="overflow-hidden shadow-lg bg-card/80 backdrop-blur-lg border rounded-2xl">
                   <div className="grid grid-cols-1 md:grid-cols-2">
                       {/* Left Side: Info */}
-                      <div className="p-8 md:p-12 bg-secondary/30">
+                      <div className="p-8 md:p-12">
                           <div className="flex flex-col justify-center h-full text-foreground">
                               <h3 className="text-2xl font-bold mb-4">Get in Touch</h3>
                               <p className="text-foreground/80 mb-8">
@@ -101,7 +104,7 @@ export default function ContactPageContent() {
                       </div>
   
                       {/* Right Side: Form */}
-                      <div className="p-8 md:p-12">
+                      <div className="p-8 md:p-12 bg-secondary/30">
                           {jobTitle ? <ApplicationForm jobTitle={jobTitle} /> : <GeneralContactForm />}
                       </div>
                   </div>
