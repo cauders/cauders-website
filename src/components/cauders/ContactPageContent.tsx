@@ -62,16 +62,18 @@ export default function ContactPageContent() {
              <Card className="overflow-hidden shadow-lg bg-card border rounded-2xl">
                   <div className="grid grid-cols-1 md:grid-cols-2">
                       {/* Left Side: Info */}
-                      <div className="relative bg-foreground/90 p-8 md:p-12 overflow-hidden">
-                          <div className="absolute top-[-80px] left-[-80px] w-64 h-64 bg-primary/30 rounded-full blur-3xl opacity-80"></div>
-                          <div className="absolute bottom-[-80px] right-[-80px] w-64 h-64 bg-primary/30 rounded-full blur-3xl opacity-80"></div>
-                          <Card className="glass-effect w-full h-full rounded-2xl border-border/20 bg-card/10">
-                            <CardContent className="relative flex flex-col justify-center p-8 h-full text-background">
+                      <div className="relative p-8 md:p-12 overflow-hidden">
+                          <div className="absolute inset-0 z-0">
+                            <div className="absolute top-[-80px] left-[-80px] w-64 h-64 bg-primary/30 rounded-full blur-3xl opacity-80"></div>
+                            <div className="absolute bottom-[-80px] right-[-80px] w-64 h-64 bg-primary/30 rounded-full blur-3xl opacity-80"></div>
+                          </div>
+                          <Card className="glass-effect w-full h-full rounded-2xl border-border/20 relative z-10">
+                            <CardContent className="flex flex-col justify-center p-8 h-full text-foreground">
                                 <h3 className="text-2xl font-bold mb-4">Get in Touch</h3>
-                                <p className="text-background/80 mb-8">
+                                <p className="text-foreground/80 mb-8">
                                     We're here to help and answer any question you might have. We look forward to hearing from you.
                                 </p>
-                                <div className="space-y-6 text-background/90">
+                                <div className="space-y-6 text-foreground/90">
                                     <div className="flex items-center gap-4">
                                         <Mail className="w-6 h-6 text-primary" />
                                         <a href="mailto:info@cauders.com" className="hover:text-primary transition-colors">info@cauders.com</a>
@@ -81,21 +83,21 @@ export default function ContactPageContent() {
                                         <span>Pakistan</span>
                                     </div>
                                 </div>
-                                <Separator className="my-8 bg-background/20" />
+                                <Separator className="my-8 bg-foreground/20" />
                                 <div className="flex items-center gap-2">
                                    <Button variant="ghost" size="icon" asChild>
                                         <Link href="https://www.instagram.com/ccauders/" aria-label="Instagram">
-                                            <Instagram className="h-5 w-5 text-background/70 hover:text-primary transition-colors" />
+                                            <Instagram className="h-5 w-5 text-foreground/70 hover:text-primary transition-colors" />
                                         </Link>
                                     </Button>
                                     <Button variant="ghost" size="icon" asChild>
                                         <Link href="https://github.com/cauders" aria-label="GitHub">
-                                            <Github className="h-5 w-5 text-background/70 hover:text-primary transition-colors" />
+                                            <Github className="h-5 w-5 text-foreground/70 hover:text-primary transition-colors" />
                                         </Link>
                                     </Button>
                                     <Button variant="ghost" size="icon" asChild>
                                         <Link href="https://www.linkedin.com/company/108785409/admin/dashboard/" aria-label="LinkedIn">
-                                            <Linkedin className="h-5 w-5 text-background/70 hover:text-primary transition-colors" />
+                                            <Linkedin className="h-5 w-5 text-foreground/70 hover:text-primary transition-colors" />
                                         </Link>
                                     </Button>
                                 </div>
