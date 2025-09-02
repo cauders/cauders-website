@@ -64,7 +64,7 @@ export default function PortfolioSection() {
             <div ref={containerRef} className="relative flex flex-col h-[600vh] bg-background">
                 <div className="absolute inset-0 z-0">
                     <Suspense fallback={<Skeleton className="w-full h-full" />}>
-                        <StickyScroll3D scrollProgress={progress} />
+                        
                     </Suspense>
                 </div>
                 
