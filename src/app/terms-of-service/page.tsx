@@ -99,7 +99,7 @@ export default function TermsOfServicePage() {
                                         {index + 1}.
                                     </div>
                                     <div>
-                                        <h2 className="text-2xl font-bold text-foreground mb-3">{section.title}</h2>
+                                        <h2 className="text-2xl font-bold text-foreground mb-3 font-headline">{section.title}</h2>
                                         <div className="text-foreground/80 space-y-4">
                                             {section.content}
                                         </div>

@@ -46,7 +46,7 @@ export default function ServicePage({ params }: ServicePageParams) {
               <div className="bg-primary/10 rounded-full p-3">
                 <service.icon className="w-8 h-8 text-primary" />
               </div>
-              <h1 className="text-4xl md:text-5xl font-bold text-foreground">{service.title}</h1>
+              <h1 className="text-4xl md:text-5xl font-bold text-foreground font-headline">{service.title}</h1>
             </div>
             
             <p className="text-lg text-foreground/70 mb-12">{service.description}</p>
@@ -55,7 +55,7 @@ export default function ServicePage({ params }: ServicePageParams) {
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-12">
             <div className="lg:col-span-3">
               <ScrollFadeIn delay="delay-200">
-                <h2 className="text-2xl font-bold text-foreground mb-4">Service Details</h2>
+                <h2 className="text-2xl font-bold text-foreground mb-4 font-headline">Service Details</h2>
                 <div className="prose prose-lg dark:prose-invert text-foreground/80 max-w-none" dangerouslySetInnerHTML={{ __html: service.details }} />
               </ScrollFadeIn>
             </div>
@@ -63,7 +63,7 @@ export default function ServicePage({ params }: ServicePageParams) {
               <ScrollFadeIn delay="delay-300">
                 <Card className="bg-card border shadow-lg">
                     <CardHeader>
-                        <CardTitle className="text-foreground">What's Included</CardTitle>
+                        <CardTitle className="text-foreground font-headline">What's Included</CardTitle>
                     </CardHeader>
                     <CardContent>
                         <ul className="space-y-3">
@@ -83,7 +83,7 @@ export default function ServicePage({ params }: ServicePageParams) {
           {service.caseStudy && (
             <ScrollFadeIn className="mt-20">
               <div className="text-center">
-                <h2 className="text-3xl font-bold text-foreground mb-4">Case Study</h2>
+                <h2 className="text-3xl font-bold text-foreground mb-4 font-headline">Case Study</h2>
                 <p className="text-foreground/70 mb-8 max-w-2xl mx-auto">{service.caseStudy.description}</p>
                  <Link href={`/portfolio/${service.caseStudy.projectSlug}`}>
                   <Card className="overflow-hidden group transition-all duration-300 hover:shadow-2xl hover:shadow-primary/20 hover:-translate-y-2 bg-card border text-left">
@@ -100,7 +100,7 @@ export default function ServicePage({ params }: ServicePageParams) {
                       </div>
                     </CardHeader>
                     <CardContent className="p-6">
-                      <CardTitle className="mb-2 text-foreground">{service.caseStudy.title}</CardTitle>
+                      <CardTitle className="mb-2 text-foreground font-headline">{service.caseStudy.title}</CardTitle>
                       <Button variant="link" className="px-0">
                         View Project Details <ArrowRight className="ml-2 h-4 w-4"/>
                       </Button>
@@ -113,7 +113,7 @@ export default function ServicePage({ params }: ServicePageParams) {
 
           <ScrollFadeIn className="mt-20">
             <div className="bg-card border rounded-lg p-8 text-center shadow-lg">
-              <h2 className="text-3xl font-bold text-foreground mb-4">Ready to get started?</h2>
+              <h2 className="text-3xl font-bold text-foreground mb-4 font-headline">Ready to get started?</h2>
               <p className="text-foreground/70 mb-6 max-w-xl mx-auto">Let's discuss how our {service.title.toLowerCase()} services can help you achieve your goals.</p>
               <Button size="lg" asChild>
                   <Link href="/contact">Contact Us</Link>

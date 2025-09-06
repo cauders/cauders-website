@@ -91,7 +91,7 @@ const ServiceSection = ({ service, index }: { service: ReturnType<typeof getServ
                                       <div className="absolute bottom-[-80px] right-[-80px] w-64 h-64 bg-primary/30 rounded-full blur-3xl opacity-80"></div>
                                       <Card className={cn("relative z-10 h-full flex flex-col justify-center items-center text-center glass-effect animated-border-card border-border/20 px-6 pb-6")}>
                                           <service.icon className="w-20 h-20 text-background mb-4" />
-                                          <CardTitle className="text-background text-5xl font-extrabold">{service.title}</CardTitle>
+                                          <CardTitle className="text-background text-5xl font-extrabold font-headline">{service.title}</CardTitle>
                                           <div className="absolute bottom-6 left-6 right-6">
                                             <Button asChild className="button w-full">
                                                 <Link href={`/services/${service.slug}`}>
@@ -157,7 +157,7 @@ export default function Services() {
         <section className="py-20 lg:py-32">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                 <ScrollFadeIn className="text-center mb-16">
-                    <h2 className="text-3xl md:text-4xl font-bold text-foreground">Why Choose Cauders?</h2>
+                    <h2 className="text-3xl md:text-4xl font-bold text-foreground font-headline">Why Choose Cauders?</h2>
                      <p className="mt-4 text-lg text-foreground/70 max-w-2xl mx-auto">
                         Our commitment to excellence is reflected in every project we undertake. We don't just build products; we build partnerships.
                     </p>
@@ -170,7 +170,7 @@ export default function Services() {
                                     <div className="mx-auto bg-primary/10 rounded-full p-4 w-fit mb-4 border border-primary/20 group-hover:bg-primary/20 transition-colors">
                                         <reason.icon className="w-8 h-8 text-primary" />
                                     </div>
-                                    <CardTitle className="text-foreground text-xl">{reason.title}</CardTitle>
+                                    <CardTitle className="text-foreground text-xl font-headline">{reason.title}</CardTitle>
                                 </CardHeader>
                                 <CardContent>
                                     <p className="text-foreground/80">{reason.description}</p>

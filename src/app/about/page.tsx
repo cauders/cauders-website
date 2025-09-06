@@ -82,7 +82,7 @@ export default function AboutPage() {
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                     <ScrollFadeIn>
                         <Card className="p-8 md:p-12 text-center bg-secondary/30">
-                            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Let's Create Together</h2>
+                            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 font-headline">Let's Create Together</h2>
                             <p className="max-w-2xl mx-auto text-foreground/70 mb-8">
                                 Have an idea that could redefine your industry? We're the team to help you build it. Let's start a conversation.
                             </p>

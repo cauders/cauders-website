@@ -206,7 +206,7 @@ export default function PortfolioPreview() {
                     {project.description}
                   </p>
                   {/* The title text gets an even heavier font weight and a stronger shadow */}
-                  <h3 className="font-black text-4xl md:text-5xl text-white mt-1 font-inter drop-shadow-2xl">
+                  <h3 className="font-black text-4xl md:text-5xl text-white mt-1 font-headline drop-shadow-2xl">
                     {project.title}
                   </h3>
                   {/* Add a top margin (e.g., mt-4) to create space above this element */}

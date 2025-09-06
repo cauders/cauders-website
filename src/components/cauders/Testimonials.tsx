@@ -37,7 +37,7 @@ export default function Testimonials() {
     <section className="py-16 lg:py-24 bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <ScrollFadeIn className="text-center mb-16">
-                <h2 className="text-3xl md:text-4xl font-bold text-foreground">What Our Clients Say</h2>
+                <h2 className="text-3xl md:text-4xl font-bold text-foreground font-headline">What Our Clients Say</h2>
                 <p className="mt-4 text-lg text-foreground/70 max-w-2xl mx-auto">
                     We're proud to have partnered with amazing companies.
                 </p>

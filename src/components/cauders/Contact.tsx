@@ -73,7 +73,7 @@ function HomePageContact() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
             <ScrollFadeIn className="h-full flex flex-col justify-center">
                 <div>
-                  <h2 className="text-3xl md:text-4xl font-bold text-foreground">Let's Discuss Your Project</h2>
+                  <h2 className="text-3xl md:text-4xl font-bold text-foreground font-headline">Let's Discuss Your Project</h2>
                   <p className="mt-4 text-lg text-foreground/70">
                       Have an idea? We'd love to hear about it. Fill out the form, and we'll get back to you to schedule a consultation.
                   </p>

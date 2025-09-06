@@ -59,7 +59,7 @@ export default function ProjectDetailClient({ project }: { project: Project }) {
                 <p className="text-lg text-foreground/70 mb-6">{project.description}</p>
                 <div className="prose prose-lg dark:prose-invert text-foreground/80 max-w-none mb-8" dangerouslySetInnerHTML={{ __html: project.details }} />
                 
-                <h3 className="text-xl font-bold text-foreground mb-4">Technologies Used</h3>
+                <h3 className="text-xl font-bold text-foreground mb-4 font-headline">Technologies Used</h3>
                 <div className="flex flex-wrap gap-2 mb-8">
                     {project.tags.map((tag) => (
                         <Badge key={tag} variant="secondary">{tag}</Badge>
@@ -68,7 +68,7 @@ export default function ProjectDetailClient({ project }: { project: Project }) {
 
                 {project.testimonial && (
                     <div>
-                        <h3 className="text-xl font-bold text-foreground mb-4">Testimonial</h3>
+                        <h3 className="text-xl font-bold text-foreground mb-4 font-headline">Testimonial</h3>
                         <blockquote className="border-l-4 border-primary pl-4 italic text-foreground/80">
                             <p>"{project.testimonial.text}"</p>
                             <footer className="mt-2 not-italic font-semibold">- {project.testimonial.author}</footer>

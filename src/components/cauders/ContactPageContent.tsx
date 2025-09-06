@@ -49,7 +49,7 @@ export default function ContactPageContent() {
       <section id="contact" className="py-20 lg:py-32 bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <ScrollFadeIn className="text-center mb-16">
-                <h2 className="text-3xl md:text-4xl font-bold text-foreground">
+                <h2 className="text-3xl md:text-4xl font-bold text-foreground font-headline">
                     {jobTitle ? `Apply for ${jobTitle}` : "Let's Build Together"}
                 </h2>
                 <p className="mt-4 text-lg text-foreground/70 max-w-2xl mx-auto">
@@ -67,7 +67,7 @@ export default function ContactPageContent() {
                         {/* Left Side: Info */}
                         <div className="p-8 md:p-12">
                             <div className="flex flex-col justify-center h-full text-foreground">
-                                <h3 className="text-2xl font-bold mb-4">Get in Touch</h3>
+                                <h3 className="text-2xl font-bold mb-4 font-headline">Get in Touch</h3>
                                 <p className="text-foreground/80 mb-8">
                                     We're here to help and answer any question you might have. We look forward to hearing from you.
                                 </p>
@@ -155,7 +155,7 @@ function GeneralContactForm() {
 
     return (
         <>
-            <h3 className="text-2xl font-bold text-foreground mb-6">Send Us a Message</h3>
+            <h3 className="text-2xl font-bold text-foreground mb-6 font-headline">Send Us a Message</h3>
             <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
                 <FormField
@@ -258,7 +258,7 @@ function ApplicationForm({ jobTitle }: { jobTitle: string }) {
 
     return (
         <>
-            <h3 className="text-2xl font-bold text-foreground mb-6">Your Information</h3>
+            <h3 className="text-2xl font-bold text-foreground mb-6 font-headline">Your Information</h3>
             <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
                 <FormField

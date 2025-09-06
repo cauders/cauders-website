@@ -106,7 +106,7 @@ export default function ServicesPreview() {
                                         <service.icon className="w-8 h-8 text-primary" />
                                     </div>
                                 </div>
-                                <CardTitle className="text-foreground">{service.title}</CardTitle>
+                                <CardTitle className="text-foreground font-headline">{service.title}</CardTitle>
                                 <CardDescription className="pt-2 text-foreground/80 line-clamp-3">{service.description}</CardDescription>
                             </CardHeader>
                         </Card>
@@ -115,7 +115,7 @@ export default function ServicesPreview() {
                     <div className="flip-card-back absolute w-full h-full">
                         <Card className={cn("h-full flex flex-col justify-between animated-border-card bg-card border")}>
                         <CardHeader>
-                            <CardTitle className="text-foreground">{service.title}</CardTitle>
+                            <CardTitle className="text-foreground font-headline">{service.title}</CardTitle>
                         </CardHeader>
                         <CardContent>
                             <ul className="space-y-2 text-left">

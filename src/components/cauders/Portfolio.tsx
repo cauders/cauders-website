@@ -31,7 +31,7 @@ export default function Portfolio() {
     <section id="portfolio" className="py-20 lg:py-32 bg-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <ScrollFadeIn className="text-center mb-16 lg:mb-24">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground">Our Recent Work</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground font-headline">Our Recent Work</h2>
           <p className="mt-4 text-lg text-foreground/70 max-w-2xl mx-auto">
             We take pride in the solutions we deliver. Here’s a selection of our projects.
           </p>
@@ -71,7 +71,7 @@ export default function Portfolio() {
                   <div className={index % 2 === 0 ? 'md:order-2' : 'md:order-1'}>
                     <div className="max-w-md">
                       <Badge variant="secondary" className="mb-4">{project.category}</Badge>
-                      <h3 className="text-2xl lg:text-3xl font-bold text-foreground mb-4">{project.title}</h3>
+                      <h3 className="text-2xl lg:text-3xl font-bold text-foreground mb-4 font-headline">{project.title}</h3>
                       <p className="text-foreground/80 mb-6">{project.description}</p>
                       <div className="flex flex-wrap gap-2 mb-6">
                         {project.tags.map((tag) => (
