@@ -4,7 +4,7 @@ import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
 import Header from '@/components/cauders/Header';
 import Footer from '@/components/cauders/Footer';
-import { Montserrat } from 'next/font/google';
+import { Montserrat, Work_Sans } from 'next/font/google';
 import { cn } from '@/lib/utils';
 import { ThemeProvider } from '@/components/cauders/ThemeProvider';
 import CustomCursor from '@/components/cauders/CustomCursor';
@@ -26,6 +26,13 @@ const montserrat = Montserrat({
   variable: '--font-headline',
 });
 
+const garet = Work_Sans({
+    subsets: ['latin'],
+    weight: ['300', '400', '500', '600', '700'],
+    variable: '--font-body',
+});
+
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -34,7 +41,7 @@ export default function RootLayout({
 
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={cn(montserrat.variable, 'flex flex-col min-h-screen bg-background antialiased relative font-body')}>
+      <body className={cn(montserrat.variable, garet.variable, 'flex flex-col min-h-screen bg-background antialiased relative font-body')}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
             <>
               <CustomCursor />
