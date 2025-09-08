@@ -54,7 +54,7 @@ export default function Portfolio() {
         <div className="flex flex-col gap-20 lg:gap-32">
           {filteredProjects.map((project, index) => (
             <ScrollFadeIn key={`${project.slug}-${activeCategory}`}>
-              <Link href={`/portfolio/${project.slug}`} className="group block">
+              <Link href={`https://www.portfolio.cauders.com/${project.slug}`} className="group block">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
                   <div className={index % 2 === 0 ? 'md:order-1' : 'md:order-2'}>
                     <div className="overflow-hidden rounded-lg shadow-lg">

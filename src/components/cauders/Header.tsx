@@ -12,7 +12,7 @@ import MagneticLink from './MagneticLink';
 const navLinks = [
   { href: '/', label: 'Home' },
   { href: '/services', label: 'Services' },
-  { href: '/portfolio', label: 'Portfolio' },
+  { href: 'https://www.portfolio.cauders.com/', label: 'Portfolio' },
   { href: '/contact',label: 'Contact' }
 ];
 

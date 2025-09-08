@@ -67,7 +67,7 @@ export default function Testimonials() {
                                             </p>
                                             <cite className="font-semibold text-xs text-background not-italic mt-4">— {testimonial!.author}</cite>
                                             <p className="text-xs text-background/60 mt-1">
-                                                From the <Link href={`/portfolio/${testimonial.projectSlug}`} className="text-primary/90 hover:underline">{testimonial.projectTitle}</Link> project
+                                                From the <Link href={`https://www.portfolio.cauders.com/${testimonial.projectSlug}`} className="text-primary/90 hover:underline">{testimonial.projectTitle}</Link> project
                                             </p>
                                         </CardContent>
                                     </Card>

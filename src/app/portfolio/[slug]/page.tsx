@@ -39,7 +39,7 @@ export default function ProjectPage({ params }: ProjectPageParams) {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-24">
         <div className="max-w-6xl mx-auto">
             <Button asChild variant="ghost" className="mb-8">
-                <Link href="/portfolio">
+                <Link href="https://www.portfolio.cauders.com/">
                     <ArrowLeft className="mr-2 h-4 w-4" />
                     Back to Portfolio
                 </Link>
@@ -56,7 +56,7 @@ export default function ProjectPage({ params }: ProjectPageParams) {
                         {nextProject.title}
                     </h2>
                     <Button asChild size="lg">
-                        <Link href={`/portfolio/${nextProject.slug}`}>
+                        <Link href={`https://www.portfolio.cauders.com/${nextProject.slug}`}>
                             View Project <ArrowRight className="ml-2" />
                         </Link>
                     </Button>

@@ -85,7 +85,7 @@ export default function ServicePage({ params }: ServicePageParams) {
               <div className="text-center">
                 <h2 className="text-3xl font-bold text-foreground mb-4 font-headline">Case Study</h2>
                 <p className="text-foreground/70 mb-8 max-w-2xl mx-auto">{service.caseStudy.description}</p>
-                 <Link href={`/portfolio/${service.caseStudy.projectSlug}`}>
+                 <Link href={`https://www.portfolio.cauders.com/${service.caseStudy.projectSlug}`}>
                   <Card className="overflow-hidden group transition-all duration-300 hover:shadow-2xl hover:shadow-primary/20 hover:-translate-y-2 bg-card border text-left">
                     <CardHeader className="p-0">
                       <div className="aspect-video overflow-hidden">

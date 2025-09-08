@@ -26,7 +26,7 @@ export default function HomePage() {
             asChild
             className="rounded-full px-8 py-6"
           >
-            <Link href="/portfolio">
+            <Link href="https://www.portfolio.cauders.com/">
               Discover more of our work <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
           </Button>

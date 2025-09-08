@@ -157,7 +157,7 @@ export default function Chatbot() {
         const response = mockResponses[responseKey as keyof typeof mockResponses] || mockResponses['default'];
 
         if(response.newState === 'redirect_portfolio'){
-             window.location.href = '/portfolio';
+             window.location.href = 'https://www.portfolio.cauders.com/';
              setIsLoading(false);
              return;
         }

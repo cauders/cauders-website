@@ -9,7 +9,7 @@ import { useEffect, useState } from 'react';
 const quickLinks = [
     { href: '/', label: 'Home' },
     { href: '/services', label: 'Services' },
-    { href: '/portfolio', label: 'Portfolio' },
+    { href: 'https://www.portfolio.cauders.com/', label: 'Portfolio' },
 ];
 
 const companyLinks = [

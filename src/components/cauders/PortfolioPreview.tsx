@@ -173,7 +173,7 @@ export default function PortfolioPreview() {
               >
                 {/* This Link wraps the card itself */}
                 <Link
-                  href={`/portfolio/${project.slug}`}
+                  href={`https://www.portfolio.cauders.com/${project.slug}`}
                   className={cn(
                     "block h-full w-full transition-all duration-500 ease-out rounded-3xl",
                     activeCard === index && "shadow-primary-glow"
