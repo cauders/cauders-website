@@ -8,6 +8,7 @@ import {
     AccordionTrigger,
 } from "@/components/ui/accordion"
 import ScrollFadeIn from "@/components/cauders/ScrollFadeIn";
+import StandardizedHeading from "@/components/cauders/StandardizedHeading";
   
 const faqs = [
     {
@@ -41,14 +42,16 @@ export default function FAQPage() {
         <div className="bg-background text-foreground">
             <section className="py-20 lg:py-32">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                    <ScrollFadeIn className="text-center mb-16">
-                        <h1 className="text-4xl md:text-5xl font-bold text-foreground font-headline">Frequently Asked Questions</h1>
-                        <p className="mt-4 text-base text-foreground/70 max-w-2xl mx-auto">
-                            Have questions? We've got answers. If you can't find what you're looking for, feel free to contact us.
-                        </p>
-                    </ScrollFadeIn>
+                    <div className="text-center mb-16">
+                        <StandardizedHeading lines={["Frequently Asked Questions"]} />
+                        <ScrollFadeIn>
+                            <p className="mt-4 text-base text-foreground/70 max-w-2xl mx-auto">
+                                Have questions? We've got answers. If you can't find what you're looking for, feel free to contact us.
+                            </p>
+                        </ScrollFadeIn>
+                    </div>
 
-                    <ScrollFadeIn delay="delay-200">
+                    <ScrollFadeIn delay={0.2}>
                         <div className="max-w-3xl mx-auto">
                             <Accordion type="single" collapsible className="w-full">
                                 {faqs.map((faq, index) => (
