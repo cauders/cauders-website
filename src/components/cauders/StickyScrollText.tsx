@@ -1,95 +1,20 @@
 
 "use client";
 
-import { useRef, useEffect, useState, Suspense } from 'react';
-import { cn } from '@/lib/utils';
-import { Skeleton } from '../ui/skeleton';
-
-const textLines = [
-  { text: "WE ENGINEER", direction: "left" },
-  { text: "HIGH-PERFORMANCE, CUTTING-EDGE PLATFORMS", className: "text-primary", direction: "right" },
-  { text: "THAT EMPOWER BUSINESSES TO DOMINATE THE DIGITAL LANDSCAPE.", direction: "left" },
-];
-
-// Easing function for a smooth slide with settle
-const easeOutExpo = (x: number): number => {
-  return x === 1 ? 1 : 1 - Math.pow(2, -10 * x);
-};
+import { useRef } from 'react';
+import StandardizedHeading from './StandardizedHeading';
 
 const StickyScrollText = () => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [transforms, setTransforms] = useState(
-    textLines.map(line => line.direction === 'left' ? 'translateX(-100%)' : 'translateX(100%)')
-  );
-  const [progress, setProgress] = useState(0);
 
-  const scrollHandler = () => {
-    if (!containerRef.current) return;
-
-    const { top, height } = containerRef.current.getBoundingClientRect();
-    const scrollableHeight = height - window.innerHeight;
-    
-    // Start animation when the component is well into view
-    const animationStartPoint = window.innerHeight * 0.8;
-    const currentProgress = Math.max(0, Math.min(1, (window.scrollY - containerRef.current.offsetTop + animationStartPoint) / (scrollableHeight + animationStartPoint)));
-    
-    setProgress(currentProgress);
-
-    const numLines = textLines.length;
-    const progressPerLine = 1 / numLines; 
-
-    const newTransforms = textLines.map((line, index) => {
-      // Each line starts animating after the previous one is mostly done.
-      const lineStartProgress = index * progressPerLine;
-      // Spread out the animation duration for each line.
-      const animationDuration = progressPerLine * 1.8;
-      
-      const lineProgress = Math.max(0, Math.min(1, (currentProgress - lineStartProgress) / animationDuration));
-      
-      // Apply the ease out expo effect
-      const easedProgress = easeOutExpo(lineProgress);
-
-      let x = 0;
-      if (line.direction === 'left') {
-        x = -100 + (easedProgress * 100);
-      } else {
-        x = 100 - (easedProgress * 100);
-      }
-      
-      return `translateX(${x}%)`;
-    });
-    
-    setTransforms(newTransforms);
-  };
-
-  useEffect(() => {
-    window.addEventListener('scroll', scrollHandler, { passive: true });
-    scrollHandler(); 
-    return () => window.removeEventListener('scroll', scrollHandler);
-  }, []);
+  const text = "WE ENGINEER\nHIGH-PERFORMANCE, CUTTING-EDGE PLATFORMS\nTHAT EMPOWER BUSINESSES TO DOMINATE THE DIGITAL LANDSCAPE.";
 
   return (
     <div ref={containerRef} className="relative flex flex-col h-[250vh] bg-background">
       {/* Sticky container for the animated text */}
       <div className="sticky top-0 flex-shrink-0 flex items-center justify-center overflow-hidden h-[100vh]">
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            {textLines.map((line, index) => (
-                <div key={index} className="overflow-hidden py-1">
-                    <h2
-                        className={cn(
-                            "text-4xl md:text-5xl font-extrabold text-foreground uppercase tracking-tight transition-transform duration-300 ease-out font-headline",
-                            line.className
-                        )}
-                        style={{ transform: transforms[index] }}
-                    >
-                      <span
-                        className="inline-block px-4 py-2 rounded-md"
-                      >
-                        {line.text}
-                      </span>
-                    </h2>
-                </div>
-            ))}
+            <StandardizedHeading text={text} />
         </div>
       </div>
     </div>
