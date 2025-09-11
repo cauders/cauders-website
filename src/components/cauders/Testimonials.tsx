@@ -60,7 +60,7 @@ export default function Testimonials() {
                                     <Card className="glass-effect w-full h-full rounded-2xl border-border/20">
                                         <CardContent className="relative flex flex-col items-center justify-center p-8 text-center h-full">
                                             <Quote className="absolute top-6 left-6 w-8 h-8 text-primary/80" />
-                                            <p className="text-sm font-medium text-background  max-w-3xl line-clamp-5">
+                                            <p className="text-sm font-medium text-white max-w-3xl line-clamp-5">
                                                 "{testimonial!.text}"
                                             </p>
                                             <cite className="font-semibold text-xs text-background not-italic mt-4">— {testimonial!.author}</cite>
