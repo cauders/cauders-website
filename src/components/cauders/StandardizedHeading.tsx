@@ -11,15 +11,16 @@ type Line = {
 
 interface StandardizedHeadingProps {
   lines: (string | Line)[];
+  className?: string;
 }
 
-export default function StandardizedHeading({ lines }: StandardizedHeadingProps) {
+export default function StandardizedHeading({ lines, className }: StandardizedHeadingProps) {
   const processedLines = lines.map(line =>
     typeof line === 'string' ? { text: line } : line
   );
 
   return (
-    <h2 className="font-headline text-6xl md:text-7xl lg:text-8xl font-bold text-foreground leading-tight">
+    <h2 className={cn("font-headline text-6xl md:text-7xl lg:text-8xl font-bold text-foreground leading-tight", className)}>
       {processedLines.map((line, lineIndex) => (
         <ScrollFadeIn
           key={lineIndex}
