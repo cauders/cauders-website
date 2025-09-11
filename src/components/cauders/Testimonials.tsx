@@ -58,7 +58,7 @@ export default function Testimonials() {
                                      <div className="absolute top-[-80px] left-[-80px] w-64 h-64 bg-primary/30 rounded-full blur-3xl opacity-80"></div>
                                      <div className="absolute bottom-[-80px] right-[-80px] w-64 h-64 bg-primary/30 rounded-full blur-3xl opacity-80"></div>
                                     <Card className="glass-effect w-full h-full rounded-2xl border-border/20">
-                                        <CardContent className="relative flex flex-col items-center justify-center p-8 text-center h-full">
+                                        <CardContent className="relative z-10 flex flex-col items-center justify-center p-8 text-center h-full">
                                             <Quote className="absolute top-6 left-6 w-8 h-8 text-primary/80" />
                                             <p className="text-sm font-medium text-white max-w-3xl line-clamp-5">
                                                 "{testimonial!.text}"
