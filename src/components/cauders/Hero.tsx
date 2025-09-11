@@ -23,7 +23,7 @@ export default function Hero() {
   return (
     <section className="relative w-full h-screen overflow-hidden">
       {/* 3D Animation Background */}
-      <div className="absolute top-0 right-0 w-full md:w-1/2 h-full z-0">
+      <div className="absolute top-0 right-0 w-full md:w-1/2 h-full z-0 md:block hidden">
         <Suspense fallback={<Skeleton className="w-full h-full" />}>
           <Hero3D />
         </Suspense>
@@ -34,15 +34,15 @@ export default function Hero() {
           {/* Left Side: Content */}
           <div className="w-full md:w-1/2 text-left">
             <div className="max-w-xl">
-                <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-foreground mt-2 leading-snug font-headline">
-                  <div>
+                <h1 className="font-extrabold tracking-tight text-foreground mt-2 leading-snug font-headline">
+                  <div className="text-6xl md:text-8xl">
                     {words1.map((word, wordIndex) => (
                       <span key={wordIndex} className="animated-gradient-text">
                         {word}{' '}
                       </span>
                     ))}
                   </div>
-                   <div>
+                   <div className="text-4xl md:text-6xl">
                     {words2.map((word, wordIndex) => (
                        <span key={wordIndex} className="animated-gradient-text">
                           {word}{' '}
@@ -81,4 +81,5 @@ export default function Hero() {
     </section>
   );
 }
+
 
