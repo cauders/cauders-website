@@ -42,7 +42,7 @@ export default function Hero() {
                       </span>
                     ))}
                   </div>
-                   <div className="text-4xl md:text-6xl">
+                   <div className="text-6xl md:text-8xl">
                     {words2.map((word, wordIndex) => (
                        <span key={wordIndex} className="animated-gradient-text">
                           {word}{' '}
@@ -81,5 +81,6 @@ export default function Hero() {
     </section>
   );
 }
+
 
 
