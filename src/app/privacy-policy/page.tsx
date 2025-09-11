@@ -6,6 +6,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
 import { ShieldCheck } from 'lucide-react';
 import React from 'react';
+import StandardizedHeading from '@/components/cauders/StandardizedHeading';
 
 const WordHighlighter = ({ text }: { text: string }) => {
   return (
@@ -77,7 +78,7 @@ export default function PrivacyPolicyPage() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
         <ScrollFadeIn>
           <header className="mb-16 text-center">
-            <h1 className="text-4xl md:text-5xl font-bold text-foreground font-headline">Privacy Policy</h1>
+            <StandardizedHeading lines={["Privacy Policy"]} />
             <p className="mt-4 text-base text-foreground/70">Last Updated: September 1, 2025</p>
           </header>
         </ScrollFadeIn>
