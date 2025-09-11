@@ -26,6 +26,7 @@ import { useSearchParams } from "next/navigation";
 import { Suspense, useEffect } from "react";
 import { Skeleton } from "../ui/skeleton";
 import { cn } from "@/lib/utils";
+import StandardizedHeading from "./StandardizedHeading";
 
 const contactFormSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters." }),
@@ -48,19 +49,17 @@ export default function ContactPageContent() {
     return (
       <section id="contact" className="py-20 lg:py-32 bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <ScrollFadeIn className="text-center mb-16">
-                <h1 className="text-4xl md:text-5xl font-bold text-foreground font-headline">
-                    {jobTitle ? `Apply for ${jobTitle}` : "Let's Build Together"}
-                </h1>
+            <div className="text-center mb-16">
+                <StandardizedHeading lines={[jobTitle ? `Apply for ${jobTitle}` : "Let's Build Together"]} />
                 <p className="mt-4 text-base text-foreground/70 max-w-2xl mx-auto">
                     {jobTitle 
                         ? "Please fill out the form below to apply. We're excited to learn more about you."
                         : "Have a project in mind or just want to say hello? We'd love to hear from you."
                     }
                 </p>
-            </ScrollFadeIn>
+            </div>
   
-          <ScrollFadeIn delay="delay-200">
+          <ScrollFadeIn delay={0.2}>
              <div className="relative">
                 <Card className="relative overflow-hidden shadow-lg rounded-2xl glass-effect">
                     <div className="grid grid-cols-1 md:grid-cols-2">
