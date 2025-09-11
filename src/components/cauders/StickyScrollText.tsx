@@ -3,7 +3,6 @@
 
 import { useRef, useEffect, useState, Suspense } from 'react';
 import { cn } from '@/lib/utils';
-import StickyScroll3D from './StickyScroll3D';
 import { Skeleton } from '../ui/skeleton';
 
 const textLines = [
@@ -73,11 +72,6 @@ const StickyScrollText = () => {
 
   return (
     <div ref={containerRef} className="relative flex flex-col h-[400vh] bg-background">
-      <div className="absolute inset-0 z-0">
-         <Suspense fallback={<Skeleton className="w-full h-full" />}>
-           <StickyScroll3D scrollProgress={progress} />
-         </Suspense>
-      </div>
       {/* Sticky container for the animated text */}
       <div className="sticky top-0 flex-shrink-0 flex items-center justify-center overflow-hidden h-[100vh]">
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -92,11 +86,6 @@ const StickyScrollText = () => {
                     >
                       <span
                         className="inline-block px-4 py-2 rounded-md"
-                        style={{
-                          backgroundColor: 'hsl(var(--background) / 0.5)',
-                          backdropFilter: 'blur(8px)',
-                          WebkitBackdropFilter: 'blur(8px)',
-                        }}
                       >
                         {line.text}
                       </span>
