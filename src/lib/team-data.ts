@@ -1,4 +1,5 @@
 
+
 export type TeamMember = {
   name: string;
   role: string;
@@ -18,9 +19,9 @@ export const teamMembers: TeamMember[] = [
     imageUrl: 'https://picsum.photos/seed/alex/400/400',
     bio: 'With over a decade of experience in software architecture, Alex leads the team with a passion for clean code and innovative solutions.',
     socials: {
-      linkedin: 'https://linkedin.com',
-      github: 'https://github.com',
-      twitter: 'https://twitter.com',
+      linkedin: 'https://linkedin.com/in/alexjohnson',
+      github: 'https://github.com/alexjohnson',
+      twitter: 'https://twitter.com/alexjohnson',
     },
   },
   {
@@ -29,8 +30,8 @@ export const teamMembers: TeamMember[] = [
     imageUrl: 'https://picsum.photos/seed/samantha/400/400',
     bio: 'Samantha translates complex ideas into intuitive and beautiful user interfaces. Her user-centric approach ensures every project is a success.',
     socials: {
-      linkedin: 'https://linkedin.com',
-      twitter: 'https://twitter.com',
+      linkedin: 'https://linkedin.com/in/samanthalee',
+      twitter: 'https://twitter.com/samanthalee',
     },
   },
   {
@@ -39,8 +40,8 @@ export const teamMembers: TeamMember[] = [
     imageUrl: 'https://picsum.photos/seed/michael/400/400',
     bio: 'A master of React and Next.js, Michael builds lightning-fast, responsive, and accessible front-end experiences.',
     socials: {
-      linkedin: 'https://linkedin.com',
-      github: 'https://github.com',
+      linkedin: 'https://linkedin.com/in/michaelchen',
+      github: 'https://github.com/michaelchen',
     },
   },
   {
@@ -49,7 +50,7 @@ export const teamMembers: TeamMember[] = [
     imageUrl: 'https://picsum.photos/seed/emily/400/400',
     bio: 'Emily ensures that projects are delivered on time and on budget, fostering clear communication between clients and the development team.',
     socials: {
-      linkedin: 'https://linkedin.com',
+      linkedin: 'https://linkedin.com/in/emilyrodriguez',
     },
   },
   {
@@ -58,8 +59,8 @@ export const teamMembers: TeamMember[] = [
     imageUrl: 'https://picsum.photos/seed/david/400/400',
     bio: 'David architects robust backend systems and integrates cutting-edge AI to build intelligent, scalable applications.',
     socials: {
-      linkedin: 'https://linkedin.com',
-      github: 'https://github.com',
+      linkedin: 'https://linkedin.com/in/davidpatel',
+      github: 'https://github.com/davidpatel',
     },
   },
   {
@@ -68,8 +69,38 @@ export const teamMembers: TeamMember[] = [
     imageUrl: 'https://picsum.photos/seed/jessica/400/400',
     bio: 'Jessica crafts seamless cross-platform mobile applications using React Native and Flutter, focusing on performance and user engagement.',
     socials: {
-      linkedin: 'https://linkedin.com',
-      github: 'https://github.com',
+      linkedin: 'https://linkedin.com/in/jessicanguyen',
+      github: 'https://github.com/jessicanguyen',
     },
   },
 ];
+
+const gradients = [
+  "linear-gradient(145deg, #3B82F6, #000)",
+  "linear-gradient(180deg, #10B981, #000)",
+  "linear-gradient(210deg, #4F46E5, #000)",
+  "linear-gradient(165deg, #F59E0B, #000)",
+  "linear-gradient(195deg, #EF4444, #000)",
+  "linear-gradient(225deg, #8B5CF6, #000)",
+  "linear-gradient(135deg, #06B6D4, #000)",
+];
+
+const borderColors = [
+  "#3B82F6",
+  "#10B981",
+  "#4F46E5",
+  "#F59E0B",
+  "#EF4444",
+  "#8B5CF6",
+  "#06B6D4",
+]
+
+export const teamData = teamMembers.map((member, index) => ({
+  image: member.imageUrl,
+  title: member.name,
+  subtitle: member.role,
+  handle: `@${member.name.split(' ')[0].toLowerCase()}`,
+  borderColor: borderColors[index % borderColors.length],
+  gradient: gradients[index % gradients.length],
+  url: member.socials.linkedin || member.socials.github || member.socials.twitter
+}));
