@@ -55,7 +55,10 @@ const projects: Project[] = [
     status: 'Live',
     year: 2023,
     implementation: ['UI/UX', 'Development', 'Strategy'],
-    testimonial: null
+    testimonial: {
+        author: "J. Dupont, CEO of Wokine",
+        text: "Cauders delivered a visually stunning and technically robust website that perfectly captures our brand's ethos. Their attention to detail is unmatched."
+    }
   },
   {
     id: 2,
@@ -100,7 +103,10 @@ const projects: Project[] = [
     status: 'Live',
     year: 2021,
     implementation: ['Branding', 'Development'],
-    testimonial: null
+    testimonial: {
+        author: "A. Khan, Tasweerkash",
+        text: "The new website is both beautiful and functional, providing a great platform to showcase our work. The team was professional and responsive throughout."
+    }
   },
   {
     id: 4,
@@ -166,7 +172,11 @@ const projects: Project[] = [
     mobileScreenshots: [
       'https://picsum.photos/seed/itc-app-mob-1/400/800',
       'https://picsum.photos/seed/itc-app-mob-2/400/800', 
-    ]
+    ],
+    testimonial: {
+        author: "M. Ali, IT Centre",
+        text: "The ERP app has transformed how we manage our institute. It's intuitive, efficient, and has saved us countless hours of administrative work."
+    }
   },
   {
     id: 7,
@@ -239,8 +249,8 @@ const projects: Project[] = [
       'https://picsum.photos/seed/binof-trainer-mob-2/400/800',
     ],
     testimonial: {
-        author: "John Doe",
-        text: "This app is amazing!"
+        author: "John Doe, Fitness Coach",
+        text: "This app is an amazing tool for managing my clients. The performance tracking is a game-changer for personalized training plans."
     }
   },
   {
@@ -287,8 +297,8 @@ const projects: Project[] = [
     year: 2021,
     implementation: ['Full-stack Dev', 'SaaS'],
     testimonial: {
-        author: 'Jane Smith',
-        text: 'Clipinn streamlined our HR processes perfectly.'
+        author: 'Jane Smith, HR Manager',
+        text: 'Clipinn streamlined our HR processes perfectly. The task management and payroll features are incredibly powerful yet easy to use.'
     }
   },
   {
@@ -376,7 +386,10 @@ const projects: Project[] = [
     status: 'Live',
     year: 2019,
     implementation: ['eCommerce Dev', 'Branding'],
-    testimonial: null
+    testimonial: {
+        author: "S. Ahmed, Portia Fabrics",
+        text: "The e-commerce solution provided by Cauders has been instrumental in our online growth. The platform is stable, fast, and easy to manage."
+    }
   },
   {
     id: 16,
