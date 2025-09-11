@@ -8,11 +8,11 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useRef, useState, useEffect, useCallback } from "react";
+import StandardizedHeading from "./StandardizedHeading";
 
 export default function ServicesPreview() {
   const services = getServices().slice(0, 4); // Get top 4 services
   const containerRef = useRef<HTMLDivElement>(null);
-  const [titleTransform, setTitleTransform] = useState('translateY(101%)');
   const [subtitleTransform, setSubtitleTransform] = useState('translateY(101%)');
   const [cardTransforms, setCardTransforms] = useState(services.map(() => 'rotateY(-90deg)'));
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
@@ -26,11 +26,6 @@ export default function ServicesPreview() {
     // Start animation when the component is well into view
     const animationStartPoint = window.innerHeight * 0.8;
     const currentProgress = Math.max(0, Math.min(1, (window.scrollY - containerRef.current.offsetTop + animationStartPoint) / (scrollableHeight + animationStartPoint)));
-
-    // --- Text Animation ---
-    const titleProgress = Math.max(0, Math.min(1, currentProgress * 4));
-    const titleY = 101 - (titleProgress * 101);
-    setTitleTransform(`translateY(${titleY}%)`);
 
     const subtitleProgress = Math.max(0, Math.min(1, (currentProgress - 0.1) * 4));
     const subtitleY = 101 - (subtitleProgress * 101);
@@ -64,14 +59,7 @@ export default function ServicesPreview() {
     <section id="services-preview" ref={containerRef} className="relative h-[250vh] bg-background">
       <div className="sticky top-0 h-screen flex flex-col items-center justify-center overflow-hidden">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <div className="overflow-hidden py-2">
-            <h2
-                className="text-4xl md:text-5xl font-extrabold text-foreground transition-transform duration-300 ease-out font-headline"
-                style={{ transform: titleTransform }}
-            >
-                What We Offer
-            </h2>
-            </div>
+            <StandardizedHeading text="What We\nOffer" />
             <div className="overflow-hidden py-1">
             <p
                 className="mt-4 text-base text-foreground/70 max-w-2xl mx-auto transition-transform duration-300 ease-out"
