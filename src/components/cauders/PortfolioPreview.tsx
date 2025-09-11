@@ -195,7 +195,7 @@ export default function PortfolioPreview() {
                   draggable={false}
                 >
                   <Card className="h-full w-full overflow-hidden rounded-3xl shadow-lg">
-                    <div className="w-full h-full bg-foreground relative overflow-hidden rounded-3xl transition-transform duration-500 group-hover:scale-105">
+                    <div className="w-full h-full relative overflow-hidden rounded-3xl transition-transform duration-500 group-hover:scale-105">
                       <Image
                         src={project.imageUrl}
                         alt={project.title}
