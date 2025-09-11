@@ -20,7 +20,7 @@ export default function StandardizedHeading({ lines, className }: StandardizedHe
   );
 
   return (
-    <h2 className={cn("font-headline text-6xl md:text-7xl lg:text-8xl font-bold text-foreground leading-tight", className)}>
+    <h2 className={cn("font-headline text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-tight", className)}>
       {processedLines.map((line, lineIndex) => (
         <ScrollFadeIn
           key={lineIndex}
