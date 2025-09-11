@@ -106,12 +106,12 @@ export default function CareersPage() {
       {/* Open Positions Section */}
       <section className="py-20 lg:py-32">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <ScrollFadeIn className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground font-headline">Current Openings</h2>
+          <div className="text-center mb-16">
+            <StandardizedHeading lines={["Current Openings"]} />
             <p className="mt-4 text-base text-foreground/70 max-w-2xl mx-auto">
               Find your next challenge. If you don't see a role that fits, feel free to reach out at hr@cauders.com. We're always looking for great talent.
             </p>
-          </ScrollFadeIn>
+          </div>
 
           <div className="max-w-4xl mx-auto">
             <div className="space-y-6">
