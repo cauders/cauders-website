@@ -8,7 +8,7 @@ import { teamData } from '@/lib/team-data';
 
 export default function TeamPage() {
   return (
-    <div className="text-foreground">
+    <div className="bg-background text-foreground">
       <section className="py-20 lg:py-32">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
