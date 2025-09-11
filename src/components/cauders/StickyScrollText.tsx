@@ -7,10 +7,8 @@ import { Skeleton } from '../ui/skeleton';
 
 const textLines = [
   { text: "WE ENGINEER", direction: "left" },
-  { text: "HIGH-PERFORMANCE,", className: "text-primary", direction: "right" },
-  { text: "CUTTING-EDGE PLATFORMS", className: "text-primary", direction: "left" },
-  { text: "THAT EMPOWER BUSINESSES", direction: "right" },
-  { text: "TO DOMINATE THE DIGITAL LANDSCAPE.", direction: "left" },
+  { text: "HIGH-PERFORMANCE, CUTTING-EDGE PLATFORMS", className: "text-primary", direction: "right" },
+  { text: "THAT EMPOWER BUSINESSES TO DOMINATE THE DIGITAL LANDSCAPE.", direction: "left" },
 ];
 
 // Easing function for a smooth slide with settle
