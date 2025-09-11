@@ -11,6 +11,7 @@ import { Card, CardTitle, CardContent, CardHeader } from '../ui/card';
 import { useRef } from 'react';
 import { useScrollProgress } from '@/hooks/useScrollProgress';
 import Image from 'next/image';
+import StandardizedHeading from './StandardizedHeading';
 
 const whyChooseUs = [
   {
@@ -129,8 +130,8 @@ const AnimatedHeroText = () => {
     return (
         <div ref={sectionRef} className="h-[100vh] relative text-center flex flex-col justify-center">
             <div className="sticky top-1/2 -translate-y-1/2">
+                <StandardizedHeading lines={["Our Services"]} />
                 <ScrollFadeIn>
-                    <h1 className="text-4xl md:text-5xl font-bold text-foreground font-headline">Our Services</h1>
                     <p className="mt-6 text-base text-foreground/70 max-w-3xl mx-auto">
                         At Cauders, we deliver future-ready digital solutions that combine innovation, performance, and scalability. Our expertise spans across multiple domains to help businesses thrive in the evolving tech landscape.
                     </p>
