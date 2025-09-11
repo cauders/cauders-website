@@ -4,6 +4,7 @@
 import ScrollFadeIn from '@/components/cauders/ScrollFadeIn';
 import { Card, CardContent } from '@/components/ui/card';
 import React from 'react';
+import StandardizedHeading from '@/components/cauders/StandardizedHeading';
 
 
 const WordHighlighter = ({ text }: { text: string }) => {
@@ -79,7 +80,7 @@ export default function TermsOfServicePage() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
         <ScrollFadeIn>
           <header className="mb-16 text-center">
-            <h1 className="text-4xl md:text-5xl font-bold text-foreground font-headline">Terms of Service</h1>
+            <StandardizedHeading lines={["Terms of Service"]} />
             <p className="mt-4 text-base text-foreground/70">Last Updated: September 1, 2025</p>
           </header>
         </ScrollFadeIn>
