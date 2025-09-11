@@ -18,7 +18,7 @@ const StickyScrollText = () => {
       {/* Sticky container for the animated text */}
       <div className="sticky top-0 flex-shrink-0 flex items-center justify-center overflow-hidden h-[100vh]">
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <StandardizedHeading lines={lines} className="text-4xl md:text-5xl lg:text-6xl" />
+            <StandardizedHeading lines={lines} className="text-6xl md:text-7xl lg:text-8xl" />
         </div>
       </div>
     </div>
@@ -26,6 +26,7 @@ const StickyScrollText = () => {
 };
 
 export default StickyScrollText;
+
 
 
 
