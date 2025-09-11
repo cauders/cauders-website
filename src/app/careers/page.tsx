@@ -5,6 +5,7 @@ import ScrollFadeIn from '@/components/cauders/ScrollFadeIn';
 import { ArrowRight, Briefcase, Coffee, Puzzle, CheckCircle } from 'lucide-react';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
+import StandardizedHeading from '@/components/cauders/StandardizedHeading';
 
 const jobOpenings = [
   {
@@ -52,7 +53,7 @@ export default function CareersPage() {
       <section className="py-20 lg:py-32 text-center">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollFadeIn>
-            <h1 className="text-4xl md:text-5xl font-bold text-foreground font-headline">Join Our Team</h1>
+            <StandardizedHeading lines={["Join Our Team"]} />
             <p className="mt-6 text-base text-foreground/70 max-w-3xl mx-auto">
               At Cauders, we're not just building products; we're building the future of digital interaction. We are looking for passionate, creative, and driven individuals to join us on our journey.
             </p>
