@@ -106,10 +106,6 @@
 }
 
 .chroma-info .name {
-    color: hsl(var(--background));
-}
-
-.dark .chroma-info .name {
     color: hsl(var(--foreground));
 }
 
