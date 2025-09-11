@@ -23,7 +23,9 @@ export default function ServicesPreview() {
     const { top, height } = containerRef.current.getBoundingClientRect();
     const scrollableHeight = height - window.innerHeight;
     
-    const currentProgress = Math.max(0, Math.min(1, -top / scrollableHeight));
+    // Start animation when the component is well into view
+    const animationStartPoint = window.innerHeight * 0.8;
+    const currentProgress = Math.max(0, Math.min(1, (window.scrollY - containerRef.current.offsetTop + animationStartPoint) / (scrollableHeight + animationStartPoint)));
 
     // --- Text Animation ---
     const titleProgress = Math.max(0, Math.min(1, currentProgress * 4));
