@@ -8,6 +8,7 @@ import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 import Image from 'next/image';
+import StandardizedHeading from '@/components/cauders/StandardizedHeading';
 
 const contentSections = [
   {
@@ -38,9 +39,9 @@ export default function AboutPage() {
         <div className="bg-background text-foreground">
             <section className="py-20 lg:py-32">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                    <ScrollFadeIn className="text-center mb-20 lg:mb-24">
-                        <h1 className="text-4xl md:text-5xl font-bold text-foreground font-headline">About Cauders</h1>
-                    </ScrollFadeIn>
+                    <div className="text-center mb-20 lg:mb-24">
+                        <StandardizedHeading lines={["About Cauders"]} />
+                    </div>
 
                     <div className="flex flex-col gap-24 lg:gap-32">
                         {contentSections.map((section, index) => (
