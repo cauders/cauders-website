@@ -14,6 +14,7 @@ const quickLinks = [
 
 const companyLinks = [
     { href: '/about', label: 'About Us' },
+    { href: '/team', label: 'Our Team' },
     { href: '/contact', label: 'Contact' },
     { href: '/careers', label: 'Careers' },
     { href: '/faq', label: 'FAQ' },
