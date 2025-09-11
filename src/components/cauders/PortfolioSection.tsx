@@ -10,6 +10,7 @@ import PortfolioPreview from "./PortfolioPreview";
 import { Button } from "../ui/button";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import StandardizedHeading from "./StandardizedHeading";
 
 const textLinesTop = [
   { text: "WE ARCHITECT", direction: "left" },
@@ -131,24 +132,9 @@ const AnimatedTextSection = ({ lines, scrollProgress }: { lines: any[], scrollPr
         )}>
             {lines.map((line, index) => (
                 <div key={index} className="overflow-hidden py-1">
-                    <h2
-                        className={cn(
-                            "text-4xl md:text-5xl font-extrabold text-foreground uppercase tracking-tight transition-transform duration-300 ease-out font-headline",
-                            line.className
-                        )}
-                        style={{ transform: transforms[index] }}
-                    >
-                    <span
-                        className="inline-block px-4 py-2 rounded-md"
-                        style={{
-                        backgroundColor: 'hsl(var(--background) / 0.5)',
-                        backdropFilter: 'blur(8px)',
-                        WebkitBackdropFilter: 'blur(8px)',
-                        }}
-                    >
-                        {line.text}
-                    </span>
-                    </h2>
+                    <div style={{ transform: transforms[index] }}>
+                        <StandardizedHeading lines={[line]} className="text-4xl md:text-5xl" />
+                    </div>
                 </div>
             ))}
         </div>
