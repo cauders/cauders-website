@@ -39,11 +39,6 @@ export default function Testimonials() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
                 <StandardizedHeading lines={["What Our Clients Say"]} />
-                <ScrollFadeIn>
-                  <p className="mt-4 text-base text-foreground/70 max-w-2xl mx-auto">
-                      We're proud to have partnered with amazing companies.
-                  </p>
-                </ScrollFadeIn>
             </div>
 
             <ScrollFadeIn delay="delay-200">
