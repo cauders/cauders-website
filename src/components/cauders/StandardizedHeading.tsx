@@ -1,26 +1,34 @@
 
 'use client';
 
-import ScrollFadeIn from "./ScrollFadeIn"; // Adjust path
+import { cn } from "@/lib/utils";
+import ScrollFadeIn from "./ScrollFadeIn";
+
+type Line = {
+  text: string;
+  className?: string;
+};
 
 interface StandardizedHeadingProps {
-  text: string;
+  lines: (string | Line)[];
 }
 
-export default function StandardizedHeading({ text }: StandardizedHeadingProps) {
-  const lines = text.split('\n');
+export default function StandardizedHeading({ lines }: StandardizedHeadingProps) {
+  const processedLines = lines.map(line =>
+    typeof line === 'string' ? { text: line } : line
+  );
 
-   return (
+  return (
     <h2 className="font-headline text-6xl md:text-7xl lg:text-8xl font-bold text-foreground leading-tight">
-      {lines.map((line, lineIndex) => (
+      {processedLines.map((line, lineIndex) => (
         <ScrollFadeIn
           key={lineIndex}
           direction={lineIndex % 2 === 0 ? 'left' : 'right'}
           delay={0.1}
           className="text-highlight-group"
         >
-          <span className="block whitespace-nowrap">
-            {line.split(' ').map((word, wordIndex) => (
+          <span className={cn("block", line.className)}>
+            {line.text.split(' ').map((word, wordIndex) => (
               <span key={wordIndex} className="word-highlight">
                 {word}{' '}
               </span>

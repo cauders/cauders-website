@@ -24,7 +24,12 @@ export default function ServicesPreview() {
     const scrollableHeight = height - window.innerHeight;
     
     const animationStartPoint = window.innerHeight * 0.2;
-    const currentProgress = Math.max(0, Math.min(1, (window.scrollY - containerRef.current.offsetTop + animationStartPoint) / (scrollableHeight + animationStartPoint)));
+    let currentProgress = 0;
+    // Check if containerRef.current.offsetTop is a valid number
+    if (containerRef.current.offsetTop && isFinite(containerRef.current.offsetTop)) {
+        currentProgress = Math.max(0, Math.min(1, (window.scrollY - containerRef.current.offsetTop + animationStartPoint) / (scrollableHeight + animationStartPoint)));
+    }
+
 
     const subtitleProgress = Math.max(0, Math.min(1, (currentProgress - 0.1) * 4));
     const subtitleY = 101 - (subtitleProgress * 101);
@@ -58,7 +63,7 @@ export default function ServicesPreview() {
     <section id="services-preview" ref={containerRef} className="relative h-[250vh] bg-background">
       <div className="sticky top-0 h-screen flex flex-col items-center justify-center overflow-hidden">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <StandardizedHeading text="What We Offer" />
+            <StandardizedHeading lines={["What We Offer"]} />
             <div className="overflow-hidden py-1">
             <p
                 className="mt-4 text-base text-foreground/70 max-w-2xl mx-auto transition-transform duration-300 ease-out"
