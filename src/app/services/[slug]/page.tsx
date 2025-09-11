@@ -56,17 +56,17 @@ export default function ServicePage({ params }: ServicePageParams) {
             <div className="lg:col-span-3">
               <ScrollFadeIn delay="delay-200">
                 <h2 className="text-2xl font-bold text-foreground mb-4 font-headline">Service Details</h2>
-                <div className="prose prose-lg dark:prose-invert text-foreground/80 max-w-none" dangerouslySetInnerHTML={{ __html: service.details }} />
+                <div className="prose prose-lg dark:prose-invert text-base text-foreground/80 max-w-none" dangerouslySetInnerHTML={{ __html: service.details }} />
               </ScrollFadeIn>
             </div>
             <div className="lg:col-span-2">
               <ScrollFadeIn delay="delay-300">
                 <Card className="bg-card border shadow-lg">
                     <CardHeader>
-                        <CardTitle className="text-foreground font-headline">What's Included</CardTitle>
+                        <CardTitle className="text-2xl font-headline text-foreground">What's Included</CardTitle>
                     </CardHeader>
                     <CardContent>
-                        <ul className="space-y-3">
+                        <ul className="space-y-3 text-base">
                             {service.included.map((item, index) => (
                                 <li key={index} className="flex items-start">
                                     <CheckCircle className="w-5 h-5 text-primary mr-3 mt-1 shrink-0" />
@@ -84,7 +84,7 @@ export default function ServicePage({ params }: ServicePageParams) {
             <ScrollFadeIn className="mt-20">
               <div className="text-center">
                 <h2 className="text-3xl font-bold text-foreground mb-4 font-headline">Case Study</h2>
-                <p className="text-foreground/70 mb-8 max-w-2xl mx-auto">{service.caseStudy.description}</p>
+                <p className="text-base text-foreground/70 mb-8 max-w-2xl mx-auto">{service.caseStudy.description}</p>
                  <Link href={`https://www.portfolio.cauders.com/${service.caseStudy.projectSlug}`}>
                   <Card className="overflow-hidden group transition-all duration-300 hover:shadow-2xl hover:shadow-primary/20 hover:-translate-y-2 bg-card border text-left">
                     <CardHeader className="p-0">
@@ -100,8 +100,8 @@ export default function ServicePage({ params }: ServicePageParams) {
                       </div>
                     </CardHeader>
                     <CardContent className="p-6">
-                      <CardTitle className="mb-2 text-foreground font-headline">{service.caseStudy.title}</CardTitle>
-                      <Button variant="link" className="px-0">
+                      <CardTitle className="mb-2 text-2xl text-foreground font-headline">{service.caseStudy.title}</CardTitle>
+                      <Button variant="link" className="px-0 text-base">
                         View Project Details <ArrowRight className="ml-2 h-4 w-4"/>
                       </Button>
                     </CardContent>
@@ -114,7 +114,7 @@ export default function ServicePage({ params }: ServicePageParams) {
           <ScrollFadeIn className="mt-20">
             <div className="bg-card border rounded-lg p-8 text-center shadow-lg">
               <h2 className="text-3xl font-bold text-foreground mb-4 font-headline">Ready to get started?</h2>
-              <p className="text-foreground/70 mb-6 max-w-xl mx-auto">Let's discuss how our {service.title.toLowerCase()} services can help you achieve your goals.</p>
+              <p className="text-base text-foreground/70 mb-6 max-w-xl mx-auto">Let's discuss how our {service.title.toLowerCase()} services can help you achieve your goals.</p>
               <Button size="lg" asChild>
                   <Link href="/contact">Contact Us</Link>
               </Button>

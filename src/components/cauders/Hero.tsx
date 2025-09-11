@@ -34,7 +34,7 @@ export default function Hero() {
           {/* Left Side: Content */}
           <div className="w-full md:w-1/2 text-left">
             <div className="max-w-xl">
-                <h1 className="text-6xl md:text-8xl font-extrabold tracking-tight text-foreground mt-2 leading-snug font-headline">
+                <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-foreground mt-2 leading-snug font-headline">
                   <div>
                     {words1.map((word, wordIndex) => (
                       <span key={wordIndex} className="animated-gradient-text">
@@ -53,7 +53,7 @@ export default function Hero() {
                 <div className="mt-8 animate-fade-in-down flex justify-start" style={{ animationDelay: '1s' }}>
                   <button 
                     onClick={scrollToServices} 
-                    className="explore-button"
+                    className="explore-button text-xs"
                     aria-label="Explore our services"
                   >
                     Explore
@@ -70,7 +70,7 @@ export default function Hero() {
         style={{ animationDelay: '1s' }}
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-          <Link href="/contact" className="text-sm font-medium tracking-widest uppercase hover:text-primary transition-colors">
+          <Link href="/contact" className="text-xs font-medium tracking-widest uppercase hover:text-primary transition-colors">
               Contact Us
           </Link>
           <button onClick={scrollToServices} aria-label="Scroll down" className="animate-bounce">

@@ -39,7 +39,7 @@ export default function AboutPage() {
             <section className="py-20 lg:py-32">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                     <ScrollFadeIn className="text-center mb-20 lg:mb-24">
-                        <h1 className="text-4xl md:text-6xl font-bold text-foreground font-headline">About Cauders</h1>
+                        <h1 className="text-4xl md:text-5xl font-bold text-foreground font-headline">About Cauders</h1>
                     </ScrollFadeIn>
 
                     <div className="flex flex-col gap-24 lg:gap-32">
@@ -53,7 +53,7 @@ export default function AboutPage() {
                                             </h2>
                                         </ScrollFadeIn>
                                         <ScrollFadeIn direction="up" style={{ animationDelay: '200ms' }}>
-                                            <p className="text-lg text-foreground/80">
+                                            <p className="text-base text-foreground/80">
                                                 {section.text}
                                             </p>
                                         </ScrollFadeIn>
@@ -83,7 +83,7 @@ export default function AboutPage() {
                     <ScrollFadeIn>
                         <Card className="p-8 md:p-12 text-center bg-secondary/30">
                             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 font-headline">Let's Create Together</h2>
-                            <p className="max-w-2xl mx-auto text-foreground/70 mb-8">
+                            <p className="max-w-2xl mx-auto text-base text-foreground/70 mb-8">
                                 Have an idea that could redefine your industry? We're the team to help you build it. Let's start a conversation.
                             </p>
                             <Button asChild size="lg">

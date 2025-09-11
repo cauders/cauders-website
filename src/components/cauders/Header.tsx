@@ -64,7 +64,7 @@ export default function Header() {
             
             <div className="flex items-center gap-4">
               <ThemeToggle />
-              <Button onClick={() => setIsMenuOpen(true)} variant="ghost" className="text-lg font-semibold tracking-widest" aria-label="Open menu">
+              <Button onClick={() => setIsMenuOpen(true)} variant="ghost" className="text-sm font-semibold tracking-widest" aria-label="Open menu">
                 MENU
               </Button>
             </div>
@@ -103,7 +103,7 @@ export default function Header() {
                     href={link.href}
                     onClick={() => setIsMenuOpen(false)}
                     className={cn(
-                        "opacity-0 text-background",
+                        "opacity-0 text-background text-lg",
                         isMenuOpen && "animate-fade-in-down"
                     )}
                      style={{ animationDelay: `${500 + index * 100}ms` }}

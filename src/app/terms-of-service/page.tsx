@@ -8,7 +8,7 @@ import React from 'react';
 
 const WordHighlighter = ({ text }: { text: string }) => {
   return (
-    <p className="text-highlight-group">
+    <p className="text-highlight-group text-base">
       {text.split(' ').map((word, index) => (
         <React.Fragment key={index}>
           <span className="word-highlight">{word}</span>{' '}
@@ -62,7 +62,7 @@ const termsSections = [
   },
   {
     title: "Contact Us",
-    content: <p className="text-highlight-group"><span className="word-highlight">If</span> <span className="word-highlight">you</span> <span className="word-highlight">have</span> <span className="word-highlight">any</span> <span className="word-highlight">questions</span> <span className="word-highlight">about</span> <span className="word-highlight">these</span> <span className="word-highlight">Terms</span> <span className="word-highlight">and</span> <span className="word-highlight">Conditions,</span> <span className="word-highlight">please</span> <span className="word-highlight">contact</span> <span className="word-highlight">us</span> <span className="word-highlight">at</span> <a href="mailto:info@cauders.com" className="text-primary hover:underline word-highlight">info@cauders.com</a>.</p>
+    content: <p className="text-highlight-group text-base"><span className="word-highlight">If</span> <span className="word-highlight">you</span> <span className="word-highlight">have</span> <span className="word-highlight">any</span> <span className="word-highlight">questions</span> <span className="word-highlight">about</span> <span className="word-highlight">these</span> <span className="word-highlight">Terms</span> <span className="word-highlight">and</span> <span className="word-highlight">Conditions,</span> <span className="word-highlight">please</span> <span className="word-highlight">contact</span> <span className="word-highlight">us</span> <span className="word-highlight">at</span> <a href="mailto:info@cauders.com" className="text-primary hover:underline word-highlight">info@cauders.com</a>.</p>
   }
 ];
 
@@ -79,8 +79,8 @@ export default function TermsOfServicePage() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
         <ScrollFadeIn>
           <header className="mb-16 text-center">
-            <h1 className="text-4xl md:text-6xl font-bold text-foreground font-headline">Terms of Service</h1>
-            <p className="mt-4 text-lg text-foreground/70">Last Updated: September 1, 2025</p>
+            <h1 className="text-4xl md:text-5xl font-bold text-foreground font-headline">Terms of Service</h1>
+            <p className="mt-4 text-base text-foreground/70">Last Updated: September 1, 2025</p>
           </header>
         </ScrollFadeIn>
 
@@ -100,7 +100,7 @@ export default function TermsOfServicePage() {
                                     </div>
                                     <div>
                                         <h2 className="text-2xl font-bold text-foreground mb-3 font-headline">{section.title}</h2>
-                                        <div className="text-foreground/80 space-y-4">
+                                        <div className="text-foreground/80 space-y-4 text-base">
                                             {section.content}
                                         </div>
                                     </div>

@@ -64,7 +64,7 @@ export default function ServicesPreview() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <div className="overflow-hidden py-2">
             <h2
-                className="text-5xl md:text-7xl font-extrabold text-foreground transition-transform duration-300 ease-out font-headline"
+                className="text-4xl md:text-5xl font-extrabold text-foreground transition-transform duration-300 ease-out font-headline"
                 style={{ transform: titleTransform }}
             >
                 What We Offer
@@ -72,7 +72,7 @@ export default function ServicesPreview() {
             </div>
             <div className="overflow-hidden py-1">
             <p
-                className="mt-4 text-lg text-foreground/70 max-w-2xl mx-auto transition-transform duration-300 ease-out"
+                className="mt-4 text-base text-foreground/70 max-w-2xl mx-auto transition-transform duration-300 ease-out"
                 style={{ transform: subtitleTransform, transitionDelay: '50ms' }}
             >
                 Our expertise spans the entire development lifecycle, delivering excellence at every step.
@@ -106,8 +106,8 @@ export default function ServicesPreview() {
                                         <service.icon className="w-8 h-8 text-primary" />
                                     </div>
                                 </div>
-                                <CardTitle className="text-foreground font-headline">{service.title}</CardTitle>
-                                <CardDescription className="pt-2 text-foreground/80 line-clamp-3">{service.description}</CardDescription>
+                                <CardTitle className="text-2xl text-foreground font-headline">{service.title}</CardTitle>
+                                <CardDescription className="pt-2 text-sm text-foreground/80 line-clamp-3">{service.description}</CardDescription>
                             </CardHeader>
                         </Card>
                     </div>
@@ -115,12 +115,12 @@ export default function ServicesPreview() {
                     <div className="flip-card-back absolute w-full h-full">
                         <Card className={cn("h-full flex flex-col justify-between animated-border-card bg-card border")}>
                         <CardHeader>
-                            <CardTitle className="text-foreground font-headline">{service.title}</CardTitle>
+                            <CardTitle className="text-2xl text-foreground font-headline">{service.title}</CardTitle>
                         </CardHeader>
                         <CardContent>
-                            <ul className="space-y-2 text-left">
+                            <ul className="space-y-2 text-left text-sm">
                             {service.included.slice(0, 3).map((item, i) => (
-                                <li key={i} className="flex items-start text-sm">
+                                <li key={i} className="flex items-start">
                                 <ArrowRight className="w-4 h-4 text-primary mr-2 mt-0.5 shrink-0" />
                                 <span className="text-foreground/80">{item}</span>
                                 </li>

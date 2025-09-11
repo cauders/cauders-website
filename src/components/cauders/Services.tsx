@@ -49,9 +49,9 @@ const ServiceSection = ({ service, index }: { service: ReturnType<typeof getServ
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                      <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16 items-center">
                         <ScrollFadeIn direction={isEven ? 'left' : 'right'} className={cn("flex flex-col justify-center", isEven ? 'md:order-1' : 'md:order-2')}>
-                            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4 font-headline">{service.title}</h2>
-                            <p className="text-lg text-foreground/80 mb-6">{service.description}</p>
-                            <ul className="space-y-3">
+                            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 font-headline">{service.title}</h2>
+                            <p className="text-base text-foreground/80 mb-6">{service.description}</p>
+                            <ul className="space-y-3 text-base">
                                 {service.included.slice(0, 3).map((item) => (
                                     <li key={item} className="flex items-start">
                                         <CheckCircle className="w-5 h-5 text-primary mr-3 mt-1 shrink-0" />
@@ -91,7 +91,7 @@ const ServiceSection = ({ service, index }: { service: ReturnType<typeof getServ
                                       <div className="absolute bottom-[-80px] right-[-80px] w-64 h-64 bg-primary/30 rounded-full blur-3xl opacity-80"></div>
                                       <Card className={cn("relative z-10 h-full flex flex-col justify-center items-center text-center glass-effect animated-border-card border-border/20 px-6 pb-6")}>
                                           <service.icon className="w-20 h-20 text-background mb-4" />
-                                          <CardTitle className="text-background text-5xl font-extrabold font-headline">{service.title}</CardTitle>
+                                          <CardTitle className="text-background text-4xl font-extrabold font-headline">{service.title}</CardTitle>
                                           <div className="absolute bottom-6 left-6 right-6">
                                             <Button asChild className="button w-full">
                                                 <Link href={`/services/${service.slug}`}>
@@ -130,8 +130,8 @@ const AnimatedHeroText = () => {
         <div ref={sectionRef} className="h-[100vh] relative text-center flex flex-col justify-center">
             <div className="sticky top-1/2 -translate-y-1/2">
                 <ScrollFadeIn>
-                    <h1 className="text-4xl md:text-6xl font-bold text-foreground font-headline">Our Services</h1>
-                    <p className="mt-6 text-lg text-foreground/70 max-w-3xl mx-auto">
+                    <h1 className="text-4xl md:text-5xl font-bold text-foreground font-headline">Our Services</h1>
+                    <p className="mt-6 text-base text-foreground/70 max-w-3xl mx-auto">
                         At Cauders, we deliver future-ready digital solutions that combine innovation, performance, and scalability. Our expertise spans across multiple domains to help businesses thrive in the evolving tech landscape.
                     </p>
                 </ScrollFadeIn>
@@ -158,7 +158,7 @@ export default function Services() {
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                 <ScrollFadeIn className="text-center mb-16">
                     <h2 className="text-3xl md:text-4xl font-bold text-foreground font-headline">Why Choose Cauders?</h2>
-                     <p className="mt-4 text-lg text-foreground/70 max-w-2xl mx-auto">
+                     <p className="mt-4 text-base text-foreground/70 max-w-2xl mx-auto">
                         Our commitment to excellence is reflected in every project we undertake. We don't just build products; we build partnerships.
                     </p>
                 </ScrollFadeIn>
@@ -170,10 +170,10 @@ export default function Services() {
                                     <div className="mx-auto bg-primary/10 rounded-full p-4 w-fit mb-4 border border-primary/20 group-hover:bg-primary/20 transition-colors">
                                         <reason.icon className="w-8 h-8 text-primary" />
                                     </div>
-                                    <CardTitle className="text-foreground text-xl font-headline">{reason.title}</CardTitle>
+                                    <CardTitle className="text-xl font-headline text-foreground">{reason.title}</CardTitle>
                                 </CardHeader>
                                 <CardContent>
-                                    <p className="text-foreground/80">{reason.description}</p>
+                                    <p className="text-sm text-foreground/80">{reason.description}</p>
                                 </CardContent>
                             </Card>
                         </ScrollFadeIn>

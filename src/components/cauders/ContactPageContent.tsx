@@ -49,10 +49,10 @@ export default function ContactPageContent() {
       <section id="contact" className="py-20 lg:py-32 bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <ScrollFadeIn className="text-center mb-16">
-                <h2 className="text-3xl md:text-4xl font-bold text-foreground font-headline">
+                <h1 className="text-4xl md:text-5xl font-bold text-foreground font-headline">
                     {jobTitle ? `Apply for ${jobTitle}` : "Let's Build Together"}
-                </h2>
-                <p className="mt-4 text-lg text-foreground/70 max-w-2xl mx-auto">
+                </h1>
+                <p className="mt-4 text-base text-foreground/70 max-w-2xl mx-auto">
                     {jobTitle 
                         ? "Please fill out the form below to apply. We're excited to learn more about you."
                         : "Have a project in mind or just want to say hello? We'd love to hear from you."
@@ -67,11 +67,11 @@ export default function ContactPageContent() {
                         {/* Left Side: Info */}
                         <div className="p-8 md:p-12">
                             <div className="flex flex-col justify-center h-full text-foreground">
-                                <h3 className="text-2xl font-bold mb-4 font-headline">Get in Touch</h3>
-                                <p className="text-foreground/80 mb-8">
+                                <h2 className="text-3xl font-bold mb-4 font-headline">Get in Touch</h2>
+                                <p className="text-base text-foreground/80 mb-8">
                                     We're here to help and answer any question you might have. We look forward to hearing from you.
                                 </p>
-                                <div className="space-y-6 text-foreground/90">
+                                <div className="space-y-6 text-base text-foreground/90">
                                     <div className="flex items-center gap-4">
                                         <Mail className="w-6 h-6 text-primary" />
                                         <a href="mailto:info@cauders.com" className="hover:text-primary transition-colors">info@cauders.com</a>
@@ -163,7 +163,7 @@ function GeneralContactForm() {
                     name="name"
                     render={({ field }) => (
                     <FormItem>
-                        <FormLabel className="text-foreground">Name</FormLabel>
+                        <FormLabel className="text-foreground text-sm">Name</FormLabel>
                         <FormControl>
                         <Input placeholder="Your Name" {...field} />
                         </FormControl>
@@ -176,7 +176,7 @@ function GeneralContactForm() {
                     name="email"
                     render={({ field }) => (
                     <FormItem>
-                        <FormLabel className="text-foreground">Email</FormLabel>
+                        <FormLabel className="text-foreground text-sm">Email</FormLabel>
                         <FormControl>
                         <Input type="email" placeholder="your.email@example.com" {...field} />
                         </FormControl>
@@ -189,7 +189,7 @@ function GeneralContactForm() {
                     name="message"
                     render={({ field }) => (
                     <FormItem>
-                        <FormLabel className="text-foreground">Message</FormLabel>
+                        <FormLabel className="text-foreground text-sm">Message</FormLabel>
                         <FormControl>
                         <Textarea placeholder="Tell us about your project..." className="min-h-[120px]" {...field} />
                         </FormControl>
@@ -266,7 +266,7 @@ function ApplicationForm({ jobTitle }: { jobTitle: string }) {
                     name="name"
                     render={({ field }) => (
                     <FormItem>
-                        <FormLabel className="text-foreground">Full Name</FormLabel>
+                        <FormLabel className="text-foreground text-sm">Full Name</FormLabel>
                         <FormControl>
                         <Input placeholder="Your Name" {...field} />
                         </FormControl>
@@ -279,7 +279,7 @@ function ApplicationForm({ jobTitle }: { jobTitle: string }) {
                     name="email"
                     render={({ field }) => (
                     <FormItem>
-                        <FormLabel className="text-foreground">Email Address</FormLabel>
+                        <FormLabel className="text-foreground text-sm">Email Address</FormLabel>
                         <FormControl>
                         <Input type="email" placeholder="your.email@example.com" {...field} />
                         </FormControl>
@@ -292,7 +292,7 @@ function ApplicationForm({ jobTitle }: { jobTitle: string }) {
                     name="jobTitle"
                     render={({ field }) => (
                     <FormItem>
-                        <FormLabel className="text-foreground">Applying for</FormLabel>
+                        <FormLabel className="text-foreground text-sm">Applying for</FormLabel>
                         <FormControl>
                             <Input {...field} readOnly disabled />
                         </FormControl>
@@ -305,7 +305,7 @@ function ApplicationForm({ jobTitle }: { jobTitle: string }) {
                     name="cv"
                     render={({ field: { onChange, value, ...rest } }) => (
                         <FormItem>
-                            <FormLabel>CV / Resume</FormLabel>
+                            <FormLabel className="text-sm">CV / Resume</FormLabel>
                             <FormControl>
                                 <Input 
                                     type="file" 

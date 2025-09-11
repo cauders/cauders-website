@@ -74,10 +74,10 @@ function HomePageContact() {
             <ScrollFadeIn className="h-full flex flex-col justify-center">
                 <div>
                   <h2 className="text-3xl md:text-4xl font-bold text-foreground font-headline">Let's Discuss Your Project</h2>
-                  <p className="mt-4 text-lg text-foreground/70">
+                  <p className="mt-4 text-base text-foreground/70">
                       Have an idea? We'd love to hear about it. Fill out the form, and we'll get back to you to schedule a consultation.
                   </p>
-                  <div className="mt-8 space-y-2 text-foreground/80">
+                  <div className="mt-8 text-base text-foreground/80">
                       <p>info@cauders.com</p>
                   </div>
                 </div>
@@ -91,7 +91,7 @@ function HomePageContact() {
                             render={({ field }) => (
                             <FormItem>
                                 <FormControl>
-                                <Input placeholder="Name" {...field} className="input-line" />
+                                <Input placeholder="Name" {...field} className="input-line text-base" />
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
@@ -103,7 +103,7 @@ function HomePageContact() {
                             render={({ field }) => (
                             <FormItem>
                                 <FormControl>
-                                <Input type="email" placeholder="Email" {...field} className="input-line"/>
+                                <Input type="email" placeholder="Email" {...field} className="input-line text-base"/>
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
@@ -115,14 +115,14 @@ function HomePageContact() {
                             render={({ field }) => (
                             <FormItem>
                                 <FormControl>
-                                <Textarea placeholder="Message" className="input-line min-h-[40px]" {...field} />
+                                <Textarea placeholder="Message" className="input-line min-h-[40px] text-base" {...field} />
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
                             )}
                         />
                         <div className="text-right">
-                           <Button type="submit" variant="link" size="lg" className="text-lg" disabled={isSubmitting}>
+                           <Button type="submit" variant="link" size="lg" className="text-base" disabled={isSubmitting}>
                                 {isSubmitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
                                 Send
                             </Button>
