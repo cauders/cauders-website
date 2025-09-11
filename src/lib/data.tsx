@@ -5,211 +5,419 @@ import { Code, Layers, PenTool, Rocket, type LucideProps, Bot, AppWindow, Shoppi
 import type { ComponentType, FC } from "react";
 
 type ServiceIcon = ComponentType<LucideProps>;
-type ProjectCategory = 'Web App' | 'Mobile App' | 'Website' | 'AI/ML' | 'Cloud & DevOps' | 'VR';
+type ProjectCategory = 'Web App' | 'Mobile App' | 'AI/ML';
 
-export interface Project {
-    title: string;
-    slug: string;
-    type: 'web' | 'mobile';
-    category: ProjectCategory;
-    description: string;
-    tags: string[];
-    imageUrl: string;
-    aiHint: string;
-    details: string;
-    testimonial: {
-        author: string;
-        text: string;
-    } | null;
-    gallery: {
-        type: 'web' | 'mobile';
-        url: string;
-        alt: string;
-        aiHint: string;
-    }[];
-}
+export type Project = {
+  id: number;
+  slug: string;
+  title: string;
+  description: string;
+  longDescription: string;
+  category: 'Web App' | 'Mobile App' | 'AI/ML';
+  imageUrl: string;
+  technologies?: string[];
+  gallery: string[];
+  featured: boolean;
+  url: string;
+  industry: string;
+  status: string;
+  year: number;
+  implementation: string[];
+  mobileScreenshots?: string[];
+  testimonial?: {
+      author: string;
+      text: string;
+  } | null;
+  aiHint?: string;
+  details?: string;
+};
 
 
 const projects: Project[] = [
   {
-    title: 'E-commerce Platform',
-    type: 'web',
+    id: 1,
+    slug: 'wokine',
+    title: 'Wokine',
+    description: 'A digital and creative agency with a focus on ethical and creative solutions.',
+    longDescription: 'Wokine is a digital and creative agency based in Lille, France, that has been operating since 2004. They specialize in digital strategy, data, e-commerce, and web development, with a focus on combining creativity, technology, and ethical commitment to design digital solutions.',
     category: 'Web App',
-    description: 'A scalable online store with a custom CMS and integrated payment gateways.',
-    tags: ['Next.js', 'Stripe', 'Tailwind CSS', 'PostgreSQL'],
-    imageUrl: 'https://picsum.photos/seed/ecom/1200/800',
-    aiHint: 'ecommerce website',
-    details: `<p>We developed a feature-rich e-commerce platform from the ground up, designed for scalability and performance. The system includes a custom-built Content Management System (CMS) that allows for easy product updates, inventory management, and order tracking. We integrated Stripe for secure and seamless payment processing.</p><p>The frontend was built with Next.js for server-side rendering, ensuring fast page loads and excellent SEO. A responsive design was implemented using Tailwind CSS to provide a consistent user experience across all devices.</p>`,
-    testimonial: {
-        author: 'Jane Doe, CEO of ShopCo',
-        text: 'Cauders delivered an exceptional platform that has significantly boosted our online sales. Their attention to detail and technical expertise were evident throughout the project.'
-    },
+    imageUrl: 'https://picsum.photos/seed/wokine/1200/800',
+    aiHint: 'creative agency website',
+    technologies: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Framer Motion'],
     gallery: [
-        { type: 'web', url: 'https://picsum.photos/seed/ecom-gallery1/1200/800', alt: 'Product page view', aiHint: 'product page' },
-        { type: 'web', url: 'https://picsum.photos/seed/ecom-gallery2/1200/800', alt: 'Shopping cart interface', aiHint: 'shopping cart' },
-    ]
+      'https://picsum.photos/seed/wokine-1/1200/800',
+      'https://picsum.photos/seed/wokine-2/1200/800',
+      'https://picsum.photos/seed/wokine-3/1200/800',
+    ],
+    featured: true,
+    url: 'https://www.wokine.com/',
+    industry: 'Digital Agency',
+    status: 'Live',
+    year: 2023,
+    implementation: ['UI/UX', 'Development', 'Strategy'],
+    testimonial: null
   },
   {
-    title: 'SaaS Dashboard',
-    type: 'web',
+    id: 2,
+    slug: 'fcinq',
+    title: 'FCINQ',
+    description: 'An award-winning digital agency specializing in "global experiences".',
+    longDescription: 'FCINQ is a digital agency with 17 years of experience, specializing in Design & Code, Production & Motion, Social Media, and Branding. The agency has received numerous awards and is known for its creative strength, with a focus on "global experiences."',
     category: 'Web App',
-    description: 'An analytics dashboard for a B2B software-as-a-service product.',
-    tags: ['React', 'D3.js', 'Node.js', 'Express'],
-    imageUrl: 'https://picsum.photos/seed/saas/1200/800',
-    aiHint: 'analytics dashboard',
-    details: `<p>This project involved creating a powerful and intuitive analytics dashboard for a B2B SaaS application. We used React for the frontend to build a highly interactive and component-based UI. For data visualization, we integrated D3.js to create custom, dynamic charts and graphs that provide deep insights into user data.</p><p>The backend was powered by Node.js and Express, providing a robust API for data retrieval and processing. The dashboard is fully responsive and offers a seamless experience on both desktop and mobile devices.</p>`,
-    testimonial: null,
-    gallery: []
+    imageUrl: 'https://picsum.photos/seed/fcinq/1200/800',
+    aiHint: 'digital agency website',
+    technologies: ['React', 'GSAP', 'Three.js', 'WebGL', 'Contentful'],
+    gallery: [
+      'https://picsum.photos/seed/fcinq-1/1200/800',
+      'https://picsum.photos/seed/fcinq-2/1200/800',
+      'https://picsum.photos/seed/fcinq-3/1200/800',
+    ],
+    featured: true,
+    url: 'https://www.fcinq.com/',
+    industry: 'Creative Agency',
+    status: 'Live',
+    year: 2022,
+    implementation: ['Design', 'Code', 'Motion'],
+    testimonial: null
   },
   {
-    title: 'Corporate Website',
-    type: 'web',
-    category: 'Website',
-    description: 'A modern, professional website for a leading financial services firm.',
-    tags: ['Gatsby', 'Contentful', 'Animation', 'GraphQL'],
-    imageUrl: 'https://picsum.photos/seed/corp/1200/800',
-    aiHint: 'corporate business',
-    details: `<p>We designed and developed a sophisticated corporate website for a financial services firm, focusing on professionalism and brand identity. The site was built with Gatsby for blazing-fast performance and security. We used Contentful as a headless CMS, allowing the client's marketing team to easily manage content without technical assistance.</p><p>Subtle animations and micro-interactions were implemented to create an engaging user experience. GraphQL was used to efficiently fetch data from Contentful, contributing to the site's speed and reliability.</p>`,
-    testimonial: {
-        author: 'John Smith, Marketing Director',
-        text: 'The new website has elevated our online presence. Cauders team was professional, creative, and delivered a product that exceeded our expectations.'
-    },
+    id: 3,
+    slug: 'tasweerkash',
+    title: 'Tasweerkash',
+    description: 'A media production company led by a National Award winner.',
+    longDescription: 'Tasweerkash is a photography and media production company led by a National Award winner. The company offers services including wedding, event, and portrait photography, as well as photo education. The website features a portfolio and client testimonials.',
+    category: 'Web App',
+    imageUrl: 'https://picsum.photos/seed/tasweerkash/1200/800',
+    aiHint: 'photography website',
+    technologies: ['Wordpress', 'PHP', 'jQuery', 'MySQL', 'Elementor'],
     gallery: [
-        { type: 'web', url: 'https://picsum.photos/seed/corp-gallery1/1200/800', alt: 'Homepage hero section', aiHint: 'website homepage' },
-        { type: 'web', url: 'https://picsum.photos/seed/corp-gallery2/1200/800', alt: 'About us page', aiHint: 'team page' },
-    ]
+       'https://picsum.photos/seed/tasweerkash-1/1200/800',
+       'https://picsum.photos/seed/tasweerkash-2/1200/800',
+    ],
+    featured: false,
+    url: 'https://www.tasweerkash.com/',
+    industry: 'Photography',
+    status: 'Live',
+    year: 2021,
+    implementation: ['Branding', 'Development'],
+    testimonial: null
   },
-    {
-    title: 'Mobile Banking App',
-    type: 'mobile',
+  {
+    id: 4,
+    slug: 'association-of-learning',
+    title: 'Association of Learning',
+    description: 'An online provider of flexible home learning courses for adults in the UK.',
+    longDescription: 'Association of Learning is a UK-based organization offering affordable and flexible home learning courses for adults. They provide a wide range of courses, including A Levels, GCSEs, and Diplomas, with a focus on personalized tutor support.',
+    category: 'Web App',
+    imageUrl: 'https://picsum.photos/seed/aol/1200/800',
+    aiHint: 'elearning platform',
+    technologies: ['LMS', 'PHP', 'Moodle', 'MySQL', 'JavaScript'],
+    gallery: [
+      'https://picsum.photos/seed/aol-1/1200/800',
+    ],
+    featured: false,
+    url: 'https://associationoflearning.com/about/',
+    industry: 'Education',
+    status: 'Live',
+    year: 2020,
+    implementation: ['LMS Integration', 'Development'],
+    testimonial: null
+  },
+  {
+    id: 5,
+    slug: 'peveril-podiatry',
+    title: 'Peveril Podiatry',
+    description: 'A local podiatry clinic providing expert foot and ankle care.',
+    longDescription: 'Peveril Podiatry is a local podiatry clinic in the UK that provides assessments, diagnoses, and treatments for various foot and ankle issues. Their services include nail care, skin care, orthotics, and pain management, and they have an experienced team including a podiatric surgeon.',
+    category: 'Web App',
+    imageUrl: 'https://picsum.photos/seed/podiatry/1200/800',
+    aiHint: 'healthcare website',
+    gallery: [
+        'https://picsum.photos/seed/podiatry-1/1200/800',
+    ],
+    featured: false,
+    url: 'https://peverilpodiatry.co.uk/',
+    industry: 'Healthcare',
+    status: 'Live',
+    year: 2022,
+    implementation: ['Web Design', 'Development'],
+    testimonial: null
+  },
+  {
+    id: 6,
+    slug: 'itc-app',
+    title: 'IT Centre App',
+    description: 'An ERP solution for computer training institutes.',
+    longDescription: 'An app that serves as a complete ERP solution for computer training institutes and digital skills academies. It helps simplify daily operations, manage admissions, track attendance, and provide a dashboard for students and staff.',
     category: 'Mobile App',
-    description: 'A secure and intuitive mobile application for a new-age digital bank.',
-    tags: ['React Native', 'Firebase', 'Biometrics', 'TypeScript'],
-    imageUrl: 'https://picsum.photos/seed/mobile-bank/1200/800',
-    aiHint: 'mobile banking',
-    details: `<p>We built a secure and user-friendly mobile banking application for a modern digital bank. The app was developed using React Native, allowing for a single codebase to target both iOS and Android platforms. This project also included a web-based admin panel for bank employees to manage users and view analytics.</p><p>Security was a top priority, so we integrated biometric authentication (Face ID and Touch ID) for secure login and transactions. Firebase was used for the backend, providing services like Authentication, Firestore database, and Cloud Functions.</p>`,
-    testimonial: null,
+    imageUrl: 'https://picsum.photos/seed/itc-app/1200/800',
+    aiHint: 'education app',
+    technologies: ['React Native', 'Firebase', 'Node.js', 'MongoDB'],
     gallery: [
-        { type: 'mobile', url: 'https://picsum.photos/seed/mobile-gallery1/400/800', alt: 'App login screen', aiHint: 'mobile login' },
-        { type: 'web', url: 'https://picsum.photos/seed/bank-admin-panel/1200/800', alt: 'Admin panel dashboard', aiHint: 'admin dashboard' },
-        { type: 'mobile', url: 'https://picsum.photos/seed/mobile-gallery2/400/800', alt: 'Account dashboard screen', aiHint: 'mobile dashboard' },
-        { type: 'mobile', url: 'https://picsum.photos/seed/mobile-gallery3/400/800', alt: 'Transaction history screen', aiHint: 'mobile transactions' },
+        'https://picsum.photos/seed/itc-app-1/400/800',
+        'https://picsum.photos/seed/itc-app-2/400/800',
+    ],
+    featured: true,
+    url: 'https://play.google.com/store/apps/details?id=com.itcentre',
+    industry: 'Education Technology',
+    status: 'Live',
+    year: 2023,
+    implementation: ['Mobile Dev', 'Backend', 'UI/UX'],
+    mobileScreenshots: [
+      'https://picsum.photos/seed/itc-app-mob-1/400/800',
+      'https://picsum.photos/seed/itc-app-mob-2/400/800', 
     ]
   },
   {
-    title: 'AI-Powered Chatbot',
-    type: 'web',
-    category: 'AI/ML',
-    description: 'Customer service chatbot with natural language processing capabilities.',
-    tags: ['Genkit', 'Dialogflow', 'TypeScript', 'Next.js'],
-    imageUrl: 'https://picsum.photos/seed/chatbot/1200/800',
-    aiHint: 'chatbot interface',
-    details: `<p>This project involved developing an intelligent, AI-powered chatbot to handle customer service inquiries. We used Google's Genkit and Dialogflow to build the natural language processing (NLP) core, enabling the chatbot to understand and respond to a wide range of user questions.</p><p>The chatbot was integrated into a Next.js application, providing a seamless user experience. TypeScript ensured that the codebase was robust and easy to scale.</p>`,
-    testimonial: {
-        author: 'Emily White, Head of Support',
-        text: 'The chatbot has revolutionized our customer support, reducing response times and freeing up our agents to handle more complex issues. A fantastic job by Cauders.'
-    },
-    gallery: []
-  },
-  {
-    title: 'VR Training Simulation',
-    type: 'web',
-    category: 'VR',
-    description: 'An immersive VR simulation for training industrial machine operators.',
-    tags: ['Unity', 'Oculus SDK', 'C#', '3D Modeling'],
-    imageUrl: 'https://picsum.photos/seed/vr/1200/800',
-    aiHint: 'virtual reality',
-    details: `<p>Developed a highly realistic virtual reality simulation to train operators of complex industrial machinery. Using Unity and the Oculus SDK, we created a safe, controlled environment where trainees can learn procedures and handle emergency scenarios without risk. C# scripting powers the interactive elements and training modules. Our team also handled the complete 3D modeling and texturing of the machinery and environment.</p>`,
-    testimonial: {
-        author: 'Safety Manager, IndusCorp',
-        text: 'This VR training has drastically reduced onboarding time and improved safety compliance. The realism is astounding.'
-    },
-    gallery: [
-        { type: 'web', url: 'https://picsum.photos/seed/vr-gallery1/1200/800', alt: 'User in VR headset', aiHint: 'vr headset' },
-        { type: 'web', url: 'https://picsum.photos/seed/vr-gallery2/1200/800', alt: 'Machine interface in VR', aiHint: 'vr interface' },
-    ]
-  },
-  {
-    title: 'Cloud Migration & DevOps',
-    type: 'web',
-    category: 'Cloud & DevOps',
-    description: 'Migrated a monolithic legacy system to a microservices architecture on AWS.',
-    tags: ['AWS', 'Docker', 'Kubernetes', 'Jenkins'],
-    imageUrl: 'https://picsum.photos/seed/cloud/1200/800',
-    aiHint: 'cloud infrastructure',
-    details: `<p>We led the complete overhaul of a legacy enterprise application, migrating it from an on-premise monolith to a modern, cloud-native microservices architecture on Amazon Web Services. We containerized services using Docker, orchestrated them with Kubernetes (EKS), and built a full CI/CD pipeline with Jenkins to automate testing and deployment. The result was improved scalability, reliability, and development velocity.</p>`,
-    testimonial: null,
-    gallery: []
-  },
-  {
-    title: 'Healthcare Management',
-    type: 'web',
-    category: 'Web App',
-    description: 'A HIPAA-compliant electronic health record (EHR) system for clinics.',
-    tags: ['Angular', '.NET Core', 'SQL Server', 'Azure'],
-    imageUrl: 'https://picsum.photos/seed/health/1200/800',
-    aiHint: 'healthcare system',
-    details: `<p>This project involved the creation of a secure and comprehensive Electronic Health Record (EHR) system for medical clinics. Built with a robust .NET Core backend and an Angular frontend, the platform is fully HIPAA-compliant. Hosted on Microsoft Azure, it ensures data security and availability. Features include patient records management, appointment scheduling, and billing integration.</p>`,
-    testimonial: {
-      author: 'Dr. Alisha Chen',
-      text: 'The EHR system is intuitive and has streamlined our clinic\'s entire workflow. Data security was our biggest concern, and Cauders delivered.'
-    },
-    gallery: []
-  },
-  {
-    title: 'Logistics Optimization',
-    type: 'mobile',
+    id: 7,
+    slug: 'fajira-admin',
+    title: 'Fajira Admin',
+    description: 'An e-commerce management app for grocery store owners.',
+    longDescription: 'A mobile app solution for small businesses and online e-commerce companies in the grocery sector. It allows store owners to manage orders, products, categories, and promotions directly from their phones.',
     category: 'Mobile App',
-    description: 'An AI-driven mobile app for optimizing delivery routes in real-time.',
-    tags: ['Python', 'Flutter', 'Google Maps API', 'AI/ML'],
-    imageUrl: 'https://picsum.photos/seed/logistics/1200/800',
-    aiHint: 'delivery route map',
-    details: `<p>We developed an intelligent mobile application for a logistics company to optimize their delivery routes dynamically. The backend, built in Python, uses a machine learning model to calculate the most efficient routes based on traffic, delivery windows, and vehicle capacity. The cross-platform mobile app was built with Flutter, providing a native experience on both iOS and Android, with live map integration using the Google Maps API.</p>`,
-    testimonial: null,
+    imageUrl: 'https://picsum.photos/seed/fajira-admin/1200/800',
+    aiHint: 'ecommerce admin app',
+    technologies: ['Flutter', 'Dart', 'Firebase', 'Stripe'],
     gallery: [
-        { type: 'mobile', url: 'https://picsum.photos/seed/logistics-gallery1/400/800', alt: 'App showing optimized route on a map', aiHint: 'map route app' },
-        { type: 'mobile', url: 'https://picsum.photos/seed/logistics-gallery2/400/800', alt: 'Delivery list screen', aiHint: 'delivery list' },
-        { type: 'mobile', url: 'https://picsum.photos/seed/logistics-gallery3/400/800', alt: 'Driver dashboard', aiHint: 'driver dashboard' },
+        'https://picsum.photos/seed/fajira-admin-1/400/800', 
+    ],
+    featured: false,
+    url: 'https://play.google.com/store/apps/details?id=com.grocery.admin',
+    industry: 'E-commerce',
+    status: 'Live',
+    year: 2022,
+    implementation: ['Mobile Dev', 'Firebase'],
+     mobileScreenshots: [
+      'https://picsum.photos/seed/fajira-admin-mob-1/400/800',
+      'https://picsum.photos/seed/fajira-admin-mob-2/400/800',
     ]
   },
   {
-    title: 'Fintech Security Suite',
-    type: 'web',
-    category: 'Web App',
-    description: 'A multi-factor authentication and fraud detection system for financial apps.',
-    tags: ['Java', 'Spring Boot', 'Kafka', 'Cybersecurity'],
-    imageUrl: 'https://picsum.photos/seed/fintech/1200/800',
-    aiHint: 'cyber security',
-    details: `<p>We engineered a high-performance security suite for a fintech client. Using Java and Spring Boot, we built a scalable system for multi-factor authentication (MFA) and real-time fraud detection. Apache Kafka was implemented to process millions of transactions asynchronously, feeding data into a rules engine that flags suspicious activity instantly. The suite provides a set of APIs that can be easily integrated into any financial application.</p>`,
-    testimonial: null,
-    gallery: []
+    id: 8,
+    slug: 'reachi-kds',
+    title: 'Reachi KDS',
+    description: 'A Kitchen Display System to streamline restaurant orders.',
+    longDescription: 'A digital screen app designed for commercial kitchens to replace paper order tickets. It helps restaurants manage, prioritize, and track customer orders, aiming to make operations more efficient.',
+    category: 'Mobile App',
+    imageUrl: 'https://picsum.photos/seed/reachi-kds/1200/800',
+    aiHint: 'kitchen display system',
+    technologies: ['Android', 'Kotlin', 'Socket.IO', 'REST APIs'],
+    gallery: [
+      'https://picsum.photos/seed/reachi-kds-1/1200/800',
+      'https://picsum.photos/seed/reachi-kds-2/1200/800',
+    ],
+    featured: true,
+    url: 'https://play.google.com/store/apps/details?id=com.reachikds',
+    industry: 'Restaurant Tech',
+    status: 'Live',
+    year: 2023,
+    implementation: ['Android Dev', 'API'],
+    mobileScreenshots: [ 
+    ]
   },
   {
-    title: 'Data Analytics Platform',
-    type: 'web',
-    category: 'AI/ML',
-    description: 'A big data platform for processing and visualizing marketing campaign data.',
-    tags: ['Spark', 'Hadoop', 'Tableau', 'Data Science'],
-    imageUrl: 'https://picsum.photos/seed/data-platform/1200/800',
-    aiHint: 'data analytics chart',
-    details: `<p>We constructed a powerful data platform to help a major marketing firm analyze campaign performance. The backend utilizes Apache Spark and Hadoop to process terabytes of data efficiently. We then integrated Tableau to create rich, interactive visualizations and dashboards, enabling the client to derive actionable insights and measure ROI effectively. Our data science team also developed models to predict campaign success.</p>`,
+    id: 9,
+    slug: 'binof-trainer',
+    title: 'BINOF Trainer',
+    description: 'A demo app for trainers to manage clients and track performance.',
+    longDescription: 'A demo app for trainers who use the BINOF system. It provides a platform for trainers to manage their clients, with features for communication, exercise tracking, and performance evaluation.',
+    category: 'Mobile App',
+    imageUrl: 'https://picsum.photos/seed/binof-trainer/1200/800',
+    aiHint: 'fitness app',
+    technologies: ['React Native', 'GraphQL', 'Apollo Client', 'PostgreSQL'],
+    gallery: [ 
+        'https://picsum.photos/seed/binof-trainer-1/400/800',
+    ],
+    featured: false,
+    url: 'https://play.google.com/store/apps/details?id=com.binofapp.trainer',
+    industry: 'Fitness',
+    status: 'Demo',
+    year: 2021,
+    implementation: ['Mobile Dev', 'GraphQL'],
+    mobileScreenshots: [
+      'https://picsum.photos/seed/binof-trainer-mob-1/400/800',
+      'https://picsum.photos/seed/binof-trainer-mob-2/400/800',
+    ],
     testimonial: {
-      author: 'Marketing Head, AdWave',
-      text: 'This platform gave us the insights we were missing. We can now make data-driven decisions with confidence.'
-    },
-    gallery: []
+        author: "John Doe",
+        text: "This app is amazing!"
+    }
   },
   {
-    title: 'Real-time Collaboration Tool',
-    type: 'web',
+    id: 10,
+    slug: 'diamond-gym-trainer',
+    title: 'Diamond Gym Trainer',
+    description: 'A fitness app for workout routines, progress tracking, and nutritional guidance.',
+    longDescription: 'This is a fitness app that serves as a comprehensive companion for individuals aiming for a healthier lifestyle. It includes workout routines, exercise demonstrations, progress tracking, and nutritional guidance.',
+    category: 'Mobile App',
+    imageUrl: 'https://picsum.photos/seed/diamond-gym/1200/800',
+    aiHint: 'gym app',
+    technologies: ['React Native', 'Firebase', 'Chart.js', 'Realm'],
+    gallery: [
+        'https://picsum.photos/seed/diamond-gym-1/400/800', 
+    ],
+    featured: false,
+    url: 'https://play.google.com/store/apps/details?id=com.diamondgymrd.trainer',
+    industry: 'Fitness',
+    status: 'Live',
+    year: 2022,
+    implementation: ['Mobile Dev', 'Firebase'],
+     mobileScreenshots: [
+      'https://picsum.photos/seed/diamond-gym-mob-1/400/800', 
+      'https://picsum.photos/seed/diamond-gym-mob-2/400/800', 
+    ]
+  },
+  {
+    id: 11,
+    slug: 'clipinn',
+    title: 'Clipinn',
+    description: 'HR software to simplify human resources management.',
+    longDescription: 'An HR software designed to simplify human resources management. It offers a range of features, including attendance tracking, task management, employee and lead management, hiring tools, and a payroll system. The platform also includes collaboration tools and a mobile app.',
     category: 'Web App',
-    description: 'A web-based platform for teams to collaborate on documents in real-time, similar to Google Docs.',
-    tags: ['WebSockets', 'React', 'Node.js', 'MongoDB'],
-    imageUrl: 'https://picsum.photos/seed/collab/1200/800',
-    aiHint: 'collaboration software',
-    details: `<p>We built a real-time document collaboration platform enabling multiple users to edit the same document simultaneously. The application uses WebSockets for instant communication between clients and a Node.js server. A React frontend provides a responsive and intuitive editing experience, while MongoDB stores document data. The platform supports rich text formatting, comments, and revision history.</p>`,
-    testimonial: null,
-    gallery: []
+    imageUrl: 'https://picsum.photos/seed/clipinn/1200/800',
+    aiHint: 'hr software',
+    technologies: ['React', 'Node.js', 'PostgreSQL', 'Redux', 'AWS'],
+    gallery: [ 
+      'https://picsum.photos/seed/clipinn-1/1200/800', 
+    ],
+    featured: false,
+    url: 'https://clipinn.com/',
+    industry: 'HR Tech',
+    status: 'Live',
+    year: 2021,
+    implementation: ['Full-stack Dev', 'SaaS'],
+    testimonial: {
+        author: 'Jane Smith',
+        text: 'Clipinn streamlined our HR processes perfectly.'
+    }
+  },
+  {
+    id: 12,
+    slug: 'the-kabul-grill',
+    title: 'The Kabul Grill',
+    description: 'A website for a restaurant, providing menu and catering information.',
+    longDescription: 'The website for a restaurant, providing information on its menu, catering services, and location.',
+    category: 'Web App',
+    imageUrl: 'https://picsum.photos/seed/kabul-grill/1200/800',
+    aiHint: 'restaurant website',
+    technologies: ['Wordpress', 'PHP', 'MySQL', 'Elementor', 'Google Maps API'],
+    gallery: [
+      'https://picsum.photos/seed/kabul-grill-1/1200/800', 
+    ],
+    featured: false,
+    url: 'https://thekabulgrill.com/',
+    industry: 'Restaurant',
+    status: 'Live',
+    year: 2020,
+    implementation: ['Web Design', 'Development'],
+    testimonial: null
+  },
+  {
+    id: 13,
+    slug: 'snipbyte',
+    title: 'Snipbyte',
+    description: 'A private limited company based in the UK.',
+    longDescription: 'A private limited company registered in the UK. No further information about its purpose or services was publicly available.',
+    category: 'Web App',
+    imageUrl: 'https://picsum.photos/seed/snipbyte/1200/800',
+    aiHint: 'tech company website',
+    technologies: ['React', 'Next.js', 'Vercel', 'TypeScript'],
+    gallery: [ 
+      'https://picsum.photos/seed/snipbyte-1/1200/800', 
+    ],
+    featured: false,
+    url: 'https://snipbyte.com/',
+    industry: 'Technology',
+    status: 'Live',
+    year: 2023,
+    implementation: ['Web Development'],
+    testimonial: null
+  },
+  {
+    id: 14,
+    slug: 'fajira-ecommerce',
+    title: 'Fajira Ecommerce',
+    description: 'An ordering solution for businesses, including user, delivery, and admin apps.',
+    longDescription: 'A mobile app designed as an ordering solution for businesses, specifically an "Ecommerce order app." It is part of a multi-platform solution that includes a user app, a delivery app, and an admin app to manage the business.',
+    category: 'Mobile App',
+    imageUrl: 'https://picsum.photos/seed/fajira-ecom/1200/800',
+    aiHint: 'ecommerce app',
+    technologies: ['Flutter', 'Dart', 'Firebase', 'Node.js'],
+    gallery: [
+        'https://picsum.photos/seed/fajira-ecom-1/400/800',
+    ],
+    featured: false,
+    url: 'https://play.google.com/store/apps/details?id=com.fajira.ecommerce',
+    industry: 'E-commerce',
+    status: 'Live',
+    year: 2022,
+    implementation: ['Mobile Dev', 'Backend'],
+     mobileScreenshots: [
+      'https://picsum.photos/seed/fajira-ecom-mob-1/400/800',
+      'https://picsum.photos/seed/fajira-ecom-mob-2/400/800',
+    ]
+  },
+  {
+    id: 15,
+    slug: 'portia-fabrics',
+    title: 'Portia Fabrics',
+    description: 'An online store for Pakistani designer brand fabrics.',
+    longDescription: 'An online store that provides Pakistani designer brand fabrics, dresses, and outfits. They specialize in a wide range of products including shawls, laces, and bridal couture, with a focus on quality, customer service, and unique selections. The website serves as a worldwide fashion store.',
+    category: 'Web App',
+    imageUrl: 'https://picsum.photos/seed/portia/1200/800',
+    aiHint: 'fashion website',
+    technologies: ['Shopify', 'eCommerce', 'Liquid', 'Payment Gateway Integration'],
+    gallery: [
+      'https://picsum.photos/seed/portia-1/1200/800',
+    ],
+    featured: false,
+    url: 'https://www.portia.pk/',
+    industry: 'Fashion',
+    status: 'Live',
+    year: 2019,
+    implementation: ['eCommerce Dev', 'Branding'],
+    testimonial: null
+  },
+  {
+    id: 16,
+    slug: 'direct-coops',
+    title: 'Direct Co-ops',
+    description: 'A group-buying platform for small businesses.',
+    longDescription: 'A group-buying platform and marketplace for small and medium-sized businesses and co-ops. It allows local independent businesses to leverage their group buying power to achieve better prices and compete with larger chains and online retailers.',
+    category: 'Web App',
+    imageUrl: 'https://picsum.photos/seed/direct-coops/1200/800',
+    aiHint: 'b2b marketplace',
+    technologies: ['React', 'Node.js', 'Marketplace', 'E-commerce'],
+    gallery: [
+      'https://picsum.photos/seed/direct-coops-1/1200/800',
+    ],
+    featured: false,
+    url: 'https://www.directcoops.com/',
+    industry: 'B2B Marketplace',
+    status: 'Live',
+    year: 2020,
+    implementation: ['Platform Dev', 'Strategy'],
+    testimonial: null
+  },
+  {
+    id: 17,
+    slug: 'domene-no',
+    title: 'Domene.no',
+    description: 'A domain registration and web hosting service.',
+    longDescription: 'Domene.no is a leading provider of domain registration and web hosting services in Norway. It offers a wide range of services for individuals and businesses to establish and maintain their online presence.',
+    category: 'Web App',
+    imageUrl: 'https://picsum.photos/seed/domene/1200/800',
+    aiHint: 'web hosting website',
+    gallery: [
+      'https://picsum.photos/seed/domene-1/1200/800',
+    ],
+    featured: false,
+    url: 'https://www.domene.no/',
+    industry: 'Web Services',
+    status: 'Live',
+    year: 2018,
+    implementation: ['Backend', 'Infrastructure'],
+    testimonial: null
   }
 ].map(p => ({...p, slug: toSlug(p.title)} as Project));
 
@@ -378,3 +586,7 @@ export const getProjectCategories = (): ProjectCategory[] => {
     const categories = projects.map(p => p.category);
     return [...new Set(categories)];
 }
+
+export const featuredProjects = projects.filter((project) => project.featured);
+
+export const projectCategories = ['All', ...Array.from(new Set(projects.map(p => p.category)))];
