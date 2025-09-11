@@ -2,6 +2,9 @@
 import Loader from '@/components/cauders/Loader';
 
 export default function Loading() {
-  // You can add any UI inside Loading, including a Skeleton.
-  return <Loader />;
+  return (
+    <div className="fixed inset-0 z-[200] flex items-center justify-center bg-background">
+      <Loader />
+    </div>
+  );
 }
