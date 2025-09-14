@@ -2,10 +2,10 @@
 "use client"
 import { ArrowDown } from 'lucide-react';
 import Link from 'next/link';
-import Hero3D from './Hero3D';
 import { Suspense } from 'react';
 import { Skeleton } from '../ui/skeleton';
 import { cn } from '@/lib/utils';
+import HeroLottieBackground from './HeroLottieBackground';
 
 export default function Hero() {
   const scrollToServices = () => {
@@ -15,25 +15,24 @@ export default function Hero() {
     }
   };
 
-  const headingLine1 = "Cauders.";
-  const headingLine2 = "Innovative Digital Solutions";
+  const headingLine1 = "Where Technology Meets Vision";
+  const headingLine2 = "and Ideas Become Impact";
   const words1 = headingLine1.split(" ");
   const words2 = headingLine2.split(" ");
 
   return (
     <section className="relative w-full h-screen overflow-hidden">
-      {/* 3D Animation Background */}
-      <div className="absolute top-0 right-0 w-full md:w-1/2 h-full z-0 md:block hidden">
+      {/* Lottie Animation Background */}
+      <div className="absolute inset-0 z-0">
         <Suspense fallback={<Skeleton className="w-full h-full" />}>
-          <Hero3D />
+          <HeroLottieBackground />
         </Suspense>
       </div> 
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 h-full">
         <div className="relative z-10 flex items-center h-full">
-          {/* Left Side: Content */}
-          <div className="w-full md:w-1/2 text-left">
-            <div className="max-w-xl">
+          <div className="w-full text-left">
+            <div className="max-w-4xl">
                 <h1 className="font-extrabold tracking-tight text-foreground mt-2 leading-snug font-headline">
                   <div className="text-6xl md:text-8xl">
                     {words1.map((word, wordIndex) => (
@@ -42,7 +41,7 @@ export default function Hero() {
                       </span>
                     ))}
                   </div>
-                   <div className="text-6xl md:text-8xl">
+                   <div className="text-4xl md:text-5xl text-foreground/80 mt-4">
                     {words2.map((word, wordIndex) => (
                        <span key={wordIndex} className="animated-gradient-text">
                           {word}{' '}
@@ -81,6 +80,3 @@ export default function Hero() {
     </section>
   );
 }
-
-
-
