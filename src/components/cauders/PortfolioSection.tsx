@@ -61,21 +61,21 @@ export default function PortfolioSection() {
     const portfolioScale = portfolioProgress < 1 ? 0.9 + portfolioProgress * 0.1 : 1;
 
     return (
-        <section id="portfolio-preview" className="bg-foreground text-background">
-            <div ref={containerRef} className="relative flex flex-col h-[600vh] bg-foreground">
-                <div className="absolute inset-0 z-0 overflow-hidden">
-                    <div 
-                        className="absolute top-[-120px] left-[-80px] w-64 h-64 bg-primary/30 rounded-full blur-3xl opacity-80"
-                    ></div>
-                    <div 
-                        className="absolute bottom-[-120px] right-[-80px] w-96 h-96 bg-primary/30 rounded-full blur-3xl opacity-80"
-                    ></div>
-                    <Suspense fallback={<Skeleton className="w-full h-full" />}>
-                        
-                    </Suspense>
-                </div>
+        <section id="portfolio-preview" className="bg-background text-foreground">
+            <div ref={containerRef} className="relative flex flex-col h-[600vh]">
+                <div className="sticky top-0 h-screen flex flex-col items-center justify-center overflow-hidden glass-effect">
+                    <div className="absolute inset-0 z-0 overflow-hidden">
+                        <div 
+                            className="absolute top-[-120px] left-[-80px] w-64 h-64 bg-primary/30 rounded-full blur-3xl opacity-80"
+                        ></div>
+                        <div 
+                            className="absolute bottom-[-120px] right-[-80px] w-96 h-96 bg-primary/30 rounded-full blur-3xl opacity-80"
+                        ></div>
+                        <Suspense fallback={<Skeleton className="w-full h-full" />}>
+                            
+                        </Suspense>
+                    </div>
                 
-                <div className="sticky top-0 h-screen flex flex-col items-center justify-center overflow-hidden">
                     {/* Top Text */}
                     <AnimatedTextSection lines={textLinesTop} scrollProgress={topTextProgress} />
 
@@ -139,7 +139,7 @@ const AnimatedTextSection = ({ lines, scrollProgress }: { lines: any[], scrollPr
             {lines.map((line, index) => (
                 <div key={index} className="overflow-hidden py-1">
                     <div style={{ transform: transforms[index] }}>
-                        <StandardizedHeading lines={[line]} className="text-4xl md:text-5xl text-background" />
+                        <StandardizedHeading lines={[line]} className="text-4xl md:text-5xl" />
                     </div>
                 </div>
             ))}
