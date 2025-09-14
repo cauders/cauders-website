@@ -167,8 +167,8 @@ export default function Services() {
                 <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
                     {whyChooseUs.map((reason, index) => (
                         <ScrollFadeIn key={reason.title} style={{ animationDelay: `${index * 150}ms`}} className="h-full">
-                             <Card className="h-full text-center bg-card border hover:border-primary hover:-translate-y-2 transition-transform duration-300 group">
-                                <CardHeader>
+                             <Card className="h-full text-center bg-card border hover:border-primary hover:-translate-y-2 transition-transform duration-300 group flex flex-col">
+                                <CardHeader className="flex-grow">
                                     <div className="mx-auto bg-primary/10 rounded-full p-4 w-fit mb-4 border border-primary/20 group-hover:bg-primary/20 transition-colors">
                                         <reason.icon className="w-8 h-8 text-primary" />
                                     </div>
