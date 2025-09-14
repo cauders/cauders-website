@@ -12,6 +12,7 @@ import { useRef } from 'react';
 import { useScrollProgress } from '@/hooks/useScrollProgress';
 import Image from 'next/image';
 import StandardizedHeading from './StandardizedHeading';
+import placeholderImages from '@/lib/placeholder-images.json';
 
 const whyChooseUs = [
   {
@@ -132,7 +133,7 @@ const AnimatedHeroText = () => {
             <div className="sticky top-1/2 -translate-y-1/2">
                 <StandardizedHeading lines={["Our Services"]} />
                 <ScrollFadeIn>
-                    <p className="mt-6 text-base text-foreground/70 max-w-3xl mx-auto">
+                    <p className="mt-6 text-lg text-foreground/70 max-w-3xl mx-auto">
                         At Cauders, we deliver future-ready digital solutions that combine innovation, performance, and scalability. Our expertise spans across multiple domains to help businesses thrive in the evolving tech landscape.
                     </p>
                 </ScrollFadeIn>
@@ -159,7 +160,7 @@ export default function Services() {
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                 <ScrollFadeIn className="text-center mb-16">
                     <h2 className="text-3xl md:text-4xl font-bold text-foreground font-headline">Why Choose Cauders?</h2>
-                     <p className="mt-4 text-base text-foreground/70 max-w-2xl mx-auto">
+                     <p className="mt-4 text-lg text-foreground/70 max-w-2xl mx-auto">
                         Our commitment to excellence is reflected in every project we undertake. We don't just build products; we build partnerships.
                     </p>
                 </ScrollFadeIn>

@@ -16,13 +16,16 @@ import Autoplay from "embla-carousel-autoplay";
 import Link from "next/link";
 import React from "react";
 import StandardizedHeading from "./StandardizedHeading";
+import Image from "next/image";
+
 
 export default function Testimonials() {
   const testimonials = getProjects()
     .map(p => ({
         ...p.testimonial,
         projectTitle: p.title,
-        projectSlug: p.slug
+        projectSlug: p.slug,
+        imageUrl: p.imageUrl
     }))
     .filter(t => t.author && t.text);
 
@@ -54,10 +57,15 @@ export default function Testimonials() {
                         {testimonials.map((testimonial, index) => (
                         <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3 pl-4">
                             <div className="p-1 h-full">
-                                <div className="relative w-full h-[320px] bg-foreground/90 rounded-2xl overflow-hidden">
-                                     <div className="absolute top-[-80px] left-[-80px] w-64 h-64 bg-primary/30 rounded-full blur-3xl opacity-80"></div>
-                                     <div className="absolute bottom-[-80px] right-[-80px] w-64 h-64 bg-primary/30 rounded-full blur-3xl opacity-80"></div>
-                                    <Card className="glass-effect w-full h-full rounded-2xl border-border/20">
+                                <div className="relative w-full h-[320px] rounded-2xl overflow-hidden">
+                                    <Image
+                                        src={testimonial.imageUrl}
+                                        alt={testimonial.projectTitle}
+                                        fill
+                                        className="object-cover"
+                                    />
+                                     <div className="absolute inset-0 bg-black/50"></div>
+                                    <Card className="glass-effect w-full h-full rounded-2xl border-border/20 bg-transparent">
                                         <CardContent className="relative z-10 flex flex-col items-center justify-center p-8 text-center h-full">
                                             <Quote className="absolute top-6 left-6 w-8 h-8 text-primary/80" />
                                             <p className="text-sm font-medium text-white max-w-3xl line-clamp-5">

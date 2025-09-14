@@ -9,28 +9,30 @@ import { ArrowRight } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 import Image from 'next/image';
 import StandardizedHeading from '@/components/cauders/StandardizedHeading';
+import placeholderImages from '@/lib/placeholder-images.json';
+
 
 const contentSections = [
   {
     title: "Redefining Digital Innovation",
     text: "At Cauders, we are redefining the future of digital innovation. As a modern IT solutions company, we specialize in creating intelligent, scalable, and high-performance digital ecosystems that empower businesses to grow, adapt, and lead in competitive markets.",
     layout: 'text-left',
-    imageUrl: 'https://picsum.photos/seed/innovation/800/600',
-    aiHint: 'digital innovation'
+    imageUrl: placeholderImages.innovation.imageUrl,
+    aiHint: placeholderImages.innovation.aiHint
   },
   {
     title: "Our Core Expertise",
     text: "Our expertise spans custom software development, enterprise grade web and mobile applications, UI/UX design, cloud-based solutions, API integrations, AI integrations and performance optimization delivering technology that is secure, user-centric, and built for long-term impact.",
     layout: 'text-right',
-    imageUrl: 'https://picsum.photos/seed/expertise/800/600',
-    aiHint: 'team collaboration'
+    imageUrl: placeholderImages.expertise.imageUrl,
+    aiHint: placeholderImages.expertise.aiHint
   },
   {
     title: "Vision for the Future",
     text: "Driven by a passion for innovation and excellence, Cauders transforms ideas into powerful digital experiences for startups, enterprises, and global brands. We don’t just build solutions we create future-ready platforms that elevate businesses and inspire growth.",
     layout: 'text-left',
-    imageUrl: 'https://picsum.photos/seed/vision/800/600',
-    aiHint: 'future technology'
+    imageUrl: placeholderImages.vision.imageUrl,
+    aiHint: placeholderImages.vision.aiHint
   },
 ];
 

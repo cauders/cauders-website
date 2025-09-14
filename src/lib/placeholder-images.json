@@ -1,0 +1,186 @@
+
+{
+    "innovation": {
+        "imageUrl": "https://picsum.photos/seed/innovation/800/600",
+        "aiHint": "digital innovation"
+    },
+    "expertise": {
+        "imageUrl": "https://picsum.photos/seed/expertise/800/600",
+        "aiHint": "team collaboration"
+    },
+    "vision": {
+        "imageUrl": "https://picsum.photos/seed/vision/800/600",
+        "aiHint": "future technology"
+    },
+    "ecom": {
+        "imageUrl": "https://picsum.photos/seed/ecom/800/450"
+    },
+    "mobile-bank": {
+        "imageUrl": "https://picsum.photos/seed/mobile-bank/800/450"
+    },
+    "chatbot": {
+        "imageUrl": "https://picsum.photos/seed/chatbot/800/450"
+    },
+    "fintech": {
+        "imageUrl": "https://picsum.photos/seed/fintech/800/450"
+    },
+    "saas": {
+        "imageUrl": "https://picsum.photos/seed/saas/800/450"
+    },
+    "corp": {
+        "imageUrl": "https://picsum.photos/seed/corp/800/450"
+    },
+    "wokine": {
+        "imageUrl": "https://picsum.photos/seed/wokine/1200/800"
+    },
+    "wokine-1": {
+        "imageUrl": "https://picsum.photos/seed/wokine-1/1200/800"
+    },
+    "wokine-2": {
+        "imageUrl": "https://picsum.photos/seed/wokine-2/1200/800"
+    },
+    "wokine-3": {
+        "imageUrl": "https://picsum.photos/seed/wokine-3/1200/800"
+    },
+    "fcinq": {
+        "imageUrl": "https://picsum.photos/seed/fcinq/1200/800"
+    },
+    "fcinq-1": {
+        "imageUrl": "https://picsum.photos/seed/fcinq-1/1200/800"
+    },
+    "fcinq-2": {
+        "imageUrl": "https://picsum.photos/seed/fcinq-2/1200/800"
+    },
+    "fcinq-3": {
+        "imageUrl": "https://picsum.photos/seed/fcinq-3/1200/800"
+    },
+    "tasweerkash": {
+        "imageUrl": "https://picsum.photos/seed/tasweerkash/1200/800"
+    },
+    "tasweerkash-1": {
+        "imageUrl": "https://picsum.photos/seed/tasweerkash-1/1200/800"
+    },
+    "tasweerkash-2": {
+        "imageUrl": "https://picsum.photos/seed/tasweerkash-2/1200/800"
+    },
+    "aol": {
+        "imageUrl": "https://picsum.photos/seed/aol/1200/800"
+    },
+    "aol-1": {
+        "imageUrl": "https://picsum.photos/seed/aol-1/1200/800"
+    },
+    "podiatry": {
+        "imageUrl": "https://picsum.photos/seed/podiatry/1200/800"
+    },
+    "podiatry-1": {
+        "imageUrl": "https://picsum.photos/seed/podiatry-1/1200/800"
+    },
+    "itc-app": {
+        "imageUrl": "https://picsum.photos/seed/itc-app/1200/800"
+    },
+    "itc-app-1": {
+        "imageUrl": "https://picsum.photos/seed/itc-app-1/400/800"
+    },
+    "itc-app-2": {
+        "imageUrl": "https://picsum.photos/seed/itc-app-2/400/800"
+    },
+    "itc-app-mob-1": {
+        "imageUrl": "https://picsum.photos/seed/itc-app-mob-1/400/800"
+    },
+    "itc-app-mob-2": {
+        "imageUrl": "https://picsum.photos/seed/itc-app-mob-2/400/800"
+    },
+    "fajira-admin": {
+        "imageUrl": "https://picsum.photos/seed/fajira-admin/1200/800"
+    },
+    "fajira-admin-1": {
+        "imageUrl": "https://picsum.photos/seed/fajira-admin-1/400/800"
+    },
+    "fajira-admin-mob-1": {
+        "imageUrl": "https://picsum.photos/seed/fajira-admin-mob-1/400/800"
+    },
+    "fajira-admin-mob-2": {
+        "imageUrl": "https://picsum.photos/seed/fajira-admin-mob-2/400/800"
+    },
+    "reachi-kds": {
+        "imageUrl": "https://picsum.photos/seed/reachi-kds/1200/800"
+    },
+    "reachi-kds-1": {
+        "imageUrl": "https://picsum.photos/seed/reachi-kds-1/1200/800"
+    },
+    "reachi-kds-2": {
+        "imageUrl": "https://picsum.photos/seed/reachi-kds-2/1200/800"
+    },
+    "binof-trainer": {
+        "imageUrl": "https://picsum.photos/seed/binof-trainer/1200/800"
+    },
+    "binof-trainer-1": {
+        "imageUrl": "https://picsum.photos/seed/binof-trainer-1/400/800"
+    },
+    "binof-trainer-mob-1": {
+        "imageUrl": "https://picsum.photos/seed/binof-trainer-mob-1/400/800"
+    },
+    "binof-trainer-mob-2": {
+        "imageUrl": "https://picsum.photos/seed/binof-trainer-mob-2/400/800"
+    },
+    "diamond-gym": {
+        "imageUrl": "https://picsum.photos/seed/diamond-gym/1200/800"
+    },
+    "diamond-gym-1": {
+        "imageUrl": "https://picsum.photos/seed/diamond-gym-1/400/800"
+    },
+    "diamond-gym-mob-1": {
+        "imageUrl": "https://picsum.photos/seed/diamond-gym-mob-1/400/800"
+    },
+    "diamond-gym-mob-2": {
+        "imageUrl": "https://picsum.photos/seed/diamond-gym-mob-2/400/800"
+    },
+    "clipinn": {
+        "imageUrl": "https://picsum.photos/seed/clipinn/1200/800"
+    },
+    "clipinn-1": {
+        "imageUrl": "https://picsum.photos/seed/clipinn-1/1200/800"
+    },
+    "kabul-grill": {
+        "imageUrl": "https://picsum.photos/seed/kabul-grill/1200/800"
+    },
+    "kabul-grill-1": {
+        "imageUrl": "https://picsum.photos/seed/kabul-grill-1/1200/800"
+    },
+    "snipbyte": {
+        "imageUrl": "https://picsum.photos/seed/snipbyte/1200/800"
+    },
+    "snipbyte-1": {
+        "imageUrl": "https://picsum.photos/seed/snipbyte-1/1200/800"
+    },
+    "fajira-ecom": {
+        "imageUrl": "https://picsum.photos/seed/fajira-ecom/1200/800"
+    },
+    "fajira-ecom-1": {
+        "imageUrl": "https://picsum.photos/seed/fajira-ecom-1/400/800"
+    },
+    "fajira-ecom-mob-1": {
+        "imageUrl": "https://picsum.photos/seed/fajira-ecom-mob-1/400/800"
+    },
+    "fajira-ecom-mob-2": {
+        "imageUrl": "https://picsum.photos/seed/fajira-ecom-mob-2/400/800"
+    },
+    "portia": {
+        "imageUrl": "https://picsum.photos/seed/portia/1200/800"
+    },
+    "portia-1": {
+        "imageUrl": "https://picsum.photos/seed/portia-1/1200/800"
+    },
+    "direct-coops": {
+        "imageUrl": "https://picsum.photos/seed/direct-coops/1200/800"
+    },
+    "direct-coops-1": {
+        "imageUrl": "https://picsum.photos/seed/direct-coops-1/1200/800"
+    },
+    "domene": {
+        "imageUrl": "https://picsum.photos/seed/domene/1200/800"
+    },
+    "domene-1": {
+        "imageUrl": "https://picsum.photos/seed/domene-1/1200/800"
+    }
+}
