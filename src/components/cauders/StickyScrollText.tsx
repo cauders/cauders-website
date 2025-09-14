@@ -7,9 +7,9 @@ const StickyScrollText = () => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   const lines = [
-    "WE ENGINEER",
-    { text: "HIGH-PERFORMANCE, CUTTING-EDGE PLATFORMS", className: "text-primary" },
-    "THAT EMPOWER BUSINESSES TO DOMINATE THE DIGITAL LANDSCAPE."
+    "We engineer",
+    { text: "high-performance, cutting-edge platforms", className: "text-primary" },
+    "that empower businesses to dominate the digital landscape."
   ];
 
   return (
@@ -25,6 +25,7 @@ const StickyScrollText = () => {
 };
 
 export default StickyScrollText;
+
 
 
 
