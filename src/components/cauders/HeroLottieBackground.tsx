@@ -10,7 +10,7 @@ export default function HeroLottieBackground() {
 
   return (
     <Lottie 
-      animationData={'/lottie/hero-animation.json'} 
+      src="/lottie/hero-animation.json"
       style={style}
       loop={true}
       autoplay={true}

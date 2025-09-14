@@ -10,7 +10,7 @@ export default function Loader() {
     )}>
       <div className="w-64 h-64">
         <Lottie 
-            animationData={'/lottie/loader-animation.json'} 
+            src="/lottie/loader-animation.json"
             loop={true}
             autoplay={true}
         />

@@ -204,7 +204,7 @@ export default function Chatbot() {
           <div className="absolute bottom-0 left-1/2 w-32 h-24 pointer-events-none z-0">
              <div className="animate-peek">
                 <Lottie 
-                    animationData={'/lottie/robot-animation.json'} 
+                    src="/lottie/robot-animation.json"
                     loop={true} 
                     className="w-full h-full"
                 />
@@ -254,7 +254,7 @@ export default function Chatbot() {
                        {hasStartedChat && (
                          <div className="w-10 h-10 animate-fade-in-down">
                               <Lottie 
-                                  animationData={'/lottie/robot-animation.json'} 
+                                  src="/lottie/robot-animation.json"
                                   loop={true}
                               />
                           </div>
@@ -280,7 +280,7 @@ export default function Chatbot() {
                     {!hasStartedChat && (
                          <div className="flex flex-col items-center justify-center flex-grow gap-2 p-4 text-center animate-fade-in-up">
                             <div className="w-32 h-32 mb-4">
-                                <Lottie animationData={'/lottie/robot-animation.json'} loop={true} />
+                                <Lottie src="/lottie/robot-animation.json" loop={true} />
                             </div>
                             <p className="text-lg font-semibold text-foreground">Welcome to Cauders!</p>
                             <p className="text-sm text-foreground/70">Start by selecting an option below, or ask a question.</p>
@@ -315,7 +315,7 @@ export default function Chatbot() {
                                 <AvatarFallback className={cn(message.role === 'bot' ? 'bg-black' : 'bg-foreground/10')}>
                                     {message.role === 'bot' ? (
                                         <div className="w-6 h-6">
-                                            <Lottie animationData={'/lottie/robot-animation.json'} loop={true} />
+                                            <Lottie src="/lottie/robot-animation.json" loop={true} />
                                         </div>
                                     ) : (
                                         <User className="w-4 h-4 text-foreground/80" />
@@ -350,7 +350,7 @@ export default function Chatbot() {
                      {isLoading && (
                         <div className="flex items-center space-x-2 self-start animate-fade-in-up">
                           <div className="w-8 h-8">
-                            <Lottie animationData={'/lottie/robot-animation.json'} loop={true} />
+                            <Lottie src="/lottie/robot-animation.json" loop={true} />
                           </div>
                           <span className="text-sm text-foreground">Thinking...</span>
                         </div>
