@@ -194,7 +194,7 @@ export default function PortfolioPreview() {
                   )}
                   draggable={false}
                 >
-                  <Card className="h-full w-full overflow-hidden rounded-3xl shadow-lg">
+                  <Card className="h-full w-full overflow-hidden rounded-3xl shadow-lg bg-transparent border-0">
                     <div className="w-full h-full relative overflow-hidden rounded-3xl transition-transform duration-500 group-hover:scale-105">
                       <Image
                         src={project.imageUrl}
@@ -246,5 +246,3 @@ export default function PortfolioPreview() {
     </div>
   );
 }
-
-    
