@@ -14,7 +14,7 @@ export default function TeamPage() {
           <div className="text-center mb-16">
             <StandardizedHeading lines={["Meet Our Team"]} />
             <ScrollFadeIn>
-              <p className="mt-4 text-base text-foreground/70 max-w-2xl mx-auto">
+              <p className="mt-4 text-lg text-foreground/70 max-w-2xl mx-auto">
                 The creative minds and dedicated professionals driving innovation at Cauders.
               </p>
             </ScrollFadeIn>

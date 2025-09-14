@@ -66,7 +66,7 @@ export default function ServicesPreview() {
             <StandardizedHeading lines={["What We Offer"]} />
             <div className="overflow-hidden py-1">
             <p
-                className="mt-4 text-base text-foreground/70 max-w-2xl mx-auto transition-transform duration-300 ease-out"
+                className="mt-4 text-lg text-foreground/70 max-w-2xl mx-auto transition-transform duration-300 ease-out"
                 style={{ transform: subtitleTransform, transitionDelay: '50ms' }}
             >
                 Our expertise spans the entire development lifecycle, delivering excellence at every step.
@@ -112,7 +112,7 @@ export default function ServicesPreview() {
                             <CardTitle className="text-xl md:text-2xl text-foreground font-headline">{service.title}</CardTitle>
                         </CardHeader>
                         <CardContent className="flex-grow">
-                            <ul className="space-y-2 text-left text-sm">
+                            <ul className="space-y-2 text-left text-xs">
                             {service.included.slice(0, 3).map((item, i) => (
                                 <li key={i} className="flex items-start">
                                 <ArrowRight className="w-4 h-4 text-primary mr-2 mt-0.5 shrink-0" />

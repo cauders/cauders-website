@@ -45,7 +45,7 @@ export default function FAQPage() {
                     <div className="text-center mb-16">
                         <StandardizedHeading lines={["Frequently Asked Questions"]} />
                         <ScrollFadeIn>
-                            <p className="mt-4 text-base text-foreground/70 max-w-2xl mx-auto">
+                            <p className="mt-4 text-lg text-foreground/70 max-w-2xl mx-auto">
                                 Have questions? We've got answers. If you can't find what you're looking for, feel free to contact us.
                             </p>
                         </ScrollFadeIn>

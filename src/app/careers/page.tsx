@@ -54,7 +54,7 @@ export default function CareersPage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollFadeIn>
             <StandardizedHeading lines={["Join Our Team"]} />
-            <p className="mt-6 text-base text-foreground/70 max-w-3xl mx-auto">
+            <p className="mt-6 text-lg text-foreground/70 max-w-3xl mx-auto">
               At Cauders, we're not just building products; we're building the future of digital interaction. We are looking for passionate, creative, and driven individuals to join us on our journey.
             </p>
           </ScrollFadeIn>
@@ -66,7 +66,7 @@ export default function CareersPage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <ScrollFadeIn className="text-center mb-16">
                 <h2 className="text-3xl md:text-4xl font-bold text-foreground font-headline">Why Cauders?</h2>
-                <p className="mt-4 text-base text-foreground/70 max-w-2xl mx-auto">
+                <p className="mt-4 text-lg text-foreground/70 max-w-2xl mx-auto">
                     We're committed to creating an environment where our team can thrive, innovate, and do their best work.
                 </p>
             </ScrollFadeIn>
@@ -108,7 +108,7 @@ export default function CareersPage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <StandardizedHeading lines={["Current Openings"]} />
-            <p className="mt-4 text-base text-foreground/70 max-w-2xl mx-auto">
+            <p className="mt-4 text-lg text-foreground/70 max-w-2xl mx-auto">
               Find your next challenge. If you don't see a role that fits, feel free to reach out at hr@cauders.com. We're always looking for great talent.
             </p>
           </div>
