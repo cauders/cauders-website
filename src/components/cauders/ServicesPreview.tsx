@@ -101,7 +101,7 @@ export default function ServicesPreview() {
                                     </div>
                                 </div>
                                 <CardTitle className="text-xl md:text-2xl text-foreground font-headline">{service.title}</CardTitle>
-                                <CardDescription className="pt-2 text-sm text-foreground/80 line-clamp-3">{service.description}</CardDescription>
+                                <CardDescription className="pt-2 text-sm text-foreground/80 line-clamp-2">{service.description}</CardDescription>
                             </CardHeader>
                         </Card>
                     </div>
@@ -111,7 +111,7 @@ export default function ServicesPreview() {
                         <CardHeader>
                             <CardTitle className="text-xl md:text-2xl text-foreground font-headline">{service.title}</CardTitle>
                         </CardHeader>
-                        <CardContent>
+                        <CardContent className="flex-grow">
                             <ul className="space-y-2 text-left text-sm">
                             {service.included.slice(0, 3).map((item, i) => (
                                 <li key={i} className="flex items-start">
