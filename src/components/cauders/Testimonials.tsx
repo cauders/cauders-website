@@ -10,13 +10,14 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel"
 import { Card, CardContent } from "@/components/ui/card";
-import { Quote } from "lucide-react";
+import { ArrowRight, Quote } from "lucide-react";
 import ScrollFadeIn from "./ScrollFadeIn";
 import Autoplay from "embla-carousel-autoplay";
 import Link from "next/link";
 import React from "react";
 import StandardizedHeading from "./StandardizedHeading";
 import Image from "next/image";
+import { Button } from "../ui/button";
 
 
 export default function Testimonials() {
@@ -87,6 +88,20 @@ export default function Testimonials() {
                 <CarouselNext className="bg-primary/80 text-primary-foreground border-0 hover:bg-primary right-8" />
             </Carousel>
         </ScrollFadeIn>
+        
+        <div className="text-center mt-16">
+          <ScrollFadeIn>
+            <Button
+              size="lg"
+              asChild
+              className="rounded-full px-8 py-6"
+            >
+              <Link href="https://www.portfolio.cauders.com/">
+                Discover more of our work <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </Button>
+          </ScrollFadeIn>
+        </div>
     </section>
   )
 }

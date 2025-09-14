@@ -19,19 +19,6 @@ export default function HomePage() {
       <ServicesPreview />
       <PortfolioSection />
       <Testimonials />
-      <section className="py-20 lg:py-32 text-center bg-background">
-        <ScrollFadeIn>
-          <Button
-            size="lg"
-            asChild
-            className="rounded-full px-8 py-6"
-          >
-            <Link href="https://www.portfolio.cauders.com/">
-              Discover more of our work <ArrowRight className="ml-2 h-4 w-4" />
-            </Link>
-          </Button>
-        </ScrollFadeIn>
-      </section>
     </>
   );
 }
