@@ -20,7 +20,7 @@ const textLinesTop = [
 const textLinesBottom = [
   { text: "THAT BRIDGE THE GAP", direction: "left" },
   { text: "BETWEEN IMAGINATION", className: "text-primary", direction: "right" },
-  { text: "AND INTERACTION.", direction: "left" },
+  { text: "AND INTERACTION", direction: "left" },
 ]
 
 const easeOutExpo = (x: number): number => {
@@ -66,7 +66,7 @@ export default function PortfolioSection() {
                 <div className="sticky top-0 h-screen flex flex-col items-center justify-center overflow-hidden" style={{
                     backdropFilter: 'blur(16px)',
                     WebkitBackdropFilter: 'blur(16px)',
-                    backgroundColor: 'hsl(var(--card) / 0.02)'
+                    backgroundColor: 'hsl(var(--background) / 0.7)'
                 }}>
                     <div className="absolute inset-0 z-0 overflow-hidden">
                         <div 
