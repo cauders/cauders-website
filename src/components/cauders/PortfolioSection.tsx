@@ -61,9 +61,13 @@ export default function PortfolioSection() {
     const portfolioScale = portfolioProgress < 1 ? 0.9 + portfolioProgress * 0.1 : 1;
 
     return (
-        <section id="portfolio-preview" className="bg-background text-foreground">
+        <section id="portfolio-preview" className="text-foreground">
             <div ref={containerRef} className="relative flex flex-col h-[600vh]">
-                <div className="sticky top-0 h-screen flex flex-col items-center justify-center overflow-hidden glass-effect">
+                <div className="sticky top-0 h-screen flex flex-col items-center justify-center overflow-hidden" style={{
+                    backdropFilter: 'blur(16px)',
+                    WebkitBackdropFilter: 'blur(16px)',
+                    backgroundColor: 'hsl(var(--card) / 0.02)'
+                }}>
                     <div className="absolute inset-0 z-0 overflow-hidden">
                         <div 
                             className="absolute top-[-120px] left-[-80px] w-64 h-64 bg-primary/30 rounded-full blur-3xl opacity-80"
