@@ -1,11 +1,10 @@
-
 "use client"
 import { ArrowDown } from 'lucide-react';
 import Link from 'next/link';
 import { Suspense } from 'react';
 import { Skeleton } from '../ui/skeleton';
 import { cn } from '@/lib/utils';
-import HeroLottieBackground from './HeroLottieBackground';
+import HeroBackground from './HeroBackground';
 
 export default function Hero() {
   const scrollToServices = () => {
@@ -25,7 +24,7 @@ export default function Hero() {
       {/* Lottie Animation Background */}
       <div className="absolute inset-0 z-0">
         <Suspense fallback={<Skeleton className="w-full h-full" />}>
-          <HeroLottieBackground />
+          <HeroBackground />
         </Suspense>
       </div> 
 
