@@ -25,7 +25,7 @@ export default function ScrollFadeIn({ children, className, style, direction = '
   const opacity = useTransform(scrollYProgress, [0, 0.6], [0, 1]);
 
    return (
-    <div ref={ref} className={cn("overflow-hidden py-2", className)}>
+    <div ref={ref} className={cn("py-2", className)}>
         <motion.div
         style={{
             ...style,
