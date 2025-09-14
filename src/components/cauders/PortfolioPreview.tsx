@@ -186,7 +186,7 @@ export default function PortfolioPreview() {
                 }}
               >
                 <Link
-                  href={`/${project.slug}`}
+                  href={`https://www.portfolio.cauders.com/${project.slug}`}
                   onClick={handleCardClick}
                   className={cn(
                     "block h-full w-full transition-all duration-500 ease-out rounded-3xl group",
