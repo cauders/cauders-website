@@ -1,4 +1,5 @@
 
+
 import { toSlug } from "./utils";
 import { Code, Layers, PenTool, Rocket, type LucideProps, Bot, AppWindow, ShoppingCart, TrendingUp, Shield, Server } from 'lucide-react';
 import type { ComponentType, FC } from "react";
@@ -152,7 +153,7 @@ const projects: Project[] = [
   },
   {
     id: 6,
-    slug: 'itc-app',
+    slug: 'it-centre-app',
     title: 'IT Centre App',
     description: 'An ERP solution for computer training institutes.',
     longDescription: 'An app that serves as a complete ERP solution for computer training institutes and digital skills academies. It helps simplify daily operations, manage admissions, track attendance, and provide a dashboard for students and staff.',
@@ -435,13 +436,13 @@ const projects: Project[] = [
   }
 ].map(p => ({...p, slug: toSlug(p.title)} as Project));
 
-const findProject = (slug: string) => {
-    const project = projects.find(p => p.slug === slug);
+const findProjectByTitle = (title: string) => {
+    const project = projects.find(p => p.title === title);
     if (!project) {
-      throw new Error(`Project with slug "${slug}" not found.`);
+      throw new Error(`Project with title "${title}" not found.`);
     }
     return project;
-  };
+};
   
   const services = [
       {
@@ -457,10 +458,10 @@ const findProject = (slug: string) => {
               'Ongoing Performance Optimization'
           ],
           caseStudy: {
-              title: findProject('fcinq').title,
-              projectSlug: findProject('fcinq').slug,
-              description: findProject('fcinq').description,
-              imageUrl: findProject('fcinq').imageUrl
+              title: findProjectByTitle('FCINQ').title,
+              projectSlug: findProjectByTitle('FCINQ').slug,
+              description: findProjectByTitle('FCINQ').description,
+              imageUrl: findProjectByTitle('FCINQ').imageUrl
           }
       },
       {
@@ -476,10 +477,10 @@ const findProject = (slug: string) => {
               'App Store Deployment & Support'
           ],
           caseStudy: {
-              title: findProject('itc-app').title,
-              projectSlug: findProject('itc-app').slug,
-              description: findProject('itc-app').description,
-              imageUrl: findProject('itc-app').imageUrl
+              title: findProjectByTitle('IT Centre App').title,
+              projectSlug: findProjectByTitle('IT Centre App').slug,
+              description: findProjectByTitle('IT Centre App').description,
+              imageUrl: findProjectByTitle('IT Centre App').imageUrl
           }
       },
       {
@@ -514,10 +515,10 @@ const findProject = (slug: string) => {
               'Blockchain & Crypto Solutions'
           ],
           caseStudy: {
-              title: findProject('wokine').title,
-              projectSlug: findProject('wokine').slug,
+              title: findProjectByTitle('Wokine').title,
+              projectSlug: findProjectByTitle('Wokine').slug,
               description: "This project showcases our ability to handle complex data and business logic, a core component of any FinTech solution.",
-              imageUrl: findProject('wokine').imageUrl
+              imageUrl: findProjectByTitle('Wokine').imageUrl
           }
       },
       {
@@ -533,10 +534,10 @@ const findProject = (slug: string) => {
               'Personalized Shopping Experiences'
           ],
           caseStudy: {
-              title: findProject('portia-fabrics').title,
-              projectSlug: findProject('portia-fabrics').slug,
-              description: findProject('portia-fabrics').description,
-              imageUrl: findProject('portia-fabrics').imageUrl
+              title: findProjectByTitle('Portia Fabrics').title,
+              projectSlug: findProjectByTitle('Portia Fabrics').slug,
+              description: findProjectByTitle('Portia Fabrics').description,
+              imageUrl: findProjectByTitle('Portia Fabrics').imageUrl
           }
       },
       {
@@ -552,10 +553,10 @@ const findProject = (slug: string) => {
               'Business Intelligence & Reporting'
           ],
           caseStudy: {
-              title: findProject('clipinn').title,
-              projectSlug: findProject('clipinn').slug,
+              title: findProjectByTitle('Clipinn').title,
+              projectSlug: findProjectByTitle('Clipinn').slug,
               description: "This analytics dashboard showcases our ability to handle complex data and business logic, a core component of any ERP.",
-              imageUrl: findProject('clipinn').imageUrl
+              imageUrl: findProjectByTitle('Clipinn').imageUrl
           }
       },
       {
@@ -571,10 +572,10 @@ const findProject = (slug: string) => {
               'Wealth & Asset Management Tools'
           ],
           caseStudy: {
-              title: findProject('itc-app').title,
-              projectSlug: findProject('itc-app').slug,
+              title: findProjectByTitle('IT Centre App').title,
+              projectSlug: findProjectByTitle('IT Centre App').slug,
               description: 'This secure mobile banking app provides a seamless user experience for managing accounts, transfers, and payments.',
-              imageUrl: findProject('itc-app').imageUrl
+              imageUrl: findProjectByTitle('IT Centre App').imageUrl
           }
       },
       {
@@ -590,10 +591,10 @@ const findProject = (slug: string) => {
               'Comprehensive Usability Testing'
           ],
           caseStudy: {
-              title: findProject('fcinq').title,
-              projectSlug: findProject('fcinq').slug,
+              title: findProjectByTitle('FCINQ').title,
+              projectSlug: findProjectByTitle('FCINQ').slug,
               description: 'The design for this financial services firm focused on a clean, professional aesthetic to build trust and credibility.',
-              imageUrl: findProject('fcinq').imageUrl
+              imageUrl: findProjectByTitle('FCINQ').imageUrl
           }
       }
 ].map(s => ({...s, slug: toSlug(s.title)}));
@@ -613,3 +614,6 @@ export const featuredProjects = projects.filter((project) => project.featured);
 
 export const projectCategories = ['All', ...Array.from(new Set(projects.map(p => p.category)))];
 
+
+
+    
