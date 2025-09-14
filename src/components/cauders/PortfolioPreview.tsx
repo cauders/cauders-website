@@ -238,7 +238,7 @@ export default function PortfolioPreview() {
             variant="outline"
             className="border-primary text-primary glass-effect hover:shadow-primary-glow"
           >
-            <Link href="/portfolio">
+            <Link href="https://www.portfolio.cauders.com/">
               See All Projects <ArrowRight className="ml-2" />
             </Link>
           </Button>
