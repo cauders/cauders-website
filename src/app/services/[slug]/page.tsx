@@ -31,54 +31,59 @@ export default function ServicePage({ params }: ServicePageParams) {
   }
 
   return (
-    <div className="bg-background">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-24">
-        <div className="max-w-4xl mx-auto">
-          <ScrollFadeIn>
-            <Button asChild variant="ghost" className="mb-8">
-              <Link href="/services">
-                <ArrowLeft className="mr-2 h-4 w-4" />
-                Back to Services
-              </Link>
-            </Button>
+    <div className="bg-background relative overflow-hidden">
+       {/* Background decorative elements */}
+        <div className="absolute top-[-10rem] right-[-10rem] w-96 h-96 bg-primary/10 rounded-full blur-3xl -z-10"></div>
+        <div className="absolute bottom-[-15rem] left-[-15rem] w-96 h-96 bg-primary/10 rounded-full blur-3xl -z-10"></div>
 
-            <div className="flex items-center gap-4 mb-4">
-              <div className="bg-primary/10 rounded-full p-3">
-                <service.icon className="w-8 h-8 text-primary" />
-              </div>
-              <h1 className="text-4xl md:text-5xl font-bold text-foreground font-headline">{service.title}</h1>
-            </div>
-            
-            <p className="text-lg text-foreground/70 mb-12">{service.description}</p>
-          </ScrollFadeIn>
-          
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-12">
-            <div className="lg:col-span-3">
-              <ScrollFadeIn delay="delay-200">
-                <h2 className="text-2xl font-bold text-foreground mb-4 font-headline">Service Details</h2>
-                <div className="prose prose-lg dark:prose-invert text-base text-foreground/80 max-w-none" dangerouslySetInnerHTML={{ __html: service.details }} />
-              </ScrollFadeIn>
-            </div>
-            <div className="lg:col-span-2">
-              <ScrollFadeIn delay="delay-300">
-                <Card className="bg-card border shadow-lg">
-                    <CardHeader>
-                        <CardTitle className="text-2xl font-headline text-foreground">What's Included</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                        <ul className="space-y-3 text-base">
-                            {service.included.map((item, index) => (
-                                <li key={index} className="flex items-start">
-                                    <CheckCircle className="w-5 h-5 text-primary mr-3 mt-1 shrink-0" />
-                                    <span className="text-foreground/80">{item}</span>
-                                </li>
-                            ))}
-                        </ul>
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-24">
+        <div className="max-w-5xl mx-auto">
+            <ScrollFadeIn>
+                <Card className="glass-effect shadow-lg rounded-2xl w-full">
+                    <CardContent className="p-8 md:p-12">
+                        <div className="flex justify-between items-center mb-8">
+                            <div className="flex items-center gap-4">
+                                <div className="bg-primary/10 rounded-full p-3 border border-primary/20">
+                                    <service.icon className="w-8 h-8 text-primary" />
+                                </div>
+                                <h1 className="text-4xl md:text-5xl font-bold text-foreground font-headline">{service.title}</h1>
+                            </div>
+                            <Button asChild variant="ghost">
+                                <Link href="/services">
+                                    <ArrowLeft className="mr-2 h-4 w-4" />
+                                    Back to Services
+                                </Link>
+                            </Button>
+                        </div>
+                        
+                        <p className="text-lg text-foreground/70 mb-12">{service.description}</p>
+                        
+                        <div className="grid grid-cols-1 lg:grid-cols-5 gap-12">
+                            <div className="lg:col-span-3">
+                                <h2 className="text-2xl font-bold text-foreground mb-4 font-headline">Service Details</h2>
+                                <div className="prose prose-lg dark:prose-invert text-base text-foreground/80 max-w-none" dangerouslySetInnerHTML={{ __html: service.details }} />
+                            </div>
+                            <div className="lg:col-span-2">
+                                <Card className="bg-card/50 border shadow-md h-fit">
+                                    <CardHeader>
+                                        <CardTitle className="text-xl font-headline text-foreground">What's Included</CardTitle>
+                                    </CardHeader>
+                                    <CardContent>
+                                        <ul className="space-y-3 text-sm">
+                                            {service.included.map((item, index) => (
+                                                <li key={index} className="flex items-start">
+                                                    <CheckCircle className="w-5 h-5 text-primary mr-3 mt-0.5 shrink-0" />
+                                                    <span className="text-foreground/80">{item}</span>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </CardContent>
+                                </Card>
+                            </div>
+                        </div>
                     </CardContent>
                 </Card>
-              </ScrollFadeIn>
-            </div>
-          </div>
+            </ScrollFadeIn>
           
           {service.caseStudy && (
             <ScrollFadeIn className="mt-20">
@@ -87,24 +92,22 @@ export default function ServicePage({ params }: ServicePageParams) {
                 <p className="text-base text-foreground/70 mb-8 max-w-2xl mx-auto">{service.caseStudy.description}</p>
                  <Link href={`https://www.portfolio.cauders.com/${service.caseStudy.projectSlug}`}>
                   <Card className="overflow-hidden group transition-all duration-300 hover:shadow-2xl hover:shadow-primary/20 hover:-translate-y-2 bg-card border text-left">
-                    <CardHeader className="p-0">
-                      <div className="aspect-video overflow-hidden">
-                        <Image
-                          src={service.caseStudy.imageUrl}
-                          alt={service.caseStudy.title}
-                          width={800}
-                          height={450}
-                          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                          data-ai-hint={service.caseStudy.title}
-                        />
-                      </div>
-                    </CardHeader>
-                    <CardContent className="p-6">
+                    <div className="aspect-video overflow-hidden">
+                      <Image
+                        src={service.caseStudy.imageUrl}
+                        alt={service.caseStudy.title}
+                        width={800}
+                        height={450}
+                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                        data-ai-hint={service.caseStudy.title}
+                      />
+                    </div>
+                    <CardHeader className="p-6">
                       <CardTitle className="mb-2 text-2xl text-foreground font-headline">{service.caseStudy.title}</CardTitle>
                       <Button variant="link" className="px-0 text-base">
                         View Project Details <ArrowRight className="ml-2 h-4 w-4"/>
                       </Button>
-                    </CardContent>
+                    </CardHeader>
                   </Card>
                 </Link>
               </div>
