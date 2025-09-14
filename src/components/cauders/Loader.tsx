@@ -1,8 +1,6 @@
-
 "use client";
 
 import Lottie from "lottie-react";
-import animationData from "@/../public/lottie/loader-animation.json";
 import { cn } from "@/lib/utils";
 
 export default function Loader() {
@@ -12,7 +10,7 @@ export default function Loader() {
     )}>
       <div className="w-64 h-64">
         <Lottie 
-            animationData={animationData} 
+            animationData={'/lottie/loader-animation.json'} 
             loop={true}
             autoplay={true}
         />
