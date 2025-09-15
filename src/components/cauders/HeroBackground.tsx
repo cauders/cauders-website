@@ -10,7 +10,7 @@ export default function HeroBackground() {
             "absolute inset-0 z-0 w-full h-full overflow-hidden",
         )}>
            <Image
-                src="/svgs/green-gradient-bg.svg"
+                src="/images/background/hero-bg.png"
                 alt="background gradient"
                 fill
                 className="object-cover"

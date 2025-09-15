@@ -48,16 +48,16 @@ export default function Header() {
   return (
      <header className={cn(
         "fixed top-0 left-0 z-50 w-full transition-all duration-300 ease-in-out",
-        hasScrolled ? "pt-4" : ""
+        hasScrolled ? "pt-0" : "pt-0"
       )}>
       <div 
         className={cn(
           "transition-all duration-500 ease-in-out",
-          hasScrolled ? "floating-header-styles" : "w-full"
+          hasScrolled ? "scrolled-header" : ""
         )}
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
+          <div className="flex items-center justify-between h-20">
             <Link href="/" className="text-2xl font-bold text-foreground hover:text-primary transition-colors">
               Cauders
             </Link>

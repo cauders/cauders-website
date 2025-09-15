@@ -1,19 +1,13 @@
+
 "use client"
-import { ArrowDown } from 'lucide-react';
-import Link from 'next/link';
 import { Suspense } from 'react';
 import { Skeleton } from '../ui/skeleton';
-import { cn } from '@/lib/utils';
 import HeroBackground from './HeroBackground';
+import { Input } from '../ui/input';
+import { Button } from '../ui/button';
+import Image from 'next/image';
 
 export default function Hero() {
-  const scrollToServices = () => {
-    const servicesSection = document.getElementById('services-preview');
-    if (servicesSection) {
-      servicesSection.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   const headingLine1 = "Where Technology Meets Vision";
   const headingLine2 = "and Ideas Become Impact";
   const words1 = headingLine1.split(" ");
@@ -21,59 +15,59 @@ export default function Hero() {
 
   return (
     <section className="relative w-full h-screen overflow-hidden">
-      {/* Lottie Animation Background */}
       <div className="absolute inset-0 z-0">
         <Suspense fallback={<Skeleton className="w-full h-full" />}>
           <HeroBackground />
         </Suspense>
-      </div> 
-
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 h-full">
-        <div className="relative z-10 flex items-center h-full">
-          <div className="w-full text-left">
-            <div className="max-w-4xl">
-                <h1 className="font-extrabold tracking-tight text-foreground mt-2 leading-snug font-headline">
-                  <div className="text-6xl md:text-8xl">
-                    {words1.map((word, wordIndex) => (
-                      <span key={wordIndex} className="animated-gradient-text">
-                        {word}{' '}
-                      </span>
-                    ))}
-                  </div>
-                   <div className="text-4xl md:text-5xl text-foreground/80 mt-4">
-                    {words2.map((word, wordIndex) => (
-                       <span key={wordIndex} className="animated-gradient-text">
-                          {word}{' '}
-                       </span>
-                    ))}
-                  </div>
-                </h1>
-                <div className="mt-8 animate-fade-in-down flex justify-start" style={{ animationDelay: '1s' }}>
-                  <button 
-                    onClick={scrollToServices} 
-                    className="explore-button text-xs"
-                    aria-label="Explore our services"
-                  >
-                    Explore
-                  </button>
-                </div>
-            </div>
-          </div>
-        </div>
       </div>
 
-      {/* Bottom Elements */}
-      <div 
-        className="absolute bottom-8 left-0 right-0 z-10 animate-fade-in-up"
-        style={{ animationDelay: '1s' }}
-      >
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-          <Link href="/contact" className="text-xs font-medium tracking-widest uppercase hover:text-primary transition-colors">
-              Contact Us
-          </Link>
-          <button onClick={scrollToServices} aria-label="Scroll down" className="animate-bounce">
-            <ArrowDown className="w-6 h-6 text-foreground" />
-          </button>
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 h-full">
+        <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 items-center h-full gap-8">
+          {/* Left Column */}
+          <div className="w-full text-left">
+            <div className="max-w-xl">
+              <h1 className="font-extrabold tracking-tight text-white mt-2 leading-snug font-headline">
+                <div className="text-6xl md:text-7xl">
+                  {words1.map((word, wordIndex) => (
+                    <span key={wordIndex} className="animated-gradient-text">
+                      {word}{' '}
+                    </span>
+                  ))}
+                </div>
+                <div className="text-4xl md:text-5xl text-white/80 mt-4">
+                  {words2.map((word, wordIndex) => (
+                    <span key={wordIndex} className="animated-gradient-text">
+                      {word}{' '}
+                    </span>
+                  ))}
+                </div>
+              </h1>
+              <div className="mt-12 animate-fade-in-up" style={{ animationDelay: '1s' }}>
+                <form className="flex items-center gap-2 max-w-md bg-white/20 backdrop-blur-sm p-2 rounded-full border border-white/30">
+                  <Input
+                    type="email"
+                    placeholder="email@address.com"
+                    className="bg-transparent border-0 text-white placeholder:text-white/70 focus-visible:ring-0 focus-visible:ring-offset-0 flex-grow"
+                  />
+                  <Button type="submit" className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-6">
+                    Get a Quote
+                  </Button>
+                </form>
+              </div>
+            </div>
+          </div>
+          
+          {/* Right Column */}
+          <div className="hidden md:flex items-center justify-center w-full h-full">
+             <div className="relative w-[500px] h-[500px] animate-fade-in-down" style={{animationDelay: '0.5s'}}>
+                 <Image 
+                    src="/images/logo/hero-logo.png"
+                    alt="Cauders Logo"
+                    fill
+                    className="object-contain"
+                 />
+             </div>
+          </div>
         </div>
       </div>
     </section>
