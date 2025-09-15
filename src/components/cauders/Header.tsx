@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useEffect, useRef } from 'react';
@@ -47,7 +48,7 @@ export default function Header() {
   return (
      <header className={cn(
         "fixed top-0 left-0 z-50 w-full transition-all duration-300 ease-in-out",
-        hasScrolled ? "pt-4" : ""
+        hasScrolled ? "pt-4" : "pt-0"
       )}>
       <div 
         className={cn(

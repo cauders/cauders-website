@@ -46,7 +46,7 @@ export default function RootLayout({
             <>
               <CustomCursor />
               <Header />
-              <main className="flex-grow pt-24 z-10">
+              <main className="flex-grow z-10">
                 {children}
               </main>
               <ScrollFadeIn direction="stretch-up">
