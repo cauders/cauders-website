@@ -4,9 +4,9 @@ import { Suspense } from 'react';
 import { Skeleton } from '../ui/skeleton';
 import HeroBackground from './HeroBackground';
 import { Input } from '../ui/input';
-import { Button } from '../ui/button';
 import Image from 'next/image';
 import BlurText from './BlurText';
+import FadeContent from './FadeContent';
 
 export default function Hero() {
 
@@ -59,18 +59,19 @@ export default function Hero() {
           
           {/* Right Column */}
           <div className="hidden md:flex items-center justify-center w-full h-full">
-             <div className="relative w-[600px] h-[600px] animate-drastic-zoom-in" style={{animationDelay: '1.2s'}}>
-                 <Image 
-                    src="/images/logo/hero-logo.png"
-                    alt="Cauders Logo"
-                    fill
-                    className="object-contain"
-                 />
-             </div>
+            <FadeContent blur={true} duration={1000} delay={1200} easing="ease-out" initialOpacity={0}>
+              <div className="relative w-[600px] h-[600px]">
+                  <Image 
+                      src="/images/logo/hero-logo.png"
+                      alt="Cauders Logo"
+                      fill
+                      className="object-contain"
+                  />
+              </div>
+            </FadeContent>
           </div>
         </div>
       </div>
     </section>
   );
 }
-
