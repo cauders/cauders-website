@@ -42,7 +42,7 @@ export default function Hero() {
                     className="text-4xl md:text-5xl text-white/80 mt-4 font-medium"
                 />
               </h1>
-              <div className="mt-12 animate-fade-in-up" style={{ animationDelay: '1s' }}>
+              <div className="mt-12 animate-fade-in-up" style={{ animationDelay: '1.5s' }}>
                 <form className="flex items-center gap-2 max-w-sm bg-white rounded-full">
                   <Input
                     type="email"
@@ -59,7 +59,7 @@ export default function Hero() {
           
           {/* Right Column */}
           <div className="hidden md:flex items-center justify-center w-full h-full">
-             <div className="relative w-[600px] h-[600px] animate-drastic-zoom-in" style={{animationDelay: '0.5s'}}>
+             <div className="relative w-[600px] h-[600px] animate-drastic-zoom-in" style={{animationDelay: '1.2s'}}>
                  <Image 
                     src="/images/logo/hero-logo.png"
                     alt="Cauders Logo"
@@ -73,3 +73,4 @@ export default function Hero() {
     </section>
   );
 }
+
