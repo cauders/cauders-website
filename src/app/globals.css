@@ -116,7 +116,7 @@
 
   .animated-gradient-text {
     display: inline;
-    background: linear-gradient(to right, hsl(var(--foreground)), hsl(var(--foreground)) 50%, #FFF 50%);
+    background: linear-gradient(to right, #FFF 50%, #FFF 50%);
     background-size: 200% 100%;
     background-position: 100%;
     -webkit-background-clip: text;
@@ -338,6 +338,20 @@
     animation: zoom-in 0.3s ease-out forwards;
   }
 
+  @keyframes drastic-zoom-in {
+    from {
+      opacity: 0;
+      transform: scale(0.5);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  .animate-drastic-zoom-in {
+    animation: drastic-zoom-in 1.2s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+  }
+
   .text-highlight-group .word-highlight {
     transition: color 0.3s ease-out, text-shadow 0.3s ease-out;
   }
@@ -355,5 +369,3 @@
       @apply rounded-lg rounded-bl-none;
   }
 }
-
-    
