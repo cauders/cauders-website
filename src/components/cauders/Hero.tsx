@@ -8,9 +8,11 @@ import { Button } from '../ui/button';
 import Image from 'next/image';
 
 export default function Hero() {
-  const headingLine1 = "Where Technology Meets Vision";
+  const headingLine1_part1 = "Where Technology";
+  const headingLine1_part2 = "Meets Vision";
   const headingLine2 = "and Ideas Become Impact";
-  const words1 = headingLine1.split(" ");
+  const words1_part1 = headingLine1_part1.split(" ");
+  const words1_part2 = headingLine1_part2.split(" ");
   const words2 = headingLine2.split(" ");
 
   return (
@@ -28,7 +30,14 @@ export default function Hero() {
             <div className="max-w-xl">
               <h1 className="font-bold tracking-tight text-white mt-2 leading-snug font-headline">
                 <div className="text-5xl md:text-6xl">
-                  {words1.map((word, wordIndex) => (
+                  {words1_part1.map((word, wordIndex) => (
+                    <span key={wordIndex} className="animated-gradient-text">
+                      {word}{' '}
+                    </span>
+                  ))}
+                </div>
+                <div className="text-5xl md:text-6xl">
+                  {words1_part2.map((word, wordIndex) => (
                     <span key={wordIndex} className="animated-gradient-text">
                       {word}{' '}
                     </span>
