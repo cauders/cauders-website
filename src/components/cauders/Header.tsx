@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, useEffect, useRef } from 'react';
@@ -58,13 +57,13 @@ export default function Header() {
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
-            <Link href="/" className="text-2xl font-bold text-foreground hover:text-primary transition-colors">
+            <Link href="/" className={cn("text-2xl font-bold transition-colors", hasScrolled ? "text-foreground hover:text-primary" : "text-white hover:text-white/80")}>
               Cauders
             </Link>
             
             <div className="flex items-center gap-4">
               <ThemeToggle />
-              <Button onClick={() => setIsMenuOpen(true)} variant="ghost" className="text-sm font-semibold tracking-widest" aria-label="Open menu">
+              <Button onClick={() => setIsMenuOpen(true)} variant="ghost" className={cn("text-sm font-semibold tracking-widest", hasScrolled ? 'text-foreground' : 'text-white hover:bg-white/10 hover:text-white')} aria-label="Open menu">
                 MENU
               </Button>
             </div>
