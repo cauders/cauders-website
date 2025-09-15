@@ -52,7 +52,7 @@ export default function Hero() {
                 </div>
               </h1>
               <div className="mt-12 animate-fade-in-up" style={{ animationDelay: '1s' }}>
-                <form className="flex items-center gap-2 max-w-md bg-white rounded-full border border-border/30">
+                <form className="flex items-center gap-2 max-w-md bg-white rounded-full">
                   <Input
                     type="email"
                     placeholder="email@address.com"
