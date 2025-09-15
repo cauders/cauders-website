@@ -43,7 +43,7 @@ export default function Hero() {
                     </span>
                   ))}
                 </div>
-                <div className="text-4xl md:text-5xl text-white/80 mt-4 font-normal">
+                <div className="text-4xl md:text-5xl text-white/80 mt-4 font-medium">
                   {words2.map((word, wordIndex) => (
                     <span key={wordIndex} className="animated-gradient-text">
                       {word}{' '}
