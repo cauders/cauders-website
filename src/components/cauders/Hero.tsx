@@ -58,9 +58,9 @@ export default function Hero() {
                     placeholder="email@address.com"
                     className="border-0 text-foreground placeholder:text-foreground/70 focus-visible:ring-0 focus-visible:ring-offset-0 flex-grow bg-transparent rounded-l-full h-full py-2.5 pl-6"
                   />
-                  <Button type="submit" className="bg-primary hover:bg-foreground hover:text-primary text-white rounded-r-full px-6 h-full">
+                  <button type="submit" className="bg-primary hover:bg-foreground hover:text-primary text-white rounded-r-full px-6 h-11 text-sm font-medium transition-colors duration-300">
                     Get a Quote
-                  </Button>
+                  </button>
                 </form>
               </div>
             </div>
