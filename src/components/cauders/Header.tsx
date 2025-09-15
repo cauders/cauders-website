@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button';
 import { X } from 'lucide-react';
 import { ThemeToggle } from './ThemeToggle';
 import MagneticLink from './MagneticLink';
+import { usePathname } from 'next/navigation';
 
 const navLinks = [
   { href: '/', label: 'Home' },
@@ -19,6 +20,7 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [hasScrolled, setHasScrolled] = useState(false);
   const navRef = useRef<HTMLElement>(null);
+  const pathname = usePathname();
   
   useEffect(() => {
     const handleScroll = () => {
@@ -44,6 +46,8 @@ export default function Header() {
     };
   }, [isMenuOpen]);
 
+  const isHeroVisible = pathname === '/' && !hasScrolled;
+
   return (
      <header className={cn(
         "fixed top-0 left-0 z-50 w-full transition-all duration-300 ease-in-out",
@@ -57,13 +61,13 @@ export default function Header() {
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
-            <Link href="/" className={cn("text-2xl font-bold transition-colors", hasScrolled ? "text-foreground hover:text-primary" : "text-white hover:text-white/80")}>
+            <Link href="/" className={cn("text-2xl font-bold transition-colors", isHeroVisible ? "text-white hover:text-white/80" : "text-foreground hover:text-primary")}>
               Cauders
             </Link>
             
             <div className="flex items-center gap-4">
-              <ThemeToggle className={cn(hasScrolled ? "text-foreground" : "text-white hover:bg-white/10 hover:text-white")} />
-              <Button onClick={() => setIsMenuOpen(true)} variant="ghost" className={cn("text-sm font-semibold tracking-widest", hasScrolled ? 'text-foreground hover:bg-accent' : 'text-white hover:bg-white/10 hover:text-white')} aria-label="Open menu">
+              <ThemeToggle className={cn(isHeroVisible ? "text-white hover:bg-white/10 hover:text-white" : "text-foreground hover:bg-accent")} />
+              <Button onClick={() => setIsMenuOpen(true)} variant="ghost" className={cn("text-sm font-semibold tracking-widest", isHeroVisible ? 'text-white hover:bg-white/10 hover:text-white' : 'text-foreground hover:bg-accent')} aria-label="Open menu">
                 MENU
               </Button>
             </div>
