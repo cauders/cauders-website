@@ -28,7 +28,7 @@ export default function Hero() {
           {/* Left Column */}
           <div className="w-full text-left">
             <div>
-              <h1 className="font-bold tracking-tight text-white mt-2 leading-tight font-headline">
+              <h1 className="font-bold tracking-tight text-white mt-2 leading-snug font-headline">
                 <div className="text-7xl md:text-8xl">
                   {words1_part1.map((word, wordIndex) => (
                     <span key={wordIndex} className="animated-gradient-text">
