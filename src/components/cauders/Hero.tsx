@@ -26,15 +26,15 @@ export default function Hero() {
           {/* Left Column */}
           <div className="w-full text-left">
             <div className="max-w-xl">
-              <h1 className="font-extrabold tracking-tight text-white mt-2 leading-snug font-headline">
-                <div className="text-6xl md:text-7xl">
+              <h1 className="font-bold tracking-tight text-white mt-2 leading-snug font-headline">
+                <div className="text-5xl md:text-6xl">
                   {words1.map((word, wordIndex) => (
                     <span key={wordIndex} className="animated-gradient-text">
                       {word}{' '}
                     </span>
                   ))}
                 </div>
-                <div className="text-4xl md:text-5xl text-white/80 mt-4">
+                <div className="text-3xl md:text-4xl text-white/80 mt-4">
                   {words2.map((word, wordIndex) => (
                     <span key={wordIndex} className="animated-gradient-text">
                       {word}{' '}
