@@ -6,14 +6,9 @@ import HeroBackground from './HeroBackground';
 import { Input } from '../ui/input';
 import { Button } from '../ui/button';
 import Image from 'next/image';
+import BlurText from './BlurText';
 
 export default function Hero() {
-  const headingLine1_part1 = "Where Technology";
-  const headingLine1_part2 = "Meets Vision";
-  const headingLine2 = "and Ideas Become Impact";
-  const words1_part1 = headingLine1_part1.split(" ");
-  const words1_part2 = headingLine1_part2.split(" ");
-  const words2 = headingLine2.split(" ");
 
   return (
     <section className="relative w-full h-screen overflow-hidden">
@@ -29,27 +24,23 @@ export default function Hero() {
           <div className="w-full text-left">
             <div>
               <h1 className="font-bold tracking-tight text-white mt-2 leading-relaxed font-headline">
-                <div className="text-7xl md:text-8xl">
-                  {words1_part1.map((word, wordIndex) => (
-                    <span key={wordIndex} className="animated-gradient-text">
-                      {word}{' '}
-                    </span>
-                  ))}
-                </div>
-                <div className="text-7xl md:text-8xl">
-                  {words1_part2.map((word, wordIndex) => (
-                    <span key={wordIndex} className="animated-gradient-text">
-                      {word}{' '}
-                    </span>
-                  ))}
-                </div>
-                <div className="text-4xl md:text-5xl text-white/80 mt-4 font-medium">
-                  {words2.map((word, wordIndex) => (
-                    <span key={wordIndex} className="animated-gradient-text">
-                      {word}{' '}
-                    </span>
-                  ))}
-                </div>
+                <BlurText
+                    text="Where Technology"
+                    animateBy="words"
+                    className="text-7xl md:text-8xl"
+                />
+                 <BlurText
+                    text="Meets Vision"
+                    animateBy="words"
+                    delay={100}
+                    className="text-7xl md:text-8xl"
+                />
+                <BlurText
+                    text="and Ideas Become Impact"
+                    animateBy="words"
+                    delay={50}
+                    className="text-4xl md:text-5xl text-white/80 mt-4 font-medium"
+                />
               </h1>
               <div className="mt-12 animate-fade-in-up" style={{ animationDelay: '1s' }}>
                 <form className="flex items-center gap-2 max-w-sm bg-white rounded-full">
