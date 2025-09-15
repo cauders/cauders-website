@@ -62,7 +62,7 @@ export default function Header() {
             </Link>
             
             <div className="flex items-center gap-4">
-              <ThemeToggle />
+              <ThemeToggle className={cn(hasScrolled ? "text-foreground" : "text-white hover:bg-white/10 hover:text-white")} />
               <Button onClick={() => setIsMenuOpen(true)} variant="ghost" className={cn("text-sm font-semibold tracking-widest", hasScrolled ? 'text-foreground' : 'text-white hover:bg-white/10 hover:text-white')} aria-label="Open menu">
                 MENU
               </Button>
