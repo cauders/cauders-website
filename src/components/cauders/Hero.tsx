@@ -27,7 +27,7 @@ export default function Hero() {
         <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 items-center h-full gap-8">
           {/* Left Column */}
           <div className="w-full text-left">
-            <div className="max-w-xl">
+            <div>
               <h1 className="font-bold tracking-tight text-white mt-2 leading-snug font-headline">
                 <div className="text-5xl md:text-6xl">
                   {words1_part1.map((word, wordIndex) => (
