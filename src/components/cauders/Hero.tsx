@@ -1,4 +1,3 @@
-
 "use client"
 import { Suspense } from 'react';
 import { Skeleton } from '../ui/skeleton';
@@ -29,14 +28,14 @@ export default function Hero() {
           <div className="w-full text-left">
             <div>
               <h1 className="font-bold tracking-tight text-white mt-2 leading-snug font-headline">
-                <div className="text-6xl md:text-7xl">
+                <div className="text-7xl md:text-8xl">
                   {words1_part1.map((word, wordIndex) => (
                     <span key={wordIndex} className="animated-gradient-text">
                       {word}{' '}
                     </span>
                   ))}
                 </div>
-                <div className="text-6xl md:text-7xl">
+                <div className="text-7xl md:text-8xl">
                   {words1_part2.map((word, wordIndex) => (
                     <span key={wordIndex} className="animated-gradient-text">
                       {word}{' '}
