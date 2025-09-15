@@ -68,7 +68,7 @@ export default function Hero() {
           
           {/* Right Column */}
           <div className="hidden md:flex items-center justify-center w-full h-full">
-             <div className="relative w-[500px] h-[500px] animate-fade-in-down" style={{animationDelay: '0.5s'}}>
+             <div className="relative w-[600px] h-[600px] animate-fade-in-down" style={{animationDelay: '0.5s'}}>
                  <Image 
                     src="/images/logo/hero-logo.png"
                     alt="Cauders Logo"
