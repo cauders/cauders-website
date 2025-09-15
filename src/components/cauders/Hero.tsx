@@ -52,13 +52,13 @@ export default function Hero() {
                 </div>
               </h1>
               <div className="mt-12 animate-fade-in-up" style={{ animationDelay: '1s' }}>
-                <form className="flex items-center gap-2 max-w-md bg-white/20 backdrop-blur-sm p-2 rounded-full border border-white/30">
+                <form className="flex items-center gap-2 max-w-md bg-white/20 backdrop-blur-sm rounded-full border border-white/30">
                   <Input
                     type="email"
                     placeholder="email@address.com"
-                    className="bg-transparent border-0 text-white placeholder:text-white/70 focus-visible:ring-0 focus-visible:ring-offset-0 flex-grow"
+                    className="border-0 text-foreground placeholder:text-foreground/70 focus-visible:ring-0 focus-visible:ring-offset-0 flex-grow bg-white rounded-l-full p-2 pl-6"
                   />
-                  <Button type="submit" className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-6">
+                  <Button type="submit" className="bg-primary hover:bg-foreground hover:text-primary text-white rounded-r-full px-6 h-full">
                     Get a Quote
                   </Button>
                 </form>
