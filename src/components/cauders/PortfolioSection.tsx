@@ -68,7 +68,7 @@ export default function PortfolioSection() {
                     WebkitBackdropFilter: 'blur(16px)',
                     backgroundColor: 'hsl(var(--background) / 0.7)'
                 }}>
-                    <div className="absolute inset-0 z-0 overflow-hidden">
+                    <div className="absolute inset-0 z-0 overflow-hidden bg-foreground">
                         <div 
                             className="absolute top-[-120px] left-[-80px] w-64 h-64 bg-primary/30 rounded-full blur-3xl opacity-80"
                         ></div>
@@ -141,7 +141,7 @@ const AnimatedTextSection = ({ lines, scrollProgress }: { lines: any[], scrollPr
             isVisible ? "opacity-100" : "opacity-0 pointer-events-none",
         )}>
             {lines.map((line, index) => (
-                <div key={index} className="w-full overflow-hidden py-1">
+                <div key={index} className="overflow-hidden py-1 px-4">
                     <div style={{ transform: transforms[index] }}>
                         <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                              <StandardizedHeading lines={[line]} className="text-4xl md:text-5xl" />
