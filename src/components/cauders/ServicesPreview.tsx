@@ -93,7 +93,7 @@ export default function ServicesPreview() {
                     <div className={cn("flip-card-inner relative w-full h-full", hoveredCard === index && "is-flipped")}>
                     {/* Front of the card */}
                     <div className="flip-card-front absolute w-full h-full">
-                        <div className="relative w-full h-full bg-foreground/90 rounded-lg overflow-hidden">
+                        <div className="relative w-full h-full rounded-lg overflow-hidden">
                             <div className="absolute top-[-80px] left-[-80px] w-48 h-48 bg-primary/30 rounded-full blur-3xl opacity-50"></div>
                             <div className="absolute bottom-[-80px] right-[-80px] w-48 h-48 bg-primary/30 rounded-full blur-3xl opacity-50"></div>
                             <Card className="h-full text-center flex flex-col bg-transparent border-0 relative z-10 glass-effect">
@@ -110,7 +110,7 @@ export default function ServicesPreview() {
                         <CardHeader>
                             <CardTitle className="text-xl md:text-2xl text-foreground font-headline">{service.title}</CardTitle>
                         </CardHeader>
-                        <CardContent className="flex-grow">
+                        <CardContent>
                             <ul className="space-y-2 text-left text-xs">
                             {service.included.slice(0, 3).map((item, i) => (
                                 <li key={i} className="flex items-start">
