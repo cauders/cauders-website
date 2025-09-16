@@ -1,5 +1,5 @@
 
-import { getServiceBySlug, getServices } from "@/lib/data";
+import { getServiceBySlug } from "@/lib/data";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
@@ -13,15 +13,6 @@ type ServicePageParams = {
     slug: string;
   };
 };
-
-export const dynamic = 'force-static';
-
-export function generateStaticParams() {
-  const services = getServices();
-  return services.map((service) => ({
-    slug: service.slug,
-  }));
-}
 
 export default function ServicePage({ params }: ServicePageParams) {
   const service = getServiceBySlug(params.slug);
