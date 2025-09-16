@@ -137,13 +137,15 @@ const AnimatedTextSection = ({ lines, scrollProgress }: { lines: any[], scrollPr
     }, [scrollProgress, lines]);
 
     return (
-        <div className={cn("absolute inset-0 flex flex-col items-center justify-center z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center transition-opacity duration-500",
+        <div className={cn("absolute inset-0 flex flex-col items-center justify-center z-10 w-full text-center transition-opacity duration-500",
             isVisible ? "opacity-100" : "opacity-0 pointer-events-none",
         )}>
             {lines.map((line, index) => (
-                <div key={index} className="overflow-hidden py-1 px-4">
+                <div key={index} className="w-full overflow-hidden py-1">
                     <div style={{ transform: transforms[index] }}>
-                        <StandardizedHeading lines={[line]} className="text-4xl md:text-5xl" />
+                        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                             <StandardizedHeading lines={[line]} className="text-4xl md:text-5xl" />
+                        </div>
                     </div>
                 </div>
             ))}
