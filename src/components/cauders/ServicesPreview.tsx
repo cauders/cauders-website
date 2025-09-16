@@ -95,11 +95,6 @@ export default function ServicesPreview() {
                     <div className="flip-card-front absolute w-full h-full">
                         <Card className="h-full text-center flex flex-col bg-card border">
                             <CardHeader className="p-8 flex-grow">
-                                <div className="mx-auto w-24 h-24 mb-4 flex items-center justify-center">
-                                    <div className="bg-primary/10 rounded-full p-4 w-fit mx-auto">
-                                        <service.icon className="w-8 h-8 text-primary" />
-                                    </div>
-                                </div>
                                 <CardTitle className="text-xl md:text-2xl text-foreground font-headline">{service.title}</CardTitle>
                                 <CardDescription className="pt-2 text-sm text-foreground/80 line-clamp-2">{service.description}</CardDescription>
                             </CardHeader>
