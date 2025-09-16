@@ -81,6 +81,7 @@ const ServiceSection = ({ service, index }: { service: ReturnType<typeof getServ
                                                     alt={service.title} 
                                                     width={800}
                                                     height={600}
+                                                    priority
                                                     className="object-cover w-full h-full"
                                                 />
                                             </div>

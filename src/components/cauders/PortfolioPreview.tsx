@@ -199,8 +199,9 @@ export default function PortfolioPreview() {
                       <Image
                         src={project.imageUrl}
                         alt={project.title}
-                        width={600}
-                        height={450}
+                        width={800}
+                        height={600}
+                        priority
                         className="w-full h-full object-cover pointer-events-none"
                         draggable={false}
                       />

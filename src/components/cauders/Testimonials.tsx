@@ -63,6 +63,9 @@ export default function Testimonials() {
                                 <Image
                                     src={testimonial.imageUrl}
                                     alt={testimonial.projectTitle}
+                                    width={800}
+                                    height={600}
+                                    priority
                                     fill
                                     className="object-cover"
                                 />
