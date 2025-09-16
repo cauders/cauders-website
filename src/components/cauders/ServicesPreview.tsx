@@ -93,12 +93,16 @@ export default function ServicesPreview() {
                     <div className={cn("flip-card-inner relative w-full h-full", hoveredCard === index && "is-flipped")}>
                     {/* Front of the card */}
                     <div className="flip-card-front absolute w-full h-full">
-                        <Card className="h-full text-center flex flex-col bg-card border">
-                            <CardHeader className="p-8 flex-grow">
-                                <service.icon className="w-10 h-10 text-primary mx-auto mb-4" />
-                                <CardTitle className="text-xl md:text-2xl text-foreground font-headline">{service.title}</CardTitle>
-                            </CardHeader>
-                        </Card>
+                        <div className="relative w-full h-full bg-foreground/90 rounded-lg overflow-hidden">
+                            <div className="absolute top-[-80px] left-[-80px] w-64 h-64 bg-primary/30 rounded-full blur-3xl opacity-80"></div>
+                            <div className="absolute bottom-[-80px] right-[-80px] w-64 h-64 bg-primary/30 rounded-full blur-3xl opacity-80"></div>
+                            <Card className="h-full text-center flex flex-col bg-transparent border-0 relative z-10 glass-effect">
+                                <CardHeader className="p-8 flex-grow flex flex-col items-center justify-center">
+                                    <service.icon className="w-10 h-10 text-background mx-auto mb-4" />
+                                    <CardTitle className="text-xl md:text-2xl text-background font-headline">{service.title}</CardTitle>
+                                </CardHeader>
+                            </Card>
+                        </div>
                     </div>
                     {/* Back of the card */}
                     <div className="flip-card-back absolute w-full h-full">
