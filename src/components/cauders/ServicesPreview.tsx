@@ -14,7 +14,7 @@ export default function ServicesPreview() {
   const services = getServices().slice(0, 4); // Get top 4 services
   const containerRef = useRef<HTMLDivElement>(null);
   const [subtitleTransform, setSubtitleTransform] = useState('translateY(101%)');
-  const [cardTransforms, setCardTransforms] = useState(services.map(() => 'rotateY(-90deg)'));
+  const [cardStyles, setCardStyles] = useState(services.map(() => ({ opacity: 0, transform: 'translateY(40px)' })));
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
 
   const scrollHandler = useCallback(() => {
@@ -25,11 +25,9 @@ export default function ServicesPreview() {
     
     const animationStartPoint = window.innerHeight * 0.2;
     let currentProgress = 0;
-    // Check if containerRef.current.offsetTop is a valid number
     if (containerRef.current.offsetTop && isFinite(containerRef.current.offsetTop)) {
         currentProgress = Math.max(0, Math.min(1, (window.scrollY - containerRef.current.offsetTop + animationStartPoint) / (scrollableHeight + animationStartPoint)));
     }
-
 
     const subtitleProgress = Math.max(0, Math.min(1, (currentProgress - 0.1) * 4));
     const subtitleY = 101 - (subtitleProgress * 101);
@@ -40,15 +38,20 @@ export default function ServicesPreview() {
     const totalCardsProgress = 1 - cardsStartProgress;
     const progressPerCard = totalCardsProgress / services.length;
 
-    const newCardTransforms = services.map((_, index) => {
+    const newCardStyles = services.map((_, index) => {
         const cardStart = cardsStartProgress + (index * progressPerCard);
         const cardProgress = Math.max(0, Math.min(1, (currentProgress - cardStart) / progressPerCard));
-        const rotation = -90 + (cardProgress * 90);
-        return `rotateY(${rotation}deg)`;
+        
+        const opacity = cardProgress;
+        const translateY = 40 * (1 - cardProgress);
+
+        return {
+            opacity: opacity,
+            transform: `translateY(${translateY}px)`
+        };
     });
-    setCardTransforms(newCardTransforms);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    setCardStyles(newCardStyles);
+  }, [services.length]);
 
   useEffect(() => {
     window.addEventListener('scroll', scrollHandler, { passive: true });
@@ -79,10 +82,8 @@ export default function ServicesPreview() {
                     key={service.slug}
                     className="h-full"
                     style={{
-                        perspective: '1000px',
-                        transition: 'transform 0.5s ease-out',
-                        transformStyle: 'preserve-3d',
-                        transform: cardTransforms[index],
+                        ...cardStyles[index],
+                        transition: 'opacity 0.4s ease-out, transform 0.4s ease-out',
                     }}
                 >
                 <div 
