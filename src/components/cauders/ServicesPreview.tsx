@@ -66,7 +66,7 @@ export default function ServicesPreview() {
             <StandardizedHeading lines={["What We Offer"]} />
             <div className="overflow-hidden py-1">
             <p
-                className="mt-4 text-lg text-foreground/70 max-w-2xl mx-auto transition-transform duration-300 ease-out"
+                className="mt-4 text-xl text-foreground/70 max-w-2xl mx-auto transition-transform duration-300 ease-out"
                 style={{ transform: subtitleTransform, transitionDelay: '50ms' }}
             >
                 Our expertise spans the entire development lifecycle, delivering excellence at every step.
