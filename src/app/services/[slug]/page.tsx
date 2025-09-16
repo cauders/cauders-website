@@ -98,6 +98,7 @@ export default function ServicePage({ params }: ServicePageParams) {
                         alt={service.caseStudy.title}
                         width={800}
                         height={450}
+                        priority
                         className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                         data-ai-hint={service.caseStudy.title}
                       />

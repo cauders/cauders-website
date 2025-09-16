@@ -65,6 +65,7 @@ export default function Hero() {
                       src="/images/logo/hero-logo.png"
                       alt="Cauders Logo"
                       fill
+                      priority
                       className="object-contain"
                   />
               </div>
