@@ -69,44 +69,28 @@ const ServiceSection = ({ service, index }: { service: ReturnType<typeof getServ
                              }}
                              className={cn("flex items-center justify-center", isEven ? 'md:order-2' : 'md:order-1')}
                         >
-                           <div className="flip-card h-[400px] w-full max-w-sm">
-                              <div className="flip-card-inner relative w-full h-full">
-                                  {/* Front of the card */}
-                                  <div className="flip-card-front absolute w-full h-full">
-                                      <Card className="h-full bg-card border shadow-lg overflow-hidden">
-                                        {service.caseStudy?.imageUrl && (
-                                            <div className="relative w-full h-full">
-                                                <Image 
-                                                    src={service.caseStudy.imageUrl} 
-                                                    alt={service.title} 
-                                                    width={800}
-                                                    height={600}
-                                                    priority
-                                                    className="object-cover w-full h-full"
-                                                />
-                                            </div>
-                                        )}
-                                      </Card>
-                                  </div>
-                                  {/* Back of the card */}
-                                  <div className="flip-card-back absolute w-full h-full">
-                                    <div className="relative w-full h-full bg-foreground/90 rounded-lg overflow-hidden">
-                                      <div className="absolute top-[-80px] left-[-80px] w-64 h-64 bg-primary/30 rounded-full blur-3xl opacity-80"></div>
-                                      <div className="absolute bottom-[-80px] right-[-80px] w-64 h-64 bg-primary/30 rounded-full blur-3xl opacity-80"></div>
-                                      <Card className={cn("relative z-10 h-full flex flex-col justify-center items-center text-center glass-effect animated-border-card border-border/20 px-6 pb-6")}>
-                                          <service.icon className="w-20 h-20 text-background mb-4" />
-                                          <CardTitle className="text-background text-4xl font-extrabold font-headline">{service.title}</CardTitle>
-                                          <div className="absolute bottom-6 left-6 right-6">
-                                            <Button asChild className="button w-full">
-                                                <Link href="https://www.portfolio.cauders.com/projects">
-                                                    View More <ArrowRight className="ml-2 h-4 w-4" />
-                                                </Link>
-                                            </Button>
-                                          </div>
-                                      </Card>
-                                    </div>
-                                  </div>
-                              </div>
+                           <div className="relative group h-[400px] w-full max-w-sm cursor-pointer">
+                                <Card className="h-full bg-card border shadow-lg overflow-hidden transition-transform duration-500 group-hover:scale-105">
+                                    {service.caseStudy?.imageUrl && (
+                                        <div className="relative w-full h-full">
+                                            <Image 
+                                                src={service.caseStudy.imageUrl} 
+                                                alt={service.title} 
+                                                width={800}
+                                                height={600}
+                                                priority
+                                                className="object-cover w-full h-full"
+                                            />
+                                        </div>
+                                    )}
+                                </Card>
+                                <div className="absolute inset-0 bg-black/50 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-all duration-300 ease-in-out flex items-center justify-center rounded-lg">
+                                    <Button asChild className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 translate-y-4 group-hover:translate-y-0">
+                                        <Link href={`https://www.portfolio.cauders.com/projects`}>
+                                            View More <ArrowRight className="ml-2 h-4 w-4" />
+                                        </Link>
+                                    </Button>
+                                </div>
                           </div>
                         </div>
                     </div>
