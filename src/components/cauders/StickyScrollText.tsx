@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useRef } from 'react';
@@ -7,9 +8,9 @@ const StickyScrollText = () => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   const lines = [
-    "We Engineer",
-    { text: "High-Performance, Cutting-Edge Platforms", className: "text-primary" },
-    "That Empower Businesses to Dominate the Digital Landscape."
+    "WE ENGINEER",
+    { text: "HIGH-PERFORMANCE, CUTTING-EDGE PLATFORMS", className: "text-primary" },
+    "THAT EMPOWER BUSINESSES TO DOMINATE THE DIGITAL LANDSCAPE."
   ];
 
   return (
@@ -25,6 +26,7 @@ const StickyScrollText = () => {
 };
 
 export default StickyScrollText;
+
 
 
 
