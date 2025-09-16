@@ -93,7 +93,7 @@ export default function ServicesPreview() {
                     <div className={cn("flip-card-inner relative w-full h-full", hoveredCard === index && "is-flipped")}>
                     {/* Front of the card */}
                     <div className="flip-card-front absolute w-full h-full">
-                        <div className="relative w-full h-full rounded-lg overflow-hidden">
+                        <div className="relative w-full h-full rounded-lg overflow-hidden bg-foreground">
                             <div className="absolute top-[-80px] left-[-80px] w-48 h-48 bg-primary/30 rounded-full blur-3xl opacity-50"></div>
                             <div className="absolute bottom-[-80px] right-[-80px] w-48 h-48 bg-primary/30 rounded-full blur-3xl opacity-50"></div>
                             <Card className="h-full text-center flex flex-col bg-card/80 border-0 relative z-10 glass-effect">
