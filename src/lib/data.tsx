@@ -538,10 +538,10 @@ const findProjectByTitle = (title: string) => {
               'App Store Deployment & Support'
           ],
           caseStudy: {
-              title: findProjectByTitle('IT Centre App').title,
-              projectSlug: findProjectByTitle('IT Centre App').slug,
-              description: findProjectByTitle('IT Centre App').description,
-              imageUrl: findProjectByTitle('IT Centre App').imageUrl
+              title: findProjectByTitle('Fajira Admin').title,
+              projectSlug: findProjectByTitle('Fajira Admin').slug,
+              description: findProjectByTitle('Fajira Admin').description,
+              imageUrl: findProjectByTitle('Fajira Admin').imageUrl
           }
       },
       {
