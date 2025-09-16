@@ -5,7 +5,6 @@ import Link from 'next/link';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { X } from 'lucide-react';
-import { ThemeToggle } from './ThemeToggle';
 import MagneticLink from './MagneticLink';
 import { usePathname } from 'next/navigation';
 
@@ -66,7 +65,6 @@ export default function Header() {
             </Link>
             
             <div className="flex items-center gap-4">
-              <ThemeToggle className={cn(isHeroVisible ? "text-white hover:bg-white/10 hover:text-white" : "text-foreground hover:bg-accent")} />
               <Button onClick={() => setIsMenuOpen(true)} variant="ghost" className={cn("text-sm font-semibold tracking-widest", isHeroVisible ? 'text-white hover:bg-white/10 hover:text-white' : 'text-foreground hover:bg-accent')} aria-label="Open menu">
                 MENU
               </Button>
