@@ -99,7 +99,6 @@ export default function ServicesPreview() {
                             <div className="absolute bottom-[-80px] right-[-80px] w-48 h-48 bg-primary/30 rounded-full blur-3xl opacity-50"></div>
                             <Card className="h-full text-center flex flex-col bg-card/80 border-0 relative z-10 glass-effect">
                                 <CardHeader className="p-8 flex-grow flex flex-col items-center justify-center">
-                                    <service.icon className="w-10 h-10 text-background mx-auto mb-4" />
                                     <CardTitle className="text-xl md:text-2xl text-background font-headline">{service.title}</CardTitle>
                                 </CardHeader>
                             </Card>
