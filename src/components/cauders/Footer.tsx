@@ -37,7 +37,7 @@ export default function Footer() {
 
   return (
     <div 
-        className="relative bg-foreground text-background overflow-hidden"
+        className="relative bg-foreground text-background overflow-hidden z-20"
         data-footer-hover="true"
     >
       <div 
