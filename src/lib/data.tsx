@@ -519,10 +519,10 @@ const findProjectByTitle = (title: string) => {
               'Ongoing Performance Optimization'
           ],
           caseStudy: {
-              title: findProjectByTitle('FCINQ').title,
-              projectSlug: findProjectByTitle('FCINQ').slug,
-              description: findProjectByTitle('FCINQ').description,
-              imageUrl: findProjectByTitle('FCINQ').imageUrl
+              title: findProjectByTitle('Snipbyte').title,
+              projectSlug: findProjectByTitle('Snipbyte').slug,
+              description: findProjectByTitle('Snipbyte').description,
+              imageUrl: findProjectByTitle('Snipbyte').imageUrl
           }
       },
       {
@@ -682,3 +682,4 @@ export const projectCategories = ['All', ...Array.from(new Set(projects.map(p =>
     
 
     
+    type ProjectCategory = 'Web App' | 'Mobile App' | 'AI/ML' | 'All';
