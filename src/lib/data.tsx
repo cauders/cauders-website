@@ -6,9 +6,6 @@ import type { ComponentType, FC } from "react";
 import placeholderImages from './placeholder-images.json';
 
 
-type ServiceIcon = ComponentType<LucideProps>;
-type ProjectCategory = 'Web App' | 'Mobile App' | 'AI/ML';
-
 export type Project = {
   id: number;
   slug: string;
@@ -679,6 +676,8 @@ export const featuredProjects = projects.filter((project) => project.featured);
 export const projectCategories = ['All', ...Array.from(new Set(projects.map(p => p.category)))];
 
 
+
+    
 
     
 
