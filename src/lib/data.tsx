@@ -180,7 +180,7 @@ export const projects: Project[] = [
     description: 'An ERP solution for computer training institutes.',
     longDescription: 'An app that serves as a complete ERP solution for computer training institutes and digital skills academies. It helps simplify daily operations, manage admissions, track attendance, and provide a dashboard for students and staff.',
     category: 'Mobile App',
-    imageUrl: '/images/portfolio/itc-app.png',
+    imageUrl: '/images/portfolio/it-centre-app.png',
     technologies: ['React Native', 'Firebase', 'Node.js', 'MongoDB'],
     gallery: [
         '/images/projects/it-centre-app/gallery-1.png',
@@ -345,7 +345,7 @@ export const projects: Project[] = [
     description: 'A website for a restaurant, providing menu and catering information.',
     longDescription: 'The website for a restaurant, providing information on its menu, catering services, and location.',
     category: 'Web App',
-    imageUrl: '/images/portfolio/kabul-grill.jpg',
+    imageUrl: '/images/portfolio/the-kabul-grill.jpg',
     technologies: ['Wordpress', 'PHP', 'MySQL', 'Elementor', 'Google Maps API'],
     gallery: [
       '/images/projects/the-kabul-grill/gallery-1.png', 
