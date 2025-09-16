@@ -79,8 +79,9 @@ const ServiceSection = ({ service, index }: { service: ReturnType<typeof getServ
                                                 <Image 
                                                     src={service.caseStudy.imageUrl} 
                                                     alt={service.title} 
-                                                    fill
-                                                    className="object-cover"
+                                                    width={800}
+                                                    height={600}
+                                                    className="object-cover w-full h-full"
                                                 />
                                             </div>
                                         )}
@@ -96,8 +97,8 @@ const ServiceSection = ({ service, index }: { service: ReturnType<typeof getServ
                                           <CardTitle className="text-background text-4xl font-extrabold font-headline">{service.title}</CardTitle>
                                           <div className="absolute bottom-6 left-6 right-6">
                                             <Button asChild className="button w-full">
-                                                <Link href={`/services/${service.slug}`}>
-                                                    Learn More <ArrowRight className="ml-2 h-4 w-4" />
+                                                <Link href="https://www.portfolio.cauders.com/projects">
+                                                    View More <ArrowRight className="ml-2 h-4 w-4" />
                                                 </Link>
                                             </Button>
                                           </div>
