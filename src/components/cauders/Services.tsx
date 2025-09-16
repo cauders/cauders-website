@@ -70,16 +70,16 @@ const ServiceSection = ({ service, index }: { service: ReturnType<typeof getServ
                              className={cn("flex items-center justify-center", isEven ? 'md:order-2' : 'md:order-1')}
                         >
                            <div className="relative group h-[400px] w-full max-w-sm cursor-pointer">
-                                <Card className="h-full bg-card border shadow-lg overflow-hidden transition-transform duration-500 group-hover:scale-105">
+                                <Card className="h-full bg-card border shadow-lg overflow-hidden">
                                     {service.caseStudy?.imageUrl && (
-                                        <div className="relative w-full h-full">
+                                        <div className="relative w-full h-full overflow-hidden rounded-lg">
                                             <Image 
                                                 src={service.caseStudy.imageUrl} 
                                                 alt={service.title} 
                                                 width={800}
                                                 height={600}
                                                 priority
-                                                className="object-cover w-full h-full"
+                                                className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105"
                                             />
                                         </div>
                                     )}
