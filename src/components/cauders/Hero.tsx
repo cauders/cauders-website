@@ -39,7 +39,7 @@ export default function Hero() {
                     text="and Ideas Become Impact"
                     animateBy="words"
                     delay={50}
-                    className="text-4xl md:text-5xl text-white/80 mt-4 font-medium"
+                    className="text-4xl md:text-5xl text-white mt-4 font-medium"
                 />
               </h1>
               <div className="mt-12 animate-fade-in-up" style={{ animationDelay: '1.5s' }}>
