@@ -90,7 +90,7 @@ const ServiceSection = ({ service, index }: { service: ReturnType<typeof getServ
                                     )}
                                 </Card>
                                 <div className="absolute inset-0 bg-black/50 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-all duration-300 ease-in-out flex items-center justify-center rounded-lg">
-                                    <Button asChild className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 translate-y-4 group-hover:translate-y-0">
+                                    <Button asChild className="opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-4 group-hover:translate-y-0">
                                         <Link href={`https://www.portfolio.cauders.com/projects`}>
                                             View More <ArrowRight className="ml-2 h-4 w-4" />
                                         </Link>
