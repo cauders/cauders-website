@@ -2,6 +2,7 @@
 'use client';
 import { useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
+import Image from 'next/image';
 
 export const ChromaGrid = ({
   items,
@@ -110,7 +111,14 @@ export const ChromaGrid = ({
           } as React.CSSProperties}
         >
           <div className="chroma-img-wrapper">
-            <img src={c.image} alt={c.title} loading="lazy" />
+             <Image 
+                src={c.image} 
+                alt={c.title}
+                width={400} 
+                height={400} 
+                loading="lazy"
+                className="w-full h-full object-cover border-radius-10"
+             />
           </div>
           <footer className="chroma-info">
             <h3 className="name">{c.title}</h3>
