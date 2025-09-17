@@ -239,7 +239,7 @@ export default function PortfolioPreview() {
         </div>
       </div>
       
-       <div className="container mx-auto px-4 text-center mt-32 relative z-10 pointer-events-auto">
+       <div className="container mx-auto px-4 text-center mt-16 relative z-10 pointer-events-auto">
           <Button 
             asChild 
             size="lg" 
