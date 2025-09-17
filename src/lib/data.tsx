@@ -557,10 +557,10 @@ const findProjectByTitle = (title: string) => {
               'Predictive Analytics & Data Insights'
           ],
           caseStudy: {
-              title: findProjectByTitle('IT Centre App').title,
-              projectSlug: findProjectByTitle('IT Centre App').slug,
-              description: "This app showcases our ability to build complex, user-focused systems that streamline operations, a core principle of intelligent automation.",
-              imageUrl: findProjectByTitle('IT Centre App').imageUrl
+              title: findProjectByTitle('Fajira Admin').title,
+              projectSlug: findProjectByTitle('Fajira Admin').slug,
+              description: "The admin app uses intelligent logic to help manage e-commerce operations, showcasing our ability to build systems that streamline complex tasks.",
+              imageUrl: findProjectByTitle('Fajira Admin').imageUrl
           }
       },
       {
