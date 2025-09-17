@@ -88,6 +88,12 @@ export default function PortfolioSection() {
                             transition: 'opacity 0.3s ease-out, transform 0.3s ease-out'
                         }}
                     >
+                        <div className="text-center">
+                            <StandardizedHeading lines={["Our Work"]} className="text-background" />
+                            <p className="mt-4 text-lg text-background/70 max-w-2xl mx-auto">
+                                A curated selection of projects that showcase our commitment to excellence and innovation.
+                            </p>
+                        </div>
                         <PortfolioPreview />
                     </div>
 
