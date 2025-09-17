@@ -9,6 +9,7 @@ import Image from "next/image";
 import { Card } from "@/components/ui/card";
 import { Button } from "../ui/button";
 import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
+import StandardizedHeading from "./StandardizedHeading";
 
 const CARD_ANGLE = 30; // Angle between each card in the carousel
 
@@ -146,12 +147,18 @@ export default function PortfolioPreview() {
   return (
     <div
       ref={sectionRef}
-      className="relative flex flex-col justify-center h-full w-full pointer-events-auto mt-16"
+      className="relative flex flex-col justify-center h-full w-full pointer-events-auto"
       onMouseMove={handleMouseMove}
       onMouseDown={handleMouseDown}
       onMouseUp={handleMouseUp}
       onMouseLeave={handleMouseLeave}
     >
+        <div className="text-center">
+            <StandardizedHeading lines={["Our Work"]} className="text-background" />
+            <p className="mt-4 text-lg text-background/70 max-w-2xl mx-auto">
+                A curated selection of projects that showcase our commitment to excellence and innovation.
+            </p>
+        </div>
       <div
         ref={followerRef}
         className={cn(
@@ -247,3 +254,5 @@ export default function PortfolioPreview() {
     </div>
   );
 }
+
+    
