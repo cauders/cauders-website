@@ -15,6 +15,7 @@ import Image from 'next/image';
 import StandardizedHeading from './StandardizedHeading';
 import placeholderImages from '@/lib/placeholder-images.json';
 import { Separator } from '../ui/separator';
+import MagneticLink from './MagneticLink';
 
 const whyChooseUs = [
   {
@@ -90,11 +91,11 @@ const ServiceSection = ({ service, index }: { service: ReturnType<typeof getServ
                                     )}
                                 </Card>
                                 <div className="absolute inset-0 bg-black/50 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-all duration-300 ease-in-out flex items-center justify-center rounded-lg">
-                                    <Button asChild variant="link" className="opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-4 group-hover:translate-y-0 text-white text-xl hover:text-primary">
-                                        <Link href={`https://www.portfolio.cauders.com/projects`}>
-                                            View More <ArrowRight className="ml-2 h-4 w-4" />
-                                        </Link>
-                                    </Button>
+                                    <div className="w-36 h-36 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-4 group-hover:translate-y-0">
+                                        <MagneticLink href={`https://www.portfolio.cauders.com/projects`} className="text-white !text-lg">
+                                            View More
+                                        </MagneticLink>
+                                    </div>
                                 </div>
                           </div>
                         </div>
