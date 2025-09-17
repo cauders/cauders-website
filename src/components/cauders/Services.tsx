@@ -1,4 +1,5 @@
 
+
 'use client';
 
 import { getServices } from '@/lib/data';
@@ -8,11 +9,12 @@ import { cn } from '@/lib/utils';
 import { ArrowRight, Award, CheckCircle, Rocket, ShieldCheck } from 'lucide-react';
 import ScrollFadeIn from './ScrollFadeIn';
 import { Card, CardTitle, CardContent, CardHeader } from '../ui/card';
-import { useRef } from 'react';
+import { useRef, Fragment } from 'react';
 import { useScrollProgress } from '@/hooks/useScrollProgress';
 import Image from 'next/image';
 import StandardizedHeading from './StandardizedHeading';
 import placeholderImages from '@/lib/placeholder-images.json';
+import { Separator } from '../ui/separator';
 
 const whyChooseUs = [
   {
@@ -53,14 +55,17 @@ const ServiceSection = ({ service, index }: { service: ReturnType<typeof getServ
                         <ScrollFadeIn direction={isEven ? 'left' : 'right'} className={cn("flex flex-col justify-center", isEven ? 'md:order-1' : 'md:order-2')}>
                             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 font-headline">{service.title}</h2>
                             <p className="text-base text-foreground/80 mb-6">{service.description}</p>
-                            <ul className="space-y-3 text-base">
-                                {service.included.slice(0, 3).map((item) => (
-                                    <li key={item} className="flex items-start">
-                                        <CheckCircle className="w-5 h-5 text-primary mr-3 mt-1 shrink-0" />
-                                        <span className="text-foreground/80">{item}</span>
-                                    </li>
+                            <div className="space-y-4 text-base">
+                                {service.included.slice(0, 3).map((item, itemIndex) => (
+                                    <Fragment key={item}>
+                                        <div className="flex items-start">
+                                            <CheckCircle className="w-5 h-5 text-primary mr-3 mt-1 shrink-0" />
+                                            <span className="text-foreground/80">{item}</span>
+                                        </div>
+                                        {itemIndex < 2 && <Separator className="bg-border/50" />}
+                                    </Fragment>
                                 ))}
-                            </ul>
+                            </div>
                         </ScrollFadeIn>
                         <div
                              style={{
@@ -70,7 +75,7 @@ const ServiceSection = ({ service, index }: { service: ReturnType<typeof getServ
                              className={cn("flex items-center justify-center", isEven ? 'md:order-2' : 'md:order-1')}
                         >
                            <div className="relative group h-[400px] w-full max-w-sm cursor-pointer">
-                                <Card className="h-full bg-card border shadow-lg overflow-hidden">
+                                <Card className="h-full bg-card border shadow-lg overflow-hidden rounded-lg">
                                     {service.caseStudy?.imageUrl && (
                                         <div className="relative w-full h-full overflow-hidden rounded-lg">
                                             <Image 
