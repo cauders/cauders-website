@@ -538,10 +538,10 @@ const findProjectByTitle = (title: string) => {
               'App Store Deployment & Support'
           ],
           caseStudy: {
-              title: findProjectByTitle('Fajira Admin').title,
-              projectSlug: findProjectByTitle('Fajira Admin').slug,
-              description: findProjectByTitle('Fajira Admin').description,
-              imageUrl: findProjectByTitle('Fajira Admin').imageUrl
+              title: findProjectByTitle('Fajira Ecommerce').title,
+              projectSlug: findProjectByTitle('Fajira Ecommerce').slug,
+              description: findProjectByTitle('Fajira Ecommerce').description,
+              imageUrl: findProjectByTitle('Fajira Ecommerce').imageUrl
           }
       },
       {
@@ -557,10 +557,10 @@ const findProjectByTitle = (title: string) => {
               'Predictive Analytics & Data Insights'
           ],
           caseStudy: {
-              title: 'AI-Powered Chatbot',
-              projectSlug: 'ai-powered-chatbot',
-              description: 'This chatbot uses Genkit to understand and respond to customer queries, significantly improving support efficiency.',
-              imageUrl: placeholderImages.chatbot.imageUrl
+              title: findProjectByTitle('IT Centre App').title,
+              projectSlug: findProjectByTitle('IT Centre App').slug,
+              description: "This app showcases our ability to build complex, user-focused systems that streamline operations, a core principle of intelligent automation.",
+              imageUrl: findProjectByTitle('IT Centre App').imageUrl
           }
       },
       {
