@@ -9,13 +9,14 @@ import { cn } from '@/lib/utils';
 import { ArrowRight, Award, CheckCircle, Rocket, ShieldCheck } from 'lucide-react';
 import ScrollFadeIn from './ScrollFadeIn';
 import { Card, CardTitle, CardContent, CardHeader } from '../ui/card';
-import { useRef, Fragment } from 'react';
+import { useRef, Fragment, useState, useEffect } from 'react';
 import { useScrollProgress } from '@/hooks/useScrollProgress';
 import Image from 'next/image';
 import StandardizedHeading from './StandardizedHeading';
 import placeholderImages from '@/lib/placeholder-images.json';
 import { Separator } from '../ui/separator';
 import MagneticLink from './MagneticLink';
+import { Skeleton } from '../ui/skeleton';
 
 const whyChooseUs = [
   {
@@ -134,9 +135,73 @@ const AnimatedHeroText = () => {
     )
 }
 
+const ServicesSkeleton = () => (
+    <div className="bg-background">
+        <div className="h-[100vh] relative text-center flex flex-col justify-center">
+            <div className="sticky top-1/2 -translate-y-1/2">
+                <Skeleton className="h-16 w-2/3 mx-auto" />
+                <Skeleton className="h-6 w-1/2 mx-auto mt-4" />
+                <Skeleton className="h-10 w-full max-w-3xl mx-auto mt-6" />
+            </div>
+        </div>
+        
+        {[...Array(2)].map((_, index) => {
+            const isEven = index % 2 === 0;
+            return (
+                <div key={index} className={cn("py-16", !isEven && "bg-secondary/30")}>
+                    <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16 items-center">
+                            <div className={cn(isEven ? 'md:order-1' : 'md:order-2')}>
+                                <Skeleton className="h-12 w-3/4 mb-4" />
+                                <Skeleton className="h-6 w-full mb-2" />
+                                <Skeleton className="h-6 w-full mb-6" />
+                                <div className="space-y-4">
+                                    <Skeleton className="h-8 w-full" />
+                                    <Skeleton className="h-8 w-full" />
+                                    <Skeleton className="h-8 w-full" />
+                                </div>
+                            </div>
+                            <div className={cn(isEven ? 'md:order-2' : 'md:order-1')}>
+                                <Skeleton className="h-[400px] w-full max-w-sm mx-auto rounded-lg" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )
+        })}
+
+        <section className="py-20 lg:py-32">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+                 <div className="text-center mb-16">
+                    <Skeleton className="h-12 w-1/2 mx-auto" />
+                    <Skeleton className="h-6 w-2/3 mx-auto mt-4" />
+                </div>
+                <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+                    {[...Array(3)].map((_, index) => (
+                        <Skeleton key={index} className="h-[320px] w-full rounded-lg" />
+                    ))}
+                </div>
+            </div>
+        </section>
+    </div>
+);
+
 
 export default function Services() {
   const services = getServices();
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // Simulate a loading time for the shimmer effect to be visible
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 500); // Adjust time as needed
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (isLoading) {
+    return <ServicesSkeleton />;
+  }
 
   return (
     <section id="services" className="bg-background">
