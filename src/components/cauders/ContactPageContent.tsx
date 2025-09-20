@@ -43,6 +43,7 @@ const applicationFormSchema = z.object({
 export default function ContactPageContent() {
     const searchParams = useSearchParams();
     const jobTitle = searchParams.get('job');
+    const contactEmail = jobTitle ? 'hr@cauders.com' : 'info@cauders.com';
   
     return (
       <section id="contact" className="py-20 lg:py-32 bg-background">
@@ -69,7 +70,7 @@ export default function ContactPageContent() {
                         <div className="space-y-6 text-base text-foreground/90">
                             <div className="flex items-center gap-4">
                                 <Mail className="w-6 h-6 text-primary" />
-                                <a href="mailto:info@cauders.com" className="hover:text-primary transition-colors">info@cauders.com</a>
+                                <a href={`mailto:${contactEmail}`} className="hover:text-primary transition-colors">{contactEmail}</a>
                             </div>
                             <div className="flex items-start gap-4">
                                 <MapPin className="w-6 h-6 text-primary mt-1" />
@@ -326,5 +327,3 @@ function ApplicationForm({ jobTitle }: { jobTitle: string }) {
         </>
     );
 }
-
-    
