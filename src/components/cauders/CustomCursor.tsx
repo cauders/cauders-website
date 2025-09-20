@@ -12,13 +12,15 @@ const CustomCursor = () => {
   const [isMenuHovered, setIsMenuHovered] = useState(false);
   const [position, setPosition] = useState({ x: -100, y: -100 });
   const [isVisible, setIsVisible] = useState(false);
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
 
   useEffect(() => {
     setIsClient(true);
+    setIsTouchDevice(window.matchMedia("(pointer: coarse)").matches);
   }, []);
 
   useEffect(() => {
-    if (!isClient) return;
+    if (!isClient || isTouchDevice) return;
 
     const handleMouseMove = (e: MouseEvent) => {
       if(!isVisible) setIsVisible(true);
@@ -40,7 +42,7 @@ const CustomCursor = () => {
       window.removeEventListener('mousemove', handleMouseMove);
       document.removeEventListener('mouseleave', handleMouseLeave);
     };
-  }, [isClient, isVisible]);
+  }, [isClient, isVisible, isTouchDevice]);
 
   useEffect(() => {
     if (cursorRef.current) {
@@ -48,7 +50,7 @@ const CustomCursor = () => {
     }
   }, [position]);
 
-  if (!isClient) return null;
+  if (!isClient || isTouchDevice) return null;
 
   const showSpecialCursor = isFooterHovered || isMenuHovered;
 
