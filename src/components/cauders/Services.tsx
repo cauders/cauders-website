@@ -10,6 +10,8 @@ import ScrollFadeIn from './ScrollFadeIn';
 import { Card, CardTitle, CardContent, CardHeader } from '../ui/card';
 import Image from 'next/image';
 import StandardizedHeading from './StandardizedHeading';
+import React from 'react';
+import { Separator } from '../ui/separator';
 
 const whyChooseUs = [
   {
@@ -49,51 +51,54 @@ export default function Services() {
                 {services.map((service, index) => {
                     const isEven = index % 2 === 0;
                     return (
-                        <div key={service.slug} className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-16 items-center">
-                            <div className={cn("text-left", isEven ? 'md:order-1' : 'md:order-2')}>
-                                <ScrollFadeIn direction={isEven ? 'left' : 'right'}>
-                                    <h2 className="text-2xl lg:text-3xl font-bold text-foreground mb-4 font-headline">{service.title}</h2>
-                                    <p className="text-sm lg:text-base text-foreground/80 mb-6">{service.description}</p>
-                                    <ul className="space-y-3 text-sm">
-                                        {service.included.slice(0, 3).map((item) => (
-                                            <li key={item} className="flex items-start">
-                                                <CheckCircle className="w-5 h-5 text-primary mr-3 mt-1 shrink-0" />
-                                                <span className="text-foreground/80">{item}</span>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                    <Button asChild variant="link" className="px-0 mt-4 text-sm lg:text-base">
+                        <React.Fragment key={service.slug}>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-16 items-center">
+                                <div className={cn("text-left", isEven ? 'md:order-1' : 'md:order-2')}>
+                                    <ScrollFadeIn direction={isEven ? 'left' : 'right'}>
+                                        <h2 className="text-2xl lg:text-3xl font-bold text-foreground mb-4 font-headline">{service.title}</h2>
+                                        <p className="text-sm lg:text-base text-foreground/80 mb-6">{service.description}</p>
+                                        <ul className="space-y-3 text-sm">
+                                            {service.included.slice(0, 3).map((item) => (
+                                                <li key={item} className="flex items-start">
+                                                    <CheckCircle className="w-5 h-5 text-primary mr-3 mt-1 shrink-0" />
+                                                    <span className="text-foreground/80">{item}</span>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                        <Button asChild variant="link" className="px-0 mt-4 text-sm lg:text-base">
+                                            <Link href={`/services/${service.slug}`}>
+                                                Learn More <ArrowRight className="ml-2 h-4 w-4" />
+                                            </Link>
+                                        </Button>
+                                    </ScrollFadeIn>
+                                </div>
+                                <div className={cn("flex items-center justify-center", isEven ? 'md:order-2' : 'md:order-1')}>
+                                    <ScrollFadeIn direction={isEven ? 'right' : 'left'}>
                                         <Link href={`/services/${service.slug}`}>
-                                            Learn More <ArrowRight className="ml-2 h-4 w-4" />
+                                            <Card className="overflow-hidden group transition-all duration-300 hover:shadow-2xl hover:shadow-primary/20 hover:-translate-y-2 bg-card border text-left">
+                                                {service.caseStudy?.imageUrl && (
+                                                    <div className="aspect-video overflow-hidden">
+                                                        <Image
+                                                            src={service.caseStudy.imageUrl}
+                                                            alt={service.caseStudy.title}
+                                                            width={800}
+                                                            height={450}
+                                                            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                                                            data-ai-hint={service.caseStudy.title}
+                                                        />
+                                                    </div>
+                                                )}
+                                                <CardHeader className="p-4 lg:p-6">
+                                                    <CardTitle className="mb-1 text-base lg:text-lg text-foreground font-headline">{service.caseStudy?.title}</CardTitle>
+                                                    <p className="text-xs lg:text-sm text-foreground/70 line-clamp-2">{service.caseStudy?.description}</p>
+                                                </CardHeader>
+                                            </Card>
                                         </Link>
-                                    </Button>
-                                </ScrollFadeIn>
+                                    </ScrollFadeIn>
+                                </div>
                             </div>
-                            <div className={cn("flex items-center justify-center", isEven ? 'md:order-2' : 'md:order-1')}>
-                                <ScrollFadeIn direction={isEven ? 'right' : 'left'}>
-                                    <Link href={`/services/${service.slug}`}>
-                                        <Card className="overflow-hidden group transition-all duration-300 hover:shadow-2xl hover:shadow-primary/20 hover:-translate-y-2 bg-card border text-left">
-                                            {service.caseStudy?.imageUrl && (
-                                                <div className="aspect-video overflow-hidden">
-                                                    <Image
-                                                        src={service.caseStudy.imageUrl}
-                                                        alt={service.caseStudy.title}
-                                                        width={800}
-                                                        height={450}
-                                                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                                                        data-ai-hint={service.caseStudy.title}
-                                                    />
-                                                </div>
-                                            )}
-                                            <CardHeader className="p-4 lg:p-6">
-                                                <CardTitle className="mb-1 text-base lg:text-lg text-foreground font-headline">{service.caseStudy?.title}</CardTitle>
-                                                <p className="text-xs lg:text-sm text-foreground/70 line-clamp-2">{service.caseStudy?.description}</p>
-                                            </CardHeader>
-                                        </Card>
-                                    </Link>
-                                </ScrollFadeIn>
-                            </div>
-                        </div>
+                            {index < services.length - 1 && <Separator className="my-8" />}
+                        </React.Fragment>
                     );
                 })}
             </div>
