@@ -67,7 +67,7 @@ export default function CareersPage() {
             <ScrollFadeIn className="text-center mb-16">
                 <h2 className="text-3xl md:text-4xl font-bold text-foreground font-headline">Why Cauders?</h2>
                 <p className="mt-4 text-lg text-foreground/70 max-w-2xl mx-auto">
-                    We're committed to creating an environment where our team can thrive, innovate, and do their best work.
+                    We're committed to creating an environment where our team can thrive, innovate, and do their best work. By fostering a culture of collaboration, respect, and continuous growth, we empower every member to make a meaningful impact.
                 </p>
             </ScrollFadeIn>
              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
