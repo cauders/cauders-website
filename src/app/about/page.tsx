@@ -48,8 +48,8 @@ export default function AboutPage() {
                     <div className="flex flex-col gap-24 lg:gap-32">
                         {contentSections.map((section, index) => (
                             <div key={index} className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-                                <div className={cn("lg:order-1", section.layout === 'text-right' && "lg:order-2")}>
-                                    <div className="max-w-lg mx-auto">
+                                <div className={cn("lg:order-1 text-center lg:text-left", section.layout === 'text-right' && "lg:order-2 lg:text-right")}>
+                                    <div className="max-w-lg mx-auto lg:mx-0 lg:ml-auto">
                                         <ScrollFadeIn direction={section.layout === 'text-left' ? 'left' : 'right'}>
                                             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6 font-headline">
                                                 {section.title}

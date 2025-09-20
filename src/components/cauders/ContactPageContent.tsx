@@ -19,7 +19,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
 import { submitContactForm, submitApplicationForm } from "@/app/actions";
 import ScrollFadeIn from "./ScrollFadeIn";
-import { Loader2, Mail, MapPin, Phone, Github, Instagram, Linkedin, Briefcase } from "lucide-react";
+import { Loader2, Mail, MapPin, Github, Instagram, Linkedin } from "lucide-react";
 import Link from "next/link";
 import { Separator } from "../ui/separator";
 import { useSearchParams } from "next/navigation";

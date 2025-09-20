@@ -27,19 +27,19 @@ export default function Hero() {
                 <BlurText
                     text="Where Technology"
                     animateBy="words"
-                    className="text-7xl md:text-8xl"
+                    className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl"
                 />
                  <BlurText
                     text="Meets Vision"
                     animateBy="words"
                     delay={100}
-                    className="text-7xl md:text-8xl"
+                    className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl"
                 />
                 <BlurText
                     text="and Ideas Become Impact"
                     animateBy="words"
                     delay={50}
-                    className="text-4xl md:text-5xl text-white mt-4 font-medium"
+                    className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-white mt-4 font-medium"
                 />
               </h1>
               <div className="mt-12 animate-fade-in-up" style={{ animationDelay: '1.5s' }}>
@@ -76,3 +76,4 @@ export default function Hero() {
     </section>
   );
 }
+

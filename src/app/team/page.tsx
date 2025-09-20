@@ -18,13 +18,13 @@ export default function TeamPage() {
           <div className="text-center mb-16">
             <StandardizedHeading lines={["Meet Our Team"]} />
             <ScrollFadeIn>
-              <p className="mt-4 text-lg text-foreground/70 max-w-2xl mx-auto">
+              <p className="mt-4 text-base md:text-lg text-foreground/70 max-w-2xl mx-auto">
                 The creative minds and dedicated professionals driving innovation at Cauders. We are a collective of thinkers, designers, and developers united by a shared passion for crafting exceptional digital experiences.
               </p>
             </ScrollFadeIn>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {teamMembers.map((member, index) => (
               <ScrollFadeIn key={index} style={{ animationDelay: `${index * 100}ms` }} className="h-full">
                 <Card className="h-full bg-card border text-center hover:border-primary hover:-translate-y-2 transition-transform duration-300 group overflow-hidden flex flex-col">

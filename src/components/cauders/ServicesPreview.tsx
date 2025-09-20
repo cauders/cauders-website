@@ -69,14 +69,14 @@ export default function ServicesPreview() {
             <StandardizedHeading lines={["What We Offer"]} className="mt-16" />
             <div className="overflow-hidden py-1">
             <p
-                className="mt-4 text-xl text-foreground/70 max-w-2xl mx-auto transition-transform duration-300 ease-out"
+                className="mt-4 text-base md:text-xl text-foreground/70 max-w-2xl mx-auto transition-transform duration-300 ease-out"
                 style={{ transform: subtitleTransform, transitionDelay: '50ms' }}
             >
                 Our expertise spans the entire development lifecycle, delivering excellence at every step. From initial strategy and design to development, deployment, and ongoing support, we provide comprehensive solutions that drive results.
             </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-16">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8 mt-16">
             {services.map((service, index) => (
                 <div
                     key={service.slug}
