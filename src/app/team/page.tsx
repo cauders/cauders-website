@@ -26,7 +26,7 @@ export default function TeamPage() {
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {teamMembers.map((member, index) => (
-              <ScrollFadeIn key={index} style={{ animationDelay: `${index * 100}ms` }}>
+              <ScrollFadeIn key={index} style={{ animationDelay: `${index * 100}ms` }} className="h-full">
                 <Card className="h-full bg-card border text-center hover:border-primary hover:-translate-y-2 transition-transform duration-300 group overflow-hidden flex flex-col">
                   <CardHeader className="p-0">
                     <div className="relative w-full h-80">
@@ -42,7 +42,7 @@ export default function TeamPage() {
                     <div className="flex-grow">
                       <h3 className="text-xl font-bold font-headline text-foreground">{member.name}</h3>
                       <p className="text-primary text-sm font-medium">{member.role}</p>
-                      <p className="text-sm text-foreground/70 mt-4">{member.bio}</p>
+                      <p className="text-sm text-foreground/70 mt-4 line-clamp-3">{member.bio}</p>
                     </div>
                     <div className="flex justify-center gap-2 mt-6">
                         {member.socials.linkedin && (
