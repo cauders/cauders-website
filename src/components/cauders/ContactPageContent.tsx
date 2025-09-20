@@ -15,6 +15,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { Card, CardContent } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
 import { submitContactForm, submitApplicationForm } from "@/app/actions";
 import ScrollFadeIn from "./ScrollFadeIn";
@@ -59,7 +60,7 @@ export default function ContactPageContent() {
           <ScrollFadeIn delay={0.2}>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16">
                 {/* Left Side: Info */}
-                <div className="p-8 md:p-12">
+                <div className="flex items-center">
                     <div className="flex flex-col justify-center h-full text-foreground">
                         <h2 className="text-3xl font-bold mb-4 font-headline">Get in Touch</h2>
                         <p className="text-base text-foreground/80 mb-8">
@@ -97,9 +98,11 @@ export default function ContactPageContent() {
                 </div>
 
                 {/* Right Side: Form */}
-                <div className="p-8 md:p-12">
-                    {jobTitle ? <ApplicationForm jobTitle={jobTitle} /> : <GeneralContactForm />}
-                </div>
+                <Card className="bg-card shadow-lg rounded-2xl">
+                    <CardContent className="p-8 md:p-12">
+                        {jobTitle ? <ApplicationForm jobTitle={jobTitle} /> : <GeneralContactForm />}
+                    </CardContent>
+                </Card>
             </div>
           </ScrollFadeIn>
         </div>
