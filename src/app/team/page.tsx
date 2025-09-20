@@ -26,7 +26,7 @@ export default function TeamPage() {
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {teamMembers.map((member, index) => (
-              <ScrollFadeIn key={index} style={{ animationDelay: `${index * 100}ms` }} className="h-full">
+              <ScrollFadeIn key={index} style={{ animationDelay: `${index * 100}ms` }}>
                 <Card className="h-full bg-card border text-center hover:border-primary hover:-translate-y-2 transition-transform duration-300 group overflow-hidden flex flex-col">
                   <CardHeader className="p-0">
                     <div className="relative w-full h-80">
