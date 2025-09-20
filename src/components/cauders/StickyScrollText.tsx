@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useRef } from 'react';
@@ -16,9 +15,9 @@ const StickyScrollText = () => {
   return (
     <div ref={containerRef} className="relative flex flex-col bg-background">
       {/* Sticky container for the animated text */}
-      <div className="py-20 lg:h-[100vh] top-0 flex-shrink-0 flex items-center justify-center overflow-hidden">
+      <div className="py-20 lg:py-0 lg:h-[100vh] top-0 flex-shrink-0 flex items-center justify-center overflow-hidden">
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <StandardizedHeading lines={lines} className="text-4xl md:text-5xl lg:text-7xl" />
+            <StandardizedHeading lines={lines} className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl" />
         </div>
       </div>
     </div>
