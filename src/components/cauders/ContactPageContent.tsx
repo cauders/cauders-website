@@ -15,7 +15,6 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Card, CardContent } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
 import { submitContactForm, submitApplicationForm } from "@/app/actions";
 import ScrollFadeIn from "./ScrollFadeIn";
@@ -23,9 +22,7 @@ import { Loader2, Mail, MapPin, Phone, Github, Instagram, Linkedin, Briefcase } 
 import Link from "next/link";
 import { Separator } from "../ui/separator";
 import { useSearchParams } from "next/navigation";
-import { Suspense, useEffect } from "react";
-import { Skeleton } from "../ui/skeleton";
-import { cn } from "@/lib/utils";
+import { useEffect } from "react";
 import StandardizedHeading from "./StandardizedHeading";
 
 const contactFormSchema = z.object({
@@ -60,53 +57,49 @@ export default function ContactPageContent() {
             </div>
   
           <ScrollFadeIn delay={0.2}>
-             <div className="relative">
-                <Card className="relative overflow-hidden shadow-lg rounded-2xl glass-effect">
-                    <div className="grid grid-cols-1 md:grid-cols-2">
-                        {/* Left Side: Info */}
-                        <div className="p-8 md:p-12">
-                            <div className="flex flex-col justify-center h-full text-foreground">
-                                <h2 className="text-3xl font-bold mb-4 font-headline">Get in Touch</h2>
-                                <p className="text-base text-foreground/80 mb-8">
-                                    We're here to help and answer any question you might have. We look forward to hearing from you.
-                                </p>
-                                <div className="space-y-6 text-base text-foreground/90">
-                                    <div className="flex items-center gap-4">
-                                        <Mail className="w-6 h-6 text-primary" />
-                                        <a href="mailto:info@cauders.com" className="hover:text-primary transition-colors">info@cauders.com</a>
-                                    </div>
-                                    <div className="flex items-start gap-4">
-                                        <MapPin className="w-6 h-6 text-primary mt-1" />
-                                        <span>Pakistan</span>
-                                    </div>
-                                </div>
-                                <Separator className="my-8 bg-foreground/20" />
-                                <div className="flex items-center gap-2">
-                                    <Button variant="ghost" size="icon" asChild>
-                                        <Link href="https://www.instagram.com/ccauders/" aria-label="Instagram">
-                                            <Instagram className="h-5 w-5 text-foreground/70 hover:text-primary transition-colors" />
-                                        </Link>
-                                    </Button>
-                                    <Button variant="ghost" size="icon" asChild>
-                                        <Link href="https://github.com/cauders" aria-label="GitHub">
-                                            <Github className="h-5 w-5 text-foreground/70 hover:text-primary transition-colors" />
-                                        </Link>
-                                    </Button>
-                                    <Button variant="ghost" size="icon" asChild>
-                                        <Link href="https://www.linkedin.com/company/108785409/admin/dashboard/" aria-label="LinkedIn">
-                                            <Linkedin className="h-5 w-5 text-foreground/70 hover:text-primary transition-colors" />
-                                        </Link>
-                                    </Button>
-                                </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16">
+                {/* Left Side: Info */}
+                <div className="p-8 md:p-12">
+                    <div className="flex flex-col justify-center h-full text-foreground">
+                        <h2 className="text-3xl font-bold mb-4 font-headline">Get in Touch</h2>
+                        <p className="text-base text-foreground/80 mb-8">
+                            We're here to help and answer any question you might have. We look forward to hearing from you.
+                        </p>
+                        <div className="space-y-6 text-base text-foreground/90">
+                            <div className="flex items-center gap-4">
+                                <Mail className="w-6 h-6 text-primary" />
+                                <a href="mailto:info@cauders.com" className="hover:text-primary transition-colors">info@cauders.com</a>
+                            </div>
+                            <div className="flex items-start gap-4">
+                                <MapPin className="w-6 h-6 text-primary mt-1" />
+                                <span>Pakistan</span>
                             </div>
                         </div>
-    
-                        {/* Right Side: Form */}
-                        <div className="p-8 md:p-12 md:border-l border-border/20">
-                            {jobTitle ? <ApplicationForm jobTitle={jobTitle} /> : <GeneralContactForm />}
+                        <Separator className="my-8 bg-foreground/20" />
+                        <div className="flex items-center gap-2">
+                            <Button variant="ghost" size="icon" asChild>
+                                <Link href="https://www.instagram.com/ccauders/" aria-label="Instagram">
+                                    <Instagram className="h-5 w-5 text-foreground/70 hover:text-primary transition-colors" />
+                                </Link>
+                            </Button>
+                            <Button variant="ghost" size="icon" asChild>
+                                <Link href="https://github.com/cauders" aria-label="GitHub">
+                                    <Github className="h-5 w-5 text-foreground/70 hover:text-primary transition-colors" />
+                                </Link>
+                            </Button>
+                            <Button variant="ghost" size="icon" asChild>
+                                <Link href="https://www.linkedin.com/company/108785409/admin/dashboard/" aria-label="LinkedIn">
+                                    <Linkedin className="h-5 w-5 text-foreground/70 hover:text-primary transition-colors" />
+                                </Link>
+                            </Button>
                         </div>
                     </div>
-                </Card>
+                </div>
+
+                {/* Right Side: Form */}
+                <div className="p-8 md:p-12">
+                    {jobTitle ? <ApplicationForm jobTitle={jobTitle} /> : <GeneralContactForm />}
+                </div>
             </div>
           </ScrollFadeIn>
         </div>
@@ -330,3 +323,5 @@ function ApplicationForm({ jobTitle }: { jobTitle: string }) {
         </>
     );
 }
+
+    
