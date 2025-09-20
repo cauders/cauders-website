@@ -14,27 +14,38 @@ import { ArrowRight, Quote } from "lucide-react";
 import ScrollFadeIn from "./ScrollFadeIn";
 import Autoplay from "embla-carousel-autoplay";
 import Link from "next/link";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import StandardizedHeading from "./StandardizedHeading";
 import Image from "next/image";
 import { Button } from "../ui/button";
+import { Skeleton } from "../ui/skeleton";
 
 
 export default function Testimonials() {
-  const testimonials = getProjects()
-    .map(p => ({
-        ...p.testimonial,
-        projectTitle: p.title,
-        projectSlug: p.slug,
-        imageUrl: p.imageUrl
-    }))
-    .filter(t => t.author && t.text);
+    const [testimonials, setTestimonials] = useState<any[]>([]);
+    const [loading, setLoading] = useState(true);
 
   const plugin = React.useRef(
     Autoplay({ delay: 5000, stopOnInteraction: true })
   );
 
-  if (testimonials.length === 0) {
+    useEffect(() => {
+        const loadedTestimonials = getProjects()
+            .map(p => ({
+                ...p.testimonial,
+                projectTitle: p.title,
+                projectSlug: p.slug,
+                imageUrl: p.imageUrl
+            }))
+            .filter(t => t.author && t.text);
+        
+        setTimeout(() => {
+            setTestimonials(loadedTestimonials);
+            setLoading(false);
+        }, 1500);
+    }, []);
+
+  if (testimonials.length === 0 && !loading) {
     return null;
   }
 
@@ -56,34 +67,44 @@ export default function Testimonials() {
                 className="w-full"
             >
                 <CarouselContent className="-ml-4">
-                    {testimonials.map((testimonial, index) => (
-                    <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3 pl-8">
-                        <div className="p-1 h-full">
-                            <div className="relative w-full h-[220px] lg:h-[320px] rounded-2xl overflow-hidden">
-                                <Image
-                                    src={testimonial.imageUrl}
-                                    alt={testimonial.projectTitle}
-                                    priority
-                                    fill
-                                    className="object-cover"
-                                />
-                                 <div className="absolute inset-0 bg-black/50"></div>
-                                <Card className="glass-effect w-full h-full rounded-2xl border-border/20 bg-transparent">
-                                    <CardContent className="relative z-10 flex flex-col items-center justify-center p-6 text-center h-full">
-                                        <Quote className="absolute top-4 left-4 w-6 h-6 text-primary/80" />
-                                        <p className="text-xs font-medium text-white max-w-3xl line-clamp-5">
-                                            "{testimonial!.text}"
-                                        </p>
-                                        <cite className="font-semibold text-xs text-background not-italic mt-4">— {testimonial!.author}</cite>
-                                        <p className="text-xs text-background/60 mt-1">
-                                            From the <Link href={`https://www.portfolio.cauders.com/${testimonial.projectSlug}`} className="text-primary/90 hover:underline">{testimonial.projectTitle}</Link> project
-                                        </p>
-                                    </CardContent>
-                                </Card>
+                    {loading ? (
+                        Array.from({ length: 3 }).map((_, index) => (
+                            <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3 pl-8">
+                                <div className="p-1 h-full">
+                                    <Skeleton className="w-full h-[220px] lg:h-[320px] rounded-2xl" />
+                                </div>
+                            </CarouselItem>
+                        ))
+                    ) : (
+                        testimonials.map((testimonial, index) => (
+                        <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3 pl-8">
+                            <div className="p-1 h-full">
+                                <div className="relative w-full h-[220px] lg:h-[320px] rounded-2xl overflow-hidden">
+                                    <Image
+                                        src={testimonial.imageUrl}
+                                        alt={testimonial.projectTitle}
+                                        priority
+                                        fill
+                                        className="object-cover"
+                                    />
+                                    <div className="absolute inset-0 bg-black/50"></div>
+                                    <Card className="glass-effect w-full h-full rounded-2xl border-border/20 bg-transparent">
+                                        <CardContent className="relative z-10 flex flex-col items-center justify-center p-6 text-center h-full">
+                                            <Quote className="absolute top-4 left-4 w-6 h-6 text-primary/80" />
+                                            <p className="text-xs font-medium text-white max-w-3xl line-clamp-5">
+                                                "{testimonial!.text}"
+                                            </p>
+                                            <cite className="font-semibold text-xs text-background not-italic mt-4">— {testimonial!.author}</cite>
+                                            <p className="text-xs text-background/60 mt-1">
+                                                From the <Link href={`https://www.portfolio.cauders.com/${testimonial.projectSlug}`} className="text-primary/90 hover:underline">{testimonial.projectTitle}</Link> project
+                                            </p>
+                                        </CardContent>
+                                    </Card>
+                                </div>
                             </div>
-                        </div>
-                    </CarouselItem>
-                    ))}
+                        </CarouselItem>
+                        ))
+                    )}
                 </CarouselContent>
                 <CarouselPrevious className="bg-primary/80 text-primary-foreground border-0 hover:bg-primary left-8" />
                 <CarouselNext className="bg-primary/80 text-primary-foreground border-0 hover:bg-primary right-8" />
