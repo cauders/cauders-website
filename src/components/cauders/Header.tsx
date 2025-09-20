@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useEffect } from 'react';
@@ -7,6 +8,7 @@ import { Button } from '@/components/ui/button';
 import { X } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import { ThemeToggle } from './ThemeToggle';
+import MagneticLink from './MagneticLink';
 
 const navLinks = [
   { href: '/', label: 'Home' },
@@ -96,22 +98,25 @@ export default function Header() {
                 </div>
             </div>
 
-            <nav className="flex-grow flex flex-col items-center justify-center gap-4 md:gap-8">
-                {navLinks.map((link, index) => (
-                <Link
-                    key={link.href}
-                    href={link.href}
-                    onClick={() => setIsMenuOpen(false)}
-                    className={cn(
-                        "relative text-4xl md:text-6xl font-bold text-background/80 hover:text-background transition-colors duration-300 opacity-0 group",
-                        isMenuOpen && "animate-fade-in-down"
-                    )}
-                     style={{ animationDelay: `${500 + index * 100}ms` }}
-                >
-                    {link.label}
-                    <span className="absolute left-0 -bottom-1 w-full h-1 bg-primary scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300 ease-out"></span>
-                </Link>
-                ))}
+            <nav className="flex-grow flex items-center justify-center">
+                <div className="flex flex-col md:flex-row items-center justify-center gap-4">
+                    {navLinks.map((link, index) => (
+                        <div 
+                            key={link.href}
+                            className={cn("opacity-0", isMenuOpen && "animate-fade-in-down")}
+                            style={{ animationDelay: `${500 + index * 100}ms` }}
+                        >
+                            <MagneticLink
+                                href={link.href}
+                                onClick={() => setIsMenuOpen(false)}
+                                className="w-40 h-40"
+                                linkClassName="text-lg text-background"
+                            >
+                                {link.label}
+                            </MagneticLink>
+                        </div>
+                    ))}
+                </div>
             </nav>
 
             <div className="h-24"></div>
