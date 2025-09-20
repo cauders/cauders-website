@@ -185,7 +185,7 @@ export default function PortfolioPreview() {
               <div
                 key={project.slug}
                 ref={(el) => { cardRefs.current[index] = el; }}
-                className="absolute w-[95vw] md:w-[60vw] lg:w-[45vw] xl:w-[35vw] h-full top-0 left-0 right-0 mx-auto pointer-events-auto"
+                className="absolute w-[90vw] md:w-[60vw] lg:w-[45vw] xl:w-[35vw] h-full top-0 left-0 right-0 mx-auto pointer-events-auto"
                 onMouseEnter={() => setActiveCard(index)}
                 onMouseLeave={() => setActiveCard(null)}
                 style={{
@@ -254,3 +254,5 @@ export default function PortfolioPreview() {
     </div>
   );
 }
+
+    
