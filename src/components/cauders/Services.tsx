@@ -110,34 +110,6 @@ const ServiceSection = ({ service, index }: { service: ReturnType<typeof getServ
     )
 }
 
-const easeOutCubic = (x: number): number => 1 - Math.pow(1 - x, 3);
-
-const AnimatedHeroText = () => {
-    const sectionRef = useRef<HTMLDivElement>(null);
-    const progress = useScrollProgress(sectionRef);
-    const easedProgress = easeOutCubic(progress);
-
-    const titleOpacity = Math.min(1, easedProgress * 2);
-    const titleTranslateY = (1 - easedProgress) * 50;
-
-    const descriptionOpacity = Math.min(1, Math.max(0, (easedProgress - 0.2) * 2));
-    const descriptionTranslateY = (1 - easeOutCubic(Math.max(0, Math.min(1, (progress - 0.2) * 2)))) * 50;
-
-
-    return (
-        <div ref={sectionRef} className="h-[100vh] relative text-center flex flex-col justify-center">
-            <div className="sticky top-1/2 -translate-y-1/2">
-                <StandardizedHeading lines={["Our Services"]} />
-                <ScrollFadeIn>
-                    <p className="mt-6 text-lg text-foreground/70 max-w-3xl mx-auto">
-                        At Cauders, we deliver future-ready digital solutions that combine innovation, performance, and scalability. Our expertise spans across multiple domains to help businesses thrive in the evolving tech landscape.
-                    </p>
-                </ScrollFadeIn>
-            </div>
-        </div>
-    )
-}
-
 const ServicesSkeleton = () => (
     <div className="bg-background">
         <div className="h-[100vh] relative text-center flex flex-col justify-center">
@@ -208,7 +180,16 @@ export default function Services() {
 
   return (
     <section id="services" className="bg-background">
-        <AnimatedHeroText />
+        <section className="py-20 lg:py-32 text-center">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+                <StandardizedHeading lines={["Our Services"]} />
+                <ScrollFadeIn>
+                    <p className="mt-6 text-lg text-foreground/70 max-w-3xl mx-auto">
+                        At Cauders, we deliver future-ready digital solutions that combine innovation, performance, and scalability. Our expertise spans across multiple domains to help businesses thrive in the evolving tech landscape.
+                    </p>
+                </ScrollFadeIn>
+            </div>
+        </section>
         
         <div className="flex flex-col">
           {services.map((service, index) => (
