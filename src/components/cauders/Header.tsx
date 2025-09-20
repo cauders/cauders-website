@@ -6,6 +6,7 @@ import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { X } from 'lucide-react';
 import { usePathname } from 'next/navigation';
+import MagneticLink from './MagneticLink';
 
 const navLinks = [
   { href: '/', label: 'Home' },
@@ -96,23 +97,22 @@ export default function Header() {
                 </div>
             </div>
 
-            <nav ref={navRef} className="flex-grow flex items-center justify-center">
-                <div className="flex flex-col items-center gap-8">
-                    {navLinks.map((link, index) => (
-                    <Link
-                        key={link.href}
-                        href={link.href}
-                        onClick={() => setIsMenuOpen(false)}
-                        className={cn(
-                            "text-5xl font-bold text-background/80 hover:text-background transition-colors duration-300 opacity-0",
-                            isMenuOpen && "animate-fade-in-down"
-                        )}
-                        style={{ animationDelay: `${500 + index * 100}ms` }}
-                    >
-                        {link.label}
-                    </Link>
-                    ))}
-                </div>
+            <nav ref={navRef} className="flex-grow flex items-center justify-center flex-wrap gap-4 md:gap-12">
+                {navLinks.map((link, index) => (
+                <MagneticLink
+                    key={link.href}
+                    href={link.href}
+                    onClick={() => setIsMenuOpen(false)}
+                    className={cn(
+                        "opacity-0 text-background",
+                        isMenuOpen && "animate-fade-in-down"
+                    )}
+                     style={{ animationDelay: `${500 + index * 100}ms` }}
+                     linkClassName="text-5xl font-bold"
+                >
+                    {link.label}
+                </MagneticLink>
+                ))}
             </nav>
 
             <div className="h-24"></div>
