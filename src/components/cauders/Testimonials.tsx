@@ -59,7 +59,7 @@ export default function Testimonials() {
                     {testimonials.map((testimonial, index) => (
                     <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3 pl-8">
                         <div className="p-1 h-full">
-                            <div className="relative w-full h-[280px] lg:h-[320px] rounded-2xl overflow-hidden">
+                            <div className="relative w-full h-[260px] lg:h-[320px] rounded-2xl overflow-hidden">
                                 <Image
                                     src={testimonial.imageUrl}
                                     alt={testimonial.projectTitle}

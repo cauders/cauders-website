@@ -55,9 +55,23 @@ export default function Hero() {
                 </form>
               </div>
             </div>
+             {/* Mobile Only Image */}
+            <div className="md:hidden flex items-center justify-center w-full mt-8">
+                <FadeContent blur={true} duration={1000} delay={1200} easing="ease-out" initialOpacity={0}>
+                <div className="relative w-[300px] h-[300px]">
+                    <Image 
+                        src="/images/logo/hero-logo.png"
+                        alt="Cauders Logo"
+                        fill
+                        priority
+                        className="object-contain"
+                    />
+                </div>
+                </FadeContent>
+            </div>
           </div>
           
-          {/* Right Column */}
+          {/* Right Column (Desktop Only) */}
           <div className="hidden md:flex items-center justify-center w-full h-full">
             <FadeContent blur={true} duration={1000} delay={1200} easing="ease-out" initialOpacity={0}>
               <div className="relative w-[600px] h-[600px]">
@@ -76,6 +90,3 @@ export default function Hero() {
     </section>
   );
 }
-
-
-
