@@ -12,7 +12,7 @@ import StandardizedHeading from "./StandardizedHeading";
 import ScrollFadeIn from "./ScrollFadeIn";
 
 export default function ServicesPreview() {
-  const services = getServices(); 
+  const services = getServices().slice(0, 4); 
   
   // --- Mobile-specific render ---
   const MobileView = () => (
@@ -26,7 +26,7 @@ export default function ServicesPreview() {
                 {services.map((service, index) => (
                     <ScrollFadeIn key={service.slug} style={{ animationDelay: `${index * 100}ms`}}>
                          <Link href={`/services/${service.slug}`} className="block h-full">
-                            <Card className={cn("h-full flex flex-col justify-between bg-card border border-primary/20 min-h-[320px]")}>
+                            <Card className={cn("h-full flex flex-col justify-between animated-border-card bg-card border min-h-[320px]")}>
                                 <CardHeader>
                                     <CardTitle className="text-xl md:text-2xl text-foreground font-headline">{service.title}</CardTitle>
                                 </CardHeader>
