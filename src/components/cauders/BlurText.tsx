@@ -100,7 +100,7 @@ const BlurText = ({
 
         return (
           <motion.span
-            className="inline-block will-change-[transform,filter,opacity] word-highlight"
+            className="inline-block will-change-[transform,filter,opacity] word-highlight py-1"
             key={index}
             initial={fromSnapshot}
             animate={inView ? animateKeyframes : fromSnapshot}
