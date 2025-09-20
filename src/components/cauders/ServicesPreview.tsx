@@ -26,7 +26,7 @@ export default function ServicesPreview() {
                 {services.map((service, index) => (
                     <ScrollFadeIn key={service.slug} style={{ animationDelay: `${index * 100}ms`}} className="h-full">
                         <Link href={`/services/${service.slug}`} className="block h-full">
-                            <Card className={cn("h-full flex flex-col justify-between animated-border-card bg-card border")}>
+                            <Card className={cn("h-full flex flex-col justify-between animated-border-card bg-card border min-h-[260px]")}>
                                 <CardHeader className="flex-grow flex items-center justify-center">
                                     <CardTitle className="text-lg md:text-2xl text-foreground font-headline">{service.title}</CardTitle>
                                 </CardHeader>
