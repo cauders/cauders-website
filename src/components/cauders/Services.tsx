@@ -50,7 +50,7 @@ const ServiceSection = ({ service, index }: { service: ReturnType<typeof getServ
     const cardOpacity = easedProgress;
     
     return (
-        <div ref={ref} className="h-[90vh] relative">
+        <div ref={ref} className="h-[80vh] relative">
             <div className={cn("sticky top-0 h-screen flex items-center justify-center overflow-hidden", !isEven && "bg-secondary/30")}>
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                      <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16 items-center">
