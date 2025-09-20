@@ -39,10 +39,8 @@ export default function Testimonials() {
             }))
             .filter(t => t.author && t.text);
         
-        setTimeout(() => {
-            setTestimonials(loadedTestimonials);
-            setLoading(false);
-        }, 1500);
+        setTestimonials(loadedTestimonials);
+        setLoading(false);
     }, []);
 
   if (testimonials.length === 0 && !loading) {
