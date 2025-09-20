@@ -110,14 +110,12 @@ export default function ServicePage({ params }: ServicePageParams) {
                 )}
             </div>
 
-            <ScrollFadeIn className="mt-24">
-                <Card className="glass-effect rounded-lg p-8 text-center shadow-lg">
+            <ScrollFadeIn className="mt-24 text-center">
                 <h2 className="text-3xl font-bold text-foreground mb-4 font-headline">Ready to get started?</h2>
                 <p className="text-base text-foreground/70 mb-6 max-w-xl mx-auto">Let's discuss how our {service.title.toLowerCase()} services can help you achieve your goals.</p>
                 <Button size="lg" asChild>
                     <Link href="/contact">Contact Us</Link>
                 </Button>
-                </Card>
             </ScrollFadeIn>
         </div>
       </div>
