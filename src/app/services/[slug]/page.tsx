@@ -7,6 +7,8 @@ import Link from "next/link";
 import { ArrowLeft, CheckCircle, ArrowRight } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import ScrollFadeIn from "@/components/cauders/ScrollFadeIn";
+import StandardizedHeading from "@/components/cauders/StandardizedHeading";
+import { Separator } from "@/components/ui/separator";
 
 type ServicePageParams = {
   params: {
@@ -27,94 +29,96 @@ export default function ServicePage({ params }: ServicePageParams) {
         <div className="absolute top-[-10rem] right-[-10rem] w-96 h-96 bg-primary/10 rounded-full blur-3xl -z-10"></div>
         <div className="absolute bottom-[-15rem] left-[-15rem] w-96 h-96 bg-primary/10 rounded-full blur-3xl -z-10"></div>
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-24">
-        <div className="max-w-5xl mx-auto">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
+        <div className="max-w-7xl mx-auto">
             <ScrollFadeIn>
-                <Card className="glass-effect shadow-lg rounded-2xl w-full">
-                    <CardContent className="p-8 md:p-12">
-                        <div className="flex justify-between items-center mb-8">
-                            <div className="flex items-center gap-4">
-                                <div className="bg-primary/10 rounded-full p-3 border border-primary/20">
-                                    <service.icon className="w-8 h-8 text-primary" />
-                                </div>
-                                <h1 className="text-4xl md:text-5xl font-bold text-foreground font-headline">{service.title}</h1>
-                            </div>
-                            <Button asChild variant="ghost">
-                                <Link href="/services">
-                                    <ArrowLeft className="mr-2 h-4 w-4" />
-                                    Back to Services
+                <div className="mb-12">
+                    <Button asChild variant="ghost" className="mb-8">
+                        <Link href="/services">
+                            <ArrowLeft className="mr-2 h-4 w-4" />
+                            Back to All Services
+                        </Link>
+                    </Button>
+                    <div className="flex items-center gap-4 mb-4">
+                        <div className="bg-primary/10 rounded-full p-3 border border-primary/20">
+                            <service.icon className="w-8 h-8 text-primary" />
+                        </div>
+                        <StandardizedHeading lines={[service.title]} />
+                    </div>
+                    <p className="text-lg text-foreground/70 max-w-4xl">{service.description}</p>
+                </div>
+            </ScrollFadeIn>
+
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
+                {/* Left/Main Column */}
+                <div className={service.caseStudy ? "lg:col-span-2" : "lg:col-span-3"}>
+                    <ScrollFadeIn>
+                        <section id="details">
+                            <h2 className="text-3xl font-bold text-foreground mb-4 font-headline">Service Details</h2>
+                            <div className="prose prose-lg dark:prose-invert text-base text-foreground/80 max-w-none" dangerouslySetInnerHTML={{ __html: service.details }} />
+                        </section>
+                    </ScrollFadeIn>
+                    
+                    <Separator className="my-12" />
+
+                    <ScrollFadeIn>
+                       <section id="included">
+                            <h2 className="text-3xl font-bold text-foreground mb-6 font-headline">What's Included</h2>
+                            <ul className="space-y-4 text-base">
+                                {service.included.map((item, index) => (
+                                    <li key={index} className="flex items-start">
+                                        <CheckCircle className="w-5 h-5 text-primary mr-3 mt-0.5 shrink-0" />
+                                        <span className="text-foreground/80">{item}</span>
+                                    </li>
+                                ))}
+                            </ul>
+                        </section>
+                    </ScrollFadeIn>
+                </div>
+
+                {/* Right Column (Case Study) */}
+                {service.caseStudy && (
+                    <div className="lg:col-span-1">
+                        <ScrollFadeIn className="sticky top-24">
+                           <section id="case-study">
+                                <h2 className="text-2xl font-bold text-foreground mb-4 font-headline">Featured Project</h2>
+                                <Link href={`https://www.portfolio.cauders.com/${service.caseStudy.projectSlug}`}>
+                                    <Card className="overflow-hidden group transition-all duration-300 hover:shadow-2xl hover:shadow-primary/20 hover:-translate-y-2 bg-card border text-left">
+                                        <div className="aspect-video overflow-hidden">
+                                        <Image
+                                            src={service.caseStudy.imageUrl}
+                                            alt={service.caseStudy.title}
+                                            width={800}
+                                            height={450}
+                                            priority
+                                            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                                            data-ai-hint={service.caseStudy.title}
+                                        />
+                                        </div>
+                                        <CardHeader className="p-6">
+                                            <CardTitle className="mb-2 text-xl text-foreground font-headline">{service.caseStudy.title}</CardTitle>
+                                            <p className="text-sm text-foreground/70 mb-4">{service.caseStudy.description}</p>
+                                            <Button variant="link" className="px-0 text-base">
+                                                View Project Details <ArrowRight className="ml-2 h-4 w-4"/>
+                                            </Button>
+                                        </CardHeader>
+                                    </Card>
                                 </Link>
-                            </Button>
-                        </div>
-                        
-                        <p className="text-lg text-foreground/70 mb-12">{service.description}</p>
-                        
-                        <div className="grid grid-cols-1 lg:grid-cols-5 gap-12">
-                            <div className="lg:col-span-3">
-                                <h2 className="text-2xl font-bold text-foreground mb-4 font-headline">Service Details</h2>
-                                <div className="prose prose-lg dark:prose-invert text-base text-foreground/80 max-w-none" dangerouslySetInnerHTML={{ __html: service.details }} />
-                            </div>
-                            <div className="lg:col-span-2">
-                                <Card className="bg-card/50 border shadow-md h-fit">
-                                    <CardHeader>
-                                        <CardTitle className="text-xl font-headline text-foreground">What's Included</CardTitle>
-                                    </CardHeader>
-                                    <CardContent>
-                                        <ul className="space-y-3 text-sm">
-                                            {service.included.map((item, index) => (
-                                                <li key={index} className="flex items-start">
-                                                    <CheckCircle className="w-5 h-5 text-primary mr-3 mt-0.5 shrink-0" />
-                                                    <span className="text-foreground/80">{item}</span>
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    </CardContent>
-                                </Card>
-                            </div>
-                        </div>
-                    </CardContent>
+                           </section>
+                        </ScrollFadeIn>
+                    </div>
+                )}
+            </div>
+
+            <ScrollFadeIn className="mt-24">
+                <Card className="glass-effect rounded-lg p-8 text-center shadow-lg">
+                <h2 className="text-3xl font-bold text-foreground mb-4 font-headline">Ready to get started?</h2>
+                <p className="text-base text-foreground/70 mb-6 max-w-xl mx-auto">Let's discuss how our {service.title.toLowerCase()} services can help you achieve your goals.</p>
+                <Button size="lg" asChild>
+                    <Link href="/contact">Contact Us</Link>
+                </Button>
                 </Card>
             </ScrollFadeIn>
-          
-          {service.caseStudy && (
-            <ScrollFadeIn className="mt-20">
-              <div className="text-center">
-                <h2 className="text-3xl font-bold text-foreground mb-4 font-headline">Case Study</h2>
-                <p className="text-base text-foreground/70 mb-8 max-w-2xl mx-auto">{service.caseStudy.description}</p>
-                 <Link href={`https://www.portfolio.cauders.com/${service.caseStudy.projectSlug}`}>
-                  <Card className="overflow-hidden group transition-all duration-300 hover:shadow-2xl hover:shadow-primary/20 hover:-translate-y-2 bg-card border text-left">
-                    <div className="aspect-video overflow-hidden">
-                      <Image
-                        src={service.caseStudy.imageUrl}
-                        alt={service.caseStudy.title}
-                        width={800}
-                        height={450}
-                        priority
-                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                        data-ai-hint={service.caseStudy.title}
-                      />
-                    </div>
-                    <CardHeader className="p-6">
-                      <CardTitle className="mb-2 text-2xl text-foreground font-headline">{service.caseStudy.title}</CardTitle>
-                      <Button variant="link" className="px-0 text-base">
-                        View Project Details <ArrowRight className="ml-2 h-4 w-4"/>
-                      </Button>
-                    </CardHeader>
-                  </Card>
-                </Link>
-              </div>
-            </ScrollFadeIn>
-          )}
-
-          <ScrollFadeIn className="mt-20">
-            <div className="bg-card border rounded-lg p-8 text-center shadow-lg">
-              <h2 className="text-3xl font-bold text-foreground mb-4 font-headline">Ready to get started?</h2>
-              <p className="text-base text-foreground/70 mb-6 max-w-xl mx-auto">Let's discuss how our {service.title.toLowerCase()} services can help you achieve your goals.</p>
-              <Button size="lg" asChild>
-                  <Link href="/contact">Contact Us</Link>
-              </Button>
-            </div>
-          </ScrollFadeIn>
         </div>
       </div>
     </div>
