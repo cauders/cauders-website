@@ -12,7 +12,7 @@ import StandardizedHeading from "./StandardizedHeading";
 import ScrollFadeIn from "./ScrollFadeIn";
 
 export default function ServicesPreview() {
-  const services = getServices(); // Get all services
+  const services = getServices(); 
   
   // --- Mobile-specific render ---
   const MobileView = () => (
@@ -22,22 +22,29 @@ export default function ServicesPreview() {
             <p className="mt-4 text-base md:text-xl text-foreground/70 max-w-2xl mx-auto">
                 Our expertise spans the entire development lifecycle, delivering excellence at every step. From initial strategy and design to development, deployment, and ongoing support, we provide comprehensive solutions that drive results.
             </p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mt-16">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-8 mt-16">
                 {services.map((service, index) => (
-                    <ScrollFadeIn key={service.slug} delay={index * 100}>
+                    <ScrollFadeIn key={service.slug} style={{ animationDelay: `${index * 100}ms`}}>
                          <Link href={`/services/${service.slug}`} className="block h-full">
-                            <Card className="h-full text-center flex flex-col bg-card border hover:border-primary hover:-translate-y-1 transition-transform duration-300 min-h-[200px]">
-                                <CardHeader className="p-6 flex-grow flex flex-col items-center justify-center">
-                                    <CardTitle className="text-xl text-foreground font-headline">{service.title}</CardTitle>
+                            <Card className={cn("h-full flex flex-col justify-between bg-card border border-primary/20 min-h-[320px]")}>
+                                <CardHeader>
+                                    <CardTitle className="text-xl md:text-2xl text-foreground font-headline">{service.title}</CardTitle>
                                 </CardHeader>
                                 <CardContent>
-                                    <p className="text-sm text-foreground/80 line-clamp-3">
-                                        {service.description}
-                                    </p>
+                                    <ul className="space-y-2 text-left text-xs">
+                                    {service.included.slice(0, 3).map((item, i) => (
+                                        <li key={i} className="flex items-start">
+                                        <ArrowRight className="w-4 h-4 text-primary mr-2 mt-0.5 shrink-0" />
+                                        <span className="text-foreground/80">{item}</span>
+                                        </li>
+                                    ))}
+                                    </ul>
                                 </CardContent>
                                 <div className="p-6 pt-0">
-                                    <Button variant="link">
-                                        Learn More <ArrowRight className="ml-2 h-4 w-4" />
+                                    <Button asChild className="w-full">
+                                      <div>
+                                          Learn More <ArrowRight className="ml-2 h-4 w-4" />
+                                      </div>
                                     </Button>
                                 </div>
                             </Card>
