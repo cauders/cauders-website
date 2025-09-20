@@ -1,6 +1,6 @@
 
 import {genkit, ai} from 'genkit';
-import {googleAI} from 'genkit/plugins/googleai';
+import {googleAI} from '@genkit-ai/googleai';
 
 genkit({
   plugins: [
@@ -8,8 +8,7 @@ genkit({
       apiVersion: 'v1beta',
     }),
   ],
-  logLevel: 'debug',
-  enableTracingAndMetrics: true,
 });
 
 export {ai};
+
