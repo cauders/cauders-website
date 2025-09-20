@@ -65,7 +65,7 @@ export default function ContactPageContent() {
                     <div className="flex flex-col justify-center h-full text-foreground">
                         <h2 className="text-3xl font-bold mb-4 font-headline">Get in Touch</h2>
                         <p className="text-base text-foreground/80 mb-8">
-                            We're here to help and answer any question you might have. We look forward to hearing from you.
+                            Whether you have a question about our services, a project proposal, or just want to connect, we're here to help. We value clear communication and look forward to hearing from you.
                         </p>
                         <div className="space-y-6 text-base text-foreground/90">
                             <div className="flex items-center gap-4">
