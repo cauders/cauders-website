@@ -110,7 +110,7 @@ export default function ServicesPreview() {
     }, [scrollHandler]);
 
     return (
-      <section id="services-preview-desktop" ref={containerRef} className="relative hidden lg:block lg:h-[250vh] bg-background">
+      <section id="services-preview-desktop" ref={containerRef} className="relative hidden lg:block h-[250vh] bg-background">
         <div className="sticky top-0 h-screen flex flex-col items-center justify-center overflow-hidden">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
               <StandardizedHeading lines={["What We Offer"]} className="mt-16 text-4xl sm:text-5xl md:text-6xl" />
