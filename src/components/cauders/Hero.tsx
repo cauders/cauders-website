@@ -43,7 +43,7 @@ export default function Hero() {
                 />
               </h1>
               <div className="mt-12 animate-fade-in-up" style={{ animationDelay: '1.5s' }}>
-                <form className="flex items-center gap-2 max-w-sm bg-white rounded-full">
+                <form className="flex items-center gap-2 max-w-sm bg-white rounded-full shadow-lg hover:shadow-xl transition-shadow duration-300">
                   <Input
                     type="email"
                     placeholder="email@address.com"
@@ -76,4 +76,5 @@ export default function Hero() {
     </section>
   );
 }
+
 
