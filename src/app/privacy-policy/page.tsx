@@ -83,32 +83,28 @@ export default function PrivacyPolicyPage() {
           </header>
         </ScrollFadeIn>
 
-        <div className="max-w-4xl mx-auto">
-            <Card className="glass-effect shadow-lg rounded-2xl">
-                <CardContent className="p-8 md:p-12 space-y-10">
-                    <ScrollFadeIn>
-                        <WordHighlighter text="Your privacy is critically important to us. Cauders ('we,' 'us,' or 'our') is committed to protecting the confidentiality and security of your personal information. This Privacy Policy outlines how we collect, use, and safeguard the information you provide when you interact with our website, services, and digital platforms." />
-                    </ScrollFadeIn>
-                    
-                    {policySections.map((section, index) => (
-                         <ScrollFadeIn key={index} style={{ animationDelay: `${(index + 1) * 100}ms`}}>
-                            <section>
-                                <div className="flex items-start gap-4">
-                                    <div className="flex-shrink-0 text-primary font-bold text-2xl mt-1">
-                                        {index + 1}.
-                                    </div>
-                                    <div>
-                                        <h2 className="text-2xl font-bold text-foreground mb-3 font-headline">{section.title}</h2>
-                                        <div className="text-foreground/80 space-y-4 text-base">
-                                            {section.content}
-                                        </div>
-                                    </div>
-                                </div>
-                            </section>
-                         </ScrollFadeIn>
-                    ))}
-                </CardContent>
-            </Card>
+        <div className="max-w-4xl mx-auto space-y-10">
+          <ScrollFadeIn>
+              <WordHighlighter text="Your privacy is critically important to us. Cauders ('we,' 'us,' or 'our') is committed to protecting the confidentiality and security of your personal information. This Privacy Policy outlines how we collect, use, and safeguard the information you provide when you interact with our website, services, and digital platforms." />
+          </ScrollFadeIn>
+          
+          {policySections.map((section, index) => (
+                <ScrollFadeIn key={index} style={{ animationDelay: `${(index + 1) * 100}ms`}}>
+                  <section>
+                      <div className="flex items-start gap-4">
+                          <div className="flex-shrink-0 text-primary font-bold text-2xl mt-1">
+                              {index + 1}.
+                          </div>
+                          <div>
+                              <h2 className="text-2xl font-bold text-foreground mb-3 font-headline">{section.title}</h2>
+                              <div className="text-foreground/80 space-y-4 text-base">
+                                  {section.content}
+                              </div>
+                          </div>
+                      </div>
+                  </section>
+                </ScrollFadeIn>
+          ))}
         </div>
       </div>
     </div>
