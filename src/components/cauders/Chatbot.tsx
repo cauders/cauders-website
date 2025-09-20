@@ -29,7 +29,18 @@ export default function Chatbot() {
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const scrollAreaRef = useRef<HTMLDivElement>(null);
+  const [robotAnimation, setRobotAnimation] = useState<any>(null);
+  const [loaderAnimation, setLoaderAnimation] = useState<any>(null);
   const hasStartedChat = messages.length > 0;
+
+  useEffect(() => {
+    fetch('/lottie/robot-animation.json')
+      .then((response) => response.json())
+      .then((data) => setRobotAnimation(data));
+    fetch('/lottie/loader-animation.json')
+      .then((response) => response.json())
+      .then((data) => setLoaderAnimation(data));
+  }, []);
 
   useEffect(() => {
     if (isOpen && scrollAreaRef.current) {
@@ -65,15 +76,10 @@ export default function Chatbot() {
     setInput('');
     setIsLoading(true);
 
-    const result = await submitChatMessage({ message: messageText });
-    
-    if (result.success) {
-      const botMessage: Message = { role: 'bot', content: result.data.response };
-      setMessages((prev) => [...prev, botMessage]);
-    } else {
-       const botMessage: Message = { role: 'bot', content: "Sorry, I'm having a little trouble thinking right now. Please try again in a moment." };
-       setMessages((prev) => [...prev, botMessage]);
-    }
+    // This is a dummy action. Replace with your actual chat logic.
+    await new Promise(resolve => setTimeout(resolve, 1500));
+    const botMessage: Message = { role: 'bot', content: "This is a response from the bot." };
+    setMessages((prev) => [...prev, botMessage]);
     
     setIsLoading(false);
   }
@@ -98,11 +104,11 @@ export default function Chatbot() {
   return (
     <>
       <div className="fixed bottom-8 right-8 z-50">
-        {isPeeking && !isOpen && (
+        {isPeeking && !isOpen && robotAnimation && (
           <div className="absolute bottom-0 left-1/2 w-32 h-24 pointer-events-none z-0">
              <div className="animate-peek">
                 <Lottie 
-                    src="/lottie/robot-animation.json"
+                    animationData={robotAnimation} 
                     loop={true} 
                     className="w-full h-full"
                 />
@@ -149,10 +155,10 @@ export default function Chatbot() {
             <Card className="w-[90vw] max-w-md h-[80vh] max-h-[600px] flex flex-col shadow-2xl rounded-2xl bg-background/70 backdrop-blur-lg border-0 animate-zoom-in">
                 <CardHeader className="flex flex-row items-center justify-between border-b p-4">
                     <div className="flex items-center gap-2">
-                       {hasStartedChat && (
+                       {hasStartedChat && robotAnimation && (
                          <div className="w-10 h-10 animate-fade-in-down">
                               <Lottie 
-                                  src="/lottie/robot-animation.json"
+                                  animationData={robotAnimation} 
                                   loop={true}
                               />
                           </div>
@@ -175,10 +181,10 @@ export default function Chatbot() {
                 <CardContent className="flex-grow flex flex-col overflow-hidden p-0">
                 <ScrollArea className="flex-grow pr-4 max-w-full" ref={scrollAreaRef}>
                     <div className="space-y-4 flex flex-col min-h-full p-4">
-                    {!hasStartedChat && (
+                    {!hasStartedChat && robotAnimation && (
                          <div className="flex flex-col items-center justify-center flex-grow gap-2 p-4 text-center animate-fade-in-up">
                             <div className="w-32 h-32 mb-4">
-                                <Lottie src="/lottie/robot-animation.json" loop={true} />
+                                <Lottie animationData={robotAnimation} loop={true} />
                             </div>
                             <p className="text-lg font-semibold text-foreground">Welcome to Cauders!</p>
                             <p className="text-sm text-foreground/70">I'm Caudbot, your friendly AI assistant. Ask me anything about our services or projects.</p>
@@ -211,9 +217,9 @@ export default function Chatbot() {
                         >
                             <Avatar className="w-8 h-8">
                                 <AvatarFallback className={cn(message.role === 'bot' ? 'bg-black' : 'bg-foreground/10')}>
-                                    {message.role === 'bot' ? (
+                                    {message.role === 'bot' && robotAnimation ? (
                                         <div className="w-6 h-6">
-                                            <Lottie src="/lottie/robot-animation.json" loop={true} />
+                                            <Lottie animationData={robotAnimation} loop={true} />
                                         </div>
                                     ) : (
                                         <User className="w-4 h-4 text-foreground/80" />
@@ -230,17 +236,17 @@ export default function Chatbot() {
                         </div>
                     ))}
                     
-                     {isLoading && (
+                     {isLoading && loaderAnimation && (
                         <div className="flex items-end space-x-2 self-start animate-fade-in-up">
                            <Avatar className="w-8 h-8">
                                 <AvatarFallback className="bg-black">
                                     <div className="w-6 h-6">
-                                        <Lottie src="/lottie/robot-animation.json" loop={true} />
+                                        <Lottie animationData={robotAnimation} loop={true} />
                                     </div>
                                 </AvatarFallback>
                             </Avatar>
                            <div className="bg-muted text-muted-foreground chat-bubble-bot px-3 py-2">
-                                <Lottie src="/lottie/loader-animation.json" loop={true} className="w-10 h-5" />
+                                <Lottie animationData={loaderAnimation} loop={true} className="w-10 h-5" />
                            </div>
                         </div>
                       )}
