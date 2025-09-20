@@ -40,9 +40,6 @@ export default function ServicePage({ params }: ServicePageParams) {
                         </Link>
                     </Button>
                     <div className="flex items-center gap-4 mb-4">
-                        <div className="bg-primary/10 rounded-full p-3 border border-primary/20">
-                            <service.icon className="w-8 h-8 text-primary" />
-                        </div>
                         <StandardizedHeading lines={[service.title]} />
                     </div>
                     <p className="text-lg text-foreground/70 max-w-4xl">{service.description}</p>
