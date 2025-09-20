@@ -47,7 +47,7 @@ export default function Services() {
                 </ScrollFadeIn>
             </div>
 
-            <div className="space-y-16 lg:space-y-24">
+            <div className="space-y-16 lg:space-y-0">
                 {services.map((service, index) => {
                     const isEven = index % 2 === 0;
                     return (
@@ -97,7 +97,7 @@ export default function Services() {
                                     </ScrollFadeIn>
                                 </div>
                             </div>
-                            {index < services.length - 1 && <Separator className="my-8" />}
+                            {index < services.length - 1 && <div className="py-16 lg:py-24"><Separator /></div>}
                         </React.Fragment>
                     );
                 })}
