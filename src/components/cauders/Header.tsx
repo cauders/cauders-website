@@ -109,8 +109,8 @@ export default function Header() {
                             <MagneticLink
                                 href={link.href}
                                 onClick={() => setIsMenuOpen(false)}
-                                className="w-40 h-40"
-                                linkClassName="text-lg text-background"
+                                className="w-28 h-28"
+                                linkClassName="text-sm text-background"
                             >
                                 {link.label}
                             </MagneticLink>
