@@ -48,8 +48,8 @@ export default function Footer() {
       ></div>
       
       <footer className="glass-effect relative z-10">
-        <div className="container mx-auto py-6 lg:py-24 px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+        <div className="container mx-auto py-12 lg:py-24 px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
               
               {/* Column 1: Logo and Copyright */}
               <div className="lg:col-span-4 flex flex-col items-start">
@@ -65,7 +65,7 @@ export default function Footer() {
               <div className="lg:col-span-4 grid grid-cols-2 gap-8 text-sm">
                   <div>
                       <h3 className="font-semibold tracking-wider uppercase mb-4 text-sm">Quick Links</h3>
-                      <nav className="flex flex-col gap-2 lg:gap-3">
+                      <nav className="flex flex-col gap-2">
                           {quickLinks.map((link) => (
                               <Link key={link.label} href={link.href} className="hover:text-primary transition-colors">
                                   {link.label}
@@ -75,7 +75,7 @@ export default function Footer() {
                   </div>
                   <div>
                       <h3 className="font-semibold tracking-wider uppercase mb-4 text-sm">Company</h3>
-                      <nav className="flex flex-col gap-2 lg:gap-3">
+                      <nav className="flex flex-col gap-2">
                           {companyLinks.map((link) => (
                               <Link key={link.label} href={link.href} className="hover:text-primary transition-colors">
                                   {link.label}
@@ -91,7 +91,7 @@ export default function Footer() {
                   <a href="mailto:info@cauders.com" className="block hover:text-primary transition-colors mb-6">info@cauders.com</a>
 
                   <h3 className="font-semibold tracking-wider uppercase mb-4 text-sm">Legal</h3>
-                  <nav className="flex flex-col gap-2 lg:gap-3">
+                  <nav className="flex flex-col gap-2">
                       {legalLinks.map((link) => (
                           <Link key={link.label} href={link.href} className="hover:text-primary transition-colors">
                               {link.label}
@@ -101,11 +101,11 @@ export default function Footer() {
               </div>
           </div>
 
-          <div className="mt-6 lg:mt-12 pt-6 lg:pt-8 border-t border-background/20 flex flex-col md:flex-row items-center justify-between gap-8">
+          <div className="mt-8 lg:mt-12 pt-6 border-t border-background/20 flex flex-col md:flex-row items-center justify-between gap-8">
               <p className="text-xs text-background/70 text-center md:text-left">
                   &copy; {year} Cauders. All Rights Reserved.
               </p>
-              <div className="flex items-center justify-center flex-wrap gap-2">
+              <div className="flex items-center justify-center flex-wrap gap-x-0 gap-y-4 md:gap-2">
                   {socialLinks.map((link) => (
                       <MagneticLink key={link.label} href={link.href} className="w-20 h-20" linkClassName="text-xs text-background">
                           {link.label}
