@@ -22,6 +22,20 @@ export default function Hero() {
         <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 items-center h-full gap-8">
           {/* Left Column */}
           <div className="w-full text-left">
+             {/* Mobile Only Image */}
+            <div className="md:hidden flex items-center justify-center w-full mb-8">
+                <FadeContent blur={true} duration={1000} delay={1200} easing="ease-out" initialOpacity={0}>
+                <div className="relative w-[300px] h-[300px]">
+                    <Image 
+                        src="/images/logo/hero-logo.png"
+                        alt="Cauders Logo"
+                        fill
+                        priority
+                        className="object-contain"
+                    />
+                </div>
+                </FadeContent>
+            </div>
             <div>
               <h1 className="font-bold tracking-tight text-white mt-2 leading-relaxed font-headline animated-gradient-text">
                 <BlurText
@@ -55,20 +69,6 @@ export default function Hero() {
                 </form>
               </div>
             </div>
-             {/* Mobile Only Image */}
-            <div className="md:hidden flex items-center justify-center w-full mt-8">
-                <FadeContent blur={true} duration={1000} delay={1200} easing="ease-out" initialOpacity={0}>
-                <div className="relative w-[300px] h-[300px]">
-                    <Image 
-                        src="/images/logo/hero-logo.png"
-                        alt="Cauders Logo"
-                        fill
-                        priority
-                        className="object-contain"
-                    />
-                </div>
-                </FadeContent>
-            </div>
           </div>
           
           {/* Right Column (Desktop Only) */}
@@ -90,3 +90,4 @@ export default function Hero() {
     </section>
   );
 }
+
