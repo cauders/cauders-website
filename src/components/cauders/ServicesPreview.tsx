@@ -19,36 +19,41 @@ export default function ServicesPreview() {
 
   const scrollHandler = useCallback(() => {
     if (!containerRef.current) return;
-
+  
     const { top, height } = containerRef.current.getBoundingClientRect();
     const scrollableHeight = height - window.innerHeight;
     
-    const animationStartPoint = window.innerHeight * 0.2;
-    let currentProgress = 0;
-    if (containerRef.current.offsetTop && isFinite(containerRef.current.offsetTop)) {
-        currentProgress = Math.max(0, Math.min(1, (window.scrollY - containerRef.current.offsetTop + animationStartPoint) / (scrollableHeight + animationStartPoint)));
+    // Ensure we don't divide by zero or a negative number if the container is smaller than the viewport.
+    if (scrollableHeight <= 0) {
+      setSubtitleTransform('translateY(0%)');
+      setCardStyles(services.map(() => ({ opacity: 1, transform: 'translateY(0px)' })));
+      return;
     }
-
-    const subtitleProgress = Math.max(0, Math.min(1, (currentProgress - 0.1) * 4));
+  
+    // Calculate progress from 0 (when top of container reaches top of viewport) to 1 (when bottom of container reaches bottom of viewport)
+    const currentProgress = Math.max(0, Math.min(1, -top / scrollableHeight));
+  
+    const subtitleProgress = Math.max(0, Math.min(1, currentProgress * 5)); // Faster animation for subtitle
     const subtitleY = 101 - (subtitleProgress * 101);
     setSubtitleTransform(`translateY(${subtitleY}%)`);
-
+  
     // --- Cards Animation ---
-    const cardsStartProgress = 0.25;
-    const totalCardsProgress = 1 - cardsStartProgress;
+    const cardsStartProgress = 0.15; // Start card animations a bit earlier
+    const totalCardsProgress = 0.8; // Total duration for all cards
     const progressPerCard = totalCardsProgress / services.length;
-
+  
     const newCardStyles = services.map((_, index) => {
-        const cardStart = cardsStartProgress + (index * progressPerCard);
-        const cardProgress = Math.max(0, Math.min(1, (currentProgress - cardStart) / progressPerCard));
-        
-        const opacity = cardProgress;
-        const translateY = 40 * (1 - cardProgress);
-
-        return {
-            opacity: opacity,
-            transform: `translateY(${translateY}px)`
-        };
+      const cardStart = cardsStartProgress + (index * progressPerCard);
+      // Make the animation for each card quicker
+      const cardProgress = Math.max(0, Math.min(1, (currentProgress - cardStart) / (progressPerCard * 0.75)));
+      
+      const opacity = cardProgress;
+      const translateY = 40 * (1 - cardProgress);
+  
+      return {
+          opacity: opacity,
+          transform: `translateY(${translateY}px)`
+      };
     });
     setCardStyles(newCardStyles);
   }, [services.length]);
@@ -66,7 +71,7 @@ export default function ServicesPreview() {
     <section id="services-preview" ref={containerRef} className="relative h-[250vh] bg-background">
       <div className="sticky top-0 h-screen flex flex-col items-center justify-center overflow-hidden">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <StandardizedHeading lines={["What We Offer"]} className="mt-16" />
+            <StandardizedHeading lines={["What We Offer"]} className="mt-16 text-4xl sm:text-5xl md:text-6xl" />
             <div className="overflow-hidden py-1">
             <p
                 className="mt-4 text-base md:text-xl text-foreground/70 max-w-2xl mx-auto transition-transform duration-300 ease-out"
