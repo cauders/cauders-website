@@ -53,7 +53,7 @@ export default function ContactPageContent() {
                 <p className="mt-4 text-base text-foreground/70 max-w-2xl mx-auto">
                     {jobTitle 
                         ? "Please fill out the form below to apply. We're excited to learn more about you."
-                        : "Have a project in mind or just want to say hello? We'd love to hear from you."
+                        : "Have a project in mind or just want to say hello? We'd love to hear from you. Fill out the form below and our team will get in touch with you shortly."
                     }
                 </p>
             </div>
@@ -327,3 +327,5 @@ function ApplicationForm({ jobTitle }: { jobTitle: string }) {
         </>
     );
 }
+
+    
