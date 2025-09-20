@@ -107,7 +107,7 @@ export default function Footer() {
               </p>
               <div className="flex items-center justify-center flex-wrap gap-2">
                   {socialLinks.map((link) => (
-                      <MagneticLink key={link.label} href={link.href} className="text-background !text-xs w-20 h-20">
+                      <MagneticLink key={link.label} href={link.href} className="w-20 h-20" linkClassName="text-xs text-background">
                           {link.label}
                       </MagneticLink>
                   ))}
