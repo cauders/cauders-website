@@ -49,19 +49,9 @@ const ServiceSection = ({ service, index, isFirst = false }: { service: ReturnTy
     const cardOpacity = easedProgress;
     
     return (
-        <div ref={ref} className="h-screen relative">
-            <div className={cn("sticky top-0 h-screen flex items-center justify-center overflow-hidden", !isEven && "bg-secondary/30")}>
+        <div ref={ref} className={cn(!isFirst && "h-screen")}>
+            <div className={cn("flex items-center justify-center overflow-hidden", isFirst ? "h-auto" : "sticky top-0 h-screen", !isEven && !isFirst && "bg-secondary/30")}>
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                    {isFirst && (
-                         <div className="text-center mb-16 absolute top-1/4 left-1/2 -translate-x-1/2 w-full px-4">
-                             <StandardizedHeading lines={["Our Services"]} />
-                             <ScrollFadeIn>
-                                 <p className="mt-6 text-lg text-foreground/70 max-w-3xl mx-auto">
-                                     At Cauders, we deliver future-ready digital solutions that combine innovation, performance, and scalability. Our expertise spans across multiple domains to help businesses thrive in the evolving tech landscape.
-                                 </p>
-                             </ScrollFadeIn>
-                         </div>
-                    )}
                      <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16 items-center">
                         <ScrollFadeIn direction={isEven ? 'left' : 'right'} className={cn("flex flex-col justify-center", isEven ? 'md:order-1' : 'md:order-2')}>
                             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 font-headline">{service.title}</h2>
@@ -190,8 +180,22 @@ export default function Services() {
   return (
     <section id="services" className="bg-background">
         <div className="flex flex-col">
-          {services.map((service, index) => (
-            <ServiceSection key={service.slug} service={service} index={index} isFirst={index === 0} />
+            <div className="h-screen relative">
+                <div className="sticky top-0 h-screen flex flex-col justify-center">
+                    <div className="text-center mb-16">
+                        <StandardizedHeading lines={["Our Services"]} />
+                        <ScrollFadeIn>
+                            <p className="mt-6 text-lg text-foreground/70 max-w-3xl mx-auto">
+                                At Cauders, we deliver future-ready digital solutions that combine innovation, performance, and scalability. Our expertise spans across multiple domains to help businesses thrive in the evolving tech landscape.
+                            </p>
+                        </ScrollFadeIn>
+                    </div>
+                    <ServiceSection service={services[0]} index={0} isFirst={true} />
+                </div>
+            </div>
+
+          {services.slice(1).map((service, index) => (
+            <ServiceSection key={service.slug} service={service} index={index + 1} />
           ))}
         </div>
 
@@ -225,3 +229,5 @@ export default function Services() {
     </section>
   );
 }
+
+    
