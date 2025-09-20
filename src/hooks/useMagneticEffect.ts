@@ -3,7 +3,7 @@
 
 import { useState, useEffect, useRef, type RefObject } from 'react';
 
-const LERP_FACTOR = 0.2; 
+const LERP_FACTOR = 0.1; 
 const MAGNET_RADIUS = 80;
 
 export function useMagneticEffect(ref: RefObject<HTMLElement>) {
