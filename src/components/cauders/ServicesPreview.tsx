@@ -66,7 +66,7 @@ export default function ServicesPreview() {
     <section id="services-preview" ref={containerRef} className="relative h-[250vh] bg-background">
       <div className="sticky top-0 h-screen flex flex-col items-center justify-center overflow-hidden">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <StandardizedHeading lines={["What We Offer"]} />
+            <StandardizedHeading lines={["What We Offer"]} className="mt-16" />
             <div className="overflow-hidden py-1">
             <p
                 className="mt-8 text-xl text-foreground/70 max-w-2xl mx-auto transition-transform duration-300 ease-out"
