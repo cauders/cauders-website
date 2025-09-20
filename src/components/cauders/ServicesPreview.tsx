@@ -86,51 +86,53 @@ export default function ServicesPreview() {
                         transition: 'opacity 0.4s ease-out, transform 0.4s ease-out',
                     }}
                 >
-                <div 
-                    className={cn("flip-card h-full min-h-[300px] md:min-h-[320px]")}
-                    onMouseEnter={() => setHoveredCard(index)}
-                    onMouseLeave={() => setHoveredCard(null)}
-                >
-                    <div className={cn("flip-card-inner relative w-full h-full", hoveredCard === index && "is-flipped")}>
-                    {/* Front of the card */}
-                    <div className="flip-card-front absolute w-full h-full">
-                        <div className="relative w-full h-full rounded-lg overflow-hidden bg-foreground">
-                            <div className="absolute top-[-80px] left-[-80px] w-48 h-48 bg-primary/30 rounded-full blur-3xl opacity-50"></div>
-                            <div className="absolute bottom-[-80px] right-[-80px] w-48 h-48 bg-primary/30 rounded-full blur-3xl opacity-50"></div>
-                            <Card className="h-full text-center flex flex-col bg-card/80 border-0 relative z-10 glass-effect">
-                                <CardHeader className="p-8 flex-grow flex flex-col items-center justify-center">
-                                    <CardTitle className="text-xl md:text-2xl text-background font-headline">{service.title}</CardTitle>
-                                </CardHeader>
-                            </Card>
-                        </div>
-                    </div>
-                    {/* Back of the card */}
-                    <div className="flip-card-back absolute w-full h-full">
-                        <Card className={cn("h-full flex flex-col justify-between animated-border-card bg-card border")}>
-                        <CardHeader>
-                            <CardTitle className="text-xl md:text-2xl text-foreground font-headline">{service.title}</CardTitle>
-                        </CardHeader>
-                        <CardContent>
-                            <ul className="space-y-2 text-left text-xs">
-                            {service.included.slice(0, 3).map((item, i) => (
-                                <li key={i} className="flex items-start">
-                                <ArrowRight className="w-4 h-4 text-primary mr-2 mt-0.5 shrink-0" />
-                                <span className="text-foreground/80">{item}</span>
-                                </li>
-                            ))}
-                            </ul>
-                        </CardContent>
-                        <div className="p-6 pt-0">
-                            <Button asChild className="w-full">
-                            <Link href={`/services/${service.slug}`}>
-                                Learn More <ArrowRight className="ml-2 h-4 w-4" />
-                            </Link>
-                            </Button>
-                        </div>
-                        </Card>
-                    </div>
-                    </div>
-                </div>
+                <Link href={`/services/${service.slug}`} className="block h-full">
+                  <div 
+                      className={cn("flip-card h-full min-h-[300px] md:min-h-[320px]")}
+                      onMouseEnter={() => setHoveredCard(index)}
+                      onMouseLeave={() => setHoveredCard(null)}
+                  >
+                      <div className={cn("flip-card-inner relative w-full h-full", hoveredCard === index && "is-flipped")}>
+                      {/* Front of the card */}
+                      <div className="flip-card-front absolute w-full h-full">
+                          <div className="relative w-full h-full rounded-lg overflow-hidden bg-foreground">
+                              <div className="absolute top-[-80px] left-[-80px] w-48 h-48 bg-primary/30 rounded-full blur-3xl opacity-50"></div>
+                              <div className="absolute bottom-[-80px] right-[-80px] w-48 h-48 bg-primary/30 rounded-full blur-3xl opacity-50"></div>
+                              <Card className="h-full text-center flex flex-col bg-card/80 border-0 relative z-10 glass-effect">
+                                  <CardHeader className="p-8 flex-grow flex flex-col items-center justify-center">
+                                      <CardTitle className="text-xl md:text-2xl text-background font-headline">{service.title}</CardTitle>
+                                  </CardHeader>
+                              </Card>
+                          </div>
+                      </div>
+                      {/* Back of the card */}
+                      <div className="flip-card-back absolute w-full h-full">
+                          <Card className={cn("h-full flex flex-col justify-between animated-border-card bg-card border")}>
+                          <CardHeader>
+                              <CardTitle className="text-xl md:text-2xl text-foreground font-headline">{service.title}</CardTitle>
+                          </CardHeader>
+                          <CardContent>
+                              <ul className="space-y-2 text-left text-xs">
+                              {service.included.slice(0, 3).map((item, i) => (
+                                  <li key={i} className="flex items-start">
+                                  <ArrowRight className="w-4 h-4 text-primary mr-2 mt-0.5 shrink-0" />
+                                  <span className="text-foreground/80">{item}</span>
+                                  </li>
+                              ))}
+                              </ul>
+                          </CardContent>
+                          <div className="p-6 pt-0">
+                              <Button asChild className="w-full">
+                                <div>
+                                    Learn More <ArrowRight className="ml-2 h-4 w-4" />
+                                </div>
+                              </Button>
+                          </div>
+                          </Card>
+                      </div>
+                      </div>
+                  </div>
+                </Link>
                 </div>
             ))}
             </div>
