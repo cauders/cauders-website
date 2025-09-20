@@ -1,13 +1,12 @@
-
 "use client";
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { X } from 'lucide-react';
 import { usePathname } from 'next/navigation';
-import MagneticLink from './MagneticLink';
+import { ThemeToggle } from './ThemeToggle';
 
 const navLinks = [
   { href: '/', label: 'Home' },
@@ -19,7 +18,6 @@ const navLinks = [
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [hasScrolled, setHasScrolled] = useState(false);
-  const navRef = useRef<HTMLElement>(null);
   const pathname = usePathname();
   
   useEffect(() => {
@@ -29,7 +27,6 @@ export default function Header() {
 
     window.addEventListener('scroll', handleScroll);
     
-    // Clean up the event listener on component unmount
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
@@ -66,6 +63,7 @@ export default function Header() {
             </Link>
             
             <div className="flex items-center gap-4">
+              <ThemeToggle className={cn(isHeroVisible ? "text-white hover:bg-white/10" : "text-foreground")} />
               <Button onClick={() => setIsMenuOpen(true)} variant="ghost" className={cn("text-sm font-semibold tracking-widest", isHeroVisible ? 'text-white hover:bg-white/10 hover:text-white' : 'text-foreground hover:bg-accent')} aria-label="Open menu">
                 MENU
               </Button>
@@ -98,21 +96,21 @@ export default function Header() {
                 </div>
             </div>
 
-            <nav ref={navRef} className="flex-grow flex items-center justify-center flex-wrap gap-4 md:gap-12">
+            <nav className="flex-grow flex flex-col items-center justify-center gap-4 md:gap-8">
                 {navLinks.map((link, index) => (
-                <MagneticLink
+                <Link
                     key={link.href}
                     href={link.href}
                     onClick={() => setIsMenuOpen(false)}
                     className={cn(
-                        "opacity-0 text-background",
+                        "relative text-4xl md:text-6xl font-bold text-background/80 hover:text-background transition-colors duration-300 opacity-0 group",
                         isMenuOpen && "animate-fade-in-down"
                     )}
                      style={{ animationDelay: `${500 + index * 100}ms` }}
-                     linkClassName="text-5xl font-bold"
                 >
                     {link.label}
-                </MagneticLink>
+                    <span className="absolute left-0 -bottom-1 w-full h-1 bg-primary scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300 ease-out"></span>
+                </Link>
                 ))}
             </nav>
 
