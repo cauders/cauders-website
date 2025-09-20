@@ -73,8 +73,8 @@ export default function CareersPage() {
              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                  {benefits.map((benefit, index) => (
                      <ScrollFadeIn key={benefit.title} delay={`delay-${index * 100}`} className="h-full">
-                        <Card className="bg-card h-full text-center border flex flex-col hover:border-primary hover:-translate-y-2 transition-transform duration-300 group">
-                            <CardHeader className="flex-grow">
+                        <Card className="bg-card h-full text-center border flex flex-col hover:border-primary hover:-translate-y-2 transition-transform duration-300 group min-h-[320px]">
+                            <CardHeader className="flex-grow flex flex-col">
                                 <div className="mx-auto bg-primary/10 rounded-full p-4 w-fit mb-4 border border-primary/20 group-hover:bg-primary/20 transition-colors">
                                     <benefit.icon className="w-8 h-8 text-primary" />
                                 </div>
