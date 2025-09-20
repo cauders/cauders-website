@@ -46,7 +46,7 @@ export default function FAQPage() {
                         <StandardizedHeading lines={["Frequently Asked Questions"]} />
                         <ScrollFadeIn>
                             <p className="mt-4 text-lg text-foreground/70 max-w-2xl mx-auto">
-                                Have questions? We've got answers. If you can't find what you're looking for, feel free to contact us.
+                                Have questions? We've got answers. We've compiled a list of the most common questions we receive to provide clarity and help you understand our process and services better. If you can't find what you're looking for, feel free to contact us.
                             </p>
                         </ScrollFadeIn>
                     </div>
