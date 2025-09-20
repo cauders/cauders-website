@@ -106,16 +106,19 @@ export default function ServicePage({ params }: ServicePageParams) {
                     </div>
                 )}
             </div>
-
-            <ScrollFadeIn className="mt-24 text-center">
-                <h2 className="text-3xl font-bold text-foreground mb-4 font-headline">Ready to get started?</h2>
-                <p className="text-base text-foreground/70 mb-6 max-w-xl mx-auto">Let's discuss how our {service.title.toLowerCase()} services can help you achieve your goals.</p>
-                <Button size="lg" asChild>
-                    <Link href="/contact">Contact Us</Link>
-                </Button>
-            </ScrollFadeIn>
         </div>
       </div>
+        <section className="py-20 lg:py-32 bg-secondary/30">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <ScrollFadeIn>
+                    <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 font-headline">Ready to get started?</h2>
+                    <p className="text-base text-foreground/70 mb-6 max-w-xl mx-auto">Let's discuss how our {service.title.toLowerCase()} services can help you achieve your goals.</p>
+                    <Button size="lg" asChild>
+                        <Link href="/contact">Contact Us</Link>
+                    </Button>
+                </ScrollFadeIn>
+            </div>
+        </section>
     </div>
   );
 }
