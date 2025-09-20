@@ -7,7 +7,6 @@ import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { X } from 'lucide-react';
 import { usePathname } from 'next/navigation';
-import { ThemeToggle } from './ThemeToggle';
 import MagneticLink from './MagneticLink';
 
 const navLinks = [
@@ -49,8 +48,8 @@ export default function Header() {
 
   return (
      <header className={cn(
-        "fixed top-0 left-0 z-50 w-full transition-all duration-300 ease-in-out px-4",
-        hasScrolled ? "pt-4" : "pt-0"
+        "fixed top-0 left-0 z-50 w-full transition-all duration-300 ease-in-out",
+        hasScrolled ? "pt-4 px-4" : "pt-0"
       )}>
       <div 
         className={cn(
@@ -59,13 +58,12 @@ export default function Header() {
         )}
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-14 md:h-16">
+          <div className="flex items-center justify-between h-14">
             <Link href="/" className={cn("text-2xl font-bold transition-colors", isHeroVisible ? "text-white hover:text-white/80" : "text-foreground hover:text-primary")}>
               Cauders
             </Link>
             
             <div className="flex items-center gap-4">
-              <ThemeToggle className={cn(isHeroVisible ? "text-white hover:bg-white/10" : "text-foreground")} />
               <Button onClick={() => setIsMenuOpen(true)} variant="ghost" className={cn("text-sm font-semibold tracking-widest", isHeroVisible ? 'text-white hover:bg-white/10 hover:text-white' : 'text-foreground hover:bg-accent')} aria-label="Open menu">
                 MENU
               </Button>
