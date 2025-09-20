@@ -19,7 +19,7 @@ export default function TeamPage() {
             <StandardizedHeading lines={["Meet Our Team"]} />
             <ScrollFadeIn>
               <p className="mt-4 text-lg text-foreground/70 max-w-2xl mx-auto">
-                The creative minds and dedicated professionals driving innovation at Cauders.
+                The creative minds and dedicated professionals driving innovation at Cauders. We are a collective of thinkers, designers, and developers united by a shared passion for crafting exceptional digital experiences.
               </p>
             </ScrollFadeIn>
           </div>
