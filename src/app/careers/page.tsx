@@ -74,15 +74,15 @@ export default function CareersPage() {
                  {benefits.map((benefit, index) => (
                      <ScrollFadeIn key={benefit.title} delay={`delay-${index * 100}`} className="h-full">
                         <Card className="bg-card h-full text-center border flex flex-col hover:border-primary hover:-translate-y-2 transition-transform duration-300 group min-h-[320px]">
-                            <CardHeader className="flex-grow flex flex-col">
+                            <CardHeader className="flex-grow flex flex-col items-center justify-center">
                                 <div className="mx-auto bg-primary/10 rounded-full p-4 w-fit mb-4 border border-primary/20 group-hover:bg-primary/20 transition-colors">
                                     <benefit.icon className="w-8 h-8 text-primary" />
                                 </div>
                                 <CardTitle className="text-2xl font-headline text-foreground">{benefit.title}</CardTitle>
+                                <CardContent className="p-0 mt-2">
+                                  <p className="text-sm text-foreground/80">{benefit.description}</p>
+                                </CardContent>
                             </CardHeader>
-                            <CardContent>
-                                <p className="text-sm text-foreground/80">{benefit.description}</p>
-                            </CardContent>
                         </Card>
                      </ScrollFadeIn>
                  ))}
