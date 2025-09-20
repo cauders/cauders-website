@@ -61,40 +61,38 @@ export default function ContactPageContent() {
           <ScrollFadeIn delay={0.2}>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16">
                 {/* Left Side: Info */}
-                <div className="flex items-center">
-                    <div className="flex flex-col justify-center h-full text-foreground">
-                        <h2 className="text-3xl font-bold mb-4 font-headline">Get in Touch</h2>
-                        <p className="text-base text-foreground/80 mb-8">
-                            Whether you have a question about our services, a project proposal, or just want to connect, we're here to help. We value clear communication and look forward to hearing from you.
-                        </p>
-                        <div className="space-y-6 text-base text-foreground/90">
-                            <div className="flex items-center gap-4">
-                                <Mail className="w-6 h-6 text-primary" />
-                                <a href={`mailto:${contactEmail}`} className="hover:text-primary transition-colors">{contactEmail}</a>
-                            </div>
-                            <div className="flex items-start gap-4">
-                                <MapPin className="w-6 h-6 text-primary mt-1" />
-                                <span>Pakistan</span>
-                            </div>
+                <div className="flex flex-col justify-center text-foreground p-4 md:p-0">
+                    <h2 className="text-3xl font-bold mb-4 font-headline">Get in Touch</h2>
+                    <p className="text-base text-foreground/80 mb-8">
+                        Whether you have a question about our services, a project proposal, or just want to connect, we're here to help. We value clear communication and look forward to hearing from you.
+                    </p>
+                    <div className="space-y-6 text-base text-foreground/90">
+                        <div className="flex items-center gap-4">
+                            <Mail className="w-6 h-6 text-primary" />
+                            <a href={`mailto:${contactEmail}`} className="hover:text-primary transition-colors">{contactEmail}</a>
                         </div>
-                        <Separator className="my-8 bg-foreground/20" />
-                        <div className="flex items-center gap-2">
-                            <Button variant="ghost" size="icon" asChild>
-                                <Link href="https://www.instagram.com/ccauders/" aria-label="Instagram">
-                                    <Instagram className="h-5 w-5 text-foreground/70 hover:text-primary transition-colors" />
-                                </Link>
-                            </Button>
-                            <Button variant="ghost" size="icon" asChild>
-                                <Link href="https://github.com/cauders" aria-label="GitHub">
-                                    <Github className="h-5 w-5 text-foreground/70 hover:text-primary transition-colors" />
-                                </Link>
-                            </Button>
-                            <Button variant="ghost" size="icon" asChild>
-                                <Link href="https://www.linkedin.com/company/108785409/admin/dashboard/" aria-label="LinkedIn">
-                                    <Linkedin className="h-5 w-5 text-foreground/70 hover:text-primary transition-colors" />
-                                </Link>
-                            </Button>
+                        <div className="flex items-start gap-4">
+                            <MapPin className="w-6 h-6 text-primary mt-1" />
+                            <span>Pakistan</span>
                         </div>
+                    </div>
+                    <Separator className="my-8 bg-foreground/20" />
+                    <div className="flex items-center gap-2">
+                        <Button variant="ghost" size="icon" asChild>
+                            <Link href="https://www.instagram.com/ccauders/" aria-label="Instagram">
+                                <Instagram className="h-5 w-5 text-foreground/70 hover:text-primary transition-colors" />
+                            </Link>
+                        </Button>
+                        <Button variant="ghost" size="icon" asChild>
+                            <Link href="https://github.com/cauders" aria-label="GitHub">
+                                <Github className="h-5 w-5 text-foreground/70 hover:text-primary transition-colors" />
+                            </Link>
+                        </Button>
+                        <Button variant="ghost" size="icon" asChild>
+                            <Link href="https://www.linkedin.com/company/108785409/admin/dashboard/" aria-label="LinkedIn">
+                                <Linkedin className="h-5 w-5 text-foreground/70 hover:text-primary transition-colors" />
+                            </Link>
+                        </Button>
                     </div>
                 </div>
 
