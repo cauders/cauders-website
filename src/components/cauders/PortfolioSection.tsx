@@ -62,7 +62,7 @@ export default function PortfolioSection() {
 
     return (
         <section id="portfolio-preview" className="text-foreground">
-            <div ref={containerRef} className="relative flex flex-col h-[600vh]">
+            <div ref={containerRef} className="relative flex flex-col h-auto lg:h-[600vh]">
                 <div className="sticky top-0 h-screen flex flex-col items-center justify-center overflow-hidden">
                     <div className="absolute inset-0 z-0 overflow-hidden bg-foreground">
                         <div 
