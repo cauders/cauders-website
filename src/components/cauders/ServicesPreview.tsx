@@ -24,13 +24,13 @@ export default function ServicesPreview() {
             </p>
             <div className="grid grid-cols-2 gap-4 md:gap-8 mt-16">
                 {services.map((service, index) => (
-                    <ScrollFadeIn key={service.slug} style={{ animationDelay: `${index * 100}ms`}}>
+                    <ScrollFadeIn key={service.slug} style={{ animationDelay: `${index * 100}ms`}} className="h-full">
                         <Link href={`/services/${service.slug}`} className="block h-full">
-                            <Card className={cn("h-full flex flex-col justify-between animated-border-card bg-card border min-h-[220px]")}>
+                            <Card className={cn("h-full flex flex-col justify-between animated-border-card bg-card border")}>
                                 <CardHeader>
                                     <CardTitle className="text-lg md:text-2xl text-foreground font-headline">{service.title}</CardTitle>
                                 </CardHeader>
-                                <CardContent>
+                                <CardContent className="flex-grow">
                                     <ul className="space-y-2 text-left text-xs">
                                     {service.included.slice(0, 2).map((item, i) => (
                                         <li key={i} className="flex items-start">
