@@ -23,7 +23,7 @@ export default function Hero() {
           {/* Left Column */}
           <div className="w-full text-left">
             <div>
-              <h1 className="font-bold tracking-tight text-white mt-2 leading-relaxed font-headline">
+              <h1 className="font-bold tracking-tight text-white mt-2 leading-relaxed font-headline animated-gradient-text">
                 <BlurText
                     text="Where Technology"
                     animateBy="words"

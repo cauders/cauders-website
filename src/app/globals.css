@@ -114,9 +114,8 @@
     transform: rotateY(180deg);
   }
 
-  .animated-gradient-text {
-    display: inline;
-    background: linear-gradient(to right, #FFF 50%, #FFF 50%);
+  .animated-gradient-text .word-highlight {
+    background: linear-gradient(to right, hsl(var(--primary)) 50%, #FFF 50%);
     background-size: 200% 100%;
     background-position: 100%;
     -webkit-background-clip: text;
@@ -125,7 +124,7 @@
     transition: background-position 0.5s cubic-bezier(0.23, 1, 0.32, 1);
   }
   
-  .animated-gradient-text:hover {
+  .animated-gradient-text:hover .word-highlight {
     background-position: 0 100%;
   }
 
