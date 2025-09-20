@@ -62,8 +62,8 @@ export default function PortfolioSection() {
 
     return (
         <section id="portfolio-preview" className="text-foreground">
-            <div ref={containerRef} className="relative flex flex-col h-[600vh]">
-                <div className="sticky top-0 h-screen flex flex-col items-center justify-center overflow-hidden">
+            <div ref={containerRef} className="relative flex flex-col lg:h-[600vh]">
+                <div className="sticky top-0 h-screen flex flex-col items-center justify-center overflow-hidden py-20 lg:py-0">
                     <div className="absolute inset-0 z-0 overflow-hidden bg-foreground">
                         <div 
                             className="absolute top-[-120px] left-[-80px] w-64 h-64 bg-primary/30 rounded-full blur-3xl opacity-80"
@@ -77,11 +77,13 @@ export default function PortfolioSection() {
                     </div>
                 
                     {/* Top Text */}
-                    <AnimatedTextSection lines={textLinesTop} scrollProgress={topTextProgress} />
+                    <div className="hidden lg:block w-full">
+                      <AnimatedTextSection lines={textLinesTop} scrollProgress={topTextProgress} />
+                    </div>
 
                     {/* Portfolio Preview */}
                     <div 
-                        className="absolute inset-0 flex flex-col justify-center"
+                        className="absolute inset-0 flex-col justify-center hidden lg:flex"
                         style={{
                             opacity: portfolioOpacity,
                             transform: `scale(${portfolioScale})`,
@@ -90,9 +92,16 @@ export default function PortfolioSection() {
                     >
                         <PortfolioPreview />
                     </div>
+                    
+                    <div className="block lg:hidden">
+                       <PortfolioPreview />
+                    </div>
+
 
                     {/* Bottom Text */}
-                    <AnimatedTextSection lines={textLinesBottom} scrollProgress={bottomTextProgress} />
+                    <div className="hidden lg:block w-full">
+                      <AnimatedTextSection lines={textLinesBottom} scrollProgress={bottomTextProgress} />
+                    </div>
                 </div>
             </div>
         </section>

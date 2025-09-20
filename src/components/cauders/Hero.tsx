@@ -11,7 +11,7 @@ import FadeContent from './FadeContent';
 export default function Hero() {
 
   return (
-    <section className="relative w-full h-screen overflow-hidden">
+    <section className="relative w-full h-[90vh] lg:h-screen overflow-hidden">
       <div className="absolute inset-0 z-0">
         <Suspense fallback={<Skeleton className="w-full h-full" />}>
           <HeroBackground />
@@ -76,5 +76,6 @@ export default function Hero() {
     </section>
   );
 }
+
 
 

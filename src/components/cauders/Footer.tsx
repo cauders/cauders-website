@@ -48,7 +48,7 @@ export default function Footer() {
       ></div>
       
       <footer className="glass-effect relative z-10">
-        <div className="container mx-auto py-24 px-4 sm:px-6 lg:px-8">
+        <div className="container mx-auto py-16 lg:py-24 px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
               
               {/* Column 1: Logo and Copyright */}
