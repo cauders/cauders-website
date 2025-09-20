@@ -48,7 +48,7 @@ export default function Footer() {
       ></div>
       
       <footer className="glass-effect relative z-10">
-        <div className="container mx-auto py-8 lg:py-24 px-4 sm:px-6 lg:px-8">
+        <div className="container mx-auto py-6 lg:py-24 px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
               
               {/* Column 1: Logo and Copyright */}
@@ -101,7 +101,7 @@ export default function Footer() {
               </div>
           </div>
 
-          <div className="mt-8 lg:mt-12 pt-8 border-t border-background/20 flex flex-col md:flex-row items-center justify-between gap-8">
+          <div className="mt-6 lg:mt-12 pt-6 lg:pt-8 border-t border-background/20 flex flex-col md:flex-row items-center justify-between gap-8">
               <p className="text-xs text-background/70 text-center md:text-left">
                   &copy; {year} Cauders. All Rights Reserved.
               </p>
