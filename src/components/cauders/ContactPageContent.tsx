@@ -325,5 +325,3 @@ function ApplicationForm({ jobTitle }: { jobTitle: string }) {
         </>
     );
 }
-
-    
