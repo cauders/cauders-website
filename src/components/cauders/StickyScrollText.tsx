@@ -8,16 +8,16 @@ const StickyScrollText = () => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   const lines = [
-    "WE ENGINEER",
-    { text: "HIGH-PERFORMANCE, CUTTING-EDGE PLATFORMS", className: "text-primary" },
-    "THAT EMPOWER BUSINESSES TO DOMINATE THE DIGITAL LANDSCAPE."
+    { text: "WE ENGINEER", className: "text-left" },
+    { text: "HIGH-PERFORMANCE, CUTTING-EDGE PLATFORMS", className: "text-primary text-right" },
+    { text: "THAT EMPOWER BUSINESSES TO DOMINATE THE DIGITAL LANDSCAPE.", className: "text-left" }
   ];
 
   return (
     <div ref={containerRef} className="relative flex flex-col bg-background">
       {/* Sticky container for the animated text */}
       <div className="sticky top-0 flex-shrink-0 flex items-center justify-center overflow-hidden h-[100vh]">
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-left">
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <StandardizedHeading lines={lines} className="text-5xl md:text-6xl lg:text-7xl" />
         </div>
       </div>
@@ -26,6 +26,7 @@ const StickyScrollText = () => {
 };
 
 export default StickyScrollText;
+
 
 
 
