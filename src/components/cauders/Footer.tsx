@@ -48,7 +48,7 @@ export default function Footer() {
       ></div>
       
       <footer className="glass-effect relative z-10">
-        <div className="container mx-auto py-12 lg:py-24 px-4 sm:px-6 lg:px-8">
+        <div className="container mx-auto py-8 lg:py-24 px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
               
               {/* Column 1: Logo and Copyright */}
@@ -88,7 +88,7 @@ export default function Footer() {
               {/* Column 3: Contact & Legal */}
               <div className="lg:col-span-4 text-sm">
                   <h3 className="font-semibold tracking-wider uppercase mb-4 text-sm">Get in Touch</h3>
-                  <a href="mailto:info@cauders.com" className="block hover:text-primary transition-colors mb-6 lg:mb-8">info@cauders.com</a>
+                  <a href="mailto:info@cauders.com" className="block hover:text-primary transition-colors mb-6">info@cauders.com</a>
 
                   <h3 className="font-semibold tracking-wider uppercase mb-4 text-sm">Legal</h3>
                   <nav className="flex flex-col gap-2 lg:gap-3">
@@ -101,7 +101,7 @@ export default function Footer() {
               </div>
           </div>
 
-          <div className="mt-10 lg:mt-12 pt-8 border-t border-background/20 flex flex-col md:flex-row items-center justify-between gap-8">
+          <div className="mt-8 lg:mt-12 pt-8 border-t border-background/20 flex flex-col md:flex-row items-center justify-between gap-8">
               <p className="text-xs text-background/70 text-center md:text-left">
                   &copy; {year} Cauders. All Rights Reserved.
               </p>
