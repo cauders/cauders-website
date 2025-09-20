@@ -177,7 +177,7 @@ export default function PortfolioPreview() {
 
 
       {/* 3D Carousel Area */}
-      <div className="h-[40vh] lg:h-[45vh] mt-16 perspective-carousel pointer-events-none">
+      <div className="h-[35vh] lg:h-[45vh] mt-16 perspective-carousel pointer-events-none">
         <div ref={carouselWrapRef} className="relative w-full h-full carousel-wrap">
           {projects.map((project, index) => {
             const cardRotation = index * CARD_ANGLE;
@@ -254,5 +254,3 @@ export default function PortfolioPreview() {
     </div>
   );
 }
-
-    
