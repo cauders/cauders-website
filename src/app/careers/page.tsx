@@ -90,8 +90,13 @@ export default function CareersPage() {
                                 </div>
                                 <div className="flip-card-back absolute w-full h-full">
                                     <Card className={cn("h-full bg-card flex flex-col justify-center items-center animated-border-card")}>
+                                        <CardHeader>
+                                            <div className="mx-auto bg-primary/10 rounded-full p-3 w-fit mb-4">
+                                                <CheckCircle className="w-6 h-6 text-primary" />
+                                            </div>
+                                        </CardHeader>
                                         <CardContent className="text-center">
-                                            <p className="text-sm text-foreground/80">{benefit.description}</p>
+                                            <p className="text-base font-semibold text-foreground">{benefit.title}</p>
                                         </CardContent>
                                     </Card>
                                 </div>
