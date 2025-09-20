@@ -74,32 +74,16 @@ export const teamMembers: TeamMember[] = [
   },
 ];
 
-const gradients = [
-  "linear-gradient(145deg, #3B82F6, transparent)",
-  "linear-gradient(180deg, #10B981, transparent)",
-  "linear-gradient(210deg, #4F46E5, transparent)",
-  "linear-gradient(165deg, #F59E0B, transparent)",
-  "linear-gradient(195deg, #EF4444, transparent)",
-  "linear-gradient(225deg, #8B5CF6, transparent)",
-  "linear-gradient(135deg, #06B6D4, transparent)",
-];
+const borderColor = "#8CEAE5";
+const gradient = "hsl(var(--card))";
 
-const borderColors = [
-  "#3B82F6",
-  "#10B981",
-  "#4F46E5",
-  "#F59E0B",
-  "#EF4444",
-  "#8B5CF6",
-  "#06B6D4",
-]
 
 export const teamData = teamMembers.map((member, index) => ({
   image: member.imageUrl,
   title: member.name,
   subtitle: member.role,
   handle: `@${member.name.split(' ')[0].toLowerCase()}`,
-  borderColor: borderColors[index % borderColors.length],
-  gradient: gradients[index % gradients.length],
+  borderColor: borderColor,
+  gradient: gradient,
   url: member.socials.linkedin || member.socials.github || member.socials.twitter
 }));
