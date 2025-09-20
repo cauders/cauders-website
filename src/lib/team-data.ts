@@ -75,7 +75,7 @@ export const teamMembers: TeamMember[] = [
 ];
 
 const borderColor = "#8CEAE5";
-const gradient = "hsl(var(--card))";
+const gradient = "hsl(var(--primary))";
 
 
 export const teamData = teamMembers.map((member, index) => ({
