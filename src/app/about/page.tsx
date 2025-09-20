@@ -17,21 +17,21 @@ const contentSections = [
     title: "Redefining Digital Innovation",
     text: "At Cauders, we are redefining the future of digital innovation. As a modern IT solutions company, we specialize in creating intelligent, scalable, and high-performance digital ecosystems that empower businesses to grow, adapt, and lead in competitive markets.",
     layout: 'text-left',
-    imageUrl: placeholderImages.innovation.imageUrl,
+    imageUrl: '/images/about/digital-innovation.jpg',
     aiHint: placeholderImages.innovation.aiHint
   },
   {
     title: "Our Core Expertise",
     text: "Our expertise spans custom software development, enterprise grade web and mobile applications, UI/UX design, cloud-based solutions, API integrations, AI integrations and performance optimization delivering technology that is secure, user-centric, and built for long-term impact.",
     layout: 'text-right',
-    imageUrl: placeholderImages.expertise.imageUrl,
+    imageUrl: '/images/about/software-development.jpg',
     aiHint: placeholderImages.expertise.aiHint
   },
   {
     title: "Vision for the Future",
     text: "Driven by a passion for innovation and excellence, Cauders transforms ideas into powerful digital experiences for startups, enterprises, and global brands. We don’t just build solutions we create future-ready platforms that elevate businesses and inspire growth.",
     layout: 'text-left',
-    imageUrl: placeholderImages.vision.imageUrl,
+    imageUrl: '/images/about/future-ready.jpg',
     aiHint: placeholderImages.vision.aiHint
   },
 ];
