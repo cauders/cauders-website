@@ -12,7 +12,7 @@ import StandardizedHeading from "./StandardizedHeading";
 import ScrollFadeIn from "./ScrollFadeIn";
 
 export default function ServicesPreview() {
-  const services = getServices().slice(0, 4); // Get top 4 services
+  const services = getServices(); // Get all services
   
   // --- Mobile-specific render ---
   const MobileView = () => (
@@ -58,9 +58,10 @@ export default function ServicesPreview() {
 
   // --- Desktop-specific render with scroll animations ---
   const DesktopView = () => {
+    const desktopServices = getServices().slice(0, 4); // Keep desktop to 4 services for the flip animation layout
     const containerRef = useRef<HTMLDivElement>(null);
     const [subtitleTransform, setSubtitleTransform] = useState('translateY(101%)');
-    const [cardStyles, setCardStyles] = useState(services.map(() => ({ opacity: 0, transform: 'translateY(40px)' })));
+    const [cardStyles, setCardStyles] = useState(desktopServices.map(() => ({ opacity: 0, transform: 'translateY(40px)' })));
     const [hoveredCard, setHoveredCard] = useState<number | null>(null);
 
     const scrollHandler = useCallback(() => {
@@ -71,7 +72,7 @@ export default function ServicesPreview() {
       
       if (scrollableHeight <= 0) {
         setSubtitleTransform('translateY(0%)');
-        setCardStyles(services.map(() => ({ opacity: 1, transform: 'translateY(0px)' })));
+        setCardStyles(desktopServices.map(() => ({ opacity: 1, transform: 'translateY(0px)' })));
         return;
       }
     
@@ -83,9 +84,9 @@ export default function ServicesPreview() {
     
       const cardsStartProgress = 0.15;
       const totalCardsProgress = 0.8;
-      const progressPerCard = totalCardsProgress / services.length;
+      const progressPerCard = totalCardsProgress / desktopServices.length;
     
-      const newCardStyles = services.map((_, index) => {
+      const newCardStyles = desktopServices.map((_, index) => {
         const cardStart = cardsStartProgress + (index * progressPerCard);
         const cardProgress = Math.max(0, Math.min(1, (currentProgress - cardStart) / (progressPerCard * 0.75)));
         
@@ -98,7 +99,7 @@ export default function ServicesPreview() {
         };
       });
       setCardStyles(newCardStyles);
-    }, [services.length]);
+    }, [desktopServices.length]);
 
     useEffect(() => {
       window.addEventListener('scroll', scrollHandler, { passive: true });
@@ -124,7 +125,7 @@ export default function ServicesPreview() {
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8 mt-16">
-              {services.map((service, index) => (
+              {desktopServices.map((service, index) => (
                   <div
                       key={service.slug}
                       className="h-full"
