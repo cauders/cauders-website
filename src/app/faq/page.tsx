@@ -40,12 +40,12 @@ const faqs = [
 export default function FAQPage() {
     return (
         <div className="bg-background text-foreground">
-            <section className="py-20 lg:py-32">
+            <section className="py-16 lg:py-32">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="text-center mb-16">
+                    <div className="text-center mb-12">
                         <StandardizedHeading lines={["Frequently Asked Questions"]} />
                         <ScrollFadeIn>
-                            <p className="mt-4 text-lg text-foreground/70 max-w-2xl mx-auto">
+                            <p className="mt-4 text-sm lg:text-lg text-foreground/70 max-w-2xl mx-auto">
                                 Have questions? We've got answers. We've compiled a list of the most common questions we receive to provide clarity and help you understand our process and services better. If you can't find what you're looking for, feel free to contact us.
                             </p>
                         </ScrollFadeIn>
@@ -56,10 +56,10 @@ export default function FAQPage() {
                             <Accordion type="single" collapsible className="w-full">
                                 {faqs.map((faq, index) => (
                                     <AccordionItem key={index} value={`item-${index}`}>
-                                        <AccordionTrigger className="text-left text-lg font-semibold hover:text-primary">
+                                        <AccordionTrigger className="text-left text-base lg:text-lg font-semibold hover:text-primary">
                                             {faq.question}
                                         </AccordionTrigger>
-                                        <AccordionContent className="text-base text-foreground/80">
+                                        <AccordionContent className="text-sm lg:text-base text-foreground/80">
                                             {faq.answer}
                                         </AccordionContent>
                                     </AccordionItem>

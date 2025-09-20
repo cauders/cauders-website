@@ -155,7 +155,7 @@ export default function PortfolioPreview() {
     >
         <div className="text-center">
             <StandardizedHeading lines={["Our Work"]} className="text-background" />
-            <p className="mt-4 text-lg text-background/70 max-w-2xl mx-auto">
+            <p className="mt-4 text-base lg:text-lg text-background/70 max-w-2xl mx-auto">
                 A curated selection of projects that showcase our commitment to excellence and innovation.
             </p>
         </div>
@@ -177,7 +177,7 @@ export default function PortfolioPreview() {
 
 
       {/* 3D Carousel Area */}
-      <div className="h-[30vh] lg:h-[45vh] mt-16 perspective-carousel pointer-events-none">
+      <div className="h-[20vh] lg:h-[45vh] mt-16 perspective-carousel pointer-events-none">
         <div ref={carouselWrapRef} className="relative w-full h-full carousel-wrap">
           {projects.map((project, index) => {
             const cardRotation = index * CARD_ANGLE;
@@ -222,13 +222,13 @@ export default function PortfolioPreview() {
                       "opacity-0 group-hover:opacity-100 group-hover:-translate-y-4"
                     )}
                   >
-                    <p className="text-lg md:text-xl lg:text-2xl font-garet text-white font-medium drop-shadow-md">
+                    <p className="text-sm md:text-xl lg:text-2xl font-garet text-white font-medium drop-shadow-md">
                       {project.description}
                     </p>
-                    <h3 className="font-black text-2xl md:text-3xl lg:text-4xl text-white mt-1 font-headline drop-shadow-2xl">
+                    <h3 className="font-black text-lg md:text-3xl lg:text-4xl text-white mt-1 font-headline drop-shadow-2xl">
                       {project.title}
                     </h3>
-                    <p className="mt-4 text-xs text-primary font-semibold uppercase tracking-wide drop-shadow-md">
+                    <p className="mt-2 text-xs text-primary font-semibold uppercase tracking-wide drop-shadow-md">
                       {project.category}
                     </p>
                   </div>

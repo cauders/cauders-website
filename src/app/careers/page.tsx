@@ -50,11 +50,11 @@ export default function CareersPage() {
   return (
     <div className="bg-background text-foreground">
       {/* Hero Section */}
-      <section className="py-20 lg:py-32 text-center">
+      <section className="py-16 lg:py-32 text-center">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollFadeIn>
             <StandardizedHeading lines={["Join Our Team"]} />
-            <p className="mt-6 text-base md:text-lg text-foreground/70 max-w-3xl mx-auto">
+            <p className="mt-4 text-sm md:text-lg text-foreground/70 max-w-3xl mx-auto">
               At Cauders, we're not just building products; we're building the future of digital interaction. We are looking for passionate, creative, and driven individuals to join us on our journey.
             </p>
           </ScrollFadeIn>
@@ -62,25 +62,25 @@ export default function CareersPage() {
       </section>
 
       {/* Why Work With Us Section */}
-      <section className="py-20 lg:py-32 bg-secondary/30">
+      <section className="py-16 lg:py-32 bg-secondary/30">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <ScrollFadeIn className="text-center mb-16">
+            <ScrollFadeIn className="text-center mb-12">
                 <h2 className="text-3xl md:text-4xl font-bold text-foreground font-headline">Why Cauders?</h2>
-                <p className="mt-4 text-base md:text-lg text-foreground/70 max-w-2xl mx-auto">
+                <p className="mt-4 text-sm md:text-lg text-foreground/70 max-w-2xl mx-auto">
                     We're committed to creating an environment where our team can thrive, innovate, and do their best work. By fostering a culture of collaboration, respect, and continuous growth, we empower every member to make a meaningful impact.
                 </p>
             </ScrollFadeIn>
              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                  {benefits.map((benefit, index) => (
                      <ScrollFadeIn key={benefit.title} delay={`delay-${index * 100}`} className="h-full">
-                        <Card className="bg-card h-full text-center border flex flex-col hover:border-primary hover:-translate-y-2 transition-transform duration-300 group min-h-[320px]">
-                            <CardHeader className="flex-grow flex flex-col items-center justify-center">
-                                <div className="mx-auto bg-primary/10 rounded-full p-4 w-fit mb-4 border border-primary/20 group-hover:bg-primary/20 transition-colors">
-                                    <benefit.icon className="w-8 h-8 text-primary" />
+                        <Card className="bg-card h-full text-center border flex flex-col hover:border-primary hover:-translate-y-2 transition-transform duration-300 group min-h-[260px] lg:min-h-[320px]">
+                            <CardHeader className="flex-grow flex flex-col items-center justify-center p-4">
+                                <div className="mx-auto bg-primary/10 rounded-full p-3 lg:p-4 w-fit mb-4 border border-primary/20 group-hover:bg-primary/20 transition-colors">
+                                    <benefit.icon className="w-6 h-6 lg:w-8 lg:h-8 text-primary" />
                                 </div>
-                                <CardTitle className="text-2xl font-headline text-foreground">{benefit.title}</CardTitle>
+                                <CardTitle className="text-xl lg:text-2xl font-headline text-foreground">{benefit.title}</CardTitle>
                                 <CardContent className="p-0 mt-2">
-                                  <p className="text-sm text-foreground/80">{benefit.description}</p>
+                                  <p className="text-xs lg:text-sm text-foreground/80">{benefit.description}</p>
                                 </CardContent>
                             </CardHeader>
                         </Card>
@@ -91,35 +91,35 @@ export default function CareersPage() {
       </section>
 
       {/* Open Positions Section */}
-      <section className="py-20 lg:py-32">
+      <section className="py-16 lg:py-32">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
+          <div className="text-center mb-12">
             <StandardizedHeading lines={["Current Openings"]} />
-            <p className="mt-4 text-base md:text-lg text-foreground/70 max-w-2xl mx-auto">
+            <p className="mt-4 text-sm md:text-lg text-foreground/70 max-w-2xl mx-auto">
               Find your next challenge. If you don't see a role that fits, feel free to reach out at hr@cauders.com. We're always looking for great talent.
             </p>
           </div>
 
           <div className="max-w-4xl mx-auto">
-            <div className="space-y-6">
+            <div className="space-y-4">
               {jobOpenings.map((job, index) => (
                 <ScrollFadeIn key={job.title} delay={`delay-${index * 100}`} className="group">
                   <Card className="bg-card border transition-all duration-300 ease-out hover:scale-[1.03] hover:border-primary hover:shadow-lg hover:shadow-primary/10">
-                      <CardHeader className="grid grid-cols-1 md:grid-cols-3 gap-4 items-start">
+                      <CardHeader className="grid grid-cols-1 md:grid-cols-3 gap-4 items-start p-4">
                       <div className="md:col-span-2">
-                          <CardTitle className="text-xl md:text-2xl text-foreground font-headline">{job.title}</CardTitle>
-                          <CardDescription className="text-sm text-foreground/70">{job.location} &middot; {job.type}</CardDescription>
+                          <CardTitle className="text-lg md:text-2xl text-foreground font-headline">{job.title}</CardTitle>
+                          <CardDescription className="text-xs text-foreground/70">{job.location} &middot; {job.type}</CardDescription>
                       </div>
                       <div className="md:text-right">
-                          <Button asChild>
+                          <Button asChild size="sm">
                               <Link href={`/contact?job=${encodeURIComponent(job.title)}`}>
                                   Apply Now <ArrowRight className="ml-2" />
                               </Link>
                           </Button>
                       </div>
                       </CardHeader>
-                      <CardContent>
-                      <p className="text-base text-foreground/80">{job.description}</p>
+                      <CardContent className="p-4 pt-0">
+                      <p className="text-sm text-foreground/80">{job.description}</p>
                       </CardContent>
                   </Card>
                 </ScrollFadeIn>

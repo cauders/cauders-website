@@ -48,24 +48,24 @@ export default function Footer() {
       ></div>
       
       <footer className="glass-effect relative z-10">
-        <div className="container mx-auto py-8 lg:py-24 px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-y-8 lg:gap-8">
+        <div className="container mx-auto py-12 lg:py-24 px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-2 lg:grid-cols-12 gap-y-8 gap-x-4 lg:gap-8">
               
               {/* Column 1: Logo and Copyright */}
-              <div className="lg:col-span-4 flex flex-col items-start">
-                  <Link href="/" className="text-3xl font-bold hover:text-primary transition-colors mb-4">
+              <div className="col-span-2 lg:col-span-4 flex flex-col items-start">
+                  <Link href="/" className="text-2xl lg:text-3xl font-bold hover:text-primary transition-colors mb-2">
                       Cauders
                   </Link>
-                  <p className="text-sm text-background/70 mt-2 max-w-xs">
+                  <p className="text-xs text-background/70 mt-2 max-w-xs">
                       Crafting premium, modern, and dynamic websites and applications to elevate your digital presence.
                   </p>
               </div>
 
               {/* Column 2: Links */}
-              <div className="lg:col-span-4 grid grid-cols-2 gap-8 text-sm">
+              <div className="lg:col-span-4 grid grid-cols-2 gap-8 text-xs lg:text-sm">
                   <div>
-                      <h3 className="font-semibold tracking-wider uppercase mb-4 text-sm">Quick Links</h3>
-                      <nav className="flex flex-col gap-2">
+                      <h3 className="font-semibold tracking-wider uppercase mb-3 text-xs">Quick Links</h3>
+                      <nav className="flex flex-col gap-1.5">
                           {quickLinks.map((link) => (
                               <Link key={link.label} href={link.href} className="hover:text-primary transition-colors">
                                   {link.label}
@@ -74,8 +74,8 @@ export default function Footer() {
                       </nav>
                   </div>
                   <div>
-                      <h3 className="font-semibold tracking-wider uppercase mb-4 text-sm">Company</h3>
-                      <nav className="flex flex-col gap-2">
+                      <h3 className="font-semibold tracking-wider uppercase mb-3 text-xs">Company</h3>
+                      <nav className="flex flex-col gap-1.5">
                           {companyLinks.map((link) => (
                               <Link key={link.label} href={link.href} className="hover:text-primary transition-colors">
                                   {link.label}
@@ -86,12 +86,12 @@ export default function Footer() {
               </div>
 
               {/* Column 3: Contact & Legal */}
-              <div className="lg:col-span-4 text-sm">
-                  <h3 className="font-semibold tracking-wider uppercase mb-4 text-sm">Get in Touch</h3>
-                  <a href="mailto:info@cauders.com" className="block hover:text-primary transition-colors mb-6">info@cauders.com</a>
+              <div className="col-span-2 lg:col-span-4 text-xs lg:text-sm">
+                  <h3 className="font-semibold tracking-wider uppercase mb-3 text-xs">Get in Touch</h3>
+                  <a href="mailto:info@cauders.com" className="block hover:text-primary transition-colors mb-4">info@cauders.com</a>
 
-                  <h3 className="font-semibold tracking-wider uppercase mb-4 text-sm">Legal</h3>
-                  <nav className="flex flex-col gap-2">
+                  <h3 className="font-semibold tracking-wider uppercase mb-3 text-xs">Legal</h3>
+                  <nav className="flex flex-col gap-1.5">
                       {legalLinks.map((link) => (
                           <Link key={link.label} href={link.href} className="hover:text-primary transition-colors">
                               {link.label}
@@ -101,13 +101,13 @@ export default function Footer() {
               </div>
           </div>
 
-          <div className="mt-6 lg:mt-12 pt-4 lg:pt-6 border-t border-background/20 flex flex-col md:flex-row items-center justify-between gap-8">
+          <div className="mt-8 lg:mt-12 pt-6 border-t border-background/20 flex flex-col md:flex-row items-center justify-between gap-4">
               <p className="text-xs text-background/70 text-center md:text-left">
                   &copy; {year} Cauders. All Rights Reserved.
               </p>
-              <div className="flex items-center justify-center flex-wrap gap-x-0 gap-y-4 md:gap-2">
+              <div className="flex items-center justify-center flex-wrap gap-x-0 gap-y-2 md:gap-2">
                   {socialLinks.map((link) => (
-                      <MagneticLink key={link.label} href={link.href} className="w-20 h-20" linkClassName="text-xs text-background">
+                      <MagneticLink key={link.label} href={link.href} className="w-16 h-16" linkClassName="text-xs text-background">
                           {link.label}
                       </MagneticLink>
                   ))}

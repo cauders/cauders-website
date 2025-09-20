@@ -39,24 +39,24 @@ const contentSections = [
 export default function AboutPage() {
     return (
         <div className="bg-background text-foreground">
-            <section className="py-20 lg:py-32">
+            <section className="py-16 lg:py-32">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="text-center mb-20 lg:mb-24">
+                    <div className="text-center mb-12 lg:mb-24">
                         <StandardizedHeading lines={["About Cauders"]} />
                     </div>
 
-                    <div className="flex flex-col gap-24 lg:gap-32">
+                    <div className="flex flex-col gap-16 lg:gap-32">
                         {contentSections.map((section, index) => (
-                            <div key={index} className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+                            <div key={index} className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                                 <div className={cn("lg:order-1 text-center lg:text-left", section.layout === 'text-right' && "lg:order-2 lg:text-right")}>
                                     <div className="max-w-lg mx-auto lg:mx-0 lg:ml-auto">
                                         <ScrollFadeIn direction={section.layout === 'text-left' ? 'left' : 'right'}>
-                                            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6 font-headline">
+                                            <h2 className="text-2xl md:text-4xl font-bold text-foreground mb-4 font-headline">
                                                 {section.title}
                                             </h2>
                                         </ScrollFadeIn>
                                         <ScrollFadeIn direction="up" style={{ animationDelay: '200ms' }}>
-                                            <p className="text-base text-foreground/80">
+                                            <p className="text-sm text-foreground/80">
                                                 {section.text}
                                             </p>
                                         </ScrollFadeIn>
@@ -81,11 +81,11 @@ export default function AboutPage() {
                     </div>
                 </div>
             </section>
-             <section className="py-20 lg:py-32 bg-secondary/30">
+             <section className="py-16 lg:py-32 bg-secondary/30">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
                     <ScrollFadeIn>
-                        <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 font-headline">Let's Create Together</h2>
-                        <p className="max-w-2xl mx-auto text-base text-foreground/70 mb-8">
+                        <h2 className="text-2xl md:text-4xl font-bold text-foreground mb-4 font-headline">Let's Create Together</h2>
+                        <p className="max-w-2xl mx-auto text-sm text-foreground/70 mb-8">
                             Have an idea that could redefine your industry? We're the team to help you build it. Let's start a conversation.
                         </p>
                         <Button asChild size="lg">

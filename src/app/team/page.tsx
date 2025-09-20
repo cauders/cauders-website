@@ -13,23 +13,23 @@ import { Github, Linkedin, Twitter } from 'lucide-react';
 export default function TeamPage() {
   return (
     <div className="bg-background text-foreground">
-      <section className="py-20 lg:py-32">
+      <section className="py-16 lg:py-32">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
+          <div className="text-center mb-12">
             <StandardizedHeading lines={["Meet Our Team"]} />
             <ScrollFadeIn>
-              <p className="mt-4 text-base md:text-lg text-foreground/70 max-w-2xl mx-auto">
+              <p className="mt-4 text-sm md:text-lg text-foreground/70 max-w-2xl mx-auto">
                 The creative minds and dedicated professionals driving innovation at Cauders. We are a collective of thinkers, designers, and developers united by a shared passion for crafting exceptional digital experiences.
               </p>
             </ScrollFadeIn>
           </div>
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
             {teamMembers.map((member, index) => (
               <ScrollFadeIn key={index} style={{ animationDelay: `${index * 100}ms` }} className="h-full">
                 <Card className="h-full bg-card border text-center hover:border-primary hover:-translate-y-2 transition-transform duration-300 group overflow-hidden flex flex-col">
                   <CardHeader className="p-0">
-                    <div className="relative w-full h-80">
+                    <div className="relative w-full h-64 lg:h-80">
                         <Image 
                             src={member.imageUrl}
                             alt={member.name}
@@ -38,31 +38,31 @@ export default function TeamPage() {
                         />
                     </div>
                   </CardHeader>
-                  <CardContent className="p-6 flex flex-col flex-grow">
+                  <CardContent className="p-4 lg:p-6 flex flex-col flex-grow">
                     <div className="flex-grow">
-                      <h3 className="text-xl font-bold font-headline text-foreground">{member.name}</h3>
-                      <p className="text-primary text-sm font-medium">{member.role}</p>
-                      <p className="text-sm text-foreground/70 mt-4 line-clamp-3">{member.bio}</p>
+                      <h3 className="text-lg font-bold font-headline text-foreground">{member.name}</h3>
+                      <p className="text-primary text-xs font-medium">{member.role}</p>
+                      <p className="text-xs text-foreground/70 mt-2 line-clamp-3">{member.bio}</p>
                     </div>
-                    <div className="flex justify-center gap-2 mt-6">
+                    <div className="flex justify-center gap-1 mt-4">
                         {member.socials.linkedin && (
                             <Button variant="ghost" size="icon" asChild>
                                 <Link href={member.socials.linkedin} target="_blank" aria-label="LinkedIn">
-                                    <Linkedin className="h-5 w-5 text-foreground/70 hover:text-primary" />
+                                    <Linkedin className="h-4 w-4 text-foreground/70 hover:text-primary" />
                                 </Link>
                             </Button>
                         )}
                         {member.socials.github && (
                             <Button variant="ghost" size="icon" asChild>
                                 <Link href={member.socials.github} target="_blank" aria-label="GitHub">
-                                    <Github className="h-5 w-5 text-foreground/70 hover:text-primary" />
+                                    <Github className="h-4 w-4 text-foreground/70 hover:text-primary" />
                                 </Link>
                             </Button>
                         )}
                         {member.socials.twitter && (
                             <Button variant="ghost" size="icon" asChild>
                                 <Link href={member.socials.twitter} target="_blank" aria-label="Twitter">
-                                    <Twitter className="h-5 w-5 text-foreground/70 hover:text-primary" />
+                                    <Twitter className="h-4 w-4 text-foreground/70 hover:text-primary" />
                                 </Link>
                             </Button>
                         )}

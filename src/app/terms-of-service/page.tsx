@@ -9,7 +9,7 @@ import StandardizedHeading from '@/components/cauders/StandardizedHeading';
 
 const WordHighlighter = ({ text }: { text: string }) => {
   return (
-    <p className="text-highlight-group text-base">
+    <p className="text-highlight-group text-sm lg:text-base">
       {text.split(' ').map((word, index) => (
         <React.Fragment key={index}>
           <span className="word-highlight">{word}</span>{' '}
@@ -63,7 +63,7 @@ const termsSections = [
   },
   {
     title: "Contact Us",
-    content: <p className="text-highlight-group text-base"><span className="word-highlight">If</span> <span className="word-highlight">you</span> <span className="word-highlight">have</span> <span className="word-highlight">any</span> <span className="word-highlight">questions</span> <span className="word-highlight">about</span> <span className="word-highlight">these</span> <span className="word-highlight">Terms</span> <span className="word-highlight">and</span> <span className="word-highlight">Conditions,</span> <span className="word-highlight">please</span> <span className="word-highlight">contact</span> <span className="word-highlight">us</span> <span className="word-highlight">at</span> <a href="mailto:info@cauders.com" className="text-primary hover:underline word-highlight">info@cauders.com</a>.</p>
+    content: <p className="text-highlight-group text-sm lg:text-base"><span className="word-highlight">If</span> <span className="word-highlight">you</span> <span className="word-highlight">have</span> <span className="word-highlight">any</span> <span className="word-highlight">questions</span> <span className="word-highlight">about</span> <span className="word-highlight">these</span> <span className="word-highlight">Terms</span> <span className="word-highlight">and</span> <span className="word-highlight">Conditions,</span> <span className="word-highlight">please</span> <span className="word-highlight">contact</span> <span className="word-highlight">us</span> <span className="word-highlight">at</span> <a href="mailto:info@cauders.com" className="text-primary hover:underline word-highlight">info@cauders.com</a>.</p>
   }
 ];
 
@@ -77,15 +77,15 @@ export default function TermsOfServicePage() {
         <div className="absolute top-1/2 right-1/4 w-64 h-64 bg-primary/5 rounded-full blur-2xl -z-10"></div>
 
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-32">
         <ScrollFadeIn>
-          <header className="mb-16 text-center">
+          <header className="mb-12 text-center">
             <StandardizedHeading lines={["Terms of Service"]} />
-            <p className="mt-4 text-base text-foreground/70">Last Updated: September 1, 2025</p>
+            <p className="mt-4 text-sm text-foreground/70">Last Updated: September 1, 2025</p>
           </header>
         </ScrollFadeIn>
 
-        <div className="max-w-4xl mx-auto space-y-10">
+        <div className="max-w-4xl mx-auto space-y-8">
           <ScrollFadeIn>
               <WordHighlighter text="Please read these Terms of Service carefully before using our services. Your access to and use of the service is conditioned on your acceptance of and compliance with these Terms. These Terms apply to all visitors, users, and others who access or use the service." />
           </ScrollFadeIn>
@@ -94,12 +94,12 @@ export default function TermsOfServicePage() {
                 <ScrollFadeIn key={index} style={{ animationDelay: `${(index + 1) * 100}ms`}}>
                   <section>
                       <div className="flex items-start gap-4">
-                          <div className="flex-shrink-0 text-primary font-bold text-2xl mt-1">
+                          <div className="flex-shrink-0 text-primary font-bold text-xl lg:text-2xl mt-1">
                               {index + 1}.
                           </div>
                           <div>
-                              <h2 className="text-2xl font-bold text-foreground mb-3 font-headline">{section.title}</h2>
-                              <div className="text-foreground/80 space-y-4 text-base">
+                              <h2 className="text-xl lg:text-2xl font-bold text-foreground mb-3 font-headline">{section.title}</h2>
+                              <div className="text-foreground/80 space-y-4 text-sm lg:text-base">
                                   {section.content}
                               </div>
                           </div>

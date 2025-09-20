@@ -10,7 +10,7 @@ import StandardizedHeading from '@/components/cauders/StandardizedHeading';
 
 const WordHighlighter = ({ text }: { text: string }) => {
   return (
-    <p className="text-highlight-group text-base">
+    <p className="text-highlight-group text-sm lg:text-base">
       {text.split(' ').map((word, index) => (
         <React.Fragment key={index}>
           <span className="word-highlight">{word}</span>{' '}
@@ -27,7 +27,7 @@ const policySections = [
     content: (
       <>
         <WordHighlighter text="We may collect personal and non-personal information through various methods, including:" />
-        <ul className="list-disc list-outside space-y-2 pl-6 mt-4 text-base">
+        <ul className="list-disc list-outside space-y-2 pl-6 mt-4 text-sm lg:text-base">
           <li><strong className="word-highlight">Information you provide to us:</strong> <WordHighlighter text="This includes data you voluntarily submit when you contact us, request a quote, subscribe to a newsletter, or fill out a form. This may include your name, company name, email address, phone number, and any other information you choose to provide." /></li>
           <li><strong className="word-highlight">Information we collect automatically:</strong> <WordHighlighter text="When you visit our website, we may automatically collect certain technical data about your device and browsing activity. This may include your IP address, browser type, operating system, pages viewed, and the duration of your visit. This data is collected using standard technologies such as cookies and log files." /></li>
         </ul>
@@ -39,7 +39,7 @@ const policySections = [
     content: (
         <>
             <WordHighlighter text="We use the collected information for a variety of purposes, including:" />
-            <ul className="list-disc list-outside space-y-2 pl-6 mt-4 text-base">
+            <ul className="list-disc list-outside space-y-2 pl-6 mt-4 text-sm lg:text-base">
                 <li><strong className="word-highlight">To provide and improve our services:</strong> <WordHighlighter text="We use your information to fulfill your requests, manage our relationship with you, and enhance the functionality and quality of our services." /></li>
                 <li><strong className="word-highlight">For communication:</strong> <WordHighlighter text="We may use your contact details to respond to your inquiries, send you project updates, and provide you with information about our services." /></li>
                 <li><strong className="word-highlight">For marketing and analytics:</strong> <WordHighlighter text="We may use non-personal data to analyze website traffic, understand user behavior, and improve our marketing strategies. We may also use your contact information to send you promotional materials about our services, which you can opt-out of at any time." /></li>
@@ -75,15 +75,15 @@ export default function PrivacyPolicyPage() {
         <div className="absolute top-1/2 right-1/4 w-64 h-64 bg-primary/5 rounded-full blur-2xl -z-10"></div>
 
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-32">
         <ScrollFadeIn>
-          <header className="mb-16 text-center">
+          <header className="mb-12 text-center">
             <StandardizedHeading lines={["Privacy Policy"]} />
-            <p className="mt-4 text-base text-foreground/70">Last Updated: September 1, 2025</p>
+            <p className="mt-4 text-sm text-foreground/70">Last Updated: September 1, 2025</p>
           </header>
         </ScrollFadeIn>
 
-        <div className="max-w-4xl mx-auto space-y-10">
+        <div className="max-w-4xl mx-auto space-y-8">
           <ScrollFadeIn>
               <WordHighlighter text="Your privacy is critically important to us. Cauders ('we,' 'us,' or 'our') is committed to protecting the confidentiality and security of your personal information. This Privacy Policy outlines how we collect, use, and safeguard the information you provide when you interact with our website, services, and digital platforms." />
           </ScrollFadeIn>
@@ -92,12 +92,12 @@ export default function PrivacyPolicyPage() {
                 <ScrollFadeIn key={index} style={{ animationDelay: `${(index + 1) * 100}ms`}}>
                   <section>
                       <div className="flex items-start gap-4">
-                          <div className="flex-shrink-0 text-primary font-bold text-2xl mt-1">
+                          <div className="flex-shrink-0 text-primary font-bold text-xl lg:text-2xl mt-1">
                               {index + 1}.
                           </div>
                           <div>
-                              <h2 className="text-2xl font-bold text-foreground mb-3 font-headline">{section.title}</h2>
-                              <div className="text-foreground/80 space-y-4 text-base">
+                              <h2 className="text-xl lg:text-2xl font-bold text-foreground mb-3 font-headline">{section.title}</h2>
+                              <div className="text-foreground/80 space-y-4 text-sm lg:text-base">
                                   {section.content}
                               </div>
                           </div>

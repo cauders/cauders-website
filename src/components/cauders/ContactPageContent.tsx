@@ -46,11 +46,11 @@ export default function ContactPageContent() {
     const contactEmail = jobTitle ? 'hr@cauders.com' : 'info@cauders.com';
   
     return (
-      <section id="contact" className="py-20 lg:py-32 bg-background">
+      <section id="contact" className="py-16 lg:py-32 bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
+            <div className="text-center mb-12">
                 <StandardizedHeading lines={[jobTitle ? `Apply for ${jobTitle}` : "Let's Build Together"]} />
-                <p className="mt-4 text-base text-foreground/70 max-w-2xl mx-auto">
+                <p className="mt-4 text-sm text-foreground/70 max-w-2xl mx-auto">
                     {jobTitle 
                         ? "Please fill out the form below to apply. We're excited to learn more about you."
                         : "Have a project in mind or just want to say hello? We'd love to hear from you. Fill out the form below and our team will get in touch with you shortly."
@@ -59,38 +59,38 @@ export default function ContactPageContent() {
             </div>
   
           <ScrollFadeIn delay={0.2}>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-16">
                 {/* Left Side: Info */}
                 <div className="flex flex-col justify-center text-foreground p-4 md:p-0">
-                    <h2 className="text-3xl font-bold mb-4 font-headline">Get in Touch</h2>
-                    <p className="text-base text-foreground/80 mb-8">
+                    <h2 className="text-2xl font-bold mb-4 font-headline">Get in Touch</h2>
+                    <p className="text-sm text-foreground/80 mb-6">
                         Whether you have a question about our services, a project proposal, or just want to connect, we're here to help. We value clear communication and look forward to hearing from you.
                     </p>
-                    <div className="space-y-6 text-base text-foreground/90">
+                    <div className="space-y-4 text-sm text-foreground/90">
                         <div className="flex items-center gap-4">
-                            <Mail className="w-6 h-6 text-primary" />
+                            <Mail className="w-5 h-5 text-primary" />
                             <a href={`mailto:${contactEmail}`} className="hover:text-primary transition-colors">{contactEmail}</a>
                         </div>
                         <div className="flex items-start gap-4">
-                            <MapPin className="w-6 h-6 text-primary mt-1" />
+                            <MapPin className="w-5 h-5 text-primary mt-1" />
                             <span>Pakistan</span>
                         </div>
                     </div>
-                    <Separator className="my-8 bg-foreground/20" />
-                    <div className="flex items-center gap-2">
+                    <Separator className="my-6 bg-foreground/20" />
+                    <div className="flex items-center gap-1">
                         <Button variant="ghost" size="icon" asChild>
                             <Link href="https://www.instagram.com/ccauders/" aria-label="Instagram">
-                                <Instagram className="h-5 w-5 text-foreground/70 hover:text-primary transition-colors" />
+                                <Instagram className="h-4 w-4 text-foreground/70 hover:text-primary transition-colors" />
                             </Link>
                         </Button>
                         <Button variant="ghost" size="icon" asChild>
                             <Link href="https://github.com/cauders" aria-label="GitHub">
-                                <Github className="h-5 w-5 text-foreground/70 hover:text-primary transition-colors" />
+                                <Github className="h-4 w-4 text-foreground/70 hover:text-primary transition-colors" />
                             </Link>
                         </Button>
                         <Button variant="ghost" size="icon" asChild>
                             <Link href="https://www.linkedin.com/company/108785409/admin/dashboard/" aria-label="LinkedIn">
-                                <Linkedin className="h-5 w-5 text-foreground/70 hover:text-primary transition-colors" />
+                                <Linkedin className="h-4 w-4 text-foreground/70 hover:text-primary transition-colors" />
                             </Link>
                         </Button>
                     </div>
@@ -98,7 +98,7 @@ export default function ContactPageContent() {
 
                 {/* Right Side: Form */}
                 <Card className="bg-card shadow-lg rounded-2xl">
-                    <CardContent className="p-8 md:p-12">
+                    <CardContent className="p-6 md:p-12">
                         {jobTitle ? <ApplicationForm jobTitle={jobTitle} /> : <GeneralContactForm />}
                     </CardContent>
                 </Card>
@@ -149,15 +149,15 @@ function GeneralContactForm() {
 
     return (
         <>
-            <h3 className="text-2xl font-bold text-foreground mb-6 font-headline">Send Us a Message</h3>
+            <h3 className="text-xl font-bold text-foreground mb-6 font-headline">Send Us a Message</h3>
             <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
                 <FormField
                     control={form.control}
                     name="name"
                     render={({ field }) => (
                     <FormItem>
-                        <FormLabel className="text-foreground text-sm">Name</FormLabel>
+                        <FormLabel className="text-foreground text-xs">Name</FormLabel>
                         <FormControl>
                         <Input placeholder="Your Name" {...field} />
                         </FormControl>
@@ -170,7 +170,7 @@ function GeneralContactForm() {
                     name="email"
                     render={({ field }) => (
                     <FormItem>
-                        <FormLabel className="text-foreground text-sm">Email</FormLabel>
+                        <FormLabel className="text-foreground text-xs">Email</FormLabel>
                         <FormControl>
                         <Input type="email" placeholder="your.email@example.com" {...field} />
                         </FormControl>
@@ -183,9 +183,9 @@ function GeneralContactForm() {
                     name="message"
                     render={({ field }) => (
                     <FormItem>
-                        <FormLabel className="text-foreground text-sm">Message</FormLabel>
+                        <FormLabel className="text-foreground text-xs">Message</FormLabel>
                         <FormControl>
-                        <Textarea placeholder="Tell us about your project..." className="min-h-[120px]" {...field} />
+                        <Textarea placeholder="Tell us about your project..." className="min-h-[100px]" {...field} />
                         </FormControl>
                         <FormMessage />
                     </FormItem>
@@ -252,15 +252,15 @@ function ApplicationForm({ jobTitle }: { jobTitle: string }) {
 
     return (
         <>
-            <h3 className="text-2xl font-bold text-foreground mb-6 font-headline">Your Information</h3>
+            <h3 className="text-xl font-bold text-foreground mb-6 font-headline">Your Information</h3>
             <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
                 <FormField
                     control={form.control}
                     name="name"
                     render={({ field }) => (
                     <FormItem>
-                        <FormLabel className="text-foreground text-sm">Full Name</FormLabel>
+                        <FormLabel className="text-foreground text-xs">Full Name</FormLabel>
                         <FormControl>
                         <Input placeholder="Your Name" {...field} />
                         </FormControl>
@@ -273,7 +273,7 @@ function ApplicationForm({ jobTitle }: { jobTitle: string }) {
                     name="email"
                     render={({ field }) => (
                     <FormItem>
-                        <FormLabel className="text-foreground text-sm">Email Address</FormLabel>
+                        <FormLabel className="text-foreground text-xs">Email Address</FormLabel>
                         <FormControl>
                         <Input type="email" placeholder="your.email@example.com" {...field} />
                         </FormControl>
@@ -286,7 +286,7 @@ function ApplicationForm({ jobTitle }: { jobTitle: string }) {
                     name="jobTitle"
                     render={({ field }) => (
                     <FormItem>
-                        <FormLabel className="text-foreground text-sm">Applying for</FormLabel>
+                        <FormLabel className="text-foreground text-xs">Applying for</FormLabel>
                         <FormControl>
                             <Input {...field} readOnly disabled />
                         </FormControl>
@@ -299,7 +299,7 @@ function ApplicationForm({ jobTitle }: { jobTitle: string }) {
                     name="cv"
                     render={({ field: { onChange, value, ...rest } }) => (
                         <FormItem>
-                            <FormLabel className="text-sm">CV / Resume</FormLabel>
+                            <FormLabel className="text-xs">CV / Resume</FormLabel>
                             <FormControl>
                                 <Input 
                                     type="file" 
