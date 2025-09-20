@@ -12,6 +12,7 @@ interface MagneticLinkProps {
   children: ReactNode;
   style?: React.CSSProperties;
   className?: string;
+  linkClassName?: string;
 }
 
 const MagneticLink: FC<MagneticLinkProps> = ({ href, onClick, children, ...props }) => {
@@ -25,14 +26,14 @@ const MagneticLink: FC<MagneticLinkProps> = ({ href, onClick, children, ...props
         transform: `translate(${x}px, ${y}px)`,
         transition: 'transform 0.3s cubic-bezier(0.165, 0.84, 0.44, 1)',
       }}
-      className="relative group w-28 h-28 flex items-center justify-center"
+      className={cn("relative group w-28 h-28 flex items-center justify-center", props.className)}
     >
       <Link
         href={href}
         onClick={onClick}
         className={cn(
             "relative text-xl font-medium z-10 transition-colors duration-300 flex items-center justify-center w-full h-full text-center p-8",
-            props.className
+            props.linkClassName
         )}
         style={props.style}
       >
