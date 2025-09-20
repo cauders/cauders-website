@@ -1,5 +1,4 @@
 
-
 export type TeamMember = {
   name: string;
   role: string;
@@ -76,13 +75,13 @@ export const teamMembers: TeamMember[] = [
 ];
 
 const gradients = [
-  "linear-gradient(145deg, #3B82F6, #000)",
-  "linear-gradient(180deg, #10B981, #000)",
-  "linear-gradient(210deg, #4F46E5, #000)",
-  "linear-gradient(165deg, #F59E0B, #000)",
-  "linear-gradient(195deg, #EF4444, #000)",
-  "linear-gradient(225deg, #8B5CF6, #000)",
-  "linear-gradient(135deg, #06B6D4, #000)",
+  "linear-gradient(145deg, #3B82F6, transparent)",
+  "linear-gradient(180deg, #10B981, transparent)",
+  "linear-gradient(210deg, #4F46E5, transparent)",
+  "linear-gradient(165deg, #F59E0B, transparent)",
+  "linear-gradient(195deg, #EF4444, transparent)",
+  "linear-gradient(225deg, #8B5CF6, transparent)",
+  "linear-gradient(135deg, #06B6D4, transparent)",
 ];
 
 const borderColors = [
