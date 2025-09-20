@@ -76,10 +76,15 @@ export default function Chatbot() {
     setInput('');
     setIsLoading(true);
 
-    // This is a dummy action. Replace with your actual chat logic.
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    const botMessage: Message = { role: 'bot', content: "This is a response from the bot." };
-    setMessages((prev) => [...prev, botMessage]);
+    const result = await submitChatMessage({ message: messageText });
+    
+    if (result.success) {
+      const botMessage: Message = { role: 'bot', content: result.data.response };
+      setMessages((prev) => [...prev, botMessage]);
+    } else {
+       const botMessage: Message = { role: 'bot', content: "Sorry, I'm having a little trouble thinking right now. Please try again in a moment." };
+       setMessages((prev) => [...prev, botMessage]);
+    }
     
     setIsLoading(false);
   }
