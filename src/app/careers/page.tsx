@@ -73,35 +73,17 @@ export default function CareersPage() {
              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                  {benefits.map((benefit, index) => (
                      <ScrollFadeIn key={benefit.title} delay={`delay-${index * 100}`} className="h-full">
-                        <div className="flip-card h-full min-h-[300px] md:min-h-[320px]">
-                            <div className="flip-card-inner relative w-full h-full">
-                                <div className="flip-card-front absolute w-full h-full">
-                                    <Card className="bg-card h-full text-center border flex flex-col">
-                                        <CardHeader className="flex-grow">
-                                            <div className="mx-auto bg-primary/10 rounded-full p-4 w-fit mb-4">
-                                                <benefit.icon className="w-8 h-8 text-primary" />
-                                            </div>
-                                            <CardTitle className="text-2xl font-headline text-foreground">{benefit.title}</CardTitle>
-                                        </CardHeader>
-                                        <CardContent>
-                                            <p className="text-sm text-foreground/80">{benefit.description}</p>
-                                        </CardContent>
-                                    </Card>
+                        <Card className="bg-card h-full text-center border flex flex-col hover:border-primary hover:-translate-y-2 transition-transform duration-300 group">
+                            <CardHeader className="flex-grow">
+                                <div className="mx-auto bg-primary/10 rounded-full p-4 w-fit mb-4 border border-primary/20 group-hover:bg-primary/20 transition-colors">
+                                    <benefit.icon className="w-8 h-8 text-primary" />
                                 </div>
-                                <div className="flip-card-back absolute w-full h-full">
-                                    <Card className={cn("h-full bg-card flex flex-col justify-center items-center animated-border-card")}>
-                                        <CardHeader>
-                                            <div className="mx-auto bg-primary/10 rounded-full p-3 w-fit mb-4">
-                                                <CheckCircle className="w-6 h-6 text-primary" />
-                                            </div>
-                                        </CardHeader>
-                                        <CardContent className="text-center">
-                                            <p className="text-base font-semibold text-foreground">{benefit.title}</p>
-                                        </CardContent>
-                                    </Card>
-                                </div>
-                            </div>
-                        </div>
+                                <CardTitle className="text-2xl font-headline text-foreground">{benefit.title}</CardTitle>
+                            </CardHeader>
+                            <CardContent>
+                                <p className="text-sm text-foreground/80">{benefit.description}</p>
+                            </CardContent>
+                        </Card>
                      </ScrollFadeIn>
                  ))}
              </div>
