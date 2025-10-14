@@ -13,13 +13,13 @@ import Link from 'next/link';
 export default function Hero() {
 
   return (
-    <section className="relative w-full h-screen overflow-hidden bg-gradient-container rounded-br-[4rem] rounded-bl-[4rem]">
+    <section className="relative w-full overflow-hidden bg-gradient-container rounded-br-[4rem] rounded-bl-[4rem] py-24 md:py-32">
        <div className="absolute inset-0 z-0 opacity-20">
          <HeroBackground />
        </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 h-full">
-        <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 items-center h-full gap-8">
+        <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 items-center h-full gap-8 pt-20">
           {/* Left Column */}
           <div className="w-full text-left">
             <div>
