@@ -48,7 +48,7 @@ export default function Hero() {
                     text="And Ideas Become Impact"
                     animateBy="words"
                     delay={50}
-                    className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-white mt-4"
+                    className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-white mt-4"
                 />
               <FadeContent delay={1000}>
                 <p className="mt-6 text-xs text-white max-w-md font-light">
