@@ -1,4 +1,3 @@
-
 "use client"
 import { Suspense } from 'react';
 import { Skeleton } from '../ui/skeleton';
@@ -8,8 +7,8 @@ import Image from 'next/image';
 import BlurText from './BlurText';
 import FadeContent from './FadeContent';
 import { Button } from '../ui/button';
-import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
+import ArrowButton from './ArrowButton';
 
 export default function Hero() {
 
@@ -56,11 +55,7 @@ export default function Hero() {
                 </p>
               </FadeContent>
               <FadeContent delay={1200}>
-                <Button asChild size="lg" className="mt-8">
-                    <Link href="/contact">
-                        Get Started <ArrowRight />
-                    </Link>
-                </Button>
+                <ArrowButton href="/contact" text="Get Started" className="mt-8" />
               </FadeContent>
             </div>
           </div>
