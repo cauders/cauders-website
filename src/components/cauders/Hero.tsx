@@ -1,4 +1,3 @@
-
 "use client"
 import { Suspense } from 'react';
 import { Skeleton } from '../ui/skeleton';
@@ -20,9 +19,9 @@ export default function Hero() {
        </div>
 
       <div className="mx-auto h-full px-4 sm:px-6 lg:px-12">
-        <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 items-center h-full gap-8 pt-20">
+        <div className="relative z-10 flex flex-col md:flex-row items-center justify-between h-full gap-8 pt-20">
           {/* Left Column */}
-          <div className="w-full text-left">
+          <div className="w-full md:w-auto text-left">
             <div>
                  <FadeContent delay={200}>
                     <Link href="/services">
@@ -66,9 +65,9 @@ export default function Hero() {
           </div>
           
           {/* Right Column (Desktop Only) */}
-          <div className="hidden md:flex items-center justify-center w-full h-full">
+          <div className="hidden md:flex items-center justify-center">
             <FadeContent duration={1000} delay={800}>
-              <div className="relative w-[230px] h-[300px] group">
+              <div className="relative w-[300px] h-[400px] group">
                   <div className="relative w-full h-full card-tilt">
                     <div className="absolute inset-0 rounded-3xl bg-white/10 border border-white/20 shadow-2xl glass-effect"></div>
                     <Image 
