@@ -63,7 +63,7 @@ export default function Header() {
             </Link>
             
             <div className="flex items-center gap-4">
-              <Button onClick={() => setIsMenuOpen(true)} variant="ghost" className={cn("text-lg font-normal", isHeroVisible ? 'text-white hover:bg-white/10 hover:text-white' : 'text-foreground hover:bg-accent')} aria-label="Open menu">
+              <Button onClick={() => setIsMenuOpen(true)} variant="ghost" className={cn("text-xl font-normal", isHeroVisible ? 'text-white hover:bg-white/10 hover:text-white' : 'text-foreground hover:bg-accent')} aria-label="Open menu">
                 Menu
               </Button>
             </div>
