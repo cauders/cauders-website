@@ -30,7 +30,7 @@ export default function Hero() {
                         </div>
                     </Link>
                  </FadeContent>
-              <h1 className="font-bold tracking-tight text-white mt-2 leading-tight font-headline">
+              <h1 className="font-medium tracking-tight text-white mt-2 leading-tight font-headline">
                 <BlurText
                     text="Where Technology"
                     animateBy="words"
@@ -51,7 +51,7 @@ export default function Hero() {
                 />
               <FadeContent delay={1000}>
                 <p className="mt-6 text-sm text-white/70 max-w-md">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labLorem ipsum dolor sit amet.
+                    At Cauders, we architect and engineer premium, modern, and dynamic digital solutions that empower businesses to thrive in a competitive landscape.
                 </p>
               </FadeContent>
               <FadeContent delay={1200}>
