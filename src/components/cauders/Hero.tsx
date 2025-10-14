@@ -20,7 +20,7 @@ export default function Hero() {
        </div>
 
       <div className="mx-auto h-full px-4 sm:px-6 lg:px-12">
-        <div className="relative z-10 flex flex-col md:flex-row items-center justify-between h-full gap-8">
+        <div className="relative z-10 flex flex-col md:flex-row items-center justify-between h-full gap-8 max-w-7xl mx-auto">
           {/* Left Column */}
           <div className="w-full md:w-auto text-left">
             <div>
@@ -48,7 +48,7 @@ export default function Hero() {
                     text="And Ideas Become Impact"
                     animateBy="words"
                     delay={50}
-                    className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-white mt-4"
+                    className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-white mt-4"
                 />
               <FadeContent delay={1000}>
                 <p className="mt-6 text-xs text-white max-w-md font-light">
