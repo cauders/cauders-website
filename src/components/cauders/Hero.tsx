@@ -1,4 +1,3 @@
-
 "use client"
 import { Suspense } from 'react';
 import { Skeleton } from '../ui/skeleton';
@@ -19,7 +18,7 @@ export default function Hero() {
          <HeroBackground />
        </div>
 
-      <div className="mx-auto h-full px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto h-full px-4">
         <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 items-center h-full gap-8 pt-20">
           {/* Left Column */}
           <div className="w-full text-left">
