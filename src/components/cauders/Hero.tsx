@@ -18,7 +18,7 @@ export default function Hero() {
          <HeroBackground />
        </div>
 
-      <div className="mx-auto h-full max-w-7xl px-4 sm:px-6 lg:px-12">
+      <div className="mx-auto h-full px-4 sm:px-6 lg:px-12">
         <div className="relative z-10 flex flex-col md:flex-row items-center justify-between h-full gap-8">
           {/* Left Column */}
           <div className="w-full md:w-auto text-left">
