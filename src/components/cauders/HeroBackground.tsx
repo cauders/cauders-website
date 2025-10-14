@@ -1,4 +1,3 @@
-
 "use client";
 
 import { cn } from "@/lib/utils";
@@ -10,7 +9,7 @@ export default function HeroBackground() {
             "absolute inset-0 z-0 w-full h-full overflow-hidden",
         )}>
            <Image
-                src="/images/background/hero-bg.png"
+                src="/images/background/world-map.svg"
                 alt="background gradient"
                 fill
                 className="object-cover"

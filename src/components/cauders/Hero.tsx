@@ -1,4 +1,3 @@
-
 "use client"
 import { Suspense } from 'react';
 import { Skeleton } from '../ui/skeleton';
@@ -7,88 +6,89 @@ import { Input } from '../ui/input';
 import Image from 'next/image';
 import BlurText from './BlurText';
 import FadeContent from './FadeContent';
+import { Button } from '../ui/button';
+import { ArrowRight } from 'lucide-react';
+import Link from 'next/link';
 
 export default function Hero() {
 
   return (
-    <section className="relative w-full h-[90vh] lg:h-screen overflow-hidden">
-      <div className="absolute inset-0 z-0">
-        <Suspense fallback={<Skeleton className="w-full h-full" />}>
-          <HeroBackground />
-        </Suspense>
-      </div>
+    <section className="relative w-full h-screen overflow-hidden bg-gradient-container">
+       <div className="absolute inset-0 z-0 opacity-20">
+         <HeroBackground />
+       </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 h-full">
         <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 items-center h-full gap-8">
           {/* Left Column */}
           <div className="w-full text-left">
-             {/* Mobile Only Image */}
-            <div className="md:hidden flex items-center justify-center w-full mb-8">
-                <FadeContent blur={true} duration={1000} delay={1200} easing="ease-out" initialOpacity={0}>
-                <div className="relative w-[200px] h-[200px]">
-                    <Image 
-                        src="/images/logo/hero-logo.png"
-                        alt="Cauders Logo"
-                        fill
-                        priority
-                        className="object-contain"
-                    />
-                </div>
-                </FadeContent>
-            </div>
             <div>
-              <h1 className="font-bold tracking-tight text-white mt-2 leading-relaxed font-headline animated-gradient-text">
+                 <FadeContent delay={200}>
+                    <Link href="/services">
+                        <div className="inline-block bg-foreground/20 text-background text-xs font-semibold py-1 px-3 rounded-full mb-4">
+                            &gt; Discover our services
+                        </div>
+                    </Link>
+                 </FadeContent>
+              <h1 className="font-bold tracking-tight text-white mt-2 leading-tight font-headline">
                 <BlurText
                     text="Where Technology"
                     animateBy="words"
-                    className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl"
+                    className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl"
                 />
                  <BlurText
                     text="Meets Vision"
                     animateBy="words"
                     delay={100}
-                    className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl"
-                />
-                <BlurText
-                    text="and Ideas Become Impact"
-                    animateBy="words"
-                    delay={50}
-                    className="text-xl sm:text-3xl md:text-4xl lg:text-5xl text-white mt-4 font-medium"
+                    className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl"
                 />
               </h1>
-              <div className="mt-12 animate-fade-in-up" style={{ animationDelay: '1.5s' }}>
-                <form className="flex items-center gap-2 max-w-sm bg-white rounded-full shadow-lg hover:shadow-xl transition-shadow duration-300">
-                  <Input
-                    type="email"
-                    placeholder="email@address.com"
-                    className="border-0 text-foreground placeholder:text-foreground/70 focus-visible:ring-0 focus-visible:ring-offset-0 flex-grow bg-transparent rounded-l-full h-full py-4 pl-6"
-                  />
-                  <button type="submit" className="bg-primary hover:bg-foreground hover:text-primary text-white rounded-full px-12 h-14 text-sm font-medium transition-colors duration-300 whitespace-nowrap">
-                    Get a Quote
-                  </button>
-                </form>
-              </div>
+              <BlurText
+                    text="And Ideas Become Impact"
+                    animateBy="words"
+                    delay={50}
+                    className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-white/80 mt-4 font-medium"
+                />
+              <FadeContent delay={1000}>
+                <p className="mt-6 text-sm text-white/70 max-w-md">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labLorem ipsum dolor sit amet.
+                </p>
+              </FadeContent>
+              <FadeContent delay={1200}>
+                <Button asChild size="lg" className="mt-8">
+                    <Link href="/contact">
+                        Get Started <ArrowRight />
+                    </Link>
+                </Button>
+              </FadeContent>
             </div>
           </div>
           
           {/* Right Column (Desktop Only) */}
           <div className="hidden md:flex items-center justify-center w-full h-full">
-            <FadeContent blur={true} duration={1000} delay={1200} easing="ease-out" initialOpacity={0}>
-              <div className="relative w-[600px] h-[600px]">
-                  <Image 
-                      src="/images/logo/hero-logo.png"
-                      alt="Cauders Logo"
-                      fill
-                      priority
-                      className="object-contain"
-                  />
+            <FadeContent duration={1000} delay={800}>
+              <div className="relative w-[500px] h-[500px] group">
+                  <div className="relative w-full h-full card-tilt">
+                    <div className="absolute inset-0 rounded-3xl bg-white/10 border border-white/20 shadow-2xl glass-effect"></div>
+                    <Image 
+                        src="https://picsum.photos/seed/phone-app/600/800"
+                        alt="App Screenshot"
+                        width={600}
+                        height={800}
+                        priority
+                        className="absolute w-[80%] h-auto top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-3xl shadow-2xl"
+                        data-ai-hint="mobile application"
+                    />
+                  </div>
+                  <div className="absolute -bottom-12 -right-12 w-48 h-32 rounded-2xl bg-white/20 border border-white/30 p-4 glass-effect shadow-xl transition-transform duration-500 group-hover:scale-110 group-hover:-translate-x-4 group-hover:-translate-y-4">
+                     <p className="text-xs text-white/80">Some text here will be written. Some text here will be written.</p>
+                  </div>
               </div>
             </FadeContent>
           </div>
         </div>
       </div>
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-background [clip-path:ellipse(100%_100%_at_50%_100%)]"></div>
     </section>
   );
 }
-
-
