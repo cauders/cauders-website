@@ -19,7 +19,7 @@ export default function Hero() {
          <HeroBackground />
        </div>
 
-      <div className="container mx-auto h-full px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto h-full px-4">
         <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 items-center h-full gap-8 pt-20">
           {/* Left Column */}
           <div className="w-full text-left">
@@ -35,23 +35,23 @@ export default function Hero() {
                 <BlurText
                     text="Where Technology"
                     animateBy="words"
-                    className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl"
+                    className="text-4xl sm:text-5xl md:text-5xl lg:text-6xl"
                 />
                  <BlurText
                     text="Meets Vision"
                     animateBy="words"
                     delay={100}
-                    className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl"
+                    className="text-4xl sm:text-5xl md:text-5xl lg:text-6xl"
                 />
               </h1>
               <BlurText
                     text="And Ideas Become Impact"
                     animateBy="words"
                     delay={50}
-                    className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-white mt-4"
+                    className="text-base sm:text-lg md:text-xl lg:text-2xl text-white mt-4"
                 />
               <FadeContent delay={1000}>
-                <p className="mt-6 text-sm sm:text-base text-white max-w-md">
+                <p className="mt-6 text-xs sm:text-sm text-white max-w-md">
                     At Cauders, we architect and engineer premium, modern, and dynamic digital solutions that empower businesses to thrive in a competitive landscape.
                 </p>
               </FadeContent>
@@ -68,7 +68,7 @@ export default function Hero() {
           {/* Right Column (Desktop Only) */}
           <div className="hidden md:flex items-center justify-center w-full h-full">
             <FadeContent duration={1000} delay={800}>
-              <div className="relative w-[500px] h-[500px] group">
+              <div className="relative w-[400px] h-[400px] group">
                   <div className="relative w-full h-full card-tilt">
                     <div className="absolute inset-0 rounded-3xl bg-white/10 border border-white/20 shadow-2xl glass-effect"></div>
                     <Image 
@@ -77,11 +77,11 @@ export default function Hero() {
                         width={600}
                         height={800}
                         priority
-                        className="absolute w-[80%] h-auto top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-3xl shadow-2xl"
+                        className="absolute w-[75%] h-auto top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-3xl shadow-2xl"
                         data-ai-hint="mobile application"
                     />
                   </div>
-                  <div className="absolute -bottom-12 -right-12 w-48 h-32 rounded-2xl bg-white/20 border border-white/30 p-4 glass-effect shadow-xl transition-transform duration-500 group-hover:scale-110 group-hover:-translate-x-4 group-hover:-translate-y-4">
+                  <div className="absolute -bottom-8 -right-8 w-40 h-28 rounded-2xl bg-white/20 border border-white/30 p-3 glass-effect shadow-xl transition-transform duration-500 group-hover:scale-110 group-hover:-translate-x-2 group-hover:-translate-y-2">
                      <p className="text-xs text-white">At Cauders, we architect and engineer premium, modern, and dynamic digital solutions.</p>
                   </div>
               </div>
