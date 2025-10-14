@@ -48,7 +48,7 @@ export default function Hero() {
                     text="And Ideas Become Impact"
                     animateBy="words"
                     delay={50}
-                    className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-white mt-4 font-medium"
+                    className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-white mt-4"
                 />
               <FadeContent delay={1000}>
                 <p className="mt-6 text-sm text-white max-w-md">
@@ -92,4 +92,5 @@ export default function Hero() {
     </section>
   );
 }
+
 
