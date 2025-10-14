@@ -19,7 +19,7 @@ export default function Hero() {
          <HeroBackground />
        </div>
 
-      <div className="container mx-auto h-full px-2 sm:px-4 lg:px-6">
+      <div className="container mx-auto h-full px-4 sm:px-6 lg:px-8">
         <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 items-center h-full gap-8 pt-20">
           {/* Left Column */}
           <div className="w-full text-left">
@@ -51,7 +51,7 @@ export default function Hero() {
                     className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-white mt-4"
                 />
               <FadeContent delay={1000}>
-                <p className="mt-6 text-xs text-white max-w-md">
+                <p className="mt-6 text-sm sm:text-base text-white max-w-md">
                     At Cauders, we architect and engineer premium, modern, and dynamic digital solutions that empower businesses to thrive in a competitive landscape.
                 </p>
               </FadeContent>
