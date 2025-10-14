@@ -57,7 +57,7 @@ export default function Header() {
           hasScrolled ? "floating-header-styles" : "w-full"
         )}
       >
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
           <div className="flex items-center justify-between h-14">
             <Link href="/" className={cn("text-2xl font-bold transition-colors", isHeroVisible ? "text-white hover:text-white/80" : "text-foreground hover:text-primary")}>
               Cauders
