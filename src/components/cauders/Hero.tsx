@@ -19,7 +19,7 @@ export default function Hero() {
          <HeroBackground />
        </div>
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 h-full">
+      <div className="container mx-auto px-2 sm:px-6 lg:px-8 h-full">
         <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 items-center h-full gap-8 pt-20">
           {/* Left Column */}
           <div className="w-full text-left">
@@ -92,6 +92,7 @@ export default function Hero() {
     </section>
   );
 }
+
 
 
 

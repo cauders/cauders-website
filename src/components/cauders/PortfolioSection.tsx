@@ -148,7 +148,7 @@ const AnimatedTextSection = ({ lines, scrollProgress }: { lines: any[], scrollPr
             {lines.map((line, index) => (
                 <div key={index} className="overflow-hidden py-1">
                     <div style={{ transform: transforms[index] }}>
-                        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div className="w-full max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
                              <StandardizedHeading lines={[line]} className="text-3xl sm:text-4xl md:text-5xl text-background" />
                         </div>
                     </div>

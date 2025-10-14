@@ -17,7 +17,7 @@ export default function ServicesPreview() {
   // --- Mobile-specific render ---
   const MobileView = () => (
     <section id="services-preview-mobile" className="lg:hidden bg-background py-20">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div className="container mx-auto px-2 sm:px-6 lg:px-8 text-center">
             <StandardizedHeading lines={["What We Offer"]} className="text-3xl sm:text-5xl md:text-6xl" />
             <p className="mt-4 text-sm md:text-xl text-foreground/70 max-w-2xl mx-auto">
                 Our expertise spans the entire development lifecycle, delivering excellence at every step. From initial strategy and design to development, deployment, and ongoing support, we provide comprehensive solutions that drive results.
@@ -120,7 +120,7 @@ export default function ServicesPreview() {
     return (
       <section id="services-preview-desktop" ref={containerRef} className="relative hidden lg:block h-[250vh] bg-background">
         <div className="sticky top-0 h-screen flex flex-col items-center justify-center overflow-hidden">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="container mx-auto px-2 sm:px-6 lg:px-8 text-center">
               <StandardizedHeading lines={["What We Offer"]} className="mt-16 text-4xl sm:text-5xl md:text-6xl" />
               <div className="overflow-hidden py-1">
               <p
