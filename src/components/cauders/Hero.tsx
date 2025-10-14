@@ -1,4 +1,3 @@
-
 "use client"
 import { Suspense } from 'react';
 import { Skeleton } from '../ui/skeleton';
@@ -19,7 +18,7 @@ export default function Hero() {
          <HeroBackground />
        </div>
 
-      <div className="container mx-auto h-full px-2">
+      <div className="container mx-auto h-full px-0">
         <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 items-center h-full gap-8 pt-20">
           {/* Left Column */}
           <div className="w-full text-left">
@@ -48,7 +47,7 @@ export default function Hero() {
                     text="And Ideas Become Impact"
                     animateBy="words"
                     delay={50}
-                    className="text-base sm:text-lg md:text-xl lg:text-2xl text-white mt-4"
+                    className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/80 mt-4"
                 />
               <FadeContent delay={1000}>
                 <p className="mt-6 text-xs sm:text-sm text-white max-w-md">
@@ -68,7 +67,7 @@ export default function Hero() {
           {/* Right Column (Desktop Only) */}
           <div className="hidden md:flex items-center justify-center w-full h-full">
             <FadeContent duration={1000} delay={800}>
-              <div className="relative w-[350px] h-[350px] group">
+              <div className="relative w-[300px] h-[300px] group">
                   <div className="relative w-full h-full card-tilt">
                     <div className="absolute inset-0 rounded-3xl bg-white/10 border border-white/20 shadow-2xl glass-effect"></div>
                     <Image 
@@ -81,8 +80,8 @@ export default function Hero() {
                         data-ai-hint="mobile application"
                     />
                   </div>
-                  <div className="absolute -bottom-6 -right-6 w-36 h-24 rounded-2xl bg-white/20 border border-white/30 p-3 glass-effect shadow-xl transition-transform duration-500 group-hover:scale-110 group-hover:-translate-x-2 group-hover:-translate-y-2">
-                     <p className="text-xs text-white">At Cauders, we architect and engineer premium, modern, and dynamic digital solutions.</p>
+                  <div className="absolute -bottom-6 -right-6 w-32 h-20 rounded-2xl bg-white/20 border border-white/30 p-3 glass-effect shadow-xl transition-transform duration-500 group-hover:scale-110 group-hover:-translate-x-2 group-hover:-translate-y-2">
+                     <p className="text-[10px] text-white">At Cauders, we architect and engineer premium, modern, and dynamic digital solutions.</p>
                   </div>
               </div>
             </FadeContent>
