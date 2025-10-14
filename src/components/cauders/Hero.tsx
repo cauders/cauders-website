@@ -13,7 +13,7 @@ import Link from 'next/link';
 export default function Hero() {
 
   return (
-    <section className="relative w-full h-screen overflow-hidden bg-gradient-container">
+    <section className="relative w-full h-screen overflow-hidden bg-gradient-container rounded-br-[4rem] rounded-bl-[4rem]">
        <div className="absolute inset-0 z-0 opacity-20">
          <HeroBackground />
        </div>
@@ -88,7 +88,6 @@ export default function Hero() {
           </div>
         </div>
       </div>
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-background [clip-path:ellipse(100%_100%_at_50%_100%)]"></div>
     </section>
   );
 }
