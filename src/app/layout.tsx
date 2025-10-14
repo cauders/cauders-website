@@ -49,9 +49,9 @@ export default function RootLayout({
               <main className="flex-grow z-10">
                 {children}
               </main>
-              <ScrollFadeIn direction="stretch-up">
+              {/* <ScrollFadeIn direction="stretch-up">
                 <Footer />
-              </ScrollFadeIn>
+              </ScrollFadeIn> */}
               <Toaster />
               <Chatbot />
             </>
