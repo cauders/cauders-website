@@ -1,3 +1,4 @@
+
 "use client"
 import { Suspense } from 'react';
 import { Skeleton } from '../ui/skeleton';
@@ -67,7 +68,7 @@ export default function Hero() {
           {/* Right Column (Desktop Only) */}
           <div className="hidden md:flex items-center justify-center w-full h-full">
             <FadeContent duration={1000} delay={800}>
-              <div className="relative w-[250px] h-[300px] group">
+              <div className="relative w-[230px] h-[300px] group">
                   <div className="relative w-full h-full card-tilt">
                     <div className="absolute inset-0 rounded-3xl bg-white/10 border border-white/20 shadow-2xl glass-effect"></div>
                     <Image 
