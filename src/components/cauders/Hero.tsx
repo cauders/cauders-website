@@ -51,7 +51,7 @@ export default function Hero() {
                     className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-white mt-4"
                 />
               <FadeContent delay={1000}>
-                <p className="mt-6 text-xs text-white max-w-md font-light">
+                <p className="mt-8 text-xs text-white max-w-md font-light">
                     At Cauders, we architect and engineer premium, modern, and dynamic digital solutions that empower businesses to thrive.
                 </p>
               </FadeContent>
