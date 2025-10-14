@@ -52,7 +52,7 @@ export default function Hero() {
                 />
               <FadeContent delay={1000}>
                 <p className="mt-6 text-xs text-white max-w-md font-light">
-                    At Cauders, we architect and engineer premium, modern, and dynamic digital solutions that empower businesses to thrive in a competitive landscape.
+                    At Cauders, we architect and engineer premium, modern, and dynamic digital solutions that empower businesses to thrive.
                 </p>
               </FadeContent>
               <FadeContent delay={1200}>
