@@ -63,7 +63,7 @@ export default function Header() {
             </Link>
             
             <div className="flex items-center gap-4">
-              <Button onClick={() => setIsMenuOpen(true)} variant="ghost" className={cn("text-base font-normal", isHeroVisible ? 'text-white hover:bg-white/10 hover:text-white' : 'text-foreground hover:bg-accent')} aria-label="Open menu">
+              <Button onClick={() => setIsMenuOpen(true)} variant="ghost" className={cn("text-lg font-normal", isHeroVisible ? 'text-white hover:bg-white/10 hover:text-white' : 'text-foreground hover:bg-accent')} aria-label="Open menu">
                 Menu
               </Button>
             </div>
@@ -78,13 +78,6 @@ export default function Header() {
           )}
           data-menu-hover="true"
       >
-        <div 
-          className="absolute top-[-120px] left-[-80px] w-64 h-64 bg-primary/30 rounded-full blur-3xl opacity-80"
-        ></div>
-        <div 
-          className="absolute bottom-[-120px] right-[-80px] w-96 h-96 bg-primary/30 rounded-full blur-3xl opacity-80"
-        ></div>
-
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 h-full flex flex-col relative z-10">
              <div className="flex items-center justify-between h-24">
                 <Link href="/" onClick={() => setIsMenuOpen(false)} className="text-2xl font-bold">
