@@ -1,3 +1,4 @@
+
 "use client"
 import { Suspense } from 'react';
 import { Skeleton } from '../ui/skeleton';
@@ -81,7 +82,7 @@ export default function Hero() {
                     />
                   </div>
                   <div className="absolute -bottom-12 -right-12 w-48 h-32 rounded-2xl bg-white/20 border border-white/30 p-4 glass-effect shadow-xl transition-transform duration-500 group-hover:scale-110 group-hover:-translate-x-4 group-hover:-translate-y-4">
-                     <p className="text-xs text-white">Some text here will be written. Some text here will be written.</p>
+                     <p className="text-xs text-white">At Cauders, we architect and engineer premium, modern, and dynamic digital solutions.</p>
                   </div>
               </div>
             </FadeContent>
@@ -91,3 +92,4 @@ export default function Hero() {
     </section>
   );
 }
+
