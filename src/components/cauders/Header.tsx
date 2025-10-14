@@ -49,7 +49,7 @@ export default function Header() {
   return (
      <header className={cn(
         "fixed top-0 left-0 z-50 w-full transition-all duration-300 ease-in-out",
-        hasScrolled ? "pt-4 px-4" : "pt-8"
+        hasScrolled ? "pt-4 px-4" : "pt-6"
       )}>
       <div 
         className={cn(
