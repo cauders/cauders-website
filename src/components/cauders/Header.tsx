@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, useEffect } from 'react';
@@ -49,7 +48,7 @@ export default function Header() {
   return (
      <header className={cn(
         "fixed top-0 left-0 z-50 w-full transition-all duration-300 ease-in-out",
-        hasScrolled ? "pt-4 px-4" : "pt-0"
+        hasScrolled ? "pt-4 px-4" : "pt-8"
       )}>
       <div 
         className={cn(
@@ -64,8 +63,8 @@ export default function Header() {
             </Link>
             
             <div className="flex items-center gap-4">
-              <Button onClick={() => setIsMenuOpen(true)} variant="ghost" className={cn("text-sm font-semibold tracking-widest", isHeroVisible ? 'text-white hover:bg-white/10 hover:text-white' : 'text-foreground hover:bg-accent')} aria-label="Open menu">
-                MENU
+              <Button onClick={() => setIsMenuOpen(true)} variant="ghost" className={cn("text-base font-medium", isHeroVisible ? 'text-white hover:bg-white/10 hover:text-white' : 'text-foreground hover:bg-accent')} aria-label="Open menu">
+                Menu
               </Button>
             </div>
           </div>
