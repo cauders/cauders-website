@@ -13,7 +13,7 @@ import Link from 'next/link';
 export default function Hero() {
 
   return (
-    <section className="relative w-full overflow-hidden bg-gradient-container rounded-br-[2rem] rounded-bl-[2rem] py-24 md:py-32">
+    <section className="relative w-full overflow-hidden bg-gradient-container rounded-br-[1rem] rounded-bl-[1rem] py-24 md:py-32">
        <div className="absolute inset-0 z-0 opacity-20">
          <HeroBackground />
        </div>
