@@ -25,7 +25,7 @@ export default function Hero() {
             <div>
                  <FadeContent delay={200}>
                     <Link href="/services">
-                        <div className="inline-block bg-foreground/20 text-background text-xs font-semibold py-1 px-3 rounded-full mb-4">
+                        <div className="inline-block bg-foreground/20 text-white text-xs font-semibold py-1 px-3 rounded-full mb-4">
                             &gt; Discover our services
                         </div>
                     </Link>
@@ -47,10 +47,10 @@ export default function Hero() {
                     text="And Ideas Become Impact"
                     animateBy="words"
                     delay={50}
-                    className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-white/80 mt-4 font-medium"
+                    className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-white mt-4 font-medium"
                 />
               <FadeContent delay={1000}>
-                <p className="mt-6 text-sm text-white/70 max-w-md">
+                <p className="mt-6 text-sm text-white max-w-md">
                     At Cauders, we architect and engineer premium, modern, and dynamic digital solutions that empower businesses to thrive in a competitive landscape.
                 </p>
               </FadeContent>
@@ -81,7 +81,7 @@ export default function Hero() {
                     />
                   </div>
                   <div className="absolute -bottom-12 -right-12 w-48 h-32 rounded-2xl bg-white/20 border border-white/30 p-4 glass-effect shadow-xl transition-transform duration-500 group-hover:scale-110 group-hover:-translate-x-4 group-hover:-translate-y-4">
-                     <p className="text-xs text-white/80">Some text here will be written. Some text here will be written.</p>
+                     <p className="text-xs text-white">Some text here will be written. Some text here will be written.</p>
                   </div>
               </div>
             </FadeContent>
