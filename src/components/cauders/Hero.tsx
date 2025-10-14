@@ -19,7 +19,7 @@ export default function Hero() {
          <HeroBackground />
        </div>
 
-      <div className="container mx-auto h-full px-4">
+      <div className="container mx-auto h-full px-2">
         <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 items-center h-full gap-8 pt-20">
           {/* Left Column */}
           <div className="w-full text-left">
@@ -68,7 +68,7 @@ export default function Hero() {
           {/* Right Column (Desktop Only) */}
           <div className="hidden md:flex items-center justify-center w-full h-full">
             <FadeContent duration={1000} delay={800}>
-              <div className="relative w-[400px] h-[400px] group">
+              <div className="relative w-[350px] h-[350px] group">
                   <div className="relative w-full h-full card-tilt">
                     <div className="absolute inset-0 rounded-3xl bg-white/10 border border-white/20 shadow-2xl glass-effect"></div>
                     <Image 
@@ -77,11 +77,11 @@ export default function Hero() {
                         width={600}
                         height={800}
                         priority
-                        className="absolute w-[75%] h-auto top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-3xl shadow-2xl"
+                        className="absolute w-[70%] h-auto top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-3xl shadow-2xl"
                         data-ai-hint="mobile application"
                     />
                   </div>
-                  <div className="absolute -bottom-8 -right-8 w-40 h-28 rounded-2xl bg-white/20 border border-white/30 p-3 glass-effect shadow-xl transition-transform duration-500 group-hover:scale-110 group-hover:-translate-x-2 group-hover:-translate-y-2">
+                  <div className="absolute -bottom-6 -right-6 w-36 h-24 rounded-2xl bg-white/20 border border-white/30 p-3 glass-effect shadow-xl transition-transform duration-500 group-hover:scale-110 group-hover:-translate-x-2 group-hover:-translate-y-2">
                      <p className="text-xs text-white">At Cauders, we architect and engineer premium, modern, and dynamic digital solutions.</p>
                   </div>
               </div>
