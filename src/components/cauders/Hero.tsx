@@ -1,4 +1,3 @@
-
 "use client"
 import { Suspense } from 'react';
 import { Skeleton } from '../ui/skeleton';
@@ -14,13 +13,13 @@ import ArrowButton from './ArrowButton';
 export default function Hero() {
 
   return (
-    <section className="relative w-full overflow-hidden py-32 md:py-48">
+    <section className="relative w-full h-screen overflow-hidden">
        <div className="absolute inset-0 z-0">
          <HeroBackground />
        </div>
 
-      <div className="mx-auto h-full px-4 sm:px-6 lg:px-12">
-        <div className="relative z-10 flex flex-col md:flex-row items-center justify-between h-full max-w-7xl mx-auto">
+      <div className="mx-auto h-full px-4 sm:px-6 lg:px-12 flex items-center">
+        <div className="relative z-10 flex flex-col md:flex-row items-center justify-between h-full max-w-7xl mx-auto w-full">
           {/* Left Column */}
           <div className="w-full md:w-1/2 text-left">
             <div>
