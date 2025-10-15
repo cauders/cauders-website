@@ -10,7 +10,6 @@ import ScrollFadeIn from "@/components/cauders/ScrollFadeIn";
 import StandardizedHeading from "@/components/cauders/StandardizedHeading";
 import ArrowBadge from "./ArrowBadge";
 import { Plus } from "lucide-react";
-import GradientContainer from "./GradientContainer";
   
 const faqs = [
     {
@@ -37,18 +36,18 @@ const faqs = [
 
 export default function FAQPreview() {
     return (
-        <GradientContainer className="py-20 lg:py-32">
+        <div className="py-20 lg:py-32 bg-background">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
                     <ScrollFadeIn>
                         <div className="flex flex-col items-start justify-center gap-4">
-                            <ArrowBadge href="/faq" text="FAQ" variant="white" />
+                            <ArrowBadge href="/faq" text="FAQ" variant="black" />
                             <StandardizedHeading 
                                 lines={[
                                     { text: "You Have Questions," },
                                     { text: "We Have Answers" }
                                 ]} 
-                                className="font-medium text-3xl sm:text-4xl md:text-5xl text-background"
+                                className="font-medium text-3xl sm:text-4xl md:text-5xl"
                             />
                         </div>
                     </ScrollFadeIn>
@@ -57,14 +56,14 @@ export default function FAQPreview() {
                         <div className="max-w-3xl mx-auto">
                             <Accordion type="single" collapsible className="w-full space-y-4">
                                 {faqs.map((faq, index) => (
-                                    <AccordionItem key={index} value={`item-${index}`} className="bg-white/10 border-white/20 rounded-2xl px-6 backdrop-blur-sm">
+                                    <AccordionItem key={index} value={`item-${index}`} className="bg-card border rounded-2xl px-6">
                                         <AccordionTrigger
-                                            className="text-left text-base text-background/90 font-normal hover:no-underline"
-                                            icon={<Plus className="h-5 w-5 text-background" />}
+                                            className="text-left text-base text-foreground/90 font-normal hover:no-underline"
+                                            icon={<Plus className="h-5 w-5 text-foreground" />}
                                         >
                                             {faq.question}
                                         </AccordionTrigger>
-                                        <AccordionContent className="text-sm text-background/70">
+                                        <AccordionContent className="text-sm text-foreground/70">
                                             {faq.answer}
                                         </AccordionContent>
                                     </AccordionItem>
@@ -74,6 +73,6 @@ export default function FAQPreview() {
                     </ScrollFadeIn>
                 </div>
             </div>
-        </GradientContainer>
+        </div>
     );
 }
