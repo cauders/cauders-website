@@ -1,3 +1,4 @@
+
 'use client';
 
 import StandardizedHeading from "./StandardizedHeading";
@@ -9,28 +10,26 @@ export default function IntroSection() {
 
     return (
         <div className="relative z-10 pt-8">
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="rounded-2xl shadow-xl overflow-hidden bg-card">
-                    <div className="text-center pt-16 pb-12">
-                        <StandardizedHeading 
-                            lines={[
-                                { text: "We Build Digital" },
-                                { text: "Solutions For The Future," },
-                                { text: "Today"}
-                            ]} 
-                            className="text-4xl md:text-6xl text-foreground"
-                        />
-                    </div>
+            <div className="rounded-2xl shadow-xl overflow-hidden bg-card">
+                <div className="text-center pt-16 pb-12">
+                    <StandardizedHeading 
+                        lines={[
+                            { text: "Transforming Ideas" },
+                            { text: "Into Digital" },
+                            { text: "Masterpieces"}
+                        ]} 
+                        className="text-4xl md:text-6xl text-foreground"
+                    />
+                </div>
 
-                    <div className="relative aspect-[16/9] w-full">
-                        <Image 
-                            src={introImage.imageUrl}
-                            alt="Intro section placeholder"
-                            fill
-                            className="object-cover"
-                            data-ai-hint={introImage.aiHint}
-                        />
-                    </div>
+                <div className="relative aspect-[16/9] w-full">
+                    <Image 
+                        src={introImage.imageUrl}
+                        alt="Intro section placeholder"
+                        fill
+                        className="object-cover"
+                        data-ai-hint={introImage.aiHint}
+                    />
                 </div>
             </div>
         </div>
