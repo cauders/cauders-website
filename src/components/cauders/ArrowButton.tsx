@@ -19,7 +19,7 @@ export default function ArrowButton({ href, text, className }: ArrowButtonProps)
           <div className="border-2 border-white text-white px-6 py-2.5 rounded-bl-3xl group-hover:bg-white group-hover:text-black transition-colors duration-300">
             <span className="text-sm font-medium">{text}</span>
           </div>
-          <div className="border-2 border-white bg-white p-3 rounded-tr-3xl">
+          <div className="border-2 border-white bg-white p-3 rounded-full">
             <ArrowUpRight className="w-5 h-5 text-black" />
           </div>
         </div>
