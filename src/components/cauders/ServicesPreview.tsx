@@ -14,7 +14,7 @@ export default function ServicesPreview() {
   const services = getServices().slice(0, 4);
 
   return (
-    <section id="services-preview" className="py-20 lg:py-32 bg-secondary/30">
+    <section id="services-preview" className="py-20 lg:py-32 bg-gradient-to-b from-background to-secondary/30">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12 lg:mb-16">
             <ScrollFadeIn>
