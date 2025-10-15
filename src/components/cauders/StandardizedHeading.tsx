@@ -48,6 +48,15 @@ export default function StandardizedHeading({ lines, className }: StandardizedHe
                   <span className="word-highlight">Cauders</span>
                 </span>
               </>
+            ) : line.text === "Reach Out Your Way" ? (
+              <>
+                <span className="word-highlight">Reach </span>
+                <span className="word-highlight">Out </span>
+                <span className="bg-gradient-text text-transparent bg-clip-text">
+                  <span className="word-highlight">Your </span>
+                  <span className="word-highlight">Way</span>
+                </span>
+              </>
             ) : (
               line.text.split(' ').map((word, wordIndex) => (
                 <span key={wordIndex} className="word-highlight">
