@@ -14,9 +14,9 @@ export default function IntroSection() {
                 <div className="text-center pt-16 pb-12">
                     <StandardizedHeading 
                         lines={[
-                            { text: "Transforming Ideas" },
-                            { text: "Into Digital" },
-                            { text: "Masterpieces"}
+                            { text: "Transforming Visionary Ideas" },
+                            { text: "Into Powerful Digital" },
+                            { text: "Experiences"}
                         ]} 
                         className="text-4xl md:text-6xl text-foreground"
                     />
