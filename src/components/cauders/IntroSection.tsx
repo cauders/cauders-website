@@ -1,4 +1,3 @@
-
 'use client';
 
 import StandardizedHeading from "./StandardizedHeading";
