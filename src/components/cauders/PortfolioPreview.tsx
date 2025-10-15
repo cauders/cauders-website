@@ -232,19 +232,6 @@ export default function PortfolioPreview() {
           })}
         </div>
       </div>
-      
-       <div className="container mx-auto px-4 text-center mt-16 relative z-10 pointer-events-auto">
-          <Button 
-            asChild 
-            size="lg" 
-            variant="outline"
-            className="border-primary text-primary glass-effect hover:shadow-primary-glow"
-          >
-            <Link href="https://www.portfolio.cauders.com/">
-              See All Projects <ArrowRight className="ml-2" />
-            </Link>
-          </Button>
-        </div>
     </div>
   );
 }

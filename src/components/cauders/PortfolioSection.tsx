@@ -1,3 +1,4 @@
+
 "use client";
 
 import GradientContainer from "./GradientContainer";
@@ -27,11 +28,11 @@ export default function PortfolioSection() {
 
           <div className="text-center mt-16 max-w-2xl mx-auto">
             <p className="text-background/80 text-base">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. consectetur adipiscing elLorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Each project is a testament to our commitment to quality, innovation, and client satisfaction. We blend cutting-edge technology with creative design to deliver solutions that not only meet but exceed expectations.
             </p>
-            <Button asChild variant="outline" className="mt-8 bg-transparent border-white text-white hover:bg-white hover:text-foreground">
+            <Button asChild variant="outline" className="mt-8 bg-transparent border-2 border-white text-white hover:bg-white hover:text-foreground">
               <Link href="https://www.portfolio.cauders.com/">
-                Button Text
+                Explore Our Work
               </Link>
             </Button>
           </div>
