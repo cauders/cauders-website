@@ -1,4 +1,3 @@
-
 'use client';
 
 import {
@@ -77,4 +76,3 @@ export default function FAQPreview() {
         </div>
     );
 }
-
