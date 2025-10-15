@@ -52,7 +52,7 @@ export default function WhyChooseUs() {
                     <StandardizedHeading lines={[ "Why People Choose Cauders" ]} className="font-medium text-3xl sm:text-4xl md:text-5xl" />
                     <ScrollFadeIn>
                         <p className="mt-4 text-base text-foreground/70 max-w-2xl mx-auto">
-                            We're more than an agency; we are your partners in innovation and excellence.
+                            We're more than a digital agency; we are your partners in innovation and excellence.
                         </p>
                     </ScrollFadeIn>
                 </div>
@@ -64,7 +64,7 @@ export default function WhyChooseUs() {
                                 <div className="flex-shrink-0 bg-primary/10 rounded-full p-3 border border-primary/20">
                                     <feature.icon className="w-6 h-6 text-foreground" />
                                 </div>
-                                <p className="text-sm text-foreground/80 font-medium">{feature.text}</p>
+                                <p className="text-sm text-foreground font-medium">{feature.text}</p>
                             </div>
                         </ScrollFadeIn>
                     ))}
