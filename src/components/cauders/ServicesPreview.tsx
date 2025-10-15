@@ -21,6 +21,9 @@ export default function ServicesPreview() {
             <ScrollFadeIn>
                 <ArrowBadge href="/services" text="Discover Our Offerings" className="mb-4" />
                 <StandardizedHeading lines={["What We Do Best"]} className="font-medium text-3xl sm:text-4xl md:text-5xl text-background" />
+                <p className="mt-4 text-sm text-white/80 max-w-2xl mx-auto">
+                    At Cauders, we deliver future-ready digital solutions that combine innovation, performance, and scalability. Our expertise spans across multiple domains to help businesses thrive in the evolving tech landscape.
+                </p>
             </ScrollFadeIn>
         </div>
 
@@ -38,7 +41,7 @@ export default function ServicesPreview() {
                         <p className="text-sm text-foreground/80 mt-2 line-clamp-2">{service.description}</p>
                     </CardContent>
                     <CardFooter className="p-0 mt-6 justify-center">
-                         <Button asChild>
+                         <Button asChild className="bg-zinc text-white">
                             <Link href={`/services/${service.slug}`}>
                                 Learn More <ArrowRight className="ml-2" />
                             </Link>
