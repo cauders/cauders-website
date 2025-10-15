@@ -1,22 +1,12 @@
-
 'use client';
 
 import ScrollFadeIn from "./ScrollFadeIn";
 import StandardizedHeading from "./StandardizedHeading";
-import { getProjects } from "@/lib/data";
-import ChromaGrid from "./ChromaGrid";
+import Image from "next/image";
+import placeholderImages from "@/lib/placeholder-images.json";
 
 export default function IntroSection() {
-    const projects = getProjects().slice(0, 6);
-
-    const gridItems = projects.map(p => ({
-        id: p.id,
-        title: p.title,
-        subtitle: p.category,
-        image: p.imageUrl,
-        url: `https://www.portfolio.cauders.com/${p.slug}`,
-        gradient: 'linear-gradient(to bottom right, hsl(var(--primary) / 0.1), transparent, hsl(var(--primary) / 0.1))',
-    }));
+    const { intro: introImage } = placeholderImages;
 
     return (
         <section className="relative z-10 -mt-[50vh] bg-background pt-[50vh]">
@@ -34,7 +24,15 @@ export default function IntroSection() {
                     </div>
 
                     <ScrollFadeIn>
-                        <ChromaGrid items={gridItems} columns={3} rows={2} />
+                        <div className="relative aspect-[16/9] w-full max-w-5xl mx-auto overflow-hidden rounded-2xl shadow-lg">
+                           <Image 
+                                src={introImage.imageUrl}
+                                alt="Intro section placeholder"
+                                fill
+                                className="object-cover"
+                                data-ai-hint={introImage.aiHint}
+                           />
+                        </div>
                     </ScrollFadeIn>
                 </div>
             </div>

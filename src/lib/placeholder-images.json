@@ -38,5 +38,9 @@
       "imageUrl": "/images/hero/hero-bg-9.png",
       "aiHint": "mobile app user interface"
     }
+  },
+  "intro": {
+    "imageUrl": "https://picsum.photos/seed/intro-section/1200/675",
+    "aiHint": "abstract technology"
   }
 }
