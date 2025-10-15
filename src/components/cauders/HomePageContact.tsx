@@ -80,7 +80,7 @@ export default function HomePageContact() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
                 <ScrollFadeIn className="h-full flex flex-col">
                     <div className="w-full">
-                        <ArrowBadge href="/contact" text="Contact Us" className="mb-4" variant="black" />
+                        <ArrowBadge href="/contact" text="Contact Us" variant="black" className="mb-4" />
                         <StandardizedHeading lines={["Reach Out Your Way"]} className="font-medium text-3xl sm:text-4xl md:text-5xl" />
                         <p className="mt-4 text-base text-foreground/70">
                             We're here to answer your questions and help you get started on your next big idea.
@@ -99,7 +99,7 @@ export default function HomePageContact() {
                                         render={({ field }) => (
                                         <FormItem className="inline-block">
                                             <FormControl>
-                                            <Input placeholder="Your Name" {...field} className="bg-background border-input rounded-full h-10 px-6 text-base" />
+                                            <Input placeholder="Your Name" {...field} className="bg-background border-input rounded-full h-10 px-6 text-sm" />
                                             </FormControl>
                                             <FormMessage />
                                         </FormItem>
@@ -116,7 +116,7 @@ export default function HomePageContact() {
                                         render={({ field }) => (
                                         <FormItem className="inline-block">
                                             <FormControl>
-                                            <Input placeholder="Your Job" {...field} className="bg-background border-input rounded-full h-10 px-6 text-base" />
+                                            <Input placeholder="Your Job" {...field} className="bg-background border-input rounded-full h-10 px-6 text-sm" />
                                             </FormControl>
                                             <FormMessage />
                                         </FormItem>
@@ -129,7 +129,7 @@ export default function HomePageContact() {
                                         render={({ field }) => (
                                         <FormItem className="inline-block">
                                             <FormControl>
-                                            <Input placeholder="Your City" {...field} className="bg-background border-input rounded-full h-10 px-6 text-base" />
+                                            <Input placeholder="Your City" {...field} className="bg-background border-input rounded-full h-10 px-6 text-sm" />
                                             </FormControl>
                                             <FormMessage />
                                         </FormItem>
@@ -143,7 +143,7 @@ export default function HomePageContact() {
                                     render={({ field }) => (
                                     <FormItem className="mt-2">
                                         <FormControl>
-                                        <Textarea placeholder="State your question here" className="bg-background border-input rounded-3xl min-h-[80px] p-6 text-base" {...field} />
+                                        <Textarea placeholder="State your question here" className="bg-background border-input rounded-3xl min-h-[80px] p-6 text-sm" {...field} />
                                         </FormControl>
                                         <FormMessage />
                                     </FormItem>
@@ -159,7 +159,7 @@ export default function HomePageContact() {
                                         render={({ field }) => (
                                         <FormItem className="inline-block">
                                             <FormControl>
-                                            <Input type="email" placeholder="Email address" {...field} className="bg-background border-input rounded-full h-10 px-6 text-base" />
+                                            <Input type="email" placeholder="Email address" {...field} className="bg-background border-input rounded-full h-10 px-6 text-sm" />
                                             </FormControl>
                                             <FormMessage />
                                         </FormItem>
