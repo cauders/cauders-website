@@ -1,3 +1,4 @@
+
 'use client';
 
 import StandardizedHeading from "./StandardizedHeading";
@@ -13,7 +14,8 @@ export default function IntroSection() {
                 <div className="text-center py-32">
                     <StandardizedHeading 
                         lines={[
-                            { text: "Transforming Visionary Ideas" },
+                            { text: "Transforming Visionary" },
+                            { text: "Ideas" },
                             { text: "Into Powerful Digital" },
                             { text: "Experiences"}
                         ]} 
