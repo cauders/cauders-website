@@ -24,7 +24,7 @@ export default {
       },
       boxShadow: {
         'primary-glow': '0 0 25px 0 hsl(var(--primary) / 0.5)',
-        'smooth-lift': '0 4px 16px 0 rgb(0 0 0 / 0.05)',
+        'smooth-lift': '0 4px 14px 0 rgb(0 0 0 / 0.05)',
       },
       fontFamily: {
         body: ['var(--font-body)', ...fontFamily.sans],
