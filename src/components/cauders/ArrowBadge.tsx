@@ -28,6 +28,13 @@ export default function ArrowBadge({ href, text, className }: ArrowBadgeProps) {
         height={12}
       />
       <span>{text}</span>
+      <Image 
+        src="/images/icons/arrow-icon.svg"
+        alt="arrow icon"
+        width={12}
+        height={12}
+        className="rotate-180"
+      />
     </Link>
   );
 }
