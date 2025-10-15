@@ -9,9 +9,9 @@ export default function IntroSection() {
     const { intro: introImage } = placeholderImages;
 
     return (
-        <div className="relative z-10 bg-background pt-8 -mt-24 rounded-t-3xl">
+        <div className="relative z-10 pt-8 -mt-24 rounded-t-3xl">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="bg-card rounded-2xl shadow-xl overflow-hidden">
+                <div className="rounded-2xl shadow-xl overflow-hidden">
                     <div className="text-center pt-16 pb-12">
                         <StandardizedHeading 
                             lines={[
