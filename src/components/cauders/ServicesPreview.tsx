@@ -35,7 +35,7 @@ export default function ServicesPreview() {
                     </CardHeader>
                     <CardContent className="flex-grow p-0 mt-4">
                         <CardTitle className="text-xl font-headline text-foreground">{service.title}</CardTitle>
-                        <p className="text-sm text-foreground/80 mt-2">{service.description}</p>
+                        <p className="text-sm text-foreground/80 mt-2 line-clamp-2">{service.description}</p>
                     </CardContent>
                     <CardFooter className="p-0 mt-6 justify-center">
                          <Button asChild>
