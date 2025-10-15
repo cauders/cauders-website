@@ -40,7 +40,7 @@
     }
   },
   "intro": {
-    "imageUrl": "https://picsum.photos/seed/intro-section/1200/675",
+    "imageUrl": "/images/hero/intro.png",
     "aiHint": "abstract technology"
   }
 }
