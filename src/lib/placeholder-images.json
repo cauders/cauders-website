@@ -31,11 +31,11 @@
   },
   "hero": {
     "main": {
-      "imageUrl": "https://picsum.photos/seed/web-design/800/600",
+      "imageUrl": "/images/background/hero-cd-3.svg",
       "aiHint": "web design"
     },
     "front": {
-      "imageUrl": "https://picsum.photos/seed/mobile-app/800/600",
+      "imageUrl": "/images/background/hero-cd-6.svg",
       "aiHint": "mobile app user interface"
     }
   }
