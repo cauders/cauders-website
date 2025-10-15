@@ -22,7 +22,7 @@ export default function Hero() {
       <div className="mx-auto h-full px-4 sm:px-6 lg:px-12">
         <div className="relative z-10 flex flex-col md:flex-row items-center justify-between h-full max-w-7xl mx-auto">
           {/* Left Column */}
-          <div className="w-full md:w-auto text-left">
+          <div className="w-full md:w-1/2 text-left">
             <div>
                  <FadeContent delay={200}>
                     <Link href="/services">
@@ -62,9 +62,9 @@ export default function Hero() {
           </div>
           
           {/* Right Column (Desktop Only) */}
-          <div className="hidden md:flex items-center justify-center">
+          <div className="hidden md:flex w-1/2 items-center justify-center">
             <FadeContent duration={1000} delay={800}>
-              <div className="relative w-[450px] h-[450px]">
+               <div className="relative">
                   {/* Back Card */}
                   <div className="absolute top-0 left-0 w-[320px] h-[380px] group card-tilt glass-effect rounded-3xl p-2">
                       <div className="relative w-full h-full">
@@ -86,5 +86,3 @@ export default function Hero() {
     </section>
   );
 }
-
-    
