@@ -10,15 +10,24 @@ export default {
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
+    container: {
+      center: true,
+      padding: '2rem',
+      screens: {
+        '2xl': '1400px',
+      },
+    },
     extend: {
       backgroundImage: {
         'gradient-text': 'linear-gradient(to right, hsl(var(--primary)) 0%, #003B38 100%)',
         'gradient-container': 'linear-gradient(to right, #003B38 0%, hsl(var(--primary)) 100%)',
       },
+      boxShadow: {
+        'primary-glow': '0 0 25px 0 hsl(var(--primary) / 0.5)',
+      },
       fontFamily: {
         body: ['var(--font-body)', ...fontFamily.sans],
-        headline: ['var(--font-body)', ...fontFamily.sans],
-        code: ['monospace'],
+        headline: ['var(--font-headline)', ...fontFamily.sans],
       },
       colors: {
         background: 'hsl(var(--background))',
@@ -102,4 +111,4 @@ export default {
     },
   },
   plugins: [require('tailwindcss-animate')],
-} satisfies Config;
+};

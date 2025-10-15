@@ -9,7 +9,7 @@ export default function HomePage() {
     <>
       <Hero />
       <IntroSection />
-      <ServicesPreview />
+      {/* <ServicesPreview /> */}
     </>
   );
 }

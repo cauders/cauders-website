@@ -71,6 +71,108 @@
   a, button, input, textarea, [role="button"] {
     cursor: none !important;
   }
+
+  .chroma-grid {
+    --x: 0;
+    --y: 0;
+    --r: 250px;
+    --h: 2;
+    --w: 2;
+    display: grid;
+    grid-template-columns: repeat(var(--cols, 2), 1fr);
+    grid-template-rows: repeat(var(--rows, 2), 1fr);
+    gap: 1.5rem;
+    position: relative;
+    border-radius: var(--radius);
+  }
+  
+  .chroma-card {
+    border-radius: var(--radius);
+    aspect-ratio: 1;
+    position: relative;
+    overflow: hidden;
+    background: var(--card-gradient, transparent);
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.03), 0 4px 6px -4px rgb(0 0 0 / 0.03);
+    transition: transform 0.3s ease-out;
+  }
+  .chroma-card:hover {
+    transform: translateY(-4px);
+  }
+
+  .chroma-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+      hsl(var(--primary) / 0.1),
+      transparent 60%
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease-out;
+    pointer-events: none;
+  }
+  .chroma-card:hover::before {
+    opacity: 1;
+  }
+  
+  .chroma-img-wrapper {
+    position: absolute;
+    inset: 1px;
+    border-radius: inherit;
+    overflow: hidden;
+    background: hsl(var(--card));
+  }
+  
+  .chroma-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1rem;
+    color: hsl(var(--card-foreground));
+    background: linear-gradient(to top, hsl(var(--card) / 0.9), transparent);
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.3s, transform 0.3s;
+    font-size: 0.875rem;
+  }
+  .chroma-card:hover .chroma-info {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .chroma-info .name {
+    font-weight: 700;
+    font-size: 1rem;
+  }
+  .chroma-info .role {
+    color: hsl(var(--primary));
+    font-size: 0.75rem;
+  }
+  
+  .chroma-overlay {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(
+      var(--r) circle at var(--x) var(--y),
+      hsl(var(--primary) / 0.1),
+      transparent 60%
+    );
+    pointer-events: none;
+  }
+  
+  .chroma-fade {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(
+      circle at center,
+      transparent,
+      hsl(var(--background)) 60%
+    );
+    pointer-events: none;
+  }
 }
 
 @layer utilities {
