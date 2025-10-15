@@ -1,8 +1,6 @@
-
 'use client';
 
 import { cn } from '@/lib/utils';
-import { ChevronRight } from 'lucide-react';
 import Link from 'next/link';
 
 interface GlassBadgeProps {
@@ -23,8 +21,28 @@ export default function GlassBadge({ href, text, className }: GlassBadgeProps) {
         "transition-all duration-300 hover:bg-white/25 hover:border-white/50",
         className
     )}>
+      <svg
+        width="12"
+        height="12"
+        viewBox="0 0 12 12"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="opacity-75"
+      >
+        <path
+          d="M6 0V12"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+        />
+        <path
+          d="M12 6L0 6"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+        />
+      </svg>
       <span>{text}</span>
-      <ChevronRight className="w-4 h-4" />
     </Link>
   );
 }
