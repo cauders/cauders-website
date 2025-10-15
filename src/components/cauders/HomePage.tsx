@@ -9,7 +9,6 @@ export default function HomePage() {
     <>
       <HomePageBackground />
       <Hero />
-      <div className="py-16"></div>
       <WhyChooseUs />
     </>
   );
