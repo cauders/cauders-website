@@ -16,8 +16,7 @@ export default function IntroSection() {
                         lines={[
                             { text: "Transforming Visionary" },
                             { text: "Ideas Into Powerful" },
-                            { text: "Digital" },
-                            { text: "Experiences"}
+                            { text: "Digital Experiences"}
                         ]} 
                         className="text-4xl md:text-6xl text-foreground"
                     />
