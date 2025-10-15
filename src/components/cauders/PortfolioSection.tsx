@@ -5,6 +5,9 @@ import ArrowBadge from "./ArrowBadge";
 import StandardizedHeading from "./StandardizedHeading";
 import PortfolioPreview from "./PortfolioPreview";
 import ScrollFadeIn from "./ScrollFadeIn";
+import { Button } from "../ui/button";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 
 export default function PortfolioSection() {
   return (
@@ -20,6 +23,17 @@ export default function PortfolioSection() {
           
           <div className="mt-12">
             <PortfolioPreview />
+          </div>
+
+          <div className="text-center mt-16 max-w-2xl mx-auto">
+            <p className="text-background/80 text-base">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. consectetur adipiscing elLorem ipsum dolor sit amet, consectetur adipiscing elit.
+            </p>
+            <Button asChild variant="outline" className="mt-8 bg-transparent border-white text-white hover:bg-white hover:text-foreground">
+              <Link href="https://www.portfolio.cauders.com/">
+                Button Text
+              </Link>
+            </Button>
           </div>
         </div>
       </GradientContainer>
