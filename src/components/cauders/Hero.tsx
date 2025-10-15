@@ -1,3 +1,4 @@
+
 'use client';
 import { Suspense } from 'react';
 import { Skeleton } from '../ui/skeleton';
@@ -94,9 +95,9 @@ export default function Hero() {
                             data-ai-hint="mobile app user interface"
                        />
                     </div>
-                     <div className="absolute bottom-0 left-0 w-full h-1/3 p-4 flex items-center justify-center text-center glass-effect">
-                        <p className="text-white text-base font-medium">
-                            Some text here will be written Some text here will
+                     <div className="absolute bottom-0 left-0 w-full h-1/3 p-4 flex items-center justify-center text-center" style={{backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)', backgroundColor: 'transparent' }}>
+                        <p className="text-white text-xs font-light">
+                            Crafting intuitive mobile experiences for iOS and Android.
                         </p>
                     </div>
                   </div>
