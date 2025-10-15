@@ -1,3 +1,4 @@
+
 "use client";
 
 import { getServices } from "@/lib/data";
@@ -24,7 +25,7 @@ export default function ServicesPreview() {
             </ScrollFadeIn>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-6xl mx-auto">
           {services.map((service, index) => (
             <ScrollFadeIn key={service.slug} style={{ animationDelay: `${index * 100}ms` }} className="h-full">
                 <Card className="h-full bg-card border flex flex-col hover:border-primary hover:-translate-y-2 transition-transform duration-300 group p-6 text-left rounded-2xl">
