@@ -5,10 +5,11 @@ import { getServices } from "@/lib/data";
 import Link from "next/link";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import ScrollFadeIn from "./ScrollFadeIn";
 import StandardizedHeading from "./StandardizedHeading";
+import ArrowBadge from "./ArrowBadge";
 
 export default function ServicesPreview() {
   const services = getServices().slice(0, 4);
@@ -18,11 +19,7 @@ export default function ServicesPreview() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12 lg:mb-16">
             <ScrollFadeIn>
-                <div className="flex items-center justify-center gap-2 text-sm text-background/80 mb-4">
-                  <ChevronLeft className="w-4 h-4" />
-                  <p>Discover Our Offerings</p>
-                  <ChevronRight className="w-4 h-4" />
-                </div>
+                <ArrowBadge href="/services" text="Discover Our Offerings" className="inline-block mb-4" />
                 <StandardizedHeading lines={["What We Do Best"]} className="text-background" />
             </ScrollFadeIn>
         </div>
