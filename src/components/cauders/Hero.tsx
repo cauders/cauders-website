@@ -95,7 +95,10 @@ export default function Hero() {
                             data-ai-hint="mobile app user interface"
                        />
                     </div>
-                     <div className="absolute bottom-0 left-0 w-full h-1/3 p-4 flex items-center justify-center text-center" style={{backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)', backgroundColor: 'transparent' }}>
+                     <div 
+                        className="absolute bottom-0 left-0 w-full h-1/3 p-4 flex items-center justify-center text-center overflow-hidden rounded-b-2xl" 
+                        style={{backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)', backgroundColor: 'transparent' }}
+                    >
                         <p className="text-white text-xs font-light">
                             Crafting intuitive mobile experiences for iOS and Android.
                         </p>
