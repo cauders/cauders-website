@@ -65,7 +65,7 @@ export default function Hero() {
           <div className="hidden md:flex w-1/2 items-center justify-center">
             <FadeContent duration={1000} delay={800} className="w-full h-full">
               <div className="flex items-center justify-center h-full">
-                 <div className="relative w-[420px] h-[480px]">
+                 <div className="relative w-[400px] h-[460px]">
                     {/* Back Card */}
                     <div className="absolute top-0 left-0 w-full h-full p-2 rounded-3xl glass-effect">
                         <div className="relative w-full h-full">
