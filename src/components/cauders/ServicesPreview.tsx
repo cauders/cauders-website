@@ -20,7 +20,7 @@ export default function ServicesPreview() {
         <div className="text-center mb-12 lg:mb-16">
             <ScrollFadeIn>
                 <ArrowBadge href="/services" text="Discover Our Offerings" className="mb-4" />
-                <StandardizedHeading lines={["What We Do Best"]} className="text-background" />
+                <StandardizedHeading lines={["What We Do Best"]} className="font-medium text-3xl sm:text-4xl md:text-5xl text-background" />
             </ScrollFadeIn>
         </div>
 
