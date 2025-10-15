@@ -19,7 +19,7 @@ export default function GlassBadge({ href, text, className }: GlassBadgeProps) {
         "border-2 border-white/30",
         "bg-white/15",
         "backdrop-blur-[50px]",
-        "text-white text-xs font-semibold",
+        "text-white text-xs font-normal",
         "transition-all duration-300 hover:bg-white/25 hover:border-white/50",
         className
     )}>
