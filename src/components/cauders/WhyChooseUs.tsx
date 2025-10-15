@@ -13,7 +13,7 @@ const features = [
     },
     {
         icon: BrainCircuit,
-        text: "Our team leverages cutting-edge technology to build innovative and future-proof digital products."
+        text: "We use cutting-edge technology to build innovative and future-proof digital products."
     },
     {
         icon: Award,
@@ -64,7 +64,7 @@ export default function WhyChooseUs() {
                                 <div className="inline-block bg-primary/10 rounded-full p-3 mb-4 border border-primary/20">
                                     <feature.icon className="w-6 h-6 text-primary" />
                                 </div>
-                                <p className="text-sm text-foreground/80">{feature.text}</p>
+                                <p className="text-sm text-foreground">{feature.text}</p>
                             </div>
                         </ScrollFadeIn>
                     ))}
