@@ -1,7 +1,6 @@
 "use client";
 
-import { useRef, type ReactNode } from 'react';
-import { motion, useInView } from 'framer-motion';
+import { useRef, type ReactNode, useEffect, useState } from 'react';
 import { cn } from '@/lib/utils';
 
 interface ScrollFadeInProps {
@@ -9,41 +8,68 @@ interface ScrollFadeInProps {
   className?: string;
   style?: React.CSSProperties;
   direction?: 'up' | 'down' | 'left' | 'right';
-  delay?: number;
+  delay?: string;
 }
 
-export default function ScrollFadeIn({ children, className, style, direction = 'up', delay = 0 }: ScrollFadeInProps) {
+export default function ScrollFadeIn({ children, className, style, direction = 'up', delay = 'delay-0' }: ScrollFadeInProps) {
   const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, amount: 0.1 });
+  const [isVisible, setIsVisible] = useState(false);
 
-  const variants = {
-    hidden: {
-      opacity: 0,
-      x: direction === 'left' ? -50 : direction === 'right' ? 50 : 0,
-      y: direction === 'up' ? 50 : direction === 'down' ? -50 : 0,
-    },
-    visible: {
-      opacity: 1,
-      x: 0,
-      y: 0,
-    },
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      {
+        threshold: 0.1,
+      }
+    );
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => {
+      if (ref.current) {
+        observer.unobserve(ref.current);
+      }
+    };
+  }, []);
+
+  const getAnimationClass = () => {
+    if (!isVisible) return 'opacity-0';
+    switch (direction) {
+      case 'up':
+        return 'animate-fade-in-up';
+      case 'down':
+        return 'animate-fade-in-down';
+      case 'left':
+        return 'animate-fade-in-left';
+      case 'right':
+        return 'animate-fade-in-right';
+      default:
+        return 'animate-fade-in';
+    }
   };
+  
+  const getDelayClass = () => {
+      const delayValue = delay?.replace('delay-', '');
+      if (delayValue && !isNaN(Number(delayValue))) {
+          return `animation-delay-${delayValue}`;
+      }
+      return '';
+  }
 
   return (
-    <motion.div
+    <div
       ref={ref}
-      initial="hidden"
-      animate={isInView ? "visible" : "hidden"}
-      variants={variants}
-      transition={{
-        duration: 0.8,
-        ease: [0.25, 0.1, 0.25, 1],
-        delay: typeof delay === 'string' ? parseFloat(delay.replace('delay-', '')) / 1000 : delay,
-      }}
-      className={cn(className)}
+      className={cn(className, 'transition-opacity', getAnimationClass())}
       style={style}
     >
       {children}
-    </motion.div>
+    </div>
   );
 }
