@@ -84,7 +84,7 @@ export default function Hero() {
                   </div>
 
                   {/* Front Card */}
-                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[320px] h-[380px] rounded-3xl shadow-2xl overflow-hidden glass-effect">
+                  <div className="absolute bottom-[-40px] right-[-60px] w-[280px] h-[330px] rounded-3xl shadow-2xl overflow-hidden">
                     <div className="relative w-full h-2/3">
                        <Image 
                             src="https://picsum.photos/seed/mobile-app/800/600"
@@ -94,7 +94,7 @@ export default function Hero() {
                             data-ai-hint="mobile app user interface"
                        />
                     </div>
-                     <div className="absolute bottom-0 left-0 w-full h-1/3 p-4 flex items-center justify-center text-center">
+                     <div className="absolute bottom-0 left-0 w-full h-1/3 p-4 flex items-center justify-center text-center glass-effect">
                         <p className="text-white text-lg font-medium">
                             Some text here will be written Some text here will
                         </p>
