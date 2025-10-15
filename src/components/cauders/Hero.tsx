@@ -15,7 +15,7 @@ import GlassBadge from './GlassBadge';
 
 export default function Hero() {
   return (
-    <section className="relative w-full h-screen overflow-hidden">
+    <section className="relative w-full h-[150vh] overflow-hidden">
       <div className="absolute inset-0 z-0">
         <HeroBackground />
       </div>
