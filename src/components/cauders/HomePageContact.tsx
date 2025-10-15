@@ -89,7 +89,7 @@ export default function HomePageContact() {
                 </ScrollFadeIn>
                 <ScrollFadeIn delay="delay-200" className="h-full flex flex-col justify-center text-foreground">
                     <Form {...form}>
-                        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 w-full text-2xl">
+                        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 w-full text-2xl font-semibold">
                             <div className="flex items-center gap-4 flex-wrap">
                                 Hi I'm
                                 <FormField
@@ -140,7 +140,7 @@ export default function HomePageContact() {
                                     render={({ field }) => (
                                     <FormItem className="mt-2">
                                         <FormControl>
-                                        <Textarea placeholder="State your question here" className="bg-background border-input rounded-3xl min-h-[120px] p-6 text-base" {...field} />
+                                        <Textarea placeholder="State your question here" className="bg-background border-input rounded-3xl min-h-[80px] p-6 text-base" {...field} />
                                         </FormControl>
                                         <FormMessage />
                                     </FormItem>
