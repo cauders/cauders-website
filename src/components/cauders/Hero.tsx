@@ -64,7 +64,7 @@ export default function Hero() {
           {/* Right Column (Desktop Only) */}
           <div className="hidden md:flex items-center justify-center">
             <FadeContent duration={1000} delay={800}>
-              <div className="relative w-[230px] h-[400px] group">
+              <div className="relative w-[280px] h-[400px] group">
                   <div className="relative w-full h-full card-tilt">
                     <div className="absolute inset-0 rounded-3xl bg-white/10 border border-white/20 shadow-2xl glass-effect"></div>
                     <Image 
@@ -73,7 +73,7 @@ export default function Hero() {
                         width={600}
                         height={800}
                         priority
-                        className="absolute w-[70%] h-auto top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-3xl shadow-2xl"
+                        className="absolute w-[90%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-3xl shadow-2xl"
                         data-ai-hint="mobile application"
                     />
                   </div>
