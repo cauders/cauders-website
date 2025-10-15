@@ -1,14 +1,13 @@
+
 "use client";
 
 import { getServices } from "@/lib/data";
 import Link from "next/link";
 import { Card, CardHeader, CardTitle, CardContent, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import ScrollFadeIn from "./ScrollFadeIn";
 import StandardizedHeading from "./StandardizedHeading";
-import ArrowBadge from "./ArrowBadge";
 
 export default function ServicesPreview() {
   const services = getServices().slice(0, 4);
@@ -18,7 +17,6 @@ export default function ServicesPreview() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12 lg:mb-16">
             <ScrollFadeIn>
-                <ArrowBadge href="/services" text="Discover Our Offerings" className="mb-4" />
                 <StandardizedHeading lines={["What We Do Best"]} className="font-medium text-3xl sm:text-4xl md:text-5xl text-background" />
                 <p className="mt-4 text-sm text-white/80 max-w-2xl mx-auto">
                     At Cauders, we deliver future-ready digital solutions that combine innovation, performance, and scalability. Our expertise spans across multiple domains to help businesses thrive in the evolving tech landscape.
@@ -36,7 +34,7 @@ export default function ServicesPreview() {
                         </div>
                     </CardHeader>
                     <CardContent className="flex-grow p-0 mt-4">
-                        <CardTitle className="text-2xl font-semibold font-headline text-foreground">{service.title}</CardTitle>
+                        <CardTitle className="text-2xl font-medium font-headline text-foreground">{service.title}</CardTitle>
                         <p className="text-sm text-foreground/80 mt-2 line-clamp-2">{service.description}</p>
                     </CardContent>
                     <CardFooter className="p-0 mt-6 justify-start">
