@@ -9,7 +9,7 @@ export default function IntroSection() {
     const { intro: introImage } = placeholderImages;
 
     return (
-        <section className="relative z-10 -mt-[50vh] bg-transparent pt-[50vh]">
+        <section className="relative z-10 -mt-[25vh] bg-transparent pt-[25vh]">
             <div className="py-20 lg:py-32">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                     <ScrollFadeIn>
