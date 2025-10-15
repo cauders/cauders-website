@@ -79,7 +79,7 @@ export default function HomePageContact() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
                 <ScrollFadeIn className="h-full flex flex-col">
-                    <div className="max-w-md">
+                    <div>
                         <ArrowBadge href="/contact" text="Contact Us" className="mb-4" variant="black" />
                         <StandardizedHeading lines={["Reach Out Your Way"]} className="font-medium text-3xl sm:text-4xl md:text-5xl" />
                         <p className="mt-4 text-base text-foreground/70">
