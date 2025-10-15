@@ -18,8 +18,8 @@ export default function Hero() {
          <HeroBackground />
        </div>
 
-      <div className="mx-auto h-full px-4 sm:px-6 lg:px-12 flex items-center">
-        <div className="relative z-10 flex flex-col md:flex-row items-center justify-between h-full max-w-7xl mx-auto w-full">
+      <div className="relative z-10 h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
+        <div className="flex flex-col md:flex-row items-center justify-between w-full h-full">
           {/* Left Column */}
           <div className="w-full md:w-1/2 text-left">
             <div>
@@ -65,7 +65,7 @@ export default function Hero() {
             <FadeContent duration={1000} delay={800}>
                <div className="relative">
                   {/* Back Card */}
-                  <div className="absolute top-0 left-0 w-[320px] h-[380px] group card-tilt glass-effect rounded-3xl p-2">
+                  <div className="absolute top-0 left-0 w-[320px] h-[380px] group card-tilt glass-effect p-2 rounded-3xl">
                       <div className="relative w-full h-full">
                           <Image 
                               src="https://picsum.photos/seed/web-design/800/600"
