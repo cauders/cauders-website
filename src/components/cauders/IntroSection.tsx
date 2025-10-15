@@ -3,15 +3,8 @@
 
 import ScrollFadeIn from "./ScrollFadeIn";
 import StandardizedHeading from "./StandardizedHeading";
-import { getServices, getProjects } from "@/lib/data";
-import Link from "next/link";
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
-import { cn } from "@/lib/utils";
-import React from "react";
+import { getProjects } from "@/lib/data";
 import ChromaGrid from "./ChromaGrid";
-
 
 export default function IntroSection() {
     const projects = getProjects().slice(0, 6);
@@ -21,8 +14,8 @@ export default function IntroSection() {
         title: p.title,
         subtitle: p.category,
         image: p.imageUrl,
-        url: p.url,
-        gradient: 'linear-gradient(to bottom right, hsl(var(--primary) / 0.2), transparent, hsl(var(--primary) / 0.2))',
+        url: `https://www.portfolio.cauders.com/${p.slug}`,
+        gradient: 'linear-gradient(to bottom right, hsl(var(--primary) / 0.1), transparent, hsl(var(--primary) / 0.1))',
     }));
 
     return (
@@ -41,7 +34,7 @@ export default function IntroSection() {
                     </div>
 
                     <ScrollFadeIn>
-                        <ChromaGrid items={gridItems} />
+                        <ChromaGrid items={gridItems} columns={3} rows={2} />
                     </ScrollFadeIn>
                 </div>
             </div>
