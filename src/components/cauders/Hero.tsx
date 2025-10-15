@@ -1,3 +1,4 @@
+
 "use client"
 import { Suspense } from 'react';
 import { Skeleton } from '../ui/skeleton';
@@ -19,7 +20,7 @@ export default function Hero() {
        </div>
 
       <div className="relative z-10 h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
-        <div className="flex flex-col md:flex-row items-center justify-between w-full h-full">
+        <div className="flex items-center justify-between w-full h-full">
           {/* Left Column */}
           <div className="w-full md:w-1/2 text-left">
             <div>
