@@ -1,4 +1,3 @@
-
 "use client";
 
 import { getServices } from "@/lib/data";
@@ -18,9 +17,9 @@ export default function ServicesPreview() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12 lg:mb-16">
             <ScrollFadeIn>
-                <div className="flex items-center justify-center gap-4">
-                  <StandardizedHeading lines={["What We Do Best"]} className="font-medium text-3xl sm:text-4xl md:text-5xl text-background" />
+                <div className="flex flex-col items-center justify-center gap-4">
                   <ArrowBadge href="/services" text="Our Services" />
+                  <StandardizedHeading lines={["What We Do Best"]} className="font-medium text-3xl sm:text-4xl md:text-5xl text-background" />
                 </div>
             </ScrollFadeIn>
         </div>
