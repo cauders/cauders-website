@@ -9,19 +9,19 @@ import StandardizedHeading from "./StandardizedHeading";
 const features = [
     {
         icon: Star,
-        text: "We deliver tailored solutions that align with your unique goals and drive measurable results."
+        text: "Tailored solutions that align with your unique business goals."
     },
     {
         icon: BrainCircuit,
-        text: "We leverage cutting-edge technology to build innovative and future-proof digital products."
+        text: "Innovative, future-proof products built with cutting-edge technology."
     },
     {
         icon: Award,
-        text: "With a focus on quality and performance, we ensure every project meets the highest standards of excellence."
+        text: "A focus on quality and performance to meet the highest standards."
     },
     {
         icon: ShieldCheck,
-        text: "Your success is our priority. We build lasting partnerships based on trust, transparency, and collaboration."
+        text: "Lasting partnerships built on trust, transparency, and collaboration."
     }
 ];
 
