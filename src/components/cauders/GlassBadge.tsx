@@ -1,3 +1,4 @@
+
 'use client';
 
 import { cn } from '@/lib/utils';
@@ -27,7 +28,7 @@ export default function GlassBadge({ href, text, className }: GlassBadgeProps) {
         alt="arrow icon"
         width={12}
         height={12}
-        className="opacity-75"
+        className=""
       />
       <span>{text}</span>
     </Link>
