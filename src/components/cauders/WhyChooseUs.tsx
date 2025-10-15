@@ -62,7 +62,7 @@ export default function WhyChooseUs() {
                         <ScrollFadeIn key={index} style={{ animationDelay: `${index * 100}ms` }}>
                             <div className="flex flex-col items-start gap-4">
                                 <div className="flex-shrink-0 bg-primary/10 rounded-full p-3 border border-primary/20">
-                                    <feature.icon className="w-6 h-6 text-primary" />
+                                    <feature.icon className="w-6 h-6 text-foreground" />
                                 </div>
                                 <p className="text-sm text-foreground/80 font-medium">{feature.text}</p>
                             </div>
