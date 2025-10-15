@@ -135,12 +135,9 @@ export default function HomePageContact() {
                                         </FormItem>
                                         )}
                                     />
-                                    that need help.
+                                    that need help. I have a question which are
                                 </div>
-                            </div>
-                            <div>
-                                I have a question which are
-                                <FormField
+                                 <FormField
                                     control={form.control}
                                     name="question"
                                     render={({ field }) => (
