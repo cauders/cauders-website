@@ -28,16 +28,14 @@ export default function ServicesPreview() {
           {services.map((service, index) => (
             <ScrollFadeIn key={service.slug} style={{ animationDelay: `${index * 100}ms` }} className="h-full">
                 <Card className="h-full bg-card border flex flex-col hover:border-primary hover:-translate-y-2 transition-transform duration-300 group p-6">
-                    <CardHeader className="flex-row items-center gap-4 p-0">
-                        <div className="flex-shrink-0 bg-primary/10 rounded-full p-3 border border-primary/20 group-hover:bg-primary/20 transition-colors">
+                    <CardHeader className="p-0">
+                        <div className="flex-shrink-0 bg-primary/10 rounded-full p-3 border border-primary/20 group-hover:bg-primary/20 transition-colors w-fit">
                             <service.icon className="w-6 h-6 text-primary" />
-                        </div>
-                        <div>
-                            <CardTitle className="text-xl font-headline text-foreground">{service.title}</CardTitle>
                         </div>
                     </CardHeader>
                     <CardContent className="flex-grow p-0 mt-4">
-                        <p className="text-sm text-foreground/80">{service.description}</p>
+                        <CardTitle className="text-xl font-headline text-foreground">{service.title}</CardTitle>
+                        <p className="text-sm text-foreground/80 mt-2">{service.description}</p>
                     </CardContent>
                     <CardFooter className="p-0 mt-4">
                          <Button asChild variant="link" className="px-0 text-primary">
