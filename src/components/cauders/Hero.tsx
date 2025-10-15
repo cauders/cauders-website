@@ -84,7 +84,7 @@ export default function Hero() {
                   </div>
 
                   {/* Front Card */}
-                  <div className="absolute bottom-[-40px] right-[-60px] w-[280px] h-[330px] rounded-3xl shadow-2xl overflow-hidden">
+                  <div className="absolute bottom-[-40px] right-[-60px] w-[240px] h-[290px] rounded-3xl shadow-2xl overflow-hidden">
                     <div className="relative w-full h-2/3">
                        <Image 
                             src="https://picsum.photos/seed/mobile-app/800/600"
