@@ -19,7 +19,6 @@ import { submitContactForm } from "@/app/actions";
 import ScrollFadeIn from "./ScrollFadeIn";
 import { Loader2 } from "lucide-react";
 import ArrowBadge from "./ArrowBadge";
-import GradientContainer from "./GradientContainer";
 import StandardizedHeading from "./StandardizedHeading";
 
 
@@ -84,7 +83,7 @@ export default function HomePageContact() {
                 <ArrowBadge href="/contact" text="Contact Us" className="mb-4" />
                 <StandardizedHeading lines={["Reach Out Your Way"]} className="text-foreground text-4xl" />
                 <p className="mt-4 text-base text-foreground/70">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    We're here to answer your questions and help you get started on your next big idea.
                 </p>
                 </div>
             </ScrollFadeIn>
