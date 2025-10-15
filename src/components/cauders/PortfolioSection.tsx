@@ -1,3 +1,4 @@
+
 "use client";
 
 import GradientContainer from "./GradientContainer";
@@ -27,7 +28,7 @@ export default function PortfolioSection() {
 
           <div className="text-center mt-16 max-w-xl mx-auto">
             <p className="text-background text-base">
-              Each project is a testament to our commitment to quality, innovation, and client satisfaction. We blend cutting-edge technology with creative design to deliver solutions that not only meet but exceed expectations.
+              Each project is a testament to our commitment to quality, innovation, and client satisfaction. We blend cutting-edge technology with creative design to deliver solutions that exceed expectations.
             </p>
             <Button asChild variant="outline" className="mt-8 bg-transparent border-2 border-white text-white hover:bg-white hover:text-foreground px-8">
               <Link href="https://www.portfolio.cauders.com/">
