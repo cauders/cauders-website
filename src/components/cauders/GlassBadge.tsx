@@ -1,7 +1,7 @@
-
 'use client';
 
 import { cn } from '@/lib/utils';
+import Image from 'next/image';
 import Link from 'next/link';
 
 interface GlassBadgeProps {
@@ -22,16 +22,13 @@ export default function GlassBadge({ href, text, className }: GlassBadgeProps) {
         "transition-all duration-300 hover:bg-white/25 hover:border-white/50",
         className
     )}>
-      <svg
-        width="12"
-        height="12"
-        viewBox="0 0 12 12"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
+      <Image 
+        src="/images/icons/arrow-icon.svg"
+        alt="arrow icon"
+        width={12}
+        height={12}
         className="opacity-75"
-      >
-        <path d="M10 3L4.5 8.5L2 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-      </svg>
+      />
       <span>{text}</span>
     </Link>
   );
