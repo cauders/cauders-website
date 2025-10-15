@@ -1,4 +1,3 @@
-
 'use client';
 import { Suspense } from 'react';
 import { Skeleton } from '../ui/skeleton';
@@ -12,11 +11,12 @@ import Link from 'next/link';
 import ArrowButton from './ArrowButton';
 import placeholderImages from '@/lib/placeholder-images.json';
 import GlassBadge from './GlassBadge';
+import IntroSection from './IntroSection';
 
 export default function Hero() {
   return (
-    <section className="relative w-full h-[150vh] overflow-hidden">
-      <div className="absolute inset-0 z-0">
+    <section className="relative w-full h-auto overflow-hidden">
+      <div className="absolute inset-0 z-0 h-[100vh]">
         <HeroBackground />
       </div>
 
@@ -109,6 +109,7 @@ export default function Hero() {
           </div>
         </div>
       </div>
+      <IntroSection />
     </section>
   );
 }
