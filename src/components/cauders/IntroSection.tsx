@@ -18,7 +18,7 @@ export default function IntroSection() {
                                 <StandardizedHeading 
                                     lines={[
                                         { text: "Lorem Ipsum Dolor" },
-                                        { text: "Sit Amet, Consectetur", className: "text-primary"},
+                                        { text: "Sit Amet, Consectetur" },
                                         { text: "Adipiscing"}
                                     ]} 
                                     className="text-4xl md:text-6xl"
