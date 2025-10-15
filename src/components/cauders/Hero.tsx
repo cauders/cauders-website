@@ -1,3 +1,4 @@
+
 "use client"
 import { Suspense } from 'react';
 import { Skeleton } from '../ui/skeleton';
@@ -14,9 +15,10 @@ export default function Hero() {
 
   return (
     <section className="relative w-full overflow-hidden bg-gradient-container rounded-br-[1rem] rounded-bl-[1rem] py-32 md:py-48">
-       <div className="absolute inset-0 z-0 opacity-20">
+       <div className="absolute inset-0 z-0 opacity-50">
          <HeroBackground />
        </div>
+       <div className="absolute inset-0 z-0 bg-black/30"></div>
 
       <div className="mx-auto h-full px-4 sm:px-6 lg:px-12">
         <div className="relative z-10 flex flex-col md:flex-row items-center justify-between h-full max-w-7xl mx-auto">
