@@ -1,4 +1,3 @@
-
 'use client';
 
 import StandardizedHeading from "./StandardizedHeading";
@@ -15,9 +14,9 @@ export default function IntroSection() {
                     <div className="text-center pt-16 pb-12">
                         <StandardizedHeading 
                             lines={[
-                                { text: "Lorem Ipsum Dolor" },
-                                { text: "Sit Amet, Consectetur" },
-                                { text: "Adipiscing"}
+                                { text: "We Build Digital" },
+                                { text: "Solutions For The Future," },
+                                { text: "Today"}
                             ]} 
                             className="text-4xl md:text-6xl text-foreground"
                         />
