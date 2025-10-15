@@ -5,6 +5,7 @@ import WhyChooseUs from './WhyChooseUs';
 import ServicesPreview from './ServicesPreview';
 import HomePageContact from './HomePageContact';
 import PortfolioSection from './PortfolioSection';
+import FAQPreview from './FAQPreview';
 
 export default function HomePage() {
   return (
@@ -14,6 +15,7 @@ export default function HomePage() {
       <ServicesPreview />
       <HomePageContact />
       <PortfolioSection />
+      <FAQPreview />
     </>
   );
 }

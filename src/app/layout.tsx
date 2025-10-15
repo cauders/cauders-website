@@ -3,12 +3,10 @@ import type { Metadata } from 'next';
 import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
 import Header from '@/components/cauders/Header';
-import Footer from '@/components/cauders/Footer';
 import { Montserrat } from 'next/font/google';
 import { cn } from '@/lib/utils';
 import { ThemeProvider } from '@/components/cauders/ThemeProvider';
 import CustomCursor from '@/components/cauders/CustomCursor';
-import ScrollFadeIn from '@/components/cauders/ScrollFadeIn';
 import Chatbot from '@/components/cauders/Chatbot';
 
 
@@ -43,9 +41,6 @@ export default function RootLayout({
               <main className="flex-grow z-10">
                 {children}
               </main>
-              {/* <ScrollFadeIn direction="stretch-up">
-                <Footer />
-              </ScrollFadeIn> */}
               <Toaster />
               <Chatbot />
             </>
