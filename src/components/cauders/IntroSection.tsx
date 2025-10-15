@@ -10,7 +10,7 @@ export default function IntroSection() {
     return (
         <div className="relative z-10 pt-8">
             <div className="rounded-2xl shadow-xl overflow-hidden bg-card">
-                <div className="text-center pt-16 pb-12">
+                <div className="text-center py-32">
                     <StandardizedHeading 
                         lines={[
                             { text: "Transforming Visionary Ideas" },
