@@ -17,22 +17,19 @@ const contentSections = [
     title: "Redefining Digital Innovation",
     text: "At Cauders, we are redefining the future of digital innovation. As a modern IT solutions company, we specialize in creating intelligent, scalable, and high-performance digital ecosystems that empower businesses to grow, adapt, and lead in competitive markets.",
     layout: 'text-left',
-    imageUrl: '/images/about/digital-innovation.jpg',
-    aiHint: placeholderImages.innovation.aiHint
+    imageKey: 'innovation',
   },
   {
     title: "Our Core Expertise",
     text: "Our expertise spans custom software development, enterprise grade web and mobile applications, UI/UX design, cloud-based solutions, API integrations, AI integrations and performance optimization delivering technology that is secure, user-centric, and built for long-term impact.",
     layout: 'text-right',
-    imageUrl: '/images/about/software-development.jpg',
-    aiHint: placeholderImages.expertise.aiHint
+    imageKey: 'expertise',
   },
   {
     title: "Vision for the Future",
     text: "Driven by a passion for innovation and excellence, Cauders transforms ideas into powerful digital experiences for startups, enterprises, and global brands. We don’t just build solutions we create future-ready platforms that elevate businesses and inspire growth.",
     layout: 'text-left',
-    imageUrl: '/images/about/future-ready.jpg',
-    aiHint: placeholderImages.vision.aiHint
+    imageKey: 'vision',
   },
 ];
 
@@ -46,7 +43,9 @@ export default function AboutPage() {
                     </div>
 
                     <div className="flex flex-col gap-16 lg:gap-32">
-                        {contentSections.map((section, index) => (
+                        {contentSections.map((section, index) => {
+                            const image = placeholderImages[section.imageKey as keyof typeof placeholderImages];
+                            return (
                             <div key={index} className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                                 <div className={cn("lg:order-1 text-center lg:text-left", section.layout === 'text-right' && "lg:order-2 lg:text-right")}>
                                     <div className="max-w-lg mx-auto lg:mx-0 lg:ml-auto">
@@ -66,18 +65,18 @@ export default function AboutPage() {
                                    <ScrollFadeIn direction="up">
                                         <div className="flex items-center justify-center rounded-lg overflow-hidden shadow-lg">
                                             <Image 
-                                                src={section.imageUrl}
+                                                src={image.imageUrl}
                                                 alt={section.title}
                                                 width={800}
                                                 height={600}
-                                                data-ai-hint={section.aiHint}
+                                                data-ai-hint={image.aiHint}
                                                 className="w-full h-auto object-cover"
                                             />
                                         </div>
                                     </ScrollFadeIn>
                                 </div>
                             </div>
-                        ))}
+                        )})}
                     </div>
                 </div>
             </section>

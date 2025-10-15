@@ -1,4 +1,3 @@
-
 'use client';
 import { Suspense } from 'react';
 import { Skeleton } from '../ui/skeleton';
@@ -10,6 +9,7 @@ import FadeContent from './FadeContent';
 import { Button } from '../ui/button';
 import Link from 'next/link';
 import ArrowButton from './ArrowButton';
+import placeholderImages from '@/lib/placeholder-images.json';
 
 export default function Hero() {
   return (
@@ -74,12 +74,12 @@ export default function Hero() {
                   <div className="absolute top-0 left-0 w-full h-full p-2 rounded-3xl glass-effect">
                     <div className="relative w-full h-full">
                       <Image
-                        src="https://picsum.photos/seed/web-design/800/600"
+                        src={placeholderImages.hero.main.imageUrl}
                         alt="Web Design Screenshot"
                         fill
                         priority
                         className="object-cover rounded-2xl"
-                        data-ai-hint="web design"
+                        data-ai-hint={placeholderImages.hero.main.aiHint}
                       />
                     </div>
                   </div>
@@ -88,11 +88,11 @@ export default function Hero() {
                   <div className="absolute bottom-[-40px] right-[-60px] w-[200px] h-[230px] rounded-2xl shadow-2xl overflow-hidden">
                     <div className="relative w-full h-2/3">
                        <Image 
-                            src="https://picsum.photos/seed/mobile-app/800/600"
+                            src={placeholderImages.hero.front.imageUrl}
                             alt="Mobile App Screenshot"
                             fill
                             className="object-cover"
-                            data-ai-hint="mobile app user interface"
+                            data-ai-hint={placeholderImages.hero.front.aiHint}
                        />
                     </div>
                      <div 

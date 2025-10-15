@@ -1,35 +1,42 @@
-
 {
-    "innovation": {
-        "imageUrl": "https://picsum.photos/seed/innovation/800/600",
-        "aiHint": "digital innovation"
+  "innovation": {
+    "imageUrl": "https://picsum.photos/seed/innovation/800/600",
+    "aiHint": "digital innovation"
+  },
+  "expertise": {
+    "imageUrl": "https://picsum.photos/seed/expertise/800/600",
+    "aiHint": "team collaboration"
+  },
+  "vision": {
+    "imageUrl": "https://picsum.photos/seed/vision/800/600",
+    "aiHint": "future technology"
+  },
+  "ecom": {
+    "imageUrl": "https://picsum.photos/seed/ecom/800/450"
+  },
+  "mobile-bank": {
+    "imageUrl": "https://picsum.photos/seed/mobile-bank/800/450"
+  },
+  "chatbot": {
+    "imageUrl": "https://picsum.photos/seed/chatbot/800/450"
+  },
+  "fintech": {
+    "imageUrl": "https://picsum.photos/seed/fintech/800/450"
+  },
+  "saas": {
+    "imageUrl": "https://picsum.photos/seed/saas/800/450"
+  },
+  "corp": {
+    "imageUrl": "https://picsum.photos/seed/corp/800/450"
+  },
+  "hero": {
+    "main": {
+      "imageUrl": "https://picsum.photos/seed/web-design/800/600",
+      "aiHint": "web design"
     },
-    "expertise": {
-        "imageUrl": "https://picsum.photos/seed/expertise/800/600",
-        "aiHint": "team collaboration"
-    },
-    "vision": {
-        "imageUrl": "https://picsum.photos/seed/vision/800/600",
-        "aiHint": "future technology"
-    },
-    "ecom": {
-        "imageUrl": "https://picsum.photos/seed/ecom/800/450"
-    },
-    "mobile-bank": {
-        "imageUrl": "https://picsum.photos/seed/mobile-bank/800/450"
-    },
-    "chatbot": {
-        "imageUrl": "https://picsum.photos/seed/chatbot/800/450"
-    },
-    "fintech": {
-        "imageUrl": "https://picsum.photos/seed/fintech/800/450"
-    },
-    "saas": {
-        "imageUrl": "https://picsum.photos/seed/saas/800/450"
-    },
-    "corp": {
-        "imageUrl": "https://picsum.photos/seed/corp/800/450"
+    "front": {
+      "imageUrl": "https://picsum.photos/seed/mobile-app/800/600",
+      "aiHint": "mobile app user interface"
     }
+  }
 }
-
-    
