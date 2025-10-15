@@ -57,14 +57,14 @@ export default function WhyChooseUs() {
                     </ScrollFadeIn>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 mb-12 lg:mb-20">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 mb-8 lg:mb-12">
                     {features.map((feature, index) => (
                         <ScrollFadeIn key={index} style={{ animationDelay: `${index * 100}ms` }}>
                             <div className="flex flex-col items-start gap-4">
                                 <div className="flex-shrink-0 bg-primary/10 rounded-full p-3 border border-primary/20">
                                     <feature.icon className="w-6 h-6 text-primary" />
                                 </div>
-                                <p className="text-sm text-foreground font-medium">{feature.text}</p>
+                                <p className="text-sm text-foreground/80 font-medium">{feature.text}</p>
                             </div>
                         </ScrollFadeIn>
                     ))}
