@@ -63,21 +63,23 @@ export default function Hero() {
           
           {/* Right Column (Desktop Only) */}
           <div className="hidden md:flex w-1/2 items-center justify-center">
-            <FadeContent duration={1000} delay={800}>
-               <div className="relative">
-                  {/* Back Card */}
-                  <div className="absolute top-0 left-0 w-[320px] h-[380px] group card-tilt glass-effect p-2 rounded-3xl">
-                      <div className="relative w-full h-full">
-                          <Image 
-                              src="https://picsum.photos/seed/web-design/800/600"
-                              alt="Web Design Screenshot"
-                              fill
-                              priority
-                              className="object-cover rounded-2xl"
-                              data-ai-hint="web design"
-                          />
-                      </div>
-                  </div>
+            <FadeContent duration={1000} delay={800} className="w-full h-full">
+              <div className="flex items-center justify-center h-full">
+                 <div className="relative w-[320px] h-[380px]">
+                    {/* Back Card */}
+                    <div className="absolute top-0 left-0 w-full h-full group card-tilt p-2 rounded-3xl" style={{ backgroundColor: "hsl(0 0% 100% / 0.2)" }}>
+                        <div className="relative w-full h-full">
+                            <Image 
+                                src="https://picsum.photos/seed/web-design/800/600"
+                                alt="Web Design Screenshot"
+                                fill
+                                priority
+                                className="object-cover rounded-2xl"
+                                data-ai-hint="web design"
+                            />
+                        </div>
+                    </div>
+                </div>
               </div>
             </FadeContent>
           </div>
