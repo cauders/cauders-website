@@ -64,7 +64,7 @@ export default function Hero() {
           {/* Right Column (Desktop Only) */}
           <div className="hidden md:flex items-center justify-center">
             <FadeContent duration={1000} delay={800}>
-              <div className="relative w-[320px] h-[400px] group">
+              <div className="relative w-[360px] h-[450px] group">
                   <div className="relative w-full h-full card-tilt">
                     <div className="absolute inset-0 rounded-3xl bg-white/10 border border-white/20 shadow-2xl glass-effect"></div>
                     <Image 
