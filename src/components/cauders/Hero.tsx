@@ -68,7 +68,7 @@ export default function Hero() {
               <div className="flex items-center justify-center h-full">
                 <div className="relative w-[400px] h-[460px]">
                   {/* Back Card */}
-                  <div className="absolute top-0 left-0 w-full h-full rounded-3xl glass-effect overflow-hidden">
+                  <div className="absolute top-0 left-0 w-full h-full rounded-3xl glass-effect overflow-hidden p-4">
                     <div className="relative w-full h-full overflow-hidden rounded-2xl">
                       <Image
                         src={placeholderImages.hero.main.imageUrl}
