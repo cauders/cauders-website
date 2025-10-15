@@ -66,7 +66,7 @@ export default function Hero() {
             <FadeContent duration={1000} delay={800}>
               <div className="relative w-[450px] h-[450px]">
                   {/* Back Card */}
-                  <div className="absolute top-0 left-0 w-[300px] h-[300px] group card-tilt">
+                  <div className="absolute top-0 left-0 w-[320px] h-[380px] group card-tilt">
                       <div className="relative w-full h-full">
                           <div className="absolute inset-0 rounded-3xl bg-white/10 border border-white/20 shadow-2xl glass-effect"></div>
                           <Image 
@@ -82,7 +82,7 @@ export default function Hero() {
                   </div>
 
                   {/* Front Card */}
-                  <div className="absolute bottom-0 right-0 w-[360px] h-[390px] group card-tilt">
+                  <div className="absolute bottom-0 right-0 w-[320px] h-[380px] group card-tilt">
                       <div className="relative w-full h-full">
                           <div className="absolute inset-0 rounded-3xl bg-white/10 border border-white/20 shadow-2xl glass-effect"></div>
                           <Image 
