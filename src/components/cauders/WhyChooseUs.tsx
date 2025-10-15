@@ -74,7 +74,7 @@ export default function WhyChooseUs() {
                     {stats.map((stat, index) => (
                         <ScrollFadeIn key={index} style={{ animationDelay: `${(index + 4) * 100}ms` }} className="h-full">
                             <Card className="text-center p-6 md:p-8 bg-primary/20 border-primary/30 h-full flex flex-col justify-center items-center hover:-translate-y-2 transition-transform duration-300">
-                                <p className="text-4xl md:text-5xl font-bold text-foreground font-headline">{stat.value}</p>
+                                <p className="text-4xl md:text-5xl font-semibold text-foreground font-headline">{stat.value}</p>
                                 <p className="text-sm md:text-base text-foreground/80 mt-2">{stat.label}</p>
                             </Card>
                         </ScrollFadeIn>
