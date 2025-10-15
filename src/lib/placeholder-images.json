@@ -31,11 +31,11 @@
   },
   "hero": {
     "main": {
-      "imageUrl": "/images/background/hero-cd-3.svg",
+      "imageUrl": "/images/background/hero-cd-8.png",
       "aiHint": "web design"
     },
     "front": {
-      "imageUrl": "/images/background/hero-cd-6.svg",
+      "imageUrl": "/images/background/hero-cd-9.png",
       "aiHint": "mobile app user interface"
     }
   }
