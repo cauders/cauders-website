@@ -10,6 +10,7 @@ import { Button } from '../ui/button';
 import Link from 'next/link';
 import ArrowButton from './ArrowButton';
 import placeholderImages from '@/lib/placeholder-images.json';
+import GlassBadge from './GlassBadge';
 
 export default function Hero() {
   return (
@@ -23,12 +24,8 @@ export default function Hero() {
           {/* Left Column */}
           <div className="w-full md:w-1/2 text-left">
             <div>
-              <FadeContent delay={200}>
-                <Link href="/services">
-                  <div className="inline-block bg-foreground/20 text-white text-xs font-semibold py-1 px-3 rounded-full mb-4">
-                    &gt; Discover our services
-                  </div>
-                </Link>
+              <FadeContent delay={200} className="mb-4">
+                <GlassBadge href="/services" text="Discover our services" />
               </FadeContent>
               <h1 className="font-medium tracking-tight text-white mt-2 leading-tight font-headline">
                 <BlurText
@@ -71,7 +68,7 @@ export default function Hero() {
               <div className="flex items-center justify-center h-full">
                 <div className="relative w-[400px] h-[460px]">
                   {/* Back Card */}
-                  <div className="absolute top-0 left-0 w-full h-full p-4 rounded-3xl glass-effect overflow-hidden">
+                  <div className="absolute top-0 left-0 w-full h-full rounded-3xl glass-effect overflow-hidden">
                     <div className="relative w-full h-full overflow-hidden rounded-2xl">
                       <Image
                         src={placeholderImages.hero.main.imageUrl}

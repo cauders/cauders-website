@@ -31,11 +31,11 @@
   },
   "hero": {
     "main": {
-      "imageUrl": "/images/projects/snipbyte/gallery-8.png",
+      "imageUrl": "/images/background/hero-bg-8.png",
       "aiHint": "web design"
     },
     "front": {
-      "imageUrl": "/images/projects/snipbyte/gallery-9.png",
+      "imageUrl": "/images/background/hero-bg-9.png",
       "aiHint": "mobile app user interface"
     }
   }
