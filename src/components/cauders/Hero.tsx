@@ -14,7 +14,7 @@ import ArrowButton from './ArrowButton';
 export default function Hero() {
 
   return (
-    <section className="relative w-full overflow-hidden bg-gradient-container rounded-br-[1rem] rounded-bl-[1rem] py-32 md:py-48">
+    <section className="relative w-full overflow-hidden rounded-br-[1rem] rounded-bl-[1rem] py-32 md:py-48">
        <div className="absolute inset-0 z-0 opacity-50">
          <HeroBackground />
        </div>
@@ -42,7 +42,7 @@ export default function Hero() {
                     text="Meets Vision"
                     animateBy="words"
                     delay={100}
-                    className="text-4xl sm:text-5xl md:text-5xl lg:text-6xl"
+                    className="text-4xl sm:text_5xl md:text-5xl lg:text-6xl"
                 />
               </h1>
               <BlurText
