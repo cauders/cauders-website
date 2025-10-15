@@ -26,7 +26,7 @@ export default function PortfolioSection() {
             <PortfolioPreview />
           </div>
 
-          <div className="text-center mt-24 max-w-xl mx-auto">
+          <div className="text-center mt-32 max-w-xl mx-auto">
             <p className="text-background text-base">
               Each project is a testament to our commitment to quality, innovation, and client satisfaction. We blend cutting-edge technology with creative design to deliver solutions that exceed expectations.
             </p>
