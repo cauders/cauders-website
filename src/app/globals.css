@@ -191,7 +191,7 @@
     @apply mx-auto w-full max-w-5xl rounded-full border border-border/20 shadow-lg;
     -webkit-backdrop-filter: blur(16px);
     backdrop-filter: blur(16px);
-    background: hsl(var(--background) / 0.5);
+    background: hsl(var(--background) / 0.8);
   }
 
   .scrolled-header {

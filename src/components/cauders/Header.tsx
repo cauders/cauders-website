@@ -59,12 +59,12 @@ export default function Header() {
       >
         <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
           <div className="flex items-center justify-between h-14">
-            <Link href="/" className={cn("text-2xl font-bold transition-colors", isHeroVisible ? "text-white hover:text-white/80" : "text-foreground hover:text-primary")}>
+            <Link href="/" className={cn("text-2xl font-bold transition-colors text-foreground hover:text-primary", isHeroVisible ? "text-white hover:text-white/80" : "")}>
               Cauders
             </Link>
             
             <div className="flex items-center gap-4">
-              <Button onClick={() => setIsMenuOpen(true)} variant="ghost" className={cn("text-xl font-normal", isHeroVisible ? 'text-white hover:bg-white/10 hover:text-white' : 'text-foreground hover:bg-accent')} aria-label="Open menu">
+              <Button onClick={() => setIsMenuOpen(true)} variant="ghost" className={cn("text-xl font-normal hover:bg-accent", isHeroVisible ? 'text-white hover:bg-white/10 hover:text-white' : 'text-foreground')} aria-label="Open menu">
                 Menu
               </Button>
             </div>
