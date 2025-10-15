@@ -1,4 +1,3 @@
-
 "use client";
 
 import GradientContainer from "./GradientContainer";
