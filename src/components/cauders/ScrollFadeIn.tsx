@@ -1,42 +1,49 @@
-
 "use client";
 
 import { useRef, type ReactNode } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { cn } from '@/lib/utils'; // Utility for merging class names
+import { motion, useInView } from 'framer-motion';
+import { cn } from '@/lib/utils';
 
 interface ScrollFadeInProps {
   children: ReactNode;
   className?: string;
   style?: React.CSSProperties;
-  direction?: 'up' | 'down' | 'left' | 'right' | 'stretch-up';
+  direction?: 'up' | 'down' | 'left' | 'right';
   delay?: number;
 }
 
 export default function ScrollFadeIn({ children, className, style, direction = 'up', delay = 0 }: ScrollFadeInProps) {
   const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end end"]
-  });
+  const isInView = useInView(ref, { once: true, amount: 0.1 });
 
-  const x = useTransform(scrollYProgress, [0, 1], [direction === 'left' ? -100 : direction === 'right' ? 100 : 0, 0]);
-  const y = useTransform(scrollYProgress, [0, 1], [direction === 'up' ? 100 : direction === 'down' ? -100 : 0, 0]);
-  const opacity = useTransform(scrollYProgress, [0, 0.6], [0, 1]);
+  const variants = {
+    hidden: {
+      opacity: 0,
+      x: direction === 'left' ? -50 : direction === 'right' ? 50 : 0,
+      y: direction === 'up' ? 50 : direction === 'down' ? -50 : 0,
+    },
+    visible: {
+      opacity: 1,
+      x: 0,
+      y: 0,
+    },
+  };
 
-   return (
-    <div ref={ref} className={cn("py-2", className)}>
-        <motion.div
-        style={{
-            ...style,
-            x,
-            y,
-            opacity,
-            transition: `all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) ${delay}s`
-        }}
-        >
-        {children}
-        </motion.div>
-    </div>
+  return (
+    <motion.div
+      ref={ref}
+      initial="hidden"
+      animate={isInView ? "visible" : "hidden"}
+      variants={variants}
+      transition={{
+        duration: 0.8,
+        ease: [0.25, 0.1, 0.25, 1],
+        delay: typeof delay === 'string' ? parseFloat(delay.replace('delay-', '')) / 1000 : delay,
+      }}
+      className={cn(className)}
+      style={style}
+    >
+      {children}
+    </motion.div>
   );
 }
