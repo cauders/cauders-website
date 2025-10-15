@@ -19,8 +19,9 @@ export default function ServicesPreview() {
       <Image
         src="/images/background/overlay-bg.svg"
         alt="background overlay"
-        fill
-        className="object-cover absolute inset-0 z-0"
+        width={1920}
+        height={1080}
+        className="object-cover absolute w-full h-auto bottom-0 left-0 right-0 z-0"
       />
       <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12 lg:mb-16">
@@ -32,11 +33,11 @@ export default function ServicesPreview() {
             </ScrollFadeIn>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {services.map((service, index) => (
             <ScrollFadeIn key={service.slug} style={{ animationDelay: `${index * 100}ms` }} className="h-full">
                 <Card className="h-full bg-card border flex flex-col hover:border-primary hover:-translate-y-2 transition-transform duration-300 group p-6 text-left rounded-2xl">
-                    <CardHeader className="p-0 flex-row justify-start">
+                    <CardHeader className="p-0 flex-row justify-start pt-6">
                         <div className="flex-shrink-0 bg-zinc rounded-full p-3 border border-primary/20 group-hover:bg-zinc/90 transition-colors w-fit">
                             <service.icon className="w-6 h-6 text-white" />
                         </div>
