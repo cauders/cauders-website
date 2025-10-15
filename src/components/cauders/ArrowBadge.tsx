@@ -13,7 +13,7 @@ interface ArrowBadgeProps {
 export default function ArrowBadge({ href, text, className }: ArrowBadgeProps) {
   return (
     <Link href={href} className={cn(
-        "inline-flex items-center justify-between gap-2",
+        "inline-flex items-center justify-between gap-2 w-full",
         "text-white text-sm font-normal",
         "transition-all duration-300",
         className
