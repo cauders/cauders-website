@@ -52,7 +52,7 @@ export default function WhyChooseUs() {
                     <StandardizedHeading lines={[ "Why People Choose Cauders" ]} className="font-medium text-3xl sm:text-4xl md:text-5xl" />
                     <ScrollFadeIn>
                         <p className="mt-4 text-base text-foreground/70 max-w-2xl mx-auto">
-                            We're more than just a digital agency. We're a partner in innovation, committed to delivering excellence and driving measurable results for our clients.
+                            We're more than a digital agency; we are your partners in innovation and excellence.
                         </p>
                     </ScrollFadeIn>
                 </div>
