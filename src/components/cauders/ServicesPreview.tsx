@@ -1,4 +1,3 @@
-
 "use client";
 
 import { getServices } from "@/lib/data";
@@ -41,7 +40,7 @@ export default function ServicesPreview() {
                         <p className="text-sm text-foreground/80 mt-2 line-clamp-2">{service.description}</p>
                     </CardContent>
                     <CardFooter className="p-0 mt-6 justify-start">
-                         <Button asChild className="bg-zinc text-white font-normal">
+                         <Button asChild className="bg-zinc text-white font-normal px-6">
                             <Link href={`/services/${service.slug}`}>
                                 Learn More
                             </Link>
