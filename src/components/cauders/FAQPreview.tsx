@@ -1,3 +1,4 @@
+
 'use client';
 
 import {
@@ -59,7 +60,7 @@ export default function FAQPreview() {
                                     <AccordionItem key={index} value={`item-${index}`} className="bg-card rounded-2xl px-6 shadow-smooth-lift">
                                         <AccordionTrigger
                                             className="text-left text-base text-foreground font-medium hover:no-underline"
-                                            icon={<Plus className="h-5 w-5 text-foreground" />}
+                                            icon={<Plus className="h-7 w-7 text-foreground" />}
                                         >
                                             {faq.question}
                                         </AccordionTrigger>
