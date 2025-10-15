@@ -63,7 +63,7 @@ export default function PortfolioSection() {
     return (
         <section id="portfolio-preview" className="text-foreground">
             <div ref={containerRef} className="relative flex flex-col lg:h-[600vh]">
-                <div className="sticky top-0 h-screen flex flex-col items-center justify-center overflow-hidden py-20 lg:py-0">
+                <div className="sticky top-0 h-screen flex flex-col items-center justify-center py-20 lg:py-0">
                     <div className="absolute inset-0 z-0 overflow-hidden bg-foreground">
                         <div 
                             className="absolute top-[-120px] left-[-80px] w-64 h-64 bg-primary/30 rounded-full blur-3xl opacity-80"
