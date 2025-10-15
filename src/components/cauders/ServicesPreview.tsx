@@ -9,13 +9,20 @@ import { cn } from "@/lib/utils";
 import ScrollFadeIn from "./ScrollFadeIn";
 import StandardizedHeading from "./StandardizedHeading";
 import ArrowBadge from "./ArrowBadge";
+import Image from "next/image";
 
 export default function ServicesPreview() {
   const services = getServices().slice(0, 4);
 
   return (
-    <section id="services-preview" className="py-20 lg:py-32 bg-gradient-container">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="services-preview" className="relative py-20 lg:py-32 bg-gradient-container overflow-hidden">
+      <Image
+        src="/images/background/overlay-bg.svg"
+        alt="background overlay"
+        fill
+        className="object-cover absolute inset-0 z-0"
+      />
+      <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12 lg:mb-16">
             <ScrollFadeIn>
                 <div className="flex flex-col items-center justify-center gap-4">
