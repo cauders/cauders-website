@@ -42,5 +42,27 @@
   "intro": {
     "imageUrl": "/images/hero/intro-1.png",
     "aiHint": "abstract technology"
+  },
+  "mobilePortfolio": {
+    "screen1": {
+      "imageUrl": "https://picsum.photos/seed/mobscreen1/300/600",
+      "aiHint": "mobile app profile"
+    },
+    "screen2": {
+      "imageUrl": "https://picsum.photos/seed/mobscreen2/300/600",
+      "aiHint": "mobile course list"
+    },
+    "screen3": {
+      "imageUrl": "https://picsum.photos/seed/mobscreen3/300/600",
+      "aiHint": "mobile job search"
+    },
+    "screen4": {
+      "imageUrl": "https://picsum.photos/seed/mobscreen4/300/600",
+      "aiHint": "mobile app development"
+    },
+    "screen5": {
+      "imageUrl": "https://picsum.photos/seed/mobscreen5/300/600",
+      "aiHint": "user profile screen"
+    }
   }
 }
