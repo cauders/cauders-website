@@ -1,6 +1,5 @@
 'use client';
 
-import ScrollFadeIn from "./ScrollFadeIn";
 import StandardizedHeading from "./StandardizedHeading";
 import Image from "next/image";
 import placeholderImages from "@/lib/placeholder-images.json";
@@ -9,7 +8,7 @@ export default function IntroSection() {
     const { intro: introImage } = placeholderImages;
 
     return (
-        <div className="relative z-10 pt-8 -mt-24 rounded-t-3xl">
+        <div className="relative z-10 pt-8 -mt-24">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="rounded-2xl shadow-xl overflow-hidden">
                     <div className="text-center pt-16 pb-12">
@@ -19,7 +18,7 @@ export default function IntroSection() {
                                 { text: "Sit Amet, Consectetur" },
                                 { text: "Adipiscing"}
                             ]} 
-                            className="text-4xl md:text-6xl"
+                            className="text-4xl md:text-6xl text-white"
                         />
                     </div>
 
