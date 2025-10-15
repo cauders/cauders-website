@@ -9,7 +9,7 @@ export default function HomePageBackground() {
             "fixed inset-0 z-0 w-full h-screen overflow-hidden",
         )}>
            <Image
-                src="/images/background/hero-bg.svg"
+                src="/images/background/home-page-bg.svg"
                 alt="background"
                 fill
                 className="object-cover"

@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import Hero from '@/components/cauders/Hero';
 import ServicesPreview from '@/components/cauders/ServicesPreview';
