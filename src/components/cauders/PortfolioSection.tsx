@@ -26,13 +26,13 @@ export default function PortfolioSection() {
             <PortfolioPreview />
           </div>
 
-          <div className="text-center mt-16 max-w-2xl mx-auto">
-            <p className="text-background/80 text-base">
+          <div className="text-center mt-16 max-w-xl mx-auto">
+            <p className="text-background text-base">
               Each project is a testament to our commitment to quality, innovation, and client satisfaction. We blend cutting-edge technology with creative design to deliver solutions that not only meet but exceed expectations.
             </p>
             <Button asChild variant="outline" className="mt-8 bg-transparent border-2 border-white text-white hover:bg-white hover:text-foreground">
               <Link href="https://www.portfolio.cauders.com/">
-                Explore Our Work
+                See All
               </Link>
             </Button>
           </div>
