@@ -6,7 +6,7 @@ import Image from "next/image";
 export default function HeroBackground() {
     return (
         <div className={cn(
-            "absolute inset-0 z-0 w-full h-[150vh] overflow-hidden",
+            "absolute inset-0 z-0 w-full h-[120vh] overflow-hidden",
         )}>
            <Image
                 src="/images/background/hero-bg.svg"
