@@ -57,7 +57,7 @@ export default function MobilePortfolio() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <ScrollFadeIn>
           <div className="text-center max-w-4xl mx-auto">
-            <StandardizedHeading lines={["Let Cauders Simplify Your Workflow"]} className="text-3xl sm:text-4xl md:text-5xl" />
+            <StandardizedHeading lines={["Let Cauders Simplify Your Workflow"]} className="text-3xl sm:text-4xl md:text-5xl font-medium" />
             <p className="mt-4 text-sm text-foreground/70">
               We design and develop intuitive mobile applications that consolidate your tools and streamline your processes.
             </p>
@@ -65,44 +65,11 @@ export default function MobilePortfolio() {
         </ScrollFadeIn>
 
         <div className="relative mt-16">
-            <ScrollFadeIn>
-                <div className="relative aspect-[4/3] md:aspect-[16/9] lg:aspect-[2/1] w-full max-w-6xl mx-auto">
-                    <Image
-                        src={placeholderImages.mobilePortfolio.screen4.imageUrl}
-                        alt="Mobile App Collage"
-                        fill
-                        className="object-contain"
-                        data-ai-hint={placeholderImages.mobilePortfolio.screen4.aiHint}
-                    />
-                </div>
-            </ScrollFadeIn>
-          
-            {/* Overlay Cards */}
-            <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-full h-full relative">
-                    {cards.map((card, index) => {
-                        const positions = [
-                            "top-1/4 left-0 -translate-x-1/4", // Top-left
-                            "bottom-1/4 right-0 translate-x-1/4", // Bottom-right
-                            "top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" // Center
-                        ]
-                        if (index == 2) return null;
-                         return (
-                            <ScrollFadeIn key={index} className={cn("absolute w-64 hidden lg:block", positions[index])} style={{animationDelay: `${index * 150}ms`}}>
-                                <Card className="p-6 rounded-2xl bg-primary/80 backdrop-blur-md border-0 text-primary-foreground shadow-2xl group">
-                                <p className="text-xs font-light text-primary-foreground/80">{card.description}</p>
-                                <h3 className="text-xl font-bold mt-2 text-white">{card.title}</h3>
-                                <Link href={card.href} className="absolute top-4 right-4">
-                                    <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center transition-transform duration-300 group-hover:scale-110 group-hover:rotate-45">
-                                    <ArrowUpRight className="w-5 h-5 text-primary" />
-                                    </div>
-                                </Link>
-                                </Card>
-                            </ScrollFadeIn>
-                        )}
-                    )}
-                </div>
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="min-h-[300px] bg-card rounded-2xl"></div>
+            <div className="min-h-[300px] bg-card rounded-2xl"></div>
+            <div className="min-h-[300px] bg-card rounded-2xl"></div>
+          </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center mt-20 max-w-5xl mx-auto">
