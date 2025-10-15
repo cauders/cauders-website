@@ -29,7 +29,7 @@ export default function PortfolioSection() {
             <p className="text-background text-base">
               Each project is a testament to our commitment to quality, innovation, and client satisfaction. We blend cutting-edge technology with creative design to deliver solutions that not only meet but exceed expectations.
             </p>
-            <Button asChild variant="outline" className="mt-8 bg-transparent border-2 border-white text-white hover:bg-white hover:text-foreground">
+            <Button asChild variant="outline" className="mt-8 bg-transparent border-2 border-white text-white hover:bg-white hover:text-foreground px-8">
               <Link href="https://www.portfolio.cauders.com/">
                 See All
               </Link>
