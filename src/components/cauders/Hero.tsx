@@ -71,16 +71,19 @@ export default function Hero() {
               <div className="flex items-center justify-center h-full">
                 <div className="relative w-[400px] h-[460px]">
                   {/* Back Card */}
-                  <div className="absolute top-0 left-0 w-full h-full rounded-3xl glass-effect overflow-hidden">
-                    <Image
-                      src={placeholderImages.hero.main.imageUrl}
-                      alt="Web Design Screenshot"
-                      fill
-                      priority
-                      className="object-cover"
-                      data-ai-hint={placeholderImages.hero.main.aiHint}
-                    />
+                  <div className="absolute top-0 left-0 w-full h-full p-4 rounded-3xl glass-effect overflow-hidden">
+                    <div className="relative w-full h-full overflow-hidden rounded-2xl">
+                      <Image
+                        src={placeholderImages.hero.main.imageUrl}
+                        alt="Web Design Screenshot"
+                        fill
+                        priority
+                        className="object-cover"
+                        data-ai-hint={placeholderImages.hero.main.aiHint}
+                      />
+                    </div>
                   </div>
+
 
                   {/* Front Card */}
                   <div className="absolute bottom-[-40px] right-[-60px] w-[240px] h-[230px] rounded-2xl shadow-2xl overflow-hidden">
