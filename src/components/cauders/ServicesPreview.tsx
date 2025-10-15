@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import ScrollFadeIn from "./ScrollFadeIn";
 import StandardizedHeading from "./StandardizedHeading";
+import ArrowBadge from "./ArrowBadge";
 
 export default function ServicesPreview() {
   const services = getServices().slice(0, 4);
@@ -17,10 +18,10 @@ export default function ServicesPreview() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12 lg:mb-16">
             <ScrollFadeIn>
-                <StandardizedHeading lines={["What We Do Best"]} className="font-medium text-3xl sm:text-4xl md:text-5xl text-background" />
-                <p className="mt-4 text-sm text-white/80 max-w-2xl mx-auto">
-                    At Cauders, we deliver future-ready digital solutions that combine innovation, performance, and scalability. Our expertise spans across multiple domains to help businesses thrive in the evolving tech landscape.
-                </p>
+                <div className="flex items-center justify-center gap-4">
+                  <StandardizedHeading lines={["What We Do Best"]} className="font-medium text-3xl sm:text-4xl md:text-5xl text-background" />
+                  <ArrowBadge href="/services" text="Our Services" />
+                </div>
             </ScrollFadeIn>
         </div>
 
