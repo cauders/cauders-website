@@ -2,7 +2,7 @@
 'use client';
 
 import { cn } from '@/lib/utils';
-import { ChevronRight } from 'lucide-react';
+import Image from 'next/image';
 import Link from 'next/link';
 
 interface ArrowBadgeProps {
@@ -21,7 +21,12 @@ export default function ArrowBadge({ href, text, className }: ArrowBadgeProps) {
         "transition-all duration-300 hover:bg-primary/30",
         className
     )}>
-      <ChevronRight className="w-4 h-4" />
+      <Image 
+        src="/images/icons/arrow-icon.svg"
+        alt="arrow icon"
+        width={12}
+        height={12}
+      />
       <span>{text}</span>
     </Link>
   );
