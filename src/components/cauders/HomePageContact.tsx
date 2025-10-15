@@ -99,7 +99,7 @@ export default function HomePageContact() {
                                         render={({ field }) => (
                                         <FormItem className="inline-block">
                                             <FormControl>
-                                            <Input placeholder="Your Name" {...field} className="bg-background border-input rounded-full h-12 px-6 text-base" />
+                                            <Input placeholder="Your Name" {...field} className="bg-background border-input rounded-full h-10 px-6 text-base" />
                                             </FormControl>
                                             <FormMessage />
                                         </FormItem>
@@ -116,7 +116,7 @@ export default function HomePageContact() {
                                         render={({ field }) => (
                                         <FormItem className="inline-block">
                                             <FormControl>
-                                            <Input placeholder="Your Job" {...field} className="bg-background border-input rounded-full h-12 px-6 text-base" />
+                                            <Input placeholder="Your Job" {...field} className="bg-background border-input rounded-full h-10 px-6 text-base" />
                                             </FormControl>
                                             <FormMessage />
                                         </FormItem>
@@ -129,7 +129,7 @@ export default function HomePageContact() {
                                         render={({ field }) => (
                                         <FormItem className="inline-block">
                                             <FormControl>
-                                            <Input placeholder="Your City" {...field} className="bg-background border-input rounded-full h-12 px-6 text-base" />
+                                            <Input placeholder="Your City" {...field} className="bg-background border-input rounded-full h-10 px-6 text-base" />
                                             </FormControl>
                                             <FormMessage />
                                         </FormItem>
@@ -159,7 +159,7 @@ export default function HomePageContact() {
                                         render={({ field }) => (
                                         <FormItem className="inline-block">
                                             <FormControl>
-                                            <Input type="email" placeholder="Email address" {...field} className="bg-background border-input rounded-full h-12 px-6 text-base" />
+                                            <Input type="email" placeholder="Email address" {...field} className="bg-background border-input rounded-full h-10 px-6 text-base" />
                                             </FormControl>
                                             <FormMessage />
                                         </FormItem>
