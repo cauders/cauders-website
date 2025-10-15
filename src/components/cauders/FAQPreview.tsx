@@ -57,7 +57,7 @@ export default function FAQPreview() {
                         <div className="max-w-3xl mx-auto">
                             <Accordion type="single" collapsible className="w-full space-y-4">
                                 {faqs.map((faq, index) => (
-                                    <AccordionItem key={index} value={`item-${index}`} className="bg-card rounded-2xl px-6 shadow-md">
+                                    <AccordionItem key={index} value={`item-${index}`} className="bg-card rounded-2xl px-6 shadow">
                                         <AccordionTrigger
                                             className="text-left text-base text-foreground font-medium hover:no-underline"
                                             icon={<Plus className="h-5 w-5 text-foreground" />}
