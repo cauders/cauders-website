@@ -46,7 +46,7 @@ const stats = [
 
 export default function WhyChooseUs() {
     return (
-        <section className="py-20 lg:py-32 bg-background">
+        <section className="py-20 lg:py-32">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center mb-12 lg:mb-20">
                     <StandardizedHeading lines={[ "Why People Choose Cauders" ]} className="font-medium text-3xl sm:text-4xl md:text-5xl" />
@@ -73,7 +73,7 @@ export default function WhyChooseUs() {
                 <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
                     {stats.map((stat, index) => (
                         <ScrollFadeIn key={index} style={{ animationDelay: `${(index + 4) * 100}ms` }} className="h-full">
-                            <Card className="text-center py-8 md:py-10 px-6 bg-primary/20 border-primary/30 h-full flex flex-col justify-center items-center hover:-translate-y-2 transition-transform duration-300">
+                            <Card className="text-center py-10 px-6 bg-primary/20 border-primary/30 h-full flex flex-col justify-center items-center hover:-translate-y-2 transition-transform duration-300">
                                 <p className="text-4xl md:text-5xl font-semibold text-foreground font-headline">{stat.value}</p>
                                 <p className="text-sm md:text-base text-foreground/80 mt-2">{stat.label}</p>
                             </Card>
