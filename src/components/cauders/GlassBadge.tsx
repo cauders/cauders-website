@@ -1,3 +1,4 @@
+
 'use client';
 
 import { cn } from '@/lib/utils';
@@ -24,12 +25,12 @@ export default function GlassBadge({ href, text, className }: GlassBadgeProps) {
       <svg
         width="12"
         height="12"
-        viewBox="0 0 8 12"
+        viewBox="0 0 12 12"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         className="opacity-75"
       >
-        <path d="M1 1L6 6L1 11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M10 3L4.5 8.5L2 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
       </svg>
       <span>{text}</span>
     </Link>
