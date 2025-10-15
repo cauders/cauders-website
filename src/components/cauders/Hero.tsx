@@ -78,20 +78,6 @@ export default function Hero() {
                           />
                       </div>
                   </div>
-
-                  {/* Front Card */}
-                  <div className="absolute bottom-0 right-0 w-[280px] h-[330px] group card-tilt glass-effect rounded-3xl p-2">
-                      <div className="relative w-full h-full">
-                          <Image 
-                              src="https://picsum.photos/seed/phone-app/600/800"
-                              alt="App Screenshot"
-                              fill
-                              priority
-                              className="object-cover rounded-2xl"
-                              data-ai-hint="mobile application"
-                          />
-                      </div>
-                  </div>
               </div>
             </FadeContent>
           </div>
