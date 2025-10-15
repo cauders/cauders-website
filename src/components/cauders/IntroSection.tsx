@@ -15,7 +15,7 @@ export default function IntroSection() {
                     <StandardizedHeading 
                         lines={[
                             { text: "Transforming Visionary" },
-                            { text: "Ideas Into Powerful" },
+                            { text: "Ideas Into Powerful, Creative" },
                             { text: "Digital Experiences"}
                         ]} 
                         className="text-4xl md:text-6xl text-foreground"
