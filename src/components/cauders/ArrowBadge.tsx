@@ -8,14 +8,17 @@ interface ArrowBadgeProps {
   href: string;
   text: string;
   className?: string;
+  variant?: 'white' | 'black';
 }
 
-export default function ArrowBadge({ href, text, className }: ArrowBadgeProps) {
+export default function ArrowBadge({ href, text, className, variant = 'white' }: ArrowBadgeProps) {
   return (
     <Link href={href} className={cn(
         "inline-flex items-center justify-center gap-2",
-        "text-white text-sm font-normal",
+        "text-sm font-normal",
         "transition-all duration-300",
+        variant === 'white' && 'text-white',
+        variant === 'black' && 'text-foreground',
         className
     )}>
       <Image 
@@ -23,6 +26,7 @@ export default function ArrowBadge({ href, text, className }: ArrowBadgeProps) {
         alt="arrow icon"
         width={12}
         height={12}
+        className={cn(variant === 'black' && 'filter invert')}
       />
       <span>{text}</span>
       <Image 
@@ -30,7 +34,7 @@ export default function ArrowBadge({ href, text, className }: ArrowBadgeProps) {
         alt="arrow icon"
         width={12}
         height={12}
-        className="rotate-180"
+        className={cn("rotate-180", variant === 'black' && 'filter invert')}
       />
     </Link>
   );
