@@ -1,4 +1,3 @@
-
 'use client';
 
 import {
@@ -30,7 +29,7 @@ const faqs = [
         answer: "Project costs are tailored to the specific requirements of each client. We offer a detailed proposal with a transparent cost breakdown after discussing your needs. Our goal is to provide maximum value and a clear return on your investment."
     },
     {
-        question: "Do you offer support and maintenance after the project is launched?",
+        question: "Do you offer post-launch support?",
         answer: "Yes, we offer ongoing support and maintenance packages to ensure your application remains secure, up-to-date, and performs optimally. We believe in building long-term partnerships with our clients."
     }
 ]
