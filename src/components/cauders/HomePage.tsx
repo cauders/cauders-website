@@ -6,6 +6,7 @@ import ServicesPreview from './ServicesPreview';
 import HomePageContact from './HomePageContact';
 import PortfolioSection from './PortfolioSection';
 import FAQPreview from './FAQPreview';
+import Footer from './Footer';
 
 export default function HomePage() {
   return (
@@ -16,6 +17,7 @@ export default function HomePage() {
       <HomePageContact />
       <PortfolioSection />
       <FAQPreview />
+      <Footer />
     </>
   );
 }
