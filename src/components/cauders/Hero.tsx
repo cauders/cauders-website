@@ -64,21 +64,37 @@ export default function Hero() {
           {/* Right Column (Desktop Only) */}
           <div className="hidden md:flex items-center justify-center">
             <FadeContent duration={1000} delay={800}>
-              <div className="relative w-[360px] h-[390px] group">
-                  <div className="relative w-full h-full card-tilt">
-                    <div className="absolute inset-0 rounded-3xl bg-white/10 border border-white/20 shadow-2xl glass-effect"></div>
-                    <Image 
-                        src="https://picsum.photos/seed/phone-app/600/800"
-                        alt="App Screenshot"
-                        width={600}
-                        height={800}
-                        priority
-                        className="absolute w-[90%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-3xl shadow-2xl"
-                        data-ai-hint="mobile application"
-                    />
+              <div className="relative w-[450px] h-[450px]">
+                  {/* Back Card */}
+                  <div className="absolute top-0 left-0 w-[300px] h-[300px] group card-tilt">
+                      <div className="relative w-full h-full">
+                          <div className="absolute inset-0 rounded-3xl bg-white/10 border border-white/20 shadow-2xl glass-effect"></div>
+                          <Image 
+                              src="https://picsum.photos/seed/web-design/800/600"
+                              alt="Web Design Screenshot"
+                              width={800}
+                              height={600}
+                              priority
+                              className="absolute w-[90%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-2xl shadow-lg"
+                              data-ai-hint="web design"
+                          />
+                      </div>
                   </div>
-                  <div className="absolute -bottom-6 -right-6 w-32 h-20 rounded-2xl bg-white/20 border border-white/30 p-3 glass-effect shadow-xl transition-transform duration-500 group-hover:scale-110 group-hover:-translate-x-2 group-hover:-translate-y-2">
-                     <p className="text-[10px] text-white">At Cauders, we architect and engineer premium, modern, and dynamic digital solutions.</p>
+
+                  {/* Front Card */}
+                  <div className="absolute bottom-0 right-0 w-[360px] h-[390px] group card-tilt">
+                      <div className="relative w-full h-full">
+                          <div className="absolute inset-0 rounded-3xl bg-white/10 border border-white/20 shadow-2xl glass-effect"></div>
+                          <Image 
+                              src="https://picsum.photos/seed/phone-app/600/800"
+                              alt="App Screenshot"
+                              width={600}
+                              height={800}
+                              priority
+                              className="absolute w-[90%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-3xl shadow-2xl"
+                              data-ai-hint="mobile application"
+                          />
+                      </div>
                   </div>
               </div>
             </FadeContent>
