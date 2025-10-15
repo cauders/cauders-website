@@ -50,8 +50,7 @@ export default function StandardizedHeading({ lines, className }: StandardizedHe
               </>
             ) : line.text === "Reach Out Your Way" ? (
               <>
-                <span className="word-highlight">Reach </span>
-                <span className="word-highlight">Out </span>
+                <span className="word-highlight">Reach Out </span>
                 <span className="bg-gradient-text text-transparent bg-clip-text">
                   <span className="word-highlight">Your </span>
                   <span className="word-highlight">Way</span>
