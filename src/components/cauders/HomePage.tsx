@@ -4,7 +4,7 @@ import Hero from '@/components/cauders/Hero';
 import WhyChooseUs from './WhyChooseUs';
 import ServicesPreview from './ServicesPreview';
 import HomePageContact from './HomePageContact';
-import NewPortfolioSection from './NewPortfolioSection';
+import PortfolioSection from './PortfolioSection';
 
 export default function HomePage() {
   return (
@@ -13,7 +13,7 @@ export default function HomePage() {
       <WhyChooseUs />
       <ServicesPreview />
       <HomePageContact />
-      <NewPortfolioSection />
+      <PortfolioSection />
     </>
   );
 }
