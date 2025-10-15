@@ -30,17 +30,17 @@ export default function ServicesPreview() {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
           {services.map((service, index) => (
             <ScrollFadeIn key={service.slug} style={{ animationDelay: `${index * 100}ms` }} className="h-full">
-                <Card className="h-full bg-card border flex flex-col hover:border-primary hover:-translate-y-2 transition-transform duration-300 group p-6 text-center">
-                    <CardHeader className="p-0 flex-row justify-center">
-                        <div className="flex-shrink-0 bg-primary/10 rounded-full p-3 border border-primary/20 group-hover:bg-primary/20 transition-colors w-fit">
-                            <service.icon className="w-6 h-6 text-primary" />
+                <Card className="h-full bg-card border flex flex-col hover:border-primary hover:-translate-y-2 transition-transform duration-300 group p-6 text-left">
+                    <CardHeader className="p-0 flex-row justify-start">
+                        <div className="flex-shrink-0 bg-zinc rounded-full p-3 border border-primary/20 group-hover:bg-zinc/90 transition-colors w-fit">
+                            <service.icon className="w-6 h-6 text-white" />
                         </div>
                     </CardHeader>
                     <CardContent className="flex-grow p-0 mt-4">
                         <CardTitle className="text-xl font-headline text-foreground">{service.title}</CardTitle>
                         <p className="text-sm text-foreground/80 mt-2 line-clamp-2">{service.description}</p>
                     </CardContent>
-                    <CardFooter className="p-0 mt-6 justify-center">
+                    <CardFooter className="p-0 mt-6 justify-start">
                          <Button asChild className="bg-zinc text-white">
                             <Link href={`/services/${service.slug}`}>
                                 Learn More <ArrowRight className="ml-2" />
