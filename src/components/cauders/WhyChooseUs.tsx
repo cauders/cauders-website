@@ -13,7 +13,7 @@ const features = [
     },
     {
         icon: BrainCircuit,
-        text: "Our team uses cutting-edge technology to build innovative and future-proof digital products."
+        text: "We leverage cutting-edge technology to build innovative and future-proof digital products."
     },
     {
         icon: Award,
@@ -60,11 +60,11 @@ export default function WhyChooseUs() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 mb-12 lg:mb-20">
                     {features.map((feature, index) => (
                         <ScrollFadeIn key={index} style={{ animationDelay: `${index * 100}ms` }}>
-                            <div className="flex items-start gap-4">
+                            <div className="flex flex-col items-start gap-4">
                                 <div className="flex-shrink-0 bg-primary/10 rounded-full p-3 border border-primary/20">
                                     <feature.icon className="w-6 h-6 text-primary" />
                                 </div>
-                                <p className="text-sm text-foreground font-medium mt-1">{feature.text}</p>
+                                <p className="text-sm text-foreground font-medium">{feature.text}</p>
                             </div>
                         </ScrollFadeIn>
                     ))}
