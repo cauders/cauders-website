@@ -89,7 +89,7 @@ export default function HomePageContact() {
                 </ScrollFadeIn>
                 <ScrollFadeIn delay="delay-200" className="h-full flex flex-col justify-center text-foreground">
                     <Form {...form}>
-                        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 w-full text-[26px] font-medium">
+                        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 w-full text-[28px] font-medium">
                             <div className="flex items-center gap-4 flex-wrap">
                                 Hi I'm
                                 <FormField
