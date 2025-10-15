@@ -1,3 +1,4 @@
+
 'use client';
 
 import { cn } from "@/lib/utils";
@@ -28,11 +29,23 @@ export default function StandardizedHeading({ lines, className }: StandardizedHe
           className="text-highlight-group"
         >
           <span className={cn("block", line.className)}>
-            {line.text.split(' ').map((word, wordIndex) => (
-              <span key={wordIndex} className="word-highlight">
-                {word}{' '}
-              </span>
-            ))}
+            {line.text === "Ideas Into Powerful & Creative" ? (
+              <>
+                <span className="word-highlight">Ideas </span>
+                <span className="word-highlight">Into </span>
+                <span className="bg-gradient-text text-transparent bg-clip-text">
+                  <span className="word-highlight">Powerful </span>
+                  <span className="word-highlight">& </span>
+                  <span className="word-highlight">Creative </span>
+                </span>
+              </>
+            ) : (
+              line.text.split(' ').map((word, wordIndex) => (
+                <span key={wordIndex} className="word-highlight">
+                  {word}{' '}
+                </span>
+              ))
+            )}
           </span>
         </ScrollFadeIn>
       ))}
