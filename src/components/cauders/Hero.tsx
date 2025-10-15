@@ -14,7 +14,7 @@ import ArrowButton from './ArrowButton';
 export default function Hero() {
 
   return (
-    <section className="relative w-full overflow-hidden rounded-br-[1rem] rounded-bl-[1rem] py-32 md:py-48">
+    <section className="relative w-full overflow-hidden py-32 md:py-48">
        <div className="absolute inset-0 z-0">
          <HeroBackground />
        </div>
@@ -66,30 +66,28 @@ export default function Hero() {
             <FadeContent duration={1000} delay={800}>
               <div className="relative w-[450px] h-[450px]">
                   {/* Back Card */}
-                  <div className="absolute top-0 left-0 w-[320px] h-[380px] group card-tilt">
-                      <div className="relative w-full h-full rounded-3xl overflow-hidden">
-                          <div className="absolute inset-0 z-10 rounded-3xl bg-white/10 border border-white/20 shadow-2xl glass-effect"></div>
+                  <div className="absolute top-0 left-0 w-[320px] h-[380px] group card-tilt glass-effect rounded-3xl p-2">
+                      <div className="relative w-full h-full">
                           <Image 
                               src="https://picsum.photos/seed/web-design/800/600"
                               alt="Web Design Screenshot"
                               fill
                               priority
-                              className="object-cover"
+                              className="object-cover rounded-2xl"
                               data-ai-hint="web design"
                           />
                       </div>
                   </div>
 
                   {/* Front Card */}
-                  <div className="absolute bottom-0 right-0 w-[320px] h-[380px] group card-tilt">
-                      <div className="relative w-full h-full rounded-3xl overflow-hidden">
-                          <div className="absolute inset-0 z-10 rounded-3xl bg-white/10 border border-white/20 shadow-2xl glass-effect"></div>
+                  <div className="absolute bottom-0 right-0 w-[320px] h-[380px] group card-tilt glass-effect rounded-3xl p-2">
+                      <div className="relative w-full h-full">
                           <Image 
                               src="https://picsum.photos/seed/phone-app/600/800"
                               alt="App Screenshot"
                               fill
                               priority
-                              className="object-cover"
+                              className="object-cover rounded-2xl"
                               data-ai-hint="mobile application"
                           />
                       </div>
