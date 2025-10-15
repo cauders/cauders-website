@@ -67,15 +67,14 @@ export default function Hero() {
               <div className="relative w-[450px] h-[450px]">
                   {/* Back Card */}
                   <div className="absolute top-0 left-0 w-[320px] h-[380px] group card-tilt">
-                      <div className="relative w-full h-full">
-                          <div className="absolute inset-0 rounded-3xl bg-white/10 border border-white/20 shadow-2xl glass-effect"></div>
+                      <div className="relative w-full h-full rounded-3xl overflow-hidden">
+                          <div className="absolute inset-0 z-10 rounded-3xl bg-white/10 border border-white/20 shadow-2xl glass-effect"></div>
                           <Image 
                               src="https://picsum.photos/seed/web-design/800/600"
                               alt="Web Design Screenshot"
-                              width={800}
-                              height={600}
+                              fill
                               priority
-                              className="absolute w-[90%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-2xl shadow-lg"
+                              className="object-cover"
                               data-ai-hint="web design"
                           />
                       </div>
@@ -83,15 +82,14 @@ export default function Hero() {
 
                   {/* Front Card */}
                   <div className="absolute bottom-0 right-0 w-[320px] h-[380px] group card-tilt">
-                      <div className="relative w-full h-full">
-                          <div className="absolute inset-0 rounded-3xl bg-white/10 border border-white/20 shadow-2xl glass-effect"></div>
+                      <div className="relative w-full h-full rounded-3xl overflow-hidden">
+                          <div className="absolute inset-0 z-10 rounded-3xl bg-white/10 border border-white/20 shadow-2xl glass-effect"></div>
                           <Image 
                               src="https://picsum.photos/seed/phone-app/600/800"
                               alt="App Screenshot"
-                              width={600}
-                              height={800}
+                              fill
                               priority
-                              className="absolute w-[90%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-3xl shadow-2xl"
+                              className="object-cover"
                               data-ai-hint="mobile application"
                           />
                       </div>
