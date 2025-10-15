@@ -3,7 +3,7 @@
 
 import { getServices } from "@/lib/data";
 import Link from "next/link";
-import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card";
+import { Card, CardHeader, CardTitle, CardContent, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -27,8 +27,8 @@ export default function ServicesPreview() {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
           {services.map((service, index) => (
             <ScrollFadeIn key={service.slug} style={{ animationDelay: `${index * 100}ms` }} className="h-full">
-                <Card className="h-full bg-card border flex flex-col hover:border-primary hover:-translate-y-2 transition-transform duration-300 group p-6">
-                    <CardHeader className="p-0">
+                <Card className="h-full bg-card border flex flex-col hover:border-primary hover:-translate-y-2 transition-transform duration-300 group p-6 text-center">
+                    <CardHeader className="p-0 flex-row justify-center">
                         <div className="flex-shrink-0 bg-primary/10 rounded-full p-3 border border-primary/20 group-hover:bg-primary/20 transition-colors w-fit">
                             <service.icon className="w-6 h-6 text-primary" />
                         </div>
@@ -37,8 +37,8 @@ export default function ServicesPreview() {
                         <CardTitle className="text-xl font-headline text-foreground">{service.title}</CardTitle>
                         <p className="text-sm text-foreground/80 mt-2">{service.description}</p>
                     </CardContent>
-                    <CardFooter className="p-0 mt-4">
-                         <Button asChild variant="link" className="px-0 text-primary">
+                    <CardFooter className="p-0 mt-6 justify-center">
+                         <Button asChild>
                             <Link href={`/services/${service.slug}`}>
                                 Learn More <ArrowRight className="ml-2" />
                             </Link>
