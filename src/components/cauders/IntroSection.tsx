@@ -8,7 +8,7 @@ export default function IntroSection() {
     const { intro: introImage } = placeholderImages;
 
     return (
-        <div className="relative z-10 pt-8">
+        <div className="relative z-10 pt-8 px-4 sm:px-6 lg:px-8">
             <div className="rounded-2xl shadow-xl overflow-hidden bg-card">
                 <div className="text-center py-32">
                     <StandardizedHeading 
