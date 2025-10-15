@@ -43,7 +43,7 @@ export default function ServicesPreview() {
                     <CardFooter className="p-0 mt-6 justify-start">
                          <Button asChild className="bg-zinc text-white">
                             <Link href={`/services/${service.slug}`}>
-                                Learn More <ArrowRight className="ml-2" />
+                                Learn More
                             </Link>
                         </Button>
                     </CardFooter>
