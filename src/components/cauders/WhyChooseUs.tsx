@@ -1,3 +1,4 @@
+
 'use client';
 
 import { Award, BrainCircuit, ShieldCheck, Star } from "lucide-react";
@@ -48,7 +49,7 @@ export default function WhyChooseUs() {
         <section className="py-20 lg:py-32 bg-background">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center mb-12 lg:mb-20">
-                    <StandardizedHeading lines={["Why People", { text: "Choose Cauders", className: "bg-gradient-text text-transparent bg-clip-text" }]} />
+                    <StandardizedHeading lines={["Why People", { text: "Choose Cauders", className: "bg-gradient-text text-transparent bg-clip-text" }]} className="font-medium" />
                     <ScrollFadeIn>
                         <p className="mt-4 text-base text-foreground/70 max-w-2xl mx-auto">
                             We're more than just a digital agency. We're a partner in innovation, committed to delivering excellence and driving measurable results for our clients.
