@@ -1,3 +1,4 @@
+
 'use client';
 
 import { ArrowRight } from 'lucide-react';
@@ -14,7 +15,7 @@ export default function GetAQuote() {
           <GradientContainer className="rounded-3xl py-24 md:py-32 px-12 text-center text-background relative overflow-hidden">
             <div className="relative z-10">
                 <h2 className="text-3xl md:text-5xl font-headline font-semibold">
-                    Have a project in mind?
+                    Have a project in mind? <br/> Let's Get to Work
                 </h2>
                 <p className="mt-4 text-sm md:text-base text-background/80 max-w-2xl mx-auto">
                     We're here to help you turn your vision into reality. Whether you have a detailed plan or just a spark of an idea, our team is ready to listen and collaborate with you.
