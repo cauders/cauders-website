@@ -1,3 +1,4 @@
+
 'use client';
 
 import {
@@ -36,7 +37,7 @@ const faqs = [
 
 export default function FAQPreview() {
     return (
-        <div className="py-20 lg:py-32 bg-background">
+        <div className="py-20 lg:py-32">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
                     <ScrollFadeIn>
