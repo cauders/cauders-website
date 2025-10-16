@@ -9,6 +9,7 @@ import FAQPreview from './FAQPreview';
 import Footer from './Footer';
 import MobilePortfolio from './MobilePortfolio';
 import Testimonials from './Testimonials';
+import GetAQuote from './GetAQuote';
 
 export default function HomePage() {
   return (
@@ -21,6 +22,7 @@ export default function HomePage() {
       <FAQPreview />
       <MobilePortfolio />
       <Testimonials />
+      <GetAQuote />
       <Footer />
     </>
   );
