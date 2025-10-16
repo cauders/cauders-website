@@ -29,10 +29,10 @@ export default function MobilePortfolio() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
              <div className="min-h-[300px] bg-gradient-container rounded-2xl p-8 flex flex-col justify-between text-white">
               <div>
-                <p className="text-lg">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <p className="text-lg">We design seamless mobile experiences that drive engagement and results.</p>
               </div>
               <div className="flex items-end justify-between">
-                <h3 className="text-5xl font-semibold">Heading Here</h3>
+                <h3 className="text-4xl font-medium">Unlock Your Potential</h3>
                 <Link href="#" className="bg-white text-black rounded-full p-3 hover:bg-gray-200 transition-colors">
                   <ArrowUpRight className="w-8 h-8" />
                 </Link>
