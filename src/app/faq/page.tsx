@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/accordion"
 import ScrollFadeIn from "@/components/cauders/ScrollFadeIn";
 import StandardizedHeading from "@/components/cauders/StandardizedHeading";
+import BlurCircle from "@/components/cauders/BlurCircle";
   
 const faqs = [
     {
@@ -39,7 +40,10 @@ const faqs = [
 
 export default function FAQPage() {
     return (
-        <div className="bg-background text-foreground">
+        <div className="bg-background text-foreground relative overflow-hidden">
+            <BlurCircle className="w-96 h-96 top-[-10rem] right-[-10rem]" />
+            <BlurCircle className="w-96 h-96 bottom-[-15rem] left-[-15rem]" />
+            <BlurCircle className="w-64 h-64 top-1/2 right-1/4" />
             <section className="py-16 lg:py-32">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-12">
