@@ -97,7 +97,7 @@ export default function Footer() {
               </div>
           </div>
 
-          <div className="mt-12 lg:mt-16 pt-6 border-t border-foreground/10 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-foreground/60">
+          <div className="mt-12 lg:mt-16 pt-6 border-t border-foreground/10 flex flex-col items-center gap-4 text-xs text-foreground/60">
               <div className="flex items-center gap-4">
                 {legalLinks.map((link, index) => (
                     <React.Fragment key={link.label}>
@@ -108,7 +108,7 @@ export default function Footer() {
                     </React.Fragment>
                 ))}
               </div>
-              <p className="text-center md:text-right">
+              <p className="text-center">
                   &copy; {year} Cauders. All Rights Reserved.
               </p>
           </div>
