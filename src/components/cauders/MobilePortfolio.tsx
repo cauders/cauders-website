@@ -83,7 +83,7 @@ export default function MobilePortfolio() {
                 </div>
                 <div className="bg-gradient-container rounded-2xl p-8 flex flex-col justify-between text-white min-h-[200px]">
                     <div>
-                        <p className="text-base max-w-[80%]">Intuitive designs for complex workflows.</p>
+                        <p className="text-base max-w-[80%]">We create intuitive designs for complex workflows.</p>
                     </div>
                     <div className="flex items-end">
                         <h3 className="text-3xl font-medium">Streamline</h3>
