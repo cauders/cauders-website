@@ -19,7 +19,7 @@ export default function GradientContainer({ children, className, imageSrc = "/im
         alt="background overlay"
         width={1920}
         height={1080}
-        className="object-cover absolute w-full h-auto bottom-[-80px] left-0 right-0 z-0"
+        className="object-cover absolute w-full h-auto left-0 right-0 z-0"
       />
       <div className="relative z-10">
         {children}
