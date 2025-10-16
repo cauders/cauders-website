@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useRef, type ReactNode, useEffect, useState } from 'react';
@@ -8,10 +9,10 @@ interface ScrollFadeInProps {
   className?: string;
   style?: React.CSSProperties;
   direction?: 'up' | 'down' | 'left' | 'right';
-  delay?: string;
+  delay?: string | number;
 }
 
-export default function ScrollFadeIn({ children, className, style, direction = 'up', delay = 'delay-0' }: ScrollFadeInProps) {
+export default function ScrollFadeIn({ children, className, style, direction = 'up', delay = 0 }: ScrollFadeInProps) {
   const ref = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -55,19 +56,14 @@ export default function ScrollFadeIn({ children, className, style, direction = '
     }
   };
   
-  const getDelayClass = () => {
-      const delayValue = delay?.replace('delay-', '');
-      if (delayValue && !isNaN(Number(delayValue))) {
-          return `animation-delay-${delayValue}`;
-      }
-      return '';
-  }
+  const animationDelay = typeof delay === 'string' ? delay.replace('delay-', '') : delay;
+  const delayInMs = Number(animationDelay) || 0;
 
   return (
     <div
       ref={ref}
       className={cn(className, 'transition-opacity', getAnimationClass())}
-      style={style}
+      style={{ ...style, animationDelay: `${delayInMs}ms` }}
     >
       {children}
     </div>
