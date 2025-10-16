@@ -8,6 +8,7 @@ import Link from 'next/link';
 import ScrollFadeIn from './ScrollFadeIn';
 import { cn } from '@/lib/utils';
 import StandardizedHeading from './StandardizedHeading';
+import placeholderImages from '@/lib/placeholder-images.json';
 
 export default function MobilePortfolio() {
   return (
@@ -36,7 +37,15 @@ export default function MobilePortfolio() {
                         </Link>
                     </div>
                 </div>
-                <div className="min-h-[300px] bg-card rounded-2xl"></div>
+                <div className="relative min-h-[300px] bg-card rounded-2xl overflow-hidden">
+                  <Image
+                    src={placeholderImages.mobilePortfolio.screen1.imageUrl}
+                    alt="Mobile app screenshot"
+                    fill
+                    className="object-cover"
+                    data-ai-hint={placeholderImages.mobilePortfolio.screen1.aiHint}
+                  />
+                </div>
             </div>
             <div className="min-h-[300px] bg-card rounded-2xl"></div>
             <div className="min-h-[300px] bg-card rounded-2xl"></div>
