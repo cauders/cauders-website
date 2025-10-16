@@ -2,7 +2,7 @@
 'use client';
 
 import { cn } from '@/lib/utils';
-import { ArrowRight } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 
 interface SplitButtonProps {
   emailPlaceholder?: string;
@@ -34,7 +34,7 @@ export default function SplitButton({
             buttonClassName
         )}
       >
-        <ArrowRight className={cn("w-5 h-5 -rotate-45", iconClassName)} />
+        <ArrowUpRight className={cn("w-5 h-5", iconClassName)} />
       </button>
     </div>
   );
