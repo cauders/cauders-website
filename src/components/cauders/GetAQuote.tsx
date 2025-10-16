@@ -1,11 +1,9 @@
 
 'use client';
 
-import { ArrowRight } from 'lucide-react';
-import { Button } from '../ui/button';
-import { Input } from '../ui/input';
-import GradientContainer from './GradientContainer';
 import ScrollFadeIn from './ScrollFadeIn';
+import GradientContainer from './GradientContainer';
+import SplitButton from './SplitButton';
 
 export default function GetAQuote() {
   return (
@@ -24,16 +22,7 @@ export default function GetAQuote() {
                     We're here to help you turn your vision into reality. Whether you have a detailed plan or just a spark of an idea, our team is ready to listen and collaborate with you.
                 </p>
                 <form className="mt-16 max-w-md mx-auto">
-                    <div className="flex items-center">
-                        <Input
-                            type="email"
-                            placeholder="Enter Your Email"
-                            className="flex-grow h-12 px-6 rounded-l-full rounded-r-[2px] border-2 border-white/30 bg-white/15 backdrop-blur-[50px] text-white text-base font-normal placeholder:text-white/70 transition-all duration-300 hover:bg-white/25 hover:border-white/50 focus-visible:ring-white/50"
-                        />
-                        <Button type="submit" size="icon" className="bg-white text-foreground hover:bg-gray-200 rounded-l-[2px] rounded-r-full w-12 h-12 flex-shrink-0">
-                            <ArrowRight />
-                        </Button>
-                    </div>
+                    <SplitButton />
                 </form>
             </div>
           </GradientContainer>

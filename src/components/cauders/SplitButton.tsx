@@ -1,0 +1,41 @@
+
+'use client';
+
+import { cn } from '@/lib/utils';
+import { ArrowRight } from 'lucide-react';
+
+interface SplitButtonProps {
+  emailPlaceholder?: string;
+  buttonClassName?: string;
+  inputClassName?: string;
+  iconClassName?: string;
+}
+
+export default function SplitButton({ 
+    emailPlaceholder = "Enter Your Email",
+    buttonClassName,
+    inputClassName,
+    iconClassName
+}: SplitButtonProps) {
+  return (
+    <div className="flex items-center">
+      <input
+        type="email"
+        placeholder={emailPlaceholder}
+        className={cn(
+            "flex-grow h-12 px-6 rounded-l-full rounded-r-[2px] border-2 border-r-0 border-white/30 bg-white/15 backdrop-blur-[50px] text-white text-base font-normal placeholder:text-white/70 transition-all duration-300 hover:bg-white/25 hover:border-white/50 focus:outline-none focus:ring-0 focus:border-white/50",
+            inputClassName
+        )}
+      />
+      <button 
+        type="submit" 
+        className={cn(
+            "bg-white text-foreground hover:bg-gray-200 rounded-l-[2px] rounded-r-full w-12 h-12 flex-shrink-0 flex items-center justify-center border-2 border-l-0 border-white",
+            buttonClassName
+        )}
+      >
+        <ArrowRight className={cn("w-5 h-5", iconClassName)} />
+      </button>
+    </div>
+  );
+}
