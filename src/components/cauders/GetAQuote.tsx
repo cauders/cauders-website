@@ -12,7 +12,7 @@ export default function GetAQuote() {
     <section className="py-20 lg:py-32">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <ScrollFadeIn>
-          <GradientContainer className="rounded-3xl p-12 md:p-24 text-center text-background relative overflow-hidden">
+          <GradientContainer className="rounded-3xl py-24 md:py-32 px-12 text-center text-background relative overflow-hidden">
             <div className="relative z-10">
                 <h2 className="text-3xl md:text-5xl font-bold font-headline">
                     Have a project in mind?
