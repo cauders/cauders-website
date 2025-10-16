@@ -38,8 +38,10 @@ export default function RootLayout({
             <>
               <CustomCursor />
               <Header />
-              <main className="flex-grow">
-                {children}
+              <main>
+                <div className="flex-grow">
+                    {children}
+                </div>
               </main>
               <Toaster />
               <Chatbot />
