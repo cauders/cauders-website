@@ -1,9 +1,11 @@
+
 'use client';
 
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
 import Image from 'next/image';
 import React from 'react';
+import MagneticLink from './MagneticLink';
 
 const quickLinks = [
     { href: '/', label: 'Home' },
@@ -80,11 +82,16 @@ export default function Footer() {
           
           <div className="mt-12 lg:mt-16 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-y-8 gap-x-8">
               <div className="md:col-span-1 lg:col-span-2">
-                <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm">
+                <div className="flex flex-wrap gap-x-2 gap-y-2">
                     {socialLinks.map((link) => (
-                        <Link key={link.label} href={link.href} className="hover:text-primary transition-colors">
+                        <MagneticLink
+                            key={link.label}
+                            href={link.href}
+                            className="w-auto h-auto p-2"
+                            linkClassName="text-sm text-foreground/80 hover:text-primary"
+                        >
                             {link.label}
-                        </Link>
+                        </MagneticLink>
                     ))}
                 </div>
               </div>
