@@ -16,7 +16,7 @@ export default function MobilePortfolio() {
         <ScrollFadeIn>
           <div className="text-center max-w-4xl mx-auto">
             <StandardizedHeading lines={["Let Cauders Simplify Your Workflow"]} />
-            <p className="mt-4 text-sm text-foreground/70">
+            <p className="mt-4 text-base text-foreground/70 max-w-2xl mx-auto">
               We design and develop intuitive mobile applications that consolidate your tools and streamline your processes.
             </p>
           </div>
