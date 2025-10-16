@@ -26,11 +26,11 @@ export default function MobilePortfolio() {
         <div className="relative mt-16">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="flex flex-col gap-4">
-                <div className="bg-gradient-container rounded-2xl p-6 flex flex-col justify-between text-white min-h-[200px]">
+                <div className="bg-gradient-container rounded-2xl p-6 flex flex-col text-white min-h-[200px]">
                     <div>
                         <p className="text-base max-w-[80%]">We design seamless mobile experiences that drive results.</p>
                     </div>
-                    <div className="flex items-end justify-between">
+                    <div className="flex items-end justify-between mt-auto">
                         <h3 className="text-3xl font-medium">Unlock Potential</h3>
                         <Link href="#" className="bg-white text-black rounded-full p-2 hover:bg-gray-200 transition-colors">
                             <ArrowUpRight className="w-6 h-6" />
@@ -58,11 +58,11 @@ export default function MobilePortfolio() {
                     data-ai-hint={placeholderImages.mobilePortfolio.screen3.aiHint}
                   />
                 </div>
-                <div className="bg-gradient-container rounded-2xl p-6 flex flex-col justify-between text-white min-h-[200px]">
+                <div className="bg-gradient-container rounded-2xl p-6 flex flex-col text-white min-h-[200px]">
                     <div>
                         <p className="text-base max-w-[80%]">Intuitive designs for complex workflows.</p>
                     </div>
-                    <div className="flex items-end justify-between">
+                    <div className="flex items-end justify-between mt-auto">
                         <h3 className="text-3xl font-medium">Streamline</h3>
                         <Link href="#" className="bg-white text-black rounded-full p-2 hover:bg-gray-200 transition-colors">
                             <ArrowUpRight className="w-6 h-6" />
