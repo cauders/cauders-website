@@ -1,4 +1,3 @@
-
 'use client';
 
 import Image from 'next/image';
@@ -27,7 +26,7 @@ export default function MobilePortfolio() {
             <div className="flex flex-col gap-8">
                 <div className="bg-gradient-container rounded-2xl p-6 flex flex-col justify-between text-white min-h-[200px]">
                     <div>
-                        <p className="text-base">We design seamless mobile experiences that drive results.</p>
+                        <p className="text-base max-w-[90%]">We design seamless mobile experiences that drive results.</p>
                     </div>
                     <div className="flex items-end justify-between">
                         <h3 className="text-3xl font-medium">Unlock Potential</h3>
