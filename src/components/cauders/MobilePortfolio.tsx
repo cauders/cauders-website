@@ -57,8 +57,11 @@ export default function MobilePortfolio() {
                   />
                   <div className="absolute inset-0 p-8 flex flex-col justify-end">
                     <div className="glass-effect rounded-2xl p-6 flex items-end justify-between text-white">
-                        <h3 className="text-3xl font-medium">Track your orders</h3>
-                        <Link href="#" className="bg-gradient-container text-white rounded-full p-2 hover:opacity-90 transition-opacity">
+                        <div>
+                            <p className="text-sm">Real-time tracking from store to door.</p>
+                            <h3 className="text-3xl font-medium">Order Tracking</h3>
+                        </div>
+                        <Link href="#" className="bg-gradient-container text-white rounded-full p-2 hover:opacity-90 transition-opacity ml-auto">
                             <ArrowUpRight className="w-6 h-6" />
                         </Link>
                     </div>
