@@ -20,7 +20,7 @@ export default function GetAQuote() {
                 <p className="mt-8 text-sm md:text-base text-white max-w-2xl mx-auto">
                     We're here to help you turn your vision into reality. Whether you have a detailed plan or just a spark of an idea, our team is ready to listen and collaborate with you.
                 </p>
-                <form className="mt-8 max-w-md mx-auto">
+                <form className="mt-12 max-w-md mx-auto">
                     <div className="relative flex items-center">
                         <Input
                             type="email"
