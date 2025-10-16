@@ -10,11 +10,16 @@ import Footer from './Footer';
 import MobilePortfolio from './MobilePortfolio';
 import Testimonials from './Testimonials';
 import GetAQuote from './GetAQuote';
+import BlurCircle from './BlurCircle';
 
 export default function HomePage() {
   return (
     <>
-      <Hero />
+      <div className="relative">
+        <BlurCircle className="w-96 h-96 top-1/2 -translate-y-1/2 right-0" />
+        <BlurCircle className="w-96 h-96 bottom-[-10rem] left-[-10rem]" />
+        <Hero />
+      </div>
       <WhyChooseUs />
       <ServicesPreview />
       <HomePageContact />

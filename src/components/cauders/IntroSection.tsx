@@ -12,8 +12,6 @@ export default function IntroSection() {
     return (
         <div className="relative z-10 pt-8 px-4 sm:px-6 lg:px-8 pb-16">
             <div className="rounded-2xl shadow-xl bg-card relative">
-                <BlurCircle className="w-96 h-96 top-1/2 -translate-y-1/2 right-0" />
-                <BlurCircle className="w-96 h-96 bottom-[-10rem] left-[-10rem]" />
                 <div className="text-center py-32 relative z-10">
                     <StandardizedHeading 
                         lines={[
