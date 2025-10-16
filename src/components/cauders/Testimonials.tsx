@@ -70,20 +70,18 @@ export default function Testimonials() {
   return (
     <section>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
-            <ScrollFadeIn>
-                <div className="flex flex-col items-start gap-2">
-                    <ArrowBadge href="#" text="Testimonial" variant="black" />
-                    <StandardizedHeading 
-                        lines={[
-                            { text: "Trusted by Leaders Across Industries" }
-                        ]}
-                        className="font-medium text-3xl sm:text-4xl md:text-5xl text-left"
-                    />
-                    <p className="mt-2 text-sm text-foreground/70 max-w-xl">
-                        Our commitment to excellence has earned the trust of industry leaders who rely on us to deliver innovative, high-performance digital solutions.
-                    </p>
-                </div>
-            </ScrollFadeIn>
+            <div className="flex flex-col items-start gap-2">
+                <ArrowBadge href="#" text="Testimonial" variant="black" />
+                <StandardizedHeading 
+                    lines={[
+                        { text: "Trusted by Leaders Across Industries" }
+                    ]}
+                    className="font-medium text-3xl sm:text-4xl md:text-5xl text-left"
+                />
+                <p className="mt-2 text-sm text-foreground/70 max-w-xl">
+                    Our commitment to excellence has earned the trust of industry leaders who rely on us to deliver innovative, high-performance digital solutions.
+                </p>
+            </div>
 
             <ScrollFadeIn delay={0.2} className="mt-12">
                 <Carousel
@@ -145,5 +143,3 @@ export default function Testimonials() {
     </section>
   )
 }
-
-    
