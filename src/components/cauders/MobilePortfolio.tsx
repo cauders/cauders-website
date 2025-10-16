@@ -47,7 +47,7 @@ export default function MobilePortfolio() {
                   />
                 </div>
             </div>
-            <div className="relative min-h-[450px] bg-card rounded-2xl overflow-hidden flex flex-col justify-end p-6">
+            <div className="relative min-h-[500px] bg-card rounded-2xl overflow-hidden flex flex-col justify-end p-6">
                   <Image
                     src={placeholderImages.mobilePortfolio.screen2.imageUrl}
                     alt="Mobile app screenshot"
