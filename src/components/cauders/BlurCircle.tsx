@@ -1,4 +1,3 @@
-
 'use client';
 
 import { cn } from '@/lib/utils';
@@ -12,7 +11,7 @@ export default function BlurCircle({ className }: BlurCircleProps) {
     <div
       className={cn(
         'absolute bg-primary/10 rounded-full -z-10',
-        'blur-3xl', // Tailwind's largest blur utility
+        'blur-2xl',
         className
       )}
     />
