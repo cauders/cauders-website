@@ -29,7 +29,7 @@ export default function MobilePortfolio() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
              <div className="min-h-[300px] bg-gradient-container rounded-2xl p-8 flex flex-col justify-between text-white">
               <div>
-                <p className="text-lg">We design seamless mobile experiences that drive engagement and results.</p>
+                <p className="text-base">We design seamless mobile experiences that drive engagement and results.</p>
               </div>
               <div className="flex items-end justify-between">
                 <h3 className="text-4xl font-medium">Unlock Potential</h3>
