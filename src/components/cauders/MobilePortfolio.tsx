@@ -60,7 +60,7 @@ export default function MobilePortfolio() {
                         <div>
                             <p className="text-sm">Real-time tracking from store to door.</p>
                         </div>
-                        <div className="mt-8">
+                        <div className="mt-10">
                             <div className="flex items-end">
                                 <h3 className="text-3xl font-medium">Order Tracking</h3>
                                 <Link href="#" className="bg-gradient-container text-white rounded-full p-2 hover:opacity-90 transition-opacity ml-auto">
