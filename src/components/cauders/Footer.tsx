@@ -80,9 +80,10 @@ export default function Footer() {
               </div>
           </div>
           
-          <div className="mt-12 lg:mt-16 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-y-8 gap-x-8">
-              <div className="md:col-span-1 lg:col-span-2">
-                <div className="flex items-center gap-x-2 gap-y-2">
+          <div className="mt-12 lg:mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-y-8 gap-x-8">
+              <div className="col-span-1 lg:col-span-2"></div>
+              <div className="md:col-span-2 lg:col-span-2">
+                <div className="flex items-center gap-x-2 gap-y-2 justify-start md:justify-end">
                     {socialLinks.map((link) => (
                         <MagneticLink
                             key={link.label}
@@ -97,20 +98,20 @@ export default function Footer() {
               </div>
           </div>
 
-          <div className="mt-12 lg:mt-16 pt-6 border-t border-foreground/10 flex flex-col items-center gap-4 text-xs text-foreground/60">
+          <div className="mt-12 lg:mt-16 pt-6 border-t border-foreground/10 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-foreground/60">
+              <p className="text-center md:text-left">
+                  &copy; {year} Cauders. All Rights Reserved.
+              </p>
               <div className="flex items-center gap-4">
                 {legalLinks.map((link, index) => (
                     <React.Fragment key={link.label}>
                         <Link href={link.href} className="hover:text-primary transition-colors">
                             {link.label}
                         </Link>
-                        {index < legalLinks.length - 1 && <span>•</span>}
+                        {index < legalLinks.length - 1 && <span className="hidden sm:inline">•</span>}
                     </React.Fragment>
                 ))}
               </div>
-              <p className="text-center">
-                  &copy; {year} Cauders. All Rights Reserved.
-              </p>
           </div>
         </div>
       </footer>
