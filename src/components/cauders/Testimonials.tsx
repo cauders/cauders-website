@@ -77,7 +77,7 @@ export default function Testimonials() {
                     lines={[
                         { text: "Trusted by Leaders Across Industries" }
                     ]}
-                    className="font-medium text-3xl sm:text-4xl md:text-5xl text-left"
+                    className="text-3xl sm:text-4xl md:text-5xl font-medium text-left"
                 />
                 <p className="mt-2 text-sm text-foreground/70 max-w-xl">
                     Our commitment to excellence has earned the trust of industry leaders who rely on us to deliver innovative, high-performance digital solutions.

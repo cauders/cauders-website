@@ -49,7 +49,7 @@ export default function WhyChooseUs() {
         <section className="py-20 lg:py-32">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center mb-12 lg:mb-20">
-                    <StandardizedHeading lines={[ "Why People Choose Cauders" ]} className="font-medium text-3xl sm:text-4xl md:text-5xl" />
+                    <StandardizedHeading lines={[ "Why People Choose Cauders" ]} className="text-3xl sm:text-4xl md:text-5xl font-medium" />
                     <ScrollFadeIn>
                         <p className="mt-4 text-base text-foreground/70 max-w-2xl mx-auto">
                             We're more than an agency; we are your partners in innovation and excellence.
