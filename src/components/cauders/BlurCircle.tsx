@@ -1,3 +1,4 @@
+
 'use client';
 
 import { cn } from '@/lib/utils';
@@ -14,7 +15,6 @@ export default function BlurCircle({ className }: BlurCircleProps) {
         'blur-3xl', // Tailwind's largest blur utility
         className
       )}
-      style={{ filter: 'blur(200px)'}}
     />
   );
 }
