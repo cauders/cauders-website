@@ -9,7 +9,7 @@ import ScrollFadeIn from './ScrollFadeIn';
 
 export default function GetAQuote() {
   return (
-    <section className="py-20 lg:py-32">
+    <section className="pt-0 pb-20 lg:pb-32">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <ScrollFadeIn>
           <GradientContainer 
