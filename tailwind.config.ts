@@ -18,6 +18,9 @@ export default {
       },
     },
     extend: {
+      backdropBlur: {
+        '3xl': '64px',
+      },
       backgroundImage: {
         'gradient-text': 'linear-gradient(to right, hsl(var(--primary)) 0%, #003B38 100%)',
         'gradient-container': 'linear-gradient(to right, #003B38 0%, hsl(var(--primary)) 100%)',
