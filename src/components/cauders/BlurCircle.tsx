@@ -10,7 +10,7 @@ export default function BlurCircle({ className }: BlurCircleProps) {
   return (
     <div
       className={cn(
-        'absolute bg-primary/20 rounded-full -z-10',
+        'absolute bg-primary/[.25] rounded-full -z-10',
         'blur-3xl',
         className
       )}
