@@ -47,7 +47,7 @@ export default function MobilePortfolio() {
                   />
                 </div>
             </div>
-            <div className="relative min-h-[300px] bg-card rounded-2xl overflow-hidden">
+            <div className="relative min-h-[300px] bg-card rounded-2xl overflow-hidden flex flex-col justify-end p-8">
                   <Image
                     src={placeholderImages.mobilePortfolio.screen2.imageUrl}
                     alt="Mobile app screenshot"
@@ -55,10 +55,10 @@ export default function MobilePortfolio() {
                     className="object-cover"
                     data-ai-hint={placeholderImages.mobilePortfolio.screen2.aiHint}
                   />
-                  <div className="absolute inset-0 p-8 flex flex-col justify-end">
-                    <div className="glass-effect rounded-2xl p-6 flex flex-col justify-between text-white">
+                  <div className="relative z-10 mb-[-100px]">
+                    <div className="glass-effect backdrop-blur-xl rounded-2xl p-6 flex flex-col justify-between text-white">
                         <div>
-                            <p className="text-sm">Real-time tracking from store to door.</p>
+                            <p className="text-sm mb-4">Real-time tracking from store to door.</p>
                         </div>
                         <div className="flex items-end">
                             <h3 className="text-3xl font-medium">Order Tracking</h3>
