@@ -38,7 +38,7 @@ const faqs = [
 export default function FAQPreview() {
     return (
         <div className="py-20 lg:py-32 relative overflow-hidden">
-            <BlurCircle className="w-96 h-96 top-0 left-[-10rem]" />
+            <BlurCircle className="w-96 h-96 bottom-[-10rem] left-[-10rem]" />
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
                     <ScrollFadeIn>
