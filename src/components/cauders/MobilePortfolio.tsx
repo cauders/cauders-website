@@ -37,7 +37,7 @@ export default function MobilePortfolio() {
                         </Link>
                     </div>
                 </div>
-                <div className="relative min-h-[300px] bg-card rounded-2xl overflow-hidden">
+                <div className="relative min-h-[350px] bg-card rounded-2xl overflow-hidden">
                   <Image
                     src={placeholderImages.mobilePortfolio.screen1.imageUrl}
                     alt="Mobile app screenshot"
