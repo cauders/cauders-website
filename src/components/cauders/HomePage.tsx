@@ -1,3 +1,4 @@
+
 'use client';
 
 import Hero from '@/components/cauders/Hero';
@@ -22,7 +23,10 @@ export default function HomePage() {
       </div>
       <WhyChooseUs />
       <ServicesPreview />
-      <HomePageContact />
+      <div className="relative">
+        <BlurCircle className="w-96 h-96 top-0 right-0" />
+        <HomePageContact />
+      </div>
       <PortfolioSection />
       <FAQPreview />
       <MobilePortfolio />
