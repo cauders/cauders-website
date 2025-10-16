@@ -8,6 +8,7 @@ import PortfolioSection from './PortfolioSection';
 import FAQPreview from './FAQPreview';
 import Footer from './Footer';
 import MobilePortfolio from './MobilePortfolio';
+import Testimonials from './Testimonials';
 
 export default function HomePage() {
   return (
@@ -17,6 +18,7 @@ export default function HomePage() {
       <ServicesPreview />
       <HomePageContact />
       <PortfolioSection />
+      <Testimonials />
       <FAQPreview />
       <MobilePortfolio />
       <Footer />

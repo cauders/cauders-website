@@ -19,6 +19,8 @@ import StandardizedHeading from "./StandardizedHeading";
 import Image from "next/image";
 import { Button } from "../ui/button";
 import { Skeleton } from "../ui/skeleton";
+import ArrowBadge from "./ArrowBadge";
+import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 
 
 export default function Testimonials() {
@@ -31,11 +33,11 @@ export default function Testimonials() {
 
     useEffect(() => {
         const loadedTestimonials = getProjects()
-            .map(p => ({
+            .map((p, index) => ({
                 ...p.testimonial,
                 projectTitle: p.title,
                 projectSlug: p.slug,
-                imageUrl: p.imageUrl
+                imageUrl: `https://picsum.photos/seed/person${index}/100/100` // Placeholder for author
             }))
             .filter(t => t.author && t.text);
         
@@ -48,18 +50,30 @@ export default function Testimonials() {
   }
 
   return (
-    <section className="py-16 lg:py-24 bg-background">
-        <div className="container mx-auto px-2 sm:px-6 lg:px-8">
-            <div className="text-center mb-8 lg:mb-16">
-                <StandardizedHeading lines={["What Our Clients Say"]} />
-            </div>
+    <section className="py-20 lg:py-32 bg-secondary/30">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <ScrollFadeIn>
+                <div className="flex flex-col items-start gap-2">
+                    <ArrowBadge href="#" text="Testimonial" variant="black" />
+                    <StandardizedHeading 
+                        lines={[
+                            { text: "Trusted by Leaders" },
+                            { text: "Across Industries", className: "text-primary" }
+                        ]}
+                        className="font-medium text-3xl sm:text-4xl md:text-5xl text-left"
+                    />
+                    <p className="mt-2 text-sm text-foreground/70 max-w-xl">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. consectetur adipiscing elit consectetur adipiscing elit. consectetur adipiscing elit.
+                    </p>
+                </div>
+            </ScrollFadeIn>
         </div>
 
-        <ScrollFadeIn delay={0.2}>
+        <ScrollFadeIn delay={0.2} className="mt-12">
             <Carousel
                 plugins={[plugin.current]}
                 opts={{
-                    align: "center",
+                    align: "start",
                     loop: true,
                 }}
                 className="w-full"
@@ -67,61 +81,46 @@ export default function Testimonials() {
                 <CarouselContent className="-ml-4">
                     {loading ? (
                         Array.from({ length: 3 }).map((_, index) => (
-                            <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3 pl-8">
+                            <CarouselItem key={index} className="md:basis-1/2 lg:basis-[40%] xl:basis-1/3 pl-8">
                                 <div className="p-1 h-full">
-                                    <Skeleton className="w-full h-[220px] lg:h-[320px] rounded-2xl" />
+                                    <Skeleton className="w-full h-[220px] lg:h-[280px] rounded-2xl" />
                                 </div>
                             </CarouselItem>
                         ))
                     ) : (
                         testimonials.map((testimonial, index) => (
-                        <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3 pl-8">
+                        <CarouselItem key={index} className="md:basis-1/2 lg:basis-[40%] xl:basis-1/3 pl-8">
                             <div className="p-1 h-full">
-                                <div className="relative w-full h-[220px] lg:h-[320px] rounded-2xl overflow-hidden">
-                                    <Image
-                                        src={testimonial.imageUrl}
-                                        alt={testimonial.projectTitle}
-                                        priority
-                                        fill
-                                        className="object-cover"
-                                    />
-                                    <div className="absolute inset-0 bg-black/50"></div>
-                                    <Card className="glass-effect w-full h-full rounded-2xl border-border/20 bg-transparent">
-                                        <CardContent className="relative z-10 flex flex-col items-center justify-center p-6 text-center h-full">
-                                            <Quote className="absolute top-4 left-4 w-6 h-6 text-primary/80" />
-                                            <p className="text-xs font-medium text-white max-w-3xl line-clamp-5">
-                                                "{testimonial!.text}"
+                                <Card className="bg-card w-full h-[220px] lg:h-[280px] rounded-2xl shadow-lg flex flex-col justify-between p-6">
+                                    <CardContent className="p-0">
+                                        <p className="text-sm font-normal text-foreground/80 line-clamp-5">
+                                            "{testimonial!.text}"
+                                        </p>
+                                    </CardContent>
+                                    <div className="flex items-center gap-4 mt-4">
+                                        <Avatar>
+                                            <AvatarImage src={testimonial.imageUrl} alt={testimonial.author} />
+                                            <AvatarFallback>{testimonial.author.charAt(0)}</AvatarFallback>
+                                        </Avatar>
+                                        <div>
+                                            <cite className="font-semibold text-sm text-foreground not-italic">{testimonial!.author}</cite>
+                                            <p className="text-xs text-foreground/60 mt-0">
+                                                Regional Director
                                             </p>
-                                            <cite className="font-semibold text-xs text-background not-italic mt-4">— {testimonial!.author}</cite>
-                                            <p className="text-xs text-background/60 mt-1">
-                                                From the <Link href={`https://www.portfolio.cauders.com/${testimonial.projectSlug}`} className="text-primary/90 hover:underline">{testimonial.projectTitle}</Link> project
-                                            </p>
-                                        </CardContent>
-                                    </Card>
-                                </div>
+                                        </div>
+                                    </div>
+                                </Card>
                             </div>
                         </CarouselItem>
                         ))
                     )}
                 </CarouselContent>
-                <CarouselPrevious className="bg-primary/80 text-primary-foreground border-0 hover:bg-primary left-8" />
-                <CarouselNext className="bg-primary/80 text-primary-foreground border-0 hover:bg-primary right-8" />
+                <div className="container mx-auto px-4 sm:px-6 lg:px-8 mt-8 flex justify-center">
+                    <CarouselPrevious className="static -translate-x-1 bg-card border-border text-foreground hover:bg-muted" />
+                    <CarouselNext className="static translate-x-1 bg-card border-border text-foreground hover:bg-muted" />
+                </div>
             </Carousel>
         </ScrollFadeIn>
-        
-        <div className="text-center mt-12 lg:mt-16">
-          <ScrollFadeIn>
-            <Button
-              size="lg"
-              asChild
-              className="rounded-full px-8 py-6"
-            >
-              <Link href="https://www.portfolio.cauders.com/">
-                Discover more of our work <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
-            </Button>
-          </ScrollFadeIn>
-        </div>
     </section>
   )
 }
