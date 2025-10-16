@@ -23,7 +23,7 @@ export default function SplitButton({
         type="email"
         placeholder={emailPlaceholder}
         className={cn(
-            "flex-grow h-12 px-6 rounded-l-full rounded-r-[2px] border-2 border-white/30 bg-white/15 backdrop-blur-[50px] text-white text-base font-normal placeholder:text-white/70 placeholder:font-normal transition-all duration-300 hover:bg-white/25 hover:border-white/50 focus:outline-none focus:ring-0 focus:border-white/50",
+            "flex-grow h-12 px-6 rounded-l-full rounded-r-[2px] border-2 border-white/30 bg-white/15 backdrop-blur-[50px] text-white text-base font-normal placeholder:text-white/70 placeholder:text-sm placeholder:font-normal transition-all duration-300 hover:bg-white/25 hover:border-white/50 focus:outline-none focus:ring-0 focus:border-white/50",
             inputClassName
         )}
       />
