@@ -32,7 +32,7 @@ export default function MobilePortfolio() {
                 <p className="text-lg">We design seamless mobile experiences that drive engagement and results.</p>
               </div>
               <div className="flex items-end justify-between">
-                <h3 className="text-4xl font-medium">Unlock Your Potential</h3>
+                <h3 className="text-4xl font-medium">Unlock Potential</h3>
                 <Link href="#" className="bg-white text-black rounded-full p-3 hover:bg-gray-200 transition-colors">
                   <ArrowUpRight className="w-8 h-8" />
                 </Link>
