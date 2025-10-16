@@ -1,4 +1,3 @@
-
 'use client';
 
 import { cn } from '@/lib/utils';
@@ -18,7 +17,7 @@ export default function SplitButton({
     iconClassName
 }: SplitButtonProps) {
   return (
-    <div className="flex items-center gap-1">
+    <div className="flex items-center gap-1.5">
       <input
         type="email"
         placeholder={emailPlaceholder}
