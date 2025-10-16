@@ -1,3 +1,4 @@
+
 'use client';
 
 import { cn } from '@/lib/utils';
@@ -33,7 +34,7 @@ export default function SplitButton({
             buttonClassName
         )}
       >
-        <ArrowRight className={cn("w-5 h-5", iconClassName)} />
+        <ArrowRight className={cn("w-5 h-5 -rotate-45", iconClassName)} />
       </button>
     </div>
   );
