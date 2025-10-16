@@ -8,28 +8,28 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
+  type CarouselApi,
 } from "@/components/ui/carousel"
-import { Card, CardContent } from "@/components/ui/card";
-import { ArrowRight, Quote } from "lucide-react";
+import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import ScrollFadeIn from "./ScrollFadeIn";
 import Autoplay from "embla-carousel-autoplay";
-import Link from "next/link";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import StandardizedHeading from "./StandardizedHeading";
-import Image from "next/image";
-import { Button } from "../ui/button";
 import { Skeleton } from "../ui/skeleton";
 import ArrowBadge from "./ArrowBadge";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+import { cn } from "@/lib/utils";
 
 
 export default function Testimonials() {
     const [testimonials, setTestimonials] = useState<any[]>([]);
     const [loading, setLoading] = useState(true);
+    const [api, setApi] = useState<CarouselApi>();
+    const [current, setCurrent] = useState(0);
 
-  const plugin = React.useRef(
-    Autoplay({ delay: 5000, stopOnInteraction: true })
-  );
+    const plugin = React.useRef(
+        Autoplay({ delay: 5000, stopOnInteraction: true })
+    );
 
     useEffect(() => {
         const loadedTestimonials = getProjects()
@@ -44,6 +44,24 @@ export default function Testimonials() {
         setTestimonials(loadedTestimonials);
         setLoading(false);
     }, []);
+    
+    useEffect(() => {
+        if (!api) {
+            return;
+        }
+
+        setCurrent(api.selectedScrollSnap());
+
+        const handleSelect = () => {
+            setCurrent(api.selectedScrollSnap());
+        };
+
+        api.on("select", handleSelect);
+
+        return () => {
+            api.off("select", handleSelect);
+        };
+    }, [api]);
 
   if (testimonials.length === 0 && !loading) {
     return null;
@@ -70,9 +88,10 @@ export default function Testimonials() {
 
         <ScrollFadeIn delay={0.2} className="mt-12">
             <Carousel
+                setApi={setApi}
                 plugins={[plugin.current]}
                 opts={{
-                    align: "start",
+                    align: "center",
                     loop: true,
                 }}
                 className="w-full"
@@ -89,25 +108,27 @@ export default function Testimonials() {
                     ) : (
                         testimonials.map((testimonial, index) => (
                         <CarouselItem key={index} className="md:basis-1/2 lg:basis-[40%] xl:basis-1/3 pl-8">
-                            <div className="p-1 h-full">
-                                <Card className="bg-card w-full h-[220px] lg:h-[280px] rounded-2xl shadow-lg flex flex-col justify-between p-6">
-                                    <CardContent className="p-0">
+                            <div className={cn("p-1 h-full transition-transform duration-500 ease-out", index === current ? "scale-105" : "scale-90 opacity-80")}>
+                                <Card className="bg-card w-full h-[220px] lg:h-[280px] rounded-2xl shadow-lg flex flex-col justify-between overflow-hidden">
+                                    <CardContent className="p-6 flex-grow">
                                         <p className="text-xl font-semibold text-black line-clamp-5">
                                             "{testimonial!.text}"
                                         </p>
                                     </CardContent>
-                                    <div className="flex items-center gap-4 mt-4">
-                                        <Avatar>
-                                            <AvatarImage src={testimonial.imageUrl} alt={testimonial.author} />
-                                            <AvatarFallback>{testimonial.author.charAt(0)}</AvatarFallback>
-                                        </Avatar>
-                                        <div>
-                                            <cite className="font-semibold text-sm text-foreground not-italic">{testimonial!.author}</cite>
-                                            <p className="text-xs text-foreground/60 mt-0">
-                                                Regional Director
-                                            </p>
+                                    <CardFooter className="bg-muted p-4">
+                                        <div className="flex items-center gap-4">
+                                            <Avatar>
+                                                <AvatarImage src={testimonial.imageUrl} alt={testimonial.author} />
+                                                <AvatarFallback>{testimonial.author.charAt(0)}</AvatarFallback>
+                                            </Avatar>
+                                            <div>
+                                                <cite className="font-semibold text-sm text-foreground not-italic">{testimonial!.author}</cite>
+                                                <p className="text-xs text-foreground/60 mt-0">
+                                                    Regional Director
+                                                </p>
+                                            </div>
                                         </div>
-                                    </div>
+                                    </CardFooter>
                                 </Card>
                             </div>
                         </CarouselItem>
