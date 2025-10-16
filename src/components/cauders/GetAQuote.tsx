@@ -24,13 +24,13 @@ export default function GetAQuote() {
                     We're here to help you turn your vision into reality. Whether you have a detailed plan or just a spark of an idea, our team is ready to listen and collaborate with you.
                 </p>
                 <form className="mt-16 max-w-md mx-auto">
-                    <div className="relative flex items-center">
+                    <div className="flex items-center gap-2">
                         <Input
                             type="email"
                             placeholder="Enter Your Email"
-                            className="w-full h-12 px-6 rounded-full border-2 border-white/30 bg-white/15 backdrop-blur-[50px] text-white text-base font-normal placeholder:text-white/70 transition-all duration-300 hover:bg-white/25 hover:border-white/50 focus-visible:ring-white/50"
+                            className="flex-grow h-12 px-6 rounded-full border-2 border-white/30 bg-white/15 backdrop-blur-[50px] text-white text-base font-normal placeholder:text-white/70 transition-all duration-300 hover:bg-white/25 hover:border-white/50 focus-visible:ring-white/50"
                         />
-                        <Button type="submit" size="icon" className="absolute right-1.5 bg-white text-foreground hover:bg-gray-200 rounded-full w-9 h-9">
+                        <Button type="submit" size="icon" className="bg-white text-foreground hover:bg-gray-200 rounded-full w-12 h-12 flex-shrink-0">
                             <ArrowRight />
                         </Button>
                     </div>
