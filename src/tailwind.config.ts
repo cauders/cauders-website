@@ -24,7 +24,7 @@ export default {
       },
       boxShadow: {
         'primary-glow': '0 0 25px 0 hsl(var(--primary) / 0.5)',
-        'smooth-lift': '0 4px 4px 0 rgb(0 0 0 / 0.03)',
+        'smooth-lift': '0 10px 20px 0 rgb(0 0 0 / 0.05)',
       },
       fontFamily: {
         body: ['var(--font-body)', ...fontFamily.sans],
@@ -115,5 +115,3 @@ export default {
   },
   plugins: [require('tailwindcss-animate')],
 };
-
-    
