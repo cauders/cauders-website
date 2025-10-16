@@ -18,9 +18,9 @@ export default function HomePage() {
       <ServicesPreview />
       <HomePageContact />
       <PortfolioSection />
-      <Testimonials />
       <FAQPreview />
       <MobilePortfolio />
+      <Testimonials />
       <Footer />
     </>
   );
