@@ -38,7 +38,7 @@ export default function Footer() {
 
   return (
     <div 
-        className="relative bg-background text-foreground z-20"
+        className="relative bg-card text-foreground z-20 border-t"
         data-footer-hover="true"
     >
       <footer className="relative z-10">
