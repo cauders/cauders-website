@@ -84,63 +84,64 @@ export default function Testimonials() {
                     </p>
                 </div>
             </ScrollFadeIn>
-        </div>
 
-        <ScrollFadeIn delay={0.2} className="mt-12">
-            <Carousel
-                setApi={setApi}
-                plugins={[plugin.current]}
-                opts={{
-                    align: "center",
-                    loop: true,
-                }}
-                className="w-full"
-            >
-                <CarouselContent className="-ml-4 mb-8">
-                    {loading ? (
-                        Array.from({ length: 3 }).map((_, index) => (
+            <ScrollFadeIn delay={0.2} className="mt-12">
+                <Carousel
+                    setApi={setApi}
+                    plugins={[plugin.current]}
+                    opts={{
+                        align: "center",
+                        loop: true,
+                    }}
+                    className="w-full"
+                >
+                    <CarouselContent className="-ml-4 mb-8">
+                        {loading ? (
+                            Array.from({ length: 3 }).map((_, index) => (
+                                <CarouselItem key={index} className="md:basis-1/2 lg:basis-[40%] xl:basis-1/3 pl-8">
+                                    <div className="p-1 h-full">
+                                        <Skeleton className="w-full h-[220px] lg:h-[280px] rounded-2xl" />
+                                    </div>
+                                </CarouselItem>
+                            ))
+                        ) : (
+                            testimonials.map((testimonial, index) => (
                             <CarouselItem key={index} className="md:basis-1/2 lg:basis-[40%] xl:basis-1/3 pl-8">
-                                <div className="p-1 h-full">
-                                    <Skeleton className="w-full h-[220px] lg:h-[280px] rounded-2xl" />
+                                <div className={cn("p-1 h-full transition-transform duration-500 ease-out", index === current ? "scale-105" : "scale-90 opacity-80")}>
+                                    <Card className="bg-card w-full h-[220px] lg:h-[280px] rounded-2xl shadow-lg flex flex-col justify-between overflow-hidden">
+                                        <CardContent className="p-6 flex-grow">
+                                            <p className="text-xl font-semibold text-black line-clamp-5">
+                                                "{testimonial!.text}"
+                                            </p>
+                                        </CardContent>
+                                        <CardFooter className="bg-muted p-4 pb-6">
+                                            <div className="flex items-center gap-4">
+                                                <Avatar>
+                                                    <AvatarImage src={testimonial.imageUrl} alt={testimonial.author} />
+                                                    <AvatarFallback>{testimonial.author.charAt(0)}</AvatarFallback>
+                                                </Avatar>
+                                                <div>
+                                                    <cite className="font-semibold text-sm text-foreground not-italic">{testimonial!.author}</cite>
+                                                    <p className="text-xs text-foreground/60 mt-0">
+                                                        Regional Director
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </CardFooter>
+                                    </Card>
                                 </div>
                             </CarouselItem>
-                        ))
-                    ) : (
-                        testimonials.map((testimonial, index) => (
-                        <CarouselItem key={index} className="md:basis-1/2 lg:basis-[40%] xl:basis-1/3 pl-8">
-                            <div className={cn("p-1 h-full transition-transform duration-500 ease-out", index === current ? "scale-105" : "scale-90 opacity-80")}>
-                                <Card className="bg-card w-full h-[220px] lg:h-[280px] rounded-2xl shadow-lg flex flex-col justify-between overflow-hidden">
-                                    <CardContent className="p-6 flex-grow">
-                                        <p className="text-xl font-semibold text-black line-clamp-5">
-                                            "{testimonial!.text}"
-                                        </p>
-                                    </CardContent>
-                                    <CardFooter className="bg-muted p-4 pb-6">
-                                        <div className="flex items-center gap-4">
-                                            <Avatar>
-                                                <AvatarImage src={testimonial.imageUrl} alt={testimonial.author} />
-                                                <AvatarFallback>{testimonial.author.charAt(0)}</AvatarFallback>
-                                            </Avatar>
-                                            <div>
-                                                <cite className="font-semibold text-sm text-foreground not-italic">{testimonial!.author}</cite>
-                                                <p className="text-xs text-foreground/60 mt-0">
-                                                    Regional Director
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </CardFooter>
-                                </Card>
-                            </div>
-                        </CarouselItem>
-                        ))
-                    )}
-                </CarouselContent>
-                <div className="container mx-auto px-4 sm:px-6 lg:px-8 mt-8 flex justify-center">
-                    <CarouselPrevious className="static -translate-x-1 bg-card border-border text-foreground hover:bg-muted" />
-                    <CarouselNext className="static translate-x-1 bg-card border-border text-foreground hover:bg-muted" />
-                </div>
-            </Carousel>
-        </ScrollFadeIn>
+                            ))
+                        )}
+                    </CarouselContent>
+                    <div className="container mx-auto px-4 sm:px-6 lg:px-8 mt-8 flex justify-center">
+                        <CarouselPrevious className="static -translate-x-1 bg-card border-border text-foreground hover:bg-muted" />
+                        <CarouselNext className="static translate-x-1 bg-card border-border text-foreground hover:bg-muted" />
+                    </div>
+                </Carousel>
+            </ScrollFadeIn>
+        </div>
+
     </section>
   )
 }
