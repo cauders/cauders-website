@@ -85,7 +85,7 @@ export default function Testimonials() {
                 </div>
             </ScrollFadeIn>
 
-            <ScrollFadeIn delay={0.2} className="mt-1">
+            <ScrollFadeIn delay={0.2} className="mt-12">
                 <Carousel
                     setApi={setApi}
                     plugins={[plugin.current]}
