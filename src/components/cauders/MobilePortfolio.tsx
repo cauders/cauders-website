@@ -55,7 +55,7 @@ export default function MobilePortfolio() {
                     className="object-cover"
                     data-ai-hint={placeholderImages.mobilePortfolio.screen2.aiHint}
                   />
-                  <div className="relative z-10 mb-[-100px]">
+                  <div className="relative z-10">
                     <div className="glass-effect backdrop-blur-xl rounded-2xl p-6 flex flex-col justify-between text-white">
                         <div>
                             <p className="text-sm mb-4">Real-time tracking from store to door.</p>
