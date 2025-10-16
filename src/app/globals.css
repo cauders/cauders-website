@@ -26,6 +26,7 @@
     --ring: 177 78% 72%;
     --radius: 0.5rem;
     --zinc: 177 86% 26%;
+    --subtle: 0 0% 96.1%; /* #F5F5F5 */
   }
 
   .dark {
@@ -49,6 +50,7 @@
     --input: 217 33% 17%;
     --ring: 177 78% 72%;
     --zinc: 177 86% 26%;
+    --subtle: 222 47% 13%; /* A darker subtle color for dark mode */
   }
 }
 

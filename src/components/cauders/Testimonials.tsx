@@ -114,7 +114,7 @@ export default function Testimonials() {
                                                 "{testimonial!.text}"
                                             </p>
                                         </CardContent>
-                                        <CardFooter className="bg-muted p-4 pb-6">
+                                        <CardFooter className="bg-subtle p-4 pb-6">
                                             <div className="flex items-center gap-4">
                                                 <Avatar>
                                                     <AvatarImage src={testimonial.imageUrl} alt={testimonial.author} />
@@ -122,7 +122,7 @@ export default function Testimonials() {
                                                 </Avatar>
                                                 <div>
                                                     <cite className="font-semibold text-sm text-foreground not-italic">{testimonial!.author}</cite>
-                                                    <p className="text-xs text-foreground/60 mt-0">
+                                                    <p className="text-xs text-foreground/60 mt-[2px]">
                                                         Regional Director
                                                     </p>
                                                 </div>
