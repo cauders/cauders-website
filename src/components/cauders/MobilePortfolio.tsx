@@ -56,7 +56,7 @@ export default function MobilePortfolio() {
                     data-ai-hint={placeholderImages.mobilePortfolio.screen2.aiHint}
                   />
                   <div className="absolute inset-0 p-8 flex flex-col justify-end">
-                    <div className="glass-effect rounded-2xl p-6 flex flex-col justify-between text-white h-full">
+                    <div className="glass-effect rounded-2xl p-6 flex flex-col justify-between text-white">
                         <div>
                             <p className="text-sm">Real-time tracking from store to door.</p>
                         </div>
