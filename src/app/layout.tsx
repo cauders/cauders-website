@@ -38,7 +38,7 @@ export default function RootLayout({
             <>
               <CustomCursor />
               <Header />
-              <main className="flex-grow z-10">
+              <main className="flex-grow">
                 {children}
               </main>
               <Toaster />
