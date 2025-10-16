@@ -58,7 +58,7 @@ export default function MobilePortfolio() {
                   <div className="relative z-10 mb-6">
                     <div className="glass-effect backdrop-blur-2xl rounded-2xl p-6 flex flex-col text-black">
                         <div>
-                            <p className="text-sm mb-4">Real-time tracking from store to door. Stay updated with live notifications at every step.</p>
+                            <p className="text-sm mb-4 max-w-[80%]">Real-time tracking from store to door. Stay updated with live notifications at every step.</p>
                         </div>
                         <div className="mt-12">
                             <div className="flex items-end">
