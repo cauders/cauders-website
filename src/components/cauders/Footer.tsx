@@ -98,19 +98,17 @@ export default function Footer() {
               </div>
           </div>
 
-          <div className="mt-12 lg:mt-16 pt-6 border-t border-foreground/10 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-foreground/60">
-              <p className="text-center md:text-left">
-                  &copy; {year} Cauders. All Rights Reserved.
-              </p>
-              <div className="flex items-center gap-4">
-                {legalLinks.map((link, index) => (
-                    <React.Fragment key={link.label}>
-                        <Link href={link.href} className="hover:text-primary transition-colors">
-                            {link.label}
-                        </Link>
-                        {index < legalLinks.length - 1 && <span className="hidden sm:inline">•</span>}
-                    </React.Fragment>
-                ))}
+          <div className="mt-12 lg:mt-16 pt-6 border-t border-foreground/10 flex justify-center text-xs text-foreground/60">
+              <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4">
+                  {legalLinks.map((link, index) => (
+                      <Link key={link.label} href={link.href} className="hover:text-primary transition-colors">
+                          {link.label}
+                      </Link>
+                  ))}
+                  <span className="hidden sm:inline">•</span>
+                  <p>
+                      &copy; {year} Cauders. All Rights Reserved.
+                  </p>
               </div>
           </div>
         </div>
