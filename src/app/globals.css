@@ -59,7 +59,8 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply text-foreground;
+    background: linear-gradient(to bottom, hsl(var(--background)) 0%, #F2FFFE 50%, hsl(var(--background)) 75%, #EDFFFE 100%);
   }
   html {
     scroll-behavior: smooth;
@@ -528,4 +529,6 @@
 }
 
     
+    
+
     
