@@ -34,7 +34,7 @@ export default function SplitButton({
             buttonClassName
         )}
       >
-        <ArrowUpRight className={cn("w-5 h-5", iconClassName)} />
+        <ArrowUpRight className={cn("w-6 h-6", iconClassName)} />
       </button>
     </div>
   );
