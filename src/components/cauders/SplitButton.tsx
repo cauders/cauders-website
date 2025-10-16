@@ -18,7 +18,7 @@ export default function SplitButton({
     iconClassName
 }: SplitButtonProps) {
   return (
-    <div className="flex items-center">
+    <div className="flex items-center gap-1">
       <input
         type="email"
         placeholder={emailPlaceholder}
