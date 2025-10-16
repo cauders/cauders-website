@@ -1,9 +1,9 @@
-
 'use client';
 
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
 import Image from 'next/image';
+import React from 'react';
 
 const quickLinks = [
     { href: '/', label: 'Home' },
