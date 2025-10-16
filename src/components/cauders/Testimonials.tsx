@@ -96,7 +96,7 @@ export default function Testimonials() {
                 }}
                 className="w-full"
             >
-                <CarouselContent className="-ml-4">
+                <CarouselContent className="-ml-4 mb-8">
                     {loading ? (
                         Array.from({ length: 3 }).map((_, index) => (
                             <CarouselItem key={index} className="md:basis-1/2 lg:basis-[40%] xl:basis-1/3 pl-8">
