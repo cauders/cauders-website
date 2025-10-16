@@ -17,7 +17,7 @@ export default function GetAQuote() {
             imageSrc="/images/background/overlay-bg-1.svg"
           >
             <div className="relative z-10">
-                <h2 className="text-3xl md:text-5xl font-headline font-semibold text-white">
+                <h2 className="text-3xl md:text-5xl font-headline font-medium text-white">
                     Have a project in mind? <br/> Let's Get to Work
                 </h2>
                 <p className="mt-8 text-sm md:text-base text-white max-w-2xl mx-auto">
