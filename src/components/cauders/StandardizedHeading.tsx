@@ -28,7 +28,7 @@ export default function StandardizedHeading({ lines, className }: StandardizedHe
           delay={0.1}
           className="text-highlight-group"
         >
-          <span className={cn("block", line.className)}>
+          <span className={cn("block py-1", line.className)}>
             {line.text === "Ideas Into Powerful & Creative" ? (
               <>
                 <span className="word-highlight">Ideas </span>
