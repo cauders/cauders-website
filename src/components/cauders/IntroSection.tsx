@@ -1,4 +1,3 @@
-
 'use client';
 
 import StandardizedHeading from "./StandardizedHeading";
@@ -19,7 +18,7 @@ export default function IntroSection() {
                             { text: "Ideas Into Powerful & Creative" },
                             { text: "Digital Experiences"}
                         ]} 
-                        className="text-4xl md:text-6xl text-foreground font-bold"
+                        className="text-4xl md:text-6xl text-foreground font-semibold"
                     />
                 </div>
 
