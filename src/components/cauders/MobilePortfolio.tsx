@@ -55,6 +55,14 @@ export default function MobilePortfolio() {
                     className="object-cover"
                     data-ai-hint={placeholderImages.mobilePortfolio.screen2.aiHint}
                   />
+                  <div className="absolute inset-0 p-8 flex flex-col justify-end">
+                    <div className="glass-effect rounded-2xl p-6 flex items-end justify-between text-white">
+                        <h3 className="text-3xl font-medium">Track your orders</h3>
+                        <Link href="#" className="bg-gradient-container text-white rounded-full p-2 hover:opacity-90 transition-opacity">
+                            <ArrowUpRight className="w-6 h-6" />
+                        </Link>
+                    </div>
+                  </div>
                 </div>
             <div className="flex flex-col gap-4">
                 <div className="relative min-h-[350px] bg-card rounded-2xl overflow-hidden">
