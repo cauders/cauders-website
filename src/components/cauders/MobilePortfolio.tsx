@@ -27,19 +27,15 @@ export default function MobilePortfolio() {
 
         <div className="relative mt-16">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="min-h-[450px] bg-card rounded-2xl grid grid-cols-2 overflow-hidden">
-              <div className="bg-gradient-container p-6">
-                {/* Content for gradient section will go here */}
+             <div className="min-h-[450px] bg-gradient-container rounded-2xl p-8 flex flex-col justify-between text-white">
+              <div>
+                <p className="text-lg">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
               </div>
-              <div className="relative flex items-center justify-center p-6">
-                <Image
-                  src={placeholderImages.mobilePortfolio.screen1.imageUrl}
-                  alt="Mobile App Profile Screen"
-                  width={200}
-                  height={400}
-                  className="object-contain"
-                  data-ai-hint={placeholderImages.mobilePortfolio.screen1.aiHint}
-                />
+              <div className="flex items-end justify-between">
+                <h3 className="text-5xl font-semibold">Heading Here</h3>
+                <Link href="#" className="bg-white text-black rounded-full p-3 hover:bg-gray-200 transition-colors">
+                  <ArrowUpRight className="w-8 h-8" />
+                </Link>
               </div>
             </div>
             <div className="min-h-[300px] bg-card rounded-2xl"></div>
