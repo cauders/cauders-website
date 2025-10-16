@@ -28,7 +28,7 @@ export default function GetAQuote() {
                         <Input
                             type="email"
                             placeholder="Enter Your Email"
-                            className="bg-white/10 border-white/20 text-white placeholder:text-white/70 rounded-full h-12 px-6 focus-visible:ring-white/50 w-full"
+                            className="w-full h-12 px-6 rounded-full border-2 border-white/30 bg-white/15 backdrop-blur-[50px] text-white text-base font-normal placeholder:text-white/70 transition-all duration-300 hover:bg-white/25 hover:border-white/50 focus-visible:ring-white/50"
                         />
                         <Button type="submit" size="icon" className="absolute right-1.5 bg-white text-foreground hover:bg-gray-200 rounded-full w-9 h-9">
                             <ArrowRight />
