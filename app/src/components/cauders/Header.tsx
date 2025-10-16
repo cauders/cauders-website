@@ -74,7 +74,7 @@ export default function Header() {
 
       <div 
           className={cn(
-              "fixed inset-0 z-[100] backdrop-blur-2xl text-background transition-transform duration-700 ease-in-out overflow-hidden",
+              "fixed inset-0 z-[100] backdrop-blur-3xl text-background transition-transform duration-700 ease-in-out overflow-hidden",
               isMenuOpen ? 'transform-none' : '-translate-y-full'
           )}
           data-menu-hover="true"
@@ -101,7 +101,7 @@ export default function Header() {
                                 href={link.href}
                                 onClick={() => setIsMenuOpen(false)}
                                 className="w-28 h-28"
-                                linkClassName="text-sm text-background"
+                                linkClassName="text-xl text-background"
                             >
                                 {link.label}
                             </MagneticLink>
