@@ -45,15 +45,15 @@
   },
   "mobilePortfolio": {
     "screen1": {
-      "imageUrl": "https://picsum.photos/seed/mobscreen1/300/600",
+      "imageUrl": "/images/mobilePortfolio/mb-cd-1.svg",
       "aiHint": "mobile app profile"
     },
     "screen2": {
-      "imageUrl": "https://picsum.photos/seed/mobscreen2/300/600",
+      "imageUrl": "/images/mobilePortfolio/mb-cd-2.svg",
       "aiHint": "mobile course list"
     },
     "screen3": {
-      "imageUrl": "https://picsum.photos/seed/mobscreen3/300/600",
+      "imageUrl": "/images/mobilePortfolio/mb-cd-3.svg",
       "aiHint": "mobile job search"
     },
     "screen4": {
