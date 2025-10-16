@@ -1,3 +1,4 @@
+
 'use client';
 
 import { getProjects } from "@/lib/data";
@@ -70,14 +71,14 @@ export default function Testimonials() {
   return (
     <section>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20">
-            <div className="flex flex-col items-center justify-center text-center gap-2">
+            <div className="flex flex-col items-start justify-center gap-2">
                 <ArrowBadge href="#" text="Testimonial" variant="black" />
                 <StandardizedHeading 
                     lines={[
                         { text: "Trusted by Leaders Across Industries" }
                     ]}
                 />
-                <p className="mt-4 text-base text-foreground/70 max-w-2xl mx-auto">
+                <p className="mt-4 text-base text-foreground/70 max-w-2xl">
                     Our commitment to excellence has earned the trust of industry leaders who rely on us to deliver innovative, high-performance digital solutions.
                 </p>
             </div>
