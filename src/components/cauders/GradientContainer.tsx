@@ -8,13 +8,14 @@ import type { ReactNode } from 'react';
 interface GradientContainerProps {
   children: ReactNode;
   className?: string;
+  imageSrc?: string;
 }
 
-export default function GradientContainer({ children, className }: GradientContainerProps) {
+export default function GradientContainer({ children, className, imageSrc = "/images/background/overlay-bg.svg" }: GradientContainerProps) {
   return (
     <div className={cn("relative bg-gradient-container overflow-hidden", className)}>
       <Image
-        src="/images/background/overlay-bg.svg"
+        src={imageSrc}
         alt="background overlay"
         width={1920}
         height={1080}
