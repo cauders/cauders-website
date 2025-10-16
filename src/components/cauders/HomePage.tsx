@@ -29,7 +29,10 @@ export default function HomePage() {
       </div>
       <PortfolioSection />
       <FAQPreview />
-      <MobilePortfolio />
+      <div className="relative">
+        <BlurCircle className="w-96 h-96 bottom-[-10rem] right-[-10rem]" />
+        <MobilePortfolio />
+      </div>
       <Testimonials />
       <GetAQuote />
       <Footer />
