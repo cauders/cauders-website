@@ -48,7 +48,7 @@ export default function Footer() {
               {/* Column 1: Logo and Email */}
               <div className="md:col-span-1 lg:col-span-2 flex flex-col items-start gap-4">
                   <Link href="/" className="inline-block">
-                    <Image src="/images/logo-icon.svg" alt="Cauders Logo" width={40} height={40} />
+                    <Image src="/images/logo/logo-full.svg" alt="Cauders Logo" width={60} height={60} />
                   </Link>
                   <a href="mailto:info@cauders.com" className="text-2xl lg:text-3xl font-normal text-foreground hover:text-primary transition-colors border-b border-foreground hover:border-primary">
                     info@cauders.com
