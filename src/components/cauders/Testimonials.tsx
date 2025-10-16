@@ -115,7 +115,7 @@ export default function Testimonials() {
                                             "{testimonial!.text}"
                                         </p>
                                     </CardContent>
-                                    <CardFooter className="bg-muted p-4">
+                                    <CardFooter className="bg-muted p-4 pb-6">
                                         <div className="flex items-center gap-4">
                                             <Avatar>
                                                 <AvatarImage src={testimonial.imageUrl} alt={testimonial.author} />
