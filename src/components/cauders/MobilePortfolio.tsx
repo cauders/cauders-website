@@ -26,7 +26,7 @@ export default function MobilePortfolio() {
         <div className="relative mt-16">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="flex flex-col gap-4">
-                <div className="bg-gradient-container rounded-2xl p-6 flex flex-col justify-between text-white min-h-[200px]">
+                <div className="bg-gradient-container rounded-2xl p-8 flex flex-col justify-between text-white min-h-[200px]">
                     <div>
                         <p className="text-base max-w-[80%]">We design seamless mobile experiences that drive results.</p>
                     </div>
@@ -49,11 +49,11 @@ export default function MobilePortfolio() {
             </div>
             <div className="relative min-h-[300px] bg-card rounded-2xl overflow-hidden">
                   <Image
-                    src={placeholderImages.mobilePortfolio.screen1.imageUrl}
+                    src={placeholderImages.mobilePortfolio.screen2.imageUrl}
                     alt="Mobile app screenshot"
                     fill
                     className="object-cover"
-                    data-ai-hint={placeholderImages.mobilePortfolio.screen1.aiHint}
+                    data-ai-hint={placeholderImages.mobilePortfolio.screen2.aiHint}
                   />
                 </div>
             <div className="flex flex-col gap-4">
@@ -66,7 +66,7 @@ export default function MobilePortfolio() {
                     data-ai-hint={placeholderImages.mobilePortfolio.screen3.aiHint}
                   />
                 </div>
-                <div className="bg-gradient-container rounded-2xl p-6 flex flex-col justify-between text-white min-h-[200px]">
+                <div className="bg-gradient-container rounded-2xl p-8 flex flex-col justify-between text-white min-h-[200px]">
                     <div>
                         <p className="text-base max-w-[80%]">Intuitive designs for complex workflows.</p>
                     </div>
