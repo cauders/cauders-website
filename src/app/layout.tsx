@@ -33,7 +33,7 @@ export default function RootLayout({
 
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={cn(montserrat.variable, 'flex flex-col min-h-screen bg-background antialiased relative font-body')}>
+      <body className={cn(montserrat.variable, 'flex flex-col min-h-screen bg-background antialiased font-body')}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
             <>
               <CustomCursor />
