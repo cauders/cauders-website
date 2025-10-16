@@ -30,7 +30,7 @@ export default function SplitButton({
       <button 
         type="submit" 
         className={cn(
-            "bg-white text-foreground hover:bg-gray-200 rounded-l-[2px] rounded-r-full w-12 h-12 flex-shrink-0 flex items-center justify-center border-2 border-white -ml-px",
+            "bg-white text-foreground hover:bg-gray-200 rounded-l-[2px] rounded-r-full w-12 h-12 flex-shrink-0 flex items-center justify-center border-2 border-white",
             buttonClassName
         )}
       >
