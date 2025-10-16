@@ -1,4 +1,3 @@
-
 'use client';
 
 import { getProjects } from "@/lib/data";
@@ -50,20 +49,19 @@ export default function Testimonials() {
   }
 
   return (
-    <section className="py-20 lg:py-32 bg-secondary/30">
+    <section className="py-20 lg:py-32">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <ScrollFadeIn>
                 <div className="flex flex-col items-start gap-2">
                     <ArrowBadge href="#" text="Testimonial" variant="black" />
                     <StandardizedHeading 
                         lines={[
-                            { text: "Trusted by Leaders" },
-                            { text: "Across Industries", className: "text-primary" }
+                            { text: "Trusted by Leaders Across Industries", className: "text-primary" }
                         ]}
                         className="font-medium text-3xl sm:text-4xl md:text-5xl text-left"
                     />
                     <p className="mt-2 text-sm text-foreground/70 max-w-xl">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. consectetur adipiscing elit consectetur adipiscing elit. consectetur adipiscing elit.
+                        Our commitment to excellence has earned the trust of industry leaders who rely on us to deliver innovative, high-performance digital solutions.
                     </p>
                 </div>
             </ScrollFadeIn>
@@ -93,7 +91,7 @@ export default function Testimonials() {
                             <div className="p-1 h-full">
                                 <Card className="bg-card w-full h-[220px] lg:h-[280px] rounded-2xl shadow-lg flex flex-col justify-between p-6">
                                     <CardContent className="p-0">
-                                        <p className="text-sm font-normal text-foreground/80 line-clamp-5">
+                                        <p className="text-base font-semibold text-black line-clamp-5">
                                             "{testimonial!.text}"
                                         </p>
                                     </CardContent>
