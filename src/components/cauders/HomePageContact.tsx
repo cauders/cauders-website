@@ -81,7 +81,7 @@ export default function HomePageContact() {
                 <ScrollFadeIn className="h-full flex flex-col">
                     <div className="w-full">
                         <ArrowBadge href="/contact" text="Contact Us" variant="black" className="mb-4" />
-                        <StandardizedHeading lines={["Reach Out Your Way"]} className="text-3xl sm:text-4xl md:text-5xl font-medium" />
+                        <StandardizedHeading lines={["Reach Out Your Way"]} />
                         <p className="mt-4 text-base text-foreground/70">
                             We're here to answer your questions and help you get started on your next big idea.
                         </p>
