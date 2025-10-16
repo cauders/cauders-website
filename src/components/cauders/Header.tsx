@@ -74,7 +74,7 @@ export default function Header() {
 
       <div 
           className={cn(
-              "fixed inset-0 z-[100] bg-foreground text-background transition-transform duration-700 ease-in-out overflow-hidden",
+              "fixed inset-0 z-[100] bg-foreground/80 backdrop-blur-lg text-background transition-transform duration-700 ease-in-out overflow-hidden",
               isMenuOpen ? 'transform-none' : '-translate-y-full'
           )}
           data-menu-hover="true"
