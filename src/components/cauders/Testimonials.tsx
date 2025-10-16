@@ -1,4 +1,3 @@
-
 'use client';
 
 import { getProjects } from "@/lib/data";
@@ -19,6 +18,7 @@ import { Skeleton } from "../ui/skeleton";
 import ArrowBadge from "./ArrowBadge";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { cn } from "@/lib/utils";
+import { Separator } from "../ui/separator";
 
 
 export default function Testimonials() {
@@ -83,7 +83,7 @@ export default function Testimonials() {
                 </p>
             </div>
 
-            <ScrollFadeIn delay={0.2} className="mt-12">
+            <ScrollFadeIn delay="delay-200" className="mt-12">
                 <Carousel
                     setApi={setApi}
                     plugins={[plugin.current]}
@@ -106,13 +106,14 @@ export default function Testimonials() {
                             testimonials.map((testimonial, index) => (
                             <CarouselItem key={index} className="md:basis-1/2 lg:basis-[40%] xl:basis-1/3 pl-8">
                                 <div className={cn("p-1 h-full transition-transform duration-500 ease-out", index === current ? "scale-105" : "scale-90 opacity-80")}>
-                                    <Card className="bg-card w-full h-[220px] lg:h-[280px] rounded-2xl shadow-lg flex flex-col justify-between overflow-hidden">
+                                    <Card className="bg-card w-full h-[220px] lg:h-[280px] rounded-2xl shadow-smooth-lift flex flex-col justify-between overflow-hidden">
                                         <CardContent className="p-6 flex-grow">
-                                            <p className="text-xl font-semibold text-black line-clamp-5">
+                                            <p className="text-xl font-medium text-black line-clamp-5">
                                                 "{testimonial!.text}"
                                             </p>
                                         </CardContent>
-                                        <CardFooter className="bg-subtle p-4 pb-6">
+                                        <Separator />
+                                        <CardFooter className="p-4 pb-6">
                                             <div className="flex items-center gap-4">
                                                 <Avatar>
                                                     <AvatarImage src={testimonial.imageUrl} alt={testimonial.author} />
