@@ -30,7 +30,7 @@ export default function GetAQuote() {
                             placeholder="Enter Your Email"
                             className="flex-grow h-12 px-6 rounded-l-full rounded-r-[2px] border-2 border-white/30 bg-white/15 backdrop-blur-[50px] text-white text-base font-normal placeholder:text-white/70 transition-all duration-300 hover:bg-white/25 hover:border-white/50 focus-visible:ring-white/50"
                         />
-                        <Button type="submit" size="icon" className="bg-white text-foreground hover:bg-gray-200 rounded-r-full rounded-l-[2px] w-12 h-12 flex-shrink-0">
+                        <Button type="submit" size="icon" className="bg-white text-foreground hover:bg-gray-200 rounded-l-[2px] rounded-r-full w-12 h-12 flex-shrink-0">
                             <ArrowRight />
                         </Button>
                     </div>
