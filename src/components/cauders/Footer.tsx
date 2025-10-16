@@ -82,7 +82,7 @@ export default function Footer() {
           
           <div className="mt-12 lg:mt-16 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-y-8 gap-x-8">
               <div className="md:col-span-1 lg:col-span-2">
-                <div className="flex flex-wrap gap-x-2 gap-y-2">
+                <div className="flex items-center gap-x-2 gap-y-2">
                     {socialLinks.map((link) => (
                         <MagneticLink
                             key={link.label}
