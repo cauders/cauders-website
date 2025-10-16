@@ -27,8 +27,8 @@ export default function MobilePortfolio() {
 
         <div className="relative mt-16">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="min-h-[450px] bg-card rounded-2xl grid grid-rows-2 overflow-hidden">
-              <div className="bg-gradient-container rounded-t-2xl p-6">
+            <div className="min-h-[450px] bg-card rounded-2xl grid grid-cols-2 overflow-hidden">
+              <div className="bg-gradient-container p-6">
                 {/* Content for gradient section will go here */}
               </div>
               <div className="relative flex items-center justify-center p-6">
