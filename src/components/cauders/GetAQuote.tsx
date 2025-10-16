@@ -1,4 +1,3 @@
-
 'use client';
 
 import { ArrowRight } from 'lucide-react';
@@ -14,7 +13,7 @@ export default function GetAQuote() {
         <ScrollFadeIn>
           <GradientContainer className="rounded-3xl py-24 md:py-32 px-12 text-center text-background relative overflow-hidden">
             <div className="relative z-10">
-                <h2 className="text-3xl md:text-5xl font-headline">
+                <h2 className="text-3xl md:text-5xl font-headline font-semibold">
                     Have a project in mind?
                 </h2>
                 <p className="mt-4 text-sm md:text-base text-background/80 max-w-2xl mx-auto">
