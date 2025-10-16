@@ -12,7 +12,7 @@ import placeholderImages from '@/lib/placeholder-images.json';
 
 export default function MobilePortfolio() {
   return (
-    <section className="bg-background text-foreground py-20 lg:py-32 overflow-hidden">
+    <section className="bg-background text-foreground pt-0 lg:pt-16 pb-20 lg:pb-32 overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <ScrollFadeIn>
           <div className="text-center max-w-4xl mx-auto">
