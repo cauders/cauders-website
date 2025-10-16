@@ -27,7 +27,7 @@ export default function MobilePortfolio() {
 
         <div className="relative mt-16">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-             <div className="min-h-[450px] bg-gradient-container rounded-2xl p-8 flex flex-col justify-between text-white">
+             <div className="min-h-[300px] bg-gradient-container rounded-2xl p-8 flex flex-col justify-between text-white">
               <div>
                 <p className="text-lg">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
               </div>
