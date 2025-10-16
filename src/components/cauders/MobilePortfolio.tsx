@@ -33,8 +33,8 @@ export default function MobilePortfolio() {
               </div>
               <div className="flex items-end justify-between">
                 <h3 className="text-4xl font-medium">Unlock Potential</h3>
-                <Link href="#" className="bg-white text-black rounded-full p-3 hover:bg-gray-200 transition-colors">
-                  <ArrowUpRight className="w-8 h-8" />
+                <Link href="#" className="bg-white text-black rounded-full p-2 hover:bg-gray-200 transition-colors">
+                  <ArrowUpRight className="w-6 h-6" />
                 </Link>
               </div>
             </div>
