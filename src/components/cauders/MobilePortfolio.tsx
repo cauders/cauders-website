@@ -58,13 +58,15 @@ export default function MobilePortfolio() {
                   <div className="relative z-10 mb-6">
                     <div className="glass-effect backdrop-blur-2xl rounded-2xl p-6 flex flex-col text-black">
                         <div>
-                            <p className="text-sm mb-4">Real-time tracking from store to door.</p>
+                            <p className="text-sm">Real-time tracking from store to door.</p>
                         </div>
-                        <div className="flex items-end">
-                            <h3 className="text-3xl font-medium">Order Tracking</h3>
-                            <Link href="#" className="bg-gradient-container text-white rounded-full p-2 hover:opacity-90 transition-opacity ml-auto">
-                                <ArrowUpRight className="w-6 h-6" />
-                            </Link>
+                        <div className="mt-4">
+                            <div className="flex items-end">
+                                <h3 className="text-3xl font-medium">Order Tracking</h3>
+                                <Link href="#" className="bg-gradient-container text-white rounded-full p-2 hover:opacity-90 transition-opacity ml-auto">
+                                    <ArrowUpRight className="w-6 h-6" />
+                                </Link>
+                            </div>
                         </div>
                     </div>
                   </div>
