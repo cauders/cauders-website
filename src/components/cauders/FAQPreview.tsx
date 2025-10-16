@@ -1,4 +1,3 @@
-
 'use client';
 
 import {
@@ -50,7 +49,6 @@ export default function FAQPreview() {
                                     { text: "You Have Questions," },
                                     { text: "We Have Answers" }
                                 ]} 
-                                className="text-3xl sm:text-4xl md:text-5xl font-medium"
                             />
                         </div>
                     </ScrollFadeIn>

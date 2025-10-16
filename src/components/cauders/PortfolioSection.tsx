@@ -1,4 +1,3 @@
-
 "use client";
 
 import GradientContainer from "./GradientContainer";
@@ -18,7 +17,7 @@ export default function PortfolioSection() {
           <ScrollFadeIn>
             <div className="flex flex-col items-center justify-center gap-4">
               <ArrowBadge href="https://www.portfolio.cauders.com/" text="Our Portfolio" />
-              <StandardizedHeading lines={["Explore Our Work"]} className="text-3xl sm:text-4xl md:text-5xl font-medium text-background" />
+              <StandardizedHeading lines={["Explore Our Work"]} className="text-background" />
             </div>
           </ScrollFadeIn>
           
