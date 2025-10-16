@@ -1,3 +1,4 @@
+
 'use client';
 
 import { getProjects } from "@/lib/data";
@@ -49,14 +50,14 @@ export default function Testimonials() {
   }
 
   return (
-    <section className="py-20 lg:py-32">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section>
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
             <ScrollFadeIn>
                 <div className="flex flex-col items-start gap-2">
                     <ArrowBadge href="#" text="Testimonial" variant="black" />
                     <StandardizedHeading 
                         lines={[
-                            { text: "Trusted by Leaders Across Industries", className: "text-primary" }
+                            { text: "Trusted by Leaders Across Industries" }
                         ]}
                         className="font-medium text-3xl sm:text-4xl md:text-5xl text-left"
                     />
@@ -91,7 +92,7 @@ export default function Testimonials() {
                             <div className="p-1 h-full">
                                 <Card className="bg-card w-full h-[220px] lg:h-[280px] rounded-2xl shadow-lg flex flex-col justify-between p-6">
                                     <CardContent className="p-0">
-                                        <p className="text-base font-semibold text-black line-clamp-5">
+                                        <p className="text-xl font-semibold text-black line-clamp-5">
                                             "{testimonial!.text}"
                                         </p>
                                     </CardContent>

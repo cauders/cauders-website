@@ -87,8 +87,8 @@ export default function StandardizedHeading({ lines, className }: StandardizedHe
                   <span className="word-highlight">Trusted </span>
                   <span className="word-highlight">by </span>
                   <span className="word-highlight">Leaders </span>
-                  <span className="word-highlight">Across </span>
                   <span className="bg-gradient-text text-transparent bg-clip-text">
+                      <span className="word-highlight">Across </span>
                       <span className="word-highlight">Industries</span>
                   </span>
               </>
