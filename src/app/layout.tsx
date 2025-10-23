@@ -7,7 +7,7 @@ import { Montserrat } from 'next/font/google';
 import { cn } from '@/lib/utils';
 import { ThemeProvider } from '@/components/cauders/ThemeProvider';
 import CustomCursor from '@/components/cauders/CustomCursor';
-import Chatbot from '@/components/cauders/Chatbot';
+// import Chatbot from '@/components/cauders/Chatbot';
 
 
 export const metadata: Metadata = {
@@ -44,7 +44,7 @@ export default function RootLayout({
                 </div>
               </main>
               <Toaster />
-              <Chatbot />
+              {/* <Chatbot /> */}
             </>
         </ThemeProvider>
       </body>

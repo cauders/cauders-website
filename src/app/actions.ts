@@ -2,7 +2,7 @@
 "use server";
 
 import { z } from "zod";
-import { chat, type ChatInput, type ChatOutput } from '@/ai/flows/chatbot';
+// import { chat, type ChatInput, type ChatOutput } from '@/ai/flows/chatbot';
 
 
 const contactFormSchema = z.object({
@@ -63,6 +63,7 @@ export async function submitApplicationForm(formData: FormData) {
     return { success: true, message: "Thank you for your application! We have received your CV and will be in touch if your profile matches our requirements." };
 }
 
+/*
 const chatFormSchema = z.object({
     message: z.string().min(1, 'Message is required.'),
 });
@@ -99,3 +100,4 @@ export async function submitChatMessage(input: ChatInput): Promise<ChatFormState
         };
     }
 }
+*/

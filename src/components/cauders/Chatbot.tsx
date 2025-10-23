@@ -10,7 +10,7 @@ import { Send, RefreshCw, User, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import Lottie from 'lottie-react';
 import { Avatar, AvatarFallback } from '../ui/avatar';
-import { submitChatMessage } from '@/app/actions';
+// import { submitChatMessage } from '@/app/actions';
 
 type Message = {
   role: 'user' | 'bot';
@@ -77,6 +77,7 @@ export default function Chatbot() {
     setInput('');
     setIsLoading(true);
 
+    /*
     const result = await submitChatMessage({ message: messageText });
     
     if (result.success) {
@@ -86,6 +87,9 @@ export default function Chatbot() {
        const botMessage: Message = { role: 'bot', content: "Sorry, I'm having a little trouble thinking right now. Please try again in a moment." };
        setMessages((prev) => [...prev, botMessage]);
     }
+    */
+    const botMessage: Message = { role: 'bot', content: "I am currently offline. Please check back later." };
+    setMessages((prev) => [...prev, botMessage]);
     
     setIsLoading(false);
   }

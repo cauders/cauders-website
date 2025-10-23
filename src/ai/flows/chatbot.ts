@@ -8,7 +8,7 @@
  * - ChatInput - The input type for the chat function.
  * - ChatOutput - The return type for the chat function.
  */
-
+/*
 import {ai} from '@/ai/genkit';
 import {z} from 'zod';
 
@@ -81,3 +81,4 @@ const chatFlow = ai.defineFlow(
     return output!;
   }
 );
+*/
