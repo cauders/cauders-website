@@ -1,0 +1,29 @@
+
+'use client';
+
+import { cn } from '@/lib/utils';
+import { ArrowUpRight } from 'lucide-react';
+import Link from 'next/link';
+
+interface ArrowButtonProps {
+  href: string;
+  text: string;
+  className?: string;
+}
+
+export default function ArrowButton({ href, text, className }: ArrowButtonProps) {
+  return (
+    <Link href={href} className={cn("inline-flex group", className)}>
+      <div className="relative inline-flex items-center justify-center overflow-hidden transition-all duration-300 ease-out">
+        <div className="flex items-center gap-1">
+          <div className="border-2 border-white text-white px-4 py-1.5 md:px-6 md:py-2.5 rounded-bl-2xl md:rounded-bl-3xl rounded-tr-[2px] rounded-br-[2px] group-hover:bg-white group-hover:text-black transition-colors duration-300">
+            <span className="text-xs md:text-sm font-medium">{text}</span>
+          </div>
+          <div className="border-2 border-white bg-white p-2 md:p-3 rounded-[2px]">
+            <ArrowUpRight className="w-4 h-4 md:w-5 md:h-5 text-black" />
+          </div>
+        </div>
+      </div>
+    </Link>
+  );
+}

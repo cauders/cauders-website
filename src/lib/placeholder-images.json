@@ -1,0 +1,142 @@
+{
+  "innovation": {
+    "imageUrl": "https://picsum.photos/seed/innovation/800/600",
+    "aiHint": "digital innovation"
+  },
+  "expertise": {
+    "imageUrl": "https://picsum.photos/seed/expertise/800/600",
+    "aiHint": "team collaboration"
+  },
+  "vision": {
+    "imageUrl": "https://picsum.photos/seed/future-tech/800/600",
+    "aiHint": "future technology abstract"
+  },
+  "ecom": {
+    "imageUrl": "https://picsum.photos/seed/ecom/800/450"
+  },
+  "mobile-bank": {
+    "imageUrl": "https://picsum.photos/seed/mobile-bank/800/450"
+  },
+  "chatbot": {
+    "imageUrl": "https://picsum.photos/seed/chatbot/800/450"
+  },
+  "fintech": {
+    "imageUrl": "https://picsum.photos/seed/fintech/800/450"
+  },
+  "saas": {
+    "imageUrl": "https://picsum.photos/seed/saas/800/450"
+  },
+  "corp": {
+    "imageUrl": "https://picsum.photos/seed/corp/800/450"
+  },
+  "hero": {
+    "main": {
+      "imageUrl": "/images/hero/hero-bg-8.png",
+      "aiHint": "web design"
+    },
+    "front": {
+      "imageUrl": "/images/hero/hero-bg-9.png",
+      "aiHint": "mobile app user interface"
+    }
+  },
+  "intro": {
+    "imageUrl": "/images/hero/intro-1.png",
+    "aiHint": "abstract technology"
+  },
+  "mobilePortfolio": {
+    "screen1": {
+      "imageUrl": "/images/mobilePortfolio/mb-cd-1.svg",
+      "aiHint": "mobile app profile"
+    },
+    "screen2": {
+      "imageUrl": "/images/mobilePortfolio/mb-cd-2.svg",
+      "aiHint": "mobile course list"
+    },
+    "screen3": {
+      "imageUrl": "/images/mobilePortfolio/mb-cd-3.svg",
+      "aiHint": "mobile job search"
+    },
+    "screen4": {
+      "imageUrl": "https://picsum.photos/seed/mobscreen4/800/600",
+      "aiHint": "mobile app development"
+    },
+    "screen5": {
+      "imageUrl": "https://picsum.photos/seed/mobscreen5/300/600",
+      "aiHint": "user profile screen"
+    }
+  },
+  "principles": {
+    "imageUrl": "https://picsum.photos/seed/principles/800/1000",
+    "aiHint": "modern architecture"
+  },
+  "about": {
+    "hero": {
+      "imageUrl": "https://picsum.photos/seed/about-hero/1200/600",
+      "aiHint": "business meeting handshake"
+    }
+  },
+  "careers": {
+    "hero": {
+      "imageUrl": "/images/join.png",
+      "aiHint": "modern office team"
+    }
+  },
+  "services": {
+    "web-development": {
+      "imageUrl": "/images/services/web-dev-2.png",
+      "aiHint": "business meeting"
+    },
+    "mobile-app-development": {
+      "imageUrl": "/images/services/mob-dev-2.png",
+      "aiHint": "business meeting"
+    },
+    "ai-integrations": {
+      "imageUrl": "/images/services/ai-intg.png",
+      "aiHint": "business meeting"
+    },
+    "fintech-solutions": {
+      "imageUrl": "/images/services/fintech-service.png",
+      "aiHint": "business meeting"
+    },
+    "e-commerce-development": {
+      "imageUrl": "/images/services/ecom-dev.png",
+      "aiHint": "business meeting"
+    },
+    "erp-systems": {
+      "imageUrl": "/images/services/erp.png",
+      "aiHint": "business meeting"
+    },
+    "banking-solutions": {
+      "imageUrl": "/images/services/bank-sol.png",
+      "aiHint": "business meeting"
+    },
+    "uiux-designing": {
+      "imageUrl": "/images/services/uiux-2.png",
+      "aiHint": "business meeting"
+    }
+  },
+  "team": {
+    "meeting": {
+      "imageUrl": "/images/core1.png",
+      "aiHint": "team meeting collaboration"
+    },
+    "dataChart": {
+      "imageUrl": "/images/uiux.png",
+      "aiHint": "data chart laptop"
+    },
+    "members": {
+      "alex": "/images/team/m1.png",
+      "samantha": "/images/team/m2.png",
+      "michael": "/images/team/m3.png",
+      "emily": "/images/team/m4.png",
+      "david": "/images/team/m5.png",
+      "jessica": "/images/team/m6.png"
+    }
+  },
+  "feedback": {
+    "hero": {
+      "imageUrl": "https://picsum.photos/seed/feedback-hero/1200/400",
+      "aiHint": "abstract communication"
+    }
+  }
+}
