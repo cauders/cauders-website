@@ -111,7 +111,10 @@ export const projects: Project[] = [
     status: 'Live',
     year: 2022,
     implementation: ['Design', 'Code', 'Motion'],
-    testimonial: null
+    testimonial: {
+        author: "L. Martin, Creative Director at FCINQ",
+        text: "The immersive 3D experience Cauders built for us is breathtaking. They pushed the boundaries of web technology while staying true to our creative vision."
+    }
   },
   {
     id: 3,
@@ -169,7 +172,10 @@ export const projects: Project[] = [
     status: 'Live',
     year: 2020,
     implementation: ['LMS Integration', 'Development'],
-    testimonial: null
+    testimonial: {
+        author: "Dr. Davies, Head of eLearning",
+        text: "Integrating our new LMS was a complex task, but Cauders handled it flawlessly. Student engagement has increased significantly since the launch."
+    }
   },
   {
     id: 5,
@@ -191,7 +197,10 @@ export const projects: Project[] = [
     status: 'Live',
     year: 2022,
     implementation: ['Web Design', 'Development'],
-    testimonial: null
+    testimonial: {
+        author: "Sarah Evans, Clinic Manager",
+        text: "Our new website has made it so much easier for patients to find and book our services. The design is clean, professional, and very user-friendly."
+    }
   },
   {
     id: 6,
@@ -245,7 +254,11 @@ export const projects: Project[] = [
       '/images/projects/fajira-admin/gallery-1.png',
       '/images/projects/fajira-admin/gallery-2.png',
       '/images/projects/fajira-admin/gallery-3.png',
-    ]
+    ],
+    testimonial: {
+        author: "Fatima, Grocery Owner",
+        text: "Managing my store from my phone has never been easier. The Fajira Admin app is a lifesaver for my small business."
+    }
   },
   {
     id: 8,
@@ -270,7 +283,11 @@ export const projects: Project[] = [
     year: 2023,
     implementation: ['Android Dev', 'API'],
     mobileScreenshots: [ 
-    ]
+    ],
+    testimonial: {
+        author: "Chef Antoine, The Gourmet Kitchen",
+        text: "The Reachi KDS has revolutionized our kitchen workflow. Orders are faster, more accurate, and our staff is less stressed during peak hours. A must-have."
+    }
   },
   {
     id: 9,
@@ -711,3 +728,4 @@ export const projectCategories = ['All', ...Array.from(new Set(projects.map(p =>
 
     
     type ProjectCategory = 'Web App' | 'Mobile App' | 'AI/ML' | 'All';
+
