@@ -63,7 +63,7 @@
     background: linear-gradient(to bottom, hsl(var(--background)) 0%, #F2FFFE 50%, hsl(var(--background)) 75%, #EDFFFE 100%);
   }
   html {
-    scroll-behavior: smooth;
+    scroll-behavior: auto;
     cursor: none !important;
   }
   html::-webkit-scrollbar {

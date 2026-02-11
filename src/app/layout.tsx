@@ -9,12 +9,13 @@ import { ThemeProvider } from '@/components/cauders/ThemeProvider';
 import CustomCursor from '@/components/cauders/CustomCursor';
 import Footer from '@/components/cauders/Footer';
 import Script from 'next/script';
+import SmoothScroll from '@/components/cauders/SmoothScroll';
 // import Chatbot from '@/components/cauders/Chatbot';
 
 
 export const metadata: Metadata = {
   title: 'Cauders | Innovative Digital Solutions',
-  description: 'Cauders crafts premium, modern, and dynamic websites and applications.',
+  description: 'Cauders crafts premium, modern, and dynamic websites and applications that empower businesses to thrive.',
   icons: {
     icon: '/icon.png',
   },
@@ -54,6 +55,7 @@ export default function RootLayout({
       <body className={cn(montserrat.variable, 'flex flex-col min-h-screen antialiased font-body')}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
             <>
+              <SmoothScroll />
               <CustomCursor />
               <Header />
               <main>
