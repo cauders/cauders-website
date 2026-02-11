@@ -18,6 +18,22 @@ export const metadata: Metadata = {
   icons: {
     icon: '/icon.png',
   },
+  openGraph: {
+    title: 'Cauders | Innovative Digital Solutions',
+    description: 'Cauders crafts premium, modern, and dynamic websites and applications that empower businesses to thrive.',
+    url: 'https://www.cauders.com',
+    siteName: 'Cauders',
+    images: [
+      {
+        url: '/images/hero/intro-1.png',
+        width: 1200,
+        height: 630,
+        alt: 'Cauders Digital Innovation',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
 };
 
 const montserrat = Montserrat({
