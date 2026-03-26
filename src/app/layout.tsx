@@ -14,14 +14,14 @@ import SmoothScroll from '@/components/cauders/SmoothScroll';
 
 
 export const metadata: Metadata = {
-  title: 'Cauders | AI Automation and Software Solutions',
-  description: 'Cauders specializes in AI automation and custom software solutions that empower businesses to grow, adapt, and lead.',
+  title: 'Cauders | AI, Automation and Software Solutions',
+  description: 'Cauders specializes in AI, automation and custom software solutions that empower businesses to grow, adapt, and lead.',
   icons: {
     icon: '/icon.png',
   },
   openGraph: {
-    title: 'Cauders | AI Automation and Software Solutions',
-    description: 'Cauders specializes in AI automation and custom software solutions that empower businesses to grow, adapt, and lead.',
+    title: 'Cauders | AI, Automation and Software Solutions',
+    description: 'Cauders specializes in AI, automation and custom software solutions that empower businesses to grow, adapt, and lead.',
     url: 'https://www.cauders.com',
     siteName: 'Cauders',
     images: [
