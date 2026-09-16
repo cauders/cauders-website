@@ -4,9 +4,9 @@ import { Suspense } from "react";
 
 
 export default function ApplyPage() {
-    return (
-        <Suspense>
-            <ApplicationForm />
-        </Suspense>
-    );
+ return (
+ <Suspense>
+ <ApplicationForm />
+ </Suspense>
+ );
 }

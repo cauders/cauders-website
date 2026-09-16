@@ -5,25 +5,28 @@ import { useEffect } from 'react'
 import Lenis from 'lenis'
 
 export default function SmoothScroll() {
-  useEffect(() => {
-    const lenis = new Lenis({
-      lerp: 0.1,
-      duration: 1.2,
-      smoothWheel: true,
-      touchMultiplier: 2,
-    })
+ useEffect(() => {
+ const lenis = new Lenis({
+ lerp: 0.1, 
+ duration: 1.2, 
+ smoothWheel: true,
+ touchMultiplier: 2,
+ })
 
-    function raf(time: number) {
-      lenis.raf(time)
-      requestAnimationFrame(raf)
-    }
+ let rafId: number;
 
-    requestAnimationFrame(raf)
+ function raf(time: number) {
+ lenis.raf(time)
+ rafId = requestAnimationFrame(raf)
+ }
 
-    return () => {
-      lenis.destroy()
-    }
-  }, [])
+ rafId = requestAnimationFrame(raf)
 
-  return null
+ return () => {
+ lenis.destroy()
+ cancelAnimationFrame(rafId)
+ }
+ }, [])
+
+ return null
 }

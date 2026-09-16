@@ -8,13 +8,14 @@ export default {
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/lib/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
     container: {
       center: true,
       padding: '2rem',
       screens: {
-        '2xl': '1400px',
+        '2xl': '1600px',
       },
     },
     extend: {
@@ -23,6 +24,7 @@ export default {
       },
       backgroundImage: {
         'gradient-text': 'linear-gradient(to right, hsl(var(--primary)) 0%, #003B38 100%)',
+        'gradient-text-light': 'linear-gradient(to right, hsl(var(--primary)) 0%, #00a59e 100%)',
         'gradient-container': 'linear-gradient(to right, #003B38 0%, hsl(var(--primary)) 100%)',
       },
       boxShadow: {
@@ -126,5 +128,5 @@ export default {
       },
     },
   },
-  plugins: [require('tailwindcss-animate')],
+  plugins: [require('tailwindcss-animate'), require('@tailwindcss/typography')],
 };

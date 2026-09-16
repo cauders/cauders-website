@@ -1,36 +1,31 @@
-'use client';
-
 import { cn } from '@/lib/utils';
 import Image from 'next/image';
-import Link from 'next/link';
 
 interface GlassBadgeProps {
-  href: string;
-  text: string;
-  className?: string;
+ text: string;
+ className?: string;
 }
 
-export default function GlassBadge({ href, text, className }: GlassBadgeProps) {
-  return (
-    <Link href={href} className={cn(
-        "inline-flex items-center justify-center gap-2 rounded-full",
-        "px-4 py-1.5",
-        "border-2 border-white/30",
-        "bg-white/15",
-        "backdrop-blur-[50px]",
-        "text-white text-xs font-normal",
-        "transition-all duration-300 hover:bg-white/25 hover:border-white/50",
-        className
-    )}>
-      <Image 
-        src="/images/icons/arrow-icon.svg"
-        alt="arrow icon"
-        width={12}
-        height={12}
-        className=""
-        style={{ width: 'auto', height: 'auto' }}
-      />
-      <span>{text}</span>
-    </Link>
-  );
+export default function GlassBadge({ text, className }: GlassBadgeProps) {
+ return (
+ <div className={cn(
+ "inline-flex items-center justify-center gap-3 rounded-full",
+ "px-5 py-2",
+ "border border-primary/50",
+ "bg-transparent",
+ "backdrop-blur-sm",
+ "text-primary text-[9px] sm:text-[10px] uppercase tracking-[0.15em] font-normal",
+ className
+ )}>
+ <Image 
+ src="https://res.cloudinary.com/cauders/image/upload/v1786552819/arrow-cy_olfzuh.svg"
+ alt="arrow icon"
+ width={12}
+ height={12}
+ className=""
+ style={{ width: 'auto', height: 'auto' }}
+ />
+ <span className="mt-[1px]">{text}</span>
+ </div>
+ );
 }

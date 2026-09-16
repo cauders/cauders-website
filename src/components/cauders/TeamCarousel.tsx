@@ -2,132 +2,147 @@
 
 import React, { useState, useEffect } from 'react';
 import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
+ Carousel,
+ CarouselContent,
+ CarouselItem,
+ CarouselNext,
+ CarouselPrevious,
 } from "@/components/ui/carousel"
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import Link from 'next/link';
+import ImageCard from '@/components/cauders/ImageCard';
 import { teamMembers, type TeamMember } from '@/lib/team-data';
 import StandardizedHeading from './StandardizedHeading';
 import ScrollFadeIn from './ScrollFadeIn';
-import { ArrowRight, Linkedin, X } from 'lucide-react';
+import { ArrowRight, Linkedin, TrendingUp, MapPin, Users, Laptop } from 'lucide-react';
 import ArrowBadge from './ArrowBadge';
 import BlurCircle from './BlurCircle';
+import GradientContainer from './GradientContainer';
+import CircleIcon from './CircleIcon';
 
 export default function TeamCarousel() {
-    const [selectedMember, setSelectedMember] = useState<TeamMember | null>(teamMembers[0]);
+ // The carousel is now display-only, so we don't need selectedMember state here.
 
-    const handleMemberSelect = (member: TeamMember) => {
-        setSelectedMember(member);
-        setTimeout(() => {
-            document.getElementById('team-detail')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }, 100);
-    }
+ return (
+ <>
+ <section className="py-16 lg:py-20">
+ <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+ <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
+ <div className="lg:col-span-1">
+ <div className="flex flex-col">
+ <ScrollFadeIn>
+ <ArrowBadge href="/team" text="Our Team" variant="black" className="mb-4" />
+ </ScrollFadeIn>
+ <StandardizedHeading lines={["Meet With Our Experts"]} />
+ <ScrollFadeIn delay={100}>
+ <p className="mt-4 text-sm text-foreground">
+ We're a collective of dedicated problem-solvers and engineers united by a shared passion for crafting exceptional digital experiences.
+ </p>
+ </ScrollFadeIn>
+ </div>
+ </div>
+ <div className="lg:col-span-2">
+ <ScrollFadeIn delay={200}>
+ <Carousel
+ opts={{
+ align: "start",
+ loop: true,
+ }}
+ className="w-full"
+ >
+ <CarouselContent className="-ml-4">
+ {teamMembers.map((member, index) => (
+ <CarouselItem key={index} className="pl-4 basis-full sm:basis-1/2 md:basis-1/3">
+ <div className="p-1 h-full">
+ <ImageCard
+ imageUrl={member.imageUrl}
+ altText={member.name}
+ heading={member.name}
+ subheading={member.role}
+ description={member.bio}
+ className="h-[400px] md:h-[480px]"
+ descriptionClassName="!line-clamp-3"
+ imageClassName="object-top"
+ icon={
+ member.socials.linkedin && (
+ <Button variant="ghost" size="icon" className="w-6 h-6 hover:bg-white/10" asChild>
+ <Link href={member.socials.linkedin} target="_blank" aria-label="LinkedIn">
+ <Linkedin className="h-4 w-4 text-white hover:text-primary" />
+ </Link>
+ </Button>
+ )
+ }
+ />
+ </div>
+ </CarouselItem>
+ ))}
+ </CarouselContent>
+ <div className="flex items-center justify-center gap-4 mt-8">
+ <CarouselPrevious className="static -translate-x-1 bg-card border-border text-foreground hover:bg-muted" />
+ <CarouselNext className="static translate-x-1 bg-card border-border text-foreground hover:bg-muted" />
+ </div>
+ </Carousel>
+ </ScrollFadeIn>
+ </div>
+ </div>
+ </div>
+ </section>
+ 
+ <GradientContainer className="relative overflow-hidden py-12 lg:py-20" imageSrc="">
+ <BlurCircle className="w-96 h-96 top-[-10rem] right-[-10rem]" />
+ <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+ <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-16 items-center">
+ <ScrollFadeIn>
+ <div className="relative aspect-video md:aspect-[4/3] w-full rounded-2xl overflow-hidden group shadow-lg">
+ <Image 
+ src="https://res.cloudinary.com/cauders/image/upload/v1786803238/workspace_byyhyg.png"
+ alt="Cauders Workspace" 
+ fill
+ className="object-cover rounded-3xl transition-transform duration-500 group-hover:scale-105"
+ />
+ </div>
+ </ScrollFadeIn>
+ <ScrollFadeIn delay={200} className="text-left md:row-start-auto row-start-1">
+ <ArrowBadge href="/careers" text="Careers" className="mb-4" />
+ <StandardizedHeading 
+ lines={["Build the Future with Us"]} 
+ className="text-left text-white"
+ />
+  <p className="text-white mt-4 max-w-lg leading-relaxed">
+ We're always looking for brilliant, driven individuals who want to create high-impact software and AI solutions. If you're passionate about innovation and want to work in an environment that values creativity and excellence, we'd love to hear from you.
+ </p>
 
-  return (
-    <>
-    <section className="py-16 lg:py-32">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
-          <div className="lg:col-span-1">
-            <ScrollFadeIn>
-                <ArrowBadge href="/team" text="Our Team" variant="black" className="mb-4" />
-                <StandardizedHeading lines={["Meet With <span class='bg-gradient-text text-transparent bg-clip-text'>Our Experts</span>"]} />
-                <p className="mt-4 text-sm text-foreground/70">
-                    Our success is driven by a team of passionate experts who transform visionary ideas into powerful digital realities. Meet the minds behind our innovation.
-                </p>
-            </ScrollFadeIn>
-          </div>
-          <div className="lg:col-span-2">
-            <ScrollFadeIn delay={200}>
-                <Carousel
-                    opts={{
-                        align: "start",
-                        loop: true,
-                    }}
-                    className="w-full"
-                >
-                    <CarouselContent className="-ml-4">
-                        {teamMembers.map((member, index) => (
-                        <CarouselItem key={index} className="pl-4 basis-full sm:basis-1/2 md:basis-1/3">
-                            <div className="p-1 h-full" onClick={() => handleMemberSelect(member)}>
-                                <Card className="group relative overflow-hidden rounded-2xl border-0 shadow-smooth-lift cursor-pointer h-full">
-                                    <div className="aspect-[4/5] w-full h-full relative">
-                                        <Image
-                                            src={member.imageUrl}
-                                            alt={member.name}
-                                            fill
-                                            className="object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
-                                        />
-                                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
-                                    </div>
-                                    <div className="absolute inset-0 flex flex-col justify-end p-4 text-white">
-                                        <div>
-                                            <h4 className="text-lg font-bold text-white font-headline">{member.name}</h4>
-                                            <p className="text-sm text-primary">{member.role}</p>
-                                        </div>
-                                        {member.socials.linkedin && (
-                                            <div className="mt-4">
-                                                <Link href={member.socials.linkedin} target="_blank" aria-label="LinkedIn">
-                                                    <Linkedin className="h-5 w-5 text-white/70 hover:text-white" />
-                                                </Link>
-                                            </div>
-                                        )}
-                                    </div>
-                                </Card>
-                            </div>
-                        </CarouselItem>
-                        ))}
-                    </CarouselContent>
-                    <div className="flex items-center justify-center gap-4 mt-8">
-                        <CarouselPrevious className="static -translate-x-1 bg-card border-border text-foreground hover:bg-muted" />
-                        <CarouselNext className="static translate-x-1 bg-card border-border text-foreground hover:bg-muted" />
-                    </div>
-                </Carousel>
-            </ScrollFadeIn>
-          </div>
-        </div>
-      </div>
-    </section>
-    
-    <div className="relative">
-        <BlurCircle className="w-96 h-96 top-[-10rem] right-[-10rem]" />
-        {selectedMember && (
-            <section id="team-detail" className="py-16 lg:py-24">
-                <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                    <div key={selectedMember.name} className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-16 items-center animate-fade-in-up">
-                        <div className="relative aspect-square md:aspect-[4/5] w-full max-w-md mx-auto">
-                            <Image 
-                                src={selectedMember.imageUrl} 
-                                alt={selectedMember.name} 
-                                fill
-                                className="object-cover rounded-3xl shadow-2xl"
-                            />
-                        </div>
-                        <div className="text-left md:row-start-auto row-start-1">
-                            <ArrowBadge href="#" text="Specialist" variant="black" className="mb-4" />
-                            <h3 className="text-3xl lg:text-4xl font-bold font-headline text-foreground">{selectedMember.name}</h3>
-                            <p className="text-foreground/80 mt-1">{selectedMember.role}</p>
-                            <p className="text-foreground/70 mt-4 max-w-lg">{selectedMember.bio}</p>
-                            
-                            <div className="mt-8 flex items-center gap-4">
-                                <Button asChild size="lg" variant="zinc">
-                                    <Link href="/contact">
-                                        Contact <ArrowRight className="ml-2"/>
-                                    </Link>
-                                </Button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        )}
-    </div>
-    </>
-  );
+ <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-lg">
+ <div className="flex items-center gap-4">
+ <CircleIcon icon={TrendingUp} iconClassName="text-zinc" />
+ <span className="text-sm font-semibold text-white">Growth Opportunities</span>
+ </div>
+ <div className="flex items-center gap-4">
+ <CircleIcon icon={MapPin} iconClassName="text-zinc" />
+ <span className="text-sm font-semibold text-white">Remote & Flexible</span>
+ </div>
+ <div className="flex items-center gap-4">
+ <CircleIcon icon={Users} iconClassName="text-zinc" />
+ <span className="text-sm font-semibold text-white">Great Culture</span>
+ </div>
+ <div className="flex items-center gap-4">
+ <CircleIcon icon={Laptop} iconClassName="text-zinc" />
+ <span className="text-sm font-semibold text-white">Latest Tech Stack</span>
+ </div>
+ </div>
+ <div className="mt-10 flex items-center gap-4">
+ <Button asChild size="lg" variant="outline" className="h-12 text-base px-8 group border-white text-white hover:bg-white hover:text-zinc bg-transparent">
+ <Link href="/careers">
+ View Open Positions <ArrowRight className="ml-2 w-4 h-4 transition-transform duration-300 group-hover:-rotate-45"/>
+ </Link>
+ </Button>
+ </div>
+ </ScrollFadeIn>
+ </div>
+ </div>
+ </GradientContainer>
+ </>
+ );
 }

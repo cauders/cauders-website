@@ -14,43 +14,27 @@ import BlurCircle from './BlurCircle';
 import ScrollFadeIn from './ScrollFadeIn';
 
 export default function HomePage() {
-  return (
-    <div className="overflow-x-hidden">
-      <div className="relative">
-        <BlurCircle className="w-96 h-96 top-1/2 -translate-y-1/2 right-0" />
-        <BlurCircle className="w-96 h-96 bottom-[-10rem] left-[-10rem]" />
-        <Hero />
-      </div>
-      <ScrollFadeIn>
-        <WhyChooseUs />
-      </ScrollFadeIn>
-      <ScrollFadeIn>
-        <ServicesPreview />
-      </ScrollFadeIn>
-      <ScrollFadeIn>
-        <div className="relative">
-          <BlurCircle className="w-96 h-96 top-0 right-0" />
-          <HomePageContact />
-        </div>
-      </ScrollFadeIn>
-      <ScrollFadeIn>
-        <PortfolioSection />
-      </ScrollFadeIn>
-      <ScrollFadeIn>
-        <FAQPreview />
-      </ScrollFadeIn>
-      <ScrollFadeIn>
-        <div className="relative">
-          <BlurCircle className="w-96 h-96 bottom-[-10rem] right-[-10rem]" />
-          <MobilePortfolio />
-        </div>
-      </ScrollFadeIn>
-      <ScrollFadeIn>
-        <Testimonials />
-      </ScrollFadeIn>
-      <ScrollFadeIn>
-        <GetAQuote />
-      </ScrollFadeIn>
-    </div>
-  );
+ return (
+ <div>
+ <div className="relative overflow-x-clip">
+ <BlurCircle className="w-[600px] h-[600px] md:w-[800px] md:h-[800px] top-1/2 -translate-y-1/2 right-[-200px]" />
+ <BlurCircle className="w-[600px] h-[600px] md:w-[800px] md:h-[800px] bottom-[-20rem] left-[-20rem]" />
+ <Hero />
+ </div>
+ <WhyChooseUs />
+ <ServicesPreview />
+ <div className="relative overflow-x-clip">
+ <BlurCircle className="w-[600px] h-[600px] md:w-[800px] md:h-[800px] top-[-15rem] right-[-15rem]" />
+ <HomePageContact />
+ </div>
+ <PortfolioSection />
+ <FAQPreview />
+ <div className="relative overflow-x-clip">
+ <BlurCircle className="w-[600px] h-[600px] md:w-[800px] md:h-[800px] bottom-[-15rem] right-[-15rem]" />
+ <MobilePortfolio />
+ </div>
+ <Testimonials />
+ <GetAQuote />
+ </div>
+ );
 }

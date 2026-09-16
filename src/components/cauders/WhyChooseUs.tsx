@@ -1,94 +1,93 @@
-
 'use client';
 
 import { Award, BrainCircuit, ShieldCheck, Star } from "lucide-react";
-import { Card } from "../ui/card";
 import ScrollFadeIn from "./ScrollFadeIn";
+import ContainerCard from "./ContainerCard";
 import StandardizedHeading from "./StandardizedHeading";
 import AnimatedNumber from "./AnimatedNumber";
+import CircleIcon from "./CircleIcon";
+import { typography } from "@/lib/typography";
 
 const features = [
-    {
-        icon: Star,
-        text: "Tailored solutions that align with your unique business goals."
-    },
-    {
-        icon: BrainCircuit,
-        text: "Innovative, future-proof products built with cutting-edge technology."
-    },
-    {
-        icon: Award,
-        text: "A focus on quality and performance to meet the highest standards."
-    },
-    {
-        icon: ShieldCheck,
-        text: "Lasting partnerships built on trust, transparency, and collaboration."
-    }
+ {
+ icon: Star,
+ text: "Custom-engineered solutions designed precisely for your core business objectives."
+ },
+ {
+ icon: BrainCircuit,
+ text: "Future-ready architecture powered by cutting-edge, scalable digital technologies."
+ },
+ {
+ icon: Award,
+ text: "Uncompromising engineering standards ensuring peak performance and reliability."
+ },
+ {
+ icon: ShieldCheck,
+ text: "Transparent, long-term partnerships driven by collaborative growth and trust."
+ }
 ];
 
 const stats = [
-    {
-        value: "10",
-        label: "Years of Experience",
-        suffix: "+"
-    },
-    {
-        value: "50",
-        label: "Projects Completed",
-        suffix: "+"
-    },
-    {
-        value: "98",
-        label: "Client Satisfaction",
-        suffix: "%"
-    },
-    {
-        value: "15",
-        label: "Team Experts",
-        suffix: "+"
-    }
+ {
+ value: "10",
+ label: "Years of Experience",
+ suffix: "+"
+ },
+ {
+ value: "50",
+ label: "Projects Completed",
+ suffix: "+"
+ },
+ {
+ value: "98",
+ label: "Client Satisfaction",
+ suffix: "%"
+ },
+ {
+ value: "15",
+ label: "Team Experts",
+ suffix: "+"
+ }
 ];
 
 export default function WhyChooseUs() {
-    return (
-        <section className="py-12 md:py-20 lg:py-32">
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="text-center mb-8 md:mb-12 lg:mb-20">
-                    <StandardizedHeading lines={[ "Why People Choose Cauders" ]} />
-                    <ScrollFadeIn>
-                        <p className="mt-2 text-[10px] md:mt-4 md:text-base text-foreground/70 max-w-2xl mx-auto">
-                            We're more than an agency; we are your partners in innovation and excellence.
-                        </p>
-                    </ScrollFadeIn>
-                </div>
+ return (
+ <section className="py-12 md:py-20 lg:py-20">
+ <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+ <div className="text-center mb-8 md:mb-12 lg:mb-20">
+ <StandardizedHeading lines={[ "Why People Choose Cauders" ]} />
+ <ScrollFadeIn>
+ <p className={`mt-2 md:mt-4 ${typography.bodyBase} font-normal text-foreground max-w-2xl mx-auto`}>
+ We're more than an agency; we are your partners in innovation and excellence.
+ </p>
+ </ScrollFadeIn>
+ </div>
 
-                <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8 lg:gap-12 mb-6 md:mb-8 lg:mb-12">
-                    {features.map((feature, index) => (
-                        <ScrollFadeIn key={index} style={{ animationDelay: `${index * 100}ms` }}>
-                            <div className="flex flex-col items-start gap-2 md:gap-4">
-                                <div className="flex-shrink-0 bg-primary/10 rounded-full p-2 md:p-3 border border-primary/20">
-                                    <feature.icon className="w-4 h-4 md:w-6 md:h-6 text-foreground" />
-                                </div>
-                                <p className="text-[10px] md:text-sm text-foreground font-medium">{feature.text}</p>
-                            </div>
-                        </ScrollFadeIn>
-                    ))}
-                </div>
+ <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 mb-2 lg:mb-4">
+ {features.map((feature, index) => (
+ <ScrollFadeIn key={index} style={{ animationDelay: `${index * 100}ms` }} className="h-full">
+ <div className="flex flex-col items-start gap-4 md:gap-6 h-full p-4 md:p-6 hover:-translate-y-1 transition-transform duration-300">
+ <CircleIcon icon={feature.icon} className="text-zinc shadow-sm" iconClassName="w-6 h-6 md:w-8 md:h-8" />
+ <p className="text-body-base text- font-medium ">{feature.text}</p>
+ </div>
+ </ScrollFadeIn>
+ ))}
+ </div>
 
-                <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 md:gap-4 lg:gap-6">
-                    {stats.map((stat, index) => (
-                        <ScrollFadeIn key={index} style={{ animationDelay: `${(index + 4) * 100}ms` }} className="h-full">
-                            <Card className="text-center py-8 md:py-12 px-2 md:px-6 bg-primary/20 border-primary/30 h-full flex flex-col justify-center items-center hover:-translate-y-1 md:hover:-translate-y-2 transition-transform duration-300">
-                                <p className="text-2xl md:text-4xl lg:text-5xl font-semibold text-foreground font-headline">
-                                    <AnimatedNumber value={parseInt(stat.value)} />
-                                    {stat.suffix}
-                                </p>
-                                <p className="text-[10px] md:text-sm lg:text-base text-foreground/80 mt-1 md:mt-2">{stat.label}</p>
-                            </Card>
-                        </ScrollFadeIn>
-                    ))}
-                </div>
-            </div>
-        </section>
-    );
+ <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 lg:gap-8">
+ {stats.map((stat, index) => (
+ <ScrollFadeIn key={index} style={{ animationDelay: `${(index + 4) * 100}ms` }} className="h-full">
+ <ContainerCard hoverEffect className="text-center py-10 md:py-[3.75rem] px-4 md:px-6 h-full flex flex-col justify-center items-center">
+ <p className="text-4xl md:text-5xl lg:text-6xl text-foreground font-headline font-semibold mb-2 md:mb-3">
+ <AnimatedNumber value={parseInt(stat.value)} />
+ {stat.suffix}
+ </p>
+ <p className="text-body-base lg:text-base text-muted-foreground font-medium">{stat.label}</p>
+ </ContainerCard>
+ </ScrollFadeIn>
+ ))}
+ </div>
+ </div>
+ </section>
+ );
 }
