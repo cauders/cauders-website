@@ -20,6 +20,9 @@ export interface ImageContainerHeroProps {
  ctaText?: string;
  ctaHref?: string;
  onCtaClick?: () => void;
+ secondaryCtaText?: string;
+ secondaryCtaHref?: string;
+ onSecondaryCtaClick?: () => void;
  variant?: 'light' | 'dark';
 }
 
@@ -33,6 +36,9 @@ export default function ImageContainerHero({
  ctaText,
  ctaHref,
  onCtaClick,
+ secondaryCtaText,
+ secondaryCtaHref,
+ onSecondaryCtaClick,
  variant = 'light'
 }: ImageContainerHeroProps) {
  
@@ -74,6 +80,7 @@ export default function ImageContainerHero({
 
  {ctaText && (
  <ScrollFadeIn direction="up" delay={400} className="mt-8 md:mt-10">
+ <div className="flex flex-wrap items-center justify-center gap-4">
  {onCtaClick ? (
  <Button onClick={onCtaClick} variant="zinc" size="lg" className="group">
  <span>{ctaText}</span>
@@ -94,6 +101,30 @@ export default function ImageContainerHero({
  </Link>
  </Button>
  )}
+ 
+ {secondaryCtaText && (
+ onSecondaryCtaClick ? (
+ <Button onClick={onSecondaryCtaClick} variant="outline" size="lg" className="group border border-zinc-300 dark:border-zinc-800 text-foreground hover:bg-zinc-100 dark:hover:bg-zinc-900 bg-transparent">
+ <span>{secondaryCtaText}</span>
+ </Button>
+ ) : (
+ <Button asChild variant="outline" size="lg" className="group border border-zinc-300 dark:border-zinc-800 text-foreground hover:bg-zinc-100 dark:hover:bg-zinc-900 bg-transparent">
+ <Link 
+ href={secondaryCtaHref || '#'} 
+ className="block"
+ onClick={(e) => {
+ if (secondaryCtaHref?.startsWith('#')) {
+ e.preventDefault();
+ document.querySelector(secondaryCtaHref)?.scrollIntoView({ behavior: 'smooth' });
+ }
+ }}
+ >
+ {secondaryCtaText}
+ </Link>
+ </Button>
+ )
+ )}
+ </div>
  </ScrollFadeIn>
  )}
  </div>

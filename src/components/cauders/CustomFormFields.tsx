@@ -17,7 +17,7 @@ export const CustomInput = forwardRef<HTMLInputElement, React.ComponentProps<"in
  <Input
  ref={ref}
  className={cn(
- "h-12 bg-white/20 border-white/10 text-white placeholder:text-white rounded-xl focus:border-primary focus-visible:ring-0 focus-visible:ring-offset-0 focus:bg-white/30 transition-colors",
+ "h-12 bg-white/20 border-white/10 text-white placeholder:text-white rounded-full px-6 focus:border-primary focus-visible:ring-0 focus-visible:ring-offset-0 focus:bg-white/30 transition-colors",
  className
  )}
  {...props}
@@ -33,7 +33,7 @@ export const CustomTextarea = forwardRef<HTMLTextAreaElement, React.ComponentPro
  <Textarea
  ref={ref}
  className={cn(
- "min-h-[120px] resize-none bg-white/20 border-white/10 text-white placeholder:text-white rounded-xl focus:border-primary focus-visible:ring-0 focus-visible:ring-offset-0 focus:bg-white/30 transition-colors p-4",
+ "min-h-[120px] resize-none bg-white/20 border-white/10 text-white placeholder:text-white rounded-3xl focus:border-primary focus-visible:ring-0 focus-visible:ring-offset-0 focus:bg-white/30 transition-colors p-6",
  className
  )}
  {...props}
@@ -65,7 +65,7 @@ export function CustomSelect({
  <FormControl>
  <SelectTrigger 
  className={cn(
- "h-12 bg-white/20 border-white/10 text-white data-[placeholder]:text-white rounded-xl focus:border-primary focus:ring-0 focus:ring-offset-0 focus-visible:ring-0 focus-visible:ring-offset-0 focus:bg-white/30 transition-colors outline-none",
+ "h-12 bg-white/20 border-white/10 text-white data-[placeholder]:text-white rounded-full px-6 focus:border-primary focus:ring-0 focus:ring-offset-0 focus-visible:ring-0 focus-visible:ring-offset-0 focus:bg-white/30 transition-colors outline-none",
  className
  )}
  >
