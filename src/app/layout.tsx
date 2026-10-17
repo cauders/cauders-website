@@ -9,6 +9,7 @@ import CustomCursor from '@/components/cauders/CustomCursor';
 import Footer from '@/components/cauders/Footer';
 import Script from 'next/script';
 import SmoothScroll from '@/components/cauders/SmoothScroll';
+import { Suspense } from 'react';
 import NavigationProgress from '@/components/cauders/NavigationProgress';
 // import Chatbot from '@/components/cauders/Chatbot';
 
@@ -101,7 +102,9 @@ export default function RootLayout({
       <body className={cn(montserrat.variable, inter.variable, 'flex flex-col min-h-screen antialiased font-body overflow-x-clip')}>
         <ThemeProvider attribute="class" defaultTheme="light" forcedTheme="light">
           <>
-            <NavigationProgress />
+            <Suspense fallback={null}>
+              <NavigationProgress />
+            </Suspense>
             <SmoothScroll />
             <CustomCursor />
             <Header />

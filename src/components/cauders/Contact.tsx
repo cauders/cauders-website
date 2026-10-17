@@ -18,7 +18,7 @@ import { useToast } from "@/hooks/use-toast";
 import { submitContactForm } from "@/app/actions";
 import ScrollFadeIn from "./ScrollFadeIn";
 import { Loader2 } from "lucide-react";
-import { usePathname, useSearchParams } from "next/navigation";
+import { usePathname } from "next/navigation";
 import ContactPageContent from "./ContactPageContent";
 import { Suspense } from "react";
 import HomePageContact from "./HomePageContact";
