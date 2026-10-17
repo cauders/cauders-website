@@ -19,6 +19,7 @@ export default function PortfolioPreview() {
   const cursorPosition = useRef({ x: 0, y: 0 });
   const followerPosition = useRef({ x: 0, y: 0 });
   const isDragging = useRef(false);
+  const totalDragDistance = useRef(0);
   const wasDragging = useRef(false);
   const startX = useRef(0);
   const startDragX = useRef(0);
@@ -30,34 +31,53 @@ export default function PortfolioPreview() {
   const isInitialized = useRef(false);
 
   const lastFollowerTransform = useRef("");
-  const viewportWidth = useRef(typeof window !== 'undefined' ? window.innerWidth : 1024);
+  const viewportWidth = useRef(typeof window !== "undefined" ? window.innerWidth : 1024);
   const cardWidthCache = useRef(0);
+
+  // Helper to get reliable card width
+  const getCardWidth = useCallback(() => {
+    if (cardRefs.current[0] && cardRefs.current[0].offsetWidth > 0) {
+      cardWidthCache.current = cardRefs.current[0].offsetWidth;
+      return cardWidthCache.current;
+    }
+    const vw = viewportWidth.current || (typeof window !== "undefined" ? window.innerWidth : 1024);
+    const calculated =
+      vw < 768
+        ? vw * 0.8
+        : vw < 1024
+        ? vw * 0.5
+        : vw < 1280
+        ? vw * 0.4
+        : vw * 0.3;
+    cardWidthCache.current = calculated;
+    return calculated;
+  }, []);
 
   useEffect(() => {
     const handleResize = () => {
       viewportWidth.current = window.innerWidth;
-      if (cardRefs.current[0]) {
-        cardWidthCache.current = cardRefs.current[0].offsetWidth;
-      }
+      getCardWidth();
     };
-    
+
     handleResize();
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [getCardWidth]);
 
   useEffect(() => {
     const animate = () => {
-      // Only compute and update follower transform when the carousel is actually hovered or dragged
+      // Follower position animation
       if (followerRef.current && (isHoveringCarousel || isDragging.current)) {
         const diffX = cursorPosition.current.x - followerPosition.current.x;
         const diffY = cursorPosition.current.y - followerPosition.current.y;
-        
+
         if (Math.abs(diffX) > 0.5 || Math.abs(diffY) > 0.5) {
           followerPosition.current.x += diffX * 0.15;
           followerPosition.current.y += diffY * 0.15;
-          
-          const newFollowerTransform = `translate(-50%, -50%) translate3d(${Math.round(followerPosition.current.x)}px, ${Math.round(followerPosition.current.y)}px, 0)`;
+
+          const newFollowerTransform = `translate(-50%, -50%) translate3d(${Math.round(
+            followerPosition.current.x
+          )}px, ${Math.round(followerPosition.current.y)}px, 0)`;
           if (newFollowerTransform !== lastFollowerTransform.current) {
             followerRef.current.style.transform = newFollowerTransform;
             lastFollowerTransform.current = newFollowerTransform;
@@ -65,84 +85,93 @@ export default function PortfolioPreview() {
         }
       }
 
-      if (carouselWrapRef.current && cardWidthCache.current > 0) {
+      if (carouselWrapRef.current) {
+        const cardWidth = cardWidthCache.current || getCardWidth();
+        const currentViewportWidth = viewportWidth.current || window.innerWidth;
+
+        // Vertical page scroll synchronization (only when not actively dragging)
         const currentScrollY = window.scrollY;
         if (!isDragging.current && currentScrollY !== lastScrollY.current) {
           const deltaScroll = currentScrollY - lastScrollY.current;
-          // Softened from 1.5 to 0.5 so vertical page scrolling remains ultra-smooth
           const scrollTranslation = deltaScroll * 0.5;
           targetX.current -= scrollTranslation;
-          
+
           if (Math.abs(velocity.current) < 0.1) {
             currentX.current -= scrollTranslation;
           }
         }
         lastScrollY.current = currentScrollY;
 
+        // Inertia momentum on release
         if (!isDragging.current) {
-          velocity.current *= 0.90;
+          velocity.current *= 0.92;
           if (Math.abs(velocity.current) < 0.1) {
             velocity.current = 0;
           } else {
             targetX.current += velocity.current;
           }
         }
-        
+
         const diffX = targetX.current - currentX.current;
-        
-        if (!isInitialized.current || isDragging.current || Math.abs(diffX) > 0.5 || Math.abs(velocity.current) > 0) {
+
+        if (
+          !isInitialized.current ||
+          isDragging.current ||
+          Math.abs(diffX) > 0.5 ||
+          Math.abs(velocity.current) > 0
+        ) {
           isInitialized.current = true;
-          
+
           if (!isDragging.current && Math.abs(diffX) < 1 && velocity.current === 0) {
             currentX.current = targetX.current;
           } else {
-            const damping = isDragging.current ? 0.1 : 0.05;
+            // Snappy tracking when dragging (0.75), smooth easing when free-floating (0.08)
+            const damping = isDragging.current ? 0.75 : 0.08;
             currentX.current += diffX * damping;
           }
         }
-        
-        const currentViewportWidth = viewportWidth.current;
+
         const centerScreen = currentViewportWidth / 2;
-        
-        const cardWidth = cardWidthCache.current;
-        const gap = currentViewportWidth < 768 ? 16 : 40; 
+        const gap = currentViewportWidth < 768 ? 16 : 40;
         const itemWidth = cardWidth + gap;
         const totalWidth = itemWidth * projects.length;
-        
+
         cardRefs.current.forEach((card, i) => {
           if (!card) return;
           const baseX = i * itemWidth;
-          
+
           let virtualX = (baseX + currentX.current) % totalWidth;
           if (virtualX < 0) virtualX += totalWidth;
-          
+
           if (virtualX > centerScreen + totalWidth / 2) {
             virtualX -= totalWidth;
           } else if (virtualX < centerScreen - totalWidth / 2) {
             virtualX += totalWidth;
           }
-          
-          // Performance Culling: Skip expensive 3D transforms for cards off-screen
-          const isOffscreen = virtualX < -cardWidth * 1.2 || virtualX > currentViewportWidth + cardWidth * 0.5;
+
+          // Culling with safe margins to prevent popping or stuck transforms
+          const isOffscreen =
+            virtualX < -cardWidth * 1.5 || virtualX > currentViewportWidth + cardWidth * 1.0;
           if (isOffscreen) {
-            if (card.style.visibility !== 'hidden') {
-              card.style.visibility = 'hidden';
+            if (card.style.visibility !== "hidden") {
+              card.style.visibility = "hidden";
             }
             return;
-          } else if (card.style.visibility === 'hidden') {
-            card.style.visibility = 'visible';
+          } else if (card.style.visibility === "hidden") {
+            card.style.visibility = "visible";
           }
-          
-          const cardCenter = virtualX + (cardWidth / 2);
+
+          const cardCenter = virtualX + cardWidth / 2;
           const distFromCenter = cardCenter - centerScreen;
-          
-          const rotateY = distFromCenter * -0.04; 
+
+          const rotateY = distFromCenter * -0.04;
           const translateZ = -Math.abs(distFromCenter) * 0.6;
           const clampedRotateY = Math.max(-55, Math.min(55, rotateY));
-          
-          // Hardware-accelerated translate3d with rounded coordinates
-          const transform = `translate3d(${Math.round(virtualX)}px, 0, ${Math.round(translateZ)}px) rotateY(${clampedRotateY.toFixed(1)}deg)`;
-          
+
+          const transform = `translate3d(${Math.round(virtualX)}px, 0, ${Math.round(
+            translateZ
+          )}px) rotateY(${clampedRotateY.toFixed(1)}deg)`;
+
           if (card.dataset.lastTransform !== transform) {
             card.style.transform = transform;
             card.dataset.lastTransform = transform;
@@ -163,20 +192,24 @@ export default function PortfolioPreview() {
         loop();
       }
     };
-    
+
     const stopLoop = () => {
       loopRunning = false;
       if (animationFrameId.current) cancelAnimationFrame(animationFrameId.current);
     };
 
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) {
-        lastScrollY.current = window.scrollY;
-        startLoop();
-      } else {
-        stopLoop();
-      }
-    }, { threshold: 0 });
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          lastScrollY.current = window.scrollY;
+          getCardWidth();
+          startLoop();
+        } else {
+          stopLoop();
+        }
+      },
+      { threshold: 0 }
+    );
 
     if (sectionRef.current) {
       observer.observe(sectionRef.current);
@@ -186,93 +219,102 @@ export default function PortfolioPreview() {
       observer.disconnect();
       stopLoop();
     };
+  }, [getCardWidth, isHoveringCarousel, projects.length]);
+
+  // Pointer drag handling (unified for desktop mouse, touchscreen, and stylus)
+  const handlePointerDown = useCallback((e: React.PointerEvent<HTMLDivElement>) => {
+    // Only respond to main button
+    if (e.button !== 0 && e.pointerType === "mouse") return;
+
+    try {
+      (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId);
+    } catch {
+      // Ignore
+    }
+
+    isDragging.current = true;
+    wasDragging.current = false;
+    totalDragDistance.current = 0;
+    startX.current = e.clientX;
+    startDragX.current = currentX.current;
+    velocity.current = 0;
   }, []);
-  
-  const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
+
+  const handlePointerMove = useCallback((e: React.PointerEvent<HTMLDivElement>) => {
     cursorPosition.current = { x: e.clientX, y: e.clientY };
 
-    if (isDragging.current) {
-      const walk = e.pageX - startX.current;
-      const newTargetX = startDragX.current + walk * 1.5;
-      velocity.current = (newTargetX - targetX.current) * 0.5;
-      targetX.current = newTargetX;
-      startX.current = e.pageX;
-      startDragX.current = newTargetX;
-    }
-  }, []);
-
-  const handleMouseEnterCarousel = useCallback(() => {
-    setIsHoveringCarousel(true);
-  }, []);
-
-  const handleMouseDown = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
-    isDragging.current = true;
-    wasDragging.current = false;
-    startX.current = e.pageX;
-    startDragX.current = currentX.current;
-    velocity.current = 0;
-    setTimeout(() => {
-      if(isDragging.current) wasDragging.current = true;
-    }, 150);
-  }, []);
-
-  const handleMouseUp = useCallback(() => {
-    isDragging.current = false;
-  }, []);
-
-  const handleMouseLeave = useCallback(() => {
-    isDragging.current = false;
-    setIsHoveringCarousel(false);
-  }, []);
-
-  const handleCardMouseLeave = useCallback(() => {
-    setIsHoveringCarousel(false);
-  }, []);
-
-  const handleTouchStart = useCallback((e: React.TouchEvent<HTMLDivElement>) => {
-    isDragging.current = true;
-    wasDragging.current = false;
-    startX.current = e.touches[0].pageX;
-    startDragX.current = currentX.current;
-    velocity.current = 0;
-    setTimeout(() => {
-      if (isDragging.current) wasDragging.current = true;
-    }, 150);
-  }, []);
-
-  const handleTouchMove = useCallback((e: React.TouchEvent<HTMLDivElement>) => {
     if (!isDragging.current) return;
-    const walk = e.touches[0].pageX - startX.current;
-    const newTargetX = startDragX.current + walk * 1.5;
-    velocity.current = (newTargetX - targetX.current) * 0.5;
+
+    const deltaX = e.clientX - startX.current;
+    totalDragDistance.current += Math.abs(deltaX);
+
+    if (totalDragDistance.current > 8) {
+      wasDragging.current = true;
+    }
+
+    const newTargetX = startDragX.current + deltaX * 1.4;
+    velocity.current = (newTargetX - targetX.current) * 0.45;
     targetX.current = newTargetX;
-    startX.current = e.touches[0].pageX;
+    startX.current = e.clientX;
     startDragX.current = newTargetX;
   }, []);
 
-  const handleTouchEnd = useCallback(() => {
-    isDragging.current = false;
+  const handlePointerUp = useCallback((e: React.PointerEvent<HTMLDivElement>) => {
+    if (isDragging.current) {
+      isDragging.current = false;
+      try {
+        (e.currentTarget as HTMLElement).releasePointerCapture(e.pointerId);
+      } catch {
+        // Ignore
+      }
+      setTimeout(() => {
+        wasDragging.current = false;
+      }, 50);
+    }
+  }, []);
+
+  const handlePointerCancel = useCallback((e: React.PointerEvent<HTMLDivElement>) => {
+    if (isDragging.current) {
+      isDragging.current = false;
+      try {
+        (e.currentTarget as HTMLElement).releasePointerCapture(e.pointerId);
+      } catch {
+        // Ignore
+      }
+      setTimeout(() => {
+        wasDragging.current = false;
+      }, 50);
+    }
+  }, []);
+
+  const handleMouseEnter = useCallback(() => {
+    setIsHoveringCarousel(true);
+  }, []);
+
+  const handleMouseLeave = useCallback(() => {
+    if (!isDragging.current) {
+      setIsHoveringCarousel(false);
+    }
   }, []);
 
   const handleCardClick = (e: React.MouseEvent) => {
-    if (wasDragging.current) {
+    if (wasDragging.current || totalDragDistance.current > 8) {
       e.preventDefault();
-      wasDragging.current = false;
+      e.stopPropagation();
     }
   };
 
   return (
     <div
       ref={sectionRef}
-      className="relative flex flex-col justify-center h-full w-full pointer-events-auto"
+      className="relative flex flex-col justify-center h-full w-full pointer-events-auto select-none cursor-grab active:cursor-grabbing touch-pan-y"
       data-hide-cursor="true"
-      onMouseMove={handleMouseMove}
-      onMouseDown={handleMouseDown}
-      onMouseUp={handleMouseUp}
+      onPointerDown={handlePointerDown}
+      onPointerMove={handlePointerMove}
+      onPointerUp={handlePointerUp}
+      onPointerCancel={handlePointerCancel}
+      onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      onTouchStart={handleTouchStart}
-      onTouchMove={handleTouchMove}
-      onTouchEnd={handleTouchEnd}
     >
       <div
         ref={followerRef}
@@ -280,39 +322,37 @@ export default function PortfolioPreview() {
           "fixed w-24 h-24 rounded-full flex items-center justify-center text-primary-foreground text-sm pointer-events-none z-20 transition-opacity duration-300 ease-out top-0 left-0 will-change-transform",
           "glass-effect border border-primary/50",
           "hidden md:flex",
-          (isHoveringCarousel || isDragging.current) ? "opacity-100" : "opacity-0"
+          isHoveringCarousel || isDragging.current ? "opacity-100" : "opacity-0"
         )}
         style={{ boxShadow: "0 0 25px hsl(var(--primary) / 0.5)" }}
       >
-        <div className="flex items-center text-primary">
+        <div className="flex items-center text-primary select-none">
           <ChevronLeft className="w-6 h-6" />
-          <span className="uppercase text-xs tracking-widest">Drag</span>
+          <span className="uppercase text-xs tracking-widest font-semibold">Drag</span>
           <ChevronRight className="w-6 h-6" />
         </div>
       </div>
 
       {/* 3D Carousel Area */}
-      <div 
-        className="h-[35vh] md:h-[20vh] lg:h-[45vh] mt-8 md:mt-16 perspective-carousel pointer-events-none w-full relative left-0 touch-pan-y"
-      >
+      <div className="h-[35vh] md:h-[20vh] lg:h-[45vh] mt-8 md:mt-16 perspective-carousel pointer-events-none w-full relative left-0">
         <div ref={carouselWrapRef} className="relative w-full h-full carousel-wrap">
           {projects.map((project, index) => {
             return (
               <div
                 key={project.slug}
-                ref={(el) => { cardRefs.current[index] = el; }}
-                className="absolute w-[80vw] md:w-[50vw] lg:w-[40vw] xl:w-[30vw] h-full top-0 left-0 pointer-events-auto transform-gpu will-change-transform"
+                ref={(el) => {
+                  cardRefs.current[index] = el;
+                }}
+                className="absolute w-[80vw] md:w-[50vw] lg:w-[40vw] xl:w-[30vw] h-full top-0 left-0 pointer-events-auto transform-gpu will-change-transform select-none"
               >
                 <div
                   onClick={handleCardClick}
-                  className="block h-full w-full rounded-2xl md:rounded-3xl group select-none"
+                  className="block h-full w-full rounded-2xl md:rounded-3xl group select-none cursor-grab active:cursor-grabbing"
                   draggable={false}
-                  onMouseEnter={handleMouseEnterCarousel}
-                  onMouseLeave={handleCardMouseLeave}
                 >
-                  <Card 
-                    className="relative h-full w-full overflow-hidden rounded-2xl md:rounded-3xl bg-transparent border-0" 
-                    style={{ transform: 'translateZ(0)' }}
+                  <Card
+                    className="relative h-full w-full overflow-hidden rounded-2xl md:rounded-3xl bg-transparent border-0 select-none"
+                    style={{ transform: "translateZ(0)" }}
                   >
                     <Image
                       src={project.imageUrl}
@@ -320,15 +360,15 @@ export default function PortfolioPreview() {
                       width={800}
                       height={600}
                       priority={index < 4}
-                      className="absolute inset-0 w-full h-full object-cover pointer-events-none grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105"
+                      className="absolute inset-0 w-full h-full object-cover pointer-events-none grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105 select-none"
                       draggable={false}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none select-none"></div>
                   </Card>
-                  
+
                   <div
                     className={cn(
-                      "absolute w-[95%] bottom-0 p-3 md:p-6 lg:p-8 z-20 transition-all duration-700 ease-out text-left pointer-events-none",
+                      "absolute w-[95%] bottom-0 p-3 md:p-6 lg:p-8 z-20 transition-all duration-700 ease-out text-left pointer-events-none select-none",
                       "opacity-0 group-hover:opacity-100 group-hover:-translate-y-2 md:group-hover:-translate-y-4"
                     )}
                   >
