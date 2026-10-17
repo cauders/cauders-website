@@ -1,262 +1,173 @@
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { cn } from '@/lib/utils';
-import { getServiceCategories, getIndustries, getServiceCategoryBySlug, getAiCategories } from '@/lib/data';
-import { ChevronRight } from 'lucide-react';
-
-interface MegaMenuProps {
- activeMenu: 'services' | 'ai' | 'industries' | 'company' | null;
- setActiveMenu: (menu: 'services' | 'ai' | 'industries' | 'company' | null) => void;
-}
+import { getIndustries } from '@/lib/data';
+import { ArrowUpRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-export default function MegaMenu({ activeMenu, setActiveMenu }: MegaMenuProps) {
- const pathname = usePathname();
- const serviceCategories = getServiceCategories();
- const aiCategories = getAiCategories();
- const industries = getIndustries();
- const [isMounted, setIsMounted] = useState(false);
- const lastActiveMenu = useRef<'services' | 'ai' | 'industries' | 'company' | null>(null);
- 
- if (activeMenu) {
- lastActiveMenu.current = activeMenu;
- }
- 
- const displayedMenu = activeMenu || lastActiveMenu.current;
- 
- // Timeout ref for delayed closing to prevent flickering
- const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+interface MegaMenuProps {
+  activeMenu: 'services' | 'ai' | 'industries' | 'company' | null;
+  setActiveMenu: (menu: 'services' | 'ai' | 'industries' | 'company' | null) => void;
+  isScrolled?: boolean;
+  isHeroHeader?: boolean;
+  onMouseEnter?: () => void;
+  onMouseLeave?: () => void;
+}
 
- const partitionedServices = [
- serviceCategories.filter(c => c.slug.includes('software-solutions') || c.services.length === 1),
- serviceCategories.filter(c => c.slug.includes('cloud')),
- serviceCategories.filter(c => c.slug.includes('quality-assurance'))
- ];
+interface MenuItem {
+  href: string;
+  label: string;
+}
 
- const partitionedAi = [
- aiCategories.filter(c => c.slug.includes('product-engineering') || c.slug.includes('data-intelligent')),
- aiCategories.filter(c => c.slug.includes('strategy-advisory') || c.slug.includes('enterprise-ai')),
- aiCategories.filter(c => c.slug.includes('generative-ai'))
- ];
+const aiMenuItems: MenuItem[] = [
+  { href: '/ai/generative-ai-llms/generative-ai-solutions', label: 'Generative AI & LLM Applications' },
+  { href: '/ai/generative-ai-llms/autonomous-ai-agents', label: 'AI Agents & Autonomous Workflows' },
+  { href: '/ai/ai-product-engineering/custom-ai-development', label: 'Custom AI & Machine Learning' },
+  { href: '/ai/data-intelligent-automation/automation-custom-applications', label: 'Intelligent Process Automation' },
+  { href: '/ai/data-intelligent-automation/data-modernization-analytics', label: 'Data Engineering & Analytics' },
+];
 
- // Helper component for rendering a category
- const renderCategory = (category: any) => {
- const singleServiceHref = `/services/${category.slug}/${category.services[0]?.slug}`;
- const isSingleServiceActive = pathname === singleServiceHref;
+const servicesMenuItems: MenuItem[] = [
+  { href: '/services/software-solutions/custom-software-development', label: 'Custom Software Development' },
+  { href: '/services/software-solutions/web-development', label: 'Web Application Development' },
+  { href: '/services/software-solutions/mobile-app-development', label: 'Mobile App Development' },
+  { href: '/services/software-solutions/saas-development', label: 'SaaS Product Engineering' },
+  { href: '/services/design-digital-commerce/ui-ux-design', label: 'UI/UX & Product Design' },
+  { href: '/services/cloud-digital-transformation/cloud-transformation', label: 'Platform Modernization' },
+  { href: '/services/maintenance-support/application-maintenance-support', label: 'Maintenance & Support' },
+  { href: '/services/quality-assurance-cybersecurity/quality-assurance', label: 'Quality Assurance & Security' },
+  { href: '/services/staff-augmentation/staff-augmentation-offshoring', label: 'Dedicated Teams' },
+];
 
- return (
- <div key={category.slug} className={cn("flex flex-col space-y-6 w-full", category.services.length === 1 ? "mb-5" : "mb-10")}>
- {category.services.length === 1 ? (
- <Link 
- href={singleServiceHref}
- onClick={() => setActiveMenu(null)}
- className="group inline-block"
- >
- <span className={cn("text-xl font-bold font-headline group-hover:text-zinc transition-colors leading-snug block", isSingleServiceActive ? "text-zinc" : "text-foreground")}>
- {category.title}
- </span>
- </Link>
- ) : (
- <span className="text-xl font-bold font-headline text-foreground leading-snug block">
- {category.title}
- </span>
- )}
- 
- {category.services.length > 1 && (
- <ul className="flex flex-col space-y-4">
- {category.services.map((service: any) => {
- const serviceHref = `/${displayedMenu === 'ai' ? 'ai' : 'services'}/${category.slug}/${service.slug}`;
- const isServiceActive = pathname === serviceHref;
- return (
- <li key={service.slug}>
- <Link
- href={serviceHref}
- onClick={() => setActiveMenu(null)}
- className={cn("text-[15px] hover:text-zinc transition-colors flex items-center group/link", isServiceActive ? "text-zinc font-medium" : "text-")}
- >
- <span className="group-hover/link:translate-x-1 transition-transform">
- {service.title}
- </span>
- </Link>
- </li>
- )})}
- </ul>
- )}
- </div>
- )};
+const companyMenuItems: MenuItem[] = [
+  { href: '/about', label: 'About Cauders' },
+  { href: '/careers', label: 'Careers' },
+  { href: '/partners', label: 'Partnerships' },
+  { href: '/faq', label: 'FAQs' },
+];
 
- useEffect(() => {
- setIsMounted(true);
- return () => {
- if (timeoutRef.current) clearTimeout(timeoutRef.current);
- };
- }, []);
+export default function MegaMenu({ 
+  activeMenu, 
+  setActiveMenu, 
+  isScrolled = false,
+  isHeroHeader = false,
+  onMouseEnter,
+  onMouseLeave,
+}: MegaMenuProps) {
+  const pathname = usePathname();
+  const router = useRouter();
+  const rawIndustries = getIndustries();
+  const industryMenuItems: MenuItem[] = rawIndustries.map((i) => ({
+    href: `/industries/${i.slug}`,
+    label: i.title,
+  }));
 
- const handleMouseEnter = () => {
- if (timeoutRef.current) clearTimeout(timeoutRef.current);
- };
+  const [isMounted, setIsMounted] = useState(false);
 
- const handleMouseLeave = () => {
- timeoutRef.current = setTimeout(() => {
- setActiveMenu(null);
- }, 150);
- };
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
- if (!isMounted) return null;
+  // Aggressively prefetch all links of the active category as soon as the mega menu opens
+  useEffect(() => {
+    if (!activeMenu) return;
+    let items: MenuItem[] = [];
+    if (activeMenu === 'services') items = servicesMenuItems;
+    else if (activeMenu === 'ai') items = aiMenuItems;
+    else if (activeMenu === 'industries') items = industryMenuItems;
+    else if (activeMenu === 'company') items = companyMenuItems;
 
- return (
- <AnimatePresence>
- {activeMenu && (
- <motion.div
- initial={{ opacity: 0, y: -10, x: "-50%" }}
- animate={{ opacity: 1, y: 0, x: "-50%" }}
- exit={{ opacity: 0, y: 0, x: "-50%", transition: { duration: 0.1, ease: "easeIn" } }}
- transition={{ duration: 0.1, ease: "easeOut" }}
- className="fixed z-40 w-full top-[72px] left-1/2 max-w-5xl pt-4"
- onMouseEnter={handleMouseEnter}
- onMouseLeave={handleMouseLeave}
- >
- <div className="relative w-full bg-white dark:bg-zinc-950 border border-border/20 rounded-3xl shadow-xl overflow-hidden">
- <div className="w-full max-w-[1600px] mx-auto relative ">
- <AnimatePresence mode="wait">
- {displayedMenu === 'services' && (
- <motion.div
- key="services"
- initial={{ opacity: 0 }}
- animate={{ opacity: 1 }}
- exit={{ opacity: 0 }}
- transition={{ duration: 0.15 }}
- className="w-full py-10 pb-12 px-4 sm:px-6 lg:px-12"
- >
- <div className="flex flex-col lg:flex-row gap-x-16">
- <div className="flex-1 flex flex-col">
- {partitionedServices[0].map(renderCategory)}
- </div>
- <div className="flex-1 flex flex-col">
- {partitionedServices[1].map(renderCategory)}
- </div>
- <div className="flex-1 flex flex-col">
- {partitionedServices[2].map(renderCategory)}
- </div>
- </div>
- </motion.div>
- )}
+    items.forEach((item) => {
+      try {
+        router.prefetch(item.href);
+      } catch {
+        // Safe fallback
+      }
+    });
+  }, [activeMenu, router, industryMenuItems]);
 
- {displayedMenu === 'ai' && (
- <motion.div
- key="ai"
- initial={{ opacity: 0 }}
- animate={{ opacity: 1 }}
- exit={{ opacity: 0 }}
- transition={{ duration: 0.15 }}
- className="w-full py-10 pb-12 px-4 sm:px-6 lg:px-12"
- >
- <div className="flex flex-col lg:flex-row gap-x-16">
- <div className="flex-1 flex flex-col">
- {partitionedAi[0].map(renderCategory)}
- </div>
- <div className="flex-1 flex flex-col">
- {partitionedAi[1].map(renderCategory)}
- </div>
- <div className="flex-1 flex flex-col">
- {partitionedAi[2].map(renderCategory)}
- </div>
- </div>
- </motion.div>
- )}
+  const handleContainerEnter = () => {
+    onMouseEnter?.();
+  };
 
- {displayedMenu === 'industries' && (
- <motion.div
- key="industries"
- initial={{ opacity: 0 }}
- animate={{ opacity: 1 }}
- exit={{ opacity: 0 }}
- transition={{ duration: 0.15 }}
- className="w-full py-10 pb-12 px-4 sm:px-6 lg:px-12"
- >
- <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-4 max-w-4xl">
- {industries.map((industry) => (
- <div key={industry.slug} className="w-full">
- <Link 
- href={`/industries/${industry.slug}`}
- onClick={() => setActiveMenu(null)}
- className="group inline-block"
- >
- <span className={cn("text-xl font-bold font-headline group-hover:text-zinc transition-colors leading-snug block", pathname === `/industries/${industry.slug}` ? "text-zinc" : "text-foreground")}>
- {industry.title}
- </span>
- </Link>
- {/* Subcategories removed per user request */}
- </div>
- ))}
- </div>
- </motion.div>
- )}
- {displayedMenu === 'company' && (
- <motion.div
- key="about"
- initial={{ opacity: 0 }}
- animate={{ opacity: 1 }}
- exit={{ opacity: 0 }}
- transition={{ duration: 0.15 }}
- className="w-full py-10 pb-12 px-4 sm:px-6 lg:px-12"
- >
- <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-16 gap-y-16 max-w-4xl mx-auto">
- <div className="flex flex-col space-y-6">
- <span className="text-xl font-bold font-headline text-foreground leading-snug block">
- Company
- </span>
- <ul className="flex flex-col space-y-4">
- <li>
- <Link href="/about" onClick={() => setActiveMenu(null)} className={cn("text-[15px] hover:text-zinc transition-colors flex items-center group/link", pathname === "/about" ? "text-zinc font-medium" : "text-")}>
- <span className="group-hover/link:translate-x-1 transition-transform">About Us</span>
- </Link>
- </li>
- <li>
- <Link href="/team" onClick={() => setActiveMenu(null)} className={cn("text-[15px] hover:text-zinc transition-colors flex items-center group/link", pathname === "/team" ? "text-zinc font-medium" : "text-")}>
- <span className="group-hover/link:translate-x-1 transition-transform">Our Team</span>
- </Link>
- </li>
- <li>
- <Link href="/careers" onClick={() => setActiveMenu(null)} className={cn("text-[15px] hover:text-zinc transition-colors flex items-center group/link", pathname === "/careers" ? "text-zinc font-medium" : "text-")}>
- <span className="group-hover/link:translate-x-1 transition-transform">Careers</span>
- </Link>
- </li>
- <li>
- <Link href="/partners" onClick={() => setActiveMenu(null)} className={cn("text-[15px] hover:text-zinc transition-colors flex items-center group/link", pathname === "/partners" ? "text-zinc font-medium" : "text-")}>
- <span className="group-hover/link:translate-x-1 transition-transform">Partner Program</span>
- </Link>
- </li>
- </ul>
- </div>
- <div className="flex flex-col space-y-6">
- <span className="text-xl font-bold font-headline text-foreground leading-snug block">
- Support
- </span>
- <ul className="flex flex-col space-y-4">
- <li>
- <Link href="/contact" onClick={() => setActiveMenu(null)} className={cn("text-[15px] hover:text-zinc transition-colors flex items-center group/link", pathname === "/contact" ? "text-zinc font-medium" : "text-")}>
- <span className="group-hover/link:translate-x-1 transition-transform">Contact Us</span>
- </Link>
- </li>
- <li>
- <Link href="/faq" onClick={() => setActiveMenu(null)} className={cn("text-[15px] hover:text-zinc transition-colors flex items-center group/link", pathname === "/faq" ? "text-zinc font-medium" : "text-")}>
- <span className="group-hover/link:translate-x-1 transition-transform">FAQs</span>
- </Link>
- </li>
- </ul>
- </div>
- </div>
- </motion.div>
- )}
- </AnimatePresence>
- </div>
- </div>
- </motion.div>
- )}
- </AnimatePresence>
- );
+  const handleContainerLeave = () => {
+    onMouseLeave?.();
+  };
+
+  if (!isMounted) return null;
+
+  const renderTwoColumnList = (items: MenuItem[]) => {
+    const midpoint = Math.ceil(items.length / 2);
+    const col1 = items.slice(0, midpoint);
+    const col2 = items.slice(midpoint);
+
+    const renderLink = (item: MenuItem) => {
+      const isActive = pathname === item.href;
+      return (
+        <li key={item.href}>
+          <Link
+            href={item.href}
+            prefetch={true}
+            onMouseEnter={() => router.prefetch(item.href)}
+            onClick={() => setActiveMenu(null)}
+            className={cn(
+              "text-[15px] font-medium transition-colors py-1 flex items-center group w-fit",
+              isActive ? "text-zinc font-semibold" : "text-foreground/80 hover:text-zinc"
+            )}
+          >
+            <span className="group-hover:translate-x-1 transition-transform inline-flex items-center gap-1.5">
+              <span>{item.label}</span>
+              <ArrowUpRight className="w-3.5 h-3.5 opacity-0 -translate-x-1 translate-y-1 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0 transition-all duration-200 text-zinc shrink-0" />
+            </span>
+          </Link>
+        </li>
+      );
+    };
+
+    return (
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 sm:gap-x-12 gap-y-3 w-full">
+        <ul className="flex flex-col space-y-2.5">{col1.map(renderLink)}</ul>
+        <ul className="flex flex-col space-y-2.5">{col2.map(renderLink)}</ul>
+      </div>
+    );
+  };
+
+  return (
+    <AnimatePresence>
+      {activeMenu && (
+        <motion.div
+          initial={{ opacity: 0, y: -8, scale: 0.98, x: "-50%" }}
+          animate={{ opacity: 1, y: 0, scale: 1, x: "-50%" }}
+          exit={{ opacity: 0, y: -6, scale: 0.98, x: "-50%", transition: { duration: 0.12, ease: "easeIn" } }}
+          transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
+          className={cn(
+            "fixed z-50 w-full left-1/2 max-w-2xl pt-3 transition-all duration-300 ease-out",
+            isHeroHeader ? "top-[76px] md:top-[88px]" : (isScrolled ? "top-[70px]" : "top-[76px]")
+          )}
+          onMouseEnter={handleContainerEnter}
+          onMouseLeave={handleContainerLeave}
+        >
+          <div className="relative w-full bg-white dark:bg-zinc-950 border border-border/20 rounded-2xl shadow-2xl overflow-hidden">
+            <div className="w-full mx-auto relative">
+              <motion.div
+                key={activeMenu}
+                initial={{ opacity: 0, y: 3 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.12, ease: "easeOut" }}
+                className="w-full py-6 px-6 sm:px-8"
+              >
+                {activeMenu === 'services' && renderTwoColumnList(servicesMenuItems)}
+                {activeMenu === 'ai' && renderTwoColumnList(aiMenuItems)}
+                {activeMenu === 'industries' && renderTwoColumnList(industryMenuItems)}
+                {activeMenu === 'company' && renderTwoColumnList(companyMenuItems)}
+              </motion.div>
+            </div>
+          </div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
 }

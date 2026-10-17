@@ -11,14 +11,16 @@ export interface IndustryFeature {
 export interface DetailedIndustryData {
  slug: string;
  hero: {
- title: string;
- subtitle: string;
- };
+    title: string;
+    subtitle: string;
+    imageUrl?: string;
+  };
  overview: {
- title: string;
- description: string;
- bullets?: string[];
- };
+    title: string;
+    description: string;
+    bullets?: string[];
+    imageUrl?: string;
+  };
  whyChooseUs: {
  title: string;
  intro: string;
@@ -52,11 +54,13 @@ export const industryDetails: Record<string, DetailedIndustryData> = {
  slug: 'banking-financial-services',
  hero: {
  title: 'Banking & Fintech Solutions',
- subtitle: 'We align with your business goals to deliver fintech software development services that drive growth, scalability, and innovation.'
+ subtitle: 'We align with your business goals to deliver fintech software development services that drive growth, scalability, and innovation.',
+    imageUrl: 'https://images.unsplash.com/photo-1758691462071-757bca955439?auto=format&fit=crop&q=80&w=1920'
  },
  overview: {
  title: 'Our Vision for the Financial Sector',
  description: 'Cauders delivers secure, user-focused, and future-ready fintech software that amplifies your strengths and supports rapid growth in an evolving financial industry. As an end-to-end development partner, we guide you through every stage of the software development life cycle. From initial strategy and UX design to robust backend development and seamless cloud deployment, we ensure your platform is built to perform. We focus on creating highly scalable systems that drive measurable business value, enhance user engagement, and maintain strict compliance standards globally. By bridging the gap between innovative technology and deep financial expertise, we empower institutions to modernize their operations, launch new digital products with confidence, and stay ahead of the curve in a highly competitive market.',
+    imageUrl: 'https://images.unsplash.com/photo-1757466762489-52fea38071ad?auto=format&fit=crop&q=80&w=1200',
  bullets: [
  'End-to-end custom fintech software development',
  'Secure, compliant, and scalable financial architectures',
@@ -221,57 +225,66 @@ export const industryDetails: Record<string, DetailedIndustryData> = {
  },
  servicesBuiltForIndustry: {
  title: 'Financial Sector Transformation Services',
- description: 'Explore our comprehensive suite of services tailored to meet the evolving demands of your industry.',
  description: 'Explore our comprehensive suite of services tailored to meet the evolving demands of the financial sector.',
  items: [
  {
  title: 'Digital Banking Solutions',
  description: 'Enable secure, flexible digital banking with our suite of web and mobile applications, digital wallet functionalities, and core banking system integration. We create seamless, end-to-end digital experiences tailored for the modern financial landscape.',
+        imageUrl: 'https://images.unsplash.com/photo-1633158829585-23ba8f7c8caf?auto=format&fit=crop&q=80&w=800',
  icon: 'Landmark'
  },
  {
  title: 'Open Banking & API Integration',
  description: 'Unlock new revenue streams and partnerships with secure API banking solutions, robust payment gateways integration, and seamless financial data management across decentralized ecosystems.',
+        imageUrl: 'https://images.unsplash.com/photo-1616803140344-6682afb13cda?auto=format&fit=crop&q=80&w=800',
  icon: 'Network'
  },
  {
  title: 'Advanced Data Analytics',
  description: 'Make informed, data-backed decisions with advanced analytics and reporting. Our solutions turn raw financial data into actionable insights, helping you predict market trends and understand customer behavior.',
+        imageUrl: 'https://images.unsplash.com/photo-1775947933085-30050ddad6b3?auto=format&fit=crop&q=80&w=800',
  icon: 'BarChart'
  },
  {
  title: 'AI Integration & Automation',
  description: 'Leverage bespoke Fintech AI development services to automate complex financial workflows, streamline back-office operations, and provide intelligent customer service experiences.',
+        imageUrl: 'https://images.unsplash.com/photo-1538108149393-fbbd81895907?auto=format&fit=crop&q=80&w=800',
  icon: 'Brain'
  },
  {
  title: 'Cybersecurity & KYC',
  description: 'Protect sensitive financial data with multi-layered cybersecurity, automated eIDV, KYC onboarding, and real-time fraud detection to ensure robust identity verification.',
+        imageUrl: 'https://images.unsplash.com/photo-1548092372-0d1bd40894a3?auto=format&fit=crop&q=80&w=800',
  icon: 'Shield'
  },
  {
  title: 'Risk Management',
  description: 'Deploy advanced risk management software that continuously monitors transactions, evaluates credit scoring, and ensures stringent regulatory compliance across all operations.',
+        imageUrl: 'https://images.unsplash.com/photo-1757484965213-8393e82789fe?auto=format&fit=crop&q=80&w=800',
  icon: 'ShieldAlert'
  },
  {
  title: 'Wealth Management & Lending',
  description: 'Scale your financial offerings with custom lending platform development, advanced wealth management platforms, and precise accounting & financial management software.',
+        imageUrl: 'https://images.unsplash.com/photo-1683283106454-8b1b22ebf9e5?auto=format&fit=crop&q=80&w=800',
  icon: 'Briefcase'
  },
  {
  title: 'Cloud Migration & Scalability',
  description: 'Enhance your resilience with secure cloud migrations designed specifically for banking workloads, ensuring maximum uptime and scalability for growing customer bases.',
+        imageUrl: 'https://images.unsplash.com/photo-1640197618317-dc379a226fbe?auto=format&fit=crop&q=80&w=800',
  icon: 'Cloud'
  },
  {
  title: 'DeFi & Blockchain Solutions',
  description: 'Explore the potential of decentralized finance (DeFi) and blockchain to streamline cross-border transactions, enhance transparency, and execute smart contracts securely.',
+        imageUrl: 'https://images.unsplash.com/photo-1728022873385-1b48bbc41ecc?auto=format&fit=crop&q=80&w=800',
  icon: 'Link'
  },
  {
  title: 'Custom Fintech Software',
  description: 'From intuitive UI/UX prototyping to full-scale insurance software development, our custom-built solutions are designed to support and scale with your organization’s unique goals.',
+        imageUrl: 'https://images.unsplash.com/photo-1578670812003-60745e2c2ea9?auto=format&fit=crop&q=80&w=800',
  icon: 'Code'
  }
  ]
@@ -311,11 +324,13 @@ export const industryDetails: Record<string, DetailedIndustryData> = {
  slug: 'healthcare',
  hero: {
  title: 'Healthcare & MedTech Solutions',
- subtitle: 'We align with your clinical and business goals to deliver healthcare software that drives patient engagement, interoperability, and operational efficiency.'
+ subtitle: 'We align with your clinical and business goals to deliver healthcare software that drives patient engagement, interoperability, and operational efficiency.',
+    imageUrl: 'https://images.unsplash.com/photo-1504813184591-01572f98c85f?auto=format&fit=crop&q=80&w=1920'
  },
  overview: {
  title: 'Transforming care with future-ready healthcare software',
  description: 'Cauders delivers secure, HIPAA-compliant, and user-focused healthcare software that empowers providers and patients alike. As an end-to-end development partner, we support you through every stage of the software development life cycle. From strategy and compliance architecture to development and deployment. Delivering scalable systems that improve clinical outcomes and operational efficiency. We focus on creating highly scalable systems that drive measurable business value, enhance user engagement, and maintain strict compliance standards globally. By bridging the gap between innovative technology and deep industry expertise, we empower you to modernize your operations and stay ahead of the curve.',
+    imageUrl: 'https://images.unsplash.com/photo-1760199789455-49098afd02f0?auto=format&fit=crop&q=80&w=1200',
  bullets: [
  'Secure telemedicine and patient portals',
  'HIPAA-compliant data architecture and management',
@@ -419,31 +434,37 @@ export const industryDetails: Record<string, DetailedIndustryData> = {
  {
  title: 'Telemedicine & Remote Care',
  description: 'Enable secure, high-quality virtual care with custom telehealth applications featuring secure messaging, video conferencing, and wearable device data integration for remote patient monitoring.',
+        imageUrl: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80&w=800',
  icon: 'Video'
  },
  {
  title: 'EHR/EMR Integration',
  description: 'Connect disparate systems and extend the capabilities of your existing EHRs (Epic, Cerner) with custom API integrations and seamless Health Information Exchange (HIE) compliance.',
+        imageUrl: 'https://images.unsplash.com/photo-1590065707046-4fde65275b2e?auto=format&fit=crop&q=80&w=800',
  icon: 'Activity'
  },
  {
  title: 'Health Data Analytics',
  description: 'Make informed clinical decisions with AI-driven diagnostic assistance tools, predictive models, and comprehensive population health analytics platforms.',
+        imageUrl: 'https://images.unsplash.com/photo-1758691461990-03b49d969495?auto=format&fit=crop&q=80&w=800',
  icon: 'Brain'
  },
  {
  title: 'Patient Portals & UI/UX',
  description: 'Improve patient engagement with intuitive patient portals, appointment scheduling apps, and accessible healthcare UI/UX design focused on the patient journey.',
+        imageUrl: 'https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&q=80&w=800',
  icon: 'Smartphone'
  },
  {
  title: 'Medical Billing & RCM',
  description: 'Streamline administrative workflows with custom medical billing software and Revenue Cycle Management (RCM) solutions to reduce overhead and improve cash flow.',
+        imageUrl: 'https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&q=80&w=800',
  icon: 'CreditCard'
  },
  {
  title: 'Pharmacy & Clinical Trials',
  description: 'Optimize specialized workflows with robust pharmacy management systems and secure clinical trial management software designed for accuracy and scale.',
+        imageUrl: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&q=80&w=800',
  icon: 'Stethoscope'
  }
  ]
@@ -471,11 +492,13 @@ export const industryDetails: Record<string, DetailedIndustryData> = {
  slug: 'retail-ecommerce',
  hero: {
  title: 'Retail & E-Commerce Platforms',
- subtitle: 'We align with your commercial goals to deliver e-commerce software that drives sales, scalability, and omnichannel innovation.'
+ subtitle: 'We align with your commercial goals to deliver e-commerce software that drives sales, scalability, and omnichannel innovation.',
+    imageUrl: 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&q=80&w=1920'
  },
  overview: {
  title: 'Driving sales with future-ready retail software',
  description: 'Cauders engineers high-performance, user-focused, and scalable retail software that amplifies your brand and supports immense growth. As an end-to-end development partner, we support you through every stage. From engaging storefront design and complex inventory architecture to robust backend development and deployment. Delivering omnichannel systems that drive measurable revenue. We focus on creating highly scalable systems that drive measurable business value, enhance user engagement, and maintain strict compliance standards globally. By bridging the gap between innovative technology and deep industry expertise, we empower you to modernize your operations and stay ahead of the curve.',
+    imageUrl: 'https://images.unsplash.com/photo-1633265486064-086b219458ec?auto=format&fit=crop&q=80&w=1200',
  bullets: [
  'High-performance headless e-commerce solutions',
  'Omnichannel POS and OMS integration',
@@ -575,36 +598,43 @@ export const industryDetails: Record<string, DetailedIndustryData> = {
  {
  title: 'Headless E-Commerce',
  description: 'Decouple your frontend to deliver blazing-fast, customizable shopping experiences using modern commerce APIs like Shopify Plus and Commerce Layer.',
+        imageUrl: 'https://images.unsplash.com/photo-1664455340023-214c33a9d0bd?auto=format&fit=crop&q=80&w=800',
  icon: 'Layers'
  },
  {
  title: 'Mobile Commerce Apps',
  description: 'Capture the growing mobile market with custom m-commerce applications designed for intuitive navigation and seamless mobile checkout.',
+        imageUrl: 'https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&q=80&w=800',
  icon: 'Smartphone'
  },
  {
  title: 'AI Personalization & AR',
  description: 'Increase AOV with AI-driven recommendation engines, dynamic pricing, and immersive Augmented Reality (AR) product visualization.',
+        imageUrl: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&q=80&w=800',
  icon: 'Brain'
  },
  {
  title: 'Supply Chain & WMS',
  description: 'Gain real-time visibility with custom Inventory and Warehouse Management Systems (WMS) that automate reordering and streamline logistics.',
+        imageUrl: 'https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&q=80&w=800',
  icon: 'Truck'
  },
  {
  title: 'Omnichannel Integration',
  description: 'Ensure a unified brand experience by seamlessly integrating Point of Sale (POS) systems and centralized Order Management Systems (OMS).',
+        imageUrl: 'https://images.unsplash.com/photo-1674027392887-751d6396b710?auto=format&fit=crop&q=80&w=800',
  icon: 'Network'
  },
  {
  title: 'Loyalty & Payments',
  description: 'Build recurring revenue with custom loyalty program software and frictionless, secure payment gateway integrations.',
+        imageUrl: 'https://images.unsplash.com/photo-1684679674829-fc7b436ec8e8?auto=format&fit=crop&q=80&w=800',
  icon: 'CreditCard'
  },
  {
  title: 'Retail Analytics & UI/UX',
  description: 'Optimize your sales funnel with data forecasting dashboards and conversion-focused UI/UX design for maximum ROI.',
+        imageUrl: 'https://images.unsplash.com/photo-1763872011479-aa293bf083a8?auto=format&fit=crop&q=80&w=800',
  icon: 'LineChart'
  }
  ]
@@ -632,11 +662,13 @@ export const industryDetails: Record<string, DetailedIndustryData> = {
  slug: 'technology-software',
  hero: {
  title: 'Software Product Engineering',
- subtitle: 'We act as an extension of your engineering team to deliver scalable SaaS products and complex technical solutions.'
+ subtitle: 'We act as an extension of your engineering team to deliver scalable SaaS products and complex technical solutions.',
+    imageUrl: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&q=80&w=1920'
  },
  overview: {
  title: 'Accelerating product delivery with expert engineering',
  description: 'Cauders provides high-quality, scalable, and maintainable software engineering that amplifies your internal capabilities and accelerates your roadmap. As a technical development partner, we support SaaS companies and tech enterprises through every stage. From complex architecture and DevOps to full-stack development. Delivering systems that drive your product forward with enterprise-grade stability. We focus on creating highly scalable systems that drive measurable business value, enhance user engagement, and maintain strict compliance standards globally. By bridging the gap between innovative technology and deep industry expertise, we empower you to modernize your operations and stay ahead of the curve.',
+    imageUrl: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1200',
  bullets: [
  'End-to-end SaaS product engineering',
  'Scalable microservices and robust API development',
@@ -736,41 +768,49 @@ export const industryDetails: Record<string, DetailedIndustryData> = {
  {
  title: 'SaaS Architecture & Dev',
  description: 'End-to-end engineering of multi-tenant SaaS products and enterprise software, encompassing robust authentication and scalable databases.',
+        imageUrl: 'https://images.unsplash.com/photo-1760075999984-bbdea1f86b8d?auto=format&fit=crop&q=80&w=800',
  icon: 'Layers'
  },
  {
  title: 'Microservices & APIs',
  description: 'Transition from monolithic structures to microservices architectures and design robust, well-documented APIs for internal and external use.',
+        imageUrl: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&q=80&w=800',
  icon: 'Network'
  },
  {
  title: 'Cloud-Native Engineering',
  description: 'Develop and deploy highly available applications natively on AWS, GCP, or Azure, utilizing auto-scaling and serverless technologies.',
+        imageUrl: 'https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?auto=format&fit=crop&q=80&w=800',
  icon: 'Cloud'
  },
  {
  title: 'DevOps & CI/CD',
  description: 'Accelerate your deployment velocity with automated CI/CD pipelines, containerization, and infrastructure as code (IaC).',
+        imageUrl: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80&w=800',
  icon: 'Cog'
  },
  {
  title: 'Legacy Refactoring',
  description: 'Safely modernize aging legacy codebases, paying down technical debt without disrupting your current user base.',
+        imageUrl: 'https://images.unsplash.com/photo-1639066648921-82d4500abf1a?auto=format&fit=crop&q=80&w=800',
  icon: 'Wrench'
  },
  {
  title: 'AI & ML Integration',
  description: 'Enhance your core product offering by integrating sophisticated Machine Learning models and GenAI capabilities directly into your software.',
+        imageUrl: 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&q=80&w=800',
  icon: 'Brain'
  },
  {
  title: 'QA & Test Automation',
  description: 'Ensure enterprise-grade stability with rigorous Quality Assurance processes, automated testing frameworks, and continuous monitoring.',
+        imageUrl: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&q=80&w=800',
  icon: 'CheckCircle2'
  },
  {
  title: 'SaaS UI/UX Design',
  description: 'Create cohesive design systems and intuitive user interfaces that reduce churn and improve product adoption rates.',
+        imageUrl: 'https://images.unsplash.com/photo-1496171367470-9ed9a91ea931?auto=format&fit=crop&q=80&w=800',
  icon: 'PenTool'
  }
  ]
@@ -798,11 +838,13 @@ export const industryDetails: Record<string, DetailedIndustryData> = {
  slug: 'startups-high-growth',
  hero: {
  title: 'Startups & High-Growth Tech',
- subtitle: 'We align with your vision and runway to build scalable MVPs and high-growth digital products at startup speed.'
+ subtitle: 'We align with your vision and runway to build scalable MVPs and high-growth digital products at startup speed.',
+    imageUrl: 'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=1920'
  },
  overview: {
  title: 'Turning ideas into scalable digital products',
  description: 'Cauders provides agile, lean, and highly scalable software engineering that turns startup vision into market-ready reality at unprecedented speeds. As a technical co-development partner, we support founders through every critical stage. From rapid prototyping and MVP launch to Series A scaling and beyond. Delivering premium software that attracts users and impresses investors. We focus on creating highly scalable systems that drive measurable business value, enhance user engagement, and maintain strict compliance standards globally. By bridging the gap between innovative technology and deep industry expertise, we empower you to modernize your operations and stay ahead of the curve.',
+    imageUrl: 'https://images.unsplash.com/photo-1614064641938-3bbee52942c7?auto=format&fit=crop&q=80&w=1200',
  bullets: [
  'Rapid MVP development and prototyping',
  'Investor-ready scalable architectures',
@@ -902,16 +944,19 @@ export const industryDetails: Record<string, DetailedIndustryData> = {
  {
  title: 'MVP Development Sprints',
  description: 'Intensive 4-8 week development sprints designed to take your concept from wireframes to a fully functional, market-ready Minimum Viable Product.',
+        imageUrl: 'https://images.unsplash.com/photo-1621609764180-2ca554a9d6f2?auto=format&fit=crop&q=80&w=800',
  icon: 'Rocket'
  },
  {
  title: 'AI Product Integration',
  description: 'Give your startup a competitive edge by deeply integrating generative AI, LLMs, and predictive models into the core of your product offering.',
+        imageUrl: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&q=80&w=800',
  icon: 'Brain'
  },
  {
  title: 'CTO-as-a-Service',
  description: 'Access executive-level technical leadership to help with architecture design, tech stack selection, investor due diligence, and roadmap planning.',
+        imageUrl: 'https://images.unsplash.com/photo-1468495244123-6c6c332eeece?auto=format&fit=crop&q=80&w=800',
  icon: 'UserCheck'
  }
  ]
@@ -939,11 +984,13 @@ export const industryDetails: Record<string, DetailedIndustryData> = {
  slug: 'logistics-supply-chain',
  hero: {
  title: 'Logistics & Supply Chain Systems',
- subtitle: 'We align with your operational goals to deliver logistics software that drives efficiency, visibility, and automation.'
+ subtitle: 'We align with your operational goals to deliver logistics software that drives efficiency, visibility, and automation.',
+    imageUrl: 'https://images.unsplash.com/photo-1587293852726-70cdb56c2866?auto=format&fit=crop&q=80&w=1920'
  },
  overview: {
  title: 'Driving efficiency with future-ready logistics software',
  description: 'Cauders delivers robust, real-time, and scalable logistics software that amplifies your operational control and supports complex global supply chains. As a technical development partner, we support you through every stage. From system architecture and legacy integration to mobile fleet apps and deployment. Delivering solutions that drive measurable cost reductions and efficiency gains. We focus on creating highly scalable systems that drive measurable business value, enhance user engagement, and maintain strict compliance standards globally. By bridging the gap between innovative technology and deep industry expertise, we empower you to modernize your operations and stay ahead of the curve.',
+    imageUrl: 'https://images.unsplash.com/photo-1510915228340-29c85a43dcfe?auto=format&fit=crop&q=80&w=1200',
  bullets: [
  'Custom Transportation Management Systems (TMS)',
  'Real-time fleet tracking and IoT integration',
@@ -1042,36 +1089,43 @@ export const industryDetails: Record<string, DetailedIndustryData> = {
  {
  title: 'Custom TMS Development',
  description: 'Build bespoke Transportation Management Systems (TMS) that automate dispatching, manage carrier contracts, and handle complex billing requirements.',
+        imageUrl: 'https://images.unsplash.com/photo-1782948603191-065fb15e2e8e?auto=format&fit=crop&q=80&w=800',
  icon: 'Truck'
  },
  {
  title: 'Warehouse Management (WMS)',
  description: 'Optimize inventory control and forecasting with custom WMS solutions that seamlessly connect your warehouses to your broader supply chain network.',
+        imageUrl: 'https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&q=80&w=800',
  icon: 'Building2'
  },
  {
  title: 'Fleet Tracking & Telematics',
  description: 'Integrate IoT devices and telematics for real-time fleet tracking, predictive maintenance, and driver performance monitoring.',
+        imageUrl: 'https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?auto=format&fit=crop&q=80&w=800',
  icon: 'MapPin'
  },
  {
  title: 'AI Route Optimization',
  description: 'Dramatically reduce fuel costs and delivery times with AI-driven algorithms that calculate the most efficient delivery routes dynamically in real-time.',
+        imageUrl: 'https://images.unsplash.com/photo-1759310347467-578dfd846229?auto=format&fit=crop&q=80&w=800',
  icon: 'Map'
  },
  {
  title: 'Supply Chain Visibility',
  description: 'Provide stakeholders with comprehensive tracking portals and analytics dashboards for end-to-end visibility across global shipments.',
+        imageUrl: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=800',
  icon: 'Eye'
  },
  {
  title: 'Last-Mile Delivery Apps',
  description: 'Develop intuitive driver and customer applications that streamline last-mile logistics, offering real-time ETA updates and proof of delivery.',
+        imageUrl: 'https://images.unsplash.com/photo-1726776230760-ae81dc9d4e55?auto=format&fit=crop&q=80&w=800',
  icon: 'Smartphone'
  },
  {
  title: 'Freight Forwarding Software',
  description: 'Automate quoting, booking, and document generation for complex international freight forwarding operations.',
+        imageUrl: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=800',
  icon: 'Globe'
  }
  ]
@@ -1099,11 +1153,13 @@ export const industryDetails: Record<string, DetailedIndustryData> = {
  slug: 'education-elearning',
  hero: {
  title: 'EdTech & E-Learning Solutions',
- subtitle: 'We align with your educational goals to deliver interactive e-learning software that drives engagement, accessibility, and outcomes.'
+ subtitle: 'We align with your educational goals to deliver interactive e-learning software that drives engagement, accessibility, and outcomes.',
+    imageUrl: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&q=80&w=1920'
  },
  overview: {
  title: 'Transforming education with future-ready EdTech software',
  description: 'Cauders creates engaging, accessible, and scalable e-learning software that amplifies educational impact and supports modern digital classrooms. As an end-to-end development partner, we support educational institutions and EdTech startups through every stage. From intuitive UX design to robust backend development. Delivering accessible systems that drive measurable learning outcomes and student success. We focus on creating highly scalable systems that drive measurable business value, enhance user engagement, and maintain strict compliance standards globally. By bridging the gap between innovative technology and deep industry expertise, we empower you to modernize your operations and stay ahead of the curve.',
+    imageUrl: 'https://images.unsplash.com/photo-1614064548237-096f735f344f?auto=format&fit=crop&q=80&w=1200',
  bullets: [
  'Custom Learning Management Systems (LMS)',
  'Interactive virtual classrooms and video integration',
@@ -1203,36 +1259,43 @@ export const industryDetails: Record<string, DetailedIndustryData> = {
  {
  title: 'Custom LMS Development',
  description: 'Build bespoke Learning Management Systems and corporate training portals tailored to your specific pedagogical approach, far exceeding off-the-shelf limits.',
+        imageUrl: 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&q=80&w=800',
  icon: 'Monitor'
  },
  {
  title: 'Virtual Classrooms',
  description: 'Integrate robust video conferencing APIs to create seamless, secure virtual classrooms with interactive whiteboards and real-time collaboration.',
+        imageUrl: 'https://images.unsplash.com/photo-1556740758-90de374c12ad?auto=format&fit=crop&q=80&w=800',
  icon: 'Video'
  },
  {
  title: 'Student Info Systems (SIS)',
  description: 'Develop secure Student Information Systems to manage enrollment, grading, and academic records while strictly adhering to FERPA compliance.',
+        imageUrl: 'https://images.unsplash.com/photo-1629904853716-f0bc54eea481?auto=format&fit=crop&q=80&w=800',
  icon: 'Database'
  },
  {
  title: 'E-Learning Mobile Apps',
  description: 'Develop native iOS and Android educational applications featuring offline learning modes and seamless progress tracking across devices.',
+        imageUrl: 'https://images.unsplash.com/photo-1530497610245-94d3c16cda28?auto=format&fit=crop&q=80&w=800',
  icon: 'Smartphone'
  },
  {
  title: 'Gamified Learning Apps',
  description: 'Boost student retention and motivation with highly engaging, gamified learning applications featuring rewards, leaderboards, and interactive challenges.',
+        imageUrl: 'https://images.unsplash.com/photo-1561089489-f13d5e730d72?auto=format&fit=crop&q=80&w=800',
  icon: 'Gamepad2'
  },
  {
  title: 'AI Adaptive Learning',
  description: 'Integrate machine learning models that analyze student performance and dynamically adapt content difficulty to match individual learning paces.',
+        imageUrl: 'https://images.unsplash.com/photo-1695473507908-ff60e604c113?auto=format&fit=crop&q=80&w=800',
  icon: 'Brain'
  },
  {
  title: 'Educational Data Analytics',
  description: 'Implement comprehensive analytics dashboards that provide actionable insights into student engagement, bottlenecks, and overall course success rates.',
+        imageUrl: 'https://images.unsplash.com/photo-1758270705031-ebd46917a454?auto=format&fit=crop&q=80&w=800',
  icon: 'LineChart'
  }
  ]
@@ -1260,11 +1323,13 @@ export const industryDetails: Record<string, DetailedIndustryData> = {
  slug: 'real-estate',
  hero: {
  title: 'PropTech & Real Estate Systems',
- subtitle: 'We align with your business goals to deliver real estate software that drives property sales, management efficiency, and digital innovation.'
+ subtitle: 'We align with your business goals to deliver real estate software that drives property sales, management efficiency, and digital innovation.',
+    imageUrl: 'https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&q=80&w=1920'
  },
  overview: {
  title: 'Driving property sales with future-ready PropTech',
  description: 'Cauders develops modern, user-focused, and scalable real estate software that amplifies your portfolio and streamlines property management. As an end-to-end development partner, we support brokerages and PropTech startups through every stage. From premium UI design to complex MLS data integrations. Delivering systems that drive property sales and operational efficiency. We focus on creating highly scalable systems that drive measurable business value, enhance user engagement, and maintain strict compliance standards globally. By bridging the gap between innovative technology and deep industry expertise, we empower you to modernize your operations and stay ahead of the curve.',
+    imageUrl: 'https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?auto=format&fit=crop&q=80&w=1200',
  bullets: [
  'Blazing-fast custom listing platforms',
  'Seamless RETS/RESO Web API MLS integrations',
@@ -1364,36 +1429,43 @@ export const industryDetails: Record<string, DetailedIndustryData> = {
  {
  title: 'Custom Listing Platforms',
  description: 'Develop blazing-fast property marketplaces and apps with seamless MLS/IDX integrations using headless architecture for maximum speed and SEO.',
+        imageUrl: 'https://images.unsplash.com/photo-1479839672679-a46483c0e7c8?auto=format&fit=crop&q=80&w=800',
  icon: 'Monitor'
  },
  {
  title: 'Property Management (PMS)',
  description: 'Centralize rent collection, maintenance ticketing, and lease generation into one streamlined dashboard with dedicated tenant and landlord portals.',
+        imageUrl: 'https://images.unsplash.com/photo-1780208406378-cd3a47cccaec?auto=format&fit=crop&q=80&w=800',
  icon: 'Building2'
  },
  {
  title: 'Real Estate CRM',
  description: 'Create bespoke Customer Relationship Management systems that automate lead generation, routing, and marketing follow-ups for your agents.',
+        imageUrl: 'https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&q=80&w=800',
  icon: 'Users'
  },
  {
  title: 'Virtual Tours & AR',
  description: 'Enhance remote property viewing with immersive virtual tours and Augmented Reality (AR) visualizations to increase buyer engagement.',
+        imageUrl: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&q=80&w=800',
  icon: 'Eye'
  },
  {
  title: 'PropTech Investment Platforms',
  description: 'Build secure, scalable platforms for real estate investment and crowdfunding, featuring investor dashboards and automated distributions.',
+        imageUrl: 'https://images.unsplash.com/photo-1672870153618-b369bcc8c55d?auto=format&fit=crop&q=80&w=800',
  icon: 'Landmark'
  },
  {
  title: 'AI Valuation Models (AVM)',
  description: 'Leverage machine learning to build Automated Valuation Models that analyze historical data to predict accurate pricing and investment insights.',
+        imageUrl: 'https://images.unsplash.com/photo-1764983255241-3768b4df0c57?auto=format&fit=crop&q=80&w=800',
  icon: 'Brain'
  },
  {
  title: 'Smart Home IoT Integration',
  description: 'Develop centralized dashboards for property managers to monitor and control connected smart home devices across their entire portfolio.',
+        imageUrl: 'https://images.unsplash.com/photo-1788418485510-f11631855097?auto=format&fit=crop&q=80&w=800',
  icon: 'Wifi'
  }
  ]

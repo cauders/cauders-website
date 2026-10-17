@@ -1,6 +1,7 @@
 
 import type {Config} from 'tailwindcss';
 import { fontFamily } from 'tailwindcss/defaultTheme';
+import colors from 'tailwindcss/colors';
 
 export default {
   darkMode: ['class'],
@@ -19,6 +20,10 @@ export default {
       },
     },
     extend: {
+      transitionTimingFunction: {
+        'smooth': 'cubic-bezier(0.16, 1, 0.3, 1)',
+        'snappy': 'cubic-bezier(0.4, 0, 0.2, 1)',
+      },
       backdropBlur: {
         '3xl': '64px',
       },
@@ -34,6 +39,7 @@ export default {
       fontFamily: {
         body: ['var(--font-body)', ...fontFamily.sans],
         headline: ['var(--font-headline)', ...fontFamily.sans],
+        sans: ['var(--font-body)', ...fontFamily.sans],
       },
       colors: {
         background: 'hsl(var(--background))',
@@ -69,7 +75,10 @@ export default {
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
-        zinc: 'hsl(var(--zinc))',
+        zinc: {
+          DEFAULT: 'hsl(var(--zinc))',
+          ...colors.zinc,
+        },
         chart: {
           '1': 'hsl(var(--chart-1))',
           '2': 'hsl(var(--chart-2))',

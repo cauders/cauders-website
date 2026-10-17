@@ -73,7 +73,7 @@ export default function IndustryPage({ industry, detailedData }: IndustryPagePro
  <div className="selection:bg-primary/30">
  {/* 1. Centered "Command Center" Hero */}
  <ImageContainerHero 
- imageUrl={placeholderImages.hero.main.imageUrl}
+ imageUrl={detailedData.hero.imageUrl || placeholderImages.hero.main.imageUrl}
  imageAlt={detailedData.hero.title}
  badgeText="Industry Focus"
  badgeHref="#overview"
@@ -97,7 +97,7 @@ export default function IndustryPage({ industry, detailedData }: IndustryPagePro
  {detailedData.overview.description}
  </p>
  {detailedData.overview.bullets && detailedData.overview.bullets.length > 0 && (
- <ul className="space-y-4 mt-6">
+ <ul className="space-y-4 mt-6 max-w-[85%]">
  {detailedData.overview.bullets.map((bullet, idx) => (
  <li key={idx} className="flex items-start gap-3">
  <div className="flex-shrink-0 mt-1">
@@ -115,7 +115,7 @@ export default function IndustryPage({ industry, detailedData }: IndustryPagePro
  <ScrollFadeIn direction="left" delay={200}>
  <div className="relative aspect-square md:aspect-[4/3] w-full rounded-3xl overflow-hidden border border-primary/10">
  <Image 
- src={placeholderImages.team.meeting.imageUrl}
+ src={detailedData.overview.imageUrl || placeholderImages.team.meeting.imageUrl}
  alt={detailedData.overview.title}
  fill
  className="object-cover"
@@ -147,7 +147,7 @@ export default function IndustryPage({ industry, detailedData }: IndustryPagePro
  {detailedData.servicesBuiltForIndustry.items.map((svc, idx) => (
  <ScrollFadeIn key={idx} delay={idx * 50} className="w-full sm:w-[calc(50%-0.5rem)] lg:w-[calc(25%-1.125rem)]">
  <ImageCard 
- imageUrl={placeholderImages.services['ai-integrations'].imageUrl}
+ imageUrl={svc.imageUrl || placeholderImages.services['ai-integrations'].imageUrl}
  altText={svc.title}
  heading={svc.title}
  subheading="Let's Discuss"
@@ -221,17 +221,17 @@ export default function IndustryPage({ industry, detailedData }: IndustryPagePro
  align="center"
  />
  
- <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 w-full">
+ <div className="flex flex-wrap justify-center gap-6 lg:gap-8 max-w-6xl mx-auto w-full">
  {detailedData.expertise.items.map((exp, idx) => {
  const ExpIcon = (exp.icon && (LucideIcons as any)[exp.icon]) || CheckCircle2;
  return (
- <ScrollFadeIn key={idx} delay={idx * 0.1} className="h-full">
+ <ScrollFadeIn key={idx} delay={idx * 0.1} className="w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1.35rem)] max-w-sm flex">
  <InfoCard
  title={exp.title}
  description={exp.description}
  icon={ExpIcon}
  lineClamp="none"
- className="h-full p-6 md:p-8"
+ className="w-full h-full p-6 md:p-8"
  ctaText="Learn More"
  ctaHref="/contact"
  />
@@ -433,17 +433,15 @@ export default function IndustryPage({ industry, detailedData }: IndustryPagePro
  const Icon = (card.icon && (LucideIcons as any)[card.icon]) || LucideIcons.CheckCircle;
  return (
  <ScrollFadeIn key={index} delay={index * 0.1} className="h-full">
- <ContainerCard hoverEffect className="h-full flex flex-col group p-6 md:p-8 text-left">
- <div className="flex-shrink-0 bg-zinc rounded-full p-3 md:p-4 border border-primary/20 group-hover:bg-zinc/90 transition-colors w-fit mb-6">
- <Icon className="w-6 h-6 md:w-8 md:h-8 text-white" strokeWidth={1.5} />
- </div>
- <h3 className="text-heading-card font-medium font-headline text-foreground mb-3">
- {card.title}
- </h3>
- <p className="text-body-base text-foreground ">
- {card.description}
- </p>
- </ContainerCard>
+ <InfoCard
+ title={card.title}
+ description={card.description}
+ icon={Icon}
+ lineClamp="none"
+ className="h-full p-6 md:p-8"
+ ctaText="Learn More"
+ ctaHref="/contact"
+ />
  </ScrollFadeIn>
  );
  })}

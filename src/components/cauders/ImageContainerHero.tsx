@@ -56,8 +56,8 @@ export default function ImageContainerHero({
  className="object-cover"
  priority
  />
- {/* Light gradient overlay to ensure the menu is visible at the top without darkening the whole image */}
- <div className="absolute inset-x-0 top-0 h-32 lg:h-48 bg-gradient-to-b from-white/50 to-transparent pointer-events-none dark:from-black/70"></div>
+ {/* Smooth, subtle top scrim to ensure header contrast cleanly without harsh shadows */}
+ <div className="absolute inset-x-0 top-0 h-36 lg:h-48 bg-gradient-to-b from-black/40 via-black/15 to-transparent pointer-events-none"></div>
  </div>
 
  <div className="relative z-10 flex flex-col h-full items-center justify-center text-center px-4">

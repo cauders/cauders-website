@@ -63,8 +63,9 @@ export default function TeamCarousel() {
  subheading={member.role}
  description={member.bio}
  className="h-[400px] md:h-[480px]"
- descriptionClassName="!line-clamp-3"
- imageClassName="object-top"
+ descriptionClassName="!line-clamp-2"
+ imageClassName={member.imageClassName}
+ imageStyle={member.imageStyle}
  icon={
  member.socials.linkedin && (
  <Button variant="ghost" size="icon" className="w-6 h-6 hover:bg-white/10" asChild>

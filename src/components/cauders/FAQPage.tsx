@@ -123,7 +123,6 @@ export default function FAQPage() {
  <Accordion 
  type="single" 
  collapsible 
- defaultValue="item-0"
  className="w-full space-y-4"
  >
  {displayedFaqs.map((faq, index) => (

@@ -209,7 +209,7 @@ export default function FAQPage() {
  <SectionHeader 
  badgeText="Quick Insights"
  headingLines={[
- { text: "Specialized Services & Expertise", className: "text-white" }
+ "Specialized Services & Expertise"
  ]}
  theme="dark"
  align="center"
@@ -234,7 +234,7 @@ export default function FAQPage() {
 
  <Testimonials />
  
- <GetAQuote title="Ready to start your project?" subtitle="Let's build something extraordinary together." />
+ <GetAQuote title="Ready to start your project?" description="Let's build something extraordinary together." />
  </div>
  );
 }

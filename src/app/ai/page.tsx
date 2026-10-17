@@ -4,7 +4,7 @@ import { getAiCategories } from '@/lib/data';
 export default function ServicesPage() {
  const categories = getAiCategories();
  if (categories.length > 0) {
- redirect(`/services/${categories[0].slug}`);
+ redirect(`/ai/${categories[0].slug}`);
  }
  
  return null;

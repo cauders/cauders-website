@@ -75,7 +75,7 @@ export default function Principles() {
  <ScrollFadeIn direction="right">
  <div className="relative aspect-[4/5] w-full rounded-2xl overflow-hidden group shadow-lg">
  <Image
- src="/images/icon.png"
+ src="https://res.cloudinary.com/cauders/image/upload/v1792265000/96db92ab-3d92-43d5-a351-7e70b3dc6ec1_myvvhr.jpg"
  alt="Cauders Core Principles"
  fill
  className="object-cover transition-transform duration-500 group-hover:scale-105"

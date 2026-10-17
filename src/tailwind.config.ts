@@ -1,6 +1,7 @@
 
 import type {Config} from 'tailwindcss';
 import { fontFamily } from 'tailwindcss/defaultTheme';
+import colors from 'tailwindcss/colors';
 
 export default {
  darkMode: ['class'],
@@ -27,9 +28,10 @@ export default {
  'smooth-lift': '0 10px 20px 4px rgb(0 0 0 / 0.05)',
  },
  fontFamily: {
- body: ['var(--font-body)', ...fontFamily.sans],
- headline: ['var(--font-headline)', ...fontFamily.sans],
- },
+  body: ['var(--font-body)', ...fontFamily.sans],
+  headline: ['var(--font-headline)', ...fontFamily.sans],
+  sans: ['var(--font-body)', ...fontFamily.sans],
+  },
  colors: {
  background: 'hsl(var(--background))',
  foreground: 'hsl(var(--foreground))',
@@ -64,7 +66,10 @@ export default {
  border: 'hsl(var(--border))',
  input: 'hsl(var(--input))',
  ring: 'hsl(var(--ring))',
- zinc: 'hsl(var(--zinc))',
+ zinc: {
+ DEFAULT: 'hsl(var(--zinc))',
+ ...colors.zinc,
+ },
  subtle: 'hsl(var(--subtle))',
  chart: {
  '1': 'hsl(var(--chart-1))',

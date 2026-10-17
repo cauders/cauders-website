@@ -83,7 +83,7 @@ html.lenis, html.lenis body {
     overflow-x: clip;
   }
   h1, h2, h3, h4, h5, h6 {
-    @apply capitalize;
+    @apply capitalize font-headline;
   }
   html {
     scroll-behavior: auto;
@@ -572,4 +572,20 @@ html.lenis, html.lenis body {
   .hover-white-to-black {
     @apply bg-white text-black hover:bg-black hover:text-primary transition-colors duration-300;
   }
+  .img-zoom-50-top,
+  .img-zoom-top {
+    transform: scale(2.10) !important;
+    transform-origin: top center !important;
+    object-position: top center !important;
+  }
+  @keyframes nav-progress {
+    0% { transform: translateX(-100%); }
+    50% { transform: translateX(-15%); }
+    100% { transform: translateX(0%); }
+  }
+  .animate-nav-progress {
+    animation: nav-progress 1.2s cubic-bezier(0.1, 0.5, 0.1, 1) infinite;
+    transform-origin: left;
+  }
 }
+

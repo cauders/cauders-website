@@ -71,6 +71,71 @@ export default function StandardizedHeading({ lines, className, animationType = 
  </span>
  ) : line.text.includes('<span') ? (
  <span dangerouslySetInnerHTML={{ __html: line.text }} />
+ ) : line.text === "Transforming Business Challenges into" || line.text === "Transforming Business Challenges Into" ? (
+ <>
+ <span className="word-highlight">Transforming </span>
+ <span className={cn("text-transparent bg-clip-text", gradientType === 'light' ? 'bg-gradient-text-light' : 'bg-gradient-text')}>
+ <span className="word-highlight">Business </span>
+ <span className="word-highlight">Challenges </span>
+ <span className="word-highlight">{line.text.includes("Into") ? "Into" : "into"}</span>
+ </span>
+ </>
+ ) : line.text === "Solutions Through Technology & Applied AI" ? (
+ <>
+ <span className={cn("text-transparent bg-clip-text", gradientType === 'light' ? 'bg-gradient-text-light' : 'bg-gradient-text')}>
+ <span className="word-highlight">Solutions </span>
+ </span>
+ <span className="word-highlight">Through </span>
+ <span className="word-highlight">Technology </span>
+ <span className="word-highlight">& </span>
+ <span className="word-highlight">Applied </span>
+ <span className="word-highlight">AI</span>
+ </>
+ ) : line.text === "Transforming Business" ? (
+ <>
+ <span className="word-highlight">Transforming </span>
+ <span className={cn("text-transparent bg-clip-text", gradientType === 'light' ? 'bg-gradient-text-light' : 'bg-gradient-text')}>
+ <span className="word-highlight">Business</span>
+ </span>
+ </>
+ ) : line.text === "Challenges into Solutions" || line.text === "Challenges Into Solutions" ? (
+ <span className={cn("text-transparent bg-clip-text", gradientType === 'light' ? 'bg-gradient-text-light' : 'bg-gradient-text')}>
+ <span className="word-highlight">Challenges </span>
+ <span className="word-highlight">{line.text.includes("Into") ? "Into " : "into "}</span>
+ <span className="word-highlight">Solutions</span>
+ </span>
+ ) : line.text === "Business Challenges into Solutions" ? (
+ <span className={cn("text-transparent bg-clip-text", gradientType === 'light' ? 'bg-gradient-text-light' : 'bg-gradient-text')}>
+ <span className="word-highlight">Business </span>
+ <span className="word-highlight">Challenges </span>
+ <span className="word-highlight">into </span>
+ <span className="word-highlight">Solutions</span>
+ </span>
+ ) : line.text === "Transforming Business Challenges into Solutions" ? (
+ <>
+ <span className="word-highlight">Transforming </span>
+ <span className={cn("text-transparent bg-clip-text", gradientType === 'light' ? 'bg-gradient-text-light' : 'bg-gradient-text')}>
+ <span className="word-highlight">Business </span>
+ <span className="word-highlight">Challenges </span>
+ <span className="word-highlight">into </span>
+ <span className="word-highlight">Solutions</span>
+ </span>
+ </>
+ ) : line.text === "Transforming Business Challenges into Solutions Through Technology & Applied AI" ? (
+ <>
+ <span className="word-highlight">Transforming </span>
+ <span className={cn("text-transparent bg-clip-text", gradientType === 'light' ? 'bg-gradient-text-light' : 'bg-gradient-text')}>
+ <span className="word-highlight">Business </span>
+ <span className="word-highlight">Challenges </span>
+ <span className="word-highlight">into </span>
+ <span className="word-highlight">Solutions </span>
+ </span>
+ <span className="word-highlight">Through </span>
+ <span className="word-highlight">Technology </span>
+ <span className="word-highlight">& </span>
+ <span className="word-highlight">Applied </span>
+ <span className="word-highlight">AI</span>
+ </>
  ) : line.text === "Ideas Into Powerful & Creative" ? (
  <>
  <span className="word-highlight">Ideas </span>

@@ -1,32 +1,51 @@
+'use client';
 
-'use client'
-
-import { useEffect } from 'react'
-import Lenis from 'lenis'
+import { useEffect, useRef } from 'react';
+import { usePathname } from 'next/navigation';
+import Lenis from 'lenis';
 
 export default function SmoothScroll() {
- useEffect(() => {
- const lenis = new Lenis({
- lerp: 0.1, 
- duration: 1.2, 
- smoothWheel: true,
- touchMultiplier: 2,
- })
+  const pathname = usePathname();
+  const lenisRef = useRef<Lenis | null>(null);
 
- let rafId: number;
+  useEffect(() => {
+    // Let touch / mobile devices use native 120Hz momentum scrolling
+    const isTouch = typeof window !== 'undefined' && window.matchMedia('(pointer: coarse)').matches;
+    if (isTouch) return;
 
- function raf(time: number) {
- lenis.raf(time)
- rafId = requestAnimationFrame(raf)
- }
+    const lenis = new Lenis({
+      lerp: 0.12, // Responsive & fluid without the 1.2s lag delay
+      smoothWheel: true,
+      wheelMultiplier: 1,
+      touchMultiplier: 1,
+      syncTouch: false,
+    });
+    lenisRef.current = lenis;
 
- rafId = requestAnimationFrame(raf)
+    let rafId: number;
 
- return () => {
- lenis.destroy()
- cancelAnimationFrame(rafId)
- }
- }, [])
+    function raf(time: number) {
+      lenis.raf(time);
+      rafId = requestAnimationFrame(raf);
+    }
 
- return null
+    rafId = requestAnimationFrame(raf);
+
+    return () => {
+      lenis.destroy();
+      lenisRef.current = null;
+      cancelAnimationFrame(rafId);
+    };
+  }, []);
+
+  // When navigating between pages, immediately reset scroll to top without fighting Next.js
+  useEffect(() => {
+    if (lenisRef.current) {
+      lenisRef.current.scrollTo(0, { immediate: true });
+    } else if (typeof window !== 'undefined') {
+      window.scrollTo(0, 0);
+    }
+  }, [pathname]);
+
+  return null;
 }

@@ -70,33 +70,33 @@ export default function ServiceDetailPage({ data }: ServiceDetailPageProps) {
  <div className="flex flex-col items-start mb-6">
  <ArrowBadge href="#overview" text="Overview" variant="black" className="mb-4" />
  </div>
- <div className="space-y-6 mt-6">
- {data.overview.paragraphs.map((paragraph, idx) => (
- <p key={idx} className={`text-foreground font-normal ${typography.bodyBase}`}>
- {paragraph}
- </p>
- ))}
- </div>
- {data.overview.points && data.overview.points.length > 0 && (
- <ul className="mt-8 space-y-6">
- {data.overview.points.map((point, idx) => (
- <li key={idx} className="flex items-start gap-3">
- <CheckCircle2 className="w-5 h-5 flex-shrink-0 mt-0.5 text-zinc" fill="currentColor" stroke="white" />
- <div className="flex flex-col gap-1.5">
- <span className="font-bold text-foreground">{point.title}</span>
- <p className="text-sm text-foreground/80 leading-relaxed max-w-lg">{point.description}</p>
- </div>
- </li>
- ))}
- </ul>
- )}
- </ScrollFadeIn>
+ <div className="space-y-4 mt-6">
+            {data.overview.paragraphs.map((paragraph, idx) => (
+              <p key={idx} className="text-black font-normal text-base leading-relaxed">
+                {paragraph}
+              </p>
+            ))}
+          </div>
+          {data.overview.points && data.overview.points.length > 0 && (
+            <ul className="mt-6 space-y-3.5 max-w-[85%]">
+              {data.overview.points.map((point, idx) => (
+                <li key={idx} className="flex items-start gap-3">
+                  <CheckCircle2 className="w-5 h-5 flex-shrink-0 mt-1 text-zinc" fill="currentColor" stroke="white" />
+                  <div className="flex flex-col gap-1">
+                    <span className="text-lg md:text-xl font-bold text-black">{point.title}</span>
+                    <p className="text-base text-black font-normal leading-relaxed">{point.description}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          )}
+          </ScrollFadeIn>
  </div>
  <div className="lg:col-span-6 relative">
  <ScrollFadeIn direction="left" delay={200}>
  <div className="relative aspect-square md:aspect-[4/3] w-full rounded-3xl overflow-hidden border border-primary/10">
  <Image 
- src={data.hero.imageUrl || "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80&w=1200"}
+ src={data.overview?.imageUrl || "https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&q=80&w=1200"}
  alt={data.overview.heading}
  fill
  className="object-cover"
@@ -174,7 +174,7 @@ export default function ServiceDetailPage({ data }: ServiceDetailPageProps) {
  fadeOut={true}
  fadeOutColor="transparent"
  logos={data.techStack.map((tech) => ({
- node: <TechLogo name={tech.name} />
+ node: <TechLogo name={tech.name} logoUrl={tech.logoUrl} />
  }))}
  />
  </div>

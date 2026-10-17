@@ -43,3 +43,9 @@ next-env.d.ts
 # firebase
 firebase-debug.log
 firestore-debug.log
+
+# scratch
+scratch/
+scratch_git_images.txt
+scripts/*.txt
+*.bak

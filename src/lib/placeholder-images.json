@@ -31,17 +31,17 @@
   },
   "hero": {
     "main": {
-      "imageUrl": "/images/hero/hero-bg-8.png",
-      "aiHint": "web design"
+      "imageUrl": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1920",
+      "aiHint": "web design and digital technology"
     },
     "front": {
-      "imageUrl": "/images/hero/hero-bg-9.png",
+      "imageUrl": "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&q=80&w=1200",
       "aiHint": "mobile app user interface"
     }
   },
   "intro": {
-    "imageUrl": "/images/hero/intro-1.png",
-    "aiHint": "abstract technology"
+    "imageUrl": "https://res.cloudinary.com/cauders/image/upload/v1792224824/Group_145_bhp2oi.svg",
+    "aiHint": "Transforming Business Challenges into Solutions"
   },
   "mobilePortfolio": {
     "screen1": {
@@ -77,52 +77,52 @@
   },
   "careers": {
     "hero": {
-      "imageUrl": "/images/join.png",
+      "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=1920",
       "aiHint": "modern office team"
     }
   },
   "services": {
     "web-development": {
-      "imageUrl": "/images/services/web-dev-2.png",
-      "aiHint": "business meeting"
+      "imageUrl": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&q=80&w=800",
+      "aiHint": "web development coding"
     },
     "mobile-app-development": {
-      "imageUrl": "/images/services/mob-dev-2.png",
-      "aiHint": "business meeting"
+      "imageUrl": "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&q=80&w=800",
+      "aiHint": "mobile app development"
     },
     "ai-integrations": {
-      "imageUrl": "/images/services/ai-intg.png",
-      "aiHint": "business meeting"
+      "imageUrl": "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&q=80&w=800",
+      "aiHint": "artificial intelligence integrations"
     },
     "fintech-solutions": {
-      "imageUrl": "/images/services/fintech-service.png",
-      "aiHint": "business meeting"
+      "imageUrl": "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&q=80&w=800",
+      "aiHint": "fintech and finance"
     },
     "e-commerce-development": {
-      "imageUrl": "/images/services/ecom-dev.png",
-      "aiHint": "business meeting"
+      "imageUrl": "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&q=80&w=800",
+      "aiHint": "ecommerce store development"
     },
     "erp-systems": {
-      "imageUrl": "/images/services/erp.png",
-      "aiHint": "business meeting"
+      "imageUrl": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800",
+      "aiHint": "enterprise erp systems"
     },
     "banking-solutions": {
-      "imageUrl": "/images/services/bank-sol.png",
-      "aiHint": "business meeting"
+      "imageUrl": "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=80&w=800",
+      "aiHint": "banking and security"
     },
     "uiux-designing": {
-      "imageUrl": "/images/services/uiux-2.png",
-      "aiHint": "business meeting"
+      "imageUrl": "https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&q=80&w=800",
+      "aiHint": "ui ux product design"
     }
   },
   "team": {
     "meeting": {
-      "imageUrl": "/images/core1.png",
+      "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=1200",
       "aiHint": "team meeting collaboration"
     },
     "dataChart": {
-      "imageUrl": "/images/uiux.png",
-      "aiHint": "data chart laptop"
+      "imageUrl": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1200",
+      "aiHint": "data analytics dashboard"
     },
     "members": {
       "alex": "/images/team/m1.png",

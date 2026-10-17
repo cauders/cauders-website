@@ -1,112 +1,321 @@
-
 'use client';
 
-import ScrollFadeIn from '@/components/cauders/ScrollFadeIn';
-import { Card, CardContent } from '@/components/ui/card';
-import { cn } from '@/lib/utils';
-import { ShieldCheck } from 'lucide-react';
 import React from 'react';
-import StandardizedHeading from '@/components/cauders/StandardizedHeading';
-import BlurCircle from '@/components/cauders/BlurCircle';
+import Link from 'next/link';
+import PolicyLayout, { PolicySectionItem } from '@/components/cauders/PolicyLayout';
 
-const WordHighlighter = ({ text }: { text: string }) => {
- return (
- <p className="text-highlight-group text-sm lg:text-base">
- {text.split(' ').map((word, index) => (
- <React.Fragment key={index}>
- <span className="word-highlight">{word}</span>{' '}
- </React.Fragment>
- ))}
- </p>
- );
-};
+const policySections: PolicySectionItem[] = [
+  {
+    id: "introduction",
+    title: "Introduction",
+    content: (
+      <>
+        <p>
+          Cauders (Private) Limited (&quot;Cauders,&quot; &quot;we,&quot; &quot;us,&quot; or &quot;our&quot;) respects your privacy and is committed to handling personal information responsibly.
+        </p>
+        <p>
+          This Privacy Policy explains how we collect, use, disclose, and protect personal information when you visit{' '}
+          <Link href="/" className="text-zinc-900 underline underline-offset-4 decoration-zinc-300 hover:decoration-zinc-800 hover:text-zinc-600 font-medium transition-colors">https://cauders.com</Link>, contact us, book a meeting, subscribe to our newsletter, apply for a position, or otherwise interact with our website.
+        </p>
+        <p>
+          Cauders provides business-to-business technology services, including custom software development, SaaS development, AI solutions, workflow automation, and related software engineering services.
+        </p>
+        <p>
+          This Privacy Policy covers information collected through our public website and related business communications. When we process personal information on behalf of a client as part of a software development or technology engagement, that processing may be governed by the applicable client agreement and, where relevant, a separate Data Processing Agreement.
+        </p>
+      </>
+    )
+  },
+  {
+    id: "information-we-collect",
+    title: "Information We Collect",
+    content: (
+      <>
+        <p>
+          We collect information that you provide directly, information generated through your use of the website, and information received through the services used to operate our website.
+        </p>
+        
+        <div className="space-y-4 pt-2">
+          <div>
+            <h3 className="font-semibold text-zinc-900 text-base mb-1">Contact and project inquiries</h3>
+            <p>
+              When you contact us through our website, email, or other communication channels, we may collect your name, email address, professional role, location, company information, telephone number if provided, and the details of your inquiry.
+            </p>
+            <p className="mt-1">
+              This may include information about your business requirements, intended project, technology needs, budget, timelines, and other information you choose to share.
+            </p>
+          </div>
 
+          <div>
+            <h3 className="font-semibold text-zinc-900 text-base mb-1">Meeting bookings</h3>
+            <p>
+              When you book a meeting with us, we may collect your name, email address, preferred meeting time, time zone, and any information you provide about the purpose of the meeting. If a third-party scheduling service is used, that provider may also collect and process information under its own privacy policy.
+            </p>
+          </div>
 
-const policySections = [
- {
- title: "Information We Collect",
- content: (
- <>
- <WordHighlighter text="We may collect personal and non-personal information through various methods, including:" />
- <ul className="list-disc list-outside space-y-2 pl-6 mt-4 text-sm lg:text-base">
- <li><strong className="word-highlight">Information you provide to us:</strong> <WordHighlighter text="This includes data you voluntarily submit when you contact us, request a quote, subscribe to a newsletter, or fill out a form. This may include your name, company name, email address, phone number, and any other information you choose to provide." /></li>
- <li><strong className="word-highlight">Information we collect automatically:</strong> <WordHighlighter text="When you visit our website, we may automatically collect certain technical data about your device and browsing activity. This may include your IP address, browser type, operating system, pages viewed, and the duration of your visit. This data is collected using standard technologies such as cookies and log files." /></li>
- </ul>
- </>
- )
- },
- {
- title: "How We Use Your Information",
- content: (
- <>
- <WordHighlighter text="We use the collected information for a variety of purposes, including:" />
- <ul className="list-disc list-outside space-y-2 pl-6 mt-4 text-sm lg:text-base">
- <li><strong className="word-highlight">To provide and improve our services:</strong> <WordHighlighter text="We use your information to fulfill your requests, manage our relationship with you, and enhance the functionality and quality of our services." /></li>
- <li><strong className="word-highlight">For communication:</strong> <WordHighlighter text="We may use your contact details to respond to your inquiries, send you project updates, and provide you with information about our services." /></li>
- <li><strong className="word-highlight">For marketing and analytics:</strong> <WordHighlighter text="We may use non-personal data to analyze website traffic, understand user behavior, and improve our marketing strategies. We may also use your contact information to send you promotional materials about our services, which you can opt-out of at any time." /></li>
- <li><strong className="word-highlight">For security and legal compliance:</strong> <WordHighlighter text="We use your data to detect and prevent fraud, protect the security of our systems, and to comply with our legal obligations." /></li>
- </ul>
- </>
- )
- },
- {
- title: "Data Sharing and Disclosure",
- content: <WordHighlighter text="Cauders will not sell, rent, or lease your personal information to third parties. We may, however, share your information with trusted third-party service providers who assist us in operating our business and delivering our services, such as web hosting, analytics, and payment processing. These providers are bound by strict confidentiality agreements and are only permitted to use your information for the purposes for which it was shared. We may also disclose your information if required by law or a valid legal process." />
- },
- {
- title: "Data Security",
- content: <WordHighlighter text="We implement a range of industry-standard security measures, including encryption, firewalls, and secure access controls, to protect your personal information from unauthorized access, loss, or misuse. While we strive to protect your data, no method of transmission over the internet or electronic storage is 100% secure. Therefore, we cannot guarantee its absolute security." />
- },
- {
- title: "Your Rights",
- content: <WordHighlighter text="You have the right to access, update, and request the deletion of your personal information that we hold. If you wish to exercise these rights, please contact us at info@cauders.com. We will respond to your request in a timely manner and in accordance with applicable laws." />
- },
- {
- title: "Changes to this Privacy Policy",
- content: <WordHighlighter text="We may update this Privacy Policy from time to time. Any changes will be posted on this page with a revised 'Last Updated' date. We encourage you to review this policy periodically to stay informed about how we are protecting your information." />
- }
+          <div>
+            <h3 className="font-semibold text-zinc-900 text-base mb-1">Newsletter subscriptions</h3>
+            <p>
+              When you subscribe to our newsletter or business updates, we collect your email address and any subscription preferences you provide. We use this information to deliver the communications you request and manage your subscription.
+            </p>
+          </div>
+
+          <div>
+            <h3 className="font-semibold text-zinc-900 text-base mb-1">Careers and applications</h3>
+            <p>
+              If you apply for a position or contact us regarding a career opportunity, we may collect your name, contact details, resume or CV, professional experience, qualifications, portfolio links, employment history, and other information you choose to provide as part of your application.
+            </p>
+          </div>
+
+          <div>
+            <h3 className="font-semibold text-zinc-900 text-base mb-1">Website and technical information</h3>
+            <p>
+              When you visit our website, certain technical information may be collected automatically, including your IP address, browser type, operating system, device information, referring page, pages visited, visit timestamps, and information about interactions with our website.
+            </p>
+            <p className="mt-1">
+              Our hosting, security, and analytics services may process this information to deliver website content, understand site usage, maintain reliability, and help identify technical issues.
+            </p>
+          </div>
+
+          <div>
+            <h3 className="font-semibold text-zinc-900 text-base mb-1">Cookies and analytics information</h3>
+            <p>
+              We use Google Analytics to understand how visitors interact with our website and to improve its content and performance. Depending on the configuration of our website, this may involve cookies and similar technologies. Further information is available in our{' '}
+              <Link href="/cookies-policy" className="text-zinc-900 underline underline-offset-4 decoration-zinc-300 hover:decoration-zinc-800 hover:text-zinc-600 font-medium transition-colors">Cookies Policy</Link>.
+            </p>
+          </div>
+        </div>
+      </>
+    )
+  },
+  {
+    id: "how-we-use-personal-information",
+    title: "How We Use Personal Information",
+    content: (
+      <>
+        <p>We use personal information for the following purposes:</p>
+        <ul className="list-disc list-outside space-y-2 pl-6 text-sm lg:text-base text-zinc-700">
+          <li>To respond to inquiries and communicate with prospective clients.</li>
+          <li>To understand business and technical requirements and arrange discovery meetings.</li>
+          <li>To evaluate potential software development, AI, automation, and technology engagements.</li>
+          <li>To manage meeting bookings and related communications.</li>
+          <li>To deliver newsletters and business updates to subscribers.</li>
+          <li>To receive, evaluate, and manage job applications and recruitment communications.</li>
+          <li>To operate, maintain, troubleshoot, and improve our website.</li>
+          <li>To understand website traffic and usage through analytics.</li>
+          <li>To protect our website, prevent misuse, and investigate suspected security incidents.</li>
+          <li>To comply with applicable legal obligations and establish, exercise, or defend legal claims.</li>
+        </ul>
+        <p className="mt-4 text-zinc-500 font-medium text-xs sm:text-sm">
+          We do not use an inquiry submission to automatically subscribe you to our newsletter. Newsletter subscriptions are handled separately.
+        </p>
+      </>
+    )
+  },
+  {
+    id: "legal-grounds-for-processing",
+    title: "Legal Grounds for Processing",
+    content: (
+      <>
+        <p>
+          We process personal information for legitimate business purposes and in accordance with applicable law.
+        </p>
+        <p>
+          Depending on the circumstances and the law applicable to a particular person or activity, processing may be based on your request to take steps before entering into a contract, performance of a contract, our legitimate business interests, your consent, or compliance with a legal obligation.
+        </p>
+        <p>
+          Where consent is required for a particular activity, including certain cookies or marketing communications, we will seek consent as required by applicable law. You may withdraw consent where processing relies on it, without affecting the lawfulness of processing that occurred before withdrawal.
+        </p>
+      </>
+    )
+  },
+  {
+    id: "how-we-share-personal-information",
+    title: "How We Share Personal Information",
+    content: (
+      <>
+        <p>
+          We do not sell personal information in exchange for money. We may disclose personal information to the following categories of recipients when reasonably necessary for the purposes described in this Policy:
+        </p>
+        <div className="space-y-4 pt-2">
+          <div>
+            <h3 className="font-semibold text-zinc-900 text-base mb-1">Service providers</h3>
+            <p>
+              We may use hosting, infrastructure, website analytics, scheduling, email delivery, newsletter, recruitment, and other technology providers to help operate our website and business communications.
+            </p>
+          </div>
+          <div>
+            <h3 className="font-semibold text-zinc-900 text-base mb-1">Google Analytics</h3>
+            <p>
+              We use Google Analytics to measure website usage and understand visitor interactions. Information associated with your visit may be transmitted to and processed by Google in accordance with the relevant service configuration and Google&apos;s applicable privacy terms.
+            </p>
+          </div>
+          <div>
+            <h3 className="font-semibold text-zinc-900 text-base mb-1">Professional advisers</h3>
+            <p>
+              We may disclose relevant information to legal, accounting, auditing, or other professional advisers when necessary to obtain advice or manage our business obligations.
+            </p>
+          </div>
+          <div>
+            <h3 className="font-semibold text-zinc-900 text-base mb-1">Legal and regulatory authorities</h3>
+            <p>
+              We may disclose information where required by applicable law, a valid legal process, or a competent authority, or where disclosure is reasonably necessary to protect our rights or address unlawful activity.
+            </p>
+          </div>
+          <div>
+            <h3 className="font-semibold text-zinc-900 text-base mb-1">Business transactions</h3>
+            <p>
+              If Cauders undergoes a merger, restructuring, acquisition, or sale of relevant business assets, personal information may be disclosed as part of that transaction, subject to applicable legal requirements.
+            </p>
+          </div>
+        </div>
+        <p className="mt-4">
+          We do not permit service providers acting on our behalf to use personal information for purposes unrelated to the services they provide, except where their separate role or applicable law permits otherwise.
+        </p>
+      </>
+    )
+  },
+  {
+    id: "international-data-transfers",
+    title: "International Data Transfers",
+    content: (
+      <>
+        <p>
+          Cauders operates from Pakistan and may work with clients and individuals in other countries.
+        </p>
+        <p>
+          Our technology and service providers may process or store information in countries other than the country in which you reside. The locations involved depend on the providers and services used.
+        </p>
+        <p>
+          Where applicable law requires safeguards for international transfers of personal information, we will use appropriate transfer mechanisms and safeguards as required by that law.
+        </p>
+      </>
+    )
+  },
+  {
+    id: "data-retention",
+    title: "Data Retention",
+    content: (
+      <>
+        <p>
+          We retain personal information only for as long as reasonably necessary for the purposes for which it was collected, including responding to inquiries, managing business relationships, evaluating applications, delivering newsletters, maintaining website security, and meeting legal obligations.
+        </p>
+        <p>
+          Retention periods depend on the type of information, the purpose for which it is held, whether a business or recruitment relationship continues, and any applicable legal requirements.
+        </p>
+        <ul className="list-disc list-outside space-y-2 pl-6 text-sm lg:text-base text-zinc-700">
+          <li>Newsletter information is retained while you remain subscribed and for any additional period reasonably necessary to maintain unsubscribe records and respect your preferences.</li>
+          <li>Information relating to job applications is retained for as long as reasonably necessary to manage recruitment, consider applications, and address applicable legal obligations.</li>
+          <li>Technical logs and analytics information are retained according to the applicable service configuration and operational requirements.</li>
+        </ul>
+        <p className="mt-4">
+          When personal information is no longer required, we will take reasonable steps to delete it or otherwise dispose of it appropriately, subject to legal requirements, legitimate recordkeeping needs, and backup-system limitations.
+        </p>
+      </>
+    )
+  },
+  {
+    id: "information-security",
+    title: "Information Security",
+    content: (
+      <>
+        <p>
+          We take reasonable steps to protect personal information against unauthorized access, disclosure, alteration, loss, and misuse. The measures appropriate to particular information depend on its nature, sensitivity, and the systems through which it is processed.
+        </p>
+        <p>
+          No method of transmitting or storing information electronically can be guaranteed to be completely secure. Accordingly, we cannot guarantee absolute security.
+        </p>
+        <p>
+          Please avoid sending passwords, API keys, confidential production credentials, or highly sensitive information through ordinary public website forms. Where a proposed client engagement requires the exchange or processing of confidential information, appropriate contractual and technical arrangements should be established before that information is shared.
+        </p>
+      </>
+    )
+  },
+  {
+    id: "your-privacy-rights-and-choices",
+    title: "Your Privacy Rights and Choices",
+    content: (
+      <>
+        <p>
+          Depending on your location and applicable law, you may have rights concerning your personal information, including the right to request access, correction, deletion, or restriction of certain processing.
+        </p>
+        <p>
+          You may also have the right to object to particular processing activities, withdraw consent where processing relies on consent, or exercise other rights provided by applicable law. You can unsubscribe from our newsletters using the unsubscribe mechanism included in the relevant communication.
+        </p>
+        <p>
+          To submit a privacy request, contact us at{' '}
+          <a href="mailto:info@cauders.com" className="text-zinc-900 underline underline-offset-4 decoration-zinc-300 hover:decoration-zinc-800 hover:text-zinc-600 font-medium transition-colors">info@cauders.com</a>. Please describe your request clearly so that we can identify the relevant information. We may need to verify your identity before responding. We will review and respond to requests in accordance with applicable legal requirements. Certain information may need to be retained where required by law or where a valid legal ground applies.
+        </p>
+      </>
+    )
+  },
+  {
+    id: "third-party-websites-and-services",
+    title: "Third-Party Websites and Services",
+    content: (
+      <>
+        <p>
+          Our website may link to third-party websites, social media platforms, scheduling services, or other external resources.
+        </p>
+        <p>
+          These services operate independently and may collect information directly from you under their own privacy policies and terms. Cauders does not control the privacy practices of third-party websites.
+        </p>
+        <p>
+          We encourage you to review the relevant privacy information before submitting personal information through an external service.
+        </p>
+      </>
+    )
+  },
+  {
+    id: "changes-to-this-privacy-policy",
+    title: "Changes to This Privacy Policy",
+    content: (
+      <>
+        <p>
+          We may update this Privacy Policy to reflect changes in our website, services, information-handling practices, or applicable legal requirements.
+        </p>
+        <p>
+          Any updated version will be published on this page with a revised &quot;Last Updated&quot; date. We encourage you to review this page periodically.
+        </p>
+      </>
+    )
+  },
+  {
+    id: "contact-us",
+    title: "Contact Us",
+    content: (
+      <>
+        <p>If you have questions or requests concerning this Privacy Policy or the handling of your personal information, contact:</p>
+        <div className="rounded-2xl border border-zinc-200 bg-zinc-50/80 p-6 space-y-2 mt-4 text-sm lg:text-base text-zinc-800">
+          <p className="font-semibold text-zinc-900">Cauders (Private) Limited</p>
+          <p>
+            Email:{' '}
+            <a href="mailto:info@cauders.com" className="text-zinc-900 underline underline-offset-4 decoration-zinc-300 hover:decoration-zinc-800 hover:text-zinc-600 font-medium transition-colors">
+              info@cauders.com
+            </a>
+          </p>
+          <p>
+            Registered office: F1 Block Phase 2, Pak Arab Housing Society, Ferozpur Road, Lahore, Pakistan
+          </p>
+          <p>
+            Website:{' '}
+            <Link href="/" className="text-zinc-900 underline underline-offset-4 decoration-zinc-300 hover:decoration-zinc-800 hover:text-zinc-600 font-medium transition-colors">
+              https://cauders.com/
+            </Link>
+          </p>
+        </div>
+      </>
+    )
+  }
 ];
 
 export default function PrivacyPolicyPage() {
- return (
- <div className="bg-transparent text-foreground relative overflow-hidden">
- {/* Background decorative elements */}
- <BlurCircle className="absolute top-[-10rem] right-[-10rem] w-96 h-96 -z-10" />
- <BlurCircle className="absolute bottom-[-15rem] left-[-15rem] w-96 h-96 -z-10" />
-
-
- <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
- <ScrollFadeIn>
- <header className="mb-12 text-center">
- <StandardizedHeading lines={["Privacy Policy"]} />
- <p className="mt-4 text-sm text-foreground">Last Updated: September 1, 2025</p>
- </header>
- </ScrollFadeIn>
-
- <div className="max-w-4xl mx-auto space-y-8">
- <ScrollFadeIn>
- <WordHighlighter text="Your privacy is critically important to us. Cauders ('we,' 'us,' or 'our') is committed to protecting the confidentiality and security of your personal information. This Privacy Policy outlines how we collect, use, and safeguard the information you provide when you interact with our website, services, and digital platforms." />
- </ScrollFadeIn>
- 
- {policySections.map((section, index) => (
- <ScrollFadeIn key={index} style={{ animationDelay: `${(index + 1) * 100}ms`}}>
- <section>
- <div className="flex items-start gap-4">
- <div className="flex-shrink-0 text-primary font-bold text-xl lg:text-2xl mt-1">
- {index + 1}.
- </div>
- <div>
- <h2 className="text-xl lg:text-2xl font-bold text-foreground mb-3 font-headline">{section.title}</h2>
- <div className="text-foreground space-y-4 text-sm lg:text-base">
- {section.content}
- </div>
- </div>
- </div>
- </section>
- </ScrollFadeIn>
- ))}
- </div>
- </div>
- </div>
- );
+  return (
+    <PolicyLayout
+      title="Privacy Policy"
+      lastUpdated="October 17, 2026"
+      badge="Privacy"
+      sections={policySections}
+    />
+  );
 }

@@ -129,7 +129,7 @@ export default function Testimonials() {
  return (
  <CarouselItem key={index} className="sm:basis-1/2 lg:basis-[40%] xl:basis-1/3 pl-4 md:pl-8">
  <div className={cn("p-1 h-full transition-transform duration-500 ease-out", index === current ? "scale-100 md:scale-105" : "scale-90 opacity-100")}>
- <Link href={`/work/${testimonial.projectSlug}`} className="block h-full group cursor-pointer">
+ <div className="block h-full group">
  <Card className="bg-white w-full h-full min-h-[260px] md:min-h-[300px] rounded-[16px] md:rounded-[20px] shadow-[0_4px_24px_-8px_rgba(0,0,0,0.05)] border border-border/40 group-hover:border-primary/50 group-hover:shadow-[0_0_30px_-5px_rgba(13,148,136,0.2)] transition-all duration-500 flex flex-col justify-between overflow-hidden relative">
  <Quote className="absolute top-6 right-6 w-16 h-16 md:w-24 md:h-24 text-primary/[0.03] rotate-12 -z-0 pointer-events-none" />
  
@@ -161,12 +161,10 @@ export default function Testimonials() {
  </p>
  </div>
  </div>
- 
- <ArrowUpRight className="w-5 h-5 text- transition-all duration-300 group-hover:text-primary group-hover:translate-x-1 group-hover:-translate-y-1" />
  </div>
  </CardContent>
  </Card>
- </Link>
+ </div>
  </div>
  </CarouselItem>
  );

@@ -19,20 +19,20 @@ export default function FallbackPage({
 }: FallbackPageProps) {
  const quickLinks = [
  {
- title: "Services",
- linkText: "Explore",
- href: "/services",
- image: placeholderImages.services['web-development'].imageUrl
- },
- {
- title: "Portfolio",
- linkText: "View work",
- href: "/",
+ title: "AI & Automation",
+ linkText: "Explore AI",
+ href: "/ai/generative-ai-llms/generative-ai-solutions",
  image: placeholderImages.hero.front.imageUrl
  },
  {
- title: "About Us",
- linkText: "Read story",
+ title: "Services",
+ linkText: "Explore services",
+ href: "/services/software-solutions/web-development",
+ image: placeholderImages.services['web-development'].imageUrl
+ },
+ {
+ title: "Company",
+ linkText: "About us",
  href: "/about",
  image: placeholderImages.about.hero.imageUrl
  }
