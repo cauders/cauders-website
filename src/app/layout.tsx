@@ -75,9 +75,16 @@ export const metadata: Metadata = {
     images: ['/images/hero/intro-1.png'],
   },
   icons: {
-    icon: 'https://res.cloudinary.com/cauders/image/upload/v1786551887/logo_rgtpg7.png',
-    shortcut: 'https://res.cloudinary.com/cauders/image/upload/v1786551887/logo_rgtpg7.png',
-    apple: 'https://res.cloudinary.com/cauders/image/upload/v1786551887/logo_rgtpg7.png',
+    icon: [
+      { url: '/favicon.ico', sizes: '48x48' },
+      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/icon-192.png', sizes: '192x192', type: 'image/png' },
+    ],
+    shortcut: '/favicon.ico',
+    apple: [
+      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
   },
   robots: {
     index: true,
@@ -100,7 +107,7 @@ const jsonLd = {
   '@type': 'Organization',
   name: 'Cauders',
   url: 'https://www.cauders.com',
-  logo: 'https://res.cloudinary.com/cauders/image/upload/v1786551887/logo_rgtpg7.png',
+  logo: 'https://www.cauders.com/icon-512.png',
   description: 'Cauders designs, builds, and modernizes custom software, SaaS products, applied AI, and workflow automations.',
   sameAs: [
     'https://www.linkedin.com/company/cauders',
@@ -121,9 +128,12 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <link rel="icon" href="https://res.cloudinary.com/cauders/image/upload/v1786551887/logo_rgtpg7.png" sizes="any" />
-        <link rel="shortcut icon" href="https://res.cloudinary.com/cauders/image/upload/v1786551887/logo_rgtpg7.png" />
-        <link rel="apple-touch-icon" href="https://res.cloudinary.com/cauders/image/upload/v1786551887/logo_rgtpg7.png" />
+        <link rel="icon" href="/favicon.ico" sizes="48x48" />
+        <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="manifest" href="/site.webmanifest" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
