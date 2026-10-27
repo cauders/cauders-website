@@ -1,53 +1,81 @@
 'use client';
 
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
 import ScrollFadeIn from './ScrollFadeIn';
-import GradientContainer from './GradientContainer';
-import SplitButton from './SplitButton';
-import { typography } from "@/lib/typography";
+import ZincGradientContainer from './ZincGradientContainer';
+import WhiteButton from './WhiteButton';
+import SectionHeading from './SectionHeading';
+import { cn } from '@/lib/utils';
+
+interface GetAQuoteProps {
+  title?: string;
+  lines?: string[];
+  description?: string;
+  ctaText?: string;
+  ctaHref?: string;
+  containerMaxWidth?: string;
+  contentMaxWidth?: string;
+  headingMaxWidth?: string;
+  subheadingMaxWidth?: string;
+}
 
 export default function GetAQuote({
- title = "Let's Get To Work",
- description = "We're here to help you turn your vision into reality. Whether you have a detailed plan or just a spark of an idea, our team is ready to listen and collaborate with you."
-}: {
- title?: string;
- description?: string;
-}) {
- const router = useRouter();
- const [email, setEmail] = useState('');
+  title = "Let's Discuss What You're Looking To Build",
+  lines,
+  description = "Tell us about the business goal, the challenge you're addressing and the systems involved.",
+  ctaText = "Start A Discussion",
+  ctaHref = "/contact",
+  containerMaxWidth = "max-w-[95rem]",
+  contentMaxWidth = "max-w-4xl",
+  headingMaxWidth,
+  subheadingMaxWidth = "max-w-2xl",
+}: GetAQuoteProps) {
+  const headingLines = lines || (title ? [title] : [
+    "Let's Discuss What You're",
+    "Looking To Build"
+  ]);
 
- const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
- e.preventDefault();
- router.push(`/contact?email=${encodeURIComponent(email)}`);
- };
+  return (
+    <section className="pt-8 sm:pt-10 pb-16 sm:pb-20 md:pb-24 px-4 sm:px-6 lg:px-8 bg-transparent">
+      <div className={cn(containerMaxWidth, "mx-auto")}>
+        <ScrollFadeIn>
+          <ZincGradientContainer
+            withRadialGlow={true}
+            className="rounded-[2.5rem] p-0 text-center relative overflow-hidden shadow-[0_12px_40px_rgba(0,49,46,0.12)] border-[0.5px] border-primary/20"
+          >
+            {/*
+              The card fits the image completely:
+              The image renders with w-full h-auto at its natural aspect ratio,
+              fitting the width of the section and placed at the bottom without ANY cropping.
+            */}
+            <div className="relative w-full min-h-[350px] sm:min-h-[395px] md:min-h-[440px] lg:min-h-[490px] flex items-center justify-center">
+              <img
+                src="https://res.cloudinary.com/cauders/image/upload/v1792733523/image_370_hjhqlr.png"
+                alt=""
+                className="w-full h-auto block select-none pointer-events-none absolute bottom-0 inset-x-0"
+              loading="lazy" decoding="async" />
 
- return (
- <section className="pt-0 pb-8 md:pb-10 lg:pb-12">
- <div className="container mx-auto px-4 sm:px-6 lg:px-8">
- <ScrollFadeIn>
- <GradientContainer 
- className="rounded-3xl py-16 md:py-20 px-6 md:px-12 text-center relative overflow-hidden"
- imageSrc="/images/background/overlay-bg-1.svg"
- >
- <div className="relative z-10">
- <h2 
- className="font-headline text-2xl sm:text-4xl md:text-6xl text-foreground leading-tight font-medium text-white max-w-4xl mx-auto"
- dangerouslySetInnerHTML={{ __html: title }}
- />
- <p className={`mt-4 md:mt-8 ${typography.bodyBase} font-normal text-white max-w-2xl mx-auto`}>
- {description}
- </p>
- <form onSubmit={handleSubmit} className="mt-8 md:mt-16 max-w-sm md:max-w-md mx-auto">
- <SplitButton 
- emailValue={email}
- onEmailChange={(e) => setEmail(e.target.value)}
- />
- </form>
- </div>
- </GradientContainer>
- </ScrollFadeIn>
- </div>
- </section>
- );
+              {/* Content overlay using SectionHeading centered directly on top with vertical room */}
+              <div className={cn("relative z-10 flex flex-col items-center justify-center mx-auto px-6 sm:px-10 lg:px-16 py-10 sm:py-14 md:py-16", contentMaxWidth)}>
+                <SectionHeading
+                  lines={headingLines}
+                  subheading={description}
+                  align="center"
+                  headingClassName={cn("!text-white font-medium", headingMaxWidth && `mx-auto ${headingMaxWidth}`)}
+                  subheadingClassName={cn("!text-white/80 mx-auto mb-6 sm:mb-8 text-sm sm:text-base md:text-lg font-light leading-relaxed tracking-normal", subheadingMaxWidth)}
+                  subheadingMaxWidth={subheadingMaxWidth}
+                  className="mb-0"
+                />
+
+                <div>
+                  <WhiteButton href={ctaHref} size="md">
+                    {ctaText}
+                  </WhiteButton>
+                </div>
+              </div>
+            </div>
+          </ZincGradientContainer>
+        </ScrollFadeIn>
+      </div>
+    </section>
+  );
 }

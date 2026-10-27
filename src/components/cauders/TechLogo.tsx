@@ -44,6 +44,8 @@ export default function TechLogo({ name, logoUrl }: TechLogoProps) {
             src={imageSrc}
             alt={name}
             className="w-6 h-6 md:w-8 md:h-8 object-contain"
+            loading="lazy"
+            decoding="async"
             onError={() => setHasError(true)}
           />
         ) : (

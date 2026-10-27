@@ -44,8 +44,9 @@ html.lenis, html.lenis body {
     --input: 0 0% 87%;
     --ring: 177 78% 72%;
     --radius: 0.5rem;
-    --zinc: 177 86% 26%;
+    --zinc: 181 81% 18%; /* #09555A Unified Dark Teal */
     --subtle: 0 0% 94%; /* Light Silver */
+    --dark-teal: 181 81% 18%; /* #09555A */
   }
 
   .dark {
@@ -68,8 +69,9 @@ html.lenis, html.lenis body {
     --border: 217 33% 17%;
     --input: 217 33% 17%;
     --ring: 177 78% 72%;
-    --zinc: 177 86% 26%;
+    --zinc: 181 81% 18%; /* #09555A Unified Dark Teal */
     --subtle: 217 33% 15%; /* Darker subtle for dark mode */
+    --dark-teal: 181 81% 18%; /* #09555A */
   }
 }
 
@@ -554,12 +556,30 @@ html.lenis, html.lenis body {
   }
 
   .text-highlight-group .word-highlight {
-    transition: color 0.3s ease-out, text-shadow 0.3s ease-out;
+    transition: color 0.3s ease-out, text-shadow 0.3s ease-out, -webkit-text-fill-color 0.3s ease-out;
   }
   
+  .text-highlight-group .word-highlight:hover,
   .word-highlight:hover {
-    color: hsl(var(--primary));
-    text-shadow: 0 0 8px hsl(var(--primary) / 0.7);
+    color: hsl(var(--primary)) !important;
+    -webkit-text-fill-color: hsl(var(--primary)) !important;
+    background: none !important;
+    -webkit-background-clip: border-box !important;
+    background-clip: border-box !important;
+    text-shadow: 0 0 12px hsl(var(--primary) / 0.8) !important;
+  }
+
+  /* When a word inside a gradient text parent is hovered, isolate it so parent clip-text does not keep it transparent */
+  .text-cyan-gradient:has(.word-highlight:hover),
+  .bg-clip-text:has(.word-highlight:hover) {
+    /* Maintain normal rendering for non-hovered siblings */
+  }
+
+  .text-cyan-gradient .word-highlight:hover,
+  .bg-clip-text .word-highlight:hover {
+    -webkit-text-fill-color: hsl(var(--primary)) !important;
+    color: hsl(var(--primary)) !important;
+    background-image: none !important;
   }
 
   .chat-bubble-user {
@@ -587,5 +607,99 @@ html.lenis, html.lenis body {
     animation: nav-progress 1.2s cubic-bezier(0.1, 0.5, 0.1, 1) infinite;
     transform-origin: left;
   }
+
+  /* Zinc Gradient (zc-gd: #003431 0% to #28938E 100%) */
+  .bg-zinc-gradient {
+    background: linear-gradient(to right, #003431 0%, #28938E 100%);
+  }
+  .bg-zinc-gradient-b {
+    background: linear-gradient(to bottom, #003431 0%, #28938E 100%);
+  }
+  .bg-zinc-gradient-tr {
+    background: linear-gradient(to top right, #003431 0%, #28938E 100%);
+  }
+  .bg-zinc-gradient-br {
+    background: linear-gradient(135deg, #003431 0%, #28938E 100%);
+  }
+  .bg-gradient-container {
+    background: linear-gradient(135deg, #003431 0%, #28938E 100%) !important;
+  }
+  .text-zinc-gradient {
+    background: linear-gradient(to right, #003431 0%, #28938E 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .border-zinc-gradient {
+    border-image: linear-gradient(to right, #003431, #28938E) 1;
+  }
+
+  /* Cyan Radial Gradient (#98DAD7 0% to #00645F 100%) */
+  .bg-cyan-radial {
+    background: radial-gradient(circle, #98DAD7 0%, #00645F 100%);
+  }
+  .bg-cyan-radial-at-t {
+    background: radial-gradient(circle at top, #98DAD7 0%, #00645F 100%);
+  }
+  .bg-cyan-radial-at-tl {
+    background: radial-gradient(circle at top left, #98DAD7 0%, #00645F 100%);
+  }
+  .bg-cyan-radial-at-c {
+    background: radial-gradient(ellipse at center, #98DAD7 0%, #00645F 100%);
+  }
+  .text-cyan-radial {
+    background: radial-gradient(ellipse at center, #98DAD7 0%, #00645F 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .text-cyan-radial:has(.word-highlight:hover) {
+    /* Maintain normal rendering for non-hovered siblings */
+  }
+  .text-cyan-radial .word-highlight:hover {
+    -webkit-text-fill-color: hsl(var(--primary)) !important;
+    color: hsl(var(--primary)) !important;
+    background-image: none !important;
+  }
+
+  /* Cyan Gradient (Linear: hsl(var(--primary)) / #8CEAE5 0% to #003B38 100%) */
+  .bg-cyan-gradient {
+    background: linear-gradient(to right, hsl(var(--primary)) 0%, #003B38 100%);
+  }
+  .bg-cyan-gradient-b {
+    background: linear-gradient(to bottom, hsl(var(--primary)) 0%, #003B38 100%);
+  }
+  .bg-cyan-gradient-br {
+    background: linear-gradient(135deg, hsl(var(--primary)) 0%, #003B38 100%);
+  }
+  .text-cyan-gradient {
+    background: linear-gradient(to right, hsl(var(--primary)) 0%, #003B38 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .bg-gradient-text {
+    background: linear-gradient(to right, hsl(var(--primary)) 0%, #003B38 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .bg-gradient-text-light {
+    background: linear-gradient(to right, #ffffff 0%, hsl(var(--primary)) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .border-cyan-gradient {
+    border-image: linear-gradient(to right, hsl(var(--primary)), #003B38) 1;
+  }
 }
+
+/* Accessible Reduced Motion Support (WCAG 2.2 Level AAA) */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 

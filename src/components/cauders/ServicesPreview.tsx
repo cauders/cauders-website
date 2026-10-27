@@ -6,11 +6,12 @@ import ArrowBadge from "./ArrowBadge";
 import GradientContainer from "./GradientContainer";
 import InfoCard from "./InfoCard";
 import { Button } from "../ui/button";
+import Link from 'next/link';
 import { 
   Blocks, 
   BrainCircuit, 
   RefreshCw, 
-  Layout, 
+  Layers, 
   Compass, 
   Users 
 } from 'lucide-react';
@@ -35,10 +36,10 @@ const coreServices = [
     href: '/services/cloud-digital-transformation/cloud-transformation',
   },
   {
-    title: 'UI/UX & Product Design',
-    description: 'Human-centered interface design, design systems, and rapid prototyping engineered to turn complex workflows into intuitive, high-utility digital experiences that drive measurable adoption.',
-    icon: Layout,
-    href: '/services/design-digital-commerce/ui-ux-design',
+    title: 'SaaS Product Engineering',
+    description: 'Multi-tenant cloud architectures, subscription billing engines, and enterprise-grade security engineered to help software companies launch, scale, and maintain high-performing SaaS products.',
+    icon: Layers,
+    href: '/services/software-solutions/saas-development',
   },
   {
     title: 'Technical Consulting',
@@ -84,13 +85,10 @@ export default function ServicesPreview() {
           </div>
 
           <div className="text-center mt-12 md:mt-16">
-            <Button 
-              variant="outline" 
-              onClick={() => {
-                window.dispatchEvent(new CustomEvent('open-mega-menu', { detail: 'services' }));
-              }}
-            >
-              View All Services
+            <Button asChild variant="outline" size="lg">
+              <Link href="/services">
+                View All Services
+              </Link>
             </Button>
           </div>
         </div>

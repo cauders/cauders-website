@@ -1,8 +1,23 @@
-'use client';
-
+import type { Metadata } from 'next';
 import React from 'react';
 import Link from 'next/link';
 import PolicyLayout, { PolicySectionItem } from '@/components/cauders/PolicyLayout';
+
+export const metadata: Metadata = {
+  title: 'Privacy Policy | Cauders',
+  description: 'Understand how Cauders collects, processes, and protects your personal data in compliance with international privacy laws and GDPR standards.',
+  alternates: {
+    canonical: '/privacy-policy',
+  },
+  openGraph: {
+    title: 'Privacy Policy | Cauders',
+    description: 'Understand how Cauders collects, processes, and protects your personal data in compliance with international privacy laws and GDPR standards.',
+    url: 'https://www.cauders.com/privacy-policy',
+    siteName: 'Cauders',
+    locale: 'en_US',
+    type: 'website',
+  },
+};
 
 const policySections: PolicySectionItem[] = [
   {
@@ -39,48 +54,41 @@ const policySections: PolicySectionItem[] = [
           <div>
             <h3 className="font-semibold text-zinc-900 text-base mb-1">Contact and project inquiries</h3>
             <p>
-              When you contact us through our website, email, or other communication channels, we may collect your name, email address, professional role, location, company information, telephone number if provided, and the details of your inquiry.
+              When you contact us through our website (/contact, homepage contact form, or /partners), we collect your name, work email address, phone number if provided, company name, job title, company size, service interests, and details of your project or inquiry.
             </p>
             <p className="mt-1">
-              This may include information about your business requirements, intended project, technology needs, budget, timelines, and other information you choose to share.
+              For partnership applications (/partners), we additionally collect information about your agency or business model, client base, and collaboration goals.
             </p>
           </div>
 
           <div>
-            <h3 className="font-semibold text-zinc-900 text-base mb-1">Meeting bookings</h3>
+            <h3 className="font-semibold text-zinc-900 text-base mb-1">Careers and job applications</h3>
             <p>
-              When you book a meeting with us, we may collect your name, email address, preferred meeting time, time zone, and any information you provide about the purpose of the meeting. If a third-party scheduling service is used, that provider may also collect and process information under its own privacy policy.
+              When you submit a job application through our careers portal (/careers/apply), we collect your full name, email address, targeted role, cover message, and your uploaded resume or CV file (PDF or Word document).
             </p>
           </div>
 
           <div>
-            <h3 className="font-semibold text-zinc-900 text-base mb-1">Newsletter subscriptions</h3>
+            <h3 className="font-semibold text-zinc-900 text-base mb-1">User feedback and bug reports</h3>
             <p>
-              When you subscribe to our newsletter or business updates, we collect your email address and any subscription preferences you provide. We use this information to deliver the communications you request and manage your subscription.
-            </p>
-          </div>
-
-          <div>
-            <h3 className="font-semibold text-zinc-900 text-base mb-1">Careers and applications</h3>
-            <p>
-              If you apply for a position or contact us regarding a career opportunity, we may collect your name, contact details, resume or CV, professional experience, qualifications, portfolio links, employment history, and other information you choose to provide as part of your application.
+              When you submit feedback or report an issue via /feedback, we collect your name, email address, feedback category (bug, suggestion, praise, or other), your feedback description, and any optional screenshot file you upload.
             </p>
           </div>
 
           <div>
             <h3 className="font-semibold text-zinc-900 text-base mb-1">Website and technical information</h3>
             <p>
-              When you visit our website, certain technical information may be collected automatically, including your IP address, browser type, operating system, device information, referring page, pages visited, visit timestamps, and information about interactions with our website.
+              When you visit our website, certain technical information is collected automatically, including your IP address, browser type, operating system, device characteristics, referring URL, pages visited, and timestamps.
             </p>
             <p className="mt-1">
-              Our hosting, security, and analytics services may process this information to deliver website content, understand site usage, maintain reliability, and help identify technical issues.
+              Our hosting and cloud infrastructure process this data to deliver web pages securely, optimize performance, and prevent unauthorized access.
             </p>
           </div>
 
           <div>
-            <h3 className="font-semibold text-zinc-900 text-base mb-1">Cookies and analytics information</h3>
+            <h3 className="font-semibold text-zinc-900 text-base mb-1">Analytics and marketing tracking</h3>
             <p>
-              We use Google Analytics to understand how visitors interact with our website and to improve its content and performance. Depending on the configuration of our website, this may involve cookies and similar technologies. Further information is available in our{' '}
+              We use the LinkedIn Insight Tag to understand professional visitor demographics, assess marketing effectiveness, and measure B2B engagement. Depending on your browser settings, this involves cookies and tracking pixels. Further details and opt-out instructions are available in our{' '}
               <Link href="/cookies-policy" className="text-zinc-900 underline underline-offset-4 decoration-zinc-300 hover:decoration-zinc-800 hover:text-zinc-600 font-medium transition-colors">Cookies Policy</Link>.
             </p>
           </div>
@@ -145,9 +153,9 @@ const policySections: PolicySectionItem[] = [
             </p>
           </div>
           <div>
-            <h3 className="font-semibold text-zinc-900 text-base mb-1">Google Analytics</h3>
+            <h3 className="font-semibold text-zinc-900 text-base mb-1">LinkedIn Insight Tag</h3>
             <p>
-              We use Google Analytics to measure website usage and understand visitor interactions. Information associated with your visit may be transmitted to and processed by Google in accordance with the relevant service configuration and Google&apos;s applicable privacy terms.
+              We use the LinkedIn Insight Tag to track professional website engagement and conversion analytics. Data collected through the tag (including URL, IP address, device metadata, and timestamp) is processed by LinkedIn Ireland Unlimited Company in accordance with LinkedIn&apos;s privacy policy.
             </p>
           </div>
           <div>

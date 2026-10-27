@@ -18,6 +18,7 @@ interface StandardizedHeadingProps {
  className?: string;
  animationType?: 'up' | 'left' | 'alternate';
  gradientType?: 'dark' | 'light';
+ as?: 'h1' | 'h2' | 'h3';
 }
 
 function getSmartGradientLastWords(text: string, requestedWords: number): number {
@@ -40,7 +41,7 @@ function getSmartGradientLastWords(text: string, requestedWords: number): number
  return words.length - startIdx;
 }
 
-export default function StandardizedHeading({ lines, className, animationType = 'up', gradientType = 'dark' }: StandardizedHeadingProps) {
+export default function StandardizedHeading({ lines, className, animationType = 'up', gradientType = 'dark', as = 'h2' }: StandardizedHeadingProps) {
  const processedLines: Line[] = lines.map(line => {
  if (typeof line === 'string') {
  return { text: line, isGradient: false };
@@ -50,10 +51,12 @@ export default function StandardizedHeading({ lines, className, animationType = 
  gradientLastWords: line.gradientLastWords ? getSmartGradientLastWords(line.text, line.gradientLastWords) : undefined
  };
  });
+  const hasWhiteText = className && (className.includes('text-white') || className.includes('!text-white'));
+  const HeadingTag = as;
 
- return (
- <h2 className={cn(`font-headline ${typography.headingMain} text-foreground !leading-[1.2] font-medium tracking-tight`, className)}>
- {processedLines.map((line, lineIndex) => (
+  return (
+    <HeadingTag className={cn(`font-headline ${typography.headingMain} ${!hasWhiteText ? 'text-foreground' : 'text-white'} !leading-[1.2] font-medium tracking-tight`, className)}>
+      {processedLines.map((line, lineIndex) => (
  <ScrollFadeIn
  key={lineIndex}
  direction={animationType === 'alternate' ? (lineIndex % 2 === 0 ? 'left' : 'right') : animationType}
@@ -69,8 +72,29 @@ export default function StandardizedHeading({ lines, className, animationType = 
  </span>
  ))}
  </span>
- ) : line.text.includes('<span') ? (
- <span dangerouslySetInnerHTML={{ __html: line.text }} />
+          ) : line.text.includes('<span') ? (
+            <span
+              dangerouslySetInnerHTML={{
+                __html: line.text.replace(
+                  /(<span[^>]*>)(.*?)(<\/span>)/g,
+                  (_m, openTag, innerText, closeTag) => {
+                    const words = innerText.trim().split(/\s+/).filter(Boolean);
+                    const wrapped = words.map((w: string) => `<span class="word-highlight">${w}</span>`).join(' ');
+                    return `${openTag}${wrapped}${closeTag}`;
+                  }
+                ).replace(
+                  /(^|<\/span>)(.*?)(<span|$)/g,
+                  (_m, before, textBetween, after) => {
+                    if (!textBetween.trim()) return `${before}${textBetween}${after}`;
+                    const words = textBetween.trim().split(/\s+/).filter(Boolean);
+                    const wrapped = words.map((w: string) => `<span class="word-highlight">${w}</span>`).join(' ');
+                    const preSpace = /^\s/.test(textBetween) ? ' ' : '';
+                    const postSpace = /\s$/.test(textBetween) ? ' ' : '';
+                    return `${before}${preSpace}${wrapped}${postSpace}${after}`;
+                  }
+                )
+              }}
+            />
  ) : line.text === "Transforming Business Challenges into" || line.text === "Transforming Business Challenges Into" ? (
  <>
  <span className="word-highlight">Transforming </span>
@@ -155,6 +179,26 @@ export default function StandardizedHeading({ lines, className, animationType = 
  <span className="word-highlight">Cauders</span>
  </span>
  </>
+ ) : line.text === "Who We Serve" || line.text === "Who we serve" ? (
+ <>
+ <span className="word-highlight">Who </span>
+ <span className="word-highlight">We </span>
+ <span className="bg-gradient-text text-transparent bg-clip-text">
+ <span className="word-highlight">Serve</span>
+ </span>
+ </>
+ ) : line.text === "Services That Power Growth, Not Just Delivery" || line.text === "Services that power growth, not just delivery" ? (
+ <>
+ <span className="word-highlight">Services </span>
+ <span className="word-highlight">That </span>
+ <span className="word-highlight">Power </span>
+ <span className="bg-gradient-text text-transparent bg-clip-text">
+ <span className="word-highlight">Growth, </span>
+ <span className="word-highlight">Not </span>
+ <span className="word-highlight">Just </span>
+ <span className="word-highlight">Delivery</span>
+ </span>
+ </>
  ) : line.text === "Built for People Who Build" ? (
  <>
  <span className="word-highlight">Built </span>
@@ -173,15 +217,24 @@ export default function StandardizedHeading({ lines, className, animationType = 
  <span className="word-highlight">Open</span>
  </span>
  </>
- ) : line.text === "Ready to Push Boundaries?" ? (
- <>
- <span className="word-highlight">Ready </span>
- <span className="word-highlight">to </span>
- <span className="bg-gradient-text text-transparent bg-clip-text">
- <span className="word-highlight">Push </span>
- <span className="word-highlight">Boundaries?</span>
- </span>
- </>
+ ) : line.text === "Ready to Push Boundaries?" || line.text === "Ready To Push Boundaries?" ? (
+  hasWhiteText ? (
+    <>
+      <span className="word-highlight">Ready </span>
+      <span className="word-highlight">to </span>
+      <span className="word-highlight">Push </span>
+      <span className="word-highlight">Boundaries?</span>
+    </>
+  ) : (
+    <>
+      <span className="word-highlight">Ready </span>
+      <span className="word-highlight">to </span>
+      <span className="bg-gradient-text text-transparent bg-clip-text">
+        <span className="word-highlight">Push </span>
+        <span className="word-highlight">Boundaries?</span>
+      </span>
+    </>
+  )
  ) : line.text === "Find Your Next Opportunity with Us" ? (
  <>
  <span className="word-highlight">Find </span>
@@ -377,6 +430,6 @@ export default function StandardizedHeading({ lines, className, animationType = 
  </span>
  </ScrollFadeIn>
  ))}
- </h2>
+ </HeadingTag>
  );
 }

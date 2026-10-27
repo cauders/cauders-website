@@ -40,7 +40,7 @@ export default function GlassBadge({ text, className, typingSpeed = 38 }: GlassB
         "border border-primary/50",
         "bg-transparent",
         "backdrop-blur-sm",
-        "text-primary text-[9px] sm:text-[10px] uppercase tracking-[0.15em] font-normal",
+        "text-primary text-[9px] sm:text-[10px] uppercase tracking-[0.15em] font-headline font-normal",
         className
       )}
       aria-label={text}

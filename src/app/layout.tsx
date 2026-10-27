@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
 import Header from '@/components/cauders/Header';
@@ -11,7 +11,12 @@ import Script from 'next/script';
 import SmoothScroll from '@/components/cauders/SmoothScroll';
 import { Suspense } from 'react';
 import NavigationProgress from '@/components/cauders/NavigationProgress';
-// import Chatbot from '@/components/cauders/Chatbot';
+
+export const viewport: Viewport = {
+  themeColor: '#011417',
+  width: 'device-width',
+  initialScale: 1,
+};
 
 const montserrat = Montserrat({
   subsets: ['latin'],
@@ -85,6 +90,27 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || 'google-site-verification-token',
+  },
+};
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Cauders',
+  url: 'https://www.cauders.com',
+  logo: 'https://res.cloudinary.com/cauders/image/upload/v1786551887/logo_rgtpg7.png',
+  description: 'Cauders designs, builds, and modernizes custom software, SaaS products, applied AI, and workflow automations.',
+  sameAs: [
+    'https://www.linkedin.com/company/cauders',
+    'https://twitter.com/cauders',
+  ],
+  contactPoint: {
+    '@type': 'ContactPoint',
+    email: 'info@cauders.com',
+    contactType: 'customer support',
+  },
 };
 
 export default function RootLayout({
@@ -98,6 +124,10 @@ export default function RootLayout({
         <link rel="icon" href="https://res.cloudinary.com/cauders/image/upload/v1786551887/logo_rgtpg7.png" sizes="any" />
         <link rel="shortcut icon" href="https://res.cloudinary.com/cauders/image/upload/v1786551887/logo_rgtpg7.png" />
         <link rel="apple-touch-icon" href="https://res.cloudinary.com/cauders/image/upload/v1786551887/logo_rgtpg7.png" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
       </head>
       <body className={cn(montserrat.variable, inter.variable, 'flex flex-col min-h-screen antialiased font-body overflow-x-clip')}>
         <ThemeProvider attribute="class" defaultTheme="light" forcedTheme="light">
@@ -115,17 +145,16 @@ export default function RootLayout({
             </main>
             <Footer />
             <Toaster />
-            {/* <Chatbot /> */}
           </>
         </ThemeProvider>
-        <Script id="linkedin-insight-tag-1" strategy="afterInteractive">
+        <Script id="linkedin-insight-tag-1" strategy="lazyOnload">
           {`
             _linkedin_partner_id = "8844393";
             window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
             window._linkedin_data_partner_ids.push(_linkedin_partner_id);
           `}
         </Script>
-        <Script id="linkedin-insight-tag-2" strategy="afterInteractive">
+        <Script id="linkedin-insight-tag-2" strategy="lazyOnload">
           {`
             (function(l) {
             if (!l){window.lintrk = function(a,b){window.lintrk.q.push([a,b])};

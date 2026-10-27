@@ -353,7 +353,7 @@ export const projects: Project[] = [
  '/images/projects/binof-trainer/gallery-6.png', 
  ],
  testimonial: {
- author: "John Doe, Fitness Coach",
+ author: "Lead Athletic Trainer, Fitness Studio",
  text: "This app is an amazing tool for managing my clients. The performance tracking is a game-changer for personalized training plans."
  }
  },
@@ -408,7 +408,7 @@ export const projects: Project[] = [
  year: 2021,
  implementation: ['Full-stack Dev', 'SaaS'],
  testimonial: {
- author: 'Jane Smith, HR Manager',
+ author: "Head of People Operations, Enterprise Client",
  text: 'Clipinn streamlined our HR processes perfectly. The task management and payroll features are incredibly powerful yet easy to use.'
  }
  },

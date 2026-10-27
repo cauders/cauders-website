@@ -1,8 +1,23 @@
-'use client';
-
+import type { Metadata } from 'next';
 import React from 'react';
 import Link from 'next/link';
 import PolicyLayout, { PolicySectionItem } from '@/components/cauders/PolicyLayout';
+
+export const metadata: Metadata = {
+  title: 'Cookies Policy | Cauders',
+  description: 'Information about the essential and analytical cookies used on Cauders websites and how you can manage your preferences.',
+  alternates: {
+    canonical: '/cookies-policy',
+  },
+  openGraph: {
+    title: 'Cookies Policy | Cauders',
+    description: 'Information about the essential and analytical cookies used on Cauders websites and how you can manage your preferences.',
+    url: 'https://www.cauders.com/cookies-policy',
+    siteName: 'Cauders',
+    locale: 'en_US',
+    type: 'website',
+  },
+};
 
 const policySections: PolicySectionItem[] = [
   {
@@ -64,26 +79,26 @@ const policySections: PolicySectionItem[] = [
           </div>
 
           <div>
-            <h3 className="font-semibold text-zinc-900 text-base mb-1">Analytics cookies</h3>
+            <h3 className="font-semibold text-zinc-900 text-base mb-1">Analytics and marketing cookies</h3>
             <p>
-              We use Google Analytics to understand how visitors interact with our website and to help us improve website content, performance, and usability.
+              We use the LinkedIn Insight Tag to understand how professional visitors interact with our website, evaluate the performance of our content, and gain insights into our B2B audience.
             </p>
             <p className="mt-1">
-              Depending on the configuration of Google Analytics, cookies may include:
+              Cookies and identifiers deployed by the LinkedIn Insight Tag include:
             </p>
             <ul className="list-disc list-outside space-y-1.5 pl-6 my-2 text-sm lg:text-base text-zinc-700">
               <li>
-                <strong className="text-zinc-900">_ga:</strong> Generally used to distinguish website visitors for analytics purposes.
+                <strong className="text-zinc-900">bcookie:</strong> Browser identifier cookie used by LinkedIn to uniquely identify devices accessing the website.
               </li>
               <li>
-                <strong className="text-zinc-900">ga identifiers:</strong> Generally used by Google Analytics to maintain analytics session or measurement information.
+                <strong className="text-zinc-900">lidc:</strong> Facilitates routing and ensures reliable data center communication for analytics requests.
+              </li>
+              <li>
+                <strong className="text-zinc-900">UserMatchHistory:</strong> Used for conversion tracking and to provide aggregate demographic reporting without identifying individuals.
               </li>
             </ul>
             <p className="mt-1">
-              Google&apos;s standard cookie settings may allow these cookies to persist for up to two years. Actual cookie names, purposes, and durations depend on our configuration and may be shorter.
-            </p>
-            <p className="mt-1">
-              Analytics information may include page URLs, interaction events, technical information, and identifiers used to measure website usage. Information may be transmitted to Google for processing in accordance with the service configuration and Google&apos;s applicable terms and policies.
+              LinkedIn cookies typically persist for up to 90 days. You can opt out of LinkedIn tracking via your LinkedIn account settings or through the Digital Advertising Alliance opt-out portal.
             </p>
           </div>
 
@@ -150,32 +165,32 @@ const policySections: PolicySectionItem[] = [
     content: (
       <>
         <p>
-          Google and any other third-party providers integrated into our website may process information according to their own privacy policies and service settings.
+          LinkedIn and any other third-party services integrated into our website may process information according to their own privacy policies and cookie settings.
         </p>
         <p>
-          For more information about how Google uses information from websites that use its services, review Google&apos;s Privacy Policy and relevant information about its use of cookies:
+          For more information about how LinkedIn uses cookies and handles personal data, please review:
         </p>
         <ul className="list-disc list-outside space-y-2 pl-6 text-sm lg:text-base text-zinc-700">
           <li>
-            Google Privacy Policy:{' '}
+            LinkedIn Privacy Policy:{' '}
             <a 
-              href="https://policies.google.com/privacy" 
+              href="https://www.linkedin.com/legal/privacy-policy" 
               target="_blank" 
               rel="noopener noreferrer" 
               className="text-zinc-900 underline underline-offset-4 decoration-zinc-300 hover:decoration-zinc-800 hover:text-zinc-600 font-medium transition-colors"
             >
-              https://policies.google.com/privacy
+              https://www.linkedin.com/legal/privacy-policy
             </a>
           </li>
           <li>
-            Google Cookie Information:{' '}
+            LinkedIn Cookie Policy & Opt-Out:{' '}
             <a 
-              href="https://policies.google.com/technologies/cookies" 
+              href="https://www.linkedin.com/legal/cookie-policy" 
               target="_blank" 
               rel="noopener noreferrer" 
               className="text-zinc-900 underline underline-offset-4 decoration-zinc-300 hover:decoration-zinc-800 hover:text-zinc-600 font-medium transition-colors"
             >
-              https://policies.google.com/technologies/cookies
+              https://www.linkedin.com/legal/cookie-policy
             </a>
           </li>
         </ul>

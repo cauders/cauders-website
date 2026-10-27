@@ -20,6 +20,8 @@ import { Loader2 } from "lucide-react";
 import ArrowBadge from "./ArrowBadge";
 import StandardizedHeading from "./StandardizedHeading";
 import { typography } from "@/lib/typography";
+import { trackConversion } from "@/lib/analytics";
+import Link from "next/link";
 
 const formSchema = z.object({
   name: z.string().min(1, { message: "Name cannot be empty." }),
@@ -58,6 +60,7 @@ export default function HomePageContact() {
           title: "Success!",
           description: result.message || "Thank you for getting in touch. We will respond promptly.",
         });
+        trackConversion('quick_contact_submitted', { company: values.company, name: values.name });
         form.reset();
       } else {
         toast({
@@ -185,6 +188,9 @@ export default function HomePageContact() {
                     {isSubmitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
                     Submit
                   </Button>
+                  <p className="text-xs text-muted-foreground mt-3">
+                    By submitting, you agree to our <Link href="/terms-of-service" className="underline hover:text-foreground transition-colors">Terms</Link> and <Link href="/privacy-policy" className="underline hover:text-foreground transition-colors">Privacy Policy</Link>.
+                  </p>
                 </div>
               </form>
             </Form>

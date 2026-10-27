@@ -18,6 +18,7 @@ interface SplitSectionHeaderProps {
   onCtaClick?: (e: React.MouseEvent<HTMLAnchorElement>) => void;
   className?: string;
   theme?: 'light' | 'dark'; // dark theme means text is white
+  as?: 'h1' | 'h2' | 'h3';
 }
 
 export default function SplitSectionHeader({
@@ -30,6 +31,7 @@ export default function SplitSectionHeader({
   onCtaClick,
   className = '',
   theme = 'light',
+  as = 'h2',
 }: SplitSectionHeaderProps) {
   const isDark = theme === 'dark';
   
@@ -43,7 +45,7 @@ export default function SplitSectionHeader({
       
       <div className={`w-full flex flex-col md:flex-row md:justify-between items-start text-left gap-6 md:gap-0`}>
         <div className={`w-full flex flex-col md:w-[45%] lg:w-[40%] max-w-3xl`}>
-          <StandardizedHeading lines={headingLines} className={cn('text-left', isDark ? 'text-white' : '')} />
+          <StandardizedHeading lines={headingLines} as={as} className={cn('text-left', isDark ? 'text-white' : '')} />
         </div>
         {(description || ctaText) && (
           <div className={`flex flex-col gap-3 md:gap-4 w-full md:w-[45%] lg:w-[35%] items-start md:items-end text-left md:text-right md:mt-2`}>

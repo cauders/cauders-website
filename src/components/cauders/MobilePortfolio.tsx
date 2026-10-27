@@ -92,7 +92,7 @@ export default function MobilePortfolio() {
                 </div>
                 <div className="flex items-end mt-4">
                   <h3 className="text-3xl font-medium">Streamline</h3>
-                  <Link href="/services/design-digital-commerce/ui-ux-design" className="bg-white text-black rounded-full p-2 hover:bg-black hover:text-primary transition-colors ml-auto">
+                  <Link href="/services/software-solutions/mobile-app-development" className="bg-white text-black rounded-full p-2 hover:bg-black hover:text-primary transition-colors ml-auto">
                     <ArrowUpRight className="w-6 h-6" />
                   </Link>
                 </div>

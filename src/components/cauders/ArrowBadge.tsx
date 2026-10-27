@@ -42,7 +42,7 @@ export default function ArrowBadge({ href, text, className, variant = 'white', t
   return (
     <Link href={href} className={cn(
       "inline-flex items-center justify-center gap-2",
-      "text-sm font-normal",
+      "text-sm font-normal font-headline",
       "transition-all duration-300",
       variant === 'white' && 'text-white',
       variant === 'black' && 'text-foreground',

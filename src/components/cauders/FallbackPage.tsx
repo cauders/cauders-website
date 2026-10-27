@@ -79,7 +79,7 @@ export default function FallbackPage({
  <div>
  <StandardizedHeading lines={["Looking for something else?"]} />
  <p className="text-foreground text-body-base mt-4 max-w-md ">
- Explore our core services and portfolio.
+ Explore our core services and case studies.
  </p>
  </div>
  </div>

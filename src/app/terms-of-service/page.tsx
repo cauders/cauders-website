@@ -1,8 +1,23 @@
-'use client';
-
+import type { Metadata } from 'next';
 import React from 'react';
 import Link from 'next/link';
 import PolicyLayout, { PolicySectionItem } from '@/components/cauders/PolicyLayout';
+
+export const metadata: Metadata = {
+  title: 'Terms of Service | Cauders',
+  description: 'Review the terms and conditions governing the use of the Cauders website, consulting, and professional software engineering services.',
+  alternates: {
+    canonical: '/terms-of-service',
+  },
+  openGraph: {
+    title: 'Terms of Service | Cauders',
+    description: 'Review the terms and conditions governing the use of the Cauders website, consulting, and professional software engineering services.',
+    url: 'https://www.cauders.com/terms-of-service',
+    siteName: 'Cauders',
+    locale: 'en_US',
+    type: 'website',
+  },
+};
 
 const termsSections: PolicySectionItem[] = [
   {

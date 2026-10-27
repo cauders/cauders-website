@@ -25,8 +25,8 @@ export const ChromaGrid = ({
 }) => {
  const rootRef = useRef<HTMLDivElement>(null);
  const fadeRef = useRef<HTMLDivElement>(null);
- const setX = useRef<gsap.QuickSetter | null>(null);
- const setY = useRef<gsap.QuickSetter | null>(null);
+ const setX = useRef<any>(null);
+ const setY = useRef<any>(null);
  const pos = useRef({ x: 0, y: 0 });
 
  const data = items?.length ? items : [];
@@ -38,8 +38,8 @@ export const ChromaGrid = ({
  setY.current = gsap.quickSetter(el, '--y', 'px');
  const { width, height } = el.getBoundingClientRect();
  pos.current = { x: width / 2, y: height / 2 };
- setX.current(pos.current.x);
- setY.current(pos.current.y);
+ setX.current?.(pos.current.x);
+ setY.current?.(pos.current.y);
  }, []);
 
  const moveTo = (x: number, y: number) => {

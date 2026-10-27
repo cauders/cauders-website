@@ -71,6 +71,10 @@ export default {
  ...colors.zinc,
  },
  subtle: 'hsl(var(--subtle))',
+ darkTeal: {
+   DEFAULT: 'hsl(var(--dark-teal))',
+   hover: '#074347',
+ },
  chart: {
  '1': 'hsl(var(--chart-1))',
  '2': 'hsl(var(--chart-2))',

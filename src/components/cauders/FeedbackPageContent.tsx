@@ -21,6 +21,7 @@ import { CustomInput, CustomTextarea } from "./CustomFormFields";
 import ScrollFadeIn from "./ScrollFadeIn";
 import { Loader2, Bug, Lightbulb, Heart, MessageSquare } from "lucide-react";
 import StandardizedHeading from "./StandardizedHeading";
+import { trackConversion } from "@/lib/analytics";
 import ArrowBadge from "./ArrowBadge";
 import { Card } from "../ui/card";
 import BlurCircle from "./BlurCircle";
@@ -73,6 +74,7 @@ export default function FeedbackPageContent() {
     try {
       const result = await submitFeedbackForm(formData);
       if (result.success) {
+        trackConversion('feedback_submitted', { type: values.type });
         toast({
           title: "Feedback Submitted!",
           description: result.message,
@@ -109,7 +111,7 @@ export default function FeedbackPageContent() {
                 <ScrollFadeIn>
                   <ArrowBadge href="#feedback-content" text="Feedback" variant="black" className="mb-2 md:mb-4" />
                 </ScrollFadeIn>
-                <StandardizedHeading lines={["Share Your Feedback"]} className="mb-2 md:mb-4 text-left" />
+                <StandardizedHeading as="h1" lines={["Share Your Feedback"]} className="mb-2 md:mb-4 text-left" />
                 <ScrollFadeIn delay={100}>
                   <p className="mt-2 md:mt-4 text-xs md:text-base text-foreground/80 leading-relaxed max-w-md">
                     We value your input! Whether you&apos;ve found a bug, have an innovative suggestion, or just want to share some praise, your thoughts help us craft exceptional digital experiences.
@@ -204,7 +206,7 @@ export default function FeedbackPageContent() {
                                 ].map(item => (
                                   <FormItem key={item.value} className="space-y-0">
                                     <FormControl>
-                                      <RadioGroupItem value={item.value} id={item.value} className="sr-only peer" />
+                                      <RadioGroupItem value={item.value} id={item.value} aria-label={item.label} className="sr-only peer" />
                                     </FormControl>
                                     <FormLabel
                                       htmlFor={item.value}

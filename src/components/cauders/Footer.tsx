@@ -3,42 +3,40 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import React from 'react';
-import { MapPin, Mail } from 'lucide-react';
+import { MapPin, Mail, Phone } from 'lucide-react';
 
 const aiLinks = [
-  { href: '/ai/generative-ai-llms/generative-ai-solutions', label: 'Generative AI & LLMs' },
+  { href: '/ai/generative-ai-llms/generative-ai-solutions', label: 'Generative AI' },
   { href: '/ai/generative-ai-llms/autonomous-ai-agents', label: 'AI Agents & Workflows' },
   { href: '/ai/ai-product-engineering/custom-ai-development', label: 'Custom AI & ML' },
   { href: '/ai/data-intelligent-automation/automation-custom-applications', label: 'Process Automation' },
   { href: '/ai/data-intelligent-automation/data-modernization-analytics', label: 'Data & Analytics' },
-  { href: '/ai/ai-strategy-advisory/ai-roadmapping-consulting', label: 'AI Strategy' },
+  { href: '/ai/ai-strategy-advisory/ai-roadmapping-consulting', label: 'AI Strategy & Readiness' },
 ];
 
 const serviceLinks = [
-  { href: '/services/software-solutions/custom-software-development', label: 'Custom Software' },
-  { href: '/services/software-solutions/web-development', label: 'Web Applications' },
-  { href: '/services/software-solutions/mobile-app-development', label: 'Mobile Apps' },
-  { href: '/services/software-solutions/saas-development', label: 'SaaS Engineering' },
-  { href: '/services/design-digital-commerce/ui-ux-design', label: 'UI/UX Design' },
-  { href: '/services/cloud-digital-transformation/cloud-transformation', label: 'Cloud Transformation' },
-  { href: '/services/quality-assurance-cybersecurity/quality-assurance', label: 'QA & Testing' },
-  { href: '/services/maintenance-support/application-maintenance-support', label: 'Maintenance & Support' },
+  { href: '/services/software-solutions/custom-software-development', label: 'Custom Software Development' },
+  { href: '/services/software-solutions/web-development', label: 'Web Application Development' },
+  { href: '/services/software-solutions/mobile-app-development', label: 'Mobile App Development' },
+  { href: '/services/software-solutions/saas-development', label: 'SaaS Development' },
+  { href: '/services/cloud-digital-transformation/cloud-transformation', label: 'Platform Modernization' },
+  { href: '/services/staff-augmentation/staff-augmentation-offshoring', label: 'Dedicated Teams' },
 ];
 
 const industryLinks = [
-  { href: '/industries/healthcare', label: 'Healthcare' },
-  { href: '/industries/banking-financial-services', label: 'Finance & Banking' },
-  { href: '/industries/retail-ecommerce', label: 'Retail & E-commerce' },
-  { href: '/industries/technology-software', label: 'Technology & Software' },
-  { href: '/industries/logistics-supply-chain', label: 'Logistics & Supply Chain' },
-  { href: '/industries/real-estate-proptech', label: 'Real Estate & PropTech' },
+  { href: '/industries#banking-financial-services', label: 'Banking & Financial Services' },
+  { href: '/industries#healthcare', label: 'Healthcare & Life Sciences' },
+  { href: '/industries#retail-ecommerce', label: 'Retail & E-Commerce' },
+  { href: '/industries#technology-software', label: 'Technology & Software' },
+  { href: '/industries#real-estate', label: 'Real Estate & PropTech' },
+  { href: '/industries#logistics-supply-chain', label: 'Logistics & Supply Chain' },
 ];
 
 const companyLinks = [
   { href: '/about', label: 'About Us' },
+  { href: '/case-studies', label: 'Case Studies' },
   { href: '/careers', label: 'Careers' },
   { href: '/partners', label: 'Partnerships' },
-  { href: '/team', label: 'Our Team' },
   { href: '/contact', label: 'Contact Us' },
   { href: '/faq', label: 'FAQs' },
 ];
@@ -47,6 +45,7 @@ const legalLinks = [
   { href: '/privacy-policy', label: 'Privacy Policy' },
   { href: '/terms-of-service', label: 'Terms of Service' },
   { href: '/cookies-policy', label: 'Cookies Policy' },
+  { href: '/legal-information', label: 'Legal Information' },
   { href: '/feedback', label: 'Feedback' },
 ];
 
@@ -80,12 +79,19 @@ export default function Footer() {
                 <p className="text-sm text-black/80 max-w-xs leading-relaxed">
                   We help businesses streamline operations, solve complex challenges, and turn ideas into scalable digital solutions.
                 </p>
+                <p className="text-xs text-black/60 pt-1 font-mono">
+                  CAUDERS (PRIVATE) LIMITED
+                </p>
               </div>
               
-              <div className="flex flex-col gap-4 mt-2 text-sm text-black/80">
+              <div className="flex flex-col gap-3.5 mt-2 text-sm text-black/80">
                 <div className="flex items-start gap-3">
                   <MapPin className="w-5 h-5 shrink-0 mt-0.5 text-black/50" />
-                  <span>F1 Block Phase 2<br />Pak Arab Housing Society<br />Ferozpur Road, Lahore</span>
+                  <span>F1 Block Phase 2<br />Pak Arab Housing Society<br />Ferozpur Road, Lahore, Pakistan</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <Phone className="w-5 h-5 shrink-0 text-black/50" />
+                  <a href="tel:+923390107377" className="hover:text-primary transition-colors font-medium">+92 3390107377</a>
                 </div>
                 <div className="flex items-center gap-3">
                   <Mail className="w-5 h-5 shrink-0 text-black/50" />
@@ -99,7 +105,7 @@ export default function Footer() {
               <h3 className="font-semibold tracking-widest uppercase mb-5 text-black text-sm">AI & Automation</h3>
               <nav className="flex flex-col gap-3">
                 {aiLinks.map((link) => (
-                  <Link key={link.label} href={link.href} className="text-sm text-black/70 hover:text-primary transition-colors w-fit">
+                  <Link key={link.label} href={link.href} prefetch={true} className="text-sm text-black/70 hover:text-primary transition-colors w-fit">
                     {link.label}
                   </Link>
                 ))}
@@ -111,7 +117,7 @@ export default function Footer() {
               <h3 className="font-semibold tracking-widest uppercase mb-5 text-black text-sm">Services</h3>
               <nav className="flex flex-col gap-3">
                 {serviceLinks.map((link) => (
-                  <Link key={link.label} href={link.href} className="text-sm text-black/70 hover:text-primary transition-colors w-fit">
+                  <Link key={link.label} href={link.href} prefetch={true} className="text-sm text-black/70 hover:text-primary transition-colors w-fit">
                     {link.label}
                   </Link>
                 ))}
@@ -123,7 +129,7 @@ export default function Footer() {
               <h3 className="font-semibold tracking-widest uppercase mb-5 text-black text-sm">Industries</h3>
               <nav className="flex flex-col gap-3">
                 {industryLinks.map((link) => (
-                  <Link key={link.label} href={link.href} className="text-sm text-black/70 hover:text-primary transition-colors w-fit">
+                  <Link key={link.label} href={link.href} prefetch={true} className="text-sm text-black/70 hover:text-primary transition-colors w-fit">
                     {link.label}
                   </Link>
                 ))}
@@ -135,7 +141,7 @@ export default function Footer() {
               <h3 className="font-semibold tracking-widest uppercase mb-5 text-black text-sm">Company</h3>
               <nav className="flex flex-col gap-3">
                 {companyLinks.map((link) => (
-                  <Link key={link.label} href={link.href} className="text-sm text-black/70 hover:text-primary transition-colors w-fit">
+                  <Link key={link.label} href={link.href} prefetch={true} className="text-sm text-black/70 hover:text-primary transition-colors w-fit">
                     {link.label}
                   </Link>
                 ))}
@@ -155,7 +161,7 @@ export default function Footer() {
               <div className="flex items-center gap-x-4">
                 {legalLinks.map((link) => (
                   <React.Fragment key={link.label}>
-                    <Link href={link.href} className="hover:text-primary transition-colors">
+                    <Link href={link.href} prefetch={true} className="hover:text-primary transition-colors">
                       {link.label}
                     </Link>
                   </React.Fragment>

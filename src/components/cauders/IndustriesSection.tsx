@@ -45,12 +45,6 @@ export default function IndustriesSection({
  description={description}
  ctaText={ctaText}
  ctaLink={ctaLink}
- onCtaClick={(e) => {
- if (ctaLink === '/industries') {
- e.preventDefault();
- window.dispatchEvent(new CustomEvent('open-mega-menu', { detail: 'industries' }));
- }
- }}
  align="left"
  />
  </ScrollFadeIn>

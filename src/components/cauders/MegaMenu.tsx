@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { cn } from '@/lib/utils';
-import { getIndustries } from '@/lib/data';
 import { ArrowUpRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -23,30 +22,38 @@ interface MenuItem {
 }
 
 const aiMenuItems: MenuItem[] = [
-  { href: '/ai/generative-ai-llms/generative-ai-solutions', label: 'Generative AI & LLM Applications' },
-  { href: '/ai/generative-ai-llms/autonomous-ai-agents', label: 'AI Agents & Autonomous Workflows' },
-  { href: '/ai/ai-product-engineering/custom-ai-development', label: 'Custom AI & Machine Learning' },
-  { href: '/ai/data-intelligent-automation/automation-custom-applications', label: 'Intelligent Process Automation' },
-  { href: '/ai/data-intelligent-automation/data-modernization-analytics', label: 'Data Engineering & Analytics' },
+  { href: '/ai/generative-ai-llms/generative-ai-solutions', label: 'Generative AI' },
+  { href: '/ai/generative-ai-llms/autonomous-ai-agents', label: 'AI Agents & Workflows' },
+  { href: '/ai/ai-product-engineering/custom-ai-development', label: 'Custom AI & ML' },
+  { href: '/ai/data-intelligent-automation/automation-custom-applications', label: 'Process Automation' },
+  { href: '/ai/data-intelligent-automation/data-modernization-analytics', label: 'Data & Analytics' },
+  { href: '/ai/ai-strategy-advisory/ai-roadmapping-consulting', label: 'AI Strategy & Readiness' },
 ];
 
 const servicesMenuItems: MenuItem[] = [
   { href: '/services/software-solutions/custom-software-development', label: 'Custom Software Development' },
   { href: '/services/software-solutions/web-development', label: 'Web Application Development' },
   { href: '/services/software-solutions/mobile-app-development', label: 'Mobile App Development' },
-  { href: '/services/software-solutions/saas-development', label: 'SaaS Product Engineering' },
-  { href: '/services/design-digital-commerce/ui-ux-design', label: 'UI/UX & Product Design' },
+  { href: '/services/software-solutions/saas-development', label: 'SaaS Development' },
   { href: '/services/cloud-digital-transformation/cloud-transformation', label: 'Platform Modernization' },
-  { href: '/services/maintenance-support/application-maintenance-support', label: 'Maintenance & Support' },
-  { href: '/services/quality-assurance-cybersecurity/quality-assurance', label: 'Quality Assurance & Security' },
   { href: '/services/staff-augmentation/staff-augmentation-offshoring', label: 'Dedicated Teams' },
 ];
 
 const companyMenuItems: MenuItem[] = [
   { href: '/about', label: 'About Cauders' },
+  { href: '/case-studies', label: 'Case Studies' },
   { href: '/careers', label: 'Careers' },
   { href: '/partners', label: 'Partnerships' },
   { href: '/faq', label: 'FAQs' },
+];
+
+const industryMenuItems: MenuItem[] = [
+  { href: '/industries#banking-financial-services', label: 'Banking & Financial Services' },
+  { href: '/industries#healthcare', label: 'Healthcare & Life Sciences' },
+  { href: '/industries#retail-ecommerce', label: 'Retail & E-Commerce' },
+  { href: '/industries#technology-software', label: 'Technology & Software' },
+  { href: '/industries#real-estate', label: 'Real Estate & PropTech' },
+  { href: '/industries#logistics-supply-chain', label: 'Logistics & Supply Chain' },
 ];
 
 export default function MegaMenu({ 
@@ -59,11 +66,6 @@ export default function MegaMenu({
 }: MegaMenuProps) {
   const pathname = usePathname();
   const router = useRouter();
-  const rawIndustries = getIndustries();
-  const industryMenuItems: MenuItem[] = rawIndustries.map((i) => ({
-    href: `/industries/${i.slug}`,
-    label: i.title,
-  }));
 
   const [isMounted, setIsMounted] = useState(false);
 
@@ -82,12 +84,13 @@ export default function MegaMenu({
 
     items.forEach((item) => {
       try {
-        router.prefetch(item.href);
+        const cleanPath = item.href.split('#')[0];
+        router.prefetch(cleanPath);
       } catch {
         // Safe fallback
       }
     });
-  }, [activeMenu, router, industryMenuItems]);
+  }, [activeMenu, router]);
 
   const handleContainerEnter = () => {
     onMouseEnter?.();
@@ -139,10 +142,10 @@ export default function MegaMenu({
     <AnimatePresence>
       {activeMenu && (
         <motion.div
-          initial={{ opacity: 0, y: -8, scale: 0.98, x: "-50%" }}
+          initial={{ opacity: 0, y: -6, scale: 0.99, x: "-50%" }}
           animate={{ opacity: 1, y: 0, scale: 1, x: "-50%" }}
-          exit={{ opacity: 0, y: -6, scale: 0.98, x: "-50%", transition: { duration: 0.12, ease: "easeIn" } }}
-          transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
+          exit={{ opacity: 0, y: -4, scale: 0.99, x: "-50%", transition: { duration: 0.08, ease: "easeOut" } }}
+          transition={{ duration: 0.15, ease: [0.16, 1, 0.3, 1] }}
           className={cn(
             "fixed z-50 w-full left-1/2 max-w-2xl pt-3 transition-all duration-300 ease-out",
             isHeroHeader ? "top-[76px] md:top-[88px]" : (isScrolled ? "top-[70px]" : "top-[76px]")

@@ -27,11 +27,6 @@ export default {
       backdropBlur: {
         '3xl': '64px',
       },
-      backgroundImage: {
-        'gradient-text': 'linear-gradient(to right, hsl(var(--primary)) 0%, #003B38 100%)',
-        'gradient-text-light': 'linear-gradient(to right, hsl(var(--primary)) 0%, #00a59e 100%)',
-        'gradient-container': 'linear-gradient(to right, #003B38 0%, hsl(var(--primary)) 100%)',
-      },
       boxShadow: {
         'primary-glow': '0 0 25px 0 hsl(var(--primary) / 0.5)',
         'smooth-lift': '0 10px 20px 4px rgb(0 0 0 / 0.05)',
@@ -79,6 +74,11 @@ export default {
           DEFAULT: 'hsl(var(--zinc))',
           ...colors.zinc,
         },
+        'dark-teal': {
+          DEFAULT: '#09555A',
+          hsl: 'hsl(var(--dark-teal))',
+        },
+        darkTeal: '#09555A',
         chart: {
           '1': 'hsl(var(--chart-1))',
           '2': 'hsl(var(--chart-2))',
@@ -134,6 +134,22 @@ export default {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
          'drastic-zoom-in': 'drastic-zoom-in 1.2s cubic-bezier(0.23, 1, 0.32, 1) forwards',
+      },
+      backgroundImage: {
+        'gradient-text': 'linear-gradient(to right, hsl(var(--primary)) 0%, #003B38 100%)',
+        'gradient-text-light': 'linear-gradient(to right, hsl(var(--primary)) 0%, #00a59e 100%)',
+        'gradient-container': 'linear-gradient(to right, #003B38 0%, hsl(var(--primary)) 100%)',
+        'zinc-gradient': 'linear-gradient(to right, #003431 0%, #28938E 100%)',
+        'zinc-gradient-b': 'linear-gradient(to bottom, #003431 0%, #28938E 100%)',
+        'zinc-gradient-br': 'linear-gradient(135deg, #003431 0%, #28938E 100%)',
+        'zc-gd': 'linear-gradient(to right, #003431 0%, #28938E 100%)',
+        'cyan-radial': 'radial-gradient(circle, #98DAD7 0%, #00645F 100%)',
+        'cyan-radial-at-t': 'radial-gradient(circle at top, #98DAD7 0%, #00645F 100%)',
+        'cyan-radial-at-tl': 'radial-gradient(circle at top left, #98DAD7 0%, #00645F 100%)',
+        'cyan-radial-at-c': 'radial-gradient(ellipse at center, #98DAD7 0%, #00645F 100%)',
+        'cyan-gradient': 'linear-gradient(to right, hsl(var(--primary)) 0%, #003B38 100%)',
+        'cyan-gradient-b': 'linear-gradient(to bottom, hsl(var(--primary)) 0%, #003B38 100%)',
+        'cyan-gradient-br': 'linear-gradient(135deg, hsl(var(--primary)) 0%, #003B38 100%)',
       },
     },
   },

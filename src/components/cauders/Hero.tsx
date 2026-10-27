@@ -7,7 +7,6 @@ import GlassBadge from './GlassBadge';
 import IntroSection from './IntroSection';
 import { typography } from '@/lib/typography';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 interface HeroSlide {
   id: number;
@@ -29,10 +28,10 @@ const heroSlides: HeroSlide[] = [
     line2: "Meets Vision,",
     accent: "And Ideas Become Impact.",
     description:
-      "We design, build, and modernize digital systems that help businesses overcome operational bottlenecks, connect fragmented operations, and automate manual work. Every solution is engineered around your business needs and built to scale reliably.",
-    ctaText: "Let's Talk Business",
+      "We design, build, and modernize digital systems that streamline operations, connect workflows, and support business growth.",
+    ctaText: "Discuss a Project",
     ctaHref: "/contact",
-    image: "https://res.cloudinary.com/cauders/image/upload/v1786997811/ChatGPT_Image_Aug_18_2026_12_40_23_AM_yjtkon.png",
+    image: "https://res.cloudinary.com/cauders/image/upload/v1792672841/cauders_dark_teal_hero_background_n7pfpw.png",
   },
   {
     id: 2,
@@ -42,33 +41,9 @@ const heroSlides: HeroSlide[] = [
     accent: "With Applied AI Systems.",
     description:
       "Turn intelligence into action with AI-powered business applications that streamline operations, accelerate decisions, and unlock new opportunities for growth engineered directly into active workflows.",
-    ctaText: "Explore AI Solutions",
-    ctaHref: "/ai/ai-product-engineering/custom-ai-development",
+    ctaText: "Explore AI and Automation",
+    ctaHref: "/services#ai-automation",
     image: "https://globallawexperts.com/wp-content/uploads/2025/01/ai-generated-8540913_1280.jpg",
-  },
-  {
-    id: 3,
-    badge: "COMPOSABLE COMMERCE & ECOSYSTEMS",
-    line1: "AI-Enabled Ecosystems",
-    line2: "That Make Commerce",
-    accent: "Transparent & Composable.",
-    description:
-      "We remove complexity from the asset lifecycle with a composable platform that connects fragmented operations, accelerates transactions, and scales reliably.",
-    ctaText: "Discover Enterprise Solutions",
-    ctaHref: "/services/cloud-digital-transformation/business-applications",
-    image: "/images/join.png",
-  },
-  {
-    id: 4,
-    badge: "CUSTOM SOFTWARE & SAAS ENGINEERING",
-    line1: "Engineering Platforms",
-    line2: "Built to Scale,",
-    accent: "From Architecture to Impact.",
-    description:
-      "High-concurrency web applications, multi-tenant SaaS products, and enterprise portals engineered for performance, security boundaries, and sustainable long-term maintainability.",
-    ctaText: "Explore Custom Software",
-    ctaHref: "/services/software-solutions/custom-software-development",
-    image: "https://www.centralsquare.com/_next/image?url=https%3A%2F%2Fmedia.centralsquare.com%2Fwp-content%2Fuploads%2FCloud-Tech-Concept.jpg&w=3840&q=75",
   },
 ];
 
@@ -122,7 +97,7 @@ export default function Hero() {
             <div
               key={s.id}
               aria-hidden={!isCurrent}
-              className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ease-in-out ${
+              className={`absolute inset-0 w-full h-full transform-gpu will-change-transform transition-opacity duration-1000 ease-in-out ${
                 isCurrent
                   ? "opacity-100 z-20"
                   : isPrev
@@ -173,7 +148,7 @@ export default function Hero() {
                     {slide.line2}
                   </span>
                   <span className={`block mt-2 md:mt-4 ${typography.headingMain}`}>
-                    <span className="text-primary block leading-tight md:leading-tight lg:leading-tight">
+                    <span className="text-cyan-radial bg-clip-text text-transparent block leading-tight md:leading-tight lg:leading-tight drop-shadow-sm">
                       {slide.accent}
                     </span>
                   </span>
@@ -186,7 +161,7 @@ export default function Hero() {
                 <div className="mt-8 md:mt-12 flex items-center">
                   <Link
                     href={slide.ctaHref}
-                    className="px-8 py-3 rounded-full bg-gradient-to-r from-primary to-[#003B38] text-white text-sm font-medium hover:opacity-90 transition-opacity shadow-none"
+                    className="px-8 py-3 rounded-full bg-zinc-gradient text-white text-sm font-medium hover:opacity-95 transition-all shadow-md hover:shadow-lg"
                   >
                     {slide.ctaText}
                   </Link>
@@ -196,44 +171,32 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Slider Navigation Controls - Bottom Right */}
+        {/* Slider Navigation Indicators - Bottom Right */}
         <div 
-          className="absolute bottom-8 sm:bottom-12 right-4 sm:right-8 lg:right-12 z-20 flex items-center gap-3 bg-black/25 backdrop-blur-md px-4 py-2.5 rounded-full border border-white/10"
+          className="absolute bottom-8 sm:bottom-12 right-4 sm:right-8 lg:right-12 z-20 flex items-center gap-2.5 bg-black/40 backdrop-blur-md px-4 py-3 rounded-full border border-white/10 shadow-lg"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
         >
-          <button
-            type="button"
-            onClick={prevSlide}
-            aria-label="Previous slide"
-            className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-white/20 bg-white/5 hover:bg-white/15 text-white flex items-center justify-center transition-all hover:border-white/40 cursor-pointer"
-          >
-            <ChevronLeft className="w-4 h-4" />
-          </button>
-
-          <button
-            type="button"
-            onClick={nextSlide}
-            aria-label="Next slide"
-            className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-white/20 bg-white/5 hover:bg-white/15 text-white flex items-center justify-center transition-all hover:border-white/40 cursor-pointer"
-          >
-            <ChevronRight className="w-4 h-4" />
-          </button>
-
-          {/* Slide Indicator Dots (without numbers) */}
-          <div className="flex items-center gap-2 ml-1">
-            {heroSlides.map((s, idx) => (
+          {heroSlides.map((s, idx) => {
+            const isActive = idx === currentSlide;
+            return (
               <button
                 key={s.id}
                 type="button"
                 onClick={() => goToSlide(idx)}
                 aria-label={`Go to slide ${idx + 1}`}
-                className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
-                  idx === currentSlide ? "w-8 bg-primary" : "w-2 bg-white/30 hover:bg-white/50"
-                }`}
-              />
-            ))}
-          </div>
+                className={`group relative p-1 cursor-pointer focus:outline-none transition-all`}
+              >
+                <span
+                  className={`block h-2 rounded-full transition-all duration-300 ${
+                    isActive 
+                      ? "w-9 bg-primary shadow-[0_0_12px_rgba(140,234,229,0.6)]" 
+                      : "w-2.5 bg-white/40 group-hover:bg-white/80 group-hover:w-3.5"
+                  }`}
+                />
+              </button>
+            );
+          })}
         </div>
       </div>
       <IntroSection />
