@@ -92,7 +92,7 @@ export const caseStudiesData: CaseStudy[] = [
     challenge: {
       title: 'Storefront Friction, Server-Bound Cart Latency & Undocumented APIs',
       description:
-        'The retailer wanted to modernize what customers saw without interrupting active operations. Cart interactions previously blocked user interaction while waiting for server confirmation, creating perceived sluggishness that drove abandonment during checkout.',
+        'The retailer sought to modernize customer-facing interfaces without disrupting active operational workflows. Cart interactions previously blocked user interaction while waiting for server confirmation, creating perceived sluggishness that drove abandonment during checkout.',
       bulletPoints: [
         'Cart friction: Every tap on "Add to Cart" waited for backend confirmation before updating the screen, introducing perceptible delays.',
         'Complex third-party integrations: Payment gateway, parcel dispatchers, and custom CRM services required synchronized connectivity without regressions.',
@@ -102,7 +102,7 @@ export const caseStudiesData: CaseStudy[] = [
     solution: {
       title: 'Decoupled Storefront with Optimistic UI & Containerized Kubernetes Microservices',
       description:
-        'Cauders rebuilt the storefront and backend as an integrated system. We engineered a fast Next.js and React frontend deployed to Vercel, paired with a typed Node.js/TypeScript REST API orchestrated via Docker containers on Kubernetes.',
+        'Core team members architected and modernized the storefront and backend as an integrated architecture prior to Cauders: delivering a high-performance Next.js and React frontend on Vercel paired with a typed Node.js/TypeScript REST API orchestrated via Docker containers on Kubernetes.',
       keyHighlights: [
         'Implemented React Query optimistic updates: the cart UI updates immediately on tap while server synchronization executes asynchronously in the background, with automatic rollback if requests fail.',
         'Structured shared TypeScript schemas between frontend and backend to eliminate boundary data bugs and simplify API contract maintenance.',
@@ -174,11 +174,11 @@ export const caseStudiesData: CaseStudy[] = [
     solution: {
       title: 'Decoupled Integration Architecture with Real-Time Asynchronous Buffering',
       description:
-        'We engineered a secure cloud web application powered by Laravel, Livewire, and Alpine.js for rapid, enterprise-grade UI delivery, backed by a decoupled Node.js integration layer that buffers and validates requests asynchronously before dispatching to legacy core infrastructure.',
+        'The engagement team engineered an enterprise web portal powered by Laravel, Livewire, and Alpine.js for rapid, enterprise-grade UI delivery, backed by a decoupled Node.js integration layer that buffers and validates requests asynchronously before dispatching to legacy core infrastructure.',
       keyHighlights: [
         'Built real-time API integrations communicating seamlessly with legacy core platforms and government eKYC identity portals.',
         'Created a unified self-service journey allowing subscribers from both merged entities to manage legacy plans, activate new 5G tiers, and purchase hardware.',
-        'Implemented asynchronous buffering queues ensuring zero data loss and resilient transaction recovery during high-concurrency billing updates.',
+        'Implemented asynchronous buffering queues engineered for transaction recovery and state continuity during high-concurrency billing updates.',
       ],
     },
     architecture: {
@@ -188,7 +188,7 @@ export const caseStudiesData: CaseStudy[] = [
         'Laravel/Livewire presentation portal communicating via secure API requests with a decoupled Node.js integration layer. The Node.js tier acts as a resilient buffer, validating requests and orchestrating real-time transactions with legacy core systems and external eKYC verification portals.',
     },
     outcome: {
-      headline: 'Unified Onboarding for Millions with Absolute Regulatory Compliance',
+      headline: 'Unified Onboarding for Millions with Verified Regulatory Compliance Workflows',
       description:
         'The portal successfully bridged two national subscriber bases into a single digital destination with resilient transaction synchronization and unified account journeys.',
       impactList: [
@@ -208,8 +208,8 @@ export const caseStudiesData: CaseStudy[] = [
       "description": "Delivered as a white-labeled engineering engagement by members of the Cauders technical team."
 },
     slug: 'smart-building-proptech-platform',
-    title: 'Scaling an Enterprise Smart Building & Workplace SaaS Platform Across 36,000+ Devices',
-    subtitle: 'Taking over full technical ownership of a live PropTech platform: S3 file caching, SAML 2.0 enterprise SSO, bundle optimization, and IoT gateway stabilization.',
+    title: 'Optimizing an Enterprise Smart Building & Workplace SaaS Platform Across 36,000+ Devices',
+    subtitle: 'White-labeled platform engineering and performance stabilization: S3 cache-first architecture, SAML 2.0 enterprise SSO, frontend bundle reduction, and IoT gateway reliability across 36,000+ devices.',
     domain: 'PropTech & Enterprise IoT',
     capability: 'Platform Engineering & IoT Integration',
     clientName: "Commercial PropTech Provider",
@@ -217,7 +217,7 @@ export const caseStudiesData: CaseStudy[] = [
     industry: 'Real Estate & PropTech',
     duration: '8-12 Months',
     deliverables: [
-      'Platform Takeover & Stabilization across 1,000+ Buildings',
+      'Multi-Tenant Platform Modernization & IoT Gateway Reliability',
       'Amazon S3 Cache-First Layer Cutting Database Read Load by 80-95%',
       'Frontend Bundle Optimization (-43% stat, -28% gzipped)',
       'Enterprise SAML 2.0 Single Sign-On (SSO) on AWS Lambda',
@@ -233,11 +233,11 @@ export const caseStudiesData: CaseStudy[] = [
     ],
     heroImage: 'https://res.cloudinary.com/cauders/image/upload/v1792751019/Gemini_Generated_Image_o89e3to89e3to89e_ivkyvx.jpg',
     overview:
-      'A leading digital building management and workplace SaaS platform used across 1,000+ commercial buildings, 36,000+ connected IoT devices, and 500+ enterprise users faced continuity risks when its original engineering team was discontinued. Cauders stepped in and assumed full technical ownership across frontend, backend, IoT edge integrations, infrastructure, and compliance.',
+      'A multi-tenant commercial PropTech and workplace SaaS platform operating across 36,000+ connected IoT devices required targeted modernization and infrastructure stabilization. As part of a white-labeled engineering partnership, members of the technical team were engaged to resolve database read contention, remediate security vulnerabilities, streamline enterprise SSO onboarding, and optimize web performance.',
     challenge: {
       title: 'Mission-Critical Continuity, Severe Database Load & Security Deficits',
       description:
-        'Thousands of commercial facilities depended on the platform daily for access control, automated building schedules, and facilities workflows. We had to stabilize and modernize a live product without a second of service disruption.',
+        'Commercial facilities depended on the platform continuously for access monitoring, automated building schedules, and facilities workflows, requiring all modernization and caching cutovers to be executed without operational downtime.',
       bulletPoints: [
         'Database contention: Repeated file reads hit the operational database directly on every request, creating severe scaling bottlenecks as building count grew.',
         'Enterprise onboarding friction: Large corporate tenants required Single Sign-On with their own identity providers (Okta, Azure AD), but manual configuration took days.',
@@ -373,7 +373,7 @@ export const caseStudiesData: CaseStudy[] = [
       { label: 'Crash-Free Sessions', value: '95.9%' },
       { label: 'Daily Active Retention', value: '40% DAU' },
       { label: 'Checkout Integration', value: 'Instant Cart' },
-      { label: 'Styling Engine Speed', value: '< 800ms' },
+      { label: 'Wardrobe Tagging', value: 'Automated AI' },
     ],
     heroImage: 'https://res.cloudinary.com/cauders/image/upload/v1792813715/Customer-Facing_Applications_unghui.jpg',
     overview:
@@ -391,7 +391,7 @@ export const caseStudiesData: CaseStudy[] = [
     solution: {
       title: 'Modular Flutter Architecture with Asynchronous Computer Vision & Commerce APIs',
       description:
-        'We engineered an end-to-end mobile social platform built on Flutter, supported by Node.js microservices and Firebase real-time data infrastructure. Deep learning pipelines handle automated tagging and styling recommendations in the cloud.',
+        'Core team members architected and developed the mobile social commerce platform entirely from scratch using Flutter, supported by Node.js microservices and Firebase real-time data infrastructure. Deep learning pipelines handle automated tagging and styling recommendations in the cloud.',
       keyHighlights: [
         'Built "Shop the Look" functionality that maps tagged garment coordinates in photos directly to catalog SKU items for one-tap checkout.',
         'Implemented the Smart Closet engine utilizing computer vision models to automatically categorize uploaded clothing items by color, pattern, and garment type.',
@@ -449,7 +449,7 @@ export const caseStudiesData: CaseStudy[] = [
     ],
     heroImage: 'https://res.cloudinary.com/cauders/image/upload/v1792261071/iStock-1458045238-scaled_edgfe2.jpg',
     overview:
-      'An on-demand food commerce enterprise was struggling to maintain three disparate, independently developed mobile apps for customers, restaurants, and delivery drivers. They needed to consolidate their operating software into a unified, modular role-based architecture capable of supporting real-time ordering and dynamic delivery logistics.',
+      'A multi-region on-demand food commerce initiative required unifying fragmented mobile clients and streamlining ordering-to-dispatch operations. Through role-based architecture consolidation (AaharCart) and companion ordering-dispatch workflows (NearTap and MAMA), the engineering team delivered a synchronized logistics and food commerce ecosystem.',
     challenge: {
       title: 'Triplicated Codebases, Fragmented Dispatch & Synchronization Delays',
       description:
@@ -463,7 +463,7 @@ export const caseStudiesData: CaseStudy[] = [
     solution: {
       title: 'Unified Modular Flutter Platform with Real-Time Event Dispatch Engine',
       description:
-        'Cauders re-engineered the three disparate mobile products into a single modular, role-based Flutter application supported by a robust Node.js/Express backend, cloud databases, and WebSocket telemetry streams.',
+        'As part of this delivery ecosystem, the AaharCart engagement consolidated three disparate mobile products (customer, merchant, and courier) into a unified modular role-based Flutter application, while companion delivery and ordering pipelines (NearTap and MAMA) streamlined localized merchant discovery and real-time GPS dispatch loops.',
       keyHighlights: [
         'Consolidated customer ordering, vendor fulfillment, and driver logistics into a unified codebase with dynamic role permissions and conditional UI workflows.',
         'Engineered real-time GPS tracking supported by WebSocket communication and Firebase Cloud Messaging push notifications.',
@@ -607,9 +607,9 @@ export const caseStudiesData: CaseStudy[] = [
     solution: {
       title: 'Local-First SQLite Cache with Asynchronous Redis Sync & Gamified Microservices',
       description:
-        'We engineered a cross-platform Flutter application backed by Node.js microservices, Redis Pub/Sub, and Firebase. A local-first SQL storage engine records game events on-device and syncs cleanly with cloud infrastructure when connection is restored.',
+        'Core team members engineered the cross-platform Flutter mobile client and backend microservices prior to Cauders, backed by Node.js, Redis Pub/Sub, and Firebase. A local-first SQL storage engine records game events on-device and syncs cleanly with cloud infrastructure when connection is restored.',
       keyHighlights: [
-        'Implemented local-first SQL caching: cognitive workout metrics and reaction times save locally on device and automatically reconcile with the cloud with zero sync conflicts.',
+        'Implemented local-first SQL caching: cognitive workout metrics and reaction times save locally on device and automatically reconcile with the cloud with automated conflict resolution.',
         'Engineered gamified social networking modules featuring head-to-head brain challenges, community achievement badges, and real-time leaderboards.',
         'Built personalized visual dashboards charting memory, reaction speed, and cognitive agility over rolling multi-week cohorts.',
       ],
@@ -626,7 +626,7 @@ export const caseStudiesData: CaseStudy[] = [
         'The application established an accessible approach to daily cognitive wellness, combining reliable offline play with addictive community engagement.',
       impactList: [
         'Drove a 40% increase in 30-day user retention through the combination of gamified streak mechanics and leaderboards.',
-        'Processed over 1,000 daily cognitive workouts with zero recorded data synchronization failures.',
+        'Processed over 1,000 daily cognitive workouts supported by offline-first local SQL caching with automatic cloud reconnection synchronization.',
         'Delivered completely seamless offline play, enabling users to train anywhere without connectivity constraints.',
       ],
     },
@@ -659,7 +659,7 @@ export const caseStudiesData: CaseStudy[] = [
     ],
     metrics: [
       { label: 'UX Improvement', value: '+50% Better' },
-      { label: 'Hosting Storage Cost', value: '$0 Direct Video' },
+      { label: 'Hosting Storage Cost', value: 'Zero Video Storage' },
       { label: 'Playback Blocks', value: 'Eliminated via Proxy' },
       { label: 'Video Ingestion', value: 'Edge Shielded' },
     ],
@@ -679,7 +679,7 @@ export const caseStudiesData: CaseStudy[] = [
     solution: {
       title: 'Decoupled Bun Metadata Backend with Edge Reverse Proxy Protection',
       description:
-        'We separated the platform into a lean Bun backend on AWS EC2 and a responsive React frontend on Vercel. A reverse proxy sits between viewers and upstream streaming providers, masking connections so servers perceive requests from a stable, trusted origin.',
+        'Core team members architected the self-hosted platform into a decoupled Bun backend on AWS EC2 and a responsive React frontend on Vercel. A reverse proxy sits between viewers and upstream streaming providers, masking connections so servers perceive requests from a stable, trusted origin.',
       keyHighlights: [
         'Utilized Bun on AWS EC2 as an ultra-fast, minimal backend service that returns video metadata and stream manifests without storing heavy video files.',
         'Configured an edge reverse proxy to consolidate and authenticate streaming requests, eliminating origin blocking and keeping video playback dependable.',

@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowUpRight, CheckCircle2, ArrowRight, Filter, Sparkles, Building2, Globe, Cpu, Smartphone, Layers, Activity } from 'lucide-react';
+import { ArrowUpRight, ArrowRight, Filter, Sparkles, Building2, Globe, Cpu, Smartphone, Layers, Activity } from 'lucide-react';
 import ScrollFadeIn from './ScrollFadeIn';
 import ArrowBadge from './ArrowBadge';
 import SectionHeading from './SectionHeading';
@@ -199,25 +199,10 @@ export default function CaseStudiesListingPage() {
                       {study.subtitle || study.overview}
                     </p>
 
-                    {/* Measured Outcome Callout Box */}
-                    <div className="bg-[#09555A]/[0.05] dark:bg-white/[0.04] border border-[#09555A]/15 dark:border-white/10 rounded-2xl p-4 mb-6 flex items-start gap-2.5">
-                      <CheckCircle2 className="w-4 h-4 text-darkTeal dark:text-[#8CEAE5] flex-shrink-0 mt-0.5" />
-                      <div>
-                        <span className="block text-[10px] font-bold uppercase tracking-wider text-darkTeal dark:text-[#8CEAE5] mb-0.5">
-                          Measured Outcome
-                        </span>
-                        <span suppressHydrationWarning className="block text-xs sm:text-sm font-semibold text-foreground leading-snug">
-                          {study.metrics[0]?.value} • {study.metrics[0]?.label}
-                        </span>
-                      </div>
-                    </div>
                   </div>
 
-                  {/* Card Footer: Client & Link */}
-                  <div className="flex items-center justify-between pt-4 border-t border-border/40 mt-auto">
-                    <span className="text-xs font-mono font-medium text-muted-foreground uppercase">
-                      {study.isNda ? 'NDA Protected' : study.clientName}
-                    </span>
+                  {/* Card Footer: Link */}
+                  <div className="flex items-center justify-end pt-4 border-t border-border/40 mt-auto">
                     <Link
                       href={`/case-studies/${study.slug}`}
                       className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-darkTeal dark:text-[#8CEAE5] hover:opacity-80 transition-opacity"

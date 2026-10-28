@@ -18,10 +18,10 @@ export const metadata: Metadata = {
     siteName: 'Cauders',
     images: [
       {
-        url: '/images/hero/intro-1.png',
+        url: 'https://res.cloudinary.com/cauders/image/upload/v1792672841/cauders_dark_teal_hero_background_n7pfpw.png',
         width: 1200,
         height: 630,
-        alt: 'Cauders Digital Innovation',
+        alt: 'Cauders | AI, Automation & Software Solutions',
       },
     ],
     locale: 'en_US',
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     description:
       'Cauders designs, builds, and modernizes custom software, SaaS products, applied AI, and workflow automations engineered around your business operations.',
     creator: '@cauders',
-    images: ['/images/hero/intro-1.png'],
+    images: ['https://res.cloudinary.com/cauders/image/upload/v1792672841/cauders_dark_teal_hero_background_n7pfpw.png'],
   },
 };
 

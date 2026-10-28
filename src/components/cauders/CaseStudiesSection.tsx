@@ -16,7 +16,6 @@ import SectionHeading from './SectionHeading';
 import DarkTealButton from './DarkTealButton';
 import {
   ArrowRight,
-  CheckCircle2,
   Building2,
   Globe,
   Cpu,
@@ -49,7 +48,7 @@ export const defaultCaseStudies: CaseStudyItem[] = [
     capability: 'Storefront Engineering & Headless Commerce',
     title: 'How We Helped a Nordic Retailer Contribute to a 10% Sales Increase with a Faster Storefront',
     description:
-      'Rebuilt modern Next.js storefront, optimistic Add-to-Cart state updates cutting wait times by 200ms, and containerized Node.js/TypeScript REST API on Kubernetes.',
+      'Modern Next.js storefront overhaul, optimistic Add-to-Cart state updates cutting wait times by 200ms, and containerized Node.js/TypeScript REST API on Kubernetes.',
     outcome: '+10% sales contribution with -200ms cart interaction latency',
     clientName: 'Nordic Direct-to-Consumer Retailer',
     isNda: true,
@@ -75,9 +74,9 @@ export const defaultCaseStudies: CaseStudyItem[] = [
     deliveryTier: 'tier-2',
     domain: 'PropTech & Enterprise IoT',
     capability: 'Platform Engineering & IoT Integration',
-    title: 'Scaling an Enterprise Smart Building & Workplace SaaS Platform Across 36,000+ Devices',
+    title: 'Optimizing an Enterprise Smart Building & Workplace SaaS Platform Across 36,000+ Devices',
     description:
-      'Full technical ownership of live PropTech platform: S3 file caching cutting DB load by 80-95%, SAML 2.0 enterprise SSO on AWS Lambda, and 300+ remediated vulnerabilities.',
+      'White-labeled platform optimization: S3 file caching cutting DB load by 80-95%, SAML 2.0 enterprise SSO on AWS Lambda, and 300+ remediated security vulnerabilities.',
     outcome: '80-95% reduction in database read load and sub-second IoT response',
     clientName: 'Commercial PropTech Provider',
     isNda: true,
@@ -134,8 +133,8 @@ export const defaultCaseStudies: CaseStudyItem[] = [
     capability: 'Modular Role-Based Architecture & Real-Time Logistics',
     title: 'Consolidating Multi-Role Commerce, Restaurant Discovery, and Live Delivery Dispatch',
     description:
-      'Re-engineered three separate mobile apps into a single modular role-based Flutter platform with real-time GPS tracking and live dispatch matching.',
-    outcome: '3 disparate apps consolidated into 1 modular high-performance platform',
+      'Modular role-based Flutter platform consolidation (AaharCart) with synchronized ordering, merchant operations, and live GPS dispatch matching.',
+    outcome: 'Consolidated 3 separate apps into 1 modular role-based commerce platform',
     clientName: 'Regional On-Demand Delivery Network',
     isNda: true,
     icon: Globe,
@@ -149,7 +148,7 @@ export const defaultCaseStudies: CaseStudyItem[] = [
     title: 'Offline-Resilient Cognitive Training & Social Wellness Mobile Application',
     description:
       'Cross-platform Flutter application with local SQLite caching for zero-connectivity brain training, synchronized leaderboards, and high-frequency telemetry.',
-    outcome: '+40% 30-day retention lift and 1,000+ daily workouts with 0 sync errors',
+    outcome: '+40% 30-day retention lift and 1,000+ daily workouts via local-first caching',
     clientName: 'Cognitive Health & Wellness Startup',
     isNda: true,
     icon: Activity,
@@ -266,7 +265,7 @@ export default function CaseStudiesSection({
           className="w-full"
         >
           <CarouselContent
-            wrapperClassName="overflow-hidden py-6 sm:py-8 px-4 sm:px-6 lg:px-8"
+            wrapperClassName="overflow-hidden pt-6 pb-12 sm:pt-8 sm:pb-16 px-4 sm:px-6 lg:px-8"
             className="-ml-4 sm:-ml-6"
           >
             {caseStudies.map((study) => (
@@ -296,50 +295,10 @@ export default function CaseStudiesSection({
                       {study.description}
                     </p>
 
-                    {/* Measured Outcome Callout Box */}
-                    <div className="bg-[#09555A]/[0.04] border border-[#09555A]/15 rounded-2xl p-4 mb-6 flex items-start gap-3">
-                      <CheckCircle2 className="w-5 h-5 text-[#09555A] flex-shrink-0 mt-0.5" />
-                      <div>
-                        <span className="block text-[11px] font-bold uppercase tracking-wider text-[#09555A] mb-0.5">
-                          Measured Outcome
-                        </span>
-                        <span suppressHydrationWarning className="block text-xs sm:text-sm font-semibold text-zinc-900 leading-snug">
-                          {study.outcome}
-                        </span>
-                      </div>
-                    </div>
                   </div>
 
-                  {/* Client / NDA row + View Link */}
-                  <div className="flex items-center justify-between pt-6 border-t border-zinc-100 mt-auto">
-                    {study.isNda ? (
-                      <div className="flex items-center gap-2.5 text-xs sm:text-sm font-semibold text-zinc-700">
-                        <div className="w-7 h-7 rounded-full border border-zinc-200 bg-zinc-50 flex items-center justify-center flex-shrink-0">
-                          <img
-                            src="https://res.cloudinary.com/cauders/image/upload/v1792808916/Lock_Streamline_Micro_ii3oaq.png"
-                            alt="NDA Protected"
-                            className="w-3.5 h-3.5 object-contain"
-                          loading="lazy" decoding="async" />
-                        </div>
-                        <span className="font-headline tracking-tight uppercase text-zinc-800 text-xs">
-                          NDA Protected
-                        </span>
-                      </div>
-                    ) : (
-                      <div className="flex items-center gap-2.5">
-                        <div className="w-7 h-7 rounded-lg bg-zinc-900 flex items-center justify-center text-white text-xs font-bold">
-                          {study.icon ? (
-                            <study.icon className="w-3.5 h-3.5 text-white" />
-                          ) : (
-                            'C'
-                          )}
-                        </div>
-                        <span className="text-xs sm:text-sm font-bold font-headline text-zinc-900 tracking-tight">
-                          {study.clientName}
-                        </span>
-                      </div>
-                    )}
-
+                  {/* Card Footer: View Link */}
+                  <div className="flex items-center justify-end pt-6 border-t border-zinc-100 mt-auto">
                     <Link
                       href={study.link || '/case-studies'}
                       className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-[#09555A] hover:text-[#003B38] transition-colors"

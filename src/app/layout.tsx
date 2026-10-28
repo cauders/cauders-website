@@ -1,3 +1,4 @@
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import type { Metadata, Viewport } from 'next';
 import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
@@ -160,6 +161,7 @@ export default function RootLayout({
             </main>
             <Footer />
             <Toaster />
+            <SpeedInsights />
           </>
         </ThemeProvider>
         <Script id="linkedin-insight-tag-1" strategy="lazyOnload">

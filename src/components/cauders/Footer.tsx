@@ -79,9 +79,6 @@ export default function Footer() {
                 <p className="text-sm text-black/80 max-w-xs leading-relaxed">
                   We help businesses streamline operations, solve complex challenges, and turn ideas into scalable digital solutions.
                 </p>
-                <p className="text-xs text-black/60 pt-1 font-mono">
-                  CAUDERS (PRIVATE) LIMITED
-                </p>
               </div>
               
               <div className="flex flex-col gap-3.5 mt-2 text-sm text-black/80">

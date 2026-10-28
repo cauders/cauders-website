@@ -168,7 +168,7 @@ export default function WhatWeBuildSection() {
                 </div>
 
                 {/* Floating Glassmorphic Info Card at Bottom */}
-                <div className="relative z-10 m-5 sm:m-6 p-6 sm:p-7 rounded-2xl bg-white/70 dark:bg-card/75 backdrop-blur-md border border-white/40 shadow-lg">
+                <div className="relative z-10 m-5 sm:m-6 p-6 sm:p-7 rounded-2xl bg-white/95 dark:bg-[#02181b]/95 border border-white/20 shadow-lg">
                   <h3 className="text-xl sm:text-2xl font-semibold text-foreground tracking-tight mb-2">
                     AI & Automation
                   </h3>
