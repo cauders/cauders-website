@@ -61,7 +61,7 @@ export const caseStudiesData: CaseStudy[] = [
       "tier": "tier-3",
       "badge": "Prior Team Experience",
       "label": "Prior Team Experience",
-      "description": "Architected and engineered by core team members prior to Cauders."
+      "description": "Architected and engineered by Cauders team members prior to Cauders."
 },
     slug: 'nordic-ecommerce-storefront',
     title: 'How We Helped a Nordic Retailer Contribute to a 10% Sales Increase with a Faster Storefront',
@@ -102,7 +102,7 @@ export const caseStudiesData: CaseStudy[] = [
     solution: {
       title: 'Decoupled Storefront with Optimistic UI & Containerized Kubernetes Microservices',
       description:
-        'Core team members architected and modernized the storefront and backend as an integrated architecture prior to Cauders: delivering a high-performance Next.js and React frontend on Vercel paired with a typed Node.js/TypeScript REST API orchestrated via Docker containers on Kubernetes.',
+        'Cauders team members architected and modernized the storefront and backend as an integrated architecture prior to Cauders: delivering a high-performance Next.js and React frontend on Vercel paired with a typed Node.js/TypeScript REST API orchestrated via Docker containers on Kubernetes.',
       keyHighlights: [
         'Implemented React Query optimistic updates: the cart UI updates immediately on tap while server synchronization executes asynchronously in the background, with automatic rollback if requests fail.',
         'Structured shared TypeScript schemas between frontend and backend to eliminate boundary data bugs and simplify API contract maintenance.',
@@ -209,7 +209,7 @@ export const caseStudiesData: CaseStudy[] = [
 },
     slug: 'smart-building-proptech-platform',
     title: 'Optimizing an Enterprise Smart Building & Workplace SaaS Platform Across 36,000+ Devices',
-    subtitle: 'White-labeled platform engineering and performance stabilization: S3 cache-first architecture, SAML 2.0 enterprise SSO, frontend bundle reduction, and IoT gateway reliability across 36,000+ devices.',
+    subtitle: 'White-labeled platform engineering and performance stabilization: S3 cache-first architecture, SAML 2.0 enterprise SSO, frontend bundle reduction, and IoT gateway reliability across 36,000+ IoT devices.',
     domain: 'PropTech & Enterprise IoT',
     capability: 'Platform Engineering & IoT Integration',
     clientName: "Commercial PropTech Provider",
@@ -218,7 +218,7 @@ export const caseStudiesData: CaseStudy[] = [
     duration: '8-12 Months',
     deliverables: [
       'Multi-Tenant Platform Modernization & IoT Gateway Reliability',
-      'Amazon S3 Cache-First Layer Cutting Database Read Load by 80-95%',
+      'Amazon S3 Cache-First Layer Cutting Database Read Load by 80–95%',
       'Frontend Bundle Optimization (-43% stat, -28% gzipped)',
       'Enterprise SAML 2.0 Single Sign-On (SSO) on AWS Lambda',
       'IoT Edge Gateway Telemetry Integration (Hardware Edge Gateways) via MQTT',
@@ -226,14 +226,14 @@ export const caseStudiesData: CaseStudy[] = [
       'SaaS Modules for Permits, Quotes, Jobs, and Reactive Tasks',
     ],
     metrics: [
-      { label: 'Database Read Load', value: '-80% to -95%' },
+      { label: 'Database Read Load', value: '80–95% Reduction' },
       { label: 'Vulnerabilities Fixed', value: '300+ Remediated' },
       { label: 'Enterprise Onboarding', value: 'Days → Minutes' },
-      { label: 'Managed Devices', value: '36,000+ Active' },
+      { label: 'Managed Devices', value: '36,000+ IoT Devices' },
     ],
     heroImage: 'https://res.cloudinary.com/cauders/image/upload/v1792751019/Gemini_Generated_Image_o89e3to89e3to89e_ivkyvx.jpg',
     overview:
-      'A multi-tenant commercial PropTech and workplace SaaS platform operating across 36,000+ connected IoT devices required targeted modernization and infrastructure stabilization. As part of a white-labeled engineering partnership, members of the technical team were engaged to resolve database read contention, remediate security vulnerabilities, streamline enterprise SSO onboarding, and optimize web performance.',
+      'A multi-tenant commercial PropTech and workplace SaaS platform operating across 36,000+ IoT devices required targeted modernization and infrastructure stabilization. As part of a white-labeled engineering partnership, members of the Cauders technical team were engaged to resolve database read contention, remediate 300+ security vulnerabilities, streamline enterprise SSO onboarding, and optimize web performance.',
     challenge: {
       title: 'Mission-Critical Continuity, Severe Database Load & Security Deficits',
       description:
@@ -249,7 +249,7 @@ export const caseStudiesData: CaseStudy[] = [
       description:
         'A dedicated team of four engineers and a tech lead executed incremental modernizations: environment stabilization, frontend bundle optimization, S3 caching, vulnerability remediation, and automated SAML 2.0 single sign-on.',
       keyHighlights: [
-        'Engineered an Amazon S3 caching layer as FastAPI microservices: files are served directly from S3, slashing database read load by 80-95% without altering underlying schemas.',
+        'Engineered an Amazon S3 caching layer as FastAPI microservices: files are served directly from S3, slashing database read load by 80–95% without altering underlying schemas.',
         'Built an IdP-agnostic SAML 2.0 SSO service on AWS Lambda with CloudWatch telemetry, enabling enterprise tenants to configure identity providers in minutes.',
         'Remediated 300+ vulnerabilities identified via OWASP ZAP penetration testing, eliminating 100% of high-risk and 90% of medium-risk findings.',
       ],
@@ -265,7 +265,7 @@ export const caseStudiesData: CaseStudy[] = [
       description:
         'A platform at risk of stagnation was transformed into an enterprise-ready, compliant, and performant SaaS product that easily passes corporate procurement reviews.',
       impactList: [
-        'Reduced operational database read load by 80-95% through the S3 caching layer.',
+        'Reduced operational database read load by 80–95% through the S3 caching layer.',
         'Shrunk frontend bundle size by 43% and resolved memory leaks across 20+ components, boosting heap efficiency by 17.3%.',
         'Cut enterprise customer onboarding from days of manual setup to self-service minutes with SAML 2.0 SSO.',
       ],
@@ -350,7 +350,7 @@ export const caseStudiesData: CaseStudy[] = [
       "tier": "tier-3",
       "badge": "Prior Team Experience",
       "label": "Prior Team Experience",
-      "description": "Architected and engineered by core team members prior to Cauders."
+      "description": "Architected and engineered by Cauders team members prior to Cauders."
 },
     slug: 'social-commerce-fashion-discovery',
     title: 'Unifying AI-Assisted Virtual Styling, Digital Wardrobes, and Shop the Look Commerce',
@@ -391,7 +391,7 @@ export const caseStudiesData: CaseStudy[] = [
     solution: {
       title: 'Modular Flutter Architecture with Asynchronous Computer Vision & Commerce APIs',
       description:
-        'Core team members architected and developed the mobile social commerce platform entirely from scratch using Flutter, supported by Node.js microservices and Firebase real-time data infrastructure. Deep learning pipelines handle automated tagging and styling recommendations in the cloud.',
+        'Cauders team members architected and developed the mobile social commerce platform entirely from scratch using Flutter, supported by Node.js microservices and Firebase real-time data infrastructure. Deep learning pipelines handle automated tagging and styling recommendations in the cloud.',
       keyHighlights: [
         'Built "Shop the Look" functionality that maps tagged garment coordinates in photos directly to catalog SKU items for one-tap checkout.',
         'Implemented the Smart Closet engine utilizing computer vision models to automatically categorize uploaded clothing items by color, pattern, and garment type.',
@@ -566,7 +566,7 @@ export const caseStudiesData: CaseStudy[] = [
       "tier": "tier-3",
       "badge": "Prior Team Experience",
       "label": "Prior Team Experience",
-      "description": "Architected and engineered by core team members prior to Cauders."
+      "description": "Architected and engineered by Cauders team members prior to Cauders."
 },
     slug: 'cognitive-fitness-gamified-platform',
     title: 'Offline-Resilient Cognitive Training & Social Wellness Mobile Application',
@@ -607,7 +607,7 @@ export const caseStudiesData: CaseStudy[] = [
     solution: {
       title: 'Local-First SQLite Cache with Asynchronous Redis Sync & Gamified Microservices',
       description:
-        'Core team members engineered the cross-platform Flutter mobile client and backend microservices prior to Cauders, backed by Node.js, Redis Pub/Sub, and Firebase. A local-first SQL storage engine records game events on-device and syncs cleanly with cloud infrastructure when connection is restored.',
+        'Cauders team members engineered the cross-platform Flutter mobile client and backend microservices prior to Cauders, backed by Node.js, Redis Pub/Sub, and Firebase. A local-first SQL storage engine records game events on-device and syncs cleanly with cloud infrastructure when connection is restored.',
       keyHighlights: [
         'Implemented local-first SQL caching: cognitive workout metrics and reaction times save locally on device and automatically reconcile with the cloud with automated conflict resolution.',
         'Engineered gamified social networking modules featuring head-to-head brain challenges, community achievement badges, and real-time leaderboards.',
@@ -638,11 +638,11 @@ export const caseStudiesData: CaseStudy[] = [
       "tier": "tier-3",
       "badge": "Prior Team Experience",
       "label": "Prior Team Experience",
-      "description": "Architected and engineered by core team members prior to Cauders."
+      "description": "Architected and engineered by Cauders team members prior to Cauders."
 },
     slug: 'self-hosted-streaming-platform',
     title: 'High-Performance Self-Hosted Streaming Architecture with Edge Reverse Proxy',
-    subtitle: 'Decoupled Bun runtime backend, edge-cached React frontend on Vercel, and reverse proxy masking to enable high-definition playback with zero video storage overhead.',
+    subtitle: 'Decoupled Bun runtime backend on AWS EC2, edge-cached React frontend on Vercel, and reverse-proxy routing to deliver a responsive, low-cost self-hosted streaming architecture without hosting massive video files directly.',
     domain: 'Media & Digital Entertainment',
     capability: 'Edge Infrastructure & Streaming Architecture',
     clientName: "Community-Driven Digital Media Project",
@@ -650,7 +650,7 @@ export const caseStudiesData: CaseStudy[] = [
     industry: 'Developer Tools & Cloud Platforms',
     duration: '3-4 Months',
     deliverables: [
-      'Decoupled Streaming Architecture with Zero Video Storage Overhead',
+      'Decoupled Low-Cost Self-Hosted Streaming Architecture with Reverse-Proxy Routing',
       'Ultra-Lean Backend Service Running on Bun Runtime on AWS EC2',
       'Edge-Rendered React Frontend Deployed Globally on Vercel',
       'Custom Edge Reverse Proxy Shielding Requests from Third-Party Blocks',
@@ -659,19 +659,19 @@ export const caseStudiesData: CaseStudy[] = [
     ],
     metrics: [
       { label: 'UX Improvement', value: '+50% Better' },
-      { label: 'Hosting Storage Cost', value: 'Zero Video Storage' },
+      { label: 'Hosting Architecture', value: 'Low-Cost Self-Hosted' },
       { label: 'Playback Blocks', value: 'Eliminated via Proxy' },
       { label: 'Video Ingestion', value: 'Edge Shielded' },
     ],
     heroImage: 'https://res.cloudinary.com/cauders/image/upload/v1792912134/custom_ai_x7ljqa.jpg',
     overview:
-      'A community-driven digital media streaming project needed an ultra-fast, modern streaming web interface that developers and enthusiasts could easily self-host. Storing and serving gigabytes of video directly would introduce prohibitive hosting costs, while third-party streaming origins frequently rate-blocked direct browser connections.',
+      'A community-driven digital media streaming project needed an ultra-fast, modern streaming web interface that developers and enthusiasts could easily self-host. Rather than maintaining heavy, cost-prohibitive dedicated video hosting clusters, the platform was engineered to route streaming feeds reliably through an authenticated reverse-proxy architecture on minimal cloud infrastructure.',
     challenge: {
-      title: 'Prohibitive Video Hosting Costs & Third-Party Origin Blocking',
+      title: 'High Infrastructure Costs & Third-Party Origin Blocking',
       description:
         'The platform needed to deliver a premium, responsive video experience without the crippling infrastructure expense of storing video files directly or risking viewer playback drops.',
       bulletPoints: [
-        'Direct video hosting and CDN egress bandwidth costs were economically infeasible for a free, community-run initiative.',
+        'Dedicated video hosting and high CDN egress bandwidth were economically infeasible for a free, community-run initiative.',
         'Third-party streaming servers frequently blocked or throttled requests arriving directly from thousands of individual user browsers.',
         'The existing interface was dated, lacked community sign-in, and offered zero personalization or theme customization.',
       ],
@@ -679,9 +679,9 @@ export const caseStudiesData: CaseStudy[] = [
     solution: {
       title: 'Decoupled Bun Metadata Backend with Edge Reverse Proxy Protection',
       description:
-        'Core team members architected the self-hosted platform into a decoupled Bun backend on AWS EC2 and a responsive React frontend on Vercel. A reverse proxy sits between viewers and upstream streaming providers, masking connections so servers perceive requests from a stable, trusted origin.',
+        'Cauders team members architected the self-hosted platform into a decoupled Bun backend on AWS EC2 and a responsive React frontend on Vercel. A reverse proxy sits between viewers and upstream streaming providers, masking connections so servers perceive requests from a stable, trusted origin.',
       keyHighlights: [
-        'Utilized Bun on AWS EC2 as an ultra-fast, minimal backend service that returns video metadata and stream manifests without storing heavy video files.',
+        'Utilized Bun on AWS EC2 as an ultra-fast, minimal backend service that returns video metadata and stream manifests without requiring local video file storage.',
         'Configured an edge reverse proxy to consolidate and authenticate streaming requests, eliminating origin blocking and keeping video playback dependable.',
         'Integrated AniList OAuth for seamless anime fan sign-ins and Disqus for discussion threads, eliminating custom auth maintenance.',
       ],
@@ -693,12 +693,12 @@ export const caseStudiesData: CaseStudy[] = [
         'React frontend deployed globally across Vercel edge points. The client queries a lightweight Bun service on AWS EC2 for video manifests. Stream segments flow through an edge reverse proxy to ensure third-party origin servers recognize verified origin requests.',
     },
     outcome: {
-      headline: 'Seamless High-Definition Streaming with Near-Zero Infrastructure Overhead',
+      headline: 'High-Definition Streaming Delivered on a Low-Cost Self-Hosted Architecture',
       description:
         'The open-source self-hosted architecture delivered a 50%+ boost in viewer experience while keeping operating and hosting expenses minimal.',
       impactList: [
         'Achieved a 50%+ improvement in user satisfaction through instantaneous player startup and modern interface design.',
-        'Shipped an open-source, easily self-hostable setup that anyone can deploy in minutes at virtually zero monthly cost.',
+        'Shipped an open-source, easily self-hostable setup that community members can deploy in minutes on minimal, low-cost cloud infrastructure.',
         'Eliminated stream blocking completely via the edge reverse proxy origin masking layer.',
       ],
     },
@@ -710,7 +710,7 @@ export const caseStudiesData: CaseStudy[] = [
       "tier": "tier-3",
       "badge": "Prior Team Experience",
       "label": "Prior Team Experience",
-      "description": "Architected and engineered by core team members prior to Cauders."
+      "description": "Architected and engineered by Cauders team members prior to Cauders."
 },
     slug: 'contracting-service-portal',
     title: 'High-Conversion Digital Showroom & Local SEO Lead Engine for Specialty Contractors',

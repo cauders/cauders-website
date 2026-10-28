@@ -76,8 +76,8 @@ export const defaultCaseStudies: CaseStudyItem[] = [
     capability: 'Platform Engineering & IoT Integration',
     title: 'Optimizing an Enterprise Smart Building & Workplace SaaS Platform Across 36,000+ Devices',
     description:
-      'White-labeled platform optimization: S3 file caching cutting DB load by 80-95%, SAML 2.0 enterprise SSO on AWS Lambda, and 300+ remediated security vulnerabilities.',
-    outcome: '80-95% reduction in database read load and sub-second IoT response',
+      'White-labeled platform optimization: S3 file caching cutting DB load by 80–95%, SAML 2.0 enterprise SSO on AWS Lambda, and 300+ remediated security vulnerabilities.',
+    outcome: '80–95% reduction in database read load and 300+ remediated vulnerabilities across 36,000+ IoT devices',
     clientName: 'Commercial PropTech Provider',
     isNda: true,
     icon: Cpu,
@@ -162,7 +162,7 @@ export const defaultCaseStudies: CaseStudyItem[] = [
     title: 'High-Performance Self-Hosted Streaming Architecture with Edge Reverse Proxy',
     description:
       'Ultra-lean Bun runtime on AWS EC2 paired with global React frontend on Vercel and edge reverse proxy to shield requests from third-party rate blocks.',
-    outcome: '+50% UX improvement with zero direct video storage overhead',
+    outcome: '+50% UX improvement via low-cost self-hosted architecture and reverse-proxy routing',
     clientName: 'Community-Driven Digital Media Project',
     isNda: true,
     icon: Globe,
