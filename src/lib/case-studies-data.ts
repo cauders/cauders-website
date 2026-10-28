@@ -5,7 +5,18 @@ export interface CaseStudyMetric {
   value: string;
 }
 
+export type DeliveryTier = 'tier-1' | 'tier-2' | 'tier-3' | 'tier-4';
+
+export interface DeliveryContext {
+  tier: DeliveryTier;
+  badge: string;
+  label: string;
+  description: string;
+}
+
 export interface CaseStudy {
+  publicLabel: string;
+  deliveryContext: DeliveryContext;
   id: string;
   slug: string;
   title: string;
@@ -45,12 +56,19 @@ export interface CaseStudy {
 export const caseStudiesData: CaseStudy[] = [
   {
     id: 'nordic-ecommerce-storefront',
+    publicLabel: "E-Commerce Storefront & Commerce Integrations",
+    deliveryContext: {
+      "tier": "tier-3",
+      "badge": "Prior Team Experience",
+      "label": "Prior Team Experience",
+      "description": "Architected and engineered by core team members prior to Cauders."
+},
     slug: 'nordic-ecommerce-storefront',
     title: 'How We Helped a Nordic Retailer Contribute to a 10% Sales Increase with a Faster Storefront',
     subtitle: 'Headless Next.js storefront overhaul, optimistic Add-to-Cart state management, and containerized microservice integrations connecting payments, dispatch, and CRM.',
     domain: 'Retail & E-Commerce',
     capability: 'Storefront Engineering & Headless Commerce',
-    clientName: 'Nordic Direct-to-Consumer Retailer',
+    clientName: "Nordic Direct-to-Consumer Retailer",
     isNda: true,
     industry: 'Retail & E-Commerce',
     duration: '6 Months',
@@ -110,12 +128,19 @@ export const caseStudiesData: CaseStudy[] = [
   },
   {
     id: 'telecom-core-infrastructure-portal',
+    publicLabel: "Post-Merger Enterprise Telecom Platform",
+    deliveryContext: {
+      "tier": "tier-2",
+      "badge": "White Labeled",
+      "label": "White Labeled",
+      "description": "Delivered as a white-labeled engineering engagement by members of the Cauders technical team."
+},
     slug: 'telecom-core-infrastructure-portal',
     title: 'Unifying Digital Customer Services Post-Merger for a National Telecom Leader',
     subtitle: 'High-availability customer portal connected directly to legacy core infrastructure, real-time government eKYC verification, and hardware e-commerce.',
     domain: 'Enterprise Systems & Telecom',
     capability: 'Enterprise Web Engineering & Core System Integration',
-    clientName: 'Tier-1 Telecommunications Operator',
+    clientName: "Tier-1 Telecommunications Operator",
     isNda: true,
     industry: 'Telecommunications & Infrastructure',
     duration: '8-10 Months',
@@ -125,13 +150,13 @@ export const caseStudiesData: CaseStudy[] = [
       'Real-Time Government eKYC Identity Verification Pipeline',
       'Unified Subscription Management for Legacy & New Mobile Plans',
       'Integrated Hardware E-Commerce (Smartphones & Wi-Fi Routers)',
-      'Zero-Downtime Data Buffering and Resilient Synchronization',
+      'Resilient Asynchronous Data Buffering and Synchronization',
     ],
     metrics: [
       { label: 'Subscriber Base', value: 'Multi-Million' },
-      { label: 'Migration Downtime', value: '0 Minutes' },
-      { label: 'eKYC Verification', value: 'Real-Time' },
-      { label: 'Sync Drop-Offs', value: '0%' },
+      { label: 'Core Onboarding', value: 'SIM & eSIM' },
+      { label: 'eKYC Verification', value: 'Real-Time Stream' },
+      { label: 'Traffic Resilience', value: 'Buffered Queues' },
     ],
     heroImage: 'https://res.cloudinary.com/cauders/image/upload/v1792751012/Gemini_Generated_Image_hd74yghd74yghd74_dmhz1q.jpg',
     overview:
@@ -165,9 +190,9 @@ export const caseStudiesData: CaseStudy[] = [
     outcome: {
       headline: 'Unified Onboarding for Millions with Absolute Regulatory Compliance',
       description:
-        'The portal successfully bridged two national subscriber bases into a single digital destination with zero service disruption or data leakage.',
+        'The portal successfully bridged two national subscriber bases into a single digital destination with resilient transaction synchronization and unified account journeys.',
       impactList: [
-        'Successfully deployed high-availability portal handling massive concurrent traffic spikes with zero data leakage or synchronization drop-offs.',
+        'Successfully deployed high-availability portal handling massive concurrent traffic spikes with low drop-offs and resilient queue-buffered synchronization.',
         'Automated customer identity verification (eKYC), eliminating manual branch visits and accelerating subscriber activations.',
         'Centralized account management across merged subscriber cohorts, drastically lowering operational support overhead.',
       ],
@@ -175,12 +200,19 @@ export const caseStudiesData: CaseStudy[] = [
   },
   {
     id: 'smart-building-proptech-platform',
+    publicLabel: "Enterprise PropTech & Smart Building IoT Platform",
+    deliveryContext: {
+      "tier": "tier-2",
+      "badge": "White Labeled",
+      "label": "White Labeled",
+      "description": "Delivered as a white-labeled engineering engagement by members of the Cauders technical team."
+},
     slug: 'smart-building-proptech-platform',
-    title: 'Scaling an Enterprise Smart Building & Workplace SaaS Platform Across 30,000+ Devices',
+    title: 'Scaling an Enterprise Smart Building & Workplace SaaS Platform Across 36,000+ Devices',
     subtitle: 'Taking over full technical ownership of a live PropTech platform: S3 file caching, SAML 2.0 enterprise SSO, bundle optimization, and IoT gateway stabilization.',
     domain: 'PropTech & Enterprise IoT',
     capability: 'Platform Engineering & IoT Integration',
-    clientName: 'Commercial PropTech Provider',
+    clientName: "Commercial PropTech Provider",
     isNda: true,
     industry: 'Real Estate & PropTech',
     duration: '8-12 Months',
@@ -189,7 +221,7 @@ export const caseStudiesData: CaseStudy[] = [
       'Amazon S3 Cache-First Layer Cutting Database Read Load by 80-95%',
       'Frontend Bundle Optimization (-43% stat, -28% gzipped)',
       'Enterprise SAML 2.0 Single Sign-On (SSO) on AWS Lambda',
-      'IoT Edge Gateway Telemetry Integration (OMNI Boxes) via MQTT',
+      'IoT Edge Gateway Telemetry Integration (Hardware Edge Gateways) via MQTT',
       'OWASP ZAP Hardening Remediating 300+ Security Vulnerabilities',
       'SaaS Modules for Permits, Quotes, Jobs, and Reactive Tasks',
     ],
@@ -197,11 +229,11 @@ export const caseStudiesData: CaseStudy[] = [
       { label: 'Database Read Load', value: '-80% to -95%' },
       { label: 'Vulnerabilities Fixed', value: '300+ Remediated' },
       { label: 'Enterprise Onboarding', value: 'Days → Minutes' },
-      { label: 'Managed Devices', value: '30,000+ Active' },
+      { label: 'Managed Devices', value: '36,000+ Active' },
     ],
     heroImage: 'https://res.cloudinary.com/cauders/image/upload/v1792751019/Gemini_Generated_Image_o89e3to89e3to89e_ivkyvx.jpg',
     overview:
-      'A leading digital building management and workplace SaaS platform used across 1,000+ commercial buildings, 30,000+ connected IoT devices, and 500+ enterprise users faced continuity risks when its original engineering team was discontinued. Cauders stepped in and assumed full technical ownership across frontend, backend, IoT edge integrations, infrastructure, and compliance.',
+      'A leading digital building management and workplace SaaS platform used across 1,000+ commercial buildings, 36,000+ connected IoT devices, and 500+ enterprise users faced continuity risks when its original engineering team was discontinued. Cauders stepped in and assumed full technical ownership across frontend, backend, IoT edge integrations, infrastructure, and compliance.',
     challenge: {
       title: 'Mission-Critical Continuity, Severe Database Load & Security Deficits',
       description:
@@ -241,12 +273,19 @@ export const caseStudiesData: CaseStudy[] = [
   },
   {
     id: 'global-language-exchange-platform',
+    publicLabel: "Social Networking & Cultural Exchange Platform",
+    deliveryContext: {
+      "tier": "tier-2",
+      "badge": "White Labeled",
+      "label": "White Labeled",
+      "description": "Delivered as a white-labeled engineering engagement by members of the Cauders technical team."
+},
     slug: 'global-language-exchange-platform',
     title: 'Scaling a Real-Time Cultural Exchange & Language Learning Platform to 1M+ Downloads',
     subtitle: 'Decoupled asynchronous neural translation workers, high-concurrency WebSockets, and privacy-preserving matchmaking powering an Android consumer hit.',
     domain: 'Consumer Mobile & Real-Time Communication',
     capability: 'Mobile Product Engineering & Asynchronous Translation',
-    clientName: 'Global Consumer Mobile Publisher',
+    clientName: "Global Consumer Mobile Publisher",
     isNda: true,
     industry: 'Social Media & Mobile Apps',
     duration: '8-12 Months',
@@ -306,12 +345,19 @@ export const caseStudiesData: CaseStudy[] = [
   },
   {
     id: 'social-commerce-fashion-discovery',
+    publicLabel: "Fashion Discovery & Social-Commerce Experience",
+    deliveryContext: {
+      "tier": "tier-3",
+      "badge": "Prior Team Experience",
+      "label": "Prior Team Experience",
+      "description": "Architected and engineered by core team members prior to Cauders."
+},
     slug: 'social-commerce-fashion-discovery',
     title: 'Unifying AI-Assisted Virtual Styling, Digital Wardrobes, and Shop the Look Commerce',
     subtitle: 'Cross-platform mobile application combining social outfit discovery, AI Virtual Try-On, computer vision wardrobe tagging, and in-app checkout.',
     domain: 'Fashion-Tech & Social Commerce',
     capability: 'Mobile Engineering & AI Commerce Integration',
-    clientName: 'Fashion-Tech Social Commerce Venture',
+    clientName: "Fashion-Tech Social Commerce Venture",
     isNda: true,
     industry: 'Retail & E-Commerce',
     duration: '4-5 Months',
@@ -324,7 +370,7 @@ export const caseStudiesData: CaseStudy[] = [
       'Personalized Recommendations Driven by Weather & Occasion',
     ],
     metrics: [
-      { label: 'Crash-Free Sessions', value: '99.9%' },
+      { label: 'Crash-Free Sessions', value: '95.9%' },
       { label: 'Daily Active Retention', value: '40% DAU' },
       { label: 'Checkout Integration', value: 'Instant Cart' },
       { label: 'Styling Engine Speed', value: '< 800ms' },
@@ -363,7 +409,7 @@ export const caseStudiesData: CaseStudy[] = [
       description:
         'The platform achieved industry-leading retention and engagement metrics, transforming fashion browsing into an interactive styling experience.',
       impactList: [
-        'Maintained a 99.9% crash-free session rate across diverse iOS and Android hardware configurations.',
+        'Achieved a 95.9% crash-free session rate across diverse iOS and Android hardware configurations.',
         'Achieved a 40% Daily Active User (DAU) retention rate fueled by personalized wardrobe recommendations and social polls.',
         'Established an instant discovery-to-purchase path linking creator outfits directly with partner retailer inventories.',
       ],
@@ -371,12 +417,19 @@ export const caseStudiesData: CaseStudy[] = [
   },
   {
     id: 'on-demand-delivery-marketplace',
+    publicLabel: "Food Commerce & Multi-Role Delivery Workflows",
+    deliveryContext: {
+      "tier": "tier-2",
+      "badge": "White Labeled",
+      "label": "White Labeled",
+      "description": "Delivered as a white-labeled engineering engagement by members of the Cauders technical team, consolidating modular role-based commerce and dispatch workflows."
+},
     slug: 'on-demand-delivery-marketplace',
     title: 'Consolidating Multi-Role Commerce, Restaurant Discovery, and Live Delivery Dispatch',
     subtitle: 'Unifying customer ordering, restaurant vendor management, and driver dispatch into a single modular, role-based platform with real-time GPS tracking.',
     domain: 'Food Delivery & Multi-Role Logistics',
     capability: 'Modular Role-Based Architecture & Real-Time Logistics',
-    clientName: 'Regional On-Demand Delivery Network',
+    clientName: "Regional On-Demand Delivery Network",
     isNda: true,
     industry: 'Logistics & Food Delivery',
     duration: '4-6 Months',
@@ -390,9 +443,9 @@ export const caseStudiesData: CaseStudy[] = [
     ],
     metrics: [
       { label: 'Architecture Consolidation', value: '3 Apps → 1 Core' },
-      { label: 'Dispatch Latency', value: '< 1.2s' },
-      { label: 'Order Fulfillment', value: '99.8%' },
-      { label: 'App Performance', value: '60 FPS Native' },
+      { label: 'Driver Tracking', value: 'Real-Time GPS' },
+      { label: 'Dispatch Loop', value: 'Live Courier Match' },
+      { label: 'Client Architecture', value: 'Modular Flutter' },
     ],
     heroImage: 'https://res.cloudinary.com/cauders/image/upload/v1792261071/iStock-1458045238-scaled_edgfe2.jpg',
     overview:
@@ -429,20 +482,27 @@ export const caseStudiesData: CaseStudy[] = [
         'The consolidated platform eliminated multi-app maintenance headaches while significantly improving on-time deliveries and customer satisfaction.',
       impactList: [
         'Successfully consolidated three legacy codebases into one modular application, cutting ongoing engineering maintenance overhead in half.',
-        'Reduced driver dispatch assignment latency to under 1.2 seconds following order kitchen acceptance.',
-        'Maintained a 99.8% order lifecycle fulfillment rate throughout peak weekend order surges.',
+        'Streamlined driver dispatch assignment and courier routing following order kitchen acceptance.',
+        'Synchronized ordering, merchant fulfillment, and live courier delivery into a unified operational loop.',
       ],
     },
   },
   {
     id: 'api-marketplace-developer-gateway',
+    publicLabel: "Internal API Engineering Capability",
+    deliveryContext: {
+      "tier": "tier-4",
+      "badge": "Internal Capability",
+      "label": "Internal Engineering Capability",
+      "description": "Built in-house by Cauders engineering as an internal platform capability and developer tool."
+},
     slug: 'api-marketplace-developer-gateway',
     title: 'Accelerating Developer Integration with an Interactive API Marketplace & Gateway',
     subtitle: 'Centralized developer portal, interactive endpoint testing playground, sub-millisecond Redis rate-limiting, and automated multi-language SDK generation.',
     domain: 'B2B Developer Tools & API Infrastructure',
     capability: 'API Gateway Engineering & Developer Enablement',
-    clientName: 'B2B Developer Infrastructure Platform',
-    isNda: true,
+    clientName: "Internal Engineering Capability",
+    isNda: false,
     industry: 'Developer Tools & Cloud Platforms',
     duration: '3-4 Months',
     deliverables: [
@@ -455,9 +515,9 @@ export const caseStudiesData: CaseStudy[] = [
     ],
     metrics: [
       { label: 'Routing Latency', value: '< 50ms' },
-      { label: 'Gateway Uptime', value: '99.99%' },
+      { label: 'Stress Uptime', value: '90% (Stress Test)' },
       { label: 'Dev Onboarding', value: 'Weeks → Mins' },
-      { label: 'Rate-Limit Checks', value: '< 1ms (Redis)' },
+      { label: 'Rate-Limit Checks', value: 'Sub-millisecond' },
     ],
     heroImage: 'https://res.cloudinary.com/cauders/image/upload/v1792751015/Gemini_Generated_Image_ur1ee2ur1ee2ur1e_tdolpy.jpg',
     overview:
@@ -493,7 +553,7 @@ export const caseStudiesData: CaseStudy[] = [
       description:
         'The centralized gateway transformed API integration from an arduous multi-week effort into an instant, self-service developer workflow.',
       impactList: [
-        'Delivered sub-50ms API routing response latency and 99.99% gateway availability under extreme stress testing.',
+        'Delivered sub-50ms routing latency and 90% gateway uptime under stress testing.',
         'Accelerated external developer onboarding from several weeks to less than fifteen minutes.',
         'Provided operators with complete visibility over monetization quotas, security telemetry, and API consumption.',
       ],
@@ -501,12 +561,19 @@ export const caseStudiesData: CaseStudy[] = [
   },
   {
     id: 'cognitive-fitness-gamified-platform',
+    publicLabel: "Cognitive Fitness and Social Networking Application",
+    deliveryContext: {
+      "tier": "tier-3",
+      "badge": "Prior Team Experience",
+      "label": "Prior Team Experience",
+      "description": "Architected and engineered by core team members prior to Cauders."
+},
     slug: 'cognitive-fitness-gamified-platform',
     title: 'Offline-Resilient Cognitive Training & Social Wellness Mobile Application',
     subtitle: 'Gamified brain-training exercises, high-frequency telemetry, local-first SQL offline caching, and global community leaderboards built with Flutter.',
     domain: 'Health-Tech & Gamified Social',
     capability: 'Mobile Engineering & Offline-First State Synchronization',
-    clientName: 'Cognitive Health & Wellness Startup',
+    clientName: "Cognitive Health & Wellness Startup",
     isNda: true,
     industry: 'Social Media & Mobile Apps',
     duration: '5-7 Months',
@@ -521,8 +588,8 @@ export const caseStudiesData: CaseStudy[] = [
     metrics: [
       { label: '30-Day Retention', value: '+40% Lift' },
       { label: 'Daily Workouts', value: '1,000+ Completed' },
-      { label: 'Data Sync Failures', value: '0 Incidents' },
-      { label: 'Offline Execution', value: '100% Functional' },
+      { label: 'Offline Caching', value: 'Local-First SQLite' },
+      { label: 'State Sync', value: 'Asynchronous' },
     ],
     heroImage: 'https://res.cloudinary.com/cauders/image/upload/v1792906816/Gemini_Generated_Image_ma12k1ma12k1ma12_ftm70g.jpg',
     overview:
@@ -566,12 +633,19 @@ export const caseStudiesData: CaseStudy[] = [
   },
   {
     id: 'self-hosted-streaming-platform',
+    publicLabel: "Self-Hosted Anime Streaming Platform & Video Ingestion Layer",
+    deliveryContext: {
+      "tier": "tier-3",
+      "badge": "Prior Team Experience",
+      "label": "Prior Team Experience",
+      "description": "Architected and engineered by core team members prior to Cauders."
+},
     slug: 'self-hosted-streaming-platform',
     title: 'High-Performance Self-Hosted Streaming Architecture with Edge Reverse Proxy',
     subtitle: 'Decoupled Bun runtime backend, edge-cached React frontend on Vercel, and reverse proxy masking to enable high-definition playback with zero video storage overhead.',
     domain: 'Media & Digital Entertainment',
     capability: 'Edge Infrastructure & Streaming Architecture',
-    clientName: 'Community-Driven Digital Media Project',
+    clientName: "Community-Driven Digital Media Project",
     isNda: true,
     industry: 'Developer Tools & Cloud Platforms',
     duration: '3-4 Months',
@@ -586,8 +660,8 @@ export const caseStudiesData: CaseStudy[] = [
     metrics: [
       { label: 'UX Improvement', value: '+50% Better' },
       { label: 'Hosting Storage Cost', value: '$0 Direct Video' },
-      { label: 'Playback Blocks', value: '0 Incidents' },
-      { label: 'Player Startup Time', value: '< 350ms' },
+      { label: 'Playback Blocks', value: 'Eliminated via Proxy' },
+      { label: 'Video Ingestion', value: 'Edge Shielded' },
     ],
     heroImage: 'https://res.cloudinary.com/cauders/image/upload/v1792912134/custom_ai_x7ljqa.jpg',
     overview:
@@ -631,12 +705,19 @@ export const caseStudiesData: CaseStudy[] = [
   },
   {
     id: 'contracting-service-portal',
+    publicLabel: "Contracting & Service Portal",
+    deliveryContext: {
+      "tier": "tier-3",
+      "badge": "Prior Team Experience",
+      "label": "Prior Team Experience",
+      "description": "Architected and engineered by core team members prior to Cauders."
+},
     slug: 'contracting-service-portal',
     title: 'High-Conversion Digital Showroom & Local SEO Lead Engine for Specialty Contractors',
     subtitle: 'Performance-engineered WordPress platform, interactive project galleries, local search schema, and automated in-home estimate lead capture funnels.',
     domain: 'Local Services & Digital Marketing',
     capability: 'Web Performance & Local Search Architecture',
-    clientName: 'Specialized Home Remodeling Contractor',
+    clientName: "Specialized Home Remodeling Contractor",
     isNda: true,
     industry: 'Construction & Home Services',
     duration: '2-3 Months',
@@ -649,10 +730,10 @@ export const caseStudiesData: CaseStudy[] = [
       'Hardened CMS Security Architecture with Automated Image WebP Pipelines',
     ],
     metrics: [
-      { label: 'Organic Inbound Leads', value: '+180%' },
-      { label: 'Google PageSpeed', value: '96/100 Mobile' },
-      { label: 'Estimate Conversions', value: '+45%' },
-      { label: 'Turnaround Highlight', value: '2-3 Days' },
+      { label: 'Inbound Lead Flow', value: 'Significant Increase' },
+      { label: 'Turnaround Highlight', value: '2–3 Days' },
+      { label: 'Digital Showroom', value: 'Interactive Galleries' },
+      { label: 'Local Search', value: 'Geo-Targeted Schema' },
     ],
     heroImage: 'https://res.cloudinary.com/cauders/image/upload/v1792770102/Build_Integrate_egvjcw.jpg',
     overview:
@@ -688,9 +769,9 @@ export const caseStudiesData: CaseStudy[] = [
       description:
         'The new digital showroom turned the contractor’s online presence into their primary customer acquisition channel, driving record monthly renovation bookings.',
       impactList: [
-        'Drove a 180% increase in qualified inbound remodeling estimate requests within 90 days of launch.',
-        'Achieved a 96/100 mobile Google PageSpeed performance score with sub-second photo gallery loads.',
-        'Captured top-3 Google local search positions across all targeted regional municipal service territories.',
+        'Significantly increased local organic lead flow and consultation estimate bookings.',
+        'Engineered high-performance mobile loading with automated WebP photo gallery delivery.',
+        'Propelled regional local search presence across targeted municipal service territories.',
       ],
     },
   },

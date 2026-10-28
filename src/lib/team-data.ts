@@ -19,14 +19,14 @@ export type TeamMember = {
 export const teamMembers: TeamMember[] = [
   {
     name: 'Anees Ahmad',
-    role: 'Founder',
+    role: 'Founder & CTO',
     imageUrl: 'https://res.cloudinary.com/cauders/image/upload/v1792275675/anees1_xh2e1t.jpg',
     bio: 'Helping startups and growing companies turn ideas into reliable digital products.',
     fullBio: `Building software is not the hardest part.
 The real challenge is building the right product, choosing a reliable technical direction, avoiding unnecessary complexity, and creating a system that can continue to grow with the business.
 I help startups and growing companies turn ideas, business requirements, and existing technology challenges into reliable digital products.
 
-As the Founder of Cauders, I work with companies that need a dependable technology partner for:
+As Founder & CTO of Cauders, I work with companies that need a dependable technology partner for:
 • Web and mobile product development
 • SaaS platform development
 • AI integration and practical automation

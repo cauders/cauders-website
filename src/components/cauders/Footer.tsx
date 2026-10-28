@@ -156,7 +156,7 @@ export default function Footer() {
           <div className="container mx-auto py-6 px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
             
             <div className="flex flex-col sm:flex-row items-center gap-4 text-xs text-black/60">
-              <p>&copy; {year} Cauders (Private) Limited. All Rights Reserved.</p>
+              <p suppressHydrationWarning>&copy; {year} Cauders (Private) Limited. All Rights Reserved.</p>
               <div className="hidden sm:block h-3 w-px bg-black/20"></div>
               <div className="flex items-center gap-x-4">
                 {legalLinks.map((link) => (

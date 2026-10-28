@@ -55,7 +55,7 @@ export default function StandardizedHeading({ lines, className, animationType = 
   const HeadingTag = as;
 
   return (
-    <HeadingTag className={cn(`font-headline ${typography.headingMain} ${!hasWhiteText ? 'text-foreground' : 'text-white'} !leading-[1.2] font-medium tracking-tight`, className)}>
+    <HeadingTag suppressHydrationWarning className={cn(`font-headline ${typography.headingMain} ${!hasWhiteText ? 'text-foreground' : 'text-white'} !leading-[1.2] font-medium tracking-tight`, className)}>
       {processedLines.map((line, lineIndex) => (
  <ScrollFadeIn
  key={lineIndex}
@@ -63,7 +63,7 @@ export default function StandardizedHeading({ lines, className, animationType = 
  delay={animationType === 'alternate' ? 0.1 : (lineIndex * 150 + 100)}
  className={cn("text-highlight-group", line.inline ? "inline-block mr-[0.25em]" : "block")}
  >
- <span className={cn("py-0.5 md:py-1", line.className, line.inline ? "inline-block" : "block")}>
+ <span suppressHydrationWarning className={cn("py-0.5 md:py-1", line.className, line.inline ? "inline-block" : "block")}>
  {line.isGradient ? (
  <span className="bg-gradient-text text-transparent bg-clip-text">
  {line.text.split(' ').map((word, wordIndex) => (

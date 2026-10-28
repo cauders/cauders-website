@@ -3,25 +3,37 @@
 import { z } from "zod";
 import nodemailer from 'nodemailer';
 
-// Initialize Nodemailer transporter with standard SMTP credentials
-const smtpHost = process.env.SMTP_HOST || 'mail.cauders.com';
-const smtpPort = parseInt(process.env.SMTP_PORT || '465');
-const smtpUser = process.env.SMTP_USER || 'info@cauders.com';
-const smtpPass = (process.env.SMTP_PASS || '').replace(/\\/g, '');
-const smtpFrom = process.env.SMTP_FROM_EMAIL || 'info@cauders.com';
+// Dynamic, safe transporter factory that validates credentials at runtime
+function getTransporter() {
+  const host = process.env.SMTP_HOST || 'mail.cauders.com';
+  const port = parseInt(process.env.SMTP_PORT || '465', 10);
+  const user = (process.env.SMTP_USER || 'info@cauders.com').trim();
+  const pass = (process.env.SMTP_PASS || '').replace(/\\/g, '').trim();
 
-const transporter = nodemailer.createTransport({
-  host: smtpHost,
-  port: smtpPort,
-  secure: smtpPort === 465,
-  auth: {
-    user: smtpUser,
-    pass: smtpPass,
-  },
-  tls: {
-    rejectUnauthorized: false,
-  },
-});
+  if (!pass) {
+    console.error(
+      `[SMTP CONFIG ERROR] Missing SMTP_PASS environment variable on this server. ` +
+      `Please ensure SMTP_HOST, SMTP_PORT, SMTP_USER, and SMTP_PASS are set in your hosting deployment settings.`
+    );
+    return null;
+  }
+
+  return nodemailer.createTransport({
+    host,
+    port,
+    secure: port === 465,
+    auth: {
+      user,
+      pass,
+    },
+    tls: {
+      rejectUnauthorized: false,
+    },
+  });
+}
+
+const FALLBACK_ERROR_MESSAGE =
+  "Our contact gateway is currently undergoing maintenance. Please reach out directly to info@cauders.com, and our team will respond promptly.";
 
 // --- Contact Form Logic ---
 
@@ -42,14 +54,21 @@ export async function submitContactForm(data: unknown) {
   
   if (!parsedData.success) {
     console.error("Contact form validation error:", parsedData.error.flatten().fieldErrors);
-    return { success: false, message: "Invalid data provided." };
+    return { success: false, message: "Please verify all required form fields." };
   }
 
   const { workEmail, firstName, lastName, companyName, jobTitle, companySize, timeline, phoneNumber, message } = parsedData.data;
 
+  const transporter = getTransporter();
+  if (!transporter) {
+    return { success: false, message: FALLBACK_ERROR_MESSAGE };
+  }
+
+  const senderEmail = process.env.SMTP_FROM_EMAIL || process.env.SMTP_USER || 'info@cauders.com';
+
   try {
     const info = await transporter.sendMail({
-      from: `"Cauders Website" <${process.env.SMTP_FROM_EMAIL}>`,
+      from: `"Cauders Website" <${senderEmail}>`,
       to: 'info@cauders.com',
       subject: `New Contact Form Message from ${firstName} ${lastName}`,
       replyTo: workEmail,
@@ -108,16 +127,15 @@ export async function submitContactForm(data: unknown) {
       `,
     });
 
-    console.log("Nodemailer success response:", info.messageId);
-    return { success: true, message: "Thank you for your message! We'll get back to you soon." };
+    console.log("Nodemailer contact form sent:", info.messageId);
+    return { success: true, message: "Thank you for reaching out! Our engineering team will review your requirements and respond shortly." };
   } catch (error: unknown) {
-    const errorMessage = error instanceof Error ? error.message : "An unknown error occurred.";
-    console.error("Failed to send email:", error);
-    return { success: false, message: `Server Error: ${errorMessage}` };
+    console.error("Failed to send contact email:", error);
+    return { success: false, message: FALLBACK_ERROR_MESSAGE };
   }
 }
 
-// --- Home Page Contact Form Logic ---
+// --- Home Page Quick Contact Form Logic ---
 
 const homePageContactFormSchema = z.object({
   name: z.string().min(1, { message: "Name is required." }),
@@ -132,14 +150,21 @@ export async function submitHomePageContactForm(data: unknown) {
   
   if (!parsedData.success) {
     console.error("Home page contact form validation error:", parsedData.error.flatten().fieldErrors);
-    return { success: false, message: "Invalid data provided." };
+    return { success: false, message: "Please verify all required form fields." };
   }
 
   const { name, job, city, question, email } = parsedData.data;
 
+  const transporter = getTransporter();
+  if (!transporter) {
+    return { success: false, message: FALLBACK_ERROR_MESSAGE };
+  }
+
+  const senderEmail = process.env.SMTP_FROM_EMAIL || process.env.SMTP_USER || 'info@cauders.com';
+
   try {
     const info = await transporter.sendMail({
-      from: `"Cauders Website" <${process.env.SMTP_FROM_EMAIL}>`,
+      from: `"Cauders Website" <${senderEmail}>`,
       to: 'info@cauders.com',
       subject: `New Quick Contact from ${name}`,
       replyTo: email,
@@ -186,12 +211,11 @@ export async function submitHomePageContactForm(data: unknown) {
       `,
     });
 
-    console.log("Nodemailer success response:", info.messageId);
-    return { success: true, message: "Thank you for your message! We'll get back to you soon." };
+    console.log("Nodemailer homepage contact sent:", info.messageId);
+    return { success: true, message: "Thank you for reaching out! We'll get back to you soon." };
   } catch (error: unknown) {
-    const errorMessage = error instanceof Error ? error.message : "An unknown error occurred.";
-    console.error("Failed to send email:", error);
-    return { success: false, message: `Server Error: ${errorMessage}` };
+    console.error("Failed to send quick contact email:", error);
+    return { success: false, message: FALLBACK_ERROR_MESSAGE };
   }
 }
 
@@ -234,6 +258,12 @@ export async function submitFeedbackForm(formData: FormData) {
   
   const { name, email, type, message, file } = parsedData.data;
 
+  const transporter = getTransporter();
+  if (!transporter) {
+    return { success: false, message: FALLBACK_ERROR_MESSAGE };
+  }
+
+  const senderEmail = process.env.SMTP_FROM_EMAIL || process.env.SMTP_USER || 'info@cauders.com';
   const recipient = 'feedback@cauders.com';
   const subject = `New Feedback Received: ${type.charAt(0).toUpperCase() + type.slice(1)}`;
 
@@ -248,7 +278,7 @@ export async function submitFeedbackForm(formData: FormData) {
 
   try {
     const info = await transporter.sendMail({
-      from: `"Cauders Feedback" <${process.env.SMTP_FROM_EMAIL}>`,
+      from: `"Cauders Feedback" <${senderEmail}>`,
       to: recipient,
       subject: subject,
       replyTo: email,
@@ -261,12 +291,11 @@ export async function submitFeedbackForm(formData: FormData) {
       attachments: attachments,
     });
     
-    console.log("Nodemailer success response:", info.messageId);
+    console.log("Nodemailer feedback sent:", info.messageId);
     return { success: true, message: "Thank you for your feedback! We appreciate you taking the time to help us improve." };
   } catch (error: unknown) {
-    const errorMessage = error instanceof Error ? error.message : "An unknown error occurred.";
     console.error("Failed to send feedback email:", error);
-    return { success: false, message: `Server Error: ${errorMessage}` };
+    return { success: false, message: FALLBACK_ERROR_MESSAGE };
   }
 }
 
@@ -307,6 +336,12 @@ export async function submitApplicationForm(formData: FormData) {
   
   const { name, email, position, message, resume } = parsedData.data;
 
+  const transporter = getTransporter();
+  if (!transporter) {
+    return { success: false, message: FALLBACK_ERROR_MESSAGE };
+  }
+
+  const senderEmail = process.env.SMTP_FROM_EMAIL || process.env.SMTP_USER || 'info@cauders.com';
   const recipient = 'hr@cauders.com';
   const subject = `New Job Application: ${position}`;
 
@@ -321,7 +356,7 @@ export async function submitApplicationForm(formData: FormData) {
 
   try {
     const info = await transporter.sendMail({
-      from: `"Cauders Careers" <${process.env.SMTP_FROM_EMAIL}>`,
+      from: `"Cauders Careers" <${senderEmail}>`,
       to: recipient,
       subject: subject,
       replyTo: email,
@@ -333,12 +368,11 @@ export async function submitApplicationForm(formData: FormData) {
       attachments: attachments,
     });
     
-    console.log("Nodemailer success response:", info.messageId);
+    console.log("Nodemailer career application sent:", info.messageId);
     return { success: true, message: "Thank you for your application! We have received it and will be in touch if your qualifications match our needs." };
   } catch (error: unknown) {
-    const errorMessage = error instanceof Error ? error.message : "An unknown error occurred.";
     console.error("Failed to send application email:", error);
-    return { success: false, message: `Server Error: ${errorMessage}` };
+    return { success: false, message: FALLBACK_ERROR_MESSAGE };
   }
 }
 
@@ -359,15 +393,23 @@ export async function submitPartnerForm(data: unknown) {
 
   if (!parsedData.success) {
     console.error("Partner form validation error:", parsedData.error.flatten().fieldErrors);
-    return { success: false, message: "Invalid data provided." };
+    return { success: false, message: "Please verify all required form fields." };
   }
 
   const { firstName, lastName, email, company, country, model, message } = parsedData.data;
 
+  const transporter = getTransporter();
+  if (!transporter) {
+    return { success: false, message: FALLBACK_ERROR_MESSAGE };
+  }
+
+  const senderEmail = process.env.SMTP_FROM_EMAIL || process.env.SMTP_USER || 'info@cauders.com';
+  const recipient = process.env.PARTNER_RECIPIENT_EMAIL || 'info@cauders.com';
+
   try {
     const info = await transporter.sendMail({
-      from: `"Cauders Partnerships" <${process.env.SMTP_FROM_EMAIL || 'info@cauders.com'}>`,
-      to: process.env.PARTNER_RECIPIENT_EMAIL || 'info@cauders.com',
+      from: `"Cauders Partnerships" <${senderEmail}>`,
+      to: recipient,
       subject: `New Partnership Application from ${firstName} ${lastName} (${company})`,
       replyTo: email,
       html: `
@@ -391,8 +433,7 @@ export async function submitPartnerForm(data: unknown) {
     console.log("Partner application emailed successfully:", info.messageId);
     return { success: true, message: "Thank you for applying to the Cauders Partner Program! We'll review your details and reach out within two business days." };
   } catch (error: unknown) {
-    const errorMessage = error instanceof Error ? error.message : "An unknown error occurred.";
     console.error("Failed to send partner email:", error);
-    return { success: false, message: `Server Error: ${errorMessage}` };
+    return { success: false, message: FALLBACK_ERROR_MESSAGE };
   }
 }

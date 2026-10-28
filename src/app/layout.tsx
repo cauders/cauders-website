@@ -113,6 +113,11 @@ const jsonLd = {
     'https://www.linkedin.com/company/cauders',
     'https://twitter.com/cauders',
   ],
+  founder: {
+    '@type': 'Person',
+    name: 'Anees Ahmad',
+    jobTitle: 'Founder & CTO',
+  },
   contactPoint: {
     '@type': 'ContactPoint',
     email: 'info@cauders.com',
@@ -139,7 +144,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className={cn(montserrat.variable, inter.variable, 'flex flex-col min-h-screen antialiased font-body overflow-x-clip')}>
+      <body suppressHydrationWarning className={cn(montserrat.variable, inter.variable, 'flex flex-col min-h-screen antialiased font-body overflow-x-clip')}>
         <ThemeProvider attribute="class" defaultTheme="light" forcedTheme="light">
           <>
             <Suspense fallback={null}>

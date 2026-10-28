@@ -22,6 +22,17 @@ const nextConfig = {
   async redirects() {
     return [
       {
+        source: '/:path*',
+        has: [
+          {
+            type: 'host',
+            value: 'portfolio.cauders.com',
+          },
+        ],
+        destination: 'https://www.cauders.com/case-studies',
+        permanent: true,
+      },
+      {
         source: '/legal',
         destination: '/legal-information',
         permanent: true,
@@ -84,6 +95,10 @@ const nextConfig = {
           {
             key: 'Referrer-Policy',
             value: 'strict-origin-when-cross-origin',
+          },
+          {
+            key: 'Permissions-Policy',
+            value: 'camera=(), microphone=(), geolocation=()',
           },
         ],
       },

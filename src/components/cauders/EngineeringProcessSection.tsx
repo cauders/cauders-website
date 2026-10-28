@@ -74,7 +74,7 @@ export default function EngineeringProcessSection() {
         <div className="flex flex-col items-center justify-center text-center max-w-3xl mx-auto mb-12 sm:mb-16">
           <ScrollFadeIn>
             <ArrowBadge
-              href="/process"
+              href="#engineering-process"
               text="Engineering Process"
               variant="white"
               className="mb-3 md:mb-4"

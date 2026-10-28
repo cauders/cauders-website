@@ -36,6 +36,7 @@ export interface CaseStudyItem {
   outcome: string;
   clientName: string;
   isNda: boolean;
+  deliveryTier?: string;
   icon?: LucideIcon;
   link: string;
 }
@@ -43,6 +44,7 @@ export interface CaseStudyItem {
 export const defaultCaseStudies: CaseStudyItem[] = [
   {
     id: 'nordic-ecommerce-storefront',
+    deliveryTier: 'tier-3',
     domain: 'Retail & E-Commerce',
     capability: 'Storefront Engineering & Headless Commerce',
     title: 'How We Helped a Nordic Retailer Contribute to a 10% Sales Increase with a Faster Storefront',
@@ -56,12 +58,13 @@ export const defaultCaseStudies: CaseStudyItem[] = [
   },
   {
     id: 'telecom-core-infrastructure-portal',
+    deliveryTier: 'tier-2',
     domain: 'Enterprise Systems & Telecom',
     capability: 'Enterprise Web Engineering & Core System Integration',
     title: 'Unifying Digital Customer Services Post-Merger for a National Telecom Leader',
     description:
       'Engineered high-availability customer portal connected safely to legacy core telecom infrastructure via asynchronous Node.js buffering, real-time eKYC, and hardware checkout.',
-    outcome: 'Zero downtime cutover across multi-million subscriber accounts',
+    outcome: 'Unified SIM/eSIM onboarding journeys across merged subscriber cohorts',
     clientName: 'Tier-1 Telecommunications Operator',
     isNda: true,
     icon: Building2,
@@ -69,9 +72,10 @@ export const defaultCaseStudies: CaseStudyItem[] = [
   },
   {
     id: 'smart-building-proptech-platform',
+    deliveryTier: 'tier-2',
     domain: 'PropTech & Enterprise IoT',
     capability: 'Platform Engineering & IoT Integration',
-    title: 'Scaling an Enterprise Smart Building & Workplace SaaS Platform Across 30,000+ Devices',
+    title: 'Scaling an Enterprise Smart Building & Workplace SaaS Platform Across 36,000+ Devices',
     description:
       'Full technical ownership of live PropTech platform: S3 file caching cutting DB load by 80-95%, SAML 2.0 enterprise SSO on AWS Lambda, and 300+ remediated vulnerabilities.',
     outcome: '80-95% reduction in database read load and sub-second IoT response',
@@ -82,6 +86,7 @@ export const defaultCaseStudies: CaseStudyItem[] = [
   },
   {
     id: 'global-language-exchange-platform',
+    deliveryTier: 'tier-2',
     domain: 'Consumer Mobile & Real-Time Communication',
     capability: 'Mobile Product Engineering & Asynchronous Translation',
     title: 'Scaling a Real-Time Cultural Exchange & Language Learning Platform to 1M+ Downloads',
@@ -96,12 +101,13 @@ export const defaultCaseStudies: CaseStudyItem[] = [
   },
   {
     id: 'social-commerce-fashion-discovery',
+    deliveryTier: 'tier-3',
     domain: 'Fashion-Tech & Social Commerce',
     capability: 'Mobile Engineering & AI Commerce Integration',
     title: 'Unifying AI-Assisted Virtual Styling, Digital Wardrobes, and Shop the Look Commerce',
     description:
       'Mobile fashion and social discovery application combining AI Virtual Try-On, computer vision wardrobe tagging, and Shop the Look linked directly to checkout.',
-    outcome: '99.9% crash-free sessions and 40% Daily Active User retention',
+    outcome: '95.9% crash-free session rate and 40% Daily Active User retention',
     clientName: 'Fashion-Tech Social Commerce Venture',
     isNda: true,
     icon: Layers,
@@ -109,12 +115,13 @@ export const defaultCaseStudies: CaseStudyItem[] = [
   },
   {
     id: 'api-marketplace-developer-gateway',
+    deliveryTier: 'tier-4',
     domain: 'B2B Developer Tools & API Infrastructure',
     capability: 'API Gateway Engineering & Developer Enablement',
     title: 'Accelerating Developer Integration with an Interactive API Marketplace & Gateway',
     description:
       'Centralized developer portal with in-browser interactive testing playground, sub-millisecond Redis rate-limiting, and auto-generated multi-language SDK snippets.',
-    outcome: 'Sub-50ms API routing response time and 99.99% gateway availability',
+    outcome: 'Sub-50ms routing latency and 90% gateway uptime under stress testing',
     clientName: 'B2B Developer Infrastructure Platform',
     isNda: true,
     icon: Activity,
@@ -122,6 +129,7 @@ export const defaultCaseStudies: CaseStudyItem[] = [
   },
   {
     id: 'on-demand-delivery-marketplace',
+    deliveryTier: 'tier-2',
     domain: 'Food Delivery & Multi-Role Logistics',
     capability: 'Modular Role-Based Architecture & Real-Time Logistics',
     title: 'Consolidating Multi-Role Commerce, Restaurant Discovery, and Live Delivery Dispatch',
@@ -135,6 +143,7 @@ export const defaultCaseStudies: CaseStudyItem[] = [
   },
   {
     id: 'cognitive-fitness-gamified-platform',
+    deliveryTier: 'tier-3',
     domain: 'Health-Tech & Gamified Social',
     capability: 'Mobile Engineering & Offline-First State Synchronization',
     title: 'Offline-Resilient Cognitive Training & Social Wellness Mobile Application',
@@ -148,6 +157,7 @@ export const defaultCaseStudies: CaseStudyItem[] = [
   },
   {
     id: 'self-hosted-streaming-platform',
+    deliveryTier: 'tier-3',
     domain: 'Media & Digital Entertainment',
     capability: 'Edge Infrastructure & Streaming Architecture',
     title: 'High-Performance Self-Hosted Streaming Architecture with Edge Reverse Proxy',
@@ -161,12 +171,13 @@ export const defaultCaseStudies: CaseStudyItem[] = [
   },
   {
     id: 'contracting-service-portal',
+    deliveryTier: 'tier-3',
     domain: 'Local Services & Digital Marketing',
     capability: 'Web Performance & Local Search Architecture',
     title: 'High-Conversion Digital Showroom & Local SEO Lead Engine for Specialty Contractors',
     description:
       'Tailored WordPress platform with interactive before-and-after renovation galleries, local schema markup, and streamlined in-home estimate scheduling funnels.',
-    outcome: '+180% inbound lead flow with 96/100 mobile Google PageSpeed rating',
+    outcome: 'Increased inbound consultation lead flow and interactive digital showroom bookings',
     clientName: 'Specialized Home Remodeling Contractor',
     isNda: true,
     icon: Building2,
@@ -263,7 +274,7 @@ export default function CaseStudiesSection({
                 key={study.id}
                 className="pl-4 sm:pl-6 md:basis-[60%] lg:basis-[48%] xl:basis-[42%]"
               >
-                <div className="group rounded-3xl bg-white text-zinc-900 shadow-[0_12px_40px_rgba(0,0,0,0.06)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.12)] p-7 sm:p-9 lg:p-10 flex flex-col justify-between transition-all duration-300 h-full border border-zinc-100/80">
+                <div suppressHydrationWarning className="group rounded-3xl bg-white text-zinc-900 shadow-[0_12px_40px_rgba(0,0,0,0.06)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.12)] p-7 sm:p-9 lg:p-10 flex flex-col justify-between transition-all duration-300 h-full border border-zinc-100/80">
                   <div>
                     {/* Tags */}
                     <div className="flex flex-wrap items-center gap-2 mb-4">
@@ -292,7 +303,7 @@ export default function CaseStudiesSection({
                         <span className="block text-[11px] font-bold uppercase tracking-wider text-[#09555A] mb-0.5">
                           Measured Outcome
                         </span>
-                        <span className="block text-xs sm:text-sm font-semibold text-zinc-900 leading-snug">
+                        <span suppressHydrationWarning className="block text-xs sm:text-sm font-semibold text-zinc-900 leading-snug">
                           {study.outcome}
                         </span>
                       </div>

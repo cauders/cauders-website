@@ -97,20 +97,20 @@ export default function CaseStudiesListingPage() {
         <div className="max-w-[95rem] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 text-left">
             <div>
-              <p className="text-3xl sm:text-4xl font-headline font-bold text-foreground tracking-tight">100%</p>
-              <p className="text-xs sm:text-sm text-foreground/70 font-medium mt-1">Production Delivery Rate</p>
+              <p className="text-xl sm:text-2xl font-headline font-bold text-foreground tracking-tight">Production-Grade</p>
+              <p className="text-xs sm:text-sm text-foreground/70 font-medium mt-1">Tested, maintainable software delivery for active operational environments</p>
             </div>
             <div>
-              <p className="text-3xl sm:text-4xl font-headline font-bold text-foreground tracking-tight">1M+</p>
-              <p className="text-xs sm:text-sm text-foreground/70 font-medium mt-1">End-Users Supported</p>
+              <p className="text-xl sm:text-2xl font-headline font-bold text-foreground tracking-tight">High Concurrency</p>
+              <p className="text-xs sm:text-sm text-foreground/70 font-medium mt-1">Architectures engineered for scale, caching layers, and peak traffic surges</p>
             </div>
             <div>
-              <p className="text-3xl sm:text-4xl font-headline font-bold text-foreground tracking-tight">99.99%</p>
-              <p className="text-xs sm:text-sm text-foreground/70 font-medium mt-1">Average System Uptime</p>
+              <p className="text-xl sm:text-2xl font-headline font-bold text-foreground tracking-tight">High Availability</p>
+              <p className="text-xs sm:text-sm text-foreground/70 font-medium mt-1">Resilient cloud topologies with automated monitoring and fault isolation</p>
             </div>
             <div>
-              <p className="text-3xl sm:text-4xl font-headline font-bold text-foreground tracking-tight">&lt; 50ms</p>
-              <p className="text-xs sm:text-sm text-foreground/70 font-medium mt-1">Sub-second Latency Standards</p>
+              <p className="text-xl sm:text-2xl font-headline font-bold text-foreground tracking-tight">Low-Latency Systems</p>
+              <p className="text-xs sm:text-sm text-foreground/70 font-medium mt-1">Optimized data pipelines, edge routing, and asynchronous background queues</p>
             </div>
           </div>
         </div>
@@ -162,7 +162,7 @@ export default function CaseStudiesListingPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredStudies.map((study, idx) => (
             <ScrollFadeIn key={study.id} delay={idx * 80} className="h-full">
-              <div className="group rounded-3xl bg-white dark:bg-card text-foreground shadow-[0_12px_40px_rgba(0,0,0,0.06)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.12)] border border-border/40 hover:border-darkTeal/40 overflow-hidden flex flex-col justify-between transition-all duration-300 h-full hover:-translate-y-1">
+              <div suppressHydrationWarning className="group rounded-3xl bg-white dark:bg-card text-foreground shadow-[0_12px_40px_rgba(0,0,0,0.06)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.12)] border border-border/40 hover:border-darkTeal/40 overflow-hidden flex flex-col justify-between transition-all duration-300 h-full hover:-translate-y-1">
                 {/* Visual Image Header */}
                 <div className="relative w-full h-52 sm:h-56 overflow-hidden bg-zinc-100 dark:bg-zinc-900">
                   <Image
@@ -206,7 +206,7 @@ export default function CaseStudiesListingPage() {
                         <span className="block text-[10px] font-bold uppercase tracking-wider text-darkTeal dark:text-[#8CEAE5] mb-0.5">
                           Measured Outcome
                         </span>
-                        <span className="block text-xs sm:text-sm font-semibold text-foreground leading-snug">
+                        <span suppressHydrationWarning className="block text-xs sm:text-sm font-semibold text-foreground leading-snug">
                           {study.metrics[0]?.value} • {study.metrics[0]?.label}
                         </span>
                       </div>
@@ -240,7 +240,7 @@ export default function CaseStudiesListingPage() {
             <ArrowBadge href="/contact" text="Engineering Standard" variant="black" className="mb-3" />
           </ScrollFadeIn>
           <SectionHeading
-            lines={['How We Guarantee Production Reliability']}
+            lines={['Engineering for Production Reliability']}
             subheading="Every project is engineered with strict boundary controls, automated CI/CD pipelines, backward compatibility checks, and verified SLA standards before any cutover."
             align="left"
           />
@@ -251,9 +251,9 @@ export default function CaseStudiesListingPage() {
             <div className="w-10 h-10 rounded-full bg-darkTeal text-white flex items-center justify-center font-bold text-sm mb-4">
               01
             </div>
-            <h4 className="text-base sm:text-lg font-bold font-headline mb-2">Zero-Data-Loss Architecture</h4>
+            <h4 className="text-base sm:text-lg font-bold font-headline mb-2">Data Integrity & Reconciliation Architecture</h4>
             <p className="text-xs sm:text-sm text-foreground/75 leading-relaxed">
-              We design event-driven dual-write bridges, idempotency keys, and automated reconciliation daemons to ensure no records or financial settlements are lost.
+              We engineer event-driven bridges, idempotency keys, and automated reconciliation daemons to safeguard transaction continuity and protect critical state consistency.
             </p>
           </div>
 
@@ -263,7 +263,7 @@ export default function CaseStudiesListingPage() {
             </div>
             <h4 className="text-base sm:text-lg font-bold font-headline mb-2">Resilient Edge Performance</h4>
             <p className="text-xs sm:text-sm text-foreground/75 leading-relaxed">
-              Sub-second page rendering and instant API response times achieved through distributed edge workers, multi-tier caching, and localized state persistence.
+              Sub-second page rendering and responsive endpoint delivery achieved through distributed edge workers, multi-tier caching, and localized state persistence.
             </p>
           </div>
 

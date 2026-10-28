@@ -270,8 +270,8 @@ export default function Header() {
             <div className="flex items-center justify-start min-w-[150px] md:min-w-[180px] shrink-0">
               <Link 
                 href="/" 
-                prefetch={true} 
-                onMouseEnter={() => router.prefetch('/')}
+                
+                
                 className="hover:opacity-85 transition-opacity"
               >
                 <Image 
@@ -302,7 +302,7 @@ export default function Header() {
               >
                 <Link
                   href="/services#ai-automation"
-                  prefetch={true}
+                 
                   className={getNavLinkClass('ai', isAiActive)}
                   onClick={() => {
                     setActiveMenu(null);
@@ -327,7 +327,7 @@ export default function Header() {
               >
                 <Link
                   href="/services"
-                  prefetch={true}
+                 
                   className={getNavLinkClass('services', isServicesActive)}
                   onClick={() => setActiveMenu(null)}
                 >
@@ -344,7 +344,7 @@ export default function Header() {
               >
                 <Link
                   href="/industries"
-                  prefetch={true}
+                 
                   className={getNavLinkClass('industries', isIndustriesActive)}
                   onClick={() => setActiveMenu(null)}
                 >
@@ -365,7 +365,7 @@ export default function Header() {
               >
                 <Link
                   href="/about"
-                  prefetch={true}
+                 
                   className={getNavLinkClass('company', isCompanyActive)}
                   onClick={() => setActiveMenu(null)}
                 >
@@ -389,7 +389,7 @@ export default function Header() {
                   variant="zinc"
                   className="rounded-full transition-all duration-300 font-medium shadow-sm"
                 >
-                  <Link href="/contact" prefetch={true}>
+                  <Link href="/contact">
                     Contact Us
                   </Link>
                 </Button>
@@ -399,7 +399,7 @@ export default function Header() {
                   variant="outline"
                   className="rounded-full transition-all duration-300 font-medium border-2 border-zinc-900 text-zinc-900 bg-transparent hover:bg-zinc-900 hover:text-white shadow-none"
                 >
-                  <Link href="/contact" prefetch={true}>
+                  <Link href="/contact">
                     Contact Us
                   </Link>
                 </Button>
@@ -409,7 +409,7 @@ export default function Header() {
                   variant="outline"
                   className="rounded-full transition-all duration-300 font-medium border-2 border-white text-white bg-transparent hover:bg-white hover:text-foreground shadow-none backdrop-blur-xs drop-shadow-[0_1px_2px_rgba(0,0,0,0.2)]"
                 >
-                  <Link href="/contact" prefetch={true}>
+                  <Link href="/contact">
                     Contact Us
                   </Link>
                 </Button>
@@ -419,7 +419,7 @@ export default function Header() {
                   variant="outline"
                   className="rounded-full transition-all duration-300 font-medium border-2 border-white text-white bg-transparent hover:bg-white hover:text-foreground shadow-none"
                 >
-                  <Link href="/contact" prefetch={true}>
+                  <Link href="/contact">
                     Contact Us
                   </Link>
                 </Button>

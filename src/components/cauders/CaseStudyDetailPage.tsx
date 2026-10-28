@@ -23,7 +23,7 @@ export default function CaseStudyDetailPage({ study }: CaseStudyDetailPageProps)
   }
 
   return (
-    <div className="relative w-full bg-gradient-to-b from-white via-white to-transparent text-foreground">
+    <div className="relative w-full bg-gradient-to-b from-white via-white to-transparent text-foreground" suppressHydrationWarning>
       {/* ================= 1. BREADCRUMBS & HERO ================= */}
       <section className="relative w-full pt-28 pb-12 sm:pt-32 sm:pb-16 lg:pt-36 lg:pb-20 border-b border-border/40 overflow-hidden bg-zinc-50/50 dark:bg-zinc-950/40">
         <div className="max-w-[95rem] mx-auto px-4 sm:px-6 lg:px-8">
@@ -51,20 +51,20 @@ export default function CaseStudyDetailPage({ study }: CaseStudyDetailPageProps)
               </ScrollFadeIn>
 
               <ScrollFadeIn delay={100}>
-                <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-headline font-bold text-foreground tracking-tight leading-[1.15] mb-5 sm:mb-6">
+                <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-headline font-bold text-foreground tracking-tight leading-[1.15] mb-5 sm:mb-6" suppressHydrationWarning>
                   {study.title}
                 </h1>
               </ScrollFadeIn>
 
               <ScrollFadeIn delay={150}>
-                <p className="text-sm sm:text-base md:text-lg text-foreground/80 dark:text-zinc-300 leading-relaxed font-normal mb-8 max-w-2xl">
+                <p className="text-sm sm:text-base md:text-lg text-foreground/80 dark:text-zinc-300 leading-relaxed font-normal mb-8 max-w-2xl" suppressHydrationWarning>
                   {study.subtitle}
                 </p>
               </ScrollFadeIn>
 
               {/* Meta stats chips */}
               <ScrollFadeIn delay={200} className="w-full">
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 py-4 border-y border-border/40 w-full mb-8">
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 py-4 border-y border-border/40 w-full mb-8" suppressHydrationWarning>
                   <div>
                     <span className="block text-[11px] font-mono text-muted-foreground uppercase">Client</span>
                     <span className="block text-xs sm:text-sm font-semibold text-foreground mt-0.5">
@@ -84,12 +84,23 @@ export default function CaseStudyDetailPage({ study }: CaseStudyDetailPageProps)
                     </span>
                   </div>
                   <div>
-                    <span className="block text-[11px] font-mono text-muted-foreground uppercase">Delivery</span>
-                    <span className="block text-xs sm:text-sm font-semibold text-foreground mt-0.5">
-                      Production Live
+                    <span className="block text-[11px] font-mono text-muted-foreground uppercase">Project Context</span>
+                    <span className="block text-xs sm:text-sm font-semibold text-foreground mt-0.5" title={study.deliveryContext?.description}>
+                      {study.deliveryContext?.label || 'Production Live'}
                     </span>
                   </div>
                 </div>
+
+                {study.deliveryContext && (
+                  <div className="flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl bg-zinc-100/70 dark:bg-zinc-900/50 border border-border/40 text-xs text-muted-foreground mb-8" suppressHydrationWarning>
+                    <span className="font-semibold text-foreground font-mono uppercase tracking-wider text-[10px] px-2 py-0.5 rounded bg-white dark:bg-zinc-800 border border-border/40 shrink-0">
+                      Delivery Context
+                    </span>
+                    <span className="leading-relaxed">
+                      {study.deliveryContext.description}
+                    </span>
+                  </div>
+                )}
               </ScrollFadeIn>
 
               <ScrollFadeIn delay={250}>
@@ -127,7 +138,7 @@ export default function CaseStudyDetailPage({ study }: CaseStudyDetailPageProps)
                     <span className="text-[11px] font-mono uppercase text-darkTeal dark:text-[#8CEAE5] font-bold block mb-1">
                       Validated Milestone
                     </span>
-                    <p className="text-xs sm:text-sm font-semibold text-foreground leading-snug">
+                    <p className="text-xs sm:text-sm font-semibold text-foreground leading-snug" suppressHydrationWarning>
                       {study.outcome.headline}
                     </p>
                   </div>
@@ -139,7 +150,7 @@ export default function CaseStudyDetailPage({ study }: CaseStudyDetailPageProps)
       </section>
 
       {/* ================= 2. KEY METRICS GRID ================= */}
-      <section className="relative z-10 max-w-[95rem] mx-auto px-4 sm:px-6 lg:px-8 -mt-6">
+      <section className="relative z-10 max-w-[95rem] mx-auto px-4 sm:px-6 lg:px-8 -mt-6" suppressHydrationWarning>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
           {study.metrics.map((metric, mIdx) => (
             <div
@@ -149,7 +160,7 @@ export default function CaseStudyDetailPage({ study }: CaseStudyDetailPageProps)
               <span className="text-xs font-mono font-medium text-muted-foreground uppercase">
                 {metric.label}
               </span>
-              <span className="text-2xl sm:text-3xl font-headline font-bold text-darkTeal dark:text-[#8CEAE5] tracking-tight mt-2">
+              <span className="text-2xl sm:text-3xl font-headline font-bold text-darkTeal dark:text-[#8CEAE5] tracking-tight mt-2" suppressHydrationWarning>
                 {metric.value}
               </span>
             </div>
@@ -168,7 +179,7 @@ export default function CaseStudyDetailPage({ study }: CaseStudyDetailPageProps)
               <h2 className="text-2xl sm:text-3xl font-headline font-bold text-foreground tracking-tight mb-4">
                 The Operational Context
               </h2>
-              <p className="text-sm sm:text-base text-foreground/80 dark:text-zinc-300 leading-relaxed font-normal">
+              <p className="text-sm sm:text-base text-foreground/80 dark:text-zinc-300 leading-relaxed font-normal" suppressHydrationWarning>
                 {study.overview}
               </p>
             </div>
@@ -178,10 +189,10 @@ export default function CaseStudyDetailPage({ study }: CaseStudyDetailPageProps)
               <span className="text-xs font-mono font-bold uppercase tracking-wider text-darkTeal dark:text-[#8CEAE5] block mb-2">
                 The Core Bottleneck
               </span>
-              <h3 className="text-xl sm:text-2xl font-headline font-bold text-foreground mb-4">
+              <h3 className="text-xl sm:text-2xl font-headline font-bold text-foreground mb-4" suppressHydrationWarning>
                 {study.challenge.title}
               </h3>
-              <p className="text-xs sm:text-sm md:text-base text-foreground/80 leading-relaxed mb-6 font-normal">
+              <p className="text-xs sm:text-sm md:text-base text-foreground/80 leading-relaxed mb-6 font-normal" suppressHydrationWarning>
                 {study.challenge.description}
               </p>
               <ul className="space-y-3">
@@ -226,17 +237,17 @@ export default function CaseStudyDetailPage({ study }: CaseStudyDetailPageProps)
               <span className="text-xs font-mono font-bold uppercase tracking-wider text-darkTeal dark:text-[#8CEAE5] block mb-2">
                 Business Impact & Metrics
               </span>
-              <h3 className="text-xl sm:text-2xl font-headline font-bold text-foreground mb-4">
+              <h3 className="text-xl sm:text-2xl font-headline font-bold text-foreground mb-4" suppressHydrationWarning>
                 {study.outcome.headline}
               </h3>
-              <p className="text-xs sm:text-sm md:text-base text-foreground/80 leading-relaxed mb-6 font-normal">
+              <p className="text-xs sm:text-sm md:text-base text-foreground/80 leading-relaxed mb-6 font-normal" suppressHydrationWarning>
                 {study.outcome.description}
               </p>
               <div className="space-y-3">
                 {study.outcome.impactList.map((imp, impIdx) => (
                   <div key={impIdx} className="flex items-start gap-3">
                     <CheckCircle2 className="w-5 h-5 text-darkTeal dark:text-[#8CEAE5] flex-shrink-0 mt-0.5" />
-                    <span className="text-xs sm:text-sm font-semibold text-foreground">{imp}</span>
+                    <span className="text-xs sm:text-sm font-semibold text-foreground" suppressHydrationWarning>{imp}</span>
                   </div>
                 ))}
               </div>
