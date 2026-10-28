@@ -64,7 +64,7 @@ export const caseStudiesData: CaseStudy[] = [
       "description": "Architected and engineered by Cauders team members prior to Cauders."
 },
     slug: 'nordic-ecommerce-storefront',
-    title: 'How We Helped a Nordic Retailer Contribute to a 10% Sales Increase with a Faster Storefront',
+    title: 'E-Commerce Storefront Modernization for a Nordic Retailer',
     subtitle: 'Headless Next.js storefront overhaul, optimistic Add-to-Cart state management, and containerized microservice integrations connecting payments, dispatch, and CRM.',
     domain: 'Retail & E-Commerce',
     capability: 'Storefront Engineering & Headless Commerce',
@@ -219,7 +219,7 @@ export const caseStudiesData: CaseStudy[] = [
     deliverables: [
       'Multi-Tenant Platform Modernization & IoT Gateway Reliability',
       'Amazon S3 Cache-First Layer Cutting Database Read Load by 80–95%',
-      'Frontend Bundle Optimization (-43% stat, -28% gzipped)',
+      'Frontend Bundle & Component Memory Optimization',
       'Enterprise SAML 2.0 Single Sign-On (SSO) on AWS Lambda',
       'IoT Edge Gateway Telemetry Integration (Hardware Edge Gateways) via MQTT',
       'OWASP ZAP Hardening Remediating 300+ Security Vulnerabilities',
@@ -251,7 +251,7 @@ export const caseStudiesData: CaseStudy[] = [
       keyHighlights: [
         'Engineered an Amazon S3 caching layer as FastAPI microservices: files are served directly from S3, slashing database read load by 80–95% without altering underlying schemas.',
         'Built an IdP-agnostic SAML 2.0 SSO service on AWS Lambda with CloudWatch telemetry, enabling enterprise tenants to configure identity providers in minutes.',
-        'Remediated 300+ vulnerabilities identified via OWASP ZAP penetration testing, eliminating 100% of high-risk and 90% of medium-risk findings.',
+        'Remediated 300+ security vulnerabilities identified through OWASP ZAP penetration testing.',
       ],
     },
     architecture: {
@@ -263,10 +263,10 @@ export const caseStudiesData: CaseStudy[] = [
     outcome: {
       headline: 'Uncompromising Platform Stability, Hardened Security, and Scaled Operations',
       description:
-        'A platform at risk of stagnation was transformed into an enterprise-ready, compliant, and performant SaaS product that easily passes corporate procurement reviews.',
+        'A platform at risk of stagnation was modernized into a stable, secure, and performant SaaS platform supporting enterprise building operations.',
       impactList: [
         'Reduced operational database read load by 80–95% through the S3 caching layer.',
-        'Shrunk frontend bundle size by 43% and resolved memory leaks across 20+ components, boosting heap efficiency by 17.3%.',
+        'Optimized frontend bundle size and resolved client memory leaks across components to improve responsiveness.',
         'Cut enterprise customer onboarding from days of manual setup to self-service minutes with SAML 2.0 SSO.',
       ],
     },
@@ -697,7 +697,7 @@ export const caseStudiesData: CaseStudy[] = [
       description:
         'The open-source self-hosted architecture delivered a 50%+ boost in viewer experience while keeping operating and hosting expenses minimal.',
       impactList: [
-        'Achieved a 50%+ improvement in user satisfaction through instantaneous player startup and modern interface design.',
+        'Achieved a 50%+ improvement in user experience through instantaneous player startup and modern interface design.',
         'Shipped an open-source, easily self-hostable setup that community members can deploy in minutes on minimal, low-cost cloud infrastructure.',
         'Eliminated stream blocking completely via the edge reverse proxy origin masking layer.',
       ],

@@ -46,7 +46,7 @@ export const defaultCaseStudies: CaseStudyItem[] = [
     deliveryTier: 'tier-3',
     domain: 'Retail & E-Commerce',
     capability: 'Storefront Engineering & Headless Commerce',
-    title: 'How We Helped a Nordic Retailer Contribute to a 10% Sales Increase with a Faster Storefront',
+    title: 'E-Commerce Storefront Modernization for a Nordic Retailer',
     description:
       'Modern Next.js storefront overhaul, optimistic Add-to-Cart state updates cutting wait times by 200ms, and containerized Node.js/TypeScript REST API on Kubernetes.',
     outcome: '+10% sales contribution with -200ms cart interaction latency',
