@@ -270,7 +270,7 @@ export const industryDetails: Record<string, DetailedIndustryData> = {
  },
  {
  title: 'Cloud Migration & Scalability',
- description: 'Enhance your resilience with secure cloud migrations designed specifically for banking workloads, ensuring maximum uptime and scalability for growing customer bases.',
+ description: 'Enhance your resilience with secure cloud migrations designed specifically for banking workloads, supporting high availability and fault-isolated scalability for growing customer bases.',
         imageUrl: 'https://images.unsplash.com/photo-1640197618317-dc379a226fbe?auto=format&fit=crop&q=80&w=800',
  icon: 'Cloud'
  },
@@ -1246,7 +1246,7 @@ export const industryDetails: Record<string, DetailedIndustryData> = {
  },
  {
  title: 'High-Concurrency Architectures',
- description: 'Build robust cloud-native systems utilizing auto-scaling and edge caching to guarantee 99.99% uptime during peak educational hours.',
+ description: 'Build robust cloud-native systems utilizing auto-scaling and edge caching to maintain platform availability and responsiveness during peak educational hours.',
  icon: 'Cloud'
  }
  ]

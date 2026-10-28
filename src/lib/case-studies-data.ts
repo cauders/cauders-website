@@ -292,7 +292,7 @@ export const caseStudiesData: CaseStudy[] = [
     deliverables: [
       'Production Flutter Android Application (1M+ Downloads)',
       'Decoupled Asynchronous Translation Queue (Google Cloud Translation)',
-      'Zero-Latency WebSocket Messaging & Voice Audio Transmission',
+      'Low-Latency WebSocket Messaging & Voice Audio Transmission',
       'Interest-Based Cultural Matchmaking Engine',
       'Privacy-Preserving Geospatial Recommendation Service',
       'Comprehensive Moderation, Reporting & Trust & Safety System',
@@ -618,7 +618,7 @@ export const caseStudiesData: CaseStudy[] = [
       title: 'Offline-First Cognitive Gaming Architecture',
       stack: ['Flutter', 'Node.js', 'Redis Pub/Sub', 'SQLite (Local Mobile)', 'Firebase', 'REST APIs', 'Cloud Microservices'],
       description:
-        'Flutter mobile client paired with an embedded SQLite engine for zero-latency offline gameplay and telemetry collection. Asynchronous sync handlers interface with Node.js microservices and Redis Pub/Sub for leaderboard updates.',
+        'Flutter mobile client paired with an embedded SQLite engine for responsive offline gameplay and telemetry collection. Asynchronous sync handlers interface with Node.js microservices and Redis Pub/Sub for leaderboard updates.',
     },
     outcome: {
       headline: 'Sustained User Engagement and Flawless Offline Telemetry Reliability',

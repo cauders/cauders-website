@@ -226,7 +226,7 @@ export default function CaseStudiesListingPage() {
           </ScrollFadeIn>
           <SectionHeading
             lines={['Engineering for Production Reliability']}
-            subheading="Every project is engineered with strict boundary controls, automated CI/CD pipelines, backward compatibility checks, and verified SLA standards before any cutover."
+            subheading="Every project is engineered with strict boundary controls, automated CI/CD pipelines, regression test suites, and verified performance benchmarks before any cutover."
             align="left"
           />
         </div>

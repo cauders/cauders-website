@@ -55,7 +55,7 @@ const standardProcessSteps = [
  },
  {
  title: 'Testing & QA',
- description: 'Rigorous automated and manual testing is conducted across devices to guarantee performance, security, and stability.',
+ description: 'Rigorous automated and manual testing is conducted across devices to verify performance, security, and stability.',
  },
  {
  title: 'Deployment & Support',

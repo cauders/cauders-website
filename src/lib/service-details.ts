@@ -182,7 +182,7 @@ export const detailedServices: Record<string, DetailedServiceData> = {
  },
  {
  title: 'Testing & QA',
- description: 'Rigorous automated and manual testing is conducted across devices to guarantee performance, security, and stability.',
+ description: 'Rigorous automated and manual testing is conducted across devices to verify performance, security, and stability.',
  imageUrl: 'https://images.unsplash.com/photo-1530497610245-94d3c16cda28?auto=format&fit=crop&q=80&w=800',
  },
  {
@@ -731,13 +731,13 @@ export const detailedServices: Record<string, DetailedServiceData> = {
  icon: 'Map',
  title: 'Executable Roadmaps',
  description: 'Roadmaps are sequenced by value, effort, and risk so you lead with quick wins.',
- stat: { value: '3x', label: 'Faster to Production' }
+ stat: { value: 'Sprint-Based', label: 'Milestone Delivery' }
  },
  {
  icon: 'ShieldCheck',
  title: 'Governance & Security',
  description: 'Compliance and security are designed in from the first sprint to meet global standards.',
- stat: { value: 'Zero', label: 'Compromises' }
+ stat: { value: 'Enterprise', label: 'Security Standards' }
  }
  ],
  techStackTitle: 'AI & Data Ecosystem',
@@ -1740,7 +1740,7 @@ export const detailedServices: Record<string, DetailedServiceData> = {
  {
  title: 'Industry Compliance',
  description: 'Deep knowledge of HIPAA, GDPR, and WCAG standards.',
- stat: { value: 'Zero', label: 'Compromises' }
+ stat: { value: 'Enterprise', label: 'Security Standards' }
  },
  {
  title: 'Automated Pipelines',
@@ -2176,13 +2176,13 @@ export const detailedServices: Record<string, DetailedServiceData> = {
  icon: 'Map',
  title: 'Executable Roadmaps',
  description: 'Roadmaps are sequenced by value, effort, and risk so you lead with quick wins.',
- stat: { value: '3x', label: 'Faster to Production' }
+ stat: { value: 'Sprint-Based', label: 'Milestone Delivery' }
  },
  {
  icon: 'ShieldCheck',
  title: 'Governance & Security',
  description: 'Compliance and security are designed in from the first sprint to meet global standards.',
- stat: { value: 'Zero', label: 'Compromises' }
+ stat: { value: 'Enterprise', label: 'Security Standards' }
  }
  ],
  techStackTitle: 'Consulting Frameworks',
@@ -2294,13 +2294,13 @@ export const detailedServices: Record<string, DetailedServiceData> = {
  icon: 'Map',
  title: 'Executable Roadmaps',
  description: 'Roadmaps are sequenced by value, effort, and risk so you lead with quick wins.',
- stat: { value: '3x', label: 'Faster to Production' }
+ stat: { value: 'Sprint-Based', label: 'Milestone Delivery' }
  },
  {
  icon: 'ShieldCheck',
  title: 'Governance & Security',
  description: 'Compliance and security are designed in from the first sprint to meet global standards.',
- stat: { value: 'Zero', label: 'Compromises' }
+ stat: { value: 'Enterprise', label: 'Security Standards' }
  }
  ],
  techStackTitle: 'Assessment Tools',
@@ -2408,13 +2408,13 @@ export const detailedServices: Record<string, DetailedServiceData> = {
  icon: 'Map',
  title: 'Executable Roadmaps',
  description: 'Roadmaps are sequenced by value, effort, and risk so you lead with quick wins.',
- stat: { value: '3x', label: 'Faster to Production' }
+ stat: { value: 'Sprint-Based', label: 'Milestone Delivery' }
  },
  {
  icon: 'ShieldCheck',
  title: 'Governance & Security',
  description: 'Compliance and security are designed in from the first sprint to meet global standards.',
- stat: { value: 'Zero', label: 'Compromises' }
+ stat: { value: 'Enterprise', label: 'Security Standards' }
  }
  ],
  techStackTitle: 'Core Technologies',
@@ -2526,13 +2526,13 @@ export const detailedServices: Record<string, DetailedServiceData> = {
  icon: 'Map',
  title: 'Executable Roadmaps',
  description: 'Roadmaps are sequenced by value, effort, and risk so you lead with quick wins.',
- stat: { value: '3x', label: 'Faster to Production' }
+ stat: { value: 'Sprint-Based', label: 'Milestone Delivery' }
  },
  {
  icon: 'ShieldCheck',
  title: 'Governance & Security',
  description: 'Compliance and security are designed in from the first sprint to meet global standards.',
- stat: { value: 'Zero', label: 'Compromises' }
+ stat: { value: 'Enterprise', label: 'Security Standards' }
  }
  ],
  techStackTitle: 'ML Stack',
@@ -2644,13 +2644,13 @@ export const detailedServices: Record<string, DetailedServiceData> = {
  icon: 'Map',
  title: 'Executable Roadmaps',
  description: 'Roadmaps are sequenced by value, effort, and risk so you lead with quick wins.',
- stat: { value: '3x', label: 'Faster to Production' }
+ stat: { value: 'Sprint-Based', label: 'Milestone Delivery' }
  },
  {
  icon: 'ShieldCheck',
  title: 'Governance & Security',
  description: 'Compliance and security are designed in from the first sprint to meet global standards.',
- stat: { value: 'Zero', label: 'Compromises' }
+ stat: { value: 'Enterprise', label: 'Security Standards' }
  }
  ],
  techStackTitle: 'Integration Tech',
@@ -2761,13 +2761,13 @@ export const detailedServices: Record<string, DetailedServiceData> = {
  icon: 'Map',
  title: 'Executable Roadmaps',
  description: 'Roadmaps are sequenced by value, effort, and risk so you lead with quick wins.',
- stat: { value: '3x', label: 'Faster to Production' }
+ stat: { value: 'Sprint-Based', label: 'Milestone Delivery' }
  },
  {
  icon: 'ShieldCheck',
  title: 'Governance & Security',
  description: 'Compliance and security are designed in from the first sprint to meet global standards.',
- stat: { value: 'Zero', label: 'Compromises' }
+ stat: { value: 'Enterprise', label: 'Security Standards' }
  }
  ],
  techStackTitle: 'Agent Frameworks',
@@ -2878,13 +2878,13 @@ export const detailedServices: Record<string, DetailedServiceData> = {
  icon: 'Map',
  title: 'Executable Roadmaps',
  description: 'Roadmaps are sequenced by value, effort, and risk so you lead with quick wins.',
- stat: { value: '3x', label: 'Faster to Production' }
+ stat: { value: 'Sprint-Based', label: 'Milestone Delivery' }
  },
  {
  icon: 'ShieldCheck',
  title: 'Governance & Security',
  description: 'Compliance and security are designed in from the first sprint to meet global standards.',
- stat: { value: 'Zero', label: 'Compromises' }
+ stat: { value: 'Enterprise', label: 'Security Standards' }
  }
  ],
  techStackTitle: 'Rapid Build Stack',
@@ -2995,13 +2995,13 @@ export const detailedServices: Record<string, DetailedServiceData> = {
  icon: 'Map',
  title: 'Executable Roadmaps',
  description: 'Roadmaps are sequenced by value, effort, and risk so you lead with quick wins.',
- stat: { value: '3x', label: 'Faster to Production' }
+ stat: { value: 'Sprint-Based', label: 'Milestone Delivery' }
  },
  {
  icon: 'ShieldCheck',
  title: 'Governance & Security',
  description: 'Compliance and security are designed in from the first sprint to meet global standards.',
- stat: { value: 'Zero', label: 'Compromises' }
+ stat: { value: 'Enterprise', label: 'Security Standards' }
  }
  ],
  techStackTitle: 'Enterprise Stack',
@@ -3112,13 +3112,13 @@ export const detailedServices: Record<string, DetailedServiceData> = {
  icon: 'Map',
  title: 'Executable Roadmaps',
  description: 'Roadmaps are sequenced by value, effort, and risk so you lead with quick wins.',
- stat: { value: '3x', label: 'Faster to Production' }
+ stat: { value: 'Sprint-Based', label: 'Milestone Delivery' }
  },
  {
  icon: 'ShieldCheck',
  title: 'Governance & Security',
  description: 'Compliance and security are designed in from the first sprint to meet global standards.',
- stat: { value: 'Zero', label: 'Compromises' }
+ stat: { value: 'Enterprise', label: 'Security Standards' }
  }
  ],
  techStackTitle: 'Security Tech',
@@ -3226,13 +3226,13 @@ export const detailedServices: Record<string, DetailedServiceData> = {
  icon: 'Map',
  title: 'Executable Roadmaps',
  description: 'Roadmaps are sequenced by value, effort, and risk so you lead with quick wins.',
- stat: { value: '3x', label: 'Faster to Production' }
+ stat: { value: 'Sprint-Based', label: 'Milestone Delivery' }
  },
  {
  icon: 'ShieldCheck',
  title: 'Governance & Security',
  description: 'Compliance and security are designed in from the first sprint to meet global standards.',
- stat: { value: 'Zero', label: 'Compromises' }
+ stat: { value: 'Enterprise', label: 'Security Standards' }
  }
  ],
  techStackTitle: 'Automation Tech',
@@ -3342,13 +3342,13 @@ export const detailedServices: Record<string, DetailedServiceData> = {
  icon: 'Map',
  title: 'Executable Roadmaps',
  description: 'Roadmaps are sequenced by value, effort, and risk so you lead with quick wins.',
- stat: { value: '3x', label: 'Faster to Production' }
+ stat: { value: 'Sprint-Based', label: 'Milestone Delivery' }
  },
  {
  icon: 'ShieldCheck',
  title: 'Governance & Security',
  description: 'Compliance and security are designed in from the first sprint to meet global standards.',
- stat: { value: 'Zero', label: 'Compromises' }
+ stat: { value: 'Enterprise', label: 'Security Standards' }
  }
  ],
  techStackTitle: 'Analytics Tech',
@@ -3459,13 +3459,13 @@ export const detailedServices: Record<string, DetailedServiceData> = {
  icon: 'Map',
  title: 'Executable Roadmaps',
  description: 'Roadmaps are sequenced by value, effort, and risk so you lead with quick wins.',
- stat: { value: '3x', label: 'Faster to Production' }
+ stat: { value: 'Sprint-Based', label: 'Milestone Delivery' }
  },
  {
  icon: 'ShieldCheck',
  title: 'Governance & Security',
  description: 'Compliance and security are designed in from the first sprint to meet global standards.',
- stat: { value: 'Zero', label: 'Compromises' }
+ stat: { value: 'Enterprise', label: 'Security Standards' }
  }
  ],
  techStackTitle: 'Engineering Stack',
@@ -3576,13 +3576,13 @@ export const detailedServices: Record<string, DetailedServiceData> = {
  icon: 'Map',
  title: 'Executable Roadmaps',
  description: 'Roadmaps are sequenced by value, effort, and risk so you lead with quick wins.',
- stat: { value: '3x', label: 'Faster to Production' }
+ stat: { value: 'Sprint-Based', label: 'Milestone Delivery' }
  },
  {
  icon: 'ShieldCheck',
  title: 'Governance & Security',
  description: 'Compliance and security are designed in from the first sprint to meet global standards.',
- stat: { value: 'Zero', label: 'Compromises' }
+ stat: { value: 'Enterprise', label: 'Security Standards' }
  }
  ],
  techStackTitle: 'Vision Stack',
