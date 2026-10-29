@@ -661,7 +661,7 @@ export default function PlatformModernization({
       <CaseStudiesSection
         badgeText="Selected Work"
         headingLines={["Modernization That Addresses","<span class=\"text-cyan-gradient font-medium inline-block\">Real Technical Requirements</span>"]}
-        subheading="Explore how legacy refactoring, decoupled architectures, and phased cutovers resolve technical debt without disrupting operations."
+        subheading="Explore how legacy refactoring, decoupled architectures, and carefully planned cutovers address technical debt while minimizing operational disruption."
       />
 
       {/* ================= 8. FOUR PILLARS: RELIABILITY, SECURITY & BUSINESS CONTINUITY ================= */}

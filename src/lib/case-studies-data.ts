@@ -319,7 +319,7 @@ export const caseStudiesData: CaseStudy[] = [
     solution: {
       title: 'Asynchronous Translation Worker Pipeline with Local-First Mobile State',
       description:
-        'Cauders engineered a scalable mobile architecture connecting the Flutter client to a high-performance Node.js core backend and Firebase real-time infrastructure, decoupling translation API requests from the primary message delivery pipeline.',
+        'Members of the Cauders technical team engineered a scalable mobile architecture connecting the Flutter client to a high-performance Node.js core backend and Firebase real-time infrastructure, decoupling translation API requests from the primary message delivery pipeline.',
       keyHighlights: [
         'Architected asynchronous background worker queues for Google Cloud Translation: chat messages deliver instantly in native text while translations stream asynchronously milliseconds later.',
         'Integrated WebSocket audio messaging and image delivery with client-side compression to ensure snappy media exchange on limited mobile networks.',
@@ -498,7 +498,7 @@ export const caseStudiesData: CaseStudy[] = [
 },
     slug: 'api-marketplace-developer-gateway',
     title: 'Accelerating Developer Integration with an Interactive API Marketplace & Gateway',
-    subtitle: 'Centralized developer portal, interactive endpoint testing playground, sub-millisecond Redis rate-limiting, and automated multi-language SDK generation.',
+    subtitle: 'Centralized developer portal, interactive endpoint testing playground, sub-50ms token-bucket rate limiting, and automated multi-language SDK generation.',
     domain: 'B2B Developer Tools & API Infrastructure',
     capability: 'API Gateway Engineering & Developer Enablement',
     clientName: "Internal Engineering Capability",
@@ -517,7 +517,7 @@ export const caseStudiesData: CaseStudy[] = [
       { label: 'Routing Latency', value: '< 50ms' },
       { label: 'Stress Uptime', value: '90% (Stress Test)' },
       { label: 'Dev Onboarding', value: 'Weeks → Mins' },
-      { label: 'Rate-Limit Checks', value: 'Sub-millisecond' },
+      { label: 'Rate Limiting', value: 'Sub-50ms Token-Bucket' },
     ],
     heroImage: 'https://res.cloudinary.com/cauders/image/upload/v1792751015/Gemini_Generated_Image_ur1ee2ur1ee2ur1e_tdolpy.jpg',
     overview:
@@ -538,7 +538,7 @@ export const caseStudiesData: CaseStudy[] = [
         'Cauders architected an integrated platform consisting of a Next.js server-rendered presentation tier, an asynchronous Node.js API Gateway, PostgreSQL for catalog data, and an in-memory Redis cluster for high-speed rate-limiting.',
       keyHighlights: [
         'Built an interactive in-browser API playground allowing developers to execute live requests, inspect payloads, and copy auto-generated client SDK snippets.',
-        'Implemented distributed Redis token-bucket rate limiting executing in under one millisecond per request to protect downstream services.',
+        'Implemented distributed Redis token-bucket rate limiting with sub-50ms enforcement to protect downstream services.',
         'Offloaded usage telemetry and billing calculations to background worker pools, keeping the primary API gateway non-blocking.',
       ],
     },
@@ -546,7 +546,7 @@ export const caseStudiesData: CaseStudy[] = [
       title: 'High-Concurrency API Gateway & Marketplace Topology',
       stack: ['Next.js', 'React', 'Node.js', 'Python', 'PostgreSQL', 'Redis Pub/Sub', 'JWT / API Key Auth', 'Docker', 'Serverless'],
       description:
-        'Next.js presentation tier communicating with a secure Node.js API Gateway. PostgreSQL stores catalog schema and user permissions, while Redis handles sub-millisecond quota checks and pub/sub worker dispatch for background jobs.',
+        'Next.js presentation tier communicating with a secure Node.js API Gateway. PostgreSQL stores catalog schema and user permissions, while Redis handles sub-50ms token-bucket quota checks and pub/sub worker dispatch for background jobs.',
     },
     outcome: {
       headline: 'Lightning-Fast Developer Adoption and Robust Platform Governance',
@@ -751,7 +751,7 @@ export const caseStudiesData: CaseStudy[] = [
     solution: {
       title: 'SEO-Structured Content Engine with Interactive Project Galleries & Streamlined Funnels',
       description:
-        'We engineered a tailored, performance-optimized WordPress platform structured around local search intent, interactive before/after renovation galleries, and streamlined quote booking funnels.',
+        'Cauders team members architected and engineered a tailored, performance-optimized WordPress platform structured around local search intent, interactive before/after renovation galleries, and streamlined quote booking funnels.',
       keyHighlights: [
         'Designed an interactive project gallery showcasing completed bathroom transformations with before-and-after sliders and material specifications.',
         'Implemented comprehensive local SEO schema markup and service-area content silos that propelled the contractor into Google Local 3-Pack rankings.',

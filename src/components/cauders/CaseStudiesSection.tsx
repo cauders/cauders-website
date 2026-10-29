@@ -119,7 +119,7 @@ export const defaultCaseStudies: CaseStudyItem[] = [
     capability: 'API Gateway Engineering & Developer Enablement',
     title: 'Accelerating Developer Integration with an Interactive API Marketplace & Gateway',
     description:
-      'Centralized developer portal with in-browser interactive testing playground, sub-millisecond Redis rate-limiting, and auto-generated multi-language SDK snippets.',
+      'Centralized developer portal with in-browser interactive testing playground, sub-50ms token-bucket rate limiting, and auto-generated multi-language SDK snippets.',
     outcome: 'Sub-50ms routing latency and 90% gateway uptime under stress testing',
     clientName: 'B2B Developer Infrastructure Platform',
     isNda: true,
