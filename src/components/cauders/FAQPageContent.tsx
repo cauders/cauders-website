@@ -70,7 +70,7 @@ const faqs = [
 const conciseFaqs = [
   { question: "Custom ERP Systems", answer: "Tailor-made resource planning solutions built to perfectly map your unique business workflows." },
   { question: "LLM Fine-Tuning", answer: "Train AI models on your proprietary data to automate complex decisions and generative tasks." },
-  { question: "Cloud Architecture", answer: "Design resilient, auto-scaling infrastructure on AWS and Google Cloud for zero downtime." },
+  { question: "Cloud Architecture", answer: "Design resilient, auto-scaling infrastructure on AWS and Google Cloud for high availability." },
   { question: "Workflow Automation", answer: "Eliminate manual data entry by seamlessly integrating and automating your disparate software tools." },
   { question: "Rapid Prototyping", answer: "Accelerate your time-to-market with fast, high-fidelity proof-of-concept development." },
   { question: "Legacy Modernization", answer: "Safely migrate and rewrite old codebases into secure, high-performance modern stacks." },

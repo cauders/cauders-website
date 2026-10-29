@@ -31,7 +31,7 @@ const coreServices = [
   },
   {
     title: 'Platform Modernization',
-    description: 'Refactoring legacy codebases, migrating legacy infrastructure to resilient cloud architectures, and optimizing data flows for zero-downtime reliability and sustained scalability.',
+    description: 'Refactoring legacy codebases, migrating legacy infrastructure to resilient cloud architectures, and optimizing data flows for high-availability reliability and sustained scalability.',
     icon: RefreshCw,
     href: '/services/cloud-digital-transformation/cloud-transformation',
   },

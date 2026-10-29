@@ -20,7 +20,7 @@ const features = [
   {
     icon: Layers,
     title: "End-To-End Architecture",
-    description: "Scalable, resilient platforms engineered for zero-downtime reliability, security, and sustained growth."
+    description: "Scalable, resilient platforms engineered for high-availability reliability, security, and sustained growth."
   },
   {
     icon: SearchCheck,

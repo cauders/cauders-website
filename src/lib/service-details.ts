@@ -3402,7 +3402,7 @@ export const detailedServices: Record<string, DetailedServiceData> = {
  },
  {
  question: "Can you help migrate our data from on-premise servers to the cloud?",
- answer: "Yes. We offer secure, zero-downtime migration services to transition your legacy on-premise databases into modern, scalable cloud data warehouses like Snowflake or BigQuery."
+ answer: "Yes. We offer secure migration services to transition your legacy on-premise databases into modern, scalable cloud data warehouses like Snowflake or BigQuery with minimal operational disruption."
  },
  {
  question: "How do you handle the processing of sensitive PII data?",

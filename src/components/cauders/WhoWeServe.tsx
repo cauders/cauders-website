@@ -19,7 +19,7 @@ const audiences = [
     icon: Building2,
     title: 'Enterprises & Mid-Market',
     description:
-      'For enterprise leaders and growing organizations, we modernize mission-critical systems and deploy deterministic AI workflows into core operations. We engineer secure cloud platforms, custom internal tools, and ERP integrations built for high concurrency, zero downtime, and strict governance.',
+      'For enterprise leaders and growing organizations, we modernize mission-critical systems and deploy deterministic AI workflows into core operations. We engineer secure cloud platforms, custom internal tools, and ERP integrations built for high concurrency, high availability, and strict governance.',
   },
   {
     icon: Handshake,
