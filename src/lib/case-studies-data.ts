@@ -188,11 +188,11 @@ export const caseStudiesData: CaseStudy[] = [
         'Laravel/Livewire presentation portal communicating via secure API requests with a decoupled Node.js integration layer. The Node.js tier acts as a resilient buffer, validating requests and orchestrating real-time transactions with legacy core systems and external eKYC verification portals.',
     },
     outcome: {
-      headline: 'Unified Onboarding for Millions with Verified Regulatory Compliance Workflows',
+      headline: 'Unified Digital Customer Journeys Post-Merger with Verified Compliance',
       description:
         'The portal successfully bridged two national subscriber bases into a single digital destination with resilient transaction synchronization and unified account journeys.',
       impactList: [
-        'Successfully deployed high-availability portal handling massive concurrent traffic spikes with low drop-offs and resilient queue-buffered synchronization.',
+        'Successfully deployed high-availability portal handling heavy concurrent traffic surges with low drop-offs and resilient queue-buffered synchronization.',
         'Automated customer identity verification (eKYC), eliminating manual branch visits and accelerating subscriber activations.',
         'Centralized account management across merged subscriber cohorts, drastically lowering operational support overhead.',
       ],
@@ -237,7 +237,7 @@ export const caseStudiesData: CaseStudy[] = [
     challenge: {
       title: 'Mission-Critical Continuity, Severe Database Load & Security Deficits',
       description:
-        'Commercial facilities depended on the platform continuously for access monitoring, automated building schedules, and facilities workflows, requiring all modernization and caching cutovers to be executed without operational downtime.',
+        'Commercial facilities depended on the platform continuously for access monitoring, automated building schedules, and facilities workflows, requiring all modernization and caching cutovers to maintain continuous operational availability.',
       bulletPoints: [
         'Database contention: Repeated file reads hit the operational database directly on every request, creating severe scaling bottlenecks as building count grew.',
         'Enterprise onboarding friction: Large corporate tenants required Single Sign-On with their own identity providers (Okta, Azure AD), but manual configuration took days.',
@@ -301,7 +301,7 @@ export const caseStudiesData: CaseStudy[] = [
       { label: 'Google Play Downloads', value: '1,000,000+' },
       { label: 'Store Rating', value: '4.6 / 5.0 (379K+)' },
       { label: 'Matches Facilitated', value: '100,000+ / Q1' },
-      { label: 'Translation Delay', value: '0ms (Async Stream)' },
+      { label: 'Real-Time Chat', value: 'Zero-Latency (Async Queue)' },
     ],
     heroImage: 'https://res.cloudinary.com/cauders/image/upload/v1792751018/Gemini_Generated_Image_d7wwsdd7wwsdd7ww_bpcfni.jpg',
     overview:
@@ -481,7 +481,7 @@ export const caseStudiesData: CaseStudy[] = [
       description:
         'The consolidated platform eliminated multi-app maintenance headaches while significantly improving on-time deliveries and customer satisfaction.',
       impactList: [
-        'Successfully consolidated three legacy codebases into one modular application, cutting ongoing engineering maintenance overhead in half.',
+        'Successfully consolidated 3 separate mobile apps into a unified role-based commerce client, eliminating workflow silos across customer ordering, merchant operations, and dispatch logistics.',
         'Streamlined driver dispatch assignment and courier routing following order kitchen acceptance.',
         'Synchronized ordering, merchant fulfillment, and live courier delivery into a unified operational loop.',
       ],
