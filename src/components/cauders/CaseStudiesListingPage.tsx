@@ -226,7 +226,7 @@ export default function CaseStudiesListingPage() {
           </ScrollFadeIn>
           <SectionHeading
             lines={['Engineering for Production Reliability']}
-            subheading="Every project is engineered with strict boundary controls, automated CI/CD pipelines, regression test suites, and verified performance benchmarks before any cutover."
+            subheading="We apply disciplined engineering practices across our solutions, emphasizing automated CI/CD testing, boundary controls, and validated staging cutovers."
             align="left"
           />
         </div>
@@ -248,7 +248,7 @@ export default function CaseStudiesListingPage() {
             </div>
             <h4 className="text-base sm:text-lg font-bold font-headline mb-2">Resilient Edge Performance</h4>
             <p className="text-xs sm:text-sm text-foreground/75 leading-relaxed">
-              Sub-second page rendering and responsive endpoint delivery achieved through distributed edge workers, multi-tier caching, and localized state persistence.
+              Optimized frontend bundles, multi-tier caching, and distributed edge infrastructure designed to maximize interface responsiveness and operational efficiency.
             </p>
           </div>
 
@@ -258,7 +258,7 @@ export default function CaseStudiesListingPage() {
             </div>
             <h4 className="text-base sm:text-lg font-bold font-headline mb-2">Comprehensive Code Handover</h4>
             <p className="text-xs sm:text-sm text-foreground/75 leading-relaxed">
-              Complete infrastructure-as-code manifests, architecture topology diagrams, API specs, and runbooks delivered with every production engagement.
+              Structured technical documentation, architecture diagrams, API specifications, and maintainable deployment artifacts aligned with project requirements.
             </p>
           </div>
         </div>
