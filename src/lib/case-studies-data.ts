@@ -76,7 +76,7 @@ export const caseStudiesData: CaseStudy[] = [
       'Next.js & React Modernized Storefront on Vercel',
       'Optimistic Add-to-Cart with Automatic Cache Rollback',
       'Containerized Node.js/TypeScript REST API on Kubernetes',
-      'Living Swagger API Documentation for 10+ Endpoints',
+      'OpenAPI/Swagger Documentation & Automated Playwright/Jest Test Suites',
       'Automated Playwright E2E and Jest Test Suites',
       'Payment Gateway, Parcel Dispatcher & Custom CRM Integrations',
     ],
@@ -84,7 +84,7 @@ export const caseStudiesData: CaseStudy[] = [
       { label: 'Sales Contribution', value: '+10%' },
       { label: 'Cart Wait Time', value: '-200ms' },
       { label: 'Dev Onboarding Time', value: '-25%' },
-      { label: 'Documented APIs', value: '10+ Endpoints' },
+      { label: 'API & Test Suite', value: 'Swagger & Jest' },
     ],
     heroImage: 'https://res.cloudinary.com/cauders/image/upload/v1792751014/Gemini_Generated_Image_95u9yw95u9yw95u9_nbhogb.jpg',
     overview:
@@ -106,7 +106,7 @@ export const caseStudiesData: CaseStudy[] = [
       keyHighlights: [
         'Implemented React Query optimistic updates: the cart UI updates immediately on tap while server synchronization executes asynchronously in the background, with automatic rollback if requests fail.',
         'Structured shared TypeScript schemas between frontend and backend to eliminate boundary data bugs and simplify API contract maintenance.',
-        'Established living OpenAPI/Swagger documentation for 10+ endpoints and configured Playwright E2E and Jest regression suites covering critical checkout funnels.',
+        'Established OpenAPI/Swagger documentation and automated Playwright E2E and Jest test suites covering critical checkout funnels.',
       ],
     },
     architecture: {
@@ -153,14 +153,14 @@ export const caseStudiesData: CaseStudy[] = [
       'Resilient Asynchronous Data Buffering and Synchronization',
     ],
     metrics: [
-      { label: 'Subscriber Base', value: 'Multi-Million' },
+      { label: 'Unified Journeys', value: 'SIM & eSIM Flow' },
       { label: 'Core Onboarding', value: 'SIM & eSIM' },
       { label: 'eKYC Verification', value: 'Real-Time Stream' },
       { label: 'Traffic Resilience', value: 'Buffered Queues' },
     ],
     heroImage: 'https://res.cloudinary.com/cauders/image/upload/v1792751012/Gemini_Generated_Image_hd74yghd74yghd74_dmhz1q.jpg',
     overview:
-      'Following a major corporate merger between two national telecom giants, the combined entity required a unified, enterprise-grade digital portal to serve their combined multi-million customer base. The platform needed to consolidate fragmented customer touchpoints, manage disparate mobile plans, and support digital verification without disrupting legacy billing operations.',
+      'Following a major corporate merger between two national telecom giants, the combined entity required a unified, enterprise-grade digital portal to serve their combined subscriber base across national operations. The platform needed to consolidate fragmented customer touchpoints, manage disparate mobile plans, and support digital verification without disrupting legacy billing operations.',
     challenge: {
       title: 'Post-Merger Fragmentation and Secure Legacy Core Interfacing',
       description:
@@ -168,7 +168,7 @@ export const caseStudiesData: CaseStudy[] = [
       bulletPoints: [
         'Connecting a modern customer-facing web tier securely to deep legacy backend core systems without introducing latency or security vulnerabilities.',
         'Strict compliance with government digital identity verification (eKYC) mandates before mobile plan activations.',
-        'Handling massive concurrent traffic spikes while synchronizing multi-million subscriber records with zero downtime.',
+        'Handling heavy concurrent traffic surges while synchronizing subscriber onboarding workflows across merged core telecom systems.',
       ],
     },
     solution: {
