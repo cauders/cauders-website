@@ -30,7 +30,7 @@ const termsSections: PolicySectionItem[] = [
           <Link href="/" className="text-zinc-900 underline underline-offset-4 decoration-zinc-300 hover:decoration-zinc-800 hover:text-zinc-600 font-medium transition-colors">https://cauders.com</Link> and its publicly available content and features.
         </p>
         <p>
-          The website is operated under the Cauders name by Cauders (Private) Limited (&quot;Cauders,&quot; &quot;we,&quot; &quot;us,&quot; or &quot;our&quot;).
+          The website is operated under the Cauders name by CAUDERS (PRIVATE) LIMITED (&quot;Cauders,&quot; &quot;we,&quot; &quot;us,&quot; or &quot;our&quot;), a private company limited by shares incorporated under the laws of Pakistan (Registration No. 0351558).
         </p>
         <p>
           By accessing or using the website, you agree to these Terms. If you do not agree, you should discontinue use of the website.
@@ -76,7 +76,7 @@ const termsSections: PolicySectionItem[] = [
           The information presented on our website is provided for general information about Cauders, our capabilities, and our services.
         </p>
         <p>
-          Descriptions of services, technologies, portfolio projects, and potential business outcomes are illustrative and may be updated as our work and capabilities evolve.
+          Descriptions of services, technologies, client case studies, and potential business outcomes are illustrative and may be updated as our work and capabilities evolve.
         </p>
         <p>
           Specific services, deliverables, timelines, fees, and technical requirements will be confirmed through direct discussions and the applicable client agreement.
@@ -318,7 +318,11 @@ const termsSections: PolicySectionItem[] = [
       <>
         <p>For questions concerning these Terms, contact:</p>
         <div className="rounded-2xl border border-zinc-200 bg-zinc-50/80 p-6 space-y-2 mt-4 text-sm lg:text-base text-zinc-800">
-          <p className="font-semibold text-zinc-900">Cauders (Private) Limited</p>
+          <p className="font-bold text-zinc-900 font-headline">CAUDERS (PRIVATE) LIMITED</p>
+          <p className="text-xs text-zinc-500 font-mono">Incorporation No. (SECP): 0351558</p>
+          <p>
+            Registered Office &amp; Operational Headquarters: F1 Block Phase 2, Pak Arab Housing Society, Ferozpur Road, Lahore, Pakistan
+          </p>
           <p>
             Email:{' '}
             <a href="mailto:info@cauders.com" className="text-zinc-900 underline underline-offset-4 decoration-zinc-300 hover:decoration-zinc-800 hover:text-zinc-600 font-medium transition-colors">
@@ -326,12 +330,15 @@ const termsSections: PolicySectionItem[] = [
             </a>
           </p>
           <p>
-            Registered office: F1 Block Phase 2, Pak Arab Housing Society, Ferozpur Road, Lahore, Pakistan
+            Telephone:{' '}
+            <a href="tel:+923390107377" className="text-zinc-900 underline underline-offset-4 decoration-zinc-300 hover:decoration-zinc-800 hover:text-zinc-600 font-medium transition-colors">
+              +92 3390107377
+            </a>
           </p>
           <p>
-            Website:{' '}
+            Official Website:{' '}
             <Link href="/" className="text-zinc-900 underline underline-offset-4 decoration-zinc-300 hover:decoration-zinc-800 hover:text-zinc-600 font-medium transition-colors">
-              https://cauders.com/
+              https://cauders.com
             </Link>
           </p>
         </div>
@@ -344,7 +351,7 @@ export default function TermsOfServicePage() {
   return (
     <PolicyLayout
       title="Terms of Service"
-      lastUpdated="October 17, 2026"
+      lastUpdated="November 2026"
       badge="Terms"
       sections={termsSections}
     />
