@@ -48,8 +48,8 @@ export const defaultCaseStudies: CaseStudyItem[] = [
     capability: 'Storefront Engineering & Headless Commerce',
     title: 'E-Commerce Storefront Modernization for a Nordic Retailer',
     description:
-      'Modern Next.js storefront overhaul, optimistic Add-to-Cart state updates cutting wait times by 200ms, and containerized Node.js/TypeScript REST API on Kubernetes.',
-    outcome: '+10% sales contribution with -200ms cart interaction latency',
+      'Next.js and React storefront development, Sanity CMS integration, React Query optimistic cart-state handling, commerce API workflows, and Playwright customer-journey testing.',
+    outcome: 'Optimistic React Query cart-state handling, Sanity CMS integration, and Playwright E2E customer-journey testing',
     clientName: 'Nordic Direct-to-Consumer Retailer',
     isNda: true,
     icon: Globe,
