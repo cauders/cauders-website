@@ -1,5 +1,8 @@
 /** @type {import('next').NextConfig} */
+const isDev = process.env.NODE_ENV === 'development';
+
 const nextConfig = {
+  distDir: isDev && !process.env.VERCEL ? '.next-dev' : '.next',
   compress: true,
   poweredByHeader: false,
   swcMinify: true,
@@ -16,7 +19,7 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: '**',
-      }
+      },
     ],
   },
   async redirects() {
@@ -80,7 +83,7 @@ const nextConfig = {
     ];
   },
   async headers() {
-    return [
+    const rules = [
       {
         source: '/(.*)',
         headers: [
@@ -102,19 +105,31 @@ const nextConfig = {
           },
         ],
       },
-      {
+    ];
+
+    if (!isDev) {
+      rules.push({
         source: '/_next/static/(.*)',
         headers: [
           {
             key: 'Cache-Control',
-            value:
-              process.env.NODE_ENV === 'production'
-                ? 'public, max-age=31536000, immutable'
-                : 'no-store, must-revalidate',
+            value: 'public, max-age=31536000, immutable',
           },
         ],
-      },
-    ];
+      });
+    } else {
+      rules.push({
+        source: '/_next/static/(.*)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'no-store, must-revalidate',
+          },
+        ],
+      });
+    }
+
+    return rules;
   },
 };
 

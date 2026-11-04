@@ -60,6 +60,7 @@ export default function ServiceCategoryPage({ category }: ServiceCategoryPagePro
  title={service.title} 
  description={service.description} 
  ctaText="Learn more"
+ ctaAsSpan
  >
  {/* Additional details like capabilities */}
  <div className="mt-6 pt-6 border-t border-border/50">
