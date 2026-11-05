@@ -13,26 +13,42 @@ import GradientContainer from './GradientContainer';
 import { submitPartnerForm } from '@/app/actions';
 import { trackConversion } from '@/lib/analytics';
 
-const processSteps = [
+interface PartnerProcessStep {
+  number: string;
+  icon: string;
+  title: string;
+  description: string;
+  meansForYou: string;
+}
+
+const processSteps: PartnerProcessStep[] = [
   {
     number: '01',
+    icon: 'https://res.cloudinary.com/cauders/image/upload/f_auto,q_auto,w_64/v1792728804/Target_Streamline_Core_zi3exq.png',
     title: 'Apply Online',
     description: 'Fill out the form below and tell us about your market and the partnership model you want to explore.',
+    meansForYou: 'Quick submission of your agency background and the collaboration model you want to pursue.',
   },
   {
     number: '02',
+    icon: 'https://res.cloudinary.com/cauders/image/upload/f_auto,q_auto,w_64/v1792728810/Graph-Document-Infected-Report_Streamline_Covid_hf4rd5.png',
     title: "Let's Connect",
     description: 'We schedule a discovery call to align on commercial structure, scope boundaries, and working terms.',
+    meansForYou: 'Direct call to align on commercial terms, scope boundaries, and confidentiality.',
   },
   {
     number: '03',
+    icon: 'https://res.cloudinary.com/cauders/image/upload/f_auto,q_auto,w_64/v1792728803/Desktop-Code_Streamline_Core_sps9gq.png',
     title: 'Enablement',
     description: 'We equip your team with technical collateral, co-branded architecture proposals, and access to lead engineers.',
+    meansForYou: 'Immediate access to technical documentation, co-branded collateral, and lead engineers.',
   },
   {
     number: '04',
+    icon: 'https://res.cloudinary.com/cauders/image/upload/f_auto,q_auto,w_64/v1792728812/Shield-Check_Streamline_Core_daxhoa.png',
     title: 'Scale & Deliver',
     description: 'You manage client relationships and close opportunities while our engineering teams design, build, and ship.',
+    meansForYou: 'Scalable engineering delivery under NDA while you retain full client relationship ownership.',
   },
 ];
 
@@ -350,19 +366,43 @@ export default function PartnersPageContent() {
             />
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto items-stretch">
             {processSteps.map((step, idx) => (
               <ScrollFadeIn key={step.number} delay={idx * 100} className="h-full">
-                <div className="p-6 rounded-2xl bg-card border border-border/60 shadow-smooth-lift h-full flex flex-col justify-between">
-                  <div>
-                    <span className="text-2xl font-headline font-bold text-primary mb-3 block">
-                      {step.number}
-                    </span>
-                    <h3 className="text-lg font-semibold text-foreground mb-2">
+                <div className="group relative rounded-3xl bg-white text-zinc-900 border-0 flex flex-col justify-between shadow-[0_10px_35px_rgba(0,0,0,0.12)] hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 overflow-hidden h-full">
+                  <div className="p-6 sm:p-7 pb-4 sm:pb-5">
+                    <div className="flex items-center justify-between mb-4 sm:mb-5">
+                      <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-darkTeal flex items-center justify-center shadow-md flex-shrink-0 transition-transform duration-300 group-hover:scale-105">
+                        <Image
+                          src={step.icon}
+                          alt={step.title}
+                          width={26}
+                          height={26}
+                          sizes="28px"
+                          className="w-6 h-6 sm:w-7 sm:h-7 object-contain brightness-0 invert"
+                        />
+                      </div>
+
+                      <span className="font-headline font-medium text-4xl sm:text-5xl lg:text-6xl text-zinc-300 select-none tracking-tight">
+                        {step.number}
+                      </span>
+                    </div>
+
+                    <h3 className="text-xl sm:text-2xl font-headline font-semibold text-black !text-black tracking-tight mb-2 sm:mb-2.5">
                       {step.title}
                     </h3>
-                    <p className="text-sm text-foreground/75 leading-relaxed font-light">
+
+                    <p className="text-xs sm:text-sm text-zinc-600 leading-relaxed font-normal">
                       {step.description}
+                    </p>
+                  </div>
+
+                  <div className="bg-[#F8FAF9] border-t border-zinc-100 px-6 sm:px-7 py-4 sm:py-5">
+                    <span className="block text-xs font-headline font-semibold text-darkTeal mb-1 tracking-wide">
+                      What this means for you:
+                    </span>
+                    <p className="text-xs sm:text-sm text-zinc-700 leading-relaxed font-normal">
+                      {step.meansForYou}
                     </p>
                   </div>
                 </div>

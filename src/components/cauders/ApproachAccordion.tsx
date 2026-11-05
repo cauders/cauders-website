@@ -39,10 +39,10 @@ export default function ApproachAccordion({
             onMouseEnter={() => setActiveIndex(idx)}
             onClick={() => setActiveIndex(idx)}
             className={cn(
-              'group w-full rounded-2xl sm:rounded-3xl bg-white text-zinc-900 cursor-pointer overflow-hidden border-0 shadow-[0_10px_35px_rgba(0,0,0,0.12)] transition-all duration-300 ease-out',
+              'w-full rounded-2xl sm:rounded-3xl bg-white text-zinc-900 cursor-pointer overflow-hidden shadow-[0_12px_45px_rgba(0,35,30,0.14)] transition-shadow duration-500 ease-out',
               isExpanded
-                ? 'shadow-[0_20px_50px_rgba(0,35,30,0.22)] -translate-y-0.5'
-                : 'hover:shadow-2xl hover:-translate-y-0.5'
+                ? 'shadow-[0_20px_50px_rgba(0,35,30,0.22)]'
+                : 'hover:shadow-2xl'
             )}
           >
             {isExpanded ? (
@@ -51,18 +51,18 @@ export default function ApproachAccordion({
                   <span className="font-headline font-medium text-4xl sm:text-5xl lg:text-6xl text-zinc-300 mb-5 sm:mb-6 lg:mb-7 block select-none tracking-tight">
                     {step.number}
                   </span>
-                  <h3 className="text-2xl sm:text-3xl lg:text-[2rem] font-semibold font-headline text-black !text-black tracking-tight mb-3 leading-snug">
+                  <h3 className="text-2xl sm:text-3xl lg:text-[2rem] font-semibold font-headline text-black tracking-tight mb-3 leading-snug">
                     {step.title}
                   </h3>
-                  <p className="text-sm sm:text-base text-zinc-600 font-normal leading-relaxed">
+                  <p className="text-sm sm:text-base text-zinc-700 font-normal leading-relaxed">
                     {step.description}
                   </p>
                 </div>
 
                 {takeaway && (
-                  <div className="w-full bg-[#F8FAF9] border-t border-zinc-100 px-8 py-5 sm:px-10 sm:py-6 lg:px-12 lg:py-6 z-10">
+                  <div className="w-full bg-[#F8F8F8] px-8 py-5 sm:px-10 sm:py-6 lg:px-12 lg:py-6 z-10">
                     <div className="max-w-xl sm:max-w-2xl lg:max-w-[46rem]">
-                      <span className="block text-xs sm:text-sm font-headline font-semibold text-darkTeal mb-1 tracking-wide">
+                      <span className="block text-xs sm:text-sm font-semibold text-[#09555A] mb-1 tracking-tight">
                         {takeawayLabel}
                       </span>
                       <p className="text-xs sm:text-sm text-zinc-700 font-normal leading-relaxed">
@@ -102,7 +102,7 @@ export default function ApproachAccordion({
                 aria-expanded={false}
                 onFocus={() => setActiveIndex(idx)}
                 onClick={() => setActiveIndex(idx)}
-                className="w-full text-left relative h-24 sm:h-28 lg:h-32 flex items-center justify-between pr-8 sm:pr-10 lg:pr-12 overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-darkTeal focus-visible:ring-inset"
+                className="w-full text-left relative h-24 sm:h-28 lg:h-32 flex items-center justify-between pr-8 sm:pr-10 lg:pr-12 overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#09555A] focus-visible:ring-inset"
               >
                 <div className="flex items-center gap-6 sm:gap-8 lg:gap-12 h-full min-w-0">
                   <div
@@ -126,7 +126,7 @@ export default function ApproachAccordion({
                   <span className="font-headline font-medium text-4xl sm:text-5xl lg:text-6xl text-zinc-300 select-none tracking-tight">
                     {step.number}
                   </span>
-                  <h3 className="text-xl sm:text-2xl lg:text-[1.75rem] font-semibold font-headline text-black !text-black tracking-tight truncate">
+                  <h3 className="text-xl sm:text-2xl lg:text-[1.75rem] font-semibold font-headline text-black tracking-tight truncate">
                     {step.title}
                   </h3>
                 </div>
@@ -135,7 +135,7 @@ export default function ApproachAccordion({
                   {step.description} {takeaway ? `${takeawayLabel} ${takeaway}` : ''}
                 </span>
 
-                <div className="flex-shrink-0 text-zinc-400 group-hover:text-darkTeal transition-colors" aria-hidden="true">
+                <div className="flex-shrink-0 text-zinc-300" aria-hidden="true">
                   <ChevronDown className="w-7 h-7 sm:w-8 sm:h-8 stroke-[1.75] transition-transform duration-300" />
                 </div>
               </button>
