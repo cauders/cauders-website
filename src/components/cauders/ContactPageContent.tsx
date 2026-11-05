@@ -17,7 +17,7 @@ import { useToast } from '@/hooks/use-toast';
 import { submitContactForm } from '@/app/actions';
 import { CustomInput, CustomTextarea, CustomSelect } from './CustomFormFields';
 import ScrollFadeIn from './ScrollFadeIn';
-import { Loader2, Cpu, Layers, ShieldCheck, CheckCircle2, type LucideIcon } from 'lucide-react';
+import { Loader2 } from 'lucide-react';
 import SectionHeading from './SectionHeading';
 import { Suspense, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
@@ -36,8 +36,6 @@ const contactFormSchema = z.object({
   companySize: z.string().min(1, { message: 'Company size is required.' }),
   timeline: z.string().min(1, { message: 'Timeline is required.' }),
   estimatedBudget: z.string().optional(),
-  engagementType: z.string().optional(),
-  ndaRequired: z.boolean().optional(),
   phoneNumber: z.string().optional(),
   message: z.string().optional(),
 });
@@ -54,66 +52,37 @@ const timelineOptions = [
   { value: 'Immediately', label: 'Immediately' },
   { value: 'Within 1 - 3 months', label: 'Within 1 - 3 months' },
   { value: 'Within 3 - 6 months', label: 'Within 3 - 6 months' },
-  { value: 'Just exploring', label: 'Just exploring / RFP planning' },
+  { value: 'Just exploring', label: 'Just exploring / Planning' },
 ];
 
 const budgetOptions = [
-  { value: '< $25,000 USD', label: '< $25,000 USD (Advisory / Small Pilot)' },
-  { value: '$25,000 - $50,000 USD', label: '$25,000 – $50,000 USD (MVP / Targeted Modernization)' },
-  { value: '$50,000 - $100,000 USD', label: '$50,000 – $100,000 USD (Full Product Build / Platform)' },
-  { value: '$100,000 - $250,000+ USD', label: '$100,000 – $250,000+ USD (Enterprise Transformation / Dedicated Pod)' },
-  { value: 'To Be Determined', label: 'Exploring / Budget To Be Determined' },
+  { value: '< $25,000 USD', label: '< $25,000 USD' },
+  { value: '$25,000 - $50,000 USD', label: '$25,000 – $50,000 USD' },
+  { value: '$50,000 - $100,000 USD', label: '$50,000 – $100,000 USD' },
+  { value: '$100,000 - $250,000+ USD', label: '$100,000 – $250,000+ USD' },
+  { value: 'To Be Determined', label: 'To Be Determined' },
 ];
 
-const engagementTypeOptions = [
-  { value: 'Custom Software & Platform Engineering', label: 'Custom Software & Platform Engineering' },
-  { value: 'Applied AI & Workflow Automation', label: 'Applied AI & Workflow Automation' },
-  { value: 'Cloud & System Modernization', label: 'Cloud & System Modernization' },
-  { value: 'Dedicated Engineering Team / Pod', label: 'Dedicated Engineering Team / Pod' },
-  { value: 'Strategic Advisory / Architecture Review', label: 'Strategic Advisory / Architecture Review' },
-  { value: 'White-Label / Agency Delivery', label: 'White-Label / Agency Delivery' },
-];
-
-interface ConsultationPillar {
-  number: string;
-  icon: LucideIcon;
-  title: string;
-  description: string;
-  takeaway: string;
-}
-
-const consultationPillars: ConsultationPillar[] = [
+const consultationPoints = [
   {
-    number: '01',
-    icon: Cpu,
-    title: 'Strategic Architecture & Advisory',
+    title: 'Strategic Consultation',
     description:
-      "Share your operational constraints and engineering objectives — our lead solutions architects design a resilient system topology, integration boundaries, and technology selection tailored to your business model.",
-    takeaway: 'Resilient system architecture & technical roadmap',
+      "Share your goals and constraints — we'll map out a resilient technical architecture tailored to your needs.",
   },
   {
-    number: '02',
-    icon: Layers,
-    title: 'Production-Grade Custom Solutions',
+    title: 'Custom Solutions',
     description:
-      'End-to-end web, mobile, and applied AI systems engineered for high concurrency, zero technical debt, and seamless connection to your existing data infrastructure.',
-    takeaway: 'Custom engineering with 100% code ownership',
+      "Discover how our engineering capabilities and services align directly with your team's specific priorities.",
   },
   {
-    number: '03',
-    icon: ShieldCheck,
-    title: 'Enterprise Security & Compliance',
+    title: 'Enterprise Readiness',
     description:
-      'Review data governance protocols, SOC-2 / GDPR compliance posture, fault-tolerant infrastructure, and security baselines directly with senior technical leads.',
-    takeaway: 'Strict confidentiality, mutual NDAs & data protection',
+      'Discuss security, performance, and seamless scalability directly with our senior engineers.',
   },
   {
-    number: '04',
-    icon: CheckCircle2,
-    title: 'Deterministic Scope & Proof of Value',
+    title: 'Proof Of Value',
     description:
-      'Conclude discovery with an actionable technical blueprint: milestone-governed delivery phases, transparent USD investment estimates, and a predictable rollout path.',
-    takeaway: 'Transparent USD pricing, milestones & SLA commitments',
+      'Leave with clear project timelines, transparent pricing context, and a practical rollout path.',
   },
 ];
 
@@ -154,8 +123,6 @@ function ContactForm() {
       companySize: '',
       timeline: 'Immediately',
       estimatedBudget: '',
-      engagementType: '',
-      ndaRequired: false,
       phoneNumber: '',
       message: '',
     },
@@ -181,8 +148,6 @@ function ContactForm() {
           companySize: '',
           timeline: 'Immediately',
           estimatedBudget: '',
-          engagementType: '',
-          ndaRequired: false,
           phoneNumber: '',
           message: '',
         });
@@ -228,35 +193,34 @@ function ContactForm() {
           </div>
 
           <div className="absolute inset-0 z-10 flex items-center">
-            <div className="max-w-[95rem] w-full mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="max-w-xl lg:max-w-2xl text-left">
+            <div className="w-full max-w-[88rem] mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="w-full max-w-[620px] lg:max-w-[660px] xl:max-w-[700px]">
                 <ScrollFadeIn>
-                  <ArrowBadge
-                    href="#contact-content"
-                    text="Contact Cauders"
-                    variant="black"
-                    className="mb-3 sm:mb-5"
+                  <ArrowBadge href="#contact-hero" text="Reach Out Today" variant="black" className="mb-2 md:mb-4" />
+                </ScrollFadeIn>
+                <ScrollFadeIn delay={100}>
+                  <SectionHeading
+                    as="h1"
+                    align="left"
+                    lines={[
+                      "Let's Build Something",
+                      '<span class="text-cyan-gradient font-medium inline-block">Great Together</span>',
+                    ]}
+                    subheading="Whether you are modernizing core systems, scaling an engineering team, or launching a new venture, our team is ready to help."
+                    className="mb-6 md:mb-8"
                   />
                 </ScrollFadeIn>
-
-                <SectionHeading
-                  as="h1"
-                  lines={[
-                    "Let's Build Something",
-                    '<span class="text-cyan-gradient font-medium inline-block">Great Together</span>',
-                  ]}
-                  subheading="Have a project in mind, an architectural challenge to solve, or ready to scale your software engineering? Connect with our team and let's map out a solution."
-                  align="left"
-                  subheadingMaxWidth="max-w-xl"
-                  subheadingClassName="text-xs sm:text-sm md:text-base lg:text-lg text-foreground/80 dark:text-zinc-300 leading-relaxed font-normal mb-6 sm:mb-8"
-                  className="mb-0"
-                />
-
-                <ScrollFadeIn delay={250}>
-                  <div className="pt-1">
-                    <DarkTealButton href="#contact-content" onClick={handleScrollToContent} size="md">
-                      Start A Conversation
+                <ScrollFadeIn delay={200}>
+                  <div className="flex flex-wrap items-center gap-4">
+                    <DarkTealButton href="#contact-content" size="md">
+                      Discuss Your Project
                     </DarkTealButton>
+                    <Link
+                      href="/careers"
+                      className="px-6 py-3 rounded-full text-sm font-semibold text-foreground/80 hover:text-foreground hover:bg-black/5 transition-all inline-flex items-center gap-2"
+                    >
+                      Explore Careers
+                    </Link>
                   </div>
                 </ScrollFadeIn>
               </div>
@@ -272,7 +236,7 @@ function ContactForm() {
       <div id="contact-content" className="relative overflow-hidden py-16 lg:py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 w-full items-start">
-            {/* Left Side: Numbered Bento Cards Matching Homepage */}
+            {/* Left Side: Strategic Consultation Points (Unboxed list, matching homepage typography) */}
             <div className="flex flex-col gap-8 mt-2 lg:col-span-5">
               <div className="flex flex-col items-start">
                 <ScrollFadeIn>
@@ -283,45 +247,26 @@ function ContactForm() {
                     'Architected For Scale,',
                     '<span class="text-cyan-gradient font-medium inline-block">Scoped With Precision</span>',
                   ]}
-                  subheading="Engage directly with our senior solutions architects to evaluate technical feasibility, system architecture, and delivery scope. We collaborate with leadership teams to design resilient, production-ready software solutions engineered around operational realities."
-                  subheadingClassName="max-w-[480px] text-foreground/75 text-xs sm:text-sm md:text-base leading-relaxed"
+                  subheading="Connect with our solutions architects to explore custom digital solutions. Share your vision and constraints with us, and we'll help map out the technical strategy to accelerate your growth."
+                  subheadingClassName="max-w-[480px] text-foreground/75 text-sm md:text-base leading-relaxed"
                   className="mb-2 md:mb-4"
                 />
               </div>
 
-              <div className="grid grid-cols-1 gap-4 sm:gap-4.5">
-                {consultationPillars.map((pillar, idx) => {
-                  const Icon = pillar.icon;
-                  return (
-                    <ScrollFadeIn key={pillar.number} delay={idx * 80}>
-                      <div className="group relative rounded-2xl bg-white dark:bg-card text-zinc-900 dark:text-zinc-100 border border-zinc-200/90 dark:border-zinc-800 p-5 sm:p-5.5 shadow-[0_4px_18px_rgba(0,49,46,0.04)] hover:shadow-md hover:border-darkTeal/40 transition-all duration-300 overflow-hidden">
-                        <div className="flex items-center justify-between mb-3">
-                          <div className="w-10 h-10 rounded-xl bg-darkTeal text-teal-300 flex items-center justify-center shadow-sm flex-shrink-0 transition-transform duration-300 group-hover:scale-105">
-                            <Icon className="w-5 h-5" />
-                          </div>
-                          <span className="font-mono text-2xl sm:text-3xl font-extrabold text-zinc-300 dark:text-zinc-700 select-none tracking-tight">
-                            {pillar.number}
-                          </span>
-                        </div>
-
-                        <h3 className="text-base sm:text-lg font-headline font-semibold text-foreground tracking-tight mb-1.5">
-                          {pillar.title}
-                        </h3>
-
-                        <p className="text-xs sm:text-[0.825rem] text-muted-foreground leading-relaxed font-normal">
-                          {pillar.description}
-                        </p>
-
-                        <div className="bg-[#F8FAF9] dark:bg-zinc-900/60 -mx-5 -mb-5 sm:-mx-5.5 sm:-mb-5.5 mt-3.5 px-5 sm:px-5.5 py-2.5 border-t border-zinc-100 dark:border-zinc-800 flex items-center justify-between">
-                          <span className="text-[11px] sm:text-xs font-medium text-darkTeal dark:text-teal-400">
-                            {pillar.takeaway}
-                          </span>
-                          <span className="text-xs text-darkTeal/60 dark:text-teal-400/60 font-mono">✓</span>
-                        </div>
-                      </div>
-                    </ScrollFadeIn>
-                  );
-                })}
+              <div className="grid grid-cols-1 gap-y-8">
+                {consultationPoints.map((point, idx) => (
+                  <ScrollFadeIn key={point.title} delay={(idx + 1) * 80} className="flex flex-col gap-1.5">
+                    <div className="flex items-center gap-3">
+                      <div className="w-2.5 h-2.5 rounded-full bg-darkTeal shrink-0" />
+                      <h3 className="font-headline font-semibold text-base sm:text-lg text-foreground tracking-tight">
+                        {point.title}
+                      </h3>
+                    </div>
+                    <p className="text-sm text-foreground/75 pl-5.5 leading-relaxed font-normal max-w-md">
+                      {point.description}
+                    </p>
+                  </ScrollFadeIn>
+                ))}
               </div>
             </div>
 
@@ -360,34 +305,32 @@ function ContactForm() {
                           )}
                         />
                       </div>
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <FormField
-                          control={form.control}
-                          name="workEmail"
-                          render={({ field }) => (
-                            <FormItem>
-                              <FormLabel className="text-white font-normal">Work Email</FormLabel>
-                              <FormControl>
-                                <CustomInput type="email" placeholder="you@company.com" autoComplete="email" {...field} />
-                              </FormControl>
-                              <FormMessage />
-                            </FormItem>
-                          )}
-                        />
-                        <FormField
-                          control={form.control}
-                          name="phoneNumber"
-                          render={({ field }) => (
-                            <FormItem>
-                              <FormLabel className="text-white font-normal">Phone Number</FormLabel>
-                              <FormControl>
-                                <CustomInput type="tel" placeholder="+1 555 000 1234" autoComplete="tel" {...field} />
-                              </FormControl>
-                              <FormMessage />
-                            </FormItem>
-                          )}
-                        />
-                      </div>
+                      <FormField
+                        control={form.control}
+                        name="workEmail"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel className="text-white font-normal">Work Email</FormLabel>
+                            <FormControl>
+                              <CustomInput type="email" placeholder="jane@company.com" autoComplete="email" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                      <FormField
+                        control={form.control}
+                        name="phoneNumber"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel className="text-white font-normal">Phone Number (Optional)</FormLabel>
+                            <FormControl>
+                              <CustomInput type="tel" placeholder="+1 (555) 000-0000" autoComplete="tel" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
                       <FormField
                         control={form.control}
                         name="companyName"
@@ -409,7 +352,7 @@ function ContactForm() {
                             <FormItem>
                               <FormLabel className="text-white font-normal">Job Title</FormLabel>
                               <FormControl>
-                                <CustomInput placeholder="Product Manager" autoComplete="organization-title" {...field} />
+                                <CustomInput placeholder="VP of Engineering" autoComplete="organization-title" {...field} />
                               </FormControl>
                               <FormMessage />
                             </FormItem>
@@ -433,25 +376,25 @@ function ContactForm() {
                           )}
                         />
                       </div>
-                      <FormField
-                        control={form.control}
-                        name="timeline"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel className="text-white font-normal">Estimated Project Timeline</FormLabel>
-                            <CustomSelect
-                              value={field.value}
-                              onValueChange={field.onChange}
-                              defaultValue={field.value}
-                              placeholder="Please select"
-                              options={timelineOptions}
-                            />
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
 
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <FormField
+                          control={form.control}
+                          name="timeline"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel className="text-white font-normal">Estimated Project Timeline</FormLabel>
+                              <CustomSelect
+                                value={field.value}
+                                onValueChange={field.onChange}
+                                defaultValue={field.value}
+                                placeholder="Please select"
+                                options={timelineOptions}
+                              />
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
                         <FormField
                           control={form.control}
                           name="estimatedBudget"
@@ -464,27 +407,8 @@ function ContactForm() {
                                 value={field.value}
                                 onValueChange={field.onChange}
                                 defaultValue={field.value}
-                                placeholder="Select USD budget range"
+                                placeholder="Select USD budget"
                                 options={budgetOptions}
-                              />
-                              <FormMessage />
-                            </FormItem>
-                          )}
-                        />
-                        <FormField
-                          control={form.control}
-                          name="engagementType"
-                          render={({ field }) => (
-                            <FormItem>
-                              <FormLabel className="text-white font-normal">
-                                Engagement Scope <span className="text-white/60 text-xs font-light">(Optional)</span>
-                              </FormLabel>
-                              <CustomSelect
-                                value={field.value}
-                                onValueChange={field.onChange}
-                                defaultValue={field.value}
-                                placeholder="Select engagement model"
-                                options={engagementTypeOptions}
                               />
                               <FormMessage />
                             </FormItem>
@@ -494,38 +418,12 @@ function ContactForm() {
 
                       <FormField
                         control={form.control}
-                        name="ndaRequired"
-                        render={({ field }) => (
-                          <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-2xl border border-white/20 bg-black/15 p-4">
-                            <FormControl>
-                              <input
-                                type="checkbox"
-                                id="nda-checkbox"
-                                checked={field.value || false}
-                                onChange={(e) => field.onChange(e.target.checked)}
-                                className="mt-1 h-4 w-4 rounded border-white/30 bg-white/20 text-teal-500 focus:ring-0 focus:ring-offset-0 cursor-pointer accent-[#8CEAE5]"
-                              />
-                            </FormControl>
-                            <div className="space-y-1 leading-none">
-                              <label htmlFor="nda-checkbox" className="text-white text-xs sm:text-sm font-medium cursor-pointer block">
-                                Request a countersigned Mutual NDA before technical architecture disclosure
-                              </label>
-                              <p className="text-[11px] text-white/70">
-                                We execute bilateral NDAs prior to discussing proprietary codebases, data models, or infrastructure.
-                              </p>
-                            </div>
-                          </FormItem>
-                        )}
-                      />
-
-                      <FormField
-                        control={form.control}
                         name="message"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel className="text-white font-normal">Technical Scope &amp; Requirements</FormLabel>
+                            <FormLabel className="text-white font-normal">Project Details &amp; Requirements</FormLabel>
                             <FormControl>
-                              <CustomTextarea placeholder="Describe the technical challenges, current architecture, data systems, or delivery milestones you need executed." {...field} />
+                              <CustomTextarea placeholder="Tell us about your technical challenges, timeline, or architecture requirements." {...field} />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -533,7 +431,7 @@ function ContactForm() {
                       />
 
                       <p className="text-[11px] text-white/80 mt-2 mb-6">
-                        We respect your privacy and never share your data. By submitting, you agree to our{' '}
+                        We respect your privacy and only use your details to respond to your technical inquiry. By submitting, you agree to our{' '}
                         <Link href="/terms-of-service" className="underline hover:text-white transition-colors">
                           Terms
                         </Link>{' '}
@@ -546,7 +444,7 @@ function ContactForm() {
 
                       <Button type="submit" variant="default" size="lg" className="w-full h-12 text-base hover-white-to-black" disabled={isSubmitting}>
                         {isSubmitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-                        Request Discovery Consultation
+                        Submit Inquiry
                       </Button>
                     </form>
                   </Form>

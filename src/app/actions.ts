@@ -73,8 +73,6 @@ const contactFormSchema = z.object({
   companySize: z.string().trim().min(1, { message: 'Company size is required.' }),
   timeline: z.string().trim().min(1, { message: 'Timeline is required.' }),
   estimatedBudget: z.string().trim().optional(),
-  engagementType: z.string().trim().optional(),
-  ndaRequired: z.boolean().optional(),
   phoneNumber: z.string().trim().optional(),
   message: z.string().trim().optional(),
 });
@@ -96,8 +94,6 @@ export async function submitContactForm(data: unknown) {
     companySize,
     timeline,
     estimatedBudget,
-    engagementType,
-    ndaRequired,
     phoneNumber,
     message,
   } = parsedData.data;
@@ -159,22 +155,6 @@ export async function submitContactForm(data: unknown) {
                   ? `<tr>
                 <td style="padding: 8px 0; color: #6b7280; font-weight: bold;">Budget (USD):</td>
                 <td style="padding: 8px 0; color: #0d9488; font-weight: bold;">${escapeHtml(estimatedBudget)}</td>
-              </tr>`
-                  : ''
-              }
-              ${
-                engagementType
-                  ? `<tr>
-                <td style="padding: 8px 0; color: #6b7280; font-weight: bold;">Engagement:</td>
-                <td style="padding: 8px 0; color: #111827;">${escapeHtml(engagementType)}</td>
-              </tr>`
-                  : ''
-              }
-              ${
-                ndaRequired
-                  ? `<tr>
-                <td style="padding: 8px 0; color: #6b7280; font-weight: bold;">Mutual NDA:</td>
-                <td style="padding: 8px 0; color: #dc2626; font-weight: bold;">Requested — Send Mutual NDA before technical call</td>
               </tr>`
                   : ''
               }
