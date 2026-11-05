@@ -31,7 +31,7 @@ const heroSlides: HeroSlide[] = [
     ctaText: 'Discuss a Project',
     ctaHref: '/contact',
     image:
-      'https://res.cloudinary.com/cauders/image/upload/f_auto,q_auto,w_1920/v1792672841/cauders_dark_teal_hero_background_n7pfpw.png',
+      'https://res.cloudinary.com/cauders/image/upload/v1792672841/cauders_dark_teal_hero_background_n7pfpw.png',
   },
   {
     id: 2,
@@ -44,7 +44,7 @@ const heroSlides: HeroSlide[] = [
     ctaText: 'Explore AI and Automation',
     ctaHref: '/services#ai-automation',
     image:
-      'https://res.cloudinary.com/cauders/image/upload/f_auto,q_auto,w_1920/v1792904872/GENERATIVE_AI_jam1tu.jpg',
+      'https://res.cloudinary.com/cauders/image/upload/v1792904872/GENERATIVE_AI_jam1tu.jpg',
   },
 ];
 
@@ -54,7 +54,7 @@ export default function Hero() {
   const [prevSlideIndex, setPrevSlideIndex] = useState<number | null>(null);
   const [isPaused, setIsPaused] = useState(false);
   const [isInView, setIsInView] = useState(true);
-  const [secondaryReady, setSecondaryReady] = useState(false);
+  const [secondaryReady, setSecondaryReady] = useState(true);
   const slideCount = heroSlides.length;
 
   const goToSlide = useCallback((nextIndex: number) => {
@@ -70,10 +70,9 @@ export default function Hero() {
     goToSlide((currentSlide + 1) % slideCount);
   }, [currentSlide, goToSlide, slideCount]);
 
-  // Defer Slide 2 image fetch until after Slide 1 LCP settles
+  // Slide 2 preloaded immediately
   useEffect(() => {
-    const timer = setTimeout(() => setSecondaryReady(true), 1800);
-    return () => clearTimeout(timer);
+    setSecondaryReady(true);
   }, []);
 
   useEffect(() => {
@@ -132,7 +131,7 @@ export default function Hero() {
                   src={s.image}
                   alt={s.badge}
                   fill
-                  priority={idx === 0}
+                  priority={true}
                   unoptimized
                   sizes="100vw"
                   className="object-cover"

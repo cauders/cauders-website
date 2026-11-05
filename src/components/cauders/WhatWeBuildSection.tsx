@@ -17,21 +17,29 @@ export default function WhatWeBuildSection() {
     if (!videoEl || typeof IntersectionObserver === 'undefined') return;
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
+    let playTimer: ReturnType<typeof setTimeout> | null = null;
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            videoEl.play().catch(() => {});
+            if (playTimer) clearTimeout(playTimer);
+            playTimer = setTimeout(() => {
+              videoEl.play().catch(() => {});
+            }, 120);
           } else {
+            if (playTimer) clearTimeout(playTimer);
             videoEl.pause();
           }
         });
       },
-      { threshold: 0.15 }
+      { threshold: 0.25 }
     );
 
     observer.observe(videoEl);
-    return () => observer.disconnect();
+    return () => {
+      if (playTimer) clearTimeout(playTimer);
+      observer.disconnect();
+    };
   }, []);
 
   return (
@@ -139,7 +147,7 @@ export default function WhatWeBuildSection() {
                     poster="https://res.cloudinary.com/cauders/video/upload/so_0,f_auto,q_auto,w_900/v1792679951/ai-home_oury68.jpg"
                     disablePictureInPicture
                     aria-hidden="true"
-                    className="w-full h-full object-cover object-center pointer-events-none"
+                    className="w-full h-full object-cover object-center pointer-events-none transform-gpu will-change-transform"
                   >
                     <source
                       src="https://res.cloudinary.com/cauders/video/upload/f_webm,q_auto:eco,vc_vp9,ac_none,w_900/v1792679951/ai-home_oury68.webm"
