@@ -167,7 +167,7 @@ export default function PlatformModernization({
         {/* Background image container: right-aligned with seamless blending spanning full height */}
         <div className="absolute top-0 right-0 bottom-0 w-full lg:w-[68%] xl:w-[64%] flex items-center justify-end overflow-hidden pointer-events-none select-none z-0">
           <Image
-            src="https://res.cloudinary.com/cauders/image/upload/f_auto,q_auto:best,w_2560/v1792825566/Platform_Modernization_v7x92q.jpg"
+            src="https://res.cloudinary.com/cauders/image/upload/f_auto,q_auto,w_1920/v1792825566/Platform_Modernization_v7x92q.jpg"
             alt="Platform Modernization"
             fill
             priority

@@ -156,7 +156,7 @@ export default function PartnersPageContent() {
       <section className="relative w-full h-[85vh] sm:h-[90vh] md:h-screen overflow-hidden rounded-b-3xl bg-[#011417]">
         <div className="absolute inset-0 z-0 w-full h-full">
           <Image
-            src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=90&w=2560"
+            src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=1920"
             alt="Cauders Strategic Partnerships"
             fill
             priority

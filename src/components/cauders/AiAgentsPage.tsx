@@ -153,7 +153,7 @@ export default function AiAgentsPage({
         {/* Full Hero Background Image */}
         <div className="absolute inset-0 z-0 w-full h-full pointer-events-none select-none">
           <Image
-            src="https://res.cloudinary.com/cauders/image/upload/f_auto,q_auto:best,w_2560/v1792913393/AI_AGENTSAI_AGENTS_k9wwif.jpg"
+            src="https://res.cloudinary.com/cauders/image/upload/f_auto,q_auto,w_1920/v1792913393/AI_AGENTSAI_AGENTS_k9wwif.jpg"
             alt="AI Agents & Autonomous Workflows"
             fill
             priority

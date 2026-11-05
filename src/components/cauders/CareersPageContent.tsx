@@ -85,7 +85,7 @@ export default function CareersPageContent() {
       <section className="relative w-full h-[85vh] sm:h-[90vh] md:h-screen overflow-hidden rounded-b-3xl bg-[#011417]">
         <div className="absolute inset-0 z-0 w-full h-full">
           <Image
-            src="https://res.cloudinary.com/cauders/image/upload/f_auto,q_auto:best,w_2560/v1786803238/workspace_byyhyg.png"
+            src="https://res.cloudinary.com/cauders/image/upload/f_auto,q_auto,w_1920/v1786803238/workspace_byyhyg.png"
             alt="Cauders Careers Workspace"
             fill
             priority

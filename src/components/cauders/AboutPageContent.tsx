@@ -45,7 +45,7 @@ export default function AboutPageContent() {
       <section className="relative w-full min-h-[620px] sm:min-h-[680px] lg:min-h-[760px] xl:min-h-[820px] bg-transparent flex items-center pt-24 pb-16 sm:pt-28 sm:pb-20 lg:pt-32 lg:pb-24 overflow-hidden">
         <div className="absolute top-0 right-0 bottom-0 w-full lg:w-[68%] xl:w-[64%] flex items-end justify-end overflow-hidden pointer-events-none select-none z-0">
           <Image
-            src="https://res.cloudinary.com/cauders/image/upload/f_auto,q_auto:best,w_2560/v1792827587/Gemini_Generated_Image_4u4g1b4u4g1b4u4g_cihgix.jpg"
+            src="https://res.cloudinary.com/cauders/image/upload/f_auto,q_auto,w_1920/v1792827587/Gemini_Generated_Image_4u4g1b4u4g1b4u4g_cihgix.jpg"
             alt="About Cauders - Who You Build With Shapes What Gets Delivered"
             fill
             priority

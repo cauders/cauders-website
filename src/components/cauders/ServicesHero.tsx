@@ -23,7 +23,7 @@ export default function ServicesHero() {
       <div className="relative w-full min-h-[420px] sm:min-h-[480px] lg:min-h-[550px]">
         <div className="w-full flex justify-center overflow-hidden">
           <Image
-            src="https://res.cloudinary.com/cauders/image/upload/f_auto,q_auto:best,w_2560/v1792742641/Group_4654_t9qwca.png"
+            src="https://res.cloudinary.com/cauders/image/upload/f_auto,q_auto,w_1920/v1792742641/Group_4654_t9qwca.png"
             alt=""
             aria-hidden="true"
             width={2560}

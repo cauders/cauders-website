@@ -152,7 +152,7 @@ export default function ProcessAutomationPage({
       <div className="relative w-full min-h-[660px] sm:min-h-[720px] lg:min-h-[800px] xl:min-h-[850px] bg-[#051314] rounded-b-[2rem] sm:rounded-b-[2.5rem] lg:rounded-b-[3.5rem] overflow-hidden flex items-center pt-28 pb-20 sm:pt-32 sm:pb-24 lg:pt-36 lg:pb-32">
         <div className="absolute inset-0 z-0 w-full h-full pointer-events-none select-none">
           <Image
-            src="https://res.cloudinary.com/cauders/image/upload/f_auto,q_auto:best,w_2560/v1792912192/PROCESS_AUTOMATION_dsa6ce.jpg"
+            src="https://res.cloudinary.com/cauders/image/upload/f_auto,q_auto,w_1920/v1792912192/PROCESS_AUTOMATION_dsa6ce.jpg"
             alt="Intelligent Process Automation"
             fill
             priority

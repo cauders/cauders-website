@@ -60,6 +60,7 @@ export default function WhatWeBuildSection() {
                   src="https://res.cloudinary.com/cauders/image/upload/f_auto,q_auto,w_900/v1792678283/Group_4659_fphz2w.png"
                   alt="Digital Product Engineering"
                   fill
+                  priority
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 450px"
                   className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
                 />
@@ -99,6 +100,7 @@ export default function WhatWeBuildSection() {
                     src="https://res.cloudinary.com/cauders/image/upload/f_auto,q_auto,w_900/v1792678284/image_368_wpp2wf.png"
                     alt="Dedicated Teams"
                     fill
+                    priority
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 450px"
                     className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
                   />
@@ -187,6 +189,7 @@ export default function WhatWeBuildSection() {
                     src="https://res.cloudinary.com/cauders/image/upload/f_auto,q_auto,w_900/v1792678283/image_364_v4bj47.png"
                     alt="SaaS Development"
                     fill
+                    priority
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 450px"
                     className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
                   />
@@ -217,6 +220,7 @@ export default function WhatWeBuildSection() {
                   src="https://res.cloudinary.com/cauders/image/upload/f_auto,q_auto,w_900/v1792678283/Group_4660_cqgiz6.png"
                   alt="Platform Modernization"
                   fill
+                  priority
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 450px"
                   className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
                 />

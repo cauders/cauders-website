@@ -144,7 +144,7 @@ function ContactForm() {
         <div className="relative w-full overflow-hidden min-h-[420px] sm:min-h-[480px] lg:min-h-[550px] aspect-[4320/1674]">
           <div className="absolute top-0 right-0 bottom-0 w-full lg:w-[60%] xl:w-[58%] flex items-center justify-end overflow-hidden pointer-events-none select-none z-0">
             <Image
-              src="https://res.cloudinary.com/cauders/image/upload/f_auto,q_auto:best,w_2560/v1793102442/contact_us_km2pwe.jpg"
+              src="https://res.cloudinary.com/cauders/image/upload/f_auto,q_auto,w_1920/v1793102442/contact_us_km2pwe.jpg"
               alt="Contact Cauders - Let's Build Something Great Together"
               fill
               priority

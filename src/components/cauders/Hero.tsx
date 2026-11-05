@@ -31,7 +31,7 @@ const heroSlides: HeroSlide[] = [
     ctaText: 'Discuss a Project',
     ctaHref: '/contact',
     image:
-      'https://res.cloudinary.com/cauders/image/upload/f_auto,q_auto:best,w_2560/v1792672841/cauders_dark_teal_hero_background_n7pfpw.png',
+      'https://res.cloudinary.com/cauders/image/upload/f_auto,q_auto,w_1920/v1792672841/cauders_dark_teal_hero_background_n7pfpw.png',
   },
   {
     id: 2,
@@ -44,7 +44,7 @@ const heroSlides: HeroSlide[] = [
     ctaText: 'Explore AI and Automation',
     ctaHref: '/services#ai-automation',
     image:
-      'https://res.cloudinary.com/cauders/image/upload/f_auto,q_auto:best,w_2560/v1792904872/GENERATIVE_AI_jam1tu.jpg',
+      'https://res.cloudinary.com/cauders/image/upload/f_auto,q_auto,w_1920/v1792904872/GENERATIVE_AI_jam1tu.jpg',
   },
 ];
 

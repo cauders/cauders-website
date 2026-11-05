@@ -16,23 +16,50 @@ export default function SmoothScroll() {
     if (isTouch || prefersReducedMotion) return;
 
     const lenis = new Lenis({
-      duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      orientation: 'vertical',
-      gestureOrientation: 'vertical',
+      lerp: 0.1,
       smoothWheel: true,
       wheelMultiplier: 1,
+      touchMultiplier: 1,
+      syncTouch: false,
     });
     lenisRef.current = lenis;
 
     (window as unknown as { lenis?: Lenis }).lenis = lenis;
 
     let rafId = 0;
+    let idleCount = 0;
+
     const raf = (time: number) => {
       lenis.raf(time);
-      rafId = requestAnimationFrame(raf);
+      if (lenis.isScrolling || Math.abs(lenis.velocity) > 0.005) {
+        idleCount = 0;
+        rafId = requestAnimationFrame(raf);
+      } else if (idleCount < 6) {
+        idleCount += 1;
+        rafId = requestAnimationFrame(raf);
+      } else {
+        rafId = 0;
+        idleCount = 0;
+      }
     };
-    rafId = requestAnimationFrame(raf);
+
+    const startLoop = () => {
+      idleCount = 0;
+      if (!rafId) {
+        rafId = requestAnimationFrame(raf);
+      }
+    };
+
+    window.addEventListener('wheel', startLoop, { passive: true });
+    window.addEventListener('keydown', startLoop, { passive: true });
+    window.addEventListener('resize', startLoop, { passive: true });
+
+    // Patch scrollTo to also kick off the RAF loop
+    const origScrollTo = lenis.scrollTo.bind(lenis);
+    lenis.scrollTo = ((...args: Parameters<Lenis['scrollTo']>) => {
+      startLoop();
+      return origScrollTo(...args);
+    }) as Lenis['scrollTo'];
 
     const handleAnchorClick = (e: MouseEvent) => {
       const target = (e.target as HTMLElement | null)?.closest?.('a');
@@ -43,7 +70,7 @@ export default function SmoothScroll() {
         const element = document.getElementById(id);
         if (element) {
           e.preventDefault();
-          lenis.scrollTo(element, { offset: -80, duration: 1.0 });
+          lenis.scrollTo(element, { offset: -80, duration: 0.7 });
         }
       }
     };
@@ -51,6 +78,9 @@ export default function SmoothScroll() {
     document.addEventListener('click', handleAnchorClick);
 
     return () => {
+      window.removeEventListener('wheel', startLoop);
+      window.removeEventListener('keydown', startLoop);
+      window.removeEventListener('resize', startLoop);
       document.removeEventListener('click', handleAnchorClick);
       if (rafId) cancelAnimationFrame(rafId);
       lenis.destroy();

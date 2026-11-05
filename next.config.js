@@ -17,8 +17,7 @@ const nextConfig = {
     ],
   },
   images: {
-    formats: ['image/avif', 'image/webp'],
-    minimumCacheTTL: 2592000,
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: 'https',
@@ -100,35 +99,6 @@ const nextConfig = {
           {
             key: 'Cache-Control',
             value: 'public, max-age=31536000, immutable',
-          },
-        ],
-      });
-    } else {
-      rules.push({
-        source: '/:path*',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'no-store, must-revalidate',
-          },
-        ],
-      });
-      rules.push({
-        source: '/:path*',
-        missing: [
-          {
-            type: 'cookie',
-            key: '__cauders_dev_cache_reset',
-          },
-        ],
-        headers: [
-          {
-            key: 'Clear-Site-Data',
-            value: '"cache"',
-          },
-          {
-            key: 'Set-Cookie',
-            value: '__cauders_dev_cache_reset=v2; Path=/; SameSite=Lax',
           },
         ],
       });

@@ -136,7 +136,7 @@ export default function CustomSoftwareHero({
         {/* Background image container: zoomed out (scaled down) so more of the 3D illustration is in view */}
         <div className="absolute top-0 right-0 bottom-0 w-full lg:w-[68%] xl:w-[64%] flex items-center justify-end overflow-hidden pointer-events-none select-none z-0">
           <Image
-            src="https://res.cloudinary.com/cauders/image/upload/f_auto,q_auto:best,w_2560/v1792756284/Gemini_Generated_Image_r7235xr7235xr723_1_nzh1lg.png"
+            src="https://res.cloudinary.com/cauders/image/upload/f_auto,q_auto,w_1920/v1792756284/Gemini_Generated_Image_r7235xr7235xr723_1_nzh1lg.png"
             alt="Custom Software Development"
             fill
             priority

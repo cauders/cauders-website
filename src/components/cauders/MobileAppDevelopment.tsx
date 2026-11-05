@@ -157,7 +157,7 @@ export default function MobileAppDevelopment({
         {/* Background image container: right-aligned with seamless blending */}
         <div className="absolute top-0 right-0 bottom-0 w-full lg:w-[68%] xl:w-[64%] flex items-center justify-end overflow-hidden pointer-events-none select-none z-0">
           <Image
-            src="https://res.cloudinary.com/cauders/image/upload/f_auto,q_auto:best,w_2560/v1792818829/Mobile_App_Development_hmnsqm.jpg"
+            src="https://res.cloudinary.com/cauders/image/upload/f_auto,q_auto,w_1920/v1792818829/Mobile_App_Development_hmnsqm.jpg"
             alt="Mobile App Development"
             fill
             priority
