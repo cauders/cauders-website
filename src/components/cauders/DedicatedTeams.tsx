@@ -100,10 +100,11 @@ export default function DedicatedTeams({
         {/* Background 3D illustration: Team around glass table */}
         <div className="absolute top-0 right-0 bottom-0 w-full lg:w-[68%] xl:w-[64%] flex items-center justify-end overflow-hidden pointer-events-none select-none z-0">
           <Image
-            src="https://res.cloudinary.com/cauders/image/upload/f_auto,q_auto,w_1600/v1792857091/Gemini_Generated_Image_fjog64fjog64fjog_japgfd.jpg"
+            src="https://res.cloudinary.com/cauders/image/upload/f_auto,q_auto:best,w_2560/v1792857091/Gemini_Generated_Image_fjog64fjog64fjog_japgfd.jpg"
             alt="Dedicated Engineering Teams"
             fill
             priority
+            unoptimized
             sizes="(max-width: 1024px) 100vw, 68vw"
             className="object-cover object-right opacity-90 lg:opacity-100 scale-100 lg:scale-105 origin-right"
             style={{

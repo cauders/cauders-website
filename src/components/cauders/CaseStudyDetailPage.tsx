@@ -117,10 +117,11 @@ export default function CaseStudyDetailPage({ study }: CaseStudyDetailPageProps)
               <ScrollFadeIn delay={200}>
                 <div className="relative w-full h-[360px] sm:h-[440px] md:h-[480px] rounded-3xl overflow-hidden border border-border/40 shadow-2xl group">
                   <Image
-                    src={optimizeCloudinaryUrl(study.heroImage, 1200)}
+                    src={optimizeCloudinaryUrl(study.heroImage, 1600)}
                     alt={study.title}
                     fill
                     priority
+                    unoptimized
                     sizes="(max-width: 1024px) 100vw, 42vw"
                     className="object-cover object-center grayscale contrast-[1.05] group-hover:grayscale-0 transition-all duration-700 ease-out group-hover:scale-105"
                   />

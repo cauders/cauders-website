@@ -398,11 +398,12 @@ export default function AllIndustriesPage() {
       <section className="relative w-full bg-transparent overflow-hidden">
         <div className="relative w-full overflow-hidden min-h-[420px] sm:min-h-[480px] lg:min-h-[550px] aspect-[4320/1674]">
           <Image
-            src="https://res.cloudinary.com/cauders/image/upload/f_auto,q_auto,w_1920/v1792719663/Rectangle_219_rvczyb.png"
+            src="https://res.cloudinary.com/cauders/image/upload/f_auto,q_auto:best,w_2560/v1792719663/Rectangle_219_rvczyb.png"
             alt=""
             aria-hidden="true"
             fill
             priority
+            unoptimized
             sizes="100vw"
             className="object-cover object-center pointer-events-none select-none"
           />

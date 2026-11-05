@@ -38,11 +38,12 @@ export default function CaseStudiesListingPage() {
       <section className="relative w-full min-h-[580px] sm:min-h-[640px] lg:min-h-[720px] bg-transparent flex items-center pt-24 pb-16 sm:pt-28 sm:pb-20 lg:pt-32 lg:pb-24 overflow-hidden">
         <div className="absolute top-0 right-0 bottom-0 w-full lg:w-[65%] xl:w-[60%] flex items-center justify-end overflow-hidden pointer-events-none select-none z-0">
           <Image
-            src="https://res.cloudinary.com/cauders/image/upload/f_auto,q_auto,w_1400/v1792742850/dev_xfjby4.png"
+            src="https://res.cloudinary.com/cauders/image/upload/f_auto,q_auto:best,w_2048/v1792742850/dev_xfjby4.png"
             alt="Cauders Case Studies & Engineering Portfolio"
-            width={1400}
-            height={1050}
+            width={2048}
+            height={1536}
             priority
+            unoptimized
             sizes="(max-width: 1024px) 100vw, 60vw"
             className="w-full h-full object-contain object-right max-w-none opacity-90 lg:opacity-100 scale-95 lg:scale-[0.92] origin-right"
             style={{

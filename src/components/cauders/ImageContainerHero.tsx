@@ -54,6 +54,7 @@ export default function ImageContainerHero({
           src={imageUrl}
           alt={imageAlt}
           fill
+          unoptimized
           sizes="100vw"
           className="object-cover"
           priority

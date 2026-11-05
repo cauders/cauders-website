@@ -66,61 +66,6 @@ const nextConfig = {
         destination: 'https://www.cauders.com/:path*',
         permanent: true,
       },
-      {
-        source: '/ai',
-        destination: '/services#ai-automation',
-        permanent: true,
-      },
-      {
-        source: '/legal',
-        destination: '/legal-information',
-        permanent: true,
-      },
-      {
-        source: '/cookie-policy',
-        destination: '/cookies-policy',
-        permanent: true,
-      },
-      {
-        source: '/privacy',
-        destination: '/privacy-policy',
-        permanent: true,
-      },
-      {
-        source: '/terms',
-        destination: '/terms-of-service',
-        permanent: true,
-      },
-      {
-        source: '/case-study',
-        destination: '/case-studies',
-        permanent: true,
-      },
-      {
-        source: '/portfolio',
-        destination: '/case-studies',
-        permanent: true,
-      },
-      {
-        source: '/projects',
-        destination: '/case-studies',
-        permanent: true,
-      },
-      {
-        source: '/team',
-        destination: '/about',
-        permanent: true,
-      },
-      {
-        source: '/industries/:industry',
-        destination: '/industries#:industry',
-        permanent: true,
-      },
-      {
-        source: '/work',
-        destination: '/case-studies',
-        permanent: true,
-      },
     ];
   },
   async headers() {

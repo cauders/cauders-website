@@ -24,7 +24,7 @@ export function optimizeCloudinaryUrl(url: string, width?: number): string {
     return url;
   }
 
-  const transforms = width ? `f_auto,q_auto,c_limit,w_${width}` : 'f_auto,q_auto';
+  const transforms = width ? `f_auto,q_auto:best,c_limit,w_${width}` : 'f_auto,q_auto:best';
   return `${url.slice(0, idx + marker.length)}${transforms}/${after}`;
 }
 

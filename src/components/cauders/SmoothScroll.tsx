@@ -7,57 +7,32 @@ import Lenis from 'lenis';
 export default function SmoothScroll() {
   const pathname = usePathname();
   const lenisRef = useRef<Lenis | null>(null);
-  const startLoopRef = useRef<(() => void) | null>(null);
 
   useEffect(() => {
-    // Respect touch devices and reduced-motion preferences with zero main-thread overhead
+    // Respect touch devices and reduced-motion preferences
     const isTouch = typeof window !== 'undefined' && window.matchMedia('(pointer: coarse)').matches;
     const prefersReducedMotion =
       typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (isTouch || prefersReducedMotion) return;
 
     const lenis = new Lenis({
-      lerp: 0.16,
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: 'vertical',
+      gestureOrientation: 'vertical',
       smoothWheel: true,
       wheelMultiplier: 1,
-      touchMultiplier: 1,
-      syncTouch: false,
     });
     lenisRef.current = lenis;
 
     (window as unknown as { lenis?: Lenis }).lenis = lenis;
 
     let rafId = 0;
-    let idleFrames = 0;
-
     const raf = (time: number) => {
       lenis.raf(time);
-      const moving = lenis.isScrolling || Math.abs(lenis.velocity) > 0.001;
-      if (moving) {
-        idleFrames = 0;
-        rafId = requestAnimationFrame(raf);
-      } else if (idleFrames < 6) {
-        idleFrames += 1;
-        rafId = requestAnimationFrame(raf);
-      } else {
-        rafId = 0;
-        idleFrames = 0;
-      }
+      rafId = requestAnimationFrame(raf);
     };
-
-    const startLoop = () => {
-      idleFrames = 0;
-      if (!rafId) {
-        rafId = requestAnimationFrame(raf);
-      }
-    };
-    startLoopRef.current = startLoop;
-
-    const origScrollTo = lenis.scrollTo.bind(lenis);
-    lenis.scrollTo = ((...args: Parameters<Lenis['scrollTo']>) => {
-      startLoop();
-      return origScrollTo(...args);
-    }) as Lenis['scrollTo'];
+    rafId = requestAnimationFrame(raf);
 
     const handleAnchorClick = (e: MouseEvent) => {
       const target = (e.target as HTMLElement | null)?.closest?.('a');
@@ -68,23 +43,16 @@ export default function SmoothScroll() {
         const element = document.getElementById(id);
         if (element) {
           e.preventDefault();
-          lenis.scrollTo(element, { offset: -80, duration: 0.9 });
+          lenis.scrollTo(element, { offset: -80, duration: 1.0 });
         }
       }
     };
 
-    window.addEventListener('wheel', startLoop, { passive: true });
-    window.addEventListener('keydown', startLoop, { passive: true });
-    window.addEventListener('resize', startLoop, { passive: true });
     document.addEventListener('click', handleAnchorClick);
 
     return () => {
-      window.removeEventListener('wheel', startLoop);
-      window.removeEventListener('keydown', startLoop);
-      window.removeEventListener('resize', startLoop);
       document.removeEventListener('click', handleAnchorClick);
       if (rafId) cancelAnimationFrame(rafId);
-      startLoopRef.current = null;
       lenis.destroy();
       lenisRef.current = null;
       delete (window as unknown as { lenis?: Lenis }).lenis;

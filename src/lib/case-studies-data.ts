@@ -498,7 +498,7 @@ export const caseStudiesData: CaseStudy[] = [
 },
     slug: 'api-marketplace-developer-gateway',
     title: 'Accelerating Developer Integration with an Interactive API Marketplace & Gateway',
-    subtitle: 'Centralized developer portal, interactive endpoint testing playground, sub-50ms token-bucket rate limiting, and automated multi-language SDK generation.',
+    subtitle: 'Centralized developer portal, interactive endpoint testing playground, sub-millisecond Redis rate-limiting, and automated multi-language SDK generation.',
     domain: 'B2B Developer Tools & API Infrastructure',
     capability: 'API Gateway Engineering & Developer Enablement',
     clientName: "Internal Engineering Capability",
@@ -508,7 +508,7 @@ export const caseStudiesData: CaseStudy[] = [
     deliverables: [
       'Next.js High-Performance API Marketplace & Catalog Tier',
       'In-Browser Interactive API Playground for Live Endpoint Testing',
-      'Distributed API Gateway with Redis Token-Bucket Rate Limiting',
+      'Distributed API Gateway with Sub-Millisecond Redis Rate Limiting',
       'API Key Management & JWT Authentication Architecture',
       'Automated Code Snippet Generator (cURL, Python, JS, Go)',
       'Asynchronous Background Worker Queues for Telemetry & Quotas',
@@ -517,7 +517,7 @@ export const caseStudiesData: CaseStudy[] = [
       { label: 'Routing Latency', value: '< 50ms' },
       { label: 'Stress Uptime', value: '90% (Stress Test)' },
       { label: 'Dev Onboarding', value: 'Weeks → Mins' },
-      { label: 'Rate Limiting', value: 'Sub-50ms Token-Bucket' },
+      { label: 'Rate-Limit Checks', value: 'Sub-millisecond' },
     ],
     heroImage: 'https://res.cloudinary.com/cauders/image/upload/f_auto,q_auto,w_1400/v1792751015/Gemini_Generated_Image_ur1ee2ur1ee2ur1e_tdolpy.jpg',
     overview:
@@ -538,7 +538,7 @@ export const caseStudiesData: CaseStudy[] = [
         'Cauders architected an integrated platform consisting of a Next.js server-rendered presentation tier, an asynchronous Node.js API Gateway, PostgreSQL for catalog data, and an in-memory Redis cluster for high-speed rate-limiting.',
       keyHighlights: [
         'Built an interactive in-browser API playground allowing developers to execute live requests, inspect payloads, and copy auto-generated client SDK snippets.',
-        'Implemented distributed Redis token-bucket rate limiting with sub-50ms enforcement to protect downstream services.',
+        'Implemented distributed Redis token-bucket rate limiting executing in under one millisecond per request to protect downstream services.',
         'Offloaded usage telemetry and billing calculations to background worker pools, keeping the primary API gateway non-blocking.',
       ],
     },
@@ -546,7 +546,7 @@ export const caseStudiesData: CaseStudy[] = [
       title: 'High-Concurrency API Gateway & Marketplace Topology',
       stack: ['Next.js', 'React', 'Node.js', 'Python', 'PostgreSQL', 'Redis Pub/Sub', 'JWT / API Key Auth', 'Docker', 'Serverless'],
       description:
-        'Next.js presentation tier communicating with a secure Node.js API Gateway. PostgreSQL stores catalog schema and user permissions, while Redis handles sub-50ms token-bucket quota checks and pub/sub worker dispatch for background jobs.',
+        'Next.js presentation tier communicating with a secure Node.js API Gateway. PostgreSQL stores catalog schema and user permissions, while Redis handles sub-millisecond quota checks and pub/sub worker dispatch for background jobs.',
     },
     outcome: {
       headline: 'Lightning-Fast Developer Adoption and Robust Platform Governance',

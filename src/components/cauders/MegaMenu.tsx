@@ -117,14 +117,14 @@ export default function MegaMenu({
       role="region"
       aria-label={`${activeMenu} navigation menu`}
       className={cn(
-        'fixed z-50 w-full left-1/2 -translate-x-1/2 max-w-2xl pt-3 animate-in fade-in zoom-in-95 duration-150 ease-out',
+        'fixed z-50 w-full left-1/2 -translate-x-1/2 max-w-2xl pt-3',
         isHeroHeader ? 'top-[76px] md:top-[88px]' : isScrolled ? 'top-[70px]' : 'top-[76px]'
       )}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >
       <div className="relative w-full bg-white dark:bg-zinc-950 border border-border/20 rounded-2xl shadow-2xl overflow-hidden">
-        <div key={activeMenu} className="w-full py-6 px-6 sm:px-8 animate-in fade-in duration-100">
+        <div key={activeMenu} className="w-full py-6 px-6 sm:px-8">
           {activeMenu === 'services' && renderTwoColumnList(servicesMenuItems)}
           {activeMenu === 'ai' && renderTwoColumnList(aiMenuItems)}
           {activeMenu === 'industries' && renderTwoColumnList(industryMenuItems)}

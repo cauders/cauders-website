@@ -167,10 +167,11 @@ export default function SaaSDevelopment({
         {/* Background image container: right-aligned with seamless blending spanning full height */}
         <div className="absolute top-0 right-0 bottom-0 w-full lg:w-[68%] xl:w-[64%] flex items-center justify-end overflow-hidden pointer-events-none select-none z-0">
           <Image
-            src="https://res.cloudinary.com/cauders/image/upload/f_auto,q_auto,w_1600/v1792821543/SaaS_Development_kctdu4.jpg"
+            src="https://res.cloudinary.com/cauders/image/upload/f_auto,q_auto:best,w_2560/v1792821543/SaaS_Development_kctdu4.jpg"
             alt="SaaS Development"
             fill
             priority
+            unoptimized
             sizes="(max-width: 1024px) 100vw, 68vw"
             className="object-cover object-right opacity-90 lg:opacity-100 scale-100 lg:scale-105 origin-right"
             style={{

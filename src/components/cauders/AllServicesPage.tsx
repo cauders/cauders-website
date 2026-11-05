@@ -7,7 +7,6 @@ import ServicesHero from './ServicesHero';
 import DarkTealButton from './DarkTealButton';
 import SectionHeading from './SectionHeading';
 import ScrollFadeIn from './ScrollFadeIn';
-import { getAiCategories, getServiceCategories } from '@/lib/data';
 
 interface ServiceItem {
   title: string;
@@ -173,25 +172,6 @@ const industriesCards = [
 ];
 
 export default function AllServicesPage() {
-  const allPracticeHubs = [
-    ...getServiceCategories().map((cat) => ({
-      title: cat.title,
-      href: `/services/${cat.slug}`,
-      services: cat.services.map((s) => ({
-        title: s.title,
-        href: `/services/${cat.slug}/${s.slug}`,
-      })),
-    })),
-    ...getAiCategories().map((cat) => ({
-      title: cat.title,
-      href: `/ai/${cat.slug}`,
-      services: cat.services.map((s) => ({
-        title: s.title,
-        href: `/ai/${cat.slug}/${s.slug}`,
-      })),
-    })),
-  ];
-
   return (
     <div className="min-h-screen bg-transparent">
       {/* 1. Services Hero Section */}
@@ -263,58 +243,7 @@ export default function AllServicesPage() {
         ))}
       </div>
 
-      {/* 3. Specialized Practice Areas & Full Capability Index (Ensures 100% Crawl Discoverability) */}
-      <section className="py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8 border-y border-border/40 bg-zinc-50/60 dark:bg-zinc-900/30">
-        <div className="max-w-[95rem] mx-auto">
-          <SectionHeading
-            lines={[
-              'Practice Areas & <span class="text-cyan-gradient font-medium inline-block">Specialized Capabilities</span>',
-            ]}
-            subheading="Browse our full directory of software engineering, cloud modernization, advisory, and applied AI practice areas."
-            align="left"
-            subheadingMaxWidth="max-w-2xl"
-            subheadingClassName="text-sm sm:text-base text-foreground/70 dark:text-zinc-300 leading-relaxed font-normal"
-            className="mb-12 sm:mb-14"
-          />
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {allPracticeHubs.map((hub) => (
-              <div
-                key={hub.href}
-                className="rounded-3xl bg-white dark:bg-card border border-border/50 p-6 flex flex-col justify-between shadow-sm hover:border-darkTeal/40 transition-colors"
-              >
-                <div>
-                  <Link
-                    href={hub.href}
-                    className="group inline-flex items-center justify-between gap-2 w-full mb-4 pb-3 border-b border-border/40"
-                  >
-                    <h3 className="text-base sm:text-lg font-bold font-headline text-foreground group-hover:text-darkTeal transition-colors leading-snug">
-                      {hub.title}
-                    </h3>
-                    <ArrowUpRight className="w-4 h-4 text-foreground/50 group-hover:text-darkTeal shrink-0 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                  </Link>
-
-                  <ul className="space-y-2.5">
-                    {hub.services.map((svc) => (
-                      <li key={svc.href}>
-                        <Link
-                          href={svc.href}
-                          className="text-xs sm:text-sm text-foreground/75 hover:text-darkTeal dark:hover:text-primary transition-colors flex items-start gap-2 leading-snug"
-                        >
-                          <span className="w-1.5 h-1.5 rounded-full bg-primary/70 shrink-0 mt-1.5" />
-                          <span>{svc.title}</span>
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 4. Industries We Serve Section */}
+      {/* 3. Industries We Serve Section */}
       <section className="py-20 sm:py-24 md:py-28 px-4 sm:px-6 lg:px-8 bg-transparent">
         <div className="max-w-[95rem] mx-auto">
           <SectionHeading
