@@ -369,7 +369,7 @@ export default function PartnersPageContent() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto items-stretch">
             {processSteps.map((step, idx) => (
               <ScrollFadeIn key={step.number} delay={idx * 100} className="h-full">
-                <div className="group relative rounded-3xl bg-white text-zinc-900 border-0 flex flex-col justify-between shadow-[0_10px_35px_rgba(0,0,0,0.12)] hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 overflow-hidden h-full">
+                <div className="group relative rounded-3xl bg-white text-zinc-900 border border-zinc-200/80 flex flex-col justify-between shadow-[0_10px_35px_rgba(0,0,0,0.08)] hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 overflow-hidden h-full">
                   <div className="p-6 sm:p-7 pb-4 sm:pb-5">
                     <div className="flex items-center justify-between mb-4 sm:mb-5">
                       <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-darkTeal flex items-center justify-center shadow-md flex-shrink-0 transition-transform duration-300 group-hover:scale-105">

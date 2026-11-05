@@ -217,7 +217,7 @@ export const detailedServices: Record<string, DetailedServiceData> = {
  },
  {
  title: 'Focus on Quality',
- description: 'Rigorous testing and QA processes ensure flawless performance.',
+ description: 'Rigorous testing and automated QA processes ensure resilient, zero-regression performance.',
  stat: { value: '99.9%', label: 'Uptime Guaranteed' }
  }
  ],
@@ -331,7 +331,7 @@ export const detailedServices: Record<string, DetailedServiceData> = {
  whyUsCards: [
  { title: 'Proven Track Record', description: 'Successfully delivered complex projects across multiple industries.', icon: 'CheckCircle2' },
  { title: 'Expert Team', description: 'A dedicated team of senior developers, architects, and designers.', icon: 'Users' },
- { title: 'Focus on Quality', description: 'Rigorous testing and QA processes ensure flawless performance.', icon: 'Award' }
+ { title: 'Focus on Quality', description: 'Rigorous testing and automated QA processes ensure resilient, zero-regression performance.', icon: 'Award' }
  ],
  industriesDescription: "Our expertise in mobile app development serves a diverse range of sectors, providing tailored solutions that address unique business challenges.",
  industriesCtaText: 'View All Industries',
@@ -425,7 +425,7 @@ export const detailedServices: Record<string, DetailedServiceData> = {
  whyUsCards: [
  { title: 'Proven Track Record', description: 'Successfully delivered complex projects across multiple industries.', icon: 'CheckCircle2' },
  { title: 'Expert Team', description: 'A dedicated team of senior developers, architects, and designers.', icon: 'Users' },
- { title: 'Focus on Quality', description: 'Rigorous testing and QA processes ensure flawless performance.', icon: 'Award' }
+ { title: 'Focus on Quality', description: 'Rigorous testing and automated QA processes ensure resilient, zero-regression performance.', icon: 'Award' }
  ],
  industriesDescription: "Our expertise in custom software development serves a diverse range of sectors, providing tailored solutions that address unique business challenges.",
  industriesCtaText: 'View All Industries',
@@ -537,7 +537,7 @@ export const detailedServices: Record<string, DetailedServiceData> = {
  whyUsCards: [
  { title: 'Proven Track Record', description: 'Successfully delivered complex projects across multiple industries.', icon: 'CheckCircle2' },
  { title: 'Expert Team', description: 'A dedicated team of senior developers, architects, and designers.', icon: 'Users' },
- { title: 'Focus on Quality', description: 'Rigorous testing and QA processes ensure flawless performance.', icon: 'Award' }
+ { title: 'Focus on Quality', description: 'Rigorous testing and automated QA processes ensure resilient, zero-regression performance.', icon: 'Award' }
  ],
  industriesDescription: "Our expertise in ui ux design serves a diverse range of sectors, providing tailored solutions that address unique business challenges.",
  industriesCtaText: 'View All Industries',
@@ -628,7 +628,7 @@ export const detailedServices: Record<string, DetailedServiceData> = {
  whyUsCards: [
  { title: 'Proven Track Record', description: 'Successfully delivered complex projects across multiple industries.', icon: 'CheckCircle2' },
  { title: 'Expert Team', description: 'A dedicated team of senior developers, architects, and designers.', icon: 'Users' },
- { title: 'Focus on Quality', description: 'Rigorous testing and QA processes ensure flawless performance.', icon: 'Award' }
+ { title: 'Focus on Quality', description: 'Rigorous testing and automated QA processes ensure resilient, zero-regression performance.', icon: 'Award' }
  ],
 
 },
@@ -848,7 +848,7 @@ export const detailedServices: Record<string, DetailedServiceData> = {
  whyUsCards: [
  { title: 'Proven Track Record', description: 'Successfully delivered complex projects across multiple industries.', icon: 'CheckCircle2' },
  { title: 'Expert Team', description: 'A dedicated team of senior developers, architects, and designers.', icon: 'Users' },
- { title: 'Focus on Quality', description: 'Rigorous testing and QA processes ensure flawless performance.', icon: 'Award' }
+ { title: 'Focus on Quality', description: 'Rigorous testing and automated QA processes ensure resilient, zero-regression performance.', icon: 'Award' }
  ],
  industriesDescription: "Our expertise in saas development serves a diverse range of sectors, providing tailored solutions that address unique business challenges.",
  industriesCtaText: 'View All Industries',
@@ -947,7 +947,7 @@ export const detailedServices: Record<string, DetailedServiceData> = {
  whyUsCards: [
  { title: 'Proven Track Record', description: 'Successfully delivered complex projects across multiple industries.', icon: 'CheckCircle2' },
  { title: 'Expert Team', description: 'A dedicated team of senior developers, architects, and designers.', icon: 'Users' },
- { title: 'Focus on Quality', description: 'Rigorous testing and QA processes ensure flawless performance.', icon: 'Award' }
+ { title: 'Focus on Quality', description: 'Rigorous testing and automated QA processes ensure resilient, zero-regression performance.', icon: 'Award' }
  ],
  industriesDescription: "Our expertise in cloud transformation serves a diverse range of sectors, providing tailored solutions that address unique business challenges.",
  industriesCtaText: 'View All Industries',
@@ -1039,7 +1039,7 @@ export const detailedServices: Record<string, DetailedServiceData> = {
  whyUsCards: [
  { title: 'Proven Track Record', description: 'Successfully delivered complex projects across multiple industries.', icon: 'CheckCircle2' },
  { title: 'Expert Team', description: 'A dedicated team of senior developers, architects, and designers.', icon: 'Users' },
- { title: 'Focus on Quality', description: 'Rigorous testing and QA processes ensure flawless performance.', icon: 'Award' }
+ { title: 'Focus on Quality', description: 'Rigorous testing and automated QA processes ensure resilient, zero-regression performance.', icon: 'Award' }
  ],
  industriesDescription: "Our expertise in digital consulting strategy serves a diverse range of sectors, providing tailored solutions that address unique business challenges.",
  industriesCtaText: 'View All Industries',
@@ -1137,7 +1137,7 @@ export const detailedServices: Record<string, DetailedServiceData> = {
  whyUsCards: [
  { title: 'Proven Track Record', description: 'Successfully delivered complex projects across multiple industries.', icon: 'CheckCircle2' },
  { title: 'Expert Team', description: 'A dedicated team of senior developers, architects, and designers.', icon: 'Users' },
- { title: 'Focus on Quality', description: 'Rigorous testing and QA processes ensure flawless performance.', icon: 'Award' }
+ { title: 'Focus on Quality', description: 'Rigorous testing and automated QA processes ensure resilient, zero-regression performance.', icon: 'Award' }
  ],
  industriesDescription: "Our expertise in business applications serves a diverse range of sectors, providing tailored solutions that address unique business challenges.",
  industriesCtaText: 'View All Industries',
@@ -1249,7 +1249,7 @@ export const detailedServices: Record<string, DetailedServiceData> = {
  whyUsCards: [
  { title: 'Proven Track Record', description: 'Successfully delivered complex projects across multiple industries.', icon: 'CheckCircle2' },
  { title: 'Expert Team', description: 'A dedicated team of senior developers, architects, and designers.', icon: 'Users' },
- { title: 'Focus on Quality', description: 'Rigorous testing and QA processes ensure flawless performance.', icon: 'Award' }
+ { title: 'Focus on Quality', description: 'Rigorous testing and automated QA processes ensure resilient, zero-regression performance.', icon: 'Award' }
  ],
 },
  'cybersecurity-compliance': {
@@ -1342,7 +1342,7 @@ export const detailedServices: Record<string, DetailedServiceData> = {
  whyUsCards: [
  { title: 'Proven Track Record', description: 'Successfully delivered complex projects across multiple industries.', icon: 'CheckCircle2' },
  { title: 'Expert Team', description: 'A dedicated team of senior developers, architects, and designers.', icon: 'Users' },
- { title: 'Focus on Quality', description: 'Rigorous testing and QA processes ensure flawless performance.', icon: 'Award' }
+ { title: 'Focus on Quality', description: 'Rigorous testing and automated QA processes ensure resilient, zero-regression performance.', icon: 'Award' }
  ],
  industriesDescription: "Our expertise in cybersecurity compliance serves a diverse range of sectors, providing tailored solutions that address unique business challenges.",
  industriesCtaText: 'View All Industries',
@@ -1405,7 +1405,7 @@ export const detailedServices: Record<string, DetailedServiceData> = {
  { title: 'Needs Assessment', description: 'Understanding your technical requirements, team culture, and project goals.',
  imageUrl: 'https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&q=80&w=800'
  },
- { title: 'Talent Matching', description: 'Selecting the perfect pre-vetted specialists for your exact needs.',
+ { title: 'Talent Matching', description: 'Selecting specialized pre-vetted engineers aligned with your architectural roadmap.',
  imageUrl: 'https://images.unsplash.com/photo-1542744095-fcf48d80b0fd?auto=format&fit=crop&q=80&w=800'
  },
  { title: 'Onboarding & Integration', description: 'Seamlessly integrating our talent into your communication channels and workflows.',
@@ -1441,7 +1441,7 @@ export const detailedServices: Record<string, DetailedServiceData> = {
  whyUsCards: [
  { title: 'Proven Track Record', description: 'Successfully delivered complex projects across multiple industries.', icon: 'CheckCircle2' },
  { title: 'Expert Team', description: 'A dedicated team of senior developers, architects, and designers.', icon: 'Users' },
- { title: 'Focus on Quality', description: 'Rigorous testing and QA processes ensure flawless performance.', icon: 'Award' }
+ { title: 'Focus on Quality', description: 'Rigorous testing and automated QA processes ensure resilient, zero-regression performance.', icon: 'Award' }
  ],
  industriesDescription: "Our expertise in staff augmentation offshoring serves a diverse range of sectors, providing tailored solutions that address unique business challenges.",
  industriesCtaText: 'View All Industries',
@@ -1506,7 +1506,7 @@ export const detailedServices: Record<string, DetailedServiceData> = {
  },
  {
  title: 'Integration & Testing',
- description: 'We connect inventory and payment systems, ensuring flawless transaction flows.',
+ description: 'We connect inventory and payment systems, ensuring idempotent, zero-failure transaction flows.',
  imageUrl: 'https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&q=80&w=800',
  },
  {
@@ -1636,7 +1636,7 @@ export const detailedServices: Record<string, DetailedServiceData> = {
  },
  {
  title: 'Mobile-First Approach',
- description: 'Flawless shopping experiences on any device.',
+ description: 'High-performance, responsive commerce experiences engineered across all form factors.',
  stat: { value: '100%', label: 'Responsive' }
  },
  {
@@ -2059,8 +2059,8 @@ export const detailedServices: Record<string, DetailedServiceData> = {
  },
  {
  title: 'Seamless Integrations',
- description: 'We keep your ERP, CRM, and fulfillment tools perfectly synced.',
- stat: { value: 'Flawless', label: 'Sync' }
+ description: 'We keep your ERP, CRM, and fulfillment tools synchronized with sub-second bi-directional consistency.',
+ stat: { value: 'Real-Time', label: 'Sync Architecture' }
  }
  ],
  techStackTitle: 'Supported Platforms',
@@ -2322,7 +2322,7 @@ export const detailedServices: Record<string, DetailedServiceData> = {
       imageUrl: 'https://plus.unsplash.com/premium_photo-1683120963435-6f9355d4a776?auto=format&fit=crop&q=80&w=1200',
       heading: 'Bespoke AI Engineering',
  paragraphs: [
- 'Off-the-shelf AI solutions rarely address the unique complexities of a specific business. To gain a true competitive advantage, organizations need bespoke AI applications engineered to integrate flawlessly with their existing systems and operational workflows.',
+ 'Off-the-shelf AI solutions rarely address the unique complexities of a specific business. To gain a true competitive advantage, organizations need bespoke AI applications engineered to integrate seamlessly with their enterprise infrastructure and operational workflows.',
  'Our engineering teams build custom, end-to-end AI applications. From specialized machine learning models to intelligent web applications, we focus on performance, scalability, and delivering measurable business value.'
  ],
  points: [

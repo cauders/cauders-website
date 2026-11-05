@@ -135,7 +135,7 @@ export const industryDetails: Record<string, DetailedIndustryData> = {
  },
  {
  title: 'Business Alignment',
- description: 'Our custom software can be perfectly aligned to your business goals, both short-term and long-term. No wasted features and over- or under-fitting make it leaner and more potent.',
+ description: 'Our custom software is engineered to align with your business goals, both short-term and long-term. Lean, purposeful architecture prevents bloat and accelerates time-to-value.',
  icon: 'BarChart3'
  },
  {
@@ -718,7 +718,7 @@ export const industryDetails: Record<string, DetailedIndustryData> = {
  }
  ]
  },
- industryRevolution: 'The software industry is highly competitive, where speed to market meets the need for rock-solid reliability. At Cauders, we empower tech companies with expert engineering bandwidth, from building complex microservices and AI integrations to establishing robust CI/CD pipelines. Our expertise ensures your product scales seamlessly, performs flawlessly, and remains maintainable. By combining technical mastery with agile delivery, we help software leaders stay competitive in a fast-evolving landscape.',
+ industryRevolution: 'The software industry is highly competitive, where speed to market meets the need for rock-solid reliability. At Cauders, we empower tech companies with expert engineering bandwidth, from building complex microservices and AI integrations to establishing robust CI/CD pipelines. Our expertise ensures your product scales reliably, delivers deterministic low latency, and remains maintainable. By combining technical mastery with agile delivery, we help software leaders stay competitive in a fast-evolving landscape.',
  challenges: {
  title: 'Key challenges of software product companies',
  intro: 'Cauders understands the complexity of product engineering and the need for solutions that address critical technical challenges:',
@@ -854,7 +854,7 @@ export const industryDetails: Record<string, DetailedIndustryData> = {
 
  whyChooseUs: {
  title: 'How we deliver for fast-moving startups',
- intro: 'Cauders has been assisting founders with their software needs for years. Our agile approach makes us the perfect technical partner for your startup.',
+ intro: 'Cauders has been assisting founders with their software needs for years. Our agile approach makes us an ideal technical partner for scaling startups.',
  items: [
  {
  title: 'Startup speed & agility',
