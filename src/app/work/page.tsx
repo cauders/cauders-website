@@ -1,5 +1,5 @@
-import { redirect } from 'next/navigation';
+import { permanentRedirect } from 'next/navigation';
 
-export default function WorkRedirectPage() {
-  redirect('/case-studies');
+export default function WorkPage() {
+  permanentRedirect('/case-studies');
 }

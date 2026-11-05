@@ -1,10 +1,9 @@
-'use client';
-
-import React, { useState, useRef } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowDown, ArrowRight, GitMerge, Workflow, Cpu, Layers, Sparkles, ChevronDown } from 'lucide-react';
+import { ArrowDown, ArrowRight, GitMerge, Workflow, Cpu, Layers, Sparkles } from 'lucide-react';
 import ArrowBadge from './ArrowBadge';
+import ApproachAccordion from './ApproachAccordion';
 import SectionHeading from './SectionHeading';
 import DarkTealButton from './DarkTealButton';
 import ScrollFadeIn from './ScrollFadeIn';
@@ -13,14 +12,6 @@ import ZincGradientContainer from './ZincGradientContainer';
 import GeometricZincContainer from './GeometricZincContainer';
 import FAQPreview, { FAQ } from './FAQPreview';
 import GetAQuote from './GetAQuote';
-import Autoplay from 'embla-carousel-autoplay';
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
 import { typography } from '@/lib/typography';
 import { cn } from '@/lib/utils';
 import CaseStudiesSection from './CaseStudiesSection';
@@ -107,28 +98,28 @@ const approachSteps = [
     title: 'Discover & Align',
     description: 'We learn about your business goals, users, workflows, existing systems, and the constraints that need to be considered. This helps establish the broader context around the work and the outcomes it needs to support. Early discovery ensures technical decisions align directly with your operational objectives.',
     establishes: 'A shared understanding of the problem and what the software needs to accomplish.',
-    image: 'https://res.cloudinary.com/cauders/image/upload/v1792770098/Discover_Align_vp2l9d.jpg',
+    image: 'https://res.cloudinary.com/cauders/image/upload/f_auto,q_auto,w_900/v1792770098/Discover_Align_vp2l9d.jpg',
   },
   {
     number: '02',
     title: 'Define the Scope & Solution',
     description: 'We clarify requirements, prioritize functionality, map relevant workflows, and determine the technical approach. Where needed, we also define the user journeys and interface structure. Dependencies, assumptions, and key delivery considerations are identified before implementation begins.',
     establishes: 'A clearer view of what will be built, how it should work, and what falls within the agreed scope.',
-    image: 'https://res.cloudinary.com/cauders/image/upload/v1792770100/Plan_Design_rf0t2h.jpg',
+    image: 'https://res.cloudinary.com/cauders/image/upload/f_auto,q_auto,w_900/v1792770100/Plan_Design_rf0t2h.jpg',
   },
   {
     number: '03',
     title: 'Build & Integrate',
     description: 'We develop the agreed functionality, connect the necessary systems, and address technical dependencies as the application takes shape. Relevant integrations, data flows, and operational requirements are incorporated throughout development. Continuous validation ensures every component functions reliably within your live ecosystem.',
     establishes: 'Working software developed against the agreed requirements.',
-    image: 'https://res.cloudinary.com/cauders/image/upload/v1792770102/Build_Integrate_egvjcw.jpg',
+    image: 'https://res.cloudinary.com/cauders/image/upload/f_auto,q_auto,w_900/v1792770102/Build_Integrate_egvjcw.jpg',
   },
   {
     number: '04',
     title: 'Validate & Handover',
     description: 'We validate key functionality and integrations, address identified issues, and prepare the agreed handover materials. Documentation and operational considerations are reviewed to support a smooth transition. Your team receives full ownership with complete guidance for ongoing management and evolution.',
     establishes: 'A reviewed solution and clarity on what has been delivered and how to proceed.',
-    image: 'https://res.cloudinary.com/cauders/image/upload/v1792770100/Validate_Handover_e9gotj.jpg',
+    image: 'https://res.cloudinary.com/cauders/image/upload/f_auto,q_auto,w_900/v1792770100/Validate_Handover_e9gotj.jpg',
   },
 ];
 
@@ -137,18 +128,6 @@ export default function CustomSoftwareHero({
   badgeHref = '#overview',
   className,
 }: CustomSoftwareHeroProps) {
-  const [activeApproachIndex, setActiveApproachIndex] = useState<number>(0);
-  const autoplayPlugin = useRef(
-    Autoplay({ delay: 4000, stopOnInteraction: false, stopOnMouseEnter: true })
-  );
-
-  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
-    e.preventDefault();
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
 
   return (
     <div className={cn('relative w-full bg-gradient-to-b from-white via-white to-transparent', className)}>
@@ -156,17 +135,20 @@ export default function CustomSoftwareHero({
       <div className="relative w-full min-h-[630px] sm:min-h-[690px] lg:min-h-[770px] xl:min-h-[830px] bg-transparent flex items-center pt-24 pb-16 sm:pt-28 sm:pb-20 lg:pt-32 lg:pb-28 overflow-hidden">
         {/* Background image container: zoomed out (scaled down) so more of the 3D illustration is in view */}
         <div className="absolute top-0 right-0 bottom-0 w-full lg:w-[68%] xl:w-[64%] flex items-center justify-end overflow-hidden pointer-events-none select-none z-0">
-          <img
-            src="https://res.cloudinary.com/cauders/image/upload/v1792756284/Gemini_Generated_Image_r7235xr7235xr723_1_nzh1lg.png"
+          <Image
+            src="https://res.cloudinary.com/cauders/image/upload/f_auto,q_auto,w_1600/v1792756284/Gemini_Generated_Image_r7235xr7235xr723_1_nzh1lg.png"
             alt="Custom Software Development"
-            className="w-full h-full object-cover object-left lg:object-contain lg:object-right max-w-none opacity-90 lg:opacity-100 scale-90 lg:scale-[0.88] origin-right"
+            fill
+            priority
+            sizes="(max-width: 1024px) 100vw, 68vw"
+            className="object-cover object-left lg:object-contain lg:object-right opacity-90 lg:opacity-100 scale-90 lg:scale-[0.88] origin-right"
             style={{
               maskImage: 'linear-gradient(to right, transparent 0%, rgba(0,0,0,0.4) 10%, rgba(0,0,0,1) 28%), linear-gradient(to bottom, black 72%, transparent 100%)',
               WebkitMaskImage: 'linear-gradient(to right, transparent 0%, rgba(0,0,0,0.4) 10%, rgba(0,0,0,1) 28%), linear-gradient(to bottom, black 72%, transparent 100%)',
               maskComposite: 'intersect',
               WebkitMaskComposite: 'destination-in',
             }}
-          loading="lazy" decoding="async" />
+          />
         </div>
 
         {/* Content on the left side of the hero */}
@@ -218,7 +200,7 @@ export default function CustomSoftwareHero({
             <div className="relative w-full rounded-[2rem] sm:rounded-[2.5rem] lg:rounded-[3rem] overflow-hidden shadow-[0_20px_50px_rgba(0,45,40,0.22)]">
               {/* Image that covers the entire container */}
               <img
-                src="https://res.cloudinary.com/cauders/image/upload/v1792756273/Frame_4661_c7d5nj.png"
+                src="https://res.cloudinary.com/cauders/image/upload/f_auto,q_auto,w_1600/v1792756273/Frame_4661_c7d5nj.png"
                 alt="When Off-the-Shelf Software Doesn't Fit"
                 className="w-full h-auto block select-none pointer-events-none"
               loading="lazy" decoding="async" />
@@ -252,7 +234,7 @@ export default function CustomSoftwareHero({
       </div>
 
       {/* ================= WHEN CUSTOM SOFTWARE MAKES SENSE SECTION ================= */}
-      <section className="relative z-20 w-full pt-12 sm:pt-16 md:pt-20 pb-16 sm:pb-24 px-4 sm:px-6 lg:px-8 bg-transparent">
+      <section id="overview" className="relative z-20 w-full pt-12 sm:pt-16 md:pt-20 pb-16 sm:pb-24 px-4 sm:px-6 lg:px-8 bg-transparent">
         <div className="max-w-[95rem] mx-auto">
           {/* Centered Heading and Subheading */}
           <SectionHeading
@@ -356,16 +338,16 @@ export default function CustomSoftwareHero({
               <ScrollSpyItem>
                 <div className="pb-8 lg:pb-12 border-b border-border flex items-center justify-between gap-6 sm:gap-8">
                   <div className="flex-1 max-w-lg">
-                    <h4 className="text-lg sm:text-xl md:text-2xl font-semibold font-headline text-foreground mb-2 sm:mb-3 tracking-tight">
+                    <h3 className="text-lg sm:text-xl md:text-2xl font-semibold font-headline text-foreground mb-2 sm:mb-3 tracking-tight">
                       Business Applications
-                    </h4>
+                    </h3>
                     <p className="text-foreground/75 font-normal text-sm sm:text-base leading-relaxed">
                       Applications that support internal operations, business processes, and specialized requirements.
                     </p>
                   </div>
                   <div className="w-28 h-28 sm:w-36 sm:h-36 lg:w-40 lg:h-40 flex-shrink-0 flex items-center justify-center">
                     <img
-                      src="https://res.cloudinary.com/cauders/image/upload/v1792808336/Business_Applications-Photoroom_t53gbo.png"
+                      src="https://res.cloudinary.com/cauders/image/upload/f_auto,q_auto,w_400/v1792808336/Business_Applications-Photoroom_t53gbo.png"
                       alt="Business Applications"
                       className="w-full h-full object-contain select-none pointer-events-none drop-shadow-sm transition-transform duration-300 hover:scale-105"
                     loading="lazy" decoding="async" />
@@ -377,16 +359,16 @@ export default function CustomSoftwareHero({
               <ScrollSpyItem>
                 <div className="py-8 lg:py-12 border-b border-border flex items-center justify-between gap-6 sm:gap-8">
                   <div className="flex-1 max-w-lg">
-                    <h4 className="text-lg sm:text-xl md:text-2xl font-semibold font-headline text-foreground mb-2 sm:mb-3 tracking-tight">
+                    <h3 className="text-lg sm:text-xl md:text-2xl font-semibold font-headline text-foreground mb-2 sm:mb-3 tracking-tight">
                       Customer &amp; Partner Portals
-                    </h4>
+                    </h3>
                     <p className="text-foreground/75 font-normal text-sm sm:text-base leading-relaxed">
                       Digital interfaces that let customers, partners, or other users access relevant information and complete specific tasks.
                     </p>
                   </div>
                   <div className="w-28 h-28 sm:w-36 sm:h-36 lg:w-40 lg:h-40 flex-shrink-0 flex items-center justify-center">
                     <img
-                      src="https://res.cloudinary.com/cauders/image/upload/v1792808331/Customer_Partner_Portals-Photoroom_myhnd7.png"
+                      src="https://res.cloudinary.com/cauders/image/upload/f_auto,q_auto,w_400/v1792808331/Customer_Partner_Portals-Photoroom_myhnd7.png"
                       alt="Customer & Partner Portals"
                       className="w-full h-full object-contain select-none pointer-events-none drop-shadow-sm transition-transform duration-300 hover:scale-105"
                     loading="lazy" decoding="async" />
@@ -398,16 +380,16 @@ export default function CustomSoftwareHero({
               <ScrollSpyItem>
                 <div className="py-8 lg:py-12 border-b border-border flex items-center justify-between gap-6 sm:gap-8">
                   <div className="flex-1 max-w-lg">
-                    <h4 className="text-lg sm:text-xl md:text-2xl font-semibold font-headline text-foreground mb-2 sm:mb-3 tracking-tight">
+                    <h3 className="text-lg sm:text-xl md:text-2xl font-semibold font-headline text-foreground mb-2 sm:mb-3 tracking-tight">
                       Workflow &amp; Operations Systems
-                    </h4>
+                    </h3>
                     <p className="text-foreground/75 font-normal text-sm sm:text-base leading-relaxed">
                       Applications that organize tasks, apply business rules, manage approvals, and support day-to-day operations.
                     </p>
                   </div>
                   <div className="w-28 h-28 sm:w-36 sm:h-36 lg:w-40 lg:h-40 flex-shrink-0 flex items-center justify-center">
                     <img
-                      src="https://res.cloudinary.com/cauders/image/upload/v1792808333/Workflow_Operations_Systems-Photoroom_hqp0xn.png"
+                      src="https://res.cloudinary.com/cauders/image/upload/f_auto,q_auto,w_400/v1792808333/Workflow_Operations_Systems-Photoroom_hqp0xn.png"
                       alt="Workflow & Operations Systems"
                       className="w-full h-full object-contain select-none pointer-events-none drop-shadow-sm transition-transform duration-300 hover:scale-105"
                     loading="lazy" decoding="async" />
@@ -419,16 +401,16 @@ export default function CustomSoftwareHero({
               <ScrollSpyItem>
                 <div className="pt-8 lg:pt-12 flex items-center justify-between gap-6 sm:gap-8">
                   <div className="flex-1 max-w-lg">
-                    <h4 className="text-lg sm:text-xl md:text-2xl font-semibold font-headline text-foreground mb-2 sm:mb-3 tracking-tight">
+                    <h3 className="text-lg sm:text-xl md:text-2xl font-semibold font-headline text-foreground mb-2 sm:mb-3 tracking-tight">
                       Specialized Software Solutions
-                    </h4>
+                    </h3>
                     <p className="text-foreground/75 font-normal text-sm sm:text-base leading-relaxed">
                       Tools and platforms built for requirements that existing products or standard configurations don&apos;t adequately address.
                     </p>
                   </div>
                   <div className="w-28 h-28 sm:w-36 sm:h-36 lg:w-40 lg:h-40 flex-shrink-0 flex items-center justify-center">
                     <img
-                      src="https://res.cloudinary.com/cauders/image/upload/v1792808334/Specialized_Software_Solutions-Photoroom_jrol0x.png"
+                      src="https://res.cloudinary.com/cauders/image/upload/f_auto,q_auto,w_400/v1792808334/Specialized_Software_Solutions-Photoroom_jrol0x.png"
                       alt="Specialized Software Solutions"
                       className="w-full h-full object-contain select-none pointer-events-none drop-shadow-sm transition-transform duration-300 hover:scale-105"
                     loading="lazy" decoding="async" />
@@ -468,105 +450,7 @@ export default function CustomSoftwareHero({
           </div>
 
           {/* 4 Cards: Accordion on hover/click, Card 0 expanded by default, only 1 open at a time */}
-          <div className="flex flex-col gap-3 sm:gap-4">
-            {approachSteps.map((step, idx) => {
-              const isExpanded = activeApproachIndex === idx;
-
-              return (
-                <div
-                  key={step.number}
-                  onMouseEnter={() => setActiveApproachIndex(idx)}
-                  onClick={() => setActiveApproachIndex(idx)}
-                  className={cn(
-                    "w-full rounded-2xl sm:rounded-3xl bg-white text-zinc-900 cursor-pointer overflow-hidden shadow-[0_12px_45px_rgba(0,35,30,0.14)] transition-all duration-500 ease-out",
-                    isExpanded 
-                      ? "shadow-[0_20px_50px_rgba(0,35,30,0.22)]" 
-                      : "hover:shadow-2xl"
-                  )}
-                >
-                  {isExpanded ? (
-                    /* Expanded Card View: clean, direct rendering without cross-fade */
-                    <div className="relative min-h-[350px] sm:min-h-[380px] lg:min-h-[400px] flex flex-col justify-between overflow-hidden">
-                      {/* Top content on the left */}
-                      <div className="pt-8 px-8 sm:pt-10 sm:px-10 lg:pt-11 lg:px-12 pb-6 max-w-xl sm:max-w-2xl lg:max-w-[46rem] z-20">
-                        <span className="font-headline font-medium text-4xl sm:text-5xl lg:text-6xl text-zinc-300 mb-5 sm:mb-6 lg:mb-7 block select-none tracking-tight">
-                          {step.number}
-                        </span>
-                        <h3 className="text-2xl sm:text-3xl lg:text-[2rem] font-semibold font-headline text-black tracking-tight mb-3 leading-snug">
-                          {step.title}
-                        </h3>
-                        <p className="text-sm sm:text-base text-zinc-700 font-normal leading-relaxed">
-                          {step.description}
-                        </p>
-                      </div>
-
-                      {/* Bottom Container: #F8F8F8 sits across the bottom behind the image */}
-                      <div className="w-full bg-[#F8F8F8] px-8 py-5 sm:px-10 sm:py-6 lg:px-12 lg:py-6 z-10">
-                        <div className="max-w-xl sm:max-w-2xl lg:max-w-[46rem]">
-                          <span className="block text-xs sm:text-sm font-semibold text-[#09555A] mb-1 tracking-tight">
-                            What this establishes:
-                          </span>
-                          <p className="text-xs sm:text-sm text-zinc-700 font-normal leading-relaxed">
-                            {step.establishes}
-                          </p>
-                        </div>
-                      </div>
-
-                      {/* 3D Illustration on top (z-20): Left side has an intense, wide transparency fade forcing a seamless blend */}
-                      <div 
-                        className="absolute top-0 right-0 bottom-0 w-[54%] sm:w-[56%] lg:w-[52%] flex items-center justify-end overflow-hidden pointer-events-none select-none z-20"
-                        style={{
-                          WebkitMaskImage: 'linear-gradient(to right, transparent 0%, transparent 12%, rgba(0,0,0,0.1) 25%, rgba(0,0,0,0.4) 42%, rgba(0,0,0,0.85) 58%, #000 68%)',
-                          maskImage: 'linear-gradient(to right, transparent 0%, transparent 12%, rgba(0,0,0,0.1) 25%, rgba(0,0,0,0.4) 42%, rgba(0,0,0,0.85) 58%, #000 68%)',
-                        }}
-                      >
-                        <img
-                          src={step.image}
-                          alt={step.title}
-                          className="w-full h-full object-contain object-right select-none pointer-events-none scale-105 sm:scale-100"
-                          style={{
-                            WebkitMaskImage: 'linear-gradient(to right, transparent 0%, transparent 12%, rgba(0,0,0,0.1) 25%, rgba(0,0,0,0.4) 42%, rgba(0,0,0,0.85) 58%, #000 68%)',
-                            maskImage: 'linear-gradient(to right, transparent 0%, transparent 12%, rgba(0,0,0,0.1) 25%, rgba(0,0,0,0.4) 42%, rgba(0,0,0,0.85) 58%, #000 68%)',
-                          }}
-                        loading="lazy" decoding="async" />
-                      </div>
-                    </div>
-                  ) : (
-                    /* Collapsed Strip View */
-                    <div className="relative h-24 sm:h-28 lg:h-32 flex items-center justify-between pr-8 sm:pr-10 lg:pr-12 overflow-hidden">
-                      {/* Left: Bleed 3D illustration spanning full vertical height, faded directly on its right edge */}
-                      <div className="flex items-center gap-6 sm:gap-8 lg:gap-12 h-full min-w-0">
-                        <div 
-                          className="h-full w-36 sm:w-44 lg:w-52 flex-shrink-0 flex items-center justify-start overflow-hidden"
-                          style={{
-                            WebkitMaskImage: 'linear-gradient(to right, #000 60%, rgba(0,0,0,0.6) 80%, transparent 100%)',
-                            maskImage: 'linear-gradient(to right, #000 60%, rgba(0,0,0,0.6) 80%, transparent 100%)',
-                          }}
-                        >
-                          <img
-                            src={step.image}
-                            alt=""
-                            className="w-full h-full object-cover object-left select-none pointer-events-none scale-110"
-                          loading="lazy" decoding="async" />
-                        </div>
-                        <span className="font-headline font-medium text-4xl sm:text-5xl lg:text-6xl text-zinc-300 select-none tracking-tight">
-                          {step.number}
-                        </span>
-                        <h4 className="text-xl sm:text-2xl lg:text-[1.75rem] font-semibold font-headline text-black tracking-tight truncate">
-                          {step.title}
-                        </h4>
-                      </div>
-
-                      {/* Right: Subtle expand chevron */}
-                      <div className="flex-shrink-0 text-zinc-300">
-                        <ChevronDown className="w-7 h-7 sm:w-8 sm:h-8 stroke-[1.75] transition-transform duration-300" />
-                      </div>
-                    </div>
-                  )}
-                </div>
-              );
-            })}
-          </div>
+          <ApproachAccordion steps={approachSteps} />
         </div>
       </section>
 
@@ -581,7 +465,7 @@ export default function CustomSoftwareHero({
       
 
       {/* ================= DELIVERABLES: WHAT TO EXPECT FROM DELIVERY ================= */}
-      <GeometricZincContainer zoomScale={1.3}>
+      <GeometricZincContainer id="deliverables" zoomScale={1.3}>
         <div className="relative z-10 max-w-[88rem] mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 md:py-24">
           {/* Section Header: ArrowBadge + Heading + Subheading */}
           <div className="flex flex-col items-center justify-center text-center max-w-4xl mx-auto mb-12 sm:mb-16">
@@ -644,7 +528,7 @@ export default function CustomSoftwareHero({
                 {/* Enlarged image positioned behind the text and button */}
                 <div className="pointer-events-none absolute -bottom-4 -right-4 w-60 h-48 sm:w-72 sm:h-56 lg:w-80 lg:h-60 z-0 opacity-95 transition-transform duration-300 group-hover:scale-105">
                   <Image
-                    src="https://res.cloudinary.com/cauders/image/upload/v1792813715/Customer-Facing_Applications_unghui.jpg"
+                    src="https://res.cloudinary.com/cauders/image/upload/f_auto,q_auto,w_640/v1792813715/Customer-Facing_Applications_unghui.jpg"
                     alt="Customer-Facing Applications"
                     fill
                     sizes="(max-width: 640px) 240px, (max-width: 1024px) 288px, 320px"

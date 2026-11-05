@@ -1,5 +1,5 @@
-import { redirect } from 'next/navigation';
+import { permanentRedirect } from 'next/navigation';
 
-export default function AiPage() {
-  redirect('/services#ai-automation');
+export default function AiRootPage() {
+  permanentRedirect('/services#ai-automation');
 }

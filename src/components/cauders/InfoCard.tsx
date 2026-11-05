@@ -80,15 +80,15 @@ export default function InfoCard({
               <p className={`text-sm md:text-base text-foreground/80 leading-relaxed transition-all duration-300 ${hoverReveal ? 'line-clamp-2 group-hover:line-clamp-none' : lineClamp !== 'none' ? `group-hover:line-clamp-none ${lineClampClasses[lineClamp]}` : ''} mb-4 ${descriptionClassName}`}>
                 {description}
               </p>
-              <h4 className={`text-xl lg:text-2xl font-medium font-headline text-foreground tracking-tight transition-all duration-300 mt-auto leading-snug ${titleClassName}`}>
+              <h3 className={`text-xl lg:text-2xl font-medium font-headline text-foreground tracking-tight transition-all duration-300 mt-auto leading-snug ${titleClassName}`}>
                 {title}
-              </h4>
+              </h3>
             </>
           ) : (
             <>
-              <h4 className={`text-xl lg:text-2xl font-medium font-headline text-foreground tracking-tight transition-all duration-300 ${contentAlign === 'bottom' ? 'mt-auto mb-2' : contentAlign === 'split' ? 'mb-auto' : 'mb-3'} ${titleClassName}`}>
+              <h3 className={`text-xl lg:text-2xl font-medium font-headline text-foreground tracking-tight transition-all duration-300 ${contentAlign === 'bottom' ? 'mt-auto mb-2' : contentAlign === 'split' ? 'mb-auto' : 'mb-3'} ${titleClassName}`}>
                 {title}
-              </h4>
+              </h3>
               <p className={`text-sm md:text-base text-foreground/80 leading-relaxed transition-all duration-300 ${hoverReveal ? 'line-clamp-2 group-hover:line-clamp-none' : lineClamp !== 'none' ? `group-hover:line-clamp-none ${lineClampClasses[lineClamp]}` : ''} ${contentAlign === 'bottom' || contentAlign === 'split' ? 'mb-0' : 'mb-4'} ${descriptionClassName}`}>
                 {description}
               </p>

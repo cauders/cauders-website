@@ -637,12 +637,12 @@ export const detailedServices: Record<string, DetailedServiceData> = {
  hero: {
  badge: 'GENERATIVE AI',
  title: 'Generative AI Solutions',
- description: 'Harness the full value of AI with our consulting services, helping enterprises navigate AI adoption and implementation through strategies that reduce risk and maximize ROI.',
+ description: 'Design, ground, and integrate enterprise generative AI, RAG pipelines, and LLM applications connected to your internal knowledge and workflows.',
  ctaText: 'Let\'s Connect',
- imageUrl: 'https://res.cloudinary.com/cauders/image/upload/v1792261071/iStock-1458045238-scaled_edgfe2.jpg',
+ imageUrl: 'https://res.cloudinary.com/cauders/image/upload/f_auto,q_auto,w_1600/v1792261071/iStock-1458045238-scaled_edgfe2.jpg',
  },
  overview: {
-    imageUrl: 'https://vafromeurope.com/wp-content/uploads/2026/07/image-for-blog-jul-3-2026-03-24-17-pm.webp',
+    imageUrl: 'https://res.cloudinary.com/cauders/image/upload/f_auto,q_auto,w_1200/v1792905091/GENERATIVE_AI_jam1tu.jpg',
  heading: 'Turning AI Into Measurable Value',
  paragraphs: [
  'AI creates lasting value when it is embedded into how an organization operates, makes decisions, and delivers work. However, applying new technology to outdated processes doesn\'t result in meaningful transformation.',
@@ -680,7 +680,7 @@ export const detailedServices: Record<string, DetailedServiceData> = {
  title: 'AI Readiness & Governance',
  description: 'Evaluate your data and infrastructure while establishing runtime controls that keep every model compliant, auditable, and secure.',
  ctaText: 'Let\'s Discuss',
- imageUrl: 'https://www.crowe.com/-/media/crowe/llp/sc10-media/insights/articles/2024/content-2000x1125/content_2000x1125_csta2500-002f_ai_consult_implement_ai_respon_2135127762_edit.jpg?h=313&iar=0&mw=556&w=556&rev=8a06c150a58c4b83874a70f2945fef38&hash=59D66B1E4D372DE2244A76EFB57FBE32'
+ imageUrl: 'https://res.cloudinary.com/cauders/image/upload/f_auto,q_auto,w_800/v1792905089/Finding_Information_beml1o.jpg'
  }
  ],
  processTitle: 'Our Approach to AI',
@@ -688,7 +688,7 @@ export const detailedServices: Record<string, DetailedServiceData> = {
  {
  title: 'Understand Operating Reality',
  description: 'We start by assessing your existing workflows, roles, friction points, data, technology, and regulatory requirements.',
- imageUrl: 'https://qxincjvpayy6pnt2.public.blob.vercel-storage.com/vikasa/1785725795857-kTJnsUL41UMpGOxyZ0vZNqJKIp8rQnBL-cirRCnlmrNO1DwUtV9uL2B6KcMdfdrwI8VoWnsr5eV51OdYAcMqa6kKgMSc2GWWoEj55tQVPzqVDwVm6CrGy-66Ulydzs7N1Qyke9uJ3L1K-5yAO1E2G94tmEqRTtIK6iJNYubeenA-auQ29Xj4TmwrbkgelccC10nBhBImSD.jpeg',
+ imageUrl: 'https://res.cloudinary.com/cauders/image/upload/f_auto,q_auto,w_900/v1792770098/Discover_Align_vp2l9d.jpg',
  },
  {
  title: 'Identify Opportunities',

@@ -2,32 +2,24 @@ import type { Metadata } from 'next';
 import React from 'react';
 import Link from 'next/link';
 import PolicyLayout, { PolicySectionItem } from '@/components/cauders/PolicyLayout';
+import { buildBreadcrumbJsonLd, buildPageMetadata } from '@/lib/seo';
 
-export const metadata: Metadata = {
-  title: 'Terms of Service | Cauders',
-  description: 'Review the terms and conditions governing the use of the Cauders website, consulting, and professional software engineering services.',
-  alternates: {
-    canonical: '/terms-of-service',
-  },
-  openGraph: {
-    title: 'Terms of Service | Cauders',
-    description: 'Review the terms and conditions governing the use of the Cauders website, consulting, and professional software engineering services.',
-    url: 'https://www.cauders.com/terms-of-service',
-    siteName: 'Cauders',
-    locale: 'en_US',
-    type: 'website',
-  },
-};
+export const metadata: Metadata = buildPageMetadata({
+  title: 'Terms of Service',
+  description:
+    'Review the terms and conditions governing the use of the Cauders website, consulting inquiries, and software engineering services by CAUDERS (PRIVATE) LIMITED.',
+  path: '/terms-of-service',
+});
 
 const termsSections: PolicySectionItem[] = [
   {
-    id: "introduction",
-    title: "Introduction",
+    id: 'introduction',
+    title: 'Introduction',
     content: (
       <>
         <p>
           These Terms of Service (&quot;Terms&quot;) govern your access to and use of the Cauders website at{' '}
-          <Link href="/" className="text-zinc-900 underline underline-offset-4 decoration-zinc-300 hover:decoration-zinc-800 hover:text-zinc-600 font-medium transition-colors">https://cauders.com</Link> and its publicly available content and features.
+          <Link href="/" className="text-zinc-900 underline underline-offset-4 decoration-zinc-300 hover:decoration-zinc-800 hover:text-zinc-600 font-medium transition-colors">https://www.cauders.com</Link> and its publicly available content and features.
         </p>
         <p>
           The website is operated under the Cauders name by CAUDERS (PRIVATE) LIMITED (&quot;Cauders,&quot; &quot;we,&quot; &quot;us,&quot; or &quot;our&quot;), a private company limited by shares incorporated under the laws of Pakistan (Registration No. 0351558).
@@ -39,11 +31,11 @@ const termsSections: PolicySectionItem[] = [
           If you access the website on behalf of a company or other organization, you confirm that you are authorized to act on its behalf in connection with that use.
         </p>
       </>
-    )
+    ),
   },
   {
-    id: "scope-of-these-terms",
-    title: "Scope of These Terms",
+    id: 'scope-of-these-terms',
+    title: 'Scope of These Terms',
     content: (
       <>
         <p>
@@ -62,14 +54,14 @@ const termsSections: PolicySectionItem[] = [
           Project scope, deliverables, timelines, fees, payment obligations, acceptance criteria, intellectual property ownership, confidentiality, warranties, support, and project-specific liability provisions should be addressed in the applicable client agreement.
         </p>
         <p>
-          Submitting an inquiry or booking a meeting does not, by itself, oblige Cauders to accept a project or provide services.
+          Submitting an inquiry or partnership request does not, by itself, oblige Cauders to accept a project or provide services.
         </p>
       </>
-    )
+    ),
   },
   {
-    id: "website-information-and-service-descriptions",
-    title: "Website Information and Service Descriptions",
+    id: 'website-information-and-service-descriptions',
+    title: 'Website Information and Service Descriptions',
     content: (
       <>
         <p>
@@ -85,15 +77,15 @@ const termsSections: PolicySectionItem[] = [
           Nothing on the website guarantees a particular business outcome, project result, commercial performance, or implementation timeline.
         </p>
       </>
-    )
+    ),
   },
   {
-    id: "acceptable-use",
-    title: "Acceptable Use",
+    id: 'acceptable-use',
+    title: 'Acceptable Use',
     content: (
       <>
         <p>
-          You may use our website for lawful purposes, including learning about Cauders, evaluating our services, reviewing our publicly available work, and contacting us about potential business or career opportunities.
+          You may use our website for lawful purposes, including learning about Cauders, evaluating our services, reviewing our publicly available case studies, and contacting us about potential business, partnership, or career opportunities.
         </p>
         <p>You agree not to:</p>
         <ul className="list-disc list-outside space-y-2 pl-6 text-sm lg:text-base text-zinc-700">
@@ -104,17 +96,17 @@ const termsSections: PolicySectionItem[] = [
           <li>Use automated methods to extract website content or personal information in a manner that violates applicable law or these Terms.</li>
           <li>Copy or exploit protected website materials for unauthorized commercial purposes.</li>
           <li>Impersonate another person or submit knowingly false information.</li>
-          <li>Use contact, booking, or subscription forms for spam, fraudulent activity, or other misuse.</li>
+          <li>Use contact, partnership, career, or feedback forms for spam, fraudulent activity, or other misuse.</li>
         </ul>
         <p className="pt-2">
           We may take reasonable steps to protect the website, investigate suspected abuse, and restrict access where necessary.
         </p>
       </>
-    )
+    ),
   },
   {
-    id: "intellectual-property",
-    title: "Intellectual Property",
+    id: 'intellectual-property',
+    title: 'Intellectual Property',
     content: (
       <>
         <p>
@@ -136,21 +128,21 @@ const termsSections: PolicySectionItem[] = [
           Ownership and permitted use of software, source code, designs, and other deliverables created for a client will be determined by the applicable client agreement. These website Terms do not independently transfer ownership of project deliverables.
         </p>
       </>
-    )
+    ),
   },
   {
-    id: "information-you-submit",
-    title: "Information You Submit",
+    id: 'information-you-submit',
+    title: 'Information You Submit',
     content: (
       <>
         <p>
-          When you submit an inquiry, booking request, newsletter subscription, job application, or other information through our website, you remain responsible for ensuring that the information you provide is accurate and that you are entitled to share it.
+          When you submit a project inquiry, partnership request, job application, feedback submission, or other information through our website, you remain responsible for ensuring that the information you provide is accurate and that you are entitled to share it.
         </p>
         <p>
           You retain any rights you have in the information and materials you submit, subject to applicable law and any separate agreement.
         </p>
         <p>
-          You authorize Cauders to receive, review, use, and process your submission as reasonably necessary to respond to your inquiry, arrange a meeting, consider your application, deliver requested communications, or otherwise fulfil the purpose for which you submitted it.
+          You authorize Cauders to receive, review, use, and process your submission as reasonably necessary to respond to your inquiry, coordinate discussions, consider your application, or otherwise fulfil the purpose for which you submitted it.
         </p>
         <p>
           A public website submission does not, by itself, create a confidentiality agreement. Please do not submit confidential source code, passwords, API keys, trade secrets, or sensitive production data through public forms unless appropriate arrangements have been agreed in advance.
@@ -159,35 +151,29 @@ const termsSections: PolicySectionItem[] = [
           Nothing in this section overrides an applicable confidentiality agreement or other signed contract.
         </p>
       </>
-    )
+    ),
   },
   {
-    id: "meetings-newsletters-and-applications",
-    title: "Meetings, Newsletters, and Applications",
+    id: 'inquiries-partnerships-and-applications',
+    title: 'Inquiries, Partnerships, and Career Applications',
     content: (
       <>
         <p>
-          Booking a meeting through our website is an arrangement for a discussion. It does not guarantee that Cauders will accept a project or enter into a commercial relationship.
+          Submitting a project or partnership inquiry through our website initiates a preliminary discussion and does not guarantee that Cauders will accept an engagement or enter into a commercial relationship.
         </p>
         <p>
-          Meeting availability, confirmations, cancellations, and rescheduling may be subject to the relevant booking service and arrangements communicated to you.
-        </p>
-        <p>
-          Newsletter subscriptions are voluntary. You may unsubscribe at any time using the mechanism provided in the communication.
-        </p>
-        <p>
-          Submitting a job application does not guarantee an interview, offer, or employment relationship. Any employment or contractor engagement will be subject to applicable agreements and requirements.
+          Submitting a job application through our careers portal does not guarantee an interview, offer, or employment relationship. Any employment or contractor engagement will be subject to applicable agreements and verification requirements.
         </p>
       </>
-    )
+    ),
   },
   {
-    id: "third-party-services-and-links",
-    title: "Third-Party Services and Links",
+    id: 'third-party-services-and-links',
+    title: 'Third-Party Services and Links',
     content: (
       <>
         <p>
-          Our website may link to or incorporate services operated by third parties, including scheduling, analytics, recruitment, communication, and social media providers.
+          Our website may link to or incorporate services operated by third parties, including infrastructure, analytics, communication, and social media providers.
         </p>
         <p>
           Third-party services may be governed by separate terms, privacy policies, and operational rules. Cauders does not control and is not responsible for the independent operation or content of external services.
@@ -196,11 +182,11 @@ const termsSections: PolicySectionItem[] = [
           Your interaction with those services is subject to their applicable terms and policies.
         </p>
       </>
-    )
+    ),
   },
   {
-    id: "website-availability-and-disclaimers",
-    title: "Website Availability and Disclaimers",
+    id: 'website-availability-and-disclaimers',
+    title: 'Website Availability and Disclaimers',
     content: (
       <>
         <p>
@@ -216,11 +202,11 @@ const termsSections: PolicySectionItem[] = [
           Any warranties, service levels, or performance commitments relating to paid client services must be established in the applicable client agreement.
         </p>
       </>
-    )
+    ),
   },
   {
-    id: "limitation-of-liability",
-    title: "Limitation of Liability",
+    id: 'limitation-of-liability',
+    title: 'Limitation of Liability',
     content: (
       <>
         <p>
@@ -233,11 +219,11 @@ const termsSections: PolicySectionItem[] = [
           Nothing in these Terms excludes or limits liability that cannot lawfully be excluded or limited under applicable law.
         </p>
       </>
-    )
+    ),
   },
   {
-    id: "privacy",
-    title: "Privacy",
+    id: 'privacy',
+    title: 'Privacy',
     content: (
       <>
         <p>
@@ -247,13 +233,13 @@ const termsSections: PolicySectionItem[] = [
           <li>
             Privacy Policy:{' '}
             <Link href="/privacy-policy" className="text-zinc-900 underline underline-offset-4 decoration-zinc-300 hover:decoration-zinc-800 hover:text-zinc-600 font-medium transition-colors">
-              https://cauders.com/privacy-policy
+              https://www.cauders.com/privacy-policy
             </Link>
           </li>
           <li>
             Cookies Policy:{' '}
             <Link href="/cookies-policy" className="text-zinc-900 underline underline-offset-4 decoration-zinc-300 hover:decoration-zinc-800 hover:text-zinc-600 font-medium transition-colors">
-              https://cauders.com/cookies-policy
+              https://www.cauders.com/cookies-policy
             </Link>
           </li>
         </ul>
@@ -261,11 +247,11 @@ const termsSections: PolicySectionItem[] = [
           These policies explain how personal information is handled and how cookies and similar technologies are used.
         </p>
       </>
-    )
+    ),
   },
   {
-    id: "changes-to-these-terms",
-    title: "Changes to These Terms",
+    id: 'changes-to-these-terms',
+    title: 'Changes to These Terms',
     content: (
       <>
         <p>
@@ -275,11 +261,11 @@ const termsSections: PolicySectionItem[] = [
           The revised Terms will be published on this page with an updated &quot;Last Updated&quot; date. Changes will apply prospectively from the date of publication, subject to applicable law.
         </p>
       </>
-    )
+    ),
   },
   {
-    id: "governing-law-and-disputes",
-    title: "Governing Law and Disputes",
+    id: 'governing-law-and-disputes',
+    title: 'Governing Law and Disputes',
     content: (
       <>
         <p>
@@ -292,11 +278,11 @@ const termsSections: PolicySectionItem[] = [
           Nothing in this section limits any rights that cannot lawfully be restricted or excluded.
         </p>
       </>
-    )
+    ),
   },
   {
-    id: "general-provisions",
-    title: "General Provisions",
+    id: 'general-provisions',
+    title: 'General Provisions',
     content: (
       <>
         <p>
@@ -309,11 +295,11 @@ const termsSections: PolicySectionItem[] = [
           These Terms, together with the Privacy Policy and Cookies Policy, govern your use of the public website. They do not replace or amend a separate signed client agreement.
         </p>
       </>
-    )
+    ),
   },
   {
-    id: "contact-us",
-    title: "Contact Us",
+    id: 'contact-us',
+    title: 'Contact Us',
     content: (
       <>
         <p>For questions concerning these Terms, contact:</p>
@@ -338,22 +324,33 @@ const termsSections: PolicySectionItem[] = [
           <p>
             Official Website:{' '}
             <Link href="/" className="text-zinc-900 underline underline-offset-4 decoration-zinc-300 hover:decoration-zinc-800 hover:text-zinc-600 font-medium transition-colors">
-              https://cauders.com
+              https://www.cauders.com
             </Link>
           </p>
         </div>
       </>
-    )
-  }
+    ),
+  },
 ];
 
 export default function TermsOfServicePage() {
+  const breadcrumbJsonLd = buildBreadcrumbJsonLd([
+    { name: 'Home', path: '/' },
+    { name: 'Terms of Service', path: '/terms-of-service' },
+  ]);
+
   return (
-    <PolicyLayout
-      title="Terms of Service"
-      lastUpdated="November 2026"
-      badge="Terms"
-      sections={termsSections}
-    />
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <PolicyLayout
+        title="Terms of Service"
+        lastUpdated="November 2026"
+        badge="Terms"
+        sections={termsSections}
+      />
+    </>
   );
 }

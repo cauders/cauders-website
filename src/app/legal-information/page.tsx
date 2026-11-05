@@ -2,28 +2,20 @@ import type { Metadata } from 'next';
 import React from 'react';
 import Link from 'next/link';
 import PolicyLayout, { PolicySectionItem } from '@/components/cauders/PolicyLayout';
-import { Building2, FileText, MapPin, Mail, Phone, Globe, ShieldCheck } from 'lucide-react';
+import { Building2, MapPin, Mail, Phone, Globe } from 'lucide-react';
+import { buildBreadcrumbJsonLd, buildPageMetadata } from '@/lib/seo';
 
-export const metadata: Metadata = {
-  title: 'Legal Information & Corporate Disclosures | Cauders',
-  description: 'Official corporate registration, legal disclosures, registered office address, and regulatory compliance details for Cauders (Private) Limited.',
-  alternates: {
-    canonical: '/legal-information',
-  },
-  openGraph: {
-    title: 'Legal Information & Corporate Disclosures | Cauders',
-    description: 'Official corporate registration, legal disclosures, registered office address, and regulatory compliance details for Cauders (Private) Limited.',
-    url: 'https://www.cauders.com/legal-information',
-    siteName: 'Cauders',
-    locale: 'en_US',
-    type: 'website',
-  },
-};
+export const metadata: Metadata = buildPageMetadata({
+  title: 'Legal Information & Corporate Disclosures',
+  description:
+    'Official corporate registration, SECP incorporation number 0351558, registered office address, and statutory disclosures for CAUDERS (PRIVATE) LIMITED.',
+  path: '/legal-information',
+});
 
 const legalInfoSections: PolicySectionItem[] = [
   {
-    id: "company-details",
-    title: "Company Identification",
+    id: 'company-details',
+    title: 'Company Identification',
     content: (
       <>
         <p>
@@ -31,28 +23,28 @@ const legalInfoSections: PolicySectionItem[] = [
         </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
-          <div className="rounded-3xl border border-black/[0.08] dark:border-white/[0.08] bg-white/90 dark:bg-card/90 backdrop-blur-sm p-6 shadow-sm space-y-1.5 transition-all hover:border-[#09555A]/30">
+          <div className="rounded-3xl border border-black/[0.08] dark:border-white/[0.08] bg-white/90 dark:bg-card/90 backdrop-blur-sm p-6 shadow-sm space-y-1.5 transition-colors hover:border-[#09555A]/30">
             <span className="text-xs font-bold uppercase tracking-wider text-[#09555A] dark:text-primary block">Company Name</span>
             <p className="text-lg font-bold text-foreground font-headline">CAUDERS (PRIVATE) LIMITED</p>
             <p className="text-xs text-zinc-500">Private company limited by shares</p>
           </div>
 
-          <div className="rounded-3xl border border-black/[0.08] dark:border-white/[0.08] bg-white/90 dark:bg-card/90 backdrop-blur-sm p-6 shadow-sm space-y-1.5 transition-all hover:border-[#09555A]/30">
+          <div className="rounded-3xl border border-black/[0.08] dark:border-white/[0.08] bg-white/90 dark:bg-card/90 backdrop-blur-sm p-6 shadow-sm space-y-1.5 transition-colors hover:border-[#09555A]/30">
             <span className="text-xs font-bold uppercase tracking-wider text-[#09555A] dark:text-primary block">Incorporation Number (Inc. No.)</span>
             <p className="text-lg font-bold text-[#09555A] dark:text-primary font-mono tracking-tight">0351558</p>
             <p className="text-xs text-zinc-500">Registered with SECP</p>
           </div>
         </div>
       </>
-    )
+    ),
   },
   {
-    id: "registered-office",
-    title: "Registered Office & Principal Address",
+    id: 'registered-office',
+    title: 'Registered Office & Principal Address',
     content: (
       <>
         <p>
-          The official registered address and physical operational office of Cauders (Private) Limited is as follows:
+          The official registered address and physical operational office of CAUDERS (PRIVATE) LIMITED is as follows:
         </p>
 
         <div className="rounded-3xl border border-black/[0.08] dark:border-white/[0.08] bg-[#09555A]/[0.03] dark:bg-white/[0.03] p-6 sm:p-7 space-y-4 mt-4 text-sm sm:text-base text-zinc-700 dark:text-zinc-300">
@@ -84,11 +76,11 @@ const legalInfoSections: PolicySectionItem[] = [
           </div>
         </div>
       </>
-    )
+    ),
   },
   {
-    id: "contact-channels",
-    title: "Official Contact Channels",
+    id: 'contact-channels',
+    title: 'Official Contact Channels',
     content: (
       <>
         <p>
@@ -96,66 +88,66 @@ const legalInfoSections: PolicySectionItem[] = [
         </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-5">
-          <div className="rounded-3xl border border-black/[0.08] dark:border-white/[0.08] bg-white/90 dark:bg-card/90 backdrop-blur-sm p-5 shadow-sm space-y-2.5 transition-all hover:border-[#09555A]/30 hover:shadow-md">
+          <div className="rounded-3xl border border-black/[0.08] dark:border-white/[0.08] bg-white/90 dark:bg-card/90 backdrop-blur-sm p-5 shadow-sm space-y-2.5 transition-colors hover:border-[#09555A]/30">
             <div className="w-9 h-9 rounded-xl bg-[#09555A]/10 text-[#09555A] dark:bg-primary/10 dark:text-primary flex items-center justify-center">
               <Phone className="w-4 h-4" />
             </div>
             <span className="text-xs font-bold uppercase tracking-wider text-zinc-500 block">Telephone</span>
-            <a 
-              href="tel:+923390107377" 
+            <a
+              href="tel:+923390107377"
               className="text-sm font-semibold text-foreground hover:text-[#09555A] dark:hover:text-primary transition-colors block"
             >
               +92 3390107377
             </a>
           </div>
 
-          <div className="rounded-3xl border border-black/[0.08] dark:border-white/[0.08] bg-white/90 dark:bg-card/90 backdrop-blur-sm p-5 shadow-sm space-y-2.5 transition-all hover:border-[#09555A]/30 hover:shadow-md">
+          <div className="rounded-3xl border border-black/[0.08] dark:border-white/[0.08] bg-white/90 dark:bg-card/90 backdrop-blur-sm p-5 shadow-sm space-y-2.5 transition-colors hover:border-[#09555A]/30">
             <div className="w-9 h-9 rounded-xl bg-[#09555A]/10 text-[#09555A] dark:bg-primary/10 dark:text-primary flex items-center justify-center">
               <Mail className="w-4 h-4" />
             </div>
             <span className="text-xs font-bold uppercase tracking-wider text-zinc-500 block">Email Inquiries</span>
-            <a 
-              href="mailto:info@cauders.com" 
+            <a
+              href="mailto:info@cauders.com"
               className="text-sm font-semibold text-foreground hover:text-[#09555A] dark:hover:text-primary transition-colors block"
             >
               info@cauders.com
             </a>
           </div>
 
-          <div className="rounded-3xl border border-black/[0.08] dark:border-white/[0.08] bg-white/90 dark:bg-card/90 backdrop-blur-sm p-5 shadow-sm space-y-2.5 transition-all hover:border-[#09555A]/30 hover:shadow-md">
+          <div className="rounded-3xl border border-black/[0.08] dark:border-white/[0.08] bg-white/90 dark:bg-card/90 backdrop-blur-sm p-5 shadow-sm space-y-2.5 transition-colors hover:border-[#09555A]/30">
             <div className="w-9 h-9 rounded-xl bg-[#09555A]/10 text-[#09555A] dark:bg-primary/10 dark:text-primary flex items-center justify-center">
               <Globe className="w-4 h-4" />
             </div>
             <span className="text-xs font-bold uppercase tracking-wider text-zinc-500 block">Official Website</span>
-            <Link 
-              href="/" 
+            <Link
+              href="/"
               className="text-sm font-semibold text-foreground hover:text-[#09555A] dark:hover:text-primary transition-colors block"
             >
-              https://cauders.com
+              https://www.cauders.com
             </Link>
           </div>
         </div>
       </>
-    )
+    ),
   },
   {
-    id: "statutory-status",
-    title: "Statutory & Corporate Standing",
+    id: 'statutory-status',
+    title: 'Statutory & Corporate Standing',
     content: (
       <>
         <p>
-          Cauders (Private) Limited is duly incorporated and validly existing under the corporate laws of Pakistan. 
+          CAUDERS (PRIVATE) LIMITED is duly incorporated and validly existing under the corporate laws of Pakistan (SECP Registration No. 0351558).
           The company provides business-to-business (B2B) digital engineering, artificial intelligence integrations, custom enterprise software development, SaaS products, and workflow automation services.
         </p>
         <p>
-          All commercial engagements, master services agreements (MSAs), and statements of work (SOWs) entered into under the Cauders brand are executed on behalf of Cauders (Private) Limited unless explicitly stated otherwise in a signed contractual instrument.
+          All commercial engagements, master services agreements (MSAs), and statements of work (SOWs) entered into under the Cauders brand are executed on behalf of CAUDERS (PRIVATE) LIMITED unless explicitly stated otherwise in a signed contractual instrument.
         </p>
       </>
-    )
+    ),
   },
   {
-    id: "related-policies",
-    title: "Related Corporate Policies",
+    id: 'related-policies',
+    title: 'Related Corporate Policies',
     content: (
       <>
         <p>
@@ -182,17 +174,28 @@ const legalInfoSections: PolicySectionItem[] = [
           </li>
         </ul>
       </>
-    )
-  }
+    ),
+  },
 ];
 
 export default function LegalInfoPage() {
+  const breadcrumbJsonLd = buildBreadcrumbJsonLd([
+    { name: 'Home', path: '/' },
+    { name: 'Legal Information', path: '/legal-information' },
+  ]);
+
   return (
-    <PolicyLayout
-      title="Legal Information"
-      lastUpdated="October 2026"
-      badge="Legal Information"
-      sections={legalInfoSections}
-    />
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <PolicyLayout
+        title="Legal Information"
+        lastUpdated="November 2026"
+        badge="Legal Information"
+        sections={legalInfoSections}
+      />
+    </>
   );
 }

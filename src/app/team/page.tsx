@@ -1,5 +1,5 @@
-import { redirect } from 'next/navigation';
+import { permanentRedirect } from 'next/navigation';
 
-export default function TeamRedirectPage() {
-  redirect('/about');
+export default function TeamPage() {
+  permanentRedirect('/about');
 }

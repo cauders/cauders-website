@@ -20,7 +20,7 @@ export const teamMembers: TeamMember[] = [
   {
     name: 'Anees Ahmad',
     role: 'Founder & CTO',
-    imageUrl: 'https://res.cloudinary.com/cauders/image/upload/v1792275675/anees1_xh2e1t.jpg',
+    imageUrl: 'https://res.cloudinary.com/cauders/image/upload/f_auto,q_auto,w_800/v1792275675/anees1_xh2e1t.jpg',
     bio: 'Helping startups and growing companies turn ideas into reliable digital products.',
     fullBio: `Building software is not the hardest part.
 The real challenge is building the right product, choosing a reliable technical direction, avoiding unnecessary complexity, and creating a system that can continue to grow with the business.
@@ -67,7 +67,7 @@ anees.ahmad@cauders.com`,
   {
     name: 'Muryam Naveed',
     role: 'Cofounder and CEO',
-    imageUrl: 'https://res.cloudinary.com/cauders/image/upload/v1792264624/muryam_m28ybv.jpg',
+    imageUrl: 'https://res.cloudinary.com/cauders/image/upload/f_auto,q_auto,w_800/v1792264624/muryam_m28ybv.jpg',
     bio: 'Building systems and infrastructure that help businesses scale.',
     fullBio: `I lead Cauders, a software development company focused on building the systems and infrastructure that help businesses scale.
 

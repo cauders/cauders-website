@@ -1,9 +1,8 @@
-"use client";
+'use client';
 
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
 import ArrowBadge from './ArrowBadge';
 import StandardizedHeading from './StandardizedHeading';
 import ScrollFadeIn from './ScrollFadeIn';
@@ -24,13 +23,14 @@ export interface ImageContainerHeroProps {
   secondaryCtaHref?: string;
   onSecondaryCtaClick?: () => void;
   variant?: 'light' | 'dark';
+  as?: 'h1' | 'h2';
 }
 
 export default function ImageContainerHero({
   imageUrl,
-  imageAlt = "Hero Background",
+  imageAlt = 'Hero Background',
   badgeText,
-  badgeHref = "#overview",
+  badgeHref = '#overview',
   headingLines,
   description,
   ctaText,
@@ -39,13 +39,14 @@ export default function ImageContainerHero({
   secondaryCtaText,
   secondaryCtaHref,
   onSecondaryCtaClick,
-  variant = 'light'
+  variant = 'light',
+  as = 'h1',
 }: ImageContainerHeroProps) {
-  
   const isDark = variant === 'dark';
   const glassClass = isDark ? 'glass-effect text-white' : 'glass-effect-light';
   const textColorClass = isDark ? 'text-white' : 'text-foreground';
   const headingClass = isDark ? 'text-white' : '';
+
   return (
     <section className="relative h-screen w-full overflow-hidden">
       <div className="absolute inset-0 z-0">
@@ -53,14 +54,15 @@ export default function ImageContainerHero({
           src={imageUrl}
           alt={imageAlt}
           fill
+          sizes="100vw"
           className="object-cover"
           priority
         />
-        {/* Smooth, eased top scrim to ensure header legibility while blending seamlessly into the photograph */}
-        <div 
+        <div
           className="absolute inset-x-0 top-0 h-72 sm:h-80 lg:h-96 pointer-events-none"
           style={{
-            background: 'linear-gradient(to bottom, rgba(0, 0, 0, 0.40) 0%, rgba(0, 0, 0, 0.34) 14%, rgba(0, 0, 0, 0.25) 28%, rgba(0, 0, 0, 0.16) 44%, rgba(0, 0, 0, 0.08) 60%, rgba(0, 0, 0, 0.03) 76%, rgba(0, 0, 0, 0.008) 88%, transparent 100%)'
+            background:
+              'linear-gradient(to bottom, rgba(0, 0, 0, 0.40) 0%, rgba(0, 0, 0, 0.34) 14%, rgba(0, 0, 0, 0.25) 28%, rgba(0, 0, 0, 0.16) 44%, rgba(0, 0, 0, 0.08) 60%, rgba(0, 0, 0, 0.03) 76%, rgba(0, 0, 0, 0.008) 88%, transparent 100%)',
           }}
         />
       </div>
@@ -69,16 +71,16 @@ export default function ImageContainerHero({
         <div className={`${glassClass} rounded-3xl px-8 py-12 md:px-12 md:py-16 lg:py-20 border-white/20 max-w-5xl mx-auto w-full flex flex-col items-center`}>
           {badgeText && (
             <ScrollFadeIn direction="up" delay={100}>
-              <ArrowBadge href={badgeHref} text={badgeText} variant={isDark ? "white" : "black"} className="mb-4" />
+              <ArrowBadge href={badgeHref} text={badgeText} variant={isDark ? 'white' : 'black'} className="mb-4" />
             </ScrollFadeIn>
           )}
-          
+
           <ScrollFadeIn direction="up" delay={200} className="w-full">
-            <StandardizedHeading lines={headingLines} className={headingClass} />
+            <StandardizedHeading as={as} lines={headingLines} className={headingClass} />
           </ScrollFadeIn>
 
           <ScrollFadeIn direction="up" delay={300}>
-            <p className={`mt-2 md:mt-4 ${typography.bodyBase} leading-relaxed ${textColorClass} max-w-2xl mx-auto font-normal `}>
+            <p className={`mt-2 md:mt-4 ${typography.bodyBase} leading-relaxed ${textColorClass} max-w-2xl mx-auto font-normal`}>
               {description}
             </p>
           </ScrollFadeIn>
@@ -92,8 +94,8 @@ export default function ImageContainerHero({
                   </Button>
                 ) : (
                   <Button asChild variant="zinc" size="lg" className="group">
-                    <Link 
-                      href={ctaHref || '#'} 
+                    <Link
+                      href={ctaHref || '/contact'}
                       className="block"
                       onClick={(e) => {
                         if (ctaHref?.startsWith('#')) {
@@ -106,16 +108,16 @@ export default function ImageContainerHero({
                     </Link>
                   </Button>
                 )}
-                
-                {secondaryCtaText && (
-                  onSecondaryCtaClick ? (
+
+                {secondaryCtaText &&
+                  (onSecondaryCtaClick ? (
                     <Button onClick={onSecondaryCtaClick} variant="outline" size="lg" className="group">
                       <span>{secondaryCtaText}</span>
                     </Button>
                   ) : (
                     <Button asChild variant="outline" size="lg" className="group">
-                      <Link 
-                        href={secondaryCtaHref || '#'} 
+                      <Link
+                        href={secondaryCtaHref || '/contact'}
                         className="block"
                         onClick={(e) => {
                           if (secondaryCtaHref?.startsWith('#')) {
@@ -127,8 +129,7 @@ export default function ImageContainerHero({
                         {secondaryCtaText}
                       </Link>
                     </Button>
-                  )
-                )}
+                  ))}
               </div>
             </ScrollFadeIn>
           )}

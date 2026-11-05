@@ -70,7 +70,7 @@ export const industryDetails: Record<string, DetailedIndustryData> = {
 
  whyChooseUs: {
  title: 'How we deliver fintech software',
- intro: 'Cauders has been assisting fintechs with their software needs for decades. Our experience and proven development approach make us a trusted digital partner.',
+ intro: 'Cauders supports financial institutions and fintech teams across core engineering, integration, and platform modernization. Our structured delivery approach makes us a trusted engineering partner.',
  items: [
  {
  title: 'Extensive fintech experience',
@@ -470,8 +470,8 @@ export const industryDetails: Record<string, DetailedIndustryData> = {
  },
  faqs: [
  {
- question: 'Are your healthcare software solutions HIPAA compliant?',
- answer: 'Yes. All healthcare applications we develop are designed from the ground up to meet HIPAA, HITECH, and (if applicable) GDPR compliance standards. We implement end-to-end encryption, strict access controls, and comprehensive audit logging.'
+ question: 'How do you approach HIPAA and regulatory requirements in healthcare software?',
+ answer: 'Healthcare applications we build are engineered to support HIPAA, HITECH, and GDPR-aligned security controls in collaboration with your compliance team, including encryption in transit and at rest, role-based access controls, and comprehensive audit logging.'
  },
  {
  question: 'Can you integrate a new app with our existing Epic or Cerner system?',

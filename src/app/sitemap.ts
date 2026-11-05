@@ -1,76 +1,91 @@
 import { MetadataRoute } from 'next';
+import { getAiCategories, getServiceCategories } from '@/lib/data';
+import { caseStudiesData } from '@/lib/case-studies-data';
+import { SITE_URL } from '@/lib/seo';
+
+const LAST_MODIFIED = '2026-11-05';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://www.cauders.com';
-  const currentDate = new Date().toISOString();
-
-  // Core indexable landing pages
-  const coreRoutes = [
-    '',
-    '/about',
-    '/services',
-    '/industries',
-    '/case-studies',
-    '/contact',
-    '/careers',
-    '/partners',
-    '/faq',
-    '/privacy-policy',
-    '/terms-of-service',
-    '/cookies-policy',
-    '/legal-information',
+  // 1. Core indexable landing & legal pages (excludes redirected and noindex routes)
+  const coreRoutes: { path: string; priority: number; changeFrequency: 'weekly' | 'monthly' }[] = [
+    { path: '', priority: 1.0, changeFrequency: 'weekly' },
+    { path: '/services', priority: 0.95, changeFrequency: 'weekly' },
+    { path: '/case-studies', priority: 0.9, changeFrequency: 'weekly' },
+    { path: '/industries', priority: 0.9, changeFrequency: 'weekly' },
+    { path: '/about', priority: 0.85, changeFrequency: 'monthly' },
+    { path: '/contact', priority: 0.9, changeFrequency: 'monthly' },
+    { path: '/careers', priority: 0.8, changeFrequency: 'weekly' },
+    { path: '/partners', priority: 0.8, changeFrequency: 'monthly' },
+    { path: '/faq', priority: 0.75, changeFrequency: 'monthly' },
+    { path: '/privacy-policy', priority: 0.4, changeFrequency: 'monthly' },
+    { path: '/terms-of-service', priority: 0.4, changeFrequency: 'monthly' },
+    { path: '/cookies-policy', priority: 0.4, changeFrequency: 'monthly' },
+    { path: '/legal-information', priority: 0.4, changeFrequency: 'monthly' },
   ];
 
-  // Specific canonical service & AI capabilities
-  const serviceRoutes = [
-    '/services/software-solutions/custom-software-development',
-    '/services/software-solutions/web-development',
-    '/services/software-solutions/mobile-app-development',
-    '/services/software-solutions/saas-development',
-    '/services/cloud-digital-transformation/cloud-transformation',
-    '/services/staff-augmentation/staff-augmentation-offshoring',
-    '/ai/generative-ai-llms/generative-ai-solutions',
-    '/ai/generative-ai-llms/autonomous-ai-agents',
-    '/ai/ai-product-engineering/custom-ai-development',
-    '/ai/data-intelligent-automation/automation-custom-applications',
-    '/ai/data-intelligent-automation/data-modernization-analytics',
-    '/ai/ai-strategy-advisory/ai-roadmapping-consulting',
-  ];
+  // 2. All Service categories & Service detail routes
+  const serviceCategories = getServiceCategories();
+  const serviceCategoryUrls: MetadataRoute.Sitemap = [];
+  const serviceDetailUrls: MetadataRoute.Sitemap = [];
 
-  // Verified production case studies
-  const caseStudyRoutes = [
-    '/case-studies/nordic-ecommerce-storefront',
-    '/case-studies/telecom-core-infrastructure-portal',
-    '/case-studies/smart-building-proptech-platform',
-    '/case-studies/global-language-exchange-platform',
-    '/case-studies/social-commerce-fashion-discovery',
-    '/case-studies/on-demand-delivery-marketplace',
-    '/case-studies/api-marketplace-developer-gateway',
-    '/case-studies/cognitive-fitness-gamified-platform',
-    '/case-studies/self-hosted-streaming-platform',
-    '/case-studies/contracting-service-portal',
-  ];
+  for (const category of serviceCategories) {
+    serviceCategoryUrls.push({
+      url: `${SITE_URL}/services/${category.slug}`,
+      lastModified: LAST_MODIFIED,
+      changeFrequency: 'monthly',
+      priority: 0.75,
+    });
+    for (const service of category.services) {
+      serviceDetailUrls.push({
+        url: `${SITE_URL}/services/${category.slug}/${service.slug}`,
+        lastModified: LAST_MODIFIED,
+        changeFrequency: 'weekly',
+        priority: 0.85,
+      });
+    }
+  }
 
-  const allUrls: MetadataRoute.Sitemap = [
-    ...coreRoutes.map((path) => ({
-      url: `${baseUrl}${path}`,
-      lastModified: currentDate,
-      changeFrequency: path === '' ? ('daily' as const) : ('weekly' as const),
-      priority: path === '' ? 1.0 : path === '/services' || path === '/case-studies' || path === '/contact' ? 0.9 : 0.8,
+  // 3. All AI categories & AI detail routes
+  const aiCategories = getAiCategories();
+  const aiCategoryUrls: MetadataRoute.Sitemap = [];
+  const aiDetailUrls: MetadataRoute.Sitemap = [];
+
+  for (const category of aiCategories) {
+    aiCategoryUrls.push({
+      url: `${SITE_URL}/ai/${category.slug}`,
+      lastModified: LAST_MODIFIED,
+      changeFrequency: 'monthly',
+      priority: 0.75,
+    });
+    for (const service of category.services) {
+      aiDetailUrls.push({
+        url: `${SITE_URL}/ai/${category.slug}/${service.slug}`,
+        lastModified: LAST_MODIFIED,
+        changeFrequency: 'weekly',
+        priority: 0.85,
+      });
+    }
+  }
+
+  // 4. All verified Case Study detail routes
+  const caseStudyUrls: MetadataRoute.Sitemap = caseStudiesData.map((study) => ({
+    url: `${SITE_URL}/case-studies/${study.slug}`,
+    lastModified: LAST_MODIFIED,
+    changeFrequency: 'monthly',
+    priority: 0.85,
+  }));
+
+  return [
+    ...coreRoutes.map((route) => ({
+      url: `${SITE_URL}${route.path}`,
+      lastModified: LAST_MODIFIED,
+      changeFrequency: route.changeFrequency,
+      priority: route.priority,
     })),
-    ...serviceRoutes.map((path) => ({
-      url: `${baseUrl}${path}`,
-      lastModified: currentDate,
-      changeFrequency: 'weekly' as const,
-      priority: 0.85,
-    })),
-    ...caseStudyRoutes.map((path) => ({
-      url: `${baseUrl}${path}`,
-      lastModified: currentDate,
-      changeFrequency: 'weekly' as const,
-      priority: 0.85,
-    })),
+    ...serviceDetailUrls,
+    ...aiDetailUrls,
+    ...serviceCategoryUrls,
+    ...aiCategoryUrls,
+    ...caseStudyUrls,
   ];
-
-  return allUrls;
 }

@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import Link from 'next/link';
 import {
   Carousel,
@@ -208,12 +208,40 @@ export default function CaseStudiesSection({
   ctaText = 'View All Case Studies',
   ctaHref = '/case-studies',
 }: CaseStudiesSectionProps) {
+  const sectionRef = useRef<HTMLElement | null>(null);
   const autoplayPlugin = useRef(
-    Autoplay({ delay: 5000, stopOnInteraction: true })
+    Autoplay({ delay: 5000, playOnInit: false, stopOnInteraction: true, stopOnMouseEnter: true })
   );
+
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el || typeof IntersectionObserver === 'undefined') return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        const plugin = autoplayPlugin.current;
+        if (!plugin) return;
+        try {
+          if (entry.isIntersecting) {
+            plugin.play();
+          } else {
+            plugin.stop();
+          }
+        } catch {
+          // Ignore if Embla hasn't mounted yet
+        }
+      },
+      { threshold: 0.15 }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <section
+      ref={sectionRef}
       id={id}
       className={`relative z-10 w-full py-16 sm:py-20 md:py-28 bg-transparent text-foreground overflow-hidden ${className}`}
     >
@@ -254,7 +282,7 @@ export default function CaseStudiesSection({
         </div>
       </div>
 
-      {/* Case Studies Carousel Slider: True Edge-to-Edge Screen Width, Automatic Sliding, Generous Card Width */}
+      {/* Case Studies Carousel Slider */}
       <div className="w-full relative">
         <Carousel
           plugins={[autoplayPlugin.current]}
@@ -273,7 +301,11 @@ export default function CaseStudiesSection({
                 key={study.id}
                 className="pl-4 sm:pl-6 md:basis-[60%] lg:basis-[48%] xl:basis-[42%]"
               >
-                <div suppressHydrationWarning className="group rounded-3xl bg-white text-zinc-900 shadow-[0_12px_40px_rgba(0,0,0,0.06)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.12)] p-7 sm:p-9 lg:p-10 flex flex-col justify-between transition-all duration-300 h-full border border-zinc-100/80">
+                <Link
+                  href={study.link || '/case-studies'}
+                  suppressHydrationWarning
+                  className="group rounded-3xl bg-white text-zinc-900 shadow-[0_12px_40px_rgba(0,0,0,0.06)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.12)] p-7 sm:p-9 lg:p-10 flex flex-col justify-between transition-all duration-300 h-full border border-zinc-100/80 block"
+                >
                   <div>
                     {/* Tags */}
                     <div className="flex flex-wrap items-center gap-2 mb-4">
@@ -294,20 +326,16 @@ export default function CaseStudiesSection({
                     <p className="text-xs sm:text-sm text-zinc-600 font-normal leading-relaxed mb-6">
                       {study.description}
                     </p>
-
                   </div>
 
                   {/* Card Footer: View Link */}
                   <div className="flex items-center justify-end pt-6 border-t border-zinc-100 mt-auto">
-                    <Link
-                      href={study.link || '/case-studies'}
-                      className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-[#09555A] hover:text-[#003B38] transition-colors"
-                    >
+                    <span className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-[#09555A] group-hover:text-[#003B38] transition-colors">
                       View Case Study{' '}
                       <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-                    </Link>
+                    </span>
                   </div>
-                </div>
+                </Link>
               </CarouselItem>
             ))}
           </CarouselContent>

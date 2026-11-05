@@ -4,12 +4,12 @@ import { notFound } from 'next/navigation';
 import ServiceDetailPage from '@/components/cauders/ServiceDetailPage';
 import FallbackPage from '@/components/cauders/FallbackPage';
 import { detailedServices } from '@/lib/service-details';
+import { buildBreadcrumbJsonLd, buildPageMetadata, SITE_URL } from '@/lib/seo';
 
 export async function generateStaticParams() {
   const categories = getAiCategories();
-  
   const params: { category: string; service: string }[] = [];
-  
+
   categories.forEach((category) => {
     category.services.forEach((service) => {
       params.push({
@@ -27,56 +27,42 @@ export async function generateMetadata({
 }: {
   params: { category: string; service: string };
 }): Promise<Metadata> {
+  const category = getAiCategoryBySlug(params.category);
+  const service = category?.services.find((s) => s.slug === params.service);
   const serviceData = detailedServices[params.service];
   const canonicalPath = `/ai/${params.category}/${params.service}`;
-  const fullCanonical = `https://www.cauders.com${canonicalPath}`;
 
-  if (!serviceData) {
+  if (!category || !service || !serviceData) {
     return {
-      title: 'AI & Automation | Cauders',
-      description: 'Applied artificial intelligence, autonomous agents, and workflow automations by Cauders.',
-      alternates: { canonical: canonicalPath },
+      title: 'AI Capability Not Found',
+      robots: { index: false, follow: true },
     };
   }
 
-  const title = `${serviceData.hero.title} | Applied AI & Automation | Cauders`;
-  const description = serviceData.hero.description || serviceData.overview?.paragraphs?.[0] || 'Enterprise AI and workflow automation solutions engineered by Cauders.';
-  const ogImage = serviceData.hero.imageUrl || 'https://res.cloudinary.com/cauders/image/upload/v1792742641/Group_4654_t9qwca.png';
+  const heroDesc = serviceData.hero.description || '';
+  const overviewFallback = serviceData.overview?.paragraphs?.[0] || '';
+  const rawDescription =
+    heroDesc.length >= 120
+      ? heroDesc
+      : `${heroDesc} ${overviewFallback}`.trim() ||
+        'Applied AI, autonomous agents, and workflow automation solutions engineered by Cauders.';
 
-  return {
-    title,
-    description,
-    alternates: {
-      canonical: canonicalPath,
-    },
-    openGraph: {
-      title,
-      description,
-      url: fullCanonical,
-      siteName: 'Cauders',
-      images: [
-        {
-          url: ogImage,
-          width: 1200,
-          height: 630,
-          alt: serviceData.hero.title,
-        },
-      ],
-      locale: 'en_US',
-      type: 'website',
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title,
-      description,
-      images: [ogImage],
-    },
-  };
+  return buildPageMetadata({
+    title: serviceData.hero.title,
+    description: rawDescription,
+    path: canonicalPath,
+    ogImage: serviceData.hero.imageUrl,
+    ogAlt: serviceData.hero.title,
+  });
 }
 
-export default function Page({ params }: { params: { category: string; service: string } }) {
+export default function Page({
+  params,
+}: {
+  params: { category: string; service: string };
+}) {
   const category = getAiCategoryBySlug(params.category);
-  
+
   if (!category) {
     notFound();
   }
@@ -91,7 +77,7 @@ export default function Page({ params }: { params: { category: string; service: 
 
   if (!serviceData) {
     return (
-      <FallbackPage 
+      <FallbackPage
         code="WIP"
         title="Content coming soon"
         description="We are currently migrating this service page to the new design. Please check back later."
@@ -99,5 +85,51 @@ export default function Page({ params }: { params: { category: string; service: 
     );
   }
 
-  return <ServiceDetailPage data={serviceData} />;
+  const canonicalPath = `/ai/${category.slug}/${service.slug}`;
+  const graphItems: Record<string, unknown>[] = [
+    buildBreadcrumbJsonLd([
+      { name: 'Home', path: '/' },
+      { name: 'AI & Automation', path: '/services' },
+      { name: category.title, path: `/ai/${category.slug}` },
+      { name: serviceData.hero.title, path: canonicalPath },
+    ]),
+    {
+      '@type': 'Service',
+      name: serviceData.hero.title,
+      description: serviceData.hero.description,
+      url: `${SITE_URL}${canonicalPath}`,
+      serviceType: category.title,
+      provider: { '@id': `${SITE_URL}/#organization` },
+      areaServed: 'Worldwide',
+    },
+  ];
+
+  if (serviceData.faqs && serviceData.faqs.length > 0) {
+    graphItems.push({
+      '@type': 'FAQPage',
+      mainEntity: serviceData.faqs.map((f) => ({
+        '@type': 'Question',
+        name: f.question,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: f.answer,
+        },
+      })),
+    });
+  }
+
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': graphItems,
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <ServiceDetailPage data={serviceData} />
+    </>
+  );
 }

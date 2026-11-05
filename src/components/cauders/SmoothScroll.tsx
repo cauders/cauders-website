@@ -7,14 +7,17 @@ import Lenis from 'lenis';
 export default function SmoothScroll() {
   const pathname = usePathname();
   const lenisRef = useRef<Lenis | null>(null);
+  const startLoopRef = useRef<(() => void) | null>(null);
 
   useEffect(() => {
-    // Let touch / mobile devices use native 120Hz momentum scrolling
+    // Respect touch devices and reduced-motion preferences with zero main-thread overhead
     const isTouch = typeof window !== 'undefined' && window.matchMedia('(pointer: coarse)').matches;
-    if (isTouch) return;
+    const prefersReducedMotion =
+      typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (isTouch || prefersReducedMotion) return;
 
     const lenis = new Lenis({
-      lerp: 0.16, // Fluid, natural response with zero drag
+      lerp: 0.16,
       smoothWheel: true,
       wheelMultiplier: 1,
       touchMultiplier: 1,
@@ -22,21 +25,42 @@ export default function SmoothScroll() {
     });
     lenisRef.current = lenis;
 
-    // Make lenis accessible globally for any hash link or programmatic scroll
     (window as unknown as { lenis?: Lenis }).lenis = lenis;
 
-    let rafId: number;
+    let rafId = 0;
+    let idleFrames = 0;
 
-    function raf(time: number) {
+    const raf = (time: number) => {
       lenis.raf(time);
-      rafId = requestAnimationFrame(raf);
-    }
+      const moving = lenis.isScrolling || Math.abs(lenis.velocity) > 0.001;
+      if (moving) {
+        idleFrames = 0;
+        rafId = requestAnimationFrame(raf);
+      } else if (idleFrames < 6) {
+        idleFrames += 1;
+        rafId = requestAnimationFrame(raf);
+      } else {
+        rafId = 0;
+        idleFrames = 0;
+      }
+    };
 
-    rafId = requestAnimationFrame(raf);
+    const startLoop = () => {
+      idleFrames = 0;
+      if (!rafId) {
+        rafId = requestAnimationFrame(raf);
+      }
+    };
+    startLoopRef.current = startLoop;
 
-    // Global listener for fast anchor jumps without hijacking
+    const origScrollTo = lenis.scrollTo.bind(lenis);
+    lenis.scrollTo = ((...args: Parameters<Lenis['scrollTo']>) => {
+      startLoop();
+      return origScrollTo(...args);
+    }) as Lenis['scrollTo'];
+
     const handleAnchorClick = (e: MouseEvent) => {
-      const target = (e.target as HTMLElement).closest('a');
+      const target = (e.target as HTMLElement | null)?.closest?.('a');
       if (!target) return;
       const href = target.getAttribute('href');
       if (href && href.startsWith('#') && href.length > 1) {
@@ -49,13 +73,20 @@ export default function SmoothScroll() {
       }
     };
 
+    window.addEventListener('wheel', startLoop, { passive: true });
+    window.addEventListener('keydown', startLoop, { passive: true });
+    window.addEventListener('resize', startLoop, { passive: true });
     document.addEventListener('click', handleAnchorClick);
 
     return () => {
+      window.removeEventListener('wheel', startLoop);
+      window.removeEventListener('keydown', startLoop);
+      window.removeEventListener('resize', startLoop);
       document.removeEventListener('click', handleAnchorClick);
+      if (rafId) cancelAnimationFrame(rafId);
+      startLoopRef.current = null;
       lenis.destroy();
       lenisRef.current = null;
-      cancelAnimationFrame(rafId);
       delete (window as unknown as { lenis?: Lenis }).lenis;
     };
   }, []);
@@ -67,6 +98,10 @@ export default function SmoothScroll() {
         const targetEl = document.getElementById(id);
         if (targetEl && lenisRef.current) {
           lenisRef.current.scrollTo(targetEl, { offset: -80, immediate: true });
+          return true;
+        }
+        if (targetEl) {
+          targetEl.scrollIntoView();
           return true;
         }
         return false;

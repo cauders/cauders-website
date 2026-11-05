@@ -6,11 +6,15 @@ const nextConfig = {
   compress: true,
   poweredByHeader: false,
   swcMinify: true,
-  typescript: {
-    ignoreBuildErrors: true,
-  },
-  eslint: {
-    ignoreDuringBuilds: true,
+  experimental: {
+    optimizePackageImports: [
+      'lucide-react',
+      'framer-motion',
+      '@radix-ui/react-accordion',
+      '@radix-ui/react-dialog',
+      '@radix-ui/react-dropdown-menu',
+      '@radix-ui/react-tabs',
+    ],
   },
   images: {
     formats: ['image/avif', 'image/webp'],
@@ -18,7 +22,23 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: '**',
+        hostname: 'res.cloudinary.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'plus.unsplash.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'cdn.jsdelivr.net',
+      },
+      {
+        protocol: 'https',
+        hostname: 'cdn.simpleicons.org',
       },
     ],
   },
@@ -33,6 +53,22 @@ const nextConfig = {
           },
         ],
         destination: 'https://www.cauders.com/case-studies',
+        permanent: true,
+      },
+      {
+        source: '/:path*',
+        has: [
+          {
+            type: 'host',
+            value: 'cauders.com',
+          },
+        ],
+        destination: 'https://www.cauders.com/:path*',
+        permanent: true,
+      },
+      {
+        source: '/ai',
+        destination: '/services#ai-automation',
         permanent: true,
       },
       {
@@ -73,6 +109,11 @@ const nextConfig = {
       {
         source: '/team',
         destination: '/about',
+        permanent: true,
+      },
+      {
+        source: '/industries/:industry',
+        destination: '/industries#:industry',
         permanent: true,
       },
       {
@@ -119,11 +160,30 @@ const nextConfig = {
       });
     } else {
       rules.push({
-        source: '/_next/static/(.*)',
+        source: '/:path*',
         headers: [
           {
             key: 'Cache-Control',
             value: 'no-store, must-revalidate',
+          },
+        ],
+      });
+      rules.push({
+        source: '/:path*',
+        missing: [
+          {
+            type: 'cookie',
+            key: '__cauders_dev_cache_reset',
+          },
+        ],
+        headers: [
+          {
+            key: 'Clear-Site-Data',
+            value: '"cache"',
+          },
+          {
+            key: 'Set-Cookie',
+            value: '__cauders_dev_cache_reset=v2; Path=/; SameSite=Lax',
           },
         ],
       });

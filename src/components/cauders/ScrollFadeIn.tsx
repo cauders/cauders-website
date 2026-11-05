@@ -1,11 +1,9 @@
-"use client";
-
-import { type ReactNode } from 'react';
+import { type CSSProperties, type ReactNode } from 'react';
 
 interface ScrollFadeInProps {
   children: ReactNode;
   className?: string;
-  style?: React.CSSProperties;
+  style?: CSSProperties;
   direction?: 'up' | 'down' | 'left' | 'right';
   delay?: string | number;
 }

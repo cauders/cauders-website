@@ -1,6 +1,4 @@
-'use client';
-
-import React, { useState, useRef } from 'react';
+import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
@@ -9,11 +7,11 @@ import {
   FileSearch,
   Sliders,
   CheckCircle2,
-  ChevronDown,
   TrendingUp,
   ArrowRight
 } from 'lucide-react';
 import ArrowBadge from './ArrowBadge';
+import ApproachAccordion from './ApproachAccordion';
 import SectionHeading from './SectionHeading';
 import CaseStudiesSection from './CaseStudiesSection';
 import DarkTealButton from './DarkTealButton';
@@ -113,7 +111,7 @@ const customAiApproachSteps = [
     description:
       'Clarify the business problem, desired output, available inputs, and criteria for evaluating whether the model is useful.',
     meansForYou: 'A defined problem and measurable evaluation objectives.',
-    image: 'https://res.cloudinary.com/cauders/image/upload/v1792770098/Discover_Align_vp2l9d.jpg',
+    image: 'https://res.cloudinary.com/cauders/image/upload/f_auto,q_auto,w_900/v1792770098/Discover_Align_vp2l9d.jpg',
   },
   {
     number: '02',
@@ -121,7 +119,7 @@ const customAiApproachSteps = [
     description:
       'Review available datasets, data quality, representativeness, and preparation requirements. Identify limitations that could affect model development.',
     meansForYou: 'A clearer understanding of the data available and its suitability for the task.',
-    image: 'https://res.cloudinary.com/cauders/image/upload/v1792770100/Plan_Design_rf0t2h.jpg',
+    image: 'https://res.cloudinary.com/cauders/image/upload/f_auto,q_auto,w_900/v1792770100/Plan_Design_rf0t2h.jpg',
   },
   {
     number: '03',
@@ -129,7 +127,7 @@ const customAiApproachSteps = [
     description:
       'Select an appropriate modelling approach, develop or configure the solution, and evaluate it against relevant data and agreed criteria.',
     meansForYou: 'Model results evaluated against the requirements, with limitations identified.',
-    image: 'https://res.cloudinary.com/cauders/image/upload/v1792770102/Build_Integrate_egvjcw.jpg',
+    image: 'https://res.cloudinary.com/cauders/image/upload/f_auto,q_auto,w_900/v1792770102/Build_Integrate_egvjcw.jpg',
   },
   {
     number: '04',
@@ -137,7 +135,7 @@ const customAiApproachSteps = [
     description:
       'Integrate the model into the required application or workflow and validate how it performs within the intended operating environment.',
     meansForYou: 'Model functionality integrated and reviewed within the agreed scope.',
-    image: 'https://res.cloudinary.com/cauders/image/upload/v1792770100/Validate_Handover_e9gotj.jpg',
+    image: 'https://res.cloudinary.com/cauders/image/upload/f_auto,q_auto,w_900/v1792770100/Validate_Handover_e9gotj.jpg',
   },
 ];
 
@@ -146,18 +144,20 @@ export default function CustomAiPage({
   badgeHref = '#overview',
   className,
 }: CustomAiPageProps) {
-  const [activeApproachIndex, setActiveApproachIndex] = useState<number>(0);
 
   return (
     <div className={cn('relative w-full bg-transparent', className)}>
       {/* ================= 1. HERO SECTION ================= */}
       <div className="relative w-full min-h-[660px] sm:min-h-[720px] lg:min-h-[800px] xl:min-h-[850px] bg-[#051314] rounded-b-[2rem] sm:rounded-b-[2.5rem] lg:rounded-b-[3.5rem] overflow-hidden flex items-center pt-28 pb-20 sm:pt-32 sm:pb-24 lg:pt-36 lg:pb-32">
         <div className="absolute inset-0 z-0 w-full h-full pointer-events-none select-none">
-          <img
-            src="https://res.cloudinary.com/cauders/image/upload/v1792912134/custom_ai_x7ljqa.jpg"
+          <Image
+            src="https://res.cloudinary.com/cauders/image/upload/f_auto,q_auto,w_1600/v1792912134/custom_ai_x7ljqa.jpg"
             alt="Custom AI & Machine Learning"
-            className="w-full h-full object-cover object-center lg:object-right"
-          loading="lazy" decoding="async" />
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-center lg:object-right"
+          />
           <div className="absolute inset-0 bg-gradient-to-r from-[#051314]/95 via-[#051314]/75 to-transparent lg:w-[65%]" />
         </div>
 
@@ -205,7 +205,7 @@ export default function CustomAiPage({
           <ScrollFadeIn direction="up" delay={300}>
             <div className="relative w-full rounded-[2rem] sm:rounded-[2.5rem] lg:rounded-[3rem] overflow-hidden shadow-[0_20px_50px_rgba(0,45,40,0.22)]">
               <img
-                src="https://res.cloudinary.com/cauders/image/upload/v1792905087/Group_4723_fmu4af.png"
+                src="https://res.cloudinary.com/cauders/image/upload/f_auto,q_auto,w_1600/v1792905087/Group_4723_fmu4af.png"
                 alt="When Custom AI & Machine Learning Makes Sense"
                 className="w-full h-auto block select-none pointer-events-none"
               loading="lazy" decoding="async" />
@@ -235,7 +235,7 @@ export default function CustomAiPage({
       </div>
 
       {/* ================= 3. 3 USE CASE CARDS ================= */}
-      <section className="relative z-20 w-full pt-4 sm:pt-8 pb-16 sm:pb-24 px-4 sm:px-6 lg:px-8 bg-transparent">
+      <section id="overview" className="relative z-20 w-full pt-4 sm:pt-8 pb-16 sm:pb-24 px-4 sm:px-6 lg:px-8 bg-transparent">
         <div className="max-w-[95rem] mx-auto">
           <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 xl:gap-10 items-stretch">
             {[
@@ -243,19 +243,19 @@ export default function CustomAiPage({
                 title: 'You Need to Predict an Outcome',
                 description:
                   'Use historical data to develop models that support forecasting or estimate outcomes for a defined business task.',
-                image: 'https://res.cloudinary.com/cauders/image/upload/v1792906816/Gemini_Generated_Image_ma12k1ma12k1ma12_ftm70g.jpg',
+                image: 'https://res.cloudinary.com/cauders/image/upload/f_auto,q_auto,w_900/v1792770098/Discover_Align_vp2l9d.jpg',
               },
               {
                 title: 'Information Needs to Be Classified',
                 description:
                   'Apply models to categorize documents, records, images, or other inputs according to the requirements of a particular workflow.',
-                image: 'https://res.cloudinary.com/cauders/image/upload/v1792906816/Gemini_Generated_Image_ma12k1ma12k1ma12_ftm70g.jpg',
+                image: 'https://res.cloudinary.com/cauders/image/upload/f_auto,q_auto,w_900/v1793005596/Manual_documents_review_mw4xsx.jpg',
               },
               {
                 title: 'Visual Information Needs Analysis',
                 description:
                   'Explore computer-vision solutions for tasks involving image analysis, object detection, visual classification, or other defined visual requirements.',
-                image: 'https://res.cloudinary.com/cauders/image/upload/v1792906816/Gemini_Generated_Image_ma12k1ma12k1ma12_ftm70g.jpg',
+                image: 'https://res.cloudinary.com/cauders/image/upload/f_auto,q_auto,w_900/v1792906816/Gemini_Generated_Image_ma12k1ma12k1ma12_ftm70g.jpg',
               },
             ].map((card, idx) => (
               <ScrollFadeIn key={card.title} delay={idx * 120} className="h-full">
@@ -276,7 +276,6 @@ export default function CustomAiPage({
                       fill
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 450px"
                       className="object-cover object-bottom transition-transform duration-500 group-hover:scale-105"
-                      unoptimized
                     />
                   </div>
                 </div>
@@ -326,16 +325,16 @@ export default function CustomAiPage({
               <ScrollSpyItem>
                 <div className="pb-8 lg:pb-12 border-b border-border flex items-center justify-between gap-6 sm:gap-8">
                   <div className="flex-1 max-w-lg">
-                    <h4 className="text-lg sm:text-xl md:text-2xl font-semibold font-headline text-foreground mb-2 sm:mb-3 tracking-tight">
+                    <h3 className="text-lg sm:text-xl md:text-2xl font-semibold font-headline text-foreground mb-2 sm:mb-3 tracking-tight">
                       Prediction &amp; Forecasting
-                    </h4>
+                    </h3>
                     <p className="text-foreground/75 font-normal text-sm sm:text-base leading-relaxed">
                       Develop models to estimate defined outcomes from relevant historical and contextual data.
                     </p>
                   </div>
                   <div className="w-28 h-28 sm:w-36 sm:h-36 lg:w-40 lg:h-40 flex-shrink-0 flex items-center justify-center">
                     <img
-                      src="https://res.cloudinary.com/cauders/image/upload/v1792808336/Business_Applications-Photoroom_t53gbo.png"
+                      src="https://res.cloudinary.com/cauders/image/upload/f_auto,q_auto,w_400/v1792808336/Business_Applications-Photoroom_t53gbo.png"
                       alt="Prediction & Forecasting"
                       className="w-full h-full object-contain select-none pointer-events-none drop-shadow-sm transition-transform duration-300 hover:scale-105"
                     loading="lazy" decoding="async" />
@@ -347,16 +346,16 @@ export default function CustomAiPage({
               <ScrollSpyItem>
                 <div className="py-8 lg:py-12 border-b border-border flex items-center justify-between gap-6 sm:gap-8">
                   <div className="flex-1 max-w-lg">
-                    <h4 className="text-lg sm:text-xl md:text-2xl font-semibold font-headline text-foreground mb-2 sm:mb-3 tracking-tight">
+                    <h3 className="text-lg sm:text-xl md:text-2xl font-semibold font-headline text-foreground mb-2 sm:mb-3 tracking-tight">
                       Classification
-                    </h4>
+                    </h3>
                     <p className="text-foreground/75 font-normal text-sm sm:text-base leading-relaxed">
                       Classify information into defined categories to support review, routing, analysis, or downstream workflows.
                     </p>
                   </div>
                   <div className="w-28 h-28 sm:w-36 sm:h-36 lg:w-40 lg:h-40 flex-shrink-0 flex items-center justify-center">
                     <img
-                      src="https://res.cloudinary.com/cauders/image/upload/v1792808331/Customer_Partner_Portals-Photoroom_myhnd7.png"
+                      src="https://res.cloudinary.com/cauders/image/upload/f_auto,q_auto,w_400/v1792808331/Customer_Partner_Portals-Photoroom_myhnd7.png"
                       alt="Classification"
                       className="w-full h-full object-contain select-none pointer-events-none drop-shadow-sm transition-transform duration-300 hover:scale-105"
                     loading="lazy" decoding="async" />
@@ -368,16 +367,16 @@ export default function CustomAiPage({
               <ScrollSpyItem>
                 <div className="py-8 lg:py-12 border-b border-border flex items-center justify-between gap-6 sm:gap-8">
                   <div className="flex-1 max-w-lg">
-                    <h4 className="text-lg sm:text-xl md:text-2xl font-semibold font-headline text-foreground mb-2 sm:mb-3 tracking-tight">
+                    <h3 className="text-lg sm:text-xl md:text-2xl font-semibold font-headline text-foreground mb-2 sm:mb-3 tracking-tight">
                       Computer Vision
-                    </h4>
+                    </h3>
                     <p className="text-foreground/75 font-normal text-sm sm:text-base leading-relaxed">
                       Develop visual-processing capabilities for image-based tasks, depending on the available data and evaluation requirements.
                     </p>
                   </div>
                   <div className="w-28 h-28 sm:w-36 sm:h-36 lg:w-40 lg:h-40 flex-shrink-0 flex items-center justify-center">
                     <img
-                      src="https://res.cloudinary.com/cauders/image/upload/v1792808333/Workflow_Operations_Systems-Photoroom_hqp0xn.png"
+                      src="https://res.cloudinary.com/cauders/image/upload/f_auto,q_auto,w_400/v1792808333/Workflow_Operations_Systems-Photoroom_hqp0xn.png"
                       alt="Computer Vision"
                       className="w-full h-full object-contain select-none pointer-events-none drop-shadow-sm transition-transform duration-300 hover:scale-105"
                     loading="lazy" decoding="async" />
@@ -389,16 +388,16 @@ export default function CustomAiPage({
               <ScrollSpyItem>
                 <div className="pt-8 lg:pt-12 flex items-center justify-between gap-6 sm:gap-8">
                   <div className="flex-1 max-w-lg">
-                    <h4 className="text-lg sm:text-xl md:text-2xl font-semibold font-headline text-foreground mb-2 sm:mb-3 tracking-tight">
+                    <h3 className="text-lg sm:text-xl md:text-2xl font-semibold font-headline text-foreground mb-2 sm:mb-3 tracking-tight">
                       Model Integration
-                    </h4>
+                    </h3>
                     <p className="text-foreground/75 font-normal text-sm sm:text-base leading-relaxed">
                       Integrate trained or selected models into applications, APIs, and operational workflows so their outputs can support the intended task.
                     </p>
                   </div>
                   <div className="w-28 h-28 sm:w-36 sm:h-36 lg:w-40 lg:h-40 flex-shrink-0 flex items-center justify-center">
                     <img
-                      src="https://res.cloudinary.com/cauders/image/upload/v1792808334/Specialized_Software_Solutions-Photoroom_jrol0x.png"
+                      src="https://res.cloudinary.com/cauders/image/upload/f_auto,q_auto,w_400/v1792808334/Specialized_Software_Solutions-Photoroom_jrol0x.png"
                       alt="Model Integration"
                       className="w-full h-full object-contain select-none pointer-events-none drop-shadow-sm transition-transform duration-300 hover:scale-105"
                     loading="lazy" decoding="async" />
@@ -497,96 +496,7 @@ export default function CustomAiPage({
             </ScrollFadeIn>
           </div>
 
-          <div className="flex flex-col gap-3 sm:gap-4">
-            {customAiApproachSteps.map((step, idx) => {
-              const isExpanded = activeApproachIndex === idx;
-
-              return (
-                <div
-                  key={step.number}
-                  onMouseEnter={() => setActiveApproachIndex(idx)}
-                  onClick={() => setActiveApproachIndex(idx)}
-                  className={cn(
-                    'w-full rounded-2xl sm:rounded-3xl bg-white text-zinc-900 cursor-pointer overflow-hidden shadow-[0_12px_45px_rgba(0,35,30,0.14)] transition-all duration-500 ease-out',
-                    isExpanded ? 'shadow-[0_20px_50px_rgba(0,35,30,0.22)]' : 'hover:shadow-2xl'
-                  )}
-                >
-                  {isExpanded ? (
-                    <div className="relative min-h-[350px] sm:min-h-[380px] lg:min-h-[400px] flex flex-col justify-between overflow-hidden">
-                      <div className="pt-8 px-8 sm:pt-10 sm:px-10 lg:pt-11 lg:px-12 pb-6 max-w-xl sm:max-w-2xl lg:max-w-[46rem] z-20">
-                        <span className="font-headline font-medium text-4xl sm:text-5xl lg:text-6xl text-zinc-300 mb-5 sm:mb-6 lg:mb-7 block select-none tracking-tight">
-                          {step.number}
-                        </span>
-                        <h3 className="text-2xl sm:text-3xl lg:text-[2rem] font-semibold font-headline text-black tracking-tight mb-3 leading-snug">
-                          {step.title}
-                        </h3>
-                        <p className="text-sm sm:text-base text-zinc-700 font-normal leading-relaxed">
-                          {step.description}
-                        </p>
-                      </div>
-
-                      <div className="w-full bg-[#F8F8F8] px-8 py-5 sm:px-10 sm:py-6 lg:px-12 lg:py-6 z-10">
-                        <div className="max-w-xl sm:max-w-2xl lg:max-w-[46rem]">
-                          <span className="block text-xs sm:text-sm font-semibold text-[#09555A] mb-1 tracking-tight">
-                            What this means for you:
-                          </span>
-                          <p className="text-xs sm:text-sm text-zinc-700 font-normal leading-relaxed">
-                            {step.meansForYou}
-                          </p>
-                        </div>
-                      </div>
-
-                      <div
-                        className="absolute top-0 right-0 bottom-0 w-[54%] sm:w-[56%] lg:w-[52%] flex items-center justify-end overflow-hidden pointer-events-none select-none z-20"
-                        style={{
-                          WebkitMaskImage:
-                            'linear-gradient(to right, transparent 0%, transparent 12%, rgba(0,0,0,0.1) 25%, rgba(0,0,0,0.4) 42%, rgba(0,0,0,0.85) 58%, #000 68%)',
-                          maskImage:
-                            'linear-gradient(to right, transparent 0%, transparent 12%, rgba(0,0,0,0.1) 25%, rgba(0,0,0,0.4) 42%, rgba(0,0,0,0.85) 58%, #000 68%)',
-                        }}
-                      >
-                        <img
-                          src={step.image}
-                          alt={step.title}
-                          className="w-full h-full object-contain object-right select-none pointer-events-none scale-105 sm:scale-100"
-                        loading="lazy" decoding="async" />
-                      </div>
-                    </div>
-                  ) : (
-                    <div className="relative h-24 sm:h-28 lg:h-32 flex items-center justify-between pr-8 sm:pr-10 lg:pr-12 overflow-hidden">
-                      <div className="flex items-center gap-6 sm:gap-8 lg:gap-12 h-full min-w-0">
-                        <div
-                          className="h-full w-36 sm:w-44 lg:w-52 flex-shrink-0 flex items-center justify-start overflow-hidden"
-                          style={{
-                            WebkitMaskImage:
-                              'linear-gradient(to right, #000 60%, rgba(0,0,0,0.6) 80%, transparent 100%)',
-                            maskImage:
-                              'linear-gradient(to right, #000 60%, rgba(0,0,0,0.6) 80%, transparent 100%)',
-                          }}
-                        >
-                          <img
-                            src={step.image}
-                            alt=""
-                            className="w-full h-full object-cover object-left select-none pointer-events-none scale-110"
-                          loading="lazy" decoding="async" />
-                        </div>
-                        <span className="font-headline font-medium text-4xl sm:text-5xl lg:text-6xl text-zinc-300 select-none tracking-tight">
-                          {step.number}
-                        </span>
-                        <h4 className="text-xl sm:text-2xl lg:text-[1.75rem] font-semibold font-headline text-black tracking-tight truncate">
-                          {step.title}
-                        </h4>
-                      </div>
-
-                      <div className="flex-shrink-0 text-zinc-300">
-                        <ChevronDown className="w-7 h-7 sm:w-8 sm:h-8 stroke-[1.75] transition-transform duration-300" />
-                      </div>
-                    </div>
-                  )}
-                </div>
-              );
-            })}
-          </div>
+          <ApproachAccordion steps={customAiApproachSteps} takeawayLabel="What this means for you:" />
         </div>
       </section>
 
@@ -621,9 +531,9 @@ export default function CustomAiPage({
                 <div className="w-20 h-20 sm:w-22 sm:h-22 rounded-full border-[1.5px] border-black flex items-center justify-center mb-6 sm:mb-8 transition-transform duration-300 hover:scale-105 bg-transparent">
                   <CheckCircle2 className="w-8 h-8 text-black stroke-[1.75]" />
                 </div>
-                <h4 className="text-xl sm:text-2xl font-headline font-bold text-black tracking-tight mb-3 leading-snug">
+                <h3 className="text-xl sm:text-2xl font-headline font-bold text-black tracking-tight mb-3 leading-snug">
                   Evaluate on Relevant Data
-                </h4>
+                </h3>
                 <p className="text-sm sm:text-base text-black/70 leading-relaxed font-normal max-w-md">
                   Assess model performance using representative data and metrics suitable for the task, rather than relying on headline scores.
                 </p>
@@ -636,9 +546,9 @@ export default function CustomAiPage({
                 <div className="w-20 h-20 sm:w-22 sm:h-22 rounded-full border-[1.5px] border-black flex items-center justify-center mb-6 sm:mb-8 transition-transform duration-300 hover:scale-105 bg-transparent">
                   <Sliders className="w-8 h-8 text-black stroke-[1.75]" />
                 </div>
-                <h4 className="text-xl sm:text-2xl font-headline font-bold text-black tracking-tight mb-3 leading-snug">
+                <h3 className="text-xl sm:text-2xl font-headline font-bold text-black tracking-tight mb-3 leading-snug">
                   Understand Error Modes
-                </h4>
+                </h3>
                 <p className="text-sm sm:text-base text-black/70 leading-relaxed font-normal max-w-md">
                   Identify where the model performs less reliably, which errors matter, and whether human review is required.
                 </p>
@@ -651,9 +561,9 @@ export default function CustomAiPage({
                 <div className="w-20 h-20 sm:w-22 sm:h-22 rounded-full border-[1.5px] border-black flex items-center justify-center mb-6 sm:mb-8 transition-transform duration-300 hover:scale-105 bg-transparent">
                   <TrendingUp className="w-8 h-8 text-black stroke-[1.75]" />
                 </div>
-                <h4 className="text-xl sm:text-2xl font-headline font-bold text-black tracking-tight mb-3 leading-snug">
+                <h3 className="text-xl sm:text-2xl font-headline font-bold text-black tracking-tight mb-3 leading-snug">
                   Monitor Under Live Conditions
-                </h4>
+                </h3>
                 <p className="text-sm sm:text-base text-black/70 leading-relaxed font-normal max-w-md">
                   Track operational performance indicators and review the model when input data, business conditions, or requirements change.
                 </p>
@@ -672,7 +582,7 @@ export default function CustomAiPage({
       />
 
       {/* ================= 7. DELIVERABLES ================= */}
-      <GeometricZincContainer zoomScale={1.3}>
+      <GeometricZincContainer id="deliverables" zoomScale={1.3}>
         <div className="relative z-10 max-w-[88rem] mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 md:py-24">
           <div className="flex flex-col items-center justify-center text-center max-w-4xl mx-auto mb-12 sm:mb-16">
             <ScrollFadeIn>
@@ -730,7 +640,7 @@ export default function CustomAiPage({
               <div className="group relative rounded-3xl p-6 sm:p-7 lg:p-8 flex flex-col justify-between h-full bg-white text-zinc-900 shadow-[0_20px_50px_rgba(0,0,0,0.15)] transform-gpu transition-all duration-300 hover:-translate-y-1 overflow-hidden">
                 <div className="pointer-events-none absolute -bottom-4 -right-4 w-60 h-48 sm:w-72 sm:h-56 lg:w-80 lg:h-60 z-0 opacity-95 transition-transform duration-300 group-hover:scale-105">
                   <Image
-                    src="https://res.cloudinary.com/cauders/image/upload/v1792813715/Customer-Facing_Applications_unghui.jpg"
+                    src="https://res.cloudinary.com/cauders/image/upload/f_auto,q_auto,w_640/v1792813715/Customer-Facing_Applications_unghui.jpg"
                     alt="Custom AI Engineering"
                     fill
                     sizes="(max-width: 640px) 240px, (max-width: 1024px) 288px, 320px"

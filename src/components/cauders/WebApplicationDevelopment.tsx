@@ -1,6 +1,4 @@
-'use client';
-
-import React, { useState, useRef } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import {
@@ -9,7 +7,6 @@ import {
   Layout,
   Layers,
   Sparkles,
-  ChevronDown,
   Compass,
   Cpu,
   ShieldCheck,
@@ -24,6 +21,7 @@ import {
   Search,
 } from 'lucide-react';
 import ArrowBadge from './ArrowBadge';
+import ApproachAccordion from './ApproachAccordion';
 import SectionHeading from './SectionHeading';
 import CaseStudiesSection from './CaseStudiesSection';
 import DarkTealButton from './DarkTealButton';
@@ -32,13 +30,6 @@ import ScrollSpyItem from './ScrollSpyItem';
 import GeometricZincContainer from './GeometricZincContainer';
 import FAQPreview, { FAQ } from './FAQPreview';
 import GetAQuote from './GetAQuote';
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
 import { cn } from '@/lib/utils';
 
 interface WebApplicationDevelopmentProps {
@@ -97,7 +88,7 @@ const webApproachSteps = [
     description:
       'We identify who will use the application, what they need to accomplish, how the business process works, and which existing systems are involved. We map out operational requirements to ensure every component supports real business goals.',
     establishes: "A shared understanding of the application's purpose, users, and requirements.",
-    image: 'https://res.cloudinary.com/cauders/image/upload/v1792770098/Discover_Align_vp2l9d.jpg',
+    image: 'https://res.cloudinary.com/cauders/image/upload/f_auto,q_auto,w_900/v1792770098/Discover_Align_vp2l9d.jpg',
   },
   {
     number: '02',
@@ -105,7 +96,7 @@ const webApproachSteps = [
     description:
       'We define the application scope, structure key workflows, and establish the technical approach. User journeys and interface design are developed around the intended experience across target browsers and screens.',
     establishes: 'A clear plan for the functionality, interfaces, and system connections needed.',
-    image: 'https://res.cloudinary.com/cauders/image/upload/v1792770100/Plan_Design_rf0t2h.jpg',
+    image: 'https://res.cloudinary.com/cauders/image/upload/f_auto,q_auto,w_900/v1792770100/Plan_Design_rf0t2h.jpg',
   },
   {
     number: '03',
@@ -113,7 +104,7 @@ const webApproachSteps = [
     description:
       'We develop the application functionality, implement its interfaces, and connect the required systems and services with clean architecture, robust security, and reliable API integrations.',
     establishes: 'Working application features aligned with the agreed scope.',
-    image: 'https://res.cloudinary.com/cauders/image/upload/v1792770102/Build_Integrate_egvjcw.jpg',
+    image: 'https://res.cloudinary.com/cauders/image/upload/f_auto,q_auto,w_900/v1792770102/Build_Integrate_egvjcw.jpg',
   },
   {
     number: '04',
@@ -121,7 +112,7 @@ const webApproachSteps = [
     description:
       'We test key user journeys, permissions, integrations, and supported browser or device experiences, address identified issues, and prepare the agreed handover materials and deployment plans.',
     establishes: 'A reviewed application and clarity on what has been delivered and how it is deployed or handed over.',
-    image: 'https://res.cloudinary.com/cauders/image/upload/v1792770100/Validate_Handover_e9gotj.jpg',
+    image: 'https://res.cloudinary.com/cauders/image/upload/f_auto,q_auto,w_900/v1792770100/Validate_Handover_e9gotj.jpg',
   },
 ];
 
@@ -163,7 +154,6 @@ export default function WebApplicationDevelopment({
   badgeHref = '#overview',
   className,
 }: WebApplicationDevelopmentProps) {
-  const [activeApproachIndex, setActiveApproachIndex] = useState<number>(0);
 
   return (
     <div className={cn('relative w-full bg-transparent', className)}>
@@ -171,10 +161,13 @@ export default function WebApplicationDevelopment({
       <div className="relative w-full min-h-[630px] sm:min-h-[690px] lg:min-h-[770px] xl:min-h-[830px] bg-transparent flex items-center pt-24 pb-16 sm:pt-28 sm:pb-20 lg:pt-32 lg:pb-28 overflow-hidden">
         {/* Background image container: right-aligned with seamless blending spanning full height */}
         <div className="absolute top-0 right-0 bottom-0 w-full lg:w-[68%] xl:w-[64%] flex items-center justify-end overflow-hidden pointer-events-none select-none z-0">
-          <img
-            src="https://res.cloudinary.com/cauders/image/upload/v1792819750/Web_Application_Development_jrs3co.jpg"
+          <Image
+            src="https://res.cloudinary.com/cauders/image/upload/f_auto,q_auto,w_1600/v1792819750/Web_Application_Development_jrs3co.jpg"
             alt="Web Application Development"
-            className="w-full h-full object-cover object-right max-w-none opacity-90 lg:opacity-100 scale-100 lg:scale-105 origin-right"
+            fill
+            priority
+            sizes="(max-width: 1024px) 100vw, 68vw"
+            className="object-cover object-right opacity-90 lg:opacity-100 scale-100 lg:scale-105 origin-right"
             style={{
               maskImage:
                 'linear-gradient(to right, transparent 0%, rgba(0,0,0,0.4) 10%, rgba(0,0,0,1) 28%), linear-gradient(to bottom, black 85%, transparent 100%)',
@@ -183,7 +176,7 @@ export default function WebApplicationDevelopment({
               maskComposite: 'intersect',
               WebkitMaskComposite: 'destination-in',
             }}
-          loading="lazy" decoding="async" />
+          />
         </div>
 
         {/* Content on the left side of the hero */}
@@ -233,7 +226,7 @@ export default function WebApplicationDevelopment({
           <ScrollFadeIn direction="up" delay={300}>
             <div className="relative w-full rounded-[2rem] sm:rounded-[2.5rem] lg:rounded-[3rem] overflow-hidden shadow-[0_20px_50px_rgba(0,45,40,0.22)]">
               <img
-                src="https://res.cloudinary.com/cauders/image/upload/v1792756273/Frame_4661_c7d5nj.png"
+                src="https://res.cloudinary.com/cauders/image/upload/f_auto,q_auto,w_1600/v1792756273/Frame_4661_c7d5nj.png"
                 alt="Bring Your Workflows into One Connected Web Experience"
                 className="w-full h-auto block select-none pointer-events-none"
               loading="lazy" decoding="async" />
@@ -263,7 +256,7 @@ export default function WebApplicationDevelopment({
       </div>
 
       {/* ================= 3. WHEN A WEB APPLICATION IS THE RIGHT FIT ================= */}
-      <section className="relative z-20 w-full pt-12 sm:pt-16 md:pt-20 pb-16 sm:pb-24 px-4 sm:px-6 lg:px-8 bg-transparent">
+      <section id="overview" className="relative z-20 w-full pt-12 sm:pt-16 md:pt-20 pb-16 sm:pb-24 px-4 sm:px-6 lg:px-8 bg-transparent">
         <div className="max-w-[95rem] mx-auto">
           <SectionHeading
             lines={[
@@ -361,16 +354,16 @@ export default function WebApplicationDevelopment({
               <ScrollSpyItem>
                 <div className="pb-8 lg:pb-12 border-b border-border flex items-center justify-between gap-6 sm:gap-8">
                   <div className="flex-1 max-w-lg">
-                    <h4 className="text-lg sm:text-xl md:text-2xl font-semibold font-headline text-foreground mb-2 sm:mb-3 tracking-tight">
+                    <h3 className="text-lg sm:text-xl md:text-2xl font-semibold font-headline text-foreground mb-2 sm:mb-3 tracking-tight">
                       Business &amp; Operations Applications
-                    </h4>
+                    </h3>
                     <p className="text-foreground/75 font-normal text-sm sm:text-base leading-relaxed">
                       Support internal workflows, task management, approvals, records, and day-to-day business operations through tailored applications.
                     </p>
                   </div>
                   <div className="w-28 h-28 sm:w-36 sm:h-36 lg:w-40 lg:h-40 flex-shrink-0 flex items-center justify-center">
                     <img
-                      src="https://res.cloudinary.com/cauders/image/upload/v1792808336/Business_Applications-Photoroom_t53gbo.png"
+                      src="https://res.cloudinary.com/cauders/image/upload/f_auto,q_auto,w_400/v1792808336/Business_Applications-Photoroom_t53gbo.png"
                       alt="Business & Operations Applications"
                       className="w-full h-full object-contain select-none pointer-events-none drop-shadow-sm transition-transform duration-300 hover:scale-105"
                     loading="lazy" decoding="async" />
@@ -382,16 +375,16 @@ export default function WebApplicationDevelopment({
               <ScrollSpyItem>
                 <div className="py-8 lg:py-12 border-b border-border flex items-center justify-between gap-6 sm:gap-8">
                   <div className="flex-1 max-w-lg">
-                    <h4 className="text-lg sm:text-xl md:text-2xl font-semibold font-headline text-foreground mb-2 sm:mb-3 tracking-tight">
+                    <h3 className="text-lg sm:text-xl md:text-2xl font-semibold font-headline text-foreground mb-2 sm:mb-3 tracking-tight">
                       Customer &amp; Partner Portals
-                    </h4>
+                    </h3>
                     <p className="text-foreground/75 font-normal text-sm sm:text-base leading-relaxed">
                       Give customers, suppliers, and partners a dedicated place to access information, manage accounts, submit requests, and track activity.
                     </p>
                   </div>
                   <div className="w-28 h-28 sm:w-36 sm:h-36 lg:w-40 lg:h-40 flex-shrink-0 flex items-center justify-center">
                     <img
-                      src="https://res.cloudinary.com/cauders/image/upload/v1792808331/Customer_Partner_Portals-Photoroom_myhnd7.png"
+                      src="https://res.cloudinary.com/cauders/image/upload/f_auto,q_auto,w_400/v1792808331/Customer_Partner_Portals-Photoroom_myhnd7.png"
                       alt="Customer & Partner Portals"
                       className="w-full h-full object-contain select-none pointer-events-none drop-shadow-sm transition-transform duration-300 hover:scale-105"
                     loading="lazy" decoding="async" />
@@ -403,16 +396,16 @@ export default function WebApplicationDevelopment({
               <ScrollSpyItem>
                 <div className="py-8 lg:py-12 border-b border-border flex items-center justify-between gap-6 sm:gap-8">
                   <div className="flex-1 max-w-lg">
-                    <h4 className="text-lg sm:text-xl md:text-2xl font-semibold font-headline text-foreground mb-2 sm:mb-3 tracking-tight">
+                    <h3 className="text-lg sm:text-xl md:text-2xl font-semibold font-headline text-foreground mb-2 sm:mb-3 tracking-tight">
                       Web-Based Products &amp; Platforms
-                    </h4>
+                    </h3>
                     <p className="text-foreground/75 font-normal text-sm sm:text-base leading-relaxed">
                       Develop digital products and online services with tailored functionality, interactive experiences, and user-specific features.
                     </p>
                   </div>
                   <div className="w-28 h-28 sm:w-36 sm:h-36 lg:w-40 lg:h-40 flex-shrink-0 flex items-center justify-center">
                     <img
-                      src="https://res.cloudinary.com/cauders/image/upload/v1792819836/Web-Based_Products_Platforms-Photoroom_npbfdi.png"
+                      src="https://res.cloudinary.com/cauders/image/upload/f_auto,q_auto,w_400/v1792819836/Web-Based_Products_Platforms-Photoroom_npbfdi.png"
                       alt="Web-Based Products & Platforms"
                       className="w-full h-full object-contain select-none pointer-events-none drop-shadow-sm transition-transform duration-300 hover:scale-105"
                     loading="lazy" decoding="async" />
@@ -424,16 +417,16 @@ export default function WebApplicationDevelopment({
               <ScrollSpyItem>
                 <div className="pt-8 lg:pt-12 flex items-center justify-between gap-6 sm:gap-8">
                   <div className="flex-1 max-w-lg">
-                    <h4 className="text-lg sm:text-xl md:text-2xl font-semibold font-headline text-foreground mb-2 sm:mb-3 tracking-tight">
+                    <h3 className="text-lg sm:text-xl md:text-2xl font-semibold font-headline text-foreground mb-2 sm:mb-3 tracking-tight">
                       Data &amp; Workflow Applications
-                    </h4>
+                    </h3>
                     <p className="text-foreground/75 font-normal text-sm sm:text-base leading-relaxed">
                       Bring relevant information into connected workspaces that help users manage tasks, follow business rules, and make informed decisions.
                     </p>
                   </div>
                   <div className="w-28 h-28 sm:w-36 sm:h-36 lg:w-40 lg:h-40 flex-shrink-0 flex items-center justify-center">
                     <img
-                      src="https://res.cloudinary.com/cauders/image/upload/v1792819830/Data_Workflow_Applications-Photoroom_xfxjdl.png"
+                      src="https://res.cloudinary.com/cauders/image/upload/f_auto,q_auto,w_400/v1792819830/Data_Workflow_Applications-Photoroom_xfxjdl.png"
                       alt="Data & Workflow Applications"
                       className="w-full h-full object-contain select-none pointer-events-none drop-shadow-sm transition-transform duration-300 hover:scale-105"
                     loading="lazy" decoding="async" />
@@ -446,7 +439,7 @@ export default function WebApplicationDevelopment({
       </section>
 
       {/* ================= 5. APPLICATION FEATURES & INTEGRATIONS ================= */}
-      <section className="py-16 md:py-24 relative z-10 bg-transparent">
+      <section id="features" className="py-16 md:py-24 relative z-10 bg-transparent">
         <div className="max-w-[95rem] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col items-center justify-center text-center max-w-5xl mx-auto mb-12 sm:mb-16">
             <ScrollFadeIn>
@@ -541,104 +534,7 @@ export default function WebApplicationDevelopment({
           </div>
 
           {/* 4 Interactive Accordion Cards */}
-          <div className="flex flex-col gap-3 sm:gap-4">
-            {webApproachSteps.map((step, idx) => {
-              const isExpanded = activeApproachIndex === idx;
-
-              return (
-                <div
-                  key={step.number}
-                  onMouseEnter={() => setActiveApproachIndex(idx)}
-                  onClick={() => setActiveApproachIndex(idx)}
-                  className={cn(
-                    "w-full rounded-2xl sm:rounded-3xl bg-white text-zinc-900 cursor-pointer overflow-hidden shadow-[0_12px_45px_rgba(0,35,30,0.14)] transition-all duration-500 ease-out",
-                    isExpanded 
-                      ? "shadow-[0_20px_50px_rgba(0,35,30,0.22)]" 
-                      : "hover:shadow-2xl"
-                  )}
-                >
-                  {isExpanded ? (
-                    <div className="relative min-h-[350px] sm:min-h-[380px] lg:min-h-[400px] flex flex-col justify-between overflow-hidden">
-                      <div className="pt-8 px-8 sm:pt-10 sm:px-10 lg:pt-11 lg:px-12 pb-6 max-w-xl sm:max-w-2xl lg:max-w-[46rem] z-20">
-                        <span className="font-headline font-medium text-4xl sm:text-5xl lg:text-6xl text-zinc-300 mb-5 sm:mb-6 lg:mb-7 block select-none tracking-tight">
-                          {step.number}
-                        </span>
-                        <h3 className="text-2xl sm:text-3xl lg:text-[2rem] font-semibold font-headline text-black tracking-tight mb-3 leading-snug">
-                          {step.title}
-                        </h3>
-                        <p className="text-sm sm:text-base text-zinc-700 font-normal leading-relaxed">
-                          {step.description}
-                        </p>
-                      </div>
-
-                      <div className="w-full bg-[#F8F8F8] px-8 py-5 sm:px-10 sm:py-6 lg:px-12 lg:py-6 z-10">
-                        <div className="max-w-xl sm:max-w-2xl lg:max-w-[46rem]">
-                          <span className="block text-xs sm:text-sm font-semibold text-[#09555A] mb-1 tracking-tight">
-                            What this establishes:
-                          </span>
-                          <p className="text-xs sm:text-sm text-zinc-700 font-normal leading-relaxed">
-                            {step.establishes}
-                          </p>
-                        </div>
-                      </div>
-
-                      <div 
-                        className="absolute top-0 right-0 bottom-0 w-[54%] sm:w-[56%] lg:w-[52%] flex items-center justify-end overflow-hidden pointer-events-none select-none z-20"
-                        style={{
-                          WebkitMaskImage:
-                            'linear-gradient(to right, transparent 0%, transparent 12%, rgba(0,0,0,0.1) 25%, rgba(0,0,0,0.4) 42%, rgba(0,0,0,0.85) 58%, #000 68%)',
-                          maskImage:
-                            'linear-gradient(to right, transparent 0%, transparent 12%, rgba(0,0,0,0.1) 25%, rgba(0,0,0,0.4) 42%, rgba(0,0,0,0.85) 58%, #000 68%)',
-                        }}
-                      >
-                        <img
-                          src={step.image}
-                          alt={step.title}
-                          className="w-full h-full object-contain object-right select-none pointer-events-none scale-105 sm:scale-100"
-                          style={{
-                            WebkitMaskImage:
-                              'linear-gradient(to right, transparent 0%, transparent 12%, rgba(0,0,0,0.1) 25%, rgba(0,0,0,0.4) 42%, rgba(0,0,0,0.85) 58%, #000 68%)',
-                            maskImage:
-                              'linear-gradient(to right, transparent 0%, transparent 12%, rgba(0,0,0,0.1) 25%, rgba(0,0,0,0.4) 42%, rgba(0,0,0,0.85) 58%, #000 68%)',
-                          }}
-                        loading="lazy" decoding="async" />
-                      </div>
-                    </div>
-                  ) : (
-                    <div className="relative h-24 sm:h-28 lg:h-32 flex items-center justify-between pr-8 sm:pr-10 lg:pr-12 overflow-hidden">
-                      <div className="flex items-center gap-6 sm:gap-8 lg:gap-12 h-full min-w-0">
-                        <div 
-                          className="h-full w-36 sm:w-44 lg:w-52 flex-shrink-0 flex items-center justify-start overflow-hidden"
-                          style={{
-                            WebkitMaskImage:
-                              'linear-gradient(to right, #000 60%, rgba(0,0,0,0.6) 80%, transparent 100%)',
-                            maskImage:
-                              'linear-gradient(to right, #000 60%, rgba(0,0,0,0.6) 80%, transparent 100%)',
-                          }}
-                        >
-                          <img
-                            src={step.image}
-                            alt=""
-                            className="w-full h-full object-cover object-left select-none pointer-events-none scale-110"
-                          loading="lazy" decoding="async" />
-                        </div>
-                        <span className="font-headline font-medium text-4xl sm:text-5xl lg:text-6xl text-zinc-300 select-none tracking-tight">
-                          {step.number}
-                        </span>
-                        <h4 className="text-xl sm:text-2xl lg:text-[1.75rem] font-semibold font-headline text-black tracking-tight truncate">
-                          {step.title}
-                        </h4>
-                      </div>
-
-                      <div className="flex-shrink-0 text-zinc-300">
-                        <ChevronDown className="w-7 h-7 sm:w-8 sm:h-8 stroke-[1.75] transition-transform duration-300" />
-                      </div>
-                    </div>
-                  )}
-                </div>
-              );
-            })}
-          </div>
+          <ApproachAccordion steps={webApproachSteps} />
         </div>
       </section>
 
@@ -708,7 +604,7 @@ export default function WebApplicationDevelopment({
       </section>
 
       {/* ================= 9. DELIVERABLES: WHAT TO EXPECT FROM DELIVERY ================= */}
-      <GeometricZincContainer zoomScale={1.3}>
+      <GeometricZincContainer id="deliverables" zoomScale={1.3}>
         <div className="relative z-10 max-w-[88rem] mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 md:py-24">
           <div className="flex flex-col items-center justify-center text-center max-w-4xl mx-auto mb-12 sm:mb-16">
             <ScrollFadeIn>
@@ -766,7 +662,7 @@ export default function WebApplicationDevelopment({
               <div className="group relative rounded-3xl p-6 sm:p-7 lg:p-8 flex flex-col justify-between h-full bg-white text-zinc-900 shadow-[0_20px_50px_rgba(0,0,0,0.15)] transform-gpu transition-all duration-300 hover:-translate-y-1 overflow-hidden">
                 <div className="pointer-events-none absolute -bottom-4 -right-4 w-60 h-48 sm:w-72 sm:h-56 lg:w-80 lg:h-60 z-0 opacity-95 transition-transform duration-300 group-hover:scale-105">
                   <Image
-                    src="https://res.cloudinary.com/cauders/image/upload/v1792813715/Customer-Facing_Applications_unghui.jpg"
+                    src="https://res.cloudinary.com/cauders/image/upload/f_auto,q_auto,w_640/v1792813715/Customer-Facing_Applications_unghui.jpg"
                     alt="Web Application Development"
                     fill
                     sizes="(max-width: 640px) 240px, (max-width: 1024px) 288px, 320px"

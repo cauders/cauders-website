@@ -1,6 +1,3 @@
-
-'use client';
-
 import Hero from '@/components/cauders/Hero';
 import WhatWeBuildSection from './WhatWeBuildSection';
 import EngagementModelsSection from './EngagementModelsSection';
@@ -11,7 +8,6 @@ import CaseStudiesSection from './CaseStudiesSection';
 import FAQPreview from './FAQPreview';
 import GetAQuote from './GetAQuote';
 import BlurCircle from './BlurCircle';
-import ScrollFadeIn from './ScrollFadeIn';
 
 export default function HomePage() {
   return (
@@ -27,7 +23,9 @@ export default function HomePage() {
       <ReliableWorkflowsSection />
       <EngineeringProcessSection />
       <CaseStudiesSection />
-      <FAQPreview />
+      <div id="faq">
+        <FAQPreview badgeHref="#faq" />
+      </div>
       <GetAQuote />
     </div>
   );

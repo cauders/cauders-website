@@ -1,11 +1,10 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import Link from 'next/link';
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import { ArrowUpRight } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
 
 interface MegaMenuProps {
   activeMenu: 'services' | 'ai' | 'industries' | 'company' | null;
@@ -56,51 +55,28 @@ const industryMenuItems: MenuItem[] = [
   { href: '/industries#logistics-supply-chain', label: 'Logistics & Supply Chain' },
 ];
 
-export default function MegaMenu({ 
-  activeMenu, 
-  setActiveMenu, 
+export default function MegaMenu({
+  activeMenu,
+  setActiveMenu,
   isScrolled = false,
   isHeroHeader = false,
   onMouseEnter,
   onMouseLeave,
 }: MegaMenuProps) {
   const pathname = usePathname();
-  const router = useRouter();
 
-  const [isMounted, setIsMounted] = useState(false);
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
-  // Aggressively prefetch all links of the active category as soon as the mega menu opens
   useEffect(() => {
     if (!activeMenu) return;
-    let items: MenuItem[] = [];
-    if (activeMenu === 'services') items = servicesMenuItems;
-    else if (activeMenu === 'ai') items = aiMenuItems;
-    else if (activeMenu === 'industries') items = industryMenuItems;
-    else if (activeMenu === 'company') items = companyMenuItems;
-
-    items.forEach((item) => {
-      try {
-        const cleanPath = item.href.split('#')[0];
-        router.prefetch(cleanPath);
-      } catch {
-        // Safe fallback
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setActiveMenu(null);
       }
-    });
-  }, [activeMenu, router]);
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [activeMenu, setActiveMenu]);
 
-  const handleContainerEnter = () => {
-    onMouseEnter?.();
-  };
-
-  const handleContainerLeave = () => {
-    onMouseLeave?.();
-  };
-
-  if (!isMounted) return null;
+  if (!activeMenu) return null;
 
   const renderTwoColumnList = (items: MenuItem[]) => {
     const midpoint = Math.ceil(items.length / 2);
@@ -113,12 +89,10 @@ export default function MegaMenu({
         <li key={item.href}>
           <Link
             href={item.href}
-            prefetch={true}
-            onMouseEnter={() => router.prefetch(item.href)}
             onClick={() => setActiveMenu(null)}
             className={cn(
-              "text-[15px] font-medium transition-colors py-1 flex items-center group w-fit",
-              isActive ? "text-zinc font-semibold" : "text-foreground/80 hover:text-zinc"
+              'text-[15px] font-medium transition-colors py-1 flex items-center group w-fit focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#09555A] rounded-sm',
+              isActive ? 'text-zinc font-semibold' : 'text-foreground/80 hover:text-zinc'
             )}
           >
             <span className="group-hover:translate-x-1 transition-transform inline-flex items-center gap-1.5">
@@ -139,38 +113,24 @@ export default function MegaMenu({
   };
 
   return (
-    <AnimatePresence>
-      {activeMenu && (
-        <motion.div
-          initial={{ opacity: 0, y: -6, scale: 0.99, x: "-50%" }}
-          animate={{ opacity: 1, y: 0, scale: 1, x: "-50%" }}
-          exit={{ opacity: 0, y: -4, scale: 0.99, x: "-50%", transition: { duration: 0.08, ease: "easeOut" } }}
-          transition={{ duration: 0.15, ease: [0.16, 1, 0.3, 1] }}
-          className={cn(
-            "fixed z-50 w-full left-1/2 max-w-2xl pt-3 transition-all duration-300 ease-out",
-            isHeroHeader ? "top-[76px] md:top-[88px]" : (isScrolled ? "top-[70px]" : "top-[76px]")
-          )}
-          onMouseEnter={handleContainerEnter}
-          onMouseLeave={handleContainerLeave}
-        >
-          <div className="relative w-full bg-white dark:bg-zinc-950 border border-border/20 rounded-2xl shadow-2xl overflow-hidden">
-            <div className="w-full mx-auto relative">
-              <motion.div
-                key={activeMenu}
-                initial={{ opacity: 0, y: 3 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.12, ease: "easeOut" }}
-                className="w-full py-6 px-6 sm:px-8"
-              >
-                {activeMenu === 'services' && renderTwoColumnList(servicesMenuItems)}
-                {activeMenu === 'ai' && renderTwoColumnList(aiMenuItems)}
-                {activeMenu === 'industries' && renderTwoColumnList(industryMenuItems)}
-                {activeMenu === 'company' && renderTwoColumnList(companyMenuItems)}
-              </motion.div>
-            </div>
-          </div>
-        </motion.div>
+    <div
+      role="region"
+      aria-label={`${activeMenu} navigation menu`}
+      className={cn(
+        'fixed z-50 w-full left-1/2 -translate-x-1/2 max-w-2xl pt-3 animate-in fade-in zoom-in-95 duration-150 ease-out',
+        isHeroHeader ? 'top-[76px] md:top-[88px]' : isScrolled ? 'top-[70px]' : 'top-[76px]'
       )}
-    </AnimatePresence>
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+    >
+      <div className="relative w-full bg-white dark:bg-zinc-950 border border-border/20 rounded-2xl shadow-2xl overflow-hidden">
+        <div key={activeMenu} className="w-full py-6 px-6 sm:px-8 animate-in fade-in duration-100">
+          {activeMenu === 'services' && renderTwoColumnList(servicesMenuItems)}
+          {activeMenu === 'ai' && renderTwoColumnList(aiMenuItems)}
+          {activeMenu === 'industries' && renderTwoColumnList(industryMenuItems)}
+          {activeMenu === 'company' && renderTwoColumnList(companyMenuItems)}
+        </div>
+      </div>
+    </div>
   );
 }

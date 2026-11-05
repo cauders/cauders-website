@@ -1,5 +1,3 @@
-'use client';
-
 import Link from 'next/link';
 import Image from 'next/image';
 import React from 'react';
@@ -59,50 +57,61 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <div 
-      className="relative text-black z-20"
-      data-footer-hover="true"
-    >
+    <div className="relative text-black z-20" data-footer-hover="true">
       <footer className="relative z-10">
         <div className="container mx-auto pt-10 md:pt-16 pb-8 md:pb-12 px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 lg:grid-cols-6 gap-y-12 gap-x-8">
-            
             {/* Column 1: Logo, Address, and Info */}
             <div className="col-span-2 lg:col-span-2 flex flex-col items-start gap-6">
               <Link href="/" className="inline-block">
-                <Image src="https://res.cloudinary.com/cauders/image/upload/v1786551887/logo-gd_ulbjsm.png" alt="Cauders Logo" width={240} height={120} className="w-[180px] h-auto object-contain" />
+                <Image
+                  src="https://res.cloudinary.com/cauders/image/upload/f_auto,q_auto,w_360/v1786551887/logo-gd_ulbjsm.png"
+                  alt="Cauders Logo"
+                  width={240}
+                  height={120}
+                  sizes="180px"
+                  className="w-[180px] h-auto object-contain"
+                />
               </Link>
               <div className="flex flex-col gap-2">
                 <p className="text-base font-medium text-black max-w-xs">
-                  AI, Automation & Software Solutions.
+                  AI, Automation &amp; Software Solutions.
                 </p>
                 <p className="text-sm text-black/80 max-w-xs leading-relaxed">
                   We help businesses streamline operations, solve complex challenges, and turn ideas into scalable digital solutions.
                 </p>
               </div>
-              
+
               <div className="flex flex-col gap-3.5 mt-2 text-sm text-black/80">
                 <div className="flex items-start gap-3">
-                  <MapPin className="w-5 h-5 shrink-0 mt-0.5 text-black/50" />
-                  <span>F1 Block Phase 2<br />Pak Arab Housing Society<br />Ferozpur Road, Lahore, Pakistan</span>
+                  <MapPin className="w-5 h-5 shrink-0 mt-0.5 text-black/50" aria-hidden="true" />
+                  <span>
+                    F1 Block Phase 2<br />
+                    Pak Arab Housing Society<br />
+                    Ferozpur Road, Lahore, Pakistan
+                  </span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <Phone className="w-5 h-5 shrink-0 text-black/50" />
-                  <a href="tel:+923390107377" className="hover:text-primary transition-colors font-medium">+92 3390107377</a>
+                  <Phone className="w-5 h-5 shrink-0 text-black/50" aria-hidden="true" />
+                  <a href="tel:+923390107377" className="hover:text-primary transition-colors font-medium">
+                    +92 3390107377
+                  </a>
                 </div>
                 <div className="flex items-center gap-3">
-                  <Mail className="w-5 h-5 shrink-0 text-black/50" />
-                  <a href="mailto:info@cauders.com" className="hover:text-primary transition-colors">info@cauders.com</a>
+                  <Mail className="w-5 h-5 shrink-0 text-black/50" aria-hidden="true" />
+                  <a href="mailto:info@cauders.com" className="hover:text-primary transition-colors">
+                    info@cauders.com
+                  </a>
                 </div>
               </div>
             </div>
 
             {/* Column 2: AI & Automation */}
             <div className="col-span-1 lg:col-span-1">
-              <h3 className="font-semibold tracking-widest uppercase mb-5 text-black text-sm">AI & Automation</h3>
-              <nav className="flex flex-col gap-3">
+              <h2 className="font-semibold tracking-widest uppercase mb-5 text-black text-sm">AI &amp; Automation</h2>
+              <nav aria-label="AI and Automation links" className="flex flex-col gap-3">
                 {aiLinks.map((link) => (
-                  <Link key={link.label} href={link.href} prefetch={true} className="text-sm text-black/70 hover:text-primary transition-colors w-fit">
+                  <Link key={link.label} href={link.href} className="text-sm text-black/70 hover:text-primary transition-colors w-fit">
                     {link.label}
                   </Link>
                 ))}
@@ -111,10 +120,10 @@ export default function Footer() {
 
             {/* Column 3: Services */}
             <div className="col-span-1 lg:col-span-1">
-              <h3 className="font-semibold tracking-widest uppercase mb-5 text-black text-sm">Services</h3>
-              <nav className="flex flex-col gap-3">
+              <h2 className="font-semibold tracking-widest uppercase mb-5 text-black text-sm">Services</h2>
+              <nav aria-label="Services links" className="flex flex-col gap-3">
                 {serviceLinks.map((link) => (
-                  <Link key={link.label} href={link.href} prefetch={true} className="text-sm text-black/70 hover:text-primary transition-colors w-fit">
+                  <Link key={link.label} href={link.href} className="text-sm text-black/70 hover:text-primary transition-colors w-fit">
                     {link.label}
                   </Link>
                 ))}
@@ -123,10 +132,10 @@ export default function Footer() {
 
             {/* Column 4: Industries */}
             <div className="col-span-1 lg:col-span-1">
-              <h3 className="font-semibold tracking-widest uppercase mb-5 text-black text-sm">Industries</h3>
-              <nav className="flex flex-col gap-3">
+              <h2 className="font-semibold tracking-widest uppercase mb-5 text-black text-sm">Industries</h2>
+              <nav aria-label="Industries links" className="flex flex-col gap-3">
                 {industryLinks.map((link) => (
-                  <Link key={link.label} href={link.href} prefetch={true} className="text-sm text-black/70 hover:text-primary transition-colors w-fit">
+                  <Link key={link.label} href={link.href} className="text-sm text-black/70 hover:text-primary transition-colors w-fit">
                     {link.label}
                   </Link>
                 ))}
@@ -135,43 +144,39 @@ export default function Footer() {
 
             {/* Column 5: Company */}
             <div className="col-span-1 lg:col-span-1">
-              <h3 className="font-semibold tracking-widest uppercase mb-5 text-black text-sm">Company</h3>
-              <nav className="flex flex-col gap-3">
+              <h2 className="font-semibold tracking-widest uppercase mb-5 text-black text-sm">Company</h2>
+              <nav aria-label="Company links" className="flex flex-col gap-3">
                 {companyLinks.map((link) => (
-                  <Link key={link.label} href={link.href} prefetch={true} className="text-sm text-black/70 hover:text-primary transition-colors w-fit">
+                  <Link key={link.label} href={link.href} className="text-sm text-black/70 hover:text-primary transition-colors w-fit">
                     {link.label}
                   </Link>
                 ))}
               </nav>
             </div>
-
           </div>
         </div>
 
         {/* Bottom Tier: Socials & Legal */}
         <div className="border-t border-black/10 w-full">
           <div className="container mx-auto py-6 px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
-            
             <div className="flex flex-col sm:flex-row items-center gap-4 text-xs text-black/60">
               <p suppressHydrationWarning>&copy; {year} Cauders (Private) Limited. All Rights Reserved.</p>
-              <div className="hidden sm:block h-3 w-px bg-black/20"></div>
-              <div className="flex items-center gap-x-4">
+              <div className="hidden sm:block h-3 w-px bg-black/20" aria-hidden="true" />
+              <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2">
                 {legalLinks.map((link) => (
-                  <React.Fragment key={link.label}>
-                    <Link href={link.href} prefetch={true} className="hover:text-primary transition-colors">
-                      {link.label}
-                    </Link>
-                  </React.Fragment>
+                  <Link key={link.label} href={link.href} className="hover:text-primary transition-colors">
+                    {link.label}
+                  </Link>
                 ))}
               </div>
             </div>
 
             <div className="flex flex-wrap items-center justify-center gap-4">
               {socialLinks.map((link) => (
-                <Link 
-                  key={link.label} 
-                  href={link.href} 
-                  target="_blank" 
+                <Link
+                  key={link.label}
+                  href={link.href}
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="text-xs text-black/60 hover:text-primary transition-colors tracking-widest uppercase font-medium"
                 >

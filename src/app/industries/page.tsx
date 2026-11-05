@@ -1,39 +1,30 @@
 import type { Metadata } from 'next';
 import AllIndustriesPage from '@/components/cauders/AllIndustriesPage';
+import { buildBreadcrumbJsonLd, buildPageMetadata } from '@/lib/seo';
 
-export const metadata: Metadata = {
-  title: 'Industry Solutions | Software for the Way Your Industry Operates',
+export const metadata: Metadata = buildPageMetadata({
+  title: 'Industry Software & AI Solutions',
   description:
-    'Discover our custom software development, AI solutions, and engineering expertise tailored across Banking & Fintech, Healthcare, E-commerce, Logistics, SaaS, and more.',
-  alternates: {
-    canonical: '/industries',
-  },
-  openGraph: {
-    title: 'Industry Solutions & Operational Engineering | Cauders',
-    description:
-      'Purpose-built technology solutions for Banking & Finance, Healthcare, Retail & E-Commerce, Software & Technology, Real Estate, and Logistics.',
-    url: 'https://www.cauders.com/industries',
-    siteName: 'Cauders',
-    images: [
-      {
-        url: 'https://res.cloudinary.com/cauders/image/upload/v1792742641/Group_4654_t9qwca.png',
-        width: 1200,
-        height: 630,
-        alt: 'Cauders Industry Solutions',
-      },
-    ],
-    locale: 'en_US',
-    type: 'website',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Industry Solutions & Operational Engineering | Cauders',
-    description:
-      'Purpose-built technology solutions for Banking & Finance, Healthcare, Retail & E-Commerce, Software & Technology, Real Estate, and Logistics.',
-    images: ['https://res.cloudinary.com/cauders/image/upload/v1792742641/Group_4654_t9qwca.png'],
-  },
-};
+    'Custom software, AI, and workflow automation engineered for Banking & Finance, Healthcare, Retail & E-Commerce, SaaS, Real Estate, and Logistics.',
+  path: '/industries',
+  ogImage:
+    'https://res.cloudinary.com/cauders/image/upload/f_auto,q_auto,w_1200,h_630,c_fill/v1792719663/Rectangle_219_rvczyb.png',
+  ogAlt: 'Cauders Industry Solutions',
+});
+
+const breadcrumbJsonLd = buildBreadcrumbJsonLd([
+  { name: 'Home', path: '/' },
+  { name: 'Industries', path: '/industries' },
+]);
 
 export default function IndustriesPage() {
-  return <AllIndustriesPage />;
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <AllIndustriesPage />
+    </>
+  );
 }

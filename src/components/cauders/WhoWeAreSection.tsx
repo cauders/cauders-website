@@ -1,5 +1,3 @@
-'use client';
-
 import React from 'react';
 import Link from 'next/link';
 import { Linkedin, Quote, Target, Cpu, Users, Compass } from 'lucide-react';
@@ -7,6 +5,7 @@ import ArrowBadge from './ArrowBadge';
 import SectionHeading from './SectionHeading';
 import ScrollFadeIn from './ScrollFadeIn';
 import { teamMembers } from '@/lib/team-data';
+import { optimizeCloudinaryUrl } from '@/lib/seo';
 
 interface PillarItem {
   title: string;
@@ -42,12 +41,13 @@ export default function WhoWeAreSection() {
   const muryam = teamMembers[1];
 
   return (
-    <section className="relative z-10 w-full py-16 sm:py-20 md:py-24 bg-transparent text-foreground overflow-hidden">
+    <section
+      id="who-we-are"
+      className="relative z-10 w-full py-16 sm:py-20 md:py-24 bg-transparent text-foreground overflow-hidden"
+    >
       <div className="max-w-[95rem] mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* Top Block: Who We Are & 4 Pillars in Balanced Horizontal Row Layout */}
+        {/* Top Block */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 xl:gap-16 items-start mb-20 md:mb-24">
-          {/* Left Column: Heading & Intro Paragraphs */}
           <div className="lg:col-span-5 xl:col-span-5 flex flex-col items-start text-left">
             <ScrollFadeIn>
               <ArrowBadge
@@ -59,9 +59,7 @@ export default function WhoWeAreSection() {
             </ScrollFadeIn>
 
             <SectionHeading
-              lines={[
-                'A Company <span class="text-cyan-gradient font-medium inline-block">Built on Trust</span>'
-              ]}
+              lines={['A Company <span class="text-cyan-gradient font-medium inline-block">Built on Trust</span>']}
               align="left"
               headingClassName="text-foreground font-medium !leading-[1.15] text-2xl sm:text-3xl md:text-4xl lg:text-[2.35rem] xl:text-[2.75rem] whitespace-nowrap"
               className="mb-6 w-full"
@@ -79,18 +77,15 @@ export default function WhoWeAreSection() {
             </ScrollFadeIn>
           </div>
 
-          {/* Right Column: 4 Clean Items (container & shadow only under the icon, wide enough for single line subheading) */}
           <div className="lg:col-span-7 xl:col-span-7 flex justify-start lg:justify-end">
             <div className="flex flex-col gap-6 sm:gap-7 w-full max-w-2xl pt-2 lg:pt-4">
               {pillars.map((pillar, idx) => (
                 <ScrollFadeIn key={idx} delay={idx * 70}>
                   <div className="group flex items-center gap-4 sm:gap-5 cursor-default">
-                    {/* Container only under the icon: no border, rounded, with shadow */}
                     <div className="w-13 h-13 sm:w-14 sm:h-14 rounded-2xl bg-white dark:bg-zinc-800 shadow-[0_4px_20px_rgba(0,49,46,0.10)] dark:shadow-[0_4px_20px_rgba(0,0,0,0.35)] flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:scale-105 group-hover:shadow-[0_6px_24px_rgba(0,49,46,0.15)]">
                       {pillar.icon}
                     </div>
 
-                    {/* Right Title & Subheading (no container behind text, single line fit) */}
                     <div className="flex flex-col justify-center text-left flex-1 min-w-0">
                       <h3 className="text-sm sm:text-base font-semibold text-zinc-900 dark:text-white tracking-tight leading-snug">
                         {pillar.title}
@@ -106,14 +101,13 @@ export default function WhoWeAreSection() {
           </div>
         </div>
 
-        {/* Bottom Block: Build On Trust, Driven By People & Founders */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
-          {/* Left Column: Heading, Subtext, Our Conviction Quote */}
+        {/* Bottom Block: Built On Trust, Driven By People & Founders */}
+        <div id="our-conviction" className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
           <div className="lg:col-span-5 xl:col-span-5 flex flex-col items-start text-left">
             <SectionHeading
               lines={[
-                'Build On Trust,',
-                'Driven By <span class="text-cyan-gradient font-medium inline-block">People</span>'
+                'Built On Trust,',
+                'Driven By <span class="text-cyan-gradient font-medium inline-block">People</span>',
               ]}
               align="left"
               headingClassName="text-foreground font-medium !leading-[1.12]"
@@ -137,14 +131,14 @@ export default function WhoWeAreSection() {
 
             <ScrollFadeIn delay={200} className="w-full">
               <div className="relative pl-6 py-2 mt-2 max-w-lg">
-                {/* Vibrant cyan gradient bar */}
                 <span
                   aria-hidden="true"
                   className="absolute left-0 top-0 bottom-0 w-[4px] rounded-full bg-gradient-to-b from-[#8CEAE5] via-[#00645F] to-[#003B38]"
                 />
                 <Quote className="w-6 h-6 text-darkTeal dark:text-[#8CEAE5] mb-2 rotate-180" />
                 <p className="text-lg sm:text-xl md:text-[1.35rem] font-medium text-foreground tracking-tight italic leading-snug">
-                  Good Business Relationships<br />
+                  Good Business Relationships
+                  <br />
                   Go Beyond A Single Delivery.
                 </p>
               </div>
@@ -154,12 +148,10 @@ export default function WhoWeAreSection() {
           {/* Right Column: Founder Portrait Cards */}
           <div className="lg:col-span-7 xl:col-span-7 flex justify-center lg:justify-end">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 w-full max-w-2xl">
-              
-              {/* Anees Ahmad Card - Zoomed in to match Muryam portrait framing */}
               <ScrollFadeIn delay={250}>
                 <div className="group relative rounded-[2rem] overflow-hidden bg-zinc-900 text-white shadow-xl aspect-[3/4] flex flex-col justify-end">
                   <img
-                    src={anees.imageUrl}
+                    src={optimizeCloudinaryUrl(anees.imageUrl, 800)}
                     alt={anees.name}
                     className="absolute inset-0 w-full h-full object-cover object-top filter grayscale contrast-105 transition-transform duration-700 group-hover:scale-105"
                     style={{
@@ -167,11 +159,11 @@ export default function WhoWeAreSection() {
                       transformOrigin: 'top center',
                       objectPosition: 'top center',
                     }}
-                  loading="lazy" decoding="async" />
-                  {/* Subtle dark gradient overlay on bottom */}
+                    loading="lazy"
+                    decoding="async"
+                  />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent pointer-events-none" />
 
-                  {/* Card Info Overlay */}
                   <div className="relative z-10 p-6 sm:p-7">
                     <h3 className="text-xl sm:text-2xl font-semibold text-white tracking-tight">
                       {anees.name}
@@ -196,11 +188,10 @@ export default function WhoWeAreSection() {
                 </div>
               </ScrollFadeIn>
 
-              {/* Muryam Naveed Card */}
               <ScrollFadeIn delay={350}>
                 <div className="group relative rounded-[2rem] overflow-hidden bg-zinc-900 text-white shadow-xl aspect-[3/4] flex flex-col justify-end">
                   <img
-                    src={muryam.imageUrl}
+                    src={optimizeCloudinaryUrl(muryam.imageUrl, 800)}
                     alt={muryam.name}
                     className="absolute inset-0 w-full h-full object-cover object-top filter grayscale contrast-105 transition-transform duration-700 group-hover:scale-105"
                     style={{
@@ -208,18 +199,18 @@ export default function WhoWeAreSection() {
                       transformOrigin: 'top center',
                       objectPosition: 'top center',
                     }}
-                  loading="lazy" decoding="async" />
-                  {/* Subtle dark gradient overlay on bottom */}
+                    loading="lazy"
+                    decoding="async"
+                  />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent pointer-events-none" />
 
-                  {/* Card Info Overlay */}
                   <div className="relative z-10 p-6 sm:p-7">
                     <h3 className="text-xl sm:text-2xl font-semibold text-white tracking-tight">
                       {muryam.name}
                     </h3>
                     <div className="flex items-center justify-between mt-1.5">
                       <span className="text-xs sm:text-sm text-primary font-medium tracking-wide">
-                        Co-Founder & CEO
+                        Co-Founder &amp; CEO
                       </span>
                       {muryam.socials.linkedin && (
                         <Link
@@ -236,11 +227,9 @@ export default function WhoWeAreSection() {
                   </div>
                 </div>
               </ScrollFadeIn>
-
             </div>
           </div>
         </div>
-
       </div>
     </section>
   );

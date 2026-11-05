@@ -25,15 +25,14 @@ interface PolicyLayoutProps {
 export default function PolicyLayout({
   title,
   lastUpdated,
-  badge = "Legal Document",
+  badge = 'Legal Document',
   subtitle,
-  sections
+  sections,
 }: PolicyLayoutProps) {
-  // Normalize IDs for each section
   const normalizedSections = useMemo(() => {
     return sections.map((sec, index) => ({
       ...sec,
-      id: sec.id || `section-${index + 1}`
+      id: sec.id || `section-${index + 1}`,
     }));
   }, [sections]);
 
@@ -41,17 +40,15 @@ export default function PolicyLayout({
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const isClickScrolling = useRef(false);
 
-  // Generate signature homepage-styled heading line with cyan gradient on the final word
   const headingLines = useMemo(() => {
     const words = title.trim().split(' ');
     if (words.length <= 1) return [title];
     const lastWord = words.pop()!;
     return [
-      `${words.join(' ')} <span class="text-cyan-gradient font-medium inline-block">${lastWord}</span>`
+      `${words.join(' ')} <span class="text-cyan-gradient font-medium inline-block">${lastWord}</span>`,
     ];
   }, [title]);
 
-  // Smooth scroll handler with offset for floating navbar
   const scrollToSection = (id: string) => {
     const el = document.getElementById(id);
     if (!el) return;
@@ -67,7 +64,7 @@ export default function PolicyLayout({
 
     window.scrollTo({
       top: offsetPosition,
-      behavior: 'smooth'
+      behavior: 'smooth',
     });
 
     if (window.history && window.history.replaceState) {
@@ -79,11 +76,10 @@ export default function PolicyLayout({
     }, 800);
   };
 
-  // Scroll spy using IntersectionObserver
   useEffect(() => {
     if (typeof window !== 'undefined' && window.location.hash) {
       const hashId = window.location.hash.replace('#', '');
-      if (normalizedSections.some(s => s.id === hashId)) {
+      if (normalizedSections.some((s) => s.id === hashId)) {
         setTimeout(() => scrollToSection(hashId), 200);
       }
     }
@@ -92,7 +88,7 @@ export default function PolicyLayout({
       (entries) => {
         if (isClickScrolling.current) return;
 
-        const visibleEntries = entries.filter(entry => entry.isIntersecting);
+        const visibleEntries = entries.filter((entry) => entry.isIntersecting);
         if (visibleEntries.length > 0) {
           visibleEntries.sort((a, b) => {
             const aTop = Math.abs(a.boundingClientRect.top - 120);
@@ -104,11 +100,11 @@ export default function PolicyLayout({
       },
       {
         rootMargin: '-100px 0px -60% 0px',
-        threshold: [0, 0.25, 0.5, 0.75, 1.0]
+        threshold: [0, 0.25, 0.5, 0.75, 1.0],
       }
     );
 
-    normalizedSections.forEach(section => {
+    normalizedSections.forEach((section) => {
       const el = document.getElementById(section.id);
       if (el) observer.observe(el);
     });
@@ -116,21 +112,19 @@ export default function PolicyLayout({
     return () => observer.disconnect();
   }, [normalizedSections]);
 
-  const activeSection = normalizedSections.find(s => s.id === activeId) || normalizedSections[0];
+  const activeSection = normalizedSections.find((s) => s.id === activeId) || normalizedSections[0];
 
   return (
     <div className="relative min-h-screen text-foreground overflow-x-clip">
-      {/* Cauders signature ambient glow circles */}
       <BlurCircle className="w-[600px] h-[600px] md:w-[850px] md:h-[850px] -top-32 -right-40 opacity-70" />
       <BlurCircle className="w-[600px] h-[600px] md:w-[850px] md:h-[850px] top-1/3 -left-48 opacity-60" />
       <BlurCircle className="w-[600px] h-[600px] md:w-[850px] md:h-[850px] -bottom-32 -right-40 opacity-70" />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-12 lg:pt-36 lg:pb-24 relative z-10">
-        
         {/* Header Section */}
         <header className="mb-10 lg:mb-16 text-center max-w-3xl mx-auto flex flex-col items-center">
           <ScrollFadeIn>
-            <ArrowBadge href="#" text={badge} variant="black" className="mb-4" />
+            <ArrowBadge text={badge} variant="black" className="mb-4" />
           </ScrollFadeIn>
           <SectionHeading
             as="h1"
@@ -153,8 +147,9 @@ export default function PolicyLayout({
         <div className="lg:hidden mb-8 sticky top-24 z-20">
           <div className="bg-white/95 dark:bg-card/95 backdrop-blur-xl border border-black/[0.08] dark:border-white/[0.1] rounded-2xl p-2 shadow-[0_8px_30px_rgba(0,49,46,0.08)]">
             <button
+              type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="w-full flex items-center justify-between px-4 py-3 text-left rounded-xl bg-[#09555A]/[0.04] dark:bg-white/[0.04] border border-black/[0.06] dark:border-white/[0.08] text-foreground font-medium text-sm transition-all hover:bg-[#09555A]/[0.08]"
+              className="w-full flex items-center justify-between px-4 py-3 text-left rounded-xl bg-[#09555A]/[0.04] dark:bg-white/[0.04] border border-black/[0.06] dark:border-white/[0.08] text-foreground font-medium text-sm transition-colors hover:bg-[#09555A]/[0.08]"
               aria-expanded={mobileMenuOpen}
             >
               <div className="flex items-center gap-2.5 truncate">
@@ -162,7 +157,7 @@ export default function PolicyLayout({
                 <span className="text-xs font-semibold text-zinc-500 uppercase tracking-wider">Jump to:</span>
                 <span className="truncate text-foreground font-bold">{activeSection?.title}</span>
               </div>
-              <ChevronDown className={cn("w-4 h-4 text-zinc-500 transition-transform duration-200", mobileMenuOpen && "rotate-180")} />
+              <ChevronDown className={cn('w-4 h-4 text-zinc-500 transition-transform duration-200', mobileMenuOpen && 'rotate-180')} />
             </button>
 
             {mobileMenuOpen && (
@@ -171,19 +166,22 @@ export default function PolicyLayout({
                   const isActive = activeId === section.id;
                   return (
                     <button
+                      type="button"
                       key={section.id}
                       onClick={() => scrollToSection(section.id)}
                       className={cn(
-                        "w-full flex items-start gap-2.5 px-3 py-2.5 text-left rounded-xl text-xs transition-all",
+                        'w-full flex items-start gap-2.5 px-3 py-2.5 text-left rounded-xl text-xs transition-colors',
                         isActive
-                          ? "bg-[#003431] text-white font-medium shadow-sm"
-                          : "text-zinc-600 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-white hover:bg-black/[0.03] dark:hover:bg-white/[0.05]"
+                          ? 'bg-[#003431] text-white font-medium shadow-sm'
+                          : 'text-zinc-600 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-white hover:bg-black/[0.03] dark:hover:bg-white/[0.05]'
                       )}
                     >
-                      <span className={cn(
-                        "font-mono text-[11px] font-bold flex-shrink-0 mt-0.5",
-                        isActive ? "text-primary" : "text-[#09555A]/70 dark:text-zinc-500"
-                      )}>
+                      <span
+                        className={cn(
+                          'font-mono text-[11px] font-bold flex-shrink-0 mt-0.5',
+                          isActive ? 'text-primary' : 'text-[#09555A]/70 dark:text-zinc-500'
+                        )}
+                      >
                         {String(idx + 1).padStart(2, '0')}.
                       </span>
                       <span className="truncate font-medium">{section.title}</span>
@@ -197,16 +195,15 @@ export default function PolicyLayout({
 
         {/* Main 2-Column Grid */}
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-start">
-          
           {/* Left Sticky Sidebar (TOC) - Desktop */}
           <aside className="hidden lg:block w-72 xl:w-80 flex-shrink-0 sticky top-28 xl:top-32">
-            <div className="rounded-3xl border border-black/[0.07] dark:border-white/[0.08] bg-white/90 dark:bg-card/90 backdrop-blur-xl p-5 xl:p-6 shadow-[0_12px_40px_rgba(0,49,46,0.06)] dark:shadow-none transition-all">
+            <div className="rounded-3xl border border-black/[0.07] dark:border-white/[0.08] bg-white/90 dark:bg-card/90 backdrop-blur-xl p-5 xl:p-6 shadow-[0_12px_40px_rgba(0,49,46,0.06)] dark:shadow-none">
               <div className="flex items-center justify-between pb-3.5 mb-3.5 border-b border-black/[0.06] dark:border-white/[0.08]">
                 <div className="flex items-center gap-2">
                   <ListFilter className="w-4 h-4 text-[#09555A] dark:text-primary" />
-                  <h3 className="text-xs font-bold uppercase tracking-wider text-foreground">
+                  <p className="text-xs font-bold uppercase tracking-wider text-foreground">
                     Table of Contents
-                  </h3>
+                  </p>
                 </div>
                 <span className="text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-[#09555A]/10 text-[#09555A] dark:bg-primary/10 dark:text-primary border border-[#09555A]/20 dark:border-primary/20">
                   {normalizedSections.length} sections
@@ -214,7 +211,7 @@ export default function PolicyLayout({
               </div>
 
               {/* Navigation Links */}
-              <nav className="max-h-[calc(100vh-15rem)] overflow-y-auto pr-1 space-y-1 scrollbar-thin">
+              <nav aria-label="Policy table of contents" className="max-h-[calc(100vh-15rem)] overflow-y-auto pr-1 space-y-1 scrollbar-thin">
                 {normalizedSections.map((section, idx) => {
                   const isActive = activeId === section.id;
                   return (
@@ -226,16 +223,18 @@ export default function PolicyLayout({
                         scrollToSection(section.id);
                       }}
                       className={cn(
-                        "group flex items-start gap-2.5 px-3.5 py-2.5 rounded-xl text-xs xl:text-sm text-left transition-all duration-200 leading-snug",
+                        'group flex items-start gap-2.5 px-3.5 py-2.5 rounded-xl text-xs xl:text-sm text-left transition-colors duration-200 leading-snug',
                         isActive
-                          ? "bg-[#003431] text-white font-medium shadow-md translate-x-0.5"
-                          : "text-zinc-600 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-white hover:bg-black/[0.03] dark:hover:bg-white/[0.04]"
+                          ? 'bg-[#003431] text-white font-medium shadow-md translate-x-0.5'
+                          : 'text-zinc-600 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-white hover:bg-black/[0.03] dark:hover:bg-white/[0.04]'
                       )}
                     >
-                      <span className={cn(
-                        "font-mono text-[11px] font-bold mt-0.5 flex-shrink-0 transition-colors",
-                        isActive ? "text-primary" : "text-[#09555A]/60 dark:text-zinc-500 group-hover:text-[#09555A]"
-                      )}>
+                      <span
+                        className={cn(
+                          'font-mono text-[11px] font-bold mt-0.5 flex-shrink-0 transition-colors',
+                          isActive ? 'text-primary' : 'text-[#09555A]/60 dark:text-zinc-500 group-hover:text-[#09555A]'
+                        )}
+                      >
                         {String(idx + 1).padStart(2, '0')}.
                       </span>
                       <span className="flex-1 break-words">{section.title}</span>
@@ -263,7 +262,7 @@ export default function PolicyLayout({
           </aside>
 
           {/* Right Column: Policy Content */}
-          <main className="flex-1 min-w-0 max-w-3xl xl:max-w-4xl space-y-12">
+          <article className="flex-1 min-w-0 max-w-3xl xl:max-w-4xl space-y-12">
             {normalizedSections.map((section, index) => (
               <section
                 key={section.id}
@@ -285,9 +284,8 @@ export default function PolicyLayout({
                 </div>
               </section>
             ))}
-          </main>
+          </article>
         </div>
-
       </div>
     </div>
   );

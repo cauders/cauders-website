@@ -1,5 +1,5 @@
 
-'use client';
+
 
 import ScrollFadeIn from './ScrollFadeIn';
 import ArrowBadge from './ArrowBadge';
@@ -29,7 +29,7 @@ const processSteps = [
 
 export default function OurProcess() {
  return (
- <section>
+ <section id="our-process">
  <GradientContainer className="py-16 md:py-20 lg:py-20">
  <div className="container mx-auto px-4 sm:px-6 lg:px-8">
  <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16 items-start">
@@ -37,14 +37,14 @@ export default function OurProcess() {
  <div className="lg:pr-8">
  <div className="flex flex-col items-start gap-4">
  <ScrollFadeIn>
- <ArrowBadge href="#" text="Our Process" />
+ <ArrowBadge href="#our-process" text="Our Process" />
  </ScrollFadeIn>
  <StandardizedHeading 
  lines={[{ text: "A Process Forged in Excellence" }]} 
  className="text-white text-3xl sm:text-4xl md:text-5xl"
  />
  <ScrollFadeIn delay={100}>
- <p className="text-body-base text- max-w-lg">
+ <p className="text-body-base text-white/85 max-w-lg">
  Our process is built to deliver clarity, strategy, and long-term value. Through four essential steps, we ensure every solution is tailored, thoughtful, and built to scale.
  </p>
  </ScrollFadeIn>

@@ -1,6 +1,4 @@
-'use client';
-
-import React, { useState, useRef } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import {
@@ -8,7 +6,6 @@ import {
   RefreshCw,
   Layers,
   Sparkles,
-  ChevronDown,
   Cpu,
   ShieldCheck,
   Globe,
@@ -24,6 +21,7 @@ import {
   Lock,
 } from 'lucide-react';
 import ArrowBadge from './ArrowBadge';
+import ApproachAccordion from './ApproachAccordion';
 import SectionHeading from './SectionHeading';
 import CaseStudiesSection from './CaseStudiesSection';
 import DarkTealButton from './DarkTealButton';
@@ -32,13 +30,6 @@ import ScrollSpyItem from './ScrollSpyItem';
 import GeometricZincContainer from './GeometricZincContainer';
 import FAQPreview, { FAQ } from './FAQPreview';
 import GetAQuote from './GetAQuote';
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
 import { cn } from '@/lib/utils';
 
 interface PlatformModernizationProps {
@@ -97,7 +88,7 @@ const modernizationApproachSteps = [
     description:
       'We review the relevant applications, architecture, integrations, dependencies, and operational requirements to understand the current constraints. We identify architectural friction and technical debt to ensure future adjustments safeguard live business workflows.',
     establishes: 'A shared understanding of the existing system, its dependencies, and the areas requiring attention.',
-    image: 'https://res.cloudinary.com/cauders/image/upload/v1792770098/Discover_Align_vp2l9d.jpg',
+    image: 'https://res.cloudinary.com/cauders/image/upload/f_auto,q_auto,w_900/v1792770098/Discover_Align_vp2l9d.jpg',
   },
   {
     number: '02',
@@ -105,7 +96,7 @@ const modernizationApproachSteps = [
     description:
       'We identify priorities, evaluate technical options, and establish the scope, migration requirements, and validation criteria. Migration sequences, risk mitigations, and operational checkpoints are defined before implementation begins.',
     establishes: 'A defined direction for the changes, their dependencies, and how the work will be evaluated.',
-    image: 'https://res.cloudinary.com/cauders/image/upload/v1792770100/Plan_Design_rf0t2h.jpg',
+    image: 'https://res.cloudinary.com/cauders/image/upload/f_auto,q_auto,w_900/v1792770100/Plan_Design_rf0t2h.jpg',
   },
   {
     number: '03',
@@ -113,7 +104,7 @@ const modernizationApproachSteps = [
     description:
       'We implement the agreed architectural improvements, application changes, integrations, or migration work in line with the defined scope. Legacy codebases are refactored, dependencies updated, and API connections established without disrupting daily operations.',
     establishes: 'Updated system components and connections aligned with the modernization requirements.',
-    image: 'https://res.cloudinary.com/cauders/image/upload/v1792770102/Build_Integrate_egvjcw.jpg',
+    image: 'https://res.cloudinary.com/cauders/image/upload/f_auto,q_auto,w_900/v1792770102/Build_Integrate_egvjcw.jpg',
   },
   {
     number: '04',
@@ -121,7 +112,7 @@ const modernizationApproachSteps = [
     description:
       'We validate critical workflows, data handling, integrations, and relevant system behaviour, address identified issues, and prepare the agreed transition and handover materials to ensure smooth continuity across your organization.',
     establishes: 'A reviewed modernization outcome with a clear understanding of the changes delivered and how the updated environment operates.',
-    image: 'https://res.cloudinary.com/cauders/image/upload/v1792770100/Validate_Handover_e9gotj.jpg',
+    image: 'https://res.cloudinary.com/cauders/image/upload/f_auto,q_auto,w_900/v1792770100/Validate_Handover_e9gotj.jpg',
   },
 ];
 
@@ -168,7 +159,6 @@ export default function PlatformModernization({
   badgeHref = '#overview',
   className,
 }: PlatformModernizationProps) {
-  const [activeApproachIndex, setActiveApproachIndex] = useState<number>(0);
 
   return (
     <div className={cn('relative w-full bg-transparent', className)}>
@@ -176,10 +166,13 @@ export default function PlatformModernization({
       <div className="relative w-full min-h-[630px] sm:min-h-[690px] lg:min-h-[770px] xl:min-h-[830px] bg-transparent flex items-center pt-24 pb-16 sm:pt-28 sm:pb-20 lg:pt-32 lg:pb-28 overflow-hidden">
         {/* Background image container: right-aligned with seamless blending spanning full height */}
         <div className="absolute top-0 right-0 bottom-0 w-full lg:w-[68%] xl:w-[64%] flex items-center justify-end overflow-hidden pointer-events-none select-none z-0">
-          <img
-            src="https://res.cloudinary.com/cauders/image/upload/v1792825566/Platform_Modernization_v7x92q.jpg"
+          <Image
+            src="https://res.cloudinary.com/cauders/image/upload/f_auto,q_auto,w_1600/v1792825566/Platform_Modernization_v7x92q.jpg"
             alt="Platform Modernization"
-            className="w-full h-full object-cover object-right max-w-none opacity-90 lg:opacity-100 scale-100 lg:scale-105 origin-right"
+            fill
+            priority
+            sizes="(max-width: 1024px) 100vw, 68vw"
+            className="object-cover object-right opacity-90 lg:opacity-100 scale-100 lg:scale-105 origin-right"
             style={{
               maskImage:
                 'linear-gradient(to right, transparent 0%, rgba(0,0,0,0.4) 10%, rgba(0,0,0,1) 28%), linear-gradient(to bottom, black 85%, transparent 100%)',
@@ -188,7 +181,7 @@ export default function PlatformModernization({
               maskComposite: 'intersect',
               WebkitMaskComposite: 'destination-in',
             }}
-          loading="lazy" decoding="async" />
+          />
         </div>
 
         {/* Content on the left side of the hero */}
@@ -237,7 +230,7 @@ export default function PlatformModernization({
           <ScrollFadeIn direction="up" delay={300}>
             <div className="relative w-full rounded-[2rem] sm:rounded-[2.5rem] lg:rounded-[3rem] overflow-hidden shadow-[0_20px_50px_rgba(0,45,40,0.22)]">
               <img
-                src="https://res.cloudinary.com/cauders/image/upload/v1792756273/Frame_4661_c7d5nj.png"
+                src="https://res.cloudinary.com/cauders/image/upload/f_auto,q_auto,w_1600/v1792756273/Frame_4661_c7d5nj.png"
                 alt="When Existing Systems Need to Evolve"
                 className="w-full h-auto block select-none pointer-events-none"
               loading="lazy" decoding="async" />
@@ -267,7 +260,7 @@ export default function PlatformModernization({
       </div>
 
       {/* ================= 3. WHEN MODERNIZATION BECOMES A PRIORITY ================= */}
-      <section className="relative z-20 w-full pt-12 sm:pt-16 md:pt-20 pb-16 sm:pb-24 px-4 sm:px-6 lg:px-8 bg-transparent">
+      <section id="overview" className="relative z-20 w-full pt-12 sm:pt-16 md:pt-20 pb-16 sm:pb-24 px-4 sm:px-6 lg:px-8 bg-transparent">
         <div className="max-w-[95rem] mx-auto">
           <SectionHeading
             lines={[
@@ -364,16 +357,16 @@ export default function PlatformModernization({
               <ScrollSpyItem>
                 <div className="pb-8 lg:pb-12 border-b border-border flex items-center justify-between gap-6 sm:gap-8">
                   <div className="flex-1 max-w-lg">
-                    <h4 className="text-lg sm:text-xl md:text-2xl font-semibold font-headline text-foreground mb-2 sm:mb-3 tracking-tight">
+                    <h3 className="text-lg sm:text-xl md:text-2xl font-semibold font-headline text-foreground mb-2 sm:mb-3 tracking-tight">
                       Legacy Applications
-                    </h4>
+                    </h3>
                     <p className="text-foreground/75 font-normal text-sm sm:text-base leading-relaxed">
                       Improve existing applications by addressing technical debt, outdated dependencies, and architectural constraints that complicate ongoing development.
                     </p>
                   </div>
                   <div className="w-28 h-28 sm:w-36 sm:h-36 lg:w-40 lg:h-40 flex-shrink-0 flex items-center justify-center">
                     <img
-                      src="https://res.cloudinary.com/cauders/image/upload/v1792825454/Legacy_Applications-Photoroom_ujmobs.png"
+                      src="https://res.cloudinary.com/cauders/image/upload/f_auto,q_auto,w_400/v1792825454/Legacy_Applications-Photoroom_ujmobs.png"
                       alt="Legacy Applications"
                       className="w-full h-full object-contain select-none pointer-events-none drop-shadow-sm transition-transform duration-300 hover:scale-105"
                     loading="lazy" decoding="async" />
@@ -385,16 +378,16 @@ export default function PlatformModernization({
               <ScrollSpyItem>
                 <div className="py-8 lg:py-12 border-b border-border flex items-center justify-between gap-6 sm:gap-8">
                   <div className="flex-1 max-w-lg">
-                    <h4 className="text-lg sm:text-xl md:text-2xl font-semibold font-headline text-foreground mb-2 sm:mb-3 tracking-tight">
+                    <h3 className="text-lg sm:text-xl md:text-2xl font-semibold font-headline text-foreground mb-2 sm:mb-3 tracking-tight">
                       Application Architecture
-                    </h4>
+                    </h3>
                     <p className="text-foreground/75 font-normal text-sm sm:text-base leading-relaxed">
                       Refine system structure and technical foundations to support maintainability, integration, and future changes.
                     </p>
                   </div>
                   <div className="w-28 h-28 sm:w-36 sm:h-36 lg:w-40 lg:h-40 flex-shrink-0 flex items-center justify-center">
                     <img
-                      src="https://res.cloudinary.com/cauders/image/upload/v1792825444/Application_Architecture-Photoroom_ajlqfx.png"
+                      src="https://res.cloudinary.com/cauders/image/upload/f_auto,q_auto,w_400/v1792825444/Application_Architecture-Photoroom_ajlqfx.png"
                       alt="Application Architecture"
                       className="w-full h-full object-contain select-none pointer-events-none drop-shadow-sm transition-transform duration-300 hover:scale-105"
                     loading="lazy" decoding="async" />
@@ -406,16 +399,16 @@ export default function PlatformModernization({
               <ScrollSpyItem>
                 <div className="py-8 lg:py-12 border-b border-border flex items-center justify-between gap-6 sm:gap-8">
                   <div className="flex-1 max-w-lg">
-                    <h4 className="text-lg sm:text-xl md:text-2xl font-semibold font-headline text-foreground mb-2 sm:mb-3 tracking-tight">
+                    <h3 className="text-lg sm:text-xl md:text-2xl font-semibold font-headline text-foreground mb-2 sm:mb-3 tracking-tight">
                       Connected Business Systems
-                    </h4>
+                    </h3>
                     <p className="text-foreground/75 font-normal text-sm sm:text-base leading-relaxed">
                       Connect applications and platforms through APIs and integration workflows, reducing fragmentation and improving information flow.
                     </p>
                   </div>
                   <div className="w-28 h-28 sm:w-36 sm:h-36 lg:w-40 lg:h-40 flex-shrink-0 flex items-center justify-center">
                     <img
-                      src="https://res.cloudinary.com/cauders/image/upload/v1792825440/Connected_Business_Systems-Photoroom_cvmrai.png"
+                      src="https://res.cloudinary.com/cauders/image/upload/f_auto,q_auto,w_400/v1792825440/Connected_Business_Systems-Photoroom_cvmrai.png"
                       alt="Connected Business Systems"
                       className="w-full h-full object-contain select-none pointer-events-none drop-shadow-sm transition-transform duration-300 hover:scale-105"
                     loading="lazy" decoding="async" />
@@ -427,16 +420,16 @@ export default function PlatformModernization({
               <ScrollSpyItem>
                 <div className="py-8 lg:py-12 border-b border-border flex items-center justify-between gap-6 sm:gap-8">
                   <div className="flex-1 max-w-lg">
-                    <h4 className="text-lg sm:text-xl md:text-2xl font-semibold font-headline text-foreground mb-2 sm:mb-3 tracking-tight">
+                    <h3 className="text-lg sm:text-xl md:text-2xl font-semibold font-headline text-foreground mb-2 sm:mb-3 tracking-tight">
                       Data & Application Migration
-                    </h4>
+                    </h3>
                     <p className="text-foreground/75 font-normal text-sm sm:text-base leading-relaxed">
                       Plan and implement migrations involving applications, data, or infrastructure according to the existing environment and business requirements.
                     </p>
                   </div>
                   <div className="w-28 h-28 sm:w-36 sm:h-36 lg:w-40 lg:h-40 flex-shrink-0 flex items-center justify-center">
                     <img
-                      src="https://res.cloudinary.com/cauders/image/upload/v1792825415/Data_Application_Migration-Photoroom_mvvr3n.png"
+                      src="https://res.cloudinary.com/cauders/image/upload/f_auto,q_auto,w_400/v1792825415/Data_Application_Migration-Photoroom_mvvr3n.png"
                       alt="Data & Application Migration"
                       className="w-full h-full object-contain select-none pointer-events-none drop-shadow-sm transition-transform duration-300 hover:scale-105"
                     loading="lazy" decoding="async" />
@@ -448,16 +441,16 @@ export default function PlatformModernization({
               <ScrollSpyItem>
                 <div className="pt-8 lg:pt-12 flex items-center justify-between gap-6 sm:gap-8">
                   <div className="flex-1 max-w-lg">
-                    <h4 className="text-lg sm:text-xl md:text-2xl font-semibold font-headline text-foreground mb-2 sm:mb-3 tracking-tight">
+                    <h3 className="text-lg sm:text-xl md:text-2xl font-semibold font-headline text-foreground mb-2 sm:mb-3 tracking-tight">
                       Cloud & Infrastructure Components
-                    </h4>
+                    </h3>
                     <p className="text-foreground/75 font-normal text-sm sm:text-base leading-relaxed">
                       Modernize relevant infrastructure and deployment arrangements where they support the required architecture, operational needs, and technical direction.
                     </p>
                   </div>
                   <div className="w-28 h-28 sm:w-36 sm:h-36 lg:w-40 lg:h-40 flex-shrink-0 flex items-center justify-center">
                     <img
-                      src="https://res.cloudinary.com/cauders/image/upload/v1792825413/Cloud_Infrastructure_Components-Photoroom_un4mcl.png"
+                      src="https://res.cloudinary.com/cauders/image/upload/f_auto,q_auto,w_400/v1792825413/Cloud_Infrastructure_Components-Photoroom_un4mcl.png"
                       alt="Cloud & Infrastructure Components"
                       className="w-full h-full object-contain select-none pointer-events-none drop-shadow-sm transition-transform duration-300 hover:scale-105"
                     loading="lazy" decoding="async" />
@@ -470,7 +463,7 @@ export default function PlatformModernization({
       </section>
 
       {/* ================= 5. ARCHITECTURE, INTEGRATIONS & MIGRATION ================= */}
-      <section className="py-16 md:py-24 relative z-10 bg-transparent">
+      <section id="features" className="py-16 md:py-24 relative z-10 bg-transparent">
         <div className="max-w-[95rem] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col items-center justify-center text-center max-w-6xl mx-auto mb-12 sm:mb-16">
             <ScrollFadeIn>
@@ -555,104 +548,7 @@ export default function PlatformModernization({
           </div>
 
           {/* 4 Interactive Accordion Cards */}
-          <div className="flex flex-col gap-3 sm:gap-4">
-            {modernizationApproachSteps.map((step, idx) => {
-              const isExpanded = activeApproachIndex === idx;
-
-              return (
-                <div
-                  key={step.number}
-                  onMouseEnter={() => setActiveApproachIndex(idx)}
-                  onClick={() => setActiveApproachIndex(idx)}
-                  className={cn(
-                    "w-full rounded-2xl sm:rounded-3xl bg-white text-zinc-900 cursor-pointer overflow-hidden shadow-[0_12px_45px_rgba(0,35,30,0.14)] transition-all duration-500 ease-out",
-                    isExpanded 
-                      ? "shadow-[0_20px_50px_rgba(0,35,30,0.22)]" 
-                      : "hover:shadow-2xl"
-                  )}
-                >
-                  {isExpanded ? (
-                    <div className="relative min-h-[350px] sm:min-h-[380px] lg:min-h-[400px] flex flex-col justify-between overflow-hidden">
-                      <div className="pt-8 px-8 sm:pt-10 sm:px-10 lg:pt-11 lg:px-12 pb-6 max-w-xl sm:max-w-2xl lg:max-w-[46rem] z-20">
-                        <span className="font-headline font-medium text-4xl sm:text-5xl lg:text-6xl text-zinc-300 mb-5 sm:mb-6 lg:mb-7 block select-none tracking-tight">
-                          {step.number}
-                        </span>
-                        <h3 className="text-2xl sm:text-3xl lg:text-[2rem] font-semibold font-headline text-black tracking-tight mb-3 leading-snug">
-                          {step.title}
-                        </h3>
-                        <p className="text-sm sm:text-base text-zinc-700 font-normal leading-relaxed">
-                          {step.description}
-                        </p>
-                      </div>
-
-                      <div className="w-full bg-[#F8F8F8] px-8 py-5 sm:px-10 sm:py-6 lg:px-12 lg:py-6 z-10">
-                        <div className="max-w-xl sm:max-w-2xl lg:max-w-[46rem]">
-                          <span className="block text-xs sm:text-sm font-semibold text-[#09555A] mb-1 tracking-tight">
-                            What this establishes:
-                          </span>
-                          <p className="text-xs sm:text-sm text-zinc-700 font-normal leading-relaxed">
-                            {step.establishes}
-                          </p>
-                        </div>
-                      </div>
-
-                      <div 
-                        className="absolute top-0 right-0 bottom-0 w-[54%] sm:w-[56%] lg:w-[52%] flex items-center justify-end overflow-hidden pointer-events-none select-none z-20"
-                        style={{
-                          WebkitMaskImage:
-                            'linear-gradient(to right, transparent 0%, transparent 12%, rgba(0,0,0,0.1) 25%, rgba(0,0,0,0.4) 42%, rgba(0,0,0,0.85) 58%, #000 68%)',
-                          maskImage:
-                            'linear-gradient(to right, transparent 0%, transparent 12%, rgba(0,0,0,0.1) 25%, rgba(0,0,0,0.4) 42%, rgba(0,0,0,0.85) 58%, #000 68%)',
-                        }}
-                      >
-                        <img
-                          src={step.image}
-                          alt={step.title}
-                          className="w-full h-full object-contain object-right select-none pointer-events-none scale-105 sm:scale-100"
-                          style={{
-                            WebkitMaskImage:
-                              'linear-gradient(to right, transparent 0%, transparent 12%, rgba(0,0,0,0.1) 25%, rgba(0,0,0,0.4) 42%, rgba(0,0,0,0.85) 58%, #000 68%)',
-                            maskImage:
-                              'linear-gradient(to right, transparent 0%, transparent 12%, rgba(0,0,0,0.1) 25%, rgba(0,0,0,0.4) 42%, rgba(0,0,0,0.85) 58%, #000 68%)',
-                          }}
-                        loading="lazy" decoding="async" />
-                      </div>
-                    </div>
-                  ) : (
-                    <div className="relative h-24 sm:h-28 lg:h-32 flex items-center justify-between pr-8 sm:pr-10 lg:pr-12 overflow-hidden">
-                      <div className="flex items-center gap-6 sm:gap-8 lg:gap-12 h-full min-w-0">
-                        <div 
-                          className="h-full w-36 sm:w-44 lg:w-52 flex-shrink-0 flex items-center justify-start overflow-hidden"
-                          style={{
-                            WebkitMaskImage:
-                              'linear-gradient(to right, #000 60%, rgba(0,0,0,0.6) 80%, transparent 100%)',
-                            maskImage:
-                              'linear-gradient(to right, #000 60%, rgba(0,0,0,0.6) 80%, transparent 100%)',
-                          }}
-                        >
-                          <img
-                            src={step.image}
-                            alt=""
-                            className="w-full h-full object-cover object-left select-none pointer-events-none scale-110"
-                          loading="lazy" decoding="async" />
-                        </div>
-                        <span className="font-headline font-medium text-4xl sm:text-5xl lg:text-6xl text-zinc-300 select-none tracking-tight">
-                          {step.number}
-                        </span>
-                        <h4 className="text-xl sm:text-2xl lg:text-[1.75rem] font-semibold font-headline text-black tracking-tight truncate">
-                          {step.title}
-                        </h4>
-                      </div>
-
-                      <div className="flex-shrink-0 text-zinc-300">
-                        <ChevronDown className="w-7 h-7 sm:w-8 sm:h-8 stroke-[1.75] transition-transform duration-300" />
-                      </div>
-                    </div>
-                  )}
-                </div>
-              );
-            })}
-          </div>
+          <ApproachAccordion steps={modernizationApproachSteps} />
         </div>
       </section>
 
@@ -735,7 +631,7 @@ export default function PlatformModernization({
       </section>
 
       {/* ================= 9. DELIVERABLES: WHAT TO EXPECT FROM DELIVERY ================= */}
-      <GeometricZincContainer zoomScale={1.3}>
+      <GeometricZincContainer id="deliverables" zoomScale={1.3}>
         <div className="relative z-10 max-w-[88rem] mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 md:py-24">
           <div className="flex flex-col items-center justify-center text-center max-w-5xl mx-auto mb-12 sm:mb-16">
             <ScrollFadeIn>
@@ -793,7 +689,7 @@ export default function PlatformModernization({
               <div className="group relative rounded-3xl p-6 sm:p-7 lg:p-8 flex flex-col justify-between h-full bg-white text-zinc-900 shadow-[0_20px_50px_rgba(0,0,0,0.15)] transform-gpu transition-all duration-300 hover:-translate-y-1 overflow-hidden">
                 <div className="pointer-events-none absolute -bottom-4 -right-4 w-60 h-48 sm:w-72 sm:h-56 lg:w-80 lg:h-60 z-0 opacity-95 transition-transform duration-300 group-hover:scale-105">
                   <Image
-                    src="https://res.cloudinary.com/cauders/image/upload/v1792813715/Customer-Facing_Applications_unghui.jpg"
+                    src="https://res.cloudinary.com/cauders/image/upload/f_auto,q_auto,w_640/v1792813715/Customer-Facing_Applications_unghui.jpg"
                     alt="Platform Modernization"
                     fill
                     sizes="(max-width: 640px) 240px, (max-width: 1024px) 288px, 320px"

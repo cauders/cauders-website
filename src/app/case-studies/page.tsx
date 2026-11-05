@@ -1,21 +1,27 @@
-import { Metadata } from 'next';
+import type { Metadata } from 'next';
 import CaseStudiesListingPage from '@/components/cauders/CaseStudiesListingPage';
+import { buildBreadcrumbJsonLd, buildPageMetadata } from '@/lib/seo';
 
-export const metadata: Metadata = {
-  title: 'Case Studies & Production Outcomes | Cauders',
+export const metadata: Metadata = buildPageMetadata({
+  title: 'Case Studies & Production Outcomes',
   description:
-    'Explore real-world software engineering case studies, enterprise cloud migrations, headless e-commerce architectures, and intelligent workflow automations delivered by Cauders.',
-  alternates: {
-    canonical: '/case-studies',
-  },
-  openGraph: {
-    title: 'Case Studies & Production Outcomes | Cauders',
-    description:
-      'Explore real-world software engineering case studies, enterprise cloud migrations, headless e-commerce architectures, and intelligent workflow automations delivered by Cauders.',
-    url: 'https://www.cauders.com/case-studies',
-  },
-};
+    'Explore software engineering case studies covering headless commerce, telecom portals, smart-building SaaS, API gateways, and workflow automation.',
+  path: '/case-studies',
+});
+
+const breadcrumbJsonLd = buildBreadcrumbJsonLd([
+  { name: 'Home', path: '/' },
+  { name: 'Case Studies', path: '/case-studies' },
+]);
 
 export default function CaseStudiesPage() {
-  return <CaseStudiesListingPage />;
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <CaseStudiesListingPage />
+    </>
+  );
 }

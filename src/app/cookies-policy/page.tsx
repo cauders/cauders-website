@@ -2,32 +2,24 @@ import type { Metadata } from 'next';
 import React from 'react';
 import Link from 'next/link';
 import PolicyLayout, { PolicySectionItem } from '@/components/cauders/PolicyLayout';
+import { buildBreadcrumbJsonLd, buildPageMetadata } from '@/lib/seo';
 
-export const metadata: Metadata = {
-  title: 'Cookies Policy | Cauders',
-  description: 'Information about the essential and analytical cookies used on Cauders websites and how you can manage your preferences.',
-  alternates: {
-    canonical: '/cookies-policy',
-  },
-  openGraph: {
-    title: 'Cookies Policy | Cauders',
-    description: 'Information about the essential and analytical cookies used on Cauders websites and how you can manage your preferences.',
-    url: 'https://www.cauders.com/cookies-policy',
-    siteName: 'Cauders',
-    locale: 'en_US',
-    type: 'website',
-  },
-};
+export const metadata: Metadata = buildPageMetadata({
+  title: 'Cookies Policy',
+  description:
+    'Information about essential and analytical cookies used on the Cauders website and how you can manage your browser preferences.',
+  path: '/cookies-policy',
+});
 
 const policySections: PolicySectionItem[] = [
   {
-    id: "introduction",
-    title: "Introduction",
+    id: 'introduction',
+    title: 'Introduction',
     content: (
       <>
         <p>
-          This Cookies Policy explains how Cauders (Private) Limited (&quot;Cauders,&quot; &quot;we,&quot; &quot;us,&quot; or &quot;our&quot;) uses cookies and similar technologies on{' '}
-          <Link href="/" className="text-zinc-900 underline underline-offset-4 decoration-zinc-300 hover:decoration-zinc-800 hover:text-zinc-600 font-medium transition-colors">https://cauders.com</Link>.
+          This Cookies Policy explains how CAUDERS (PRIVATE) LIMITED (&quot;Cauders,&quot; &quot;we,&quot; &quot;us,&quot; or &quot;our&quot;) uses cookies and similar technologies on{' '}
+          <Link href="/" className="text-zinc-900 underline underline-offset-4 decoration-zinc-300 hover:decoration-zinc-800 hover:text-zinc-600 font-medium transition-colors">https://www.cauders.com</Link>.
         </p>
         <p>
           It should be read alongside our Privacy Policy, which explains how we collect and use personal information.
@@ -35,15 +27,15 @@ const policySections: PolicySectionItem[] = [
         <p>
           Privacy Policy:{' '}
           <Link href="/privacy-policy" className="text-zinc-900 underline underline-offset-4 decoration-zinc-300 hover:decoration-zinc-800 hover:text-zinc-600 font-medium transition-colors">
-            https://cauders.com/privacy-policy
+            https://www.cauders.com/privacy-policy
           </Link>
         </p>
       </>
-    )
+    ),
   },
   {
-    id: "what-are-cookies",
-    title: "What Are Cookies?",
+    id: 'what-are-cookies',
+    title: 'What Are Cookies?',
     content: (
       <>
         <p>
@@ -56,11 +48,11 @@ const policySections: PolicySectionItem[] = [
           Cookies may be set by the website you visit or by third-party services integrated into it.
         </p>
       </>
-    )
+    ),
   },
   {
-    id: "how-we-use-cookies-and-similar-technologies",
-    title: "How We Use Cookies and Similar Technologies",
+    id: 'how-we-use-cookies-and-similar-technologies',
+    title: 'How We Use Cookies and Similar Technologies',
     content: (
       <>
         <p>
@@ -81,10 +73,10 @@ const policySections: PolicySectionItem[] = [
           <div>
             <h3 className="font-semibold text-zinc-900 text-base mb-1">Analytics and marketing cookies</h3>
             <p>
-              We use the LinkedIn Insight Tag to understand how professional visitors interact with our website, evaluate the performance of our content, and gain insights into our B2B audience.
+              Where enabled, we may use the LinkedIn Insight Tag to understand how professional visitors interact with our website, evaluate content performance, and gain aggregate insights into our B2B audience.
             </p>
             <p className="mt-1">
-              Cookies and identifiers deployed by the LinkedIn Insight Tag include:
+              Cookies and identifiers that may be deployed by the LinkedIn Insight Tag include:
             </p>
             <ul className="list-disc list-outside space-y-1.5 pl-6 my-2 text-sm lg:text-base text-zinc-700">
               <li>
@@ -105,10 +97,7 @@ const policySections: PolicySectionItem[] = [
           <div>
             <h3 className="font-semibold text-zinc-900 text-base mb-1">Functional and third-party technologies</h3>
             <p>
-              If you use a booking feature or another third-party service available through our website, that service may use its own cookies or similar technologies to provide the requested functionality.
-            </p>
-            <p className="mt-1">
-              The technologies used depend on the provider and how the feature is integrated. Third-party services may have their own privacy and cookie policies.
+              If you interact with embedded media or an external service linked through our website, that service may use its own cookies or similar technologies to provide the requested functionality.
             </p>
             <p className="mt-1">
               We do not describe every possible third-party cookie as active on our website. The actual cookies and technologies depend on the production website&apos;s configuration.
@@ -116,11 +105,11 @@ const policySections: PolicySectionItem[] = [
           </div>
         </div>
       </>
-    )
+    ),
   },
   {
-    id: "consent-and-cookie-preferences",
-    title: "Consent and Cookie Preferences",
+    id: 'consent-and-cookie-preferences',
+    title: 'Consent and Cookie Preferences',
     content: (
       <>
         <p>
@@ -137,11 +126,11 @@ const policySections: PolicySectionItem[] = [
           Please note that withdrawing consent does not necessarily remove cookies that were already stored on your device. You may need to delete existing cookies through your browser settings.
         </p>
       </>
-    )
+    ),
   },
   {
-    id: "managing-cookies-through-your-browser",
-    title: "Managing Cookies Through Your Browser",
+    id: 'managing-cookies-through-your-browser',
+    title: 'Managing Cookies Through Your Browser',
     content: (
       <>
         <p>
@@ -153,15 +142,12 @@ const policySections: PolicySectionItem[] = [
         <p>
           Blocking all cookies may affect certain website features. Deleting a cookie does not necessarily prevent a website or third-party service from setting it again during a later visit.
         </p>
-        <p>
-          Browser controls do not necessarily prevent all forms of data collection by external services.
-        </p>
       </>
-    )
+    ),
   },
   {
-    id: "third-party-privacy-policies",
-    title: "Third-Party Privacy Policies",
+    id: 'third-party-privacy-policies',
+    title: 'Third-Party Privacy Policies',
     content: (
       <>
         <p>
@@ -173,21 +159,21 @@ const policySections: PolicySectionItem[] = [
         <ul className="list-disc list-outside space-y-2 pl-6 text-sm lg:text-base text-zinc-700">
           <li>
             LinkedIn Privacy Policy:{' '}
-            <a 
-              href="https://www.linkedin.com/legal/privacy-policy" 
-              target="_blank" 
-              rel="noopener noreferrer" 
+            <a
+              href="https://www.linkedin.com/legal/privacy-policy"
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-zinc-900 underline underline-offset-4 decoration-zinc-300 hover:decoration-zinc-800 hover:text-zinc-600 font-medium transition-colors"
             >
               https://www.linkedin.com/legal/privacy-policy
             </a>
           </li>
           <li>
-            LinkedIn Cookie Policy & Opt-Out:{' '}
-            <a 
-              href="https://www.linkedin.com/legal/cookie-policy" 
-              target="_blank" 
-              rel="noopener noreferrer" 
+            LinkedIn Cookie Policy &amp; Opt-Out:{' '}
+            <a
+              href="https://www.linkedin.com/legal/cookie-policy"
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-zinc-900 underline underline-offset-4 decoration-zinc-300 hover:decoration-zinc-800 hover:text-zinc-600 font-medium transition-colors"
             >
               https://www.linkedin.com/legal/cookie-policy
@@ -195,11 +181,11 @@ const policySections: PolicySectionItem[] = [
           </li>
         </ul>
       </>
-    )
+    ),
   },
   {
-    id: "changes-to-this-cookies-policy",
-    title: "Changes to This Cookies Policy",
+    id: 'changes-to-this-cookies-policy',
+    title: 'Changes to This Cookies Policy',
     content: (
       <>
         <p>
@@ -209,16 +195,17 @@ const policySections: PolicySectionItem[] = [
           Any updated version will be published on this page with a revised &quot;Last Updated&quot; date.
         </p>
       </>
-    )
+    ),
   },
   {
-    id: "contact-us",
-    title: "Contact Us",
+    id: 'contact-us',
+    title: 'Contact Us',
     content: (
       <>
         <p>If you have questions about our use of cookies or this Cookies Policy, contact:</p>
         <div className="rounded-2xl border border-zinc-200 bg-zinc-50/80 p-6 space-y-2 mt-4 text-sm lg:text-base text-zinc-800">
-          <p className="font-semibold text-zinc-900">Cauders (Private) Limited</p>
+          <p className="font-bold text-zinc-900 font-headline">CAUDERS (PRIVATE) LIMITED</p>
+          <p className="text-xs text-zinc-500 font-mono">Incorporation No. (SECP): 0351558</p>
           <p>
             Email:{' '}
             <a href="mailto:info@cauders.com" className="text-zinc-900 underline underline-offset-4 decoration-zinc-300 hover:decoration-zinc-800 hover:text-zinc-600 font-medium transition-colors">
@@ -226,27 +213,38 @@ const policySections: PolicySectionItem[] = [
             </a>
           </p>
           <p>
-            Registered office: F1 Block Phase 2, Pak Arab Housing Society, Ferozpur Road, Lahore, Pakistan
+            Registered Office: F1 Block Phase 2, Pak Arab Housing Society, Ferozpur Road, Lahore, Pakistan
           </p>
           <p>
-            Website:{' '}
+            Official Website:{' '}
             <Link href="/" className="text-zinc-900 underline underline-offset-4 decoration-zinc-300 hover:decoration-zinc-800 hover:text-zinc-600 font-medium transition-colors">
-              https://cauders.com/
+              https://www.cauders.com
             </Link>
           </p>
         </div>
       </>
-    )
-  }
+    ),
+  },
 ];
 
 export default function CookiesPolicyPage() {
+  const breadcrumbJsonLd = buildBreadcrumbJsonLd([
+    { name: 'Home', path: '/' },
+    { name: 'Cookies Policy', path: '/cookies-policy' },
+  ]);
+
   return (
-    <PolicyLayout
-      title="Cookies Policy"
-      lastUpdated="October 17, 2026"
-      badge="Cookies"
-      sections={policySections}
-    />
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <PolicyLayout
+        title="Cookies Policy"
+        lastUpdated="November 2026"
+        badge="Cookies"
+        sections={policySections}
+      />
+    </>
   );
 }

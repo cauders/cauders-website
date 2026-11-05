@@ -1,7 +1,13 @@
-import { Metadata } from 'next';
+import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import CaseStudyDetailPage from '@/components/cauders/CaseStudyDetailPage';
 import { getAllCaseStudies, getCaseStudyBySlug } from '@/lib/case-studies-data';
+import {
+  buildBreadcrumbJsonLd,
+  buildPageMetadata,
+  optimizeOgImageUrl,
+  SITE_URL,
+} from '@/lib/seo';
 
 export async function generateStaticParams() {
   const studies = getAllCaseStudies();
@@ -19,39 +25,26 @@ export async function generateMetadata({
 
   if (!study) {
     return {
-      title: 'Case Study Not Found | Cauders',
+      title: 'Case Study Not Found',
+      robots: { index: false, follow: true },
     };
   }
 
-  return {
-    title: `${study.title} | Cauders Case Study`,
+  const conciseTitle =
+    study.publicLabel && study.publicLabel.length <= 48
+      ? `${study.publicLabel} Case Study`
+      : study.title.length <= 54
+      ? study.title
+      : study.publicLabel || study.title.slice(0, 52).replace(/\s+\S*$/, '');
+
+  return buildPageMetadata({
+    title: conciseTitle,
     description: study.subtitle || study.overview,
-    alternates: {
-      canonical: `/case-studies/${study.slug}`,
-    },
-    openGraph: {
-      title: `${study.title} | Cauders Case Study`,
-      description: study.subtitle || study.overview,
-      url: `https://www.cauders.com/case-studies/${study.slug}`,
-      siteName: 'Cauders',
-      locale: 'en_US',
-      type: 'article',
-      images: [
-        {
-          url: study.heroImage,
-          width: 1200,
-          height: 630,
-          alt: study.title,
-        },
-      ],
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: `${study.title} | Cauders Case Study`,
-      description: study.subtitle || study.overview,
-      images: [study.heroImage],
-    },
-  };
+    path: `/case-studies/${study.slug}`,
+    ogImage: study.heroImage,
+    ogAlt: study.title,
+    type: 'article',
+  });
 }
 
 export default function CaseStudyDetailRoute({
@@ -65,5 +58,35 @@ export default function CaseStudyDetailRoute({
     notFound();
   }
 
-  return <CaseStudyDetailPage study={study} />;
+  const canonicalPath = `/case-studies/${study.slug}`;
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      buildBreadcrumbJsonLd([
+        { name: 'Home', path: '/' },
+        { name: 'Case Studies', path: '/case-studies' },
+        { name: study.publicLabel || study.title, path: canonicalPath },
+      ]),
+      {
+        '@type': 'TechArticle',
+        headline: study.title,
+        description: study.subtitle || study.overview,
+        image: optimizeOgImageUrl(study.heroImage),
+        url: `${SITE_URL}${canonicalPath}`,
+        about: study.industry,
+        author: { '@id': `${SITE_URL}/#organization` },
+        publisher: { '@id': `${SITE_URL}/#organization` },
+      },
+    ],
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <CaseStudyDetailPage study={study} />
+    </>
+  );
 }

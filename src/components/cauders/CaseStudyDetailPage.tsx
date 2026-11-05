@@ -1,17 +1,14 @@
-'use client';
-
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
-import { ArrowLeft, ArrowUpRight, CheckCircle2, ChevronRight, Clock, Shield, Building, Award, Terminal, Zap } from 'lucide-react';
+import { ArrowLeft, CheckCircle2, ChevronRight } from 'lucide-react';
 import ScrollFadeIn from './ScrollFadeIn';
 import ArrowBadge from './ArrowBadge';
-import SectionHeading from './SectionHeading';
 import DarkTealButton from './DarkTealButton';
-import ZincGradientContainer from './ZincGradientContainer';
 import GetAQuote from './GetAQuote';
 import { CaseStudy } from '@/lib/case-studies-data';
+import { optimizeCloudinaryUrl } from '@/lib/seo';
 
 interface CaseStudyDetailPageProps {
   study: CaseStudy;
@@ -24,20 +21,18 @@ export default function CaseStudyDetailPage({ study }: CaseStudyDetailPageProps)
 
   return (
     <div className="relative w-full bg-gradient-to-b from-white via-white to-transparent text-foreground" suppressHydrationWarning>
-      {/* ================= 1. BREADCRUMBS & HERO ================= */}
+      {/* 1. BREADCRUMBS & HERO */}
       <section className="relative w-full pt-28 pb-12 sm:pt-32 sm:pb-16 lg:pt-36 lg:pb-20 border-b border-border/40 overflow-hidden bg-zinc-50/50 dark:bg-zinc-950/40">
         <div className="max-w-[95rem] mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Breadcrumb nav */}
-          <div className="flex items-center gap-2 text-xs sm:text-sm font-medium text-muted-foreground mb-6">
+          <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs sm:text-sm font-medium text-muted-foreground mb-6">
             <Link href="/" className="hover:text-darkTeal transition-colors">Home</Link>
-            <ChevronRight className="w-3.5 h-3.5 opacity-60" />
+            <ChevronRight className="w-3.5 h-3.5 opacity-60" aria-hidden="true" />
             <Link href="/case-studies" className="hover:text-darkTeal transition-colors">Case Studies</Link>
-            <ChevronRight className="w-3.5 h-3.5 opacity-60" />
+            <ChevronRight className="w-3.5 h-3.5 opacity-60" aria-hidden="true" />
             <span className="text-foreground truncate max-w-[220px] sm:max-w-md">{study.title}</span>
-          </div>
+          </nav>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
-            {/* Left Content */}
             <div className="lg:col-span-7 flex flex-col items-start text-left">
               <ScrollFadeIn>
                 <div className="flex flex-wrap items-center gap-2.5 mb-4">
@@ -62,7 +57,6 @@ export default function CaseStudyDetailPage({ study }: CaseStudyDetailPageProps)
                 </p>
               </ScrollFadeIn>
 
-              {/* Meta stats chips */}
               <ScrollFadeIn delay={200} className="w-full">
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 py-4 border-y border-border/40 w-full mb-8" suppressHydrationWarning>
                   <div>
@@ -119,12 +113,11 @@ export default function CaseStudyDetailPage({ study }: CaseStudyDetailPageProps)
               </ScrollFadeIn>
             </div>
 
-            {/* Right Hero Image Card */}
             <div className="lg:col-span-5 relative">
               <ScrollFadeIn delay={200}>
                 <div className="relative w-full h-[360px] sm:h-[440px] md:h-[480px] rounded-3xl overflow-hidden border border-border/40 shadow-2xl group">
                   <Image
-                    src={study.heroImage}
+                    src={optimizeCloudinaryUrl(study.heroImage, 1200)}
                     alt={study.title}
                     fill
                     priority
@@ -133,7 +126,6 @@ export default function CaseStudyDetailPage({ study }: CaseStudyDetailPageProps)
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent pointer-events-none" />
 
-                  {/* Floating Measured Outcome Badge inside image */}
                   <div className="absolute bottom-5 inset-x-5 p-5 rounded-2xl bg-white/90 dark:bg-zinc-950/90 backdrop-blur-md border border-white/20 shadow-lg">
                     <span className="text-[11px] font-mono uppercase text-darkTeal dark:text-[#8CEAE5] font-bold block mb-1">
                       Validated Milestone
@@ -149,7 +141,7 @@ export default function CaseStudyDetailPage({ study }: CaseStudyDetailPageProps)
         </div>
       </section>
 
-      {/* ================= 2. KEY METRICS GRID ================= */}
+      {/* 2. KEY METRICS GRID */}
       <section className="relative z-10 max-w-[95rem] mx-auto px-4 sm:px-6 lg:px-8 -mt-6" suppressHydrationWarning>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
           {study.metrics.map((metric, mIdx) => (
@@ -168,13 +160,11 @@ export default function CaseStudyDetailPage({ study }: CaseStudyDetailPageProps)
         </div>
       </section>
 
-      {/* ================= 3. OVERVIEW & CHALLENGE ================= */}
+      {/* 3. OVERVIEW & CHALLENGE */}
       <section className="relative z-10 max-w-[95rem] mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
-          {/* Main Case Study Body */}
           <div className="lg:col-span-8 flex flex-col gap-14 sm:gap-16">
-            {/* Overview Block */}
-            <div>
+            <div id="overview" className="scroll-mt-28">
               <ArrowBadge href="#overview" text="Executive Summary" variant="black" className="mb-4" />
               <h2 className="text-2xl sm:text-3xl font-headline font-bold text-foreground tracking-tight mb-4">
                 The Operational Context
@@ -184,7 +174,6 @@ export default function CaseStudyDetailPage({ study }: CaseStudyDetailPageProps)
               </p>
             </div>
 
-            {/* The Challenge Block */}
             <div className="p-8 sm:p-10 rounded-3xl bg-zinc-50 dark:bg-zinc-900/60 border border-border/40">
               <span className="text-xs font-mono font-bold uppercase tracking-wider text-darkTeal dark:text-[#8CEAE5] block mb-2">
                 The Core Bottleneck
@@ -205,8 +194,7 @@ export default function CaseStudyDetailPage({ study }: CaseStudyDetailPageProps)
               </ul>
             </div>
 
-            {/* The Solution Block */}
-            <div>
+            <div id="solution" className="scroll-mt-28">
               <ArrowBadge href="#solution" text="Technical Execution" variant="black" className="mb-4" />
               <h2 className="text-2xl sm:text-3xl font-headline font-bold text-foreground tracking-tight mb-4">
                 {study.solution.title}
@@ -232,10 +220,9 @@ export default function CaseStudyDetailPage({ study }: CaseStudyDetailPageProps)
               </div>
             </div>
 
-            {/* Measured Outcomes Block */}
             <div className="p-8 sm:p-10 rounded-3xl bg-[#003431]/5 dark:bg-white/5 border border-darkTeal/20">
               <span className="text-xs font-mono font-bold uppercase tracking-wider text-darkTeal dark:text-[#8CEAE5] block mb-2">
-                Business Impact & Metrics
+                Business Impact &amp; Metrics
               </span>
               <h3 className="text-xl sm:text-2xl font-headline font-bold text-foreground mb-4" suppressHydrationWarning>
                 {study.outcome.headline}
@@ -254,14 +241,14 @@ export default function CaseStudyDetailPage({ study }: CaseStudyDetailPageProps)
             </div>
           </div>
 
-          {/* Right Sticky Sidebar: Deliverables & Tech Stack */}
-          <div className="lg:col-span-4">
+          {/* Right Sticky Sidebar */}
+          <aside className="lg:col-span-4">
+            <h2 className="sr-only">Deliverables &amp; Architecture</h2>
             <div className="sticky top-28 space-y-8">
-              {/* Deliverables Card */}
               <div className="p-7 rounded-3xl bg-white dark:bg-card border border-border/50 shadow-lg">
-                <h4 className="text-base sm:text-lg font-bold font-headline mb-4 pb-3 border-b border-border/40">
+                <h3 className="text-base sm:text-lg font-bold font-headline mb-4 pb-3 border-b border-border/40">
                   Key Deliverables
-                </h4>
+                </h3>
                 <ul className="space-y-3">
                   {study.deliverables.map((deliv, dIdx) => (
                     <li key={dIdx} className="flex items-start gap-2.5 text-xs sm:text-sm text-foreground/85">
@@ -272,11 +259,10 @@ export default function CaseStudyDetailPage({ study }: CaseStudyDetailPageProps)
                 </ul>
               </div>
 
-              {/* Architecture & Tech Stack Card */}
               <div className="p-7 rounded-3xl bg-white dark:bg-card border border-border/50 shadow-lg">
-                <h4 className="text-base sm:text-lg font-bold font-headline mb-3 pb-3 border-b border-border/40">
+                <h3 className="text-base sm:text-lg font-bold font-headline mb-3 pb-3 border-b border-border/40">
                   {study.architecture.title}
-                </h4>
+                </h3>
                 <p className="text-xs text-foreground/75 leading-relaxed mb-5 font-normal">
                   {study.architecture.description}
                 </p>
@@ -292,15 +278,14 @@ export default function CaseStudyDetailPage({ study }: CaseStudyDetailPageProps)
                 </div>
               </div>
 
-              {/* Direct Consultation Box */}
               <div className="p-7 rounded-3xl bg-darkTeal text-white shadow-xl flex flex-col justify-between">
                 <div>
                   <span className="text-[11px] font-mono uppercase tracking-wider text-[#8CEAE5] font-semibold block mb-2">
                     Need Similar Capabilities?
                   </span>
-                  <h4 className="text-lg font-bold font-headline mb-3">
-                    Let's Review Your Architecture
-                  </h4>
+                  <h3 className="text-lg font-bold font-headline mb-3">
+                    Let&apos;s Review Your Architecture
+                  </h3>
                   <p className="text-xs text-white/80 leading-relaxed font-normal mb-6">
                     Our technical leads are ready to assess your technical bottlenecks and map out practical implementation phases.
                   </p>
@@ -313,11 +298,11 @@ export default function CaseStudyDetailPage({ study }: CaseStudyDetailPageProps)
                 </Link>
               </div>
             </div>
-          </div>
+          </aside>
         </div>
       </section>
 
-      {/* ================= 4. GET A QUOTE BOTTOM CTA ================= */}
+      {/* 4. GET A QUOTE BOTTOM CTA */}
       <GetAQuote
         title="Ready to Build Your Production System?"
         description="Schedule a technical consultation with our engineering team to review requirements, architectures, and implementation roadmaps."

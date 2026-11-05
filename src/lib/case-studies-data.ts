@@ -86,7 +86,7 @@ export const caseStudiesData: CaseStudy[] = [
       { label: 'Cart State', value: 'React Query' },
       { label: 'Journey Testing', value: 'Playwright E2E' },
     ],
-    heroImage: 'https://res.cloudinary.com/cauders/image/upload/v1792751014/Gemini_Generated_Image_95u9yw95u9yw95u9_nbhogb.jpg',
+    heroImage: 'https://res.cloudinary.com/cauders/image/upload/f_auto,q_auto,w_1400/v1792751014/Gemini_Generated_Image_95u9yw95u9yw95u9_nbhogb.jpg',
     overview:
       'A leading Norwegian direct-to-consumer e-commerce retailer serving the Nordic market needed a comprehensive storefront revamp. Their revenue depended on multiple moving parts operating harmoniously: responsive mobile shopping, custom checkout flows, regional payment gateways, automated parcel dispatchers, and post-sale CRM support.',
     challenge: {
@@ -158,7 +158,7 @@ export const caseStudiesData: CaseStudy[] = [
       { label: 'eKYC Verification', value: 'Real-Time Stream' },
       { label: 'Traffic Resilience', value: 'Buffered Queues' },
     ],
-    heroImage: 'https://res.cloudinary.com/cauders/image/upload/v1792751012/Gemini_Generated_Image_hd74yghd74yghd74_dmhz1q.jpg',
+    heroImage: 'https://res.cloudinary.com/cauders/image/upload/f_auto,q_auto,w_1400/v1792751012/Gemini_Generated_Image_hd74yghd74yghd74_dmhz1q.jpg',
     overview:
       'Following a major corporate merger between two national telecom giants, the combined entity required a unified, enterprise-grade digital portal to serve their combined subscriber base across national operations. The platform needed to consolidate fragmented customer touchpoints, manage disparate mobile plans, and support digital verification without disrupting legacy billing operations.',
     challenge: {
@@ -231,7 +231,7 @@ export const caseStudiesData: CaseStudy[] = [
       { label: 'Enterprise Onboarding', value: 'Days → Minutes' },
       { label: 'Managed Devices', value: '36,000+ IoT Devices' },
     ],
-    heroImage: 'https://res.cloudinary.com/cauders/image/upload/v1792751019/Gemini_Generated_Image_o89e3to89e3to89e_ivkyvx.jpg',
+    heroImage: 'https://res.cloudinary.com/cauders/image/upload/f_auto,q_auto,w_1400/v1792751019/Gemini_Generated_Image_o89e3to89e3to89e_ivkyvx.jpg',
     overview:
       'A multi-tenant commercial PropTech and workplace SaaS platform operating across 36,000+ IoT devices required targeted modernization and infrastructure stabilization. As part of a white-labeled engineering partnership, members of the Cauders technical team were engaged to resolve database read contention, remediate 300+ security vulnerabilities, streamline enterprise SSO onboarding, and optimize web performance.',
     challenge: {
@@ -303,7 +303,7 @@ export const caseStudiesData: CaseStudy[] = [
       { label: 'Matches Facilitated', value: '100,000+ / Q1' },
       { label: 'Real-Time Chat', value: 'Zero-Latency (Async Queue)' },
     ],
-    heroImage: 'https://res.cloudinary.com/cauders/image/upload/v1792751018/Gemini_Generated_Image_d7wwsdd7wwsdd7ww_bpcfni.jpg',
+    heroImage: 'https://res.cloudinary.com/cauders/image/upload/f_auto,q_auto,w_1400/v1792751018/Gemini_Generated_Image_d7wwsdd7wwsdd7ww_bpcfni.jpg',
     overview:
       'A global consumer mobile application connecting international enthusiasts of Korean culture with native speakers worldwide needed to scale its high-concurrency mobile social experience. The product unites friend discovery, interest-based cultural matchmaking, one-to-one and group messaging, automated translation, and community discussion boards.',
     challenge: {
@@ -375,7 +375,7 @@ export const caseStudiesData: CaseStudy[] = [
       { label: 'Checkout Integration', value: 'Instant Cart' },
       { label: 'Wardrobe Tagging', value: 'Automated AI' },
     ],
-    heroImage: 'https://res.cloudinary.com/cauders/image/upload/v1792813715/Customer-Facing_Applications_unghui.jpg',
+    heroImage: 'https://res.cloudinary.com/cauders/image/upload/f_auto,q_auto,w_1400/v1792813715/Customer-Facing_Applications_unghui.jpg',
     overview:
       'A digital fashion venture required a dedicated mobile social commerce application where users could discover trending styles, connect with fashion creators, share multimedia outfit posts, and receive personalized AI styling suggestions directly connected to e-commerce checkout.',
     challenge: {
@@ -447,7 +447,7 @@ export const caseStudiesData: CaseStudy[] = [
       { label: 'Dispatch Loop', value: 'Live Courier Match' },
       { label: 'Client Architecture', value: 'Modular Flutter' },
     ],
-    heroImage: 'https://res.cloudinary.com/cauders/image/upload/v1792261071/iStock-1458045238-scaled_edgfe2.jpg',
+    heroImage: 'https://res.cloudinary.com/cauders/image/upload/f_auto,q_auto,w_1400/v1792261071/iStock-1458045238-scaled_edgfe2.jpg',
     overview:
       'A multi-region on-demand food commerce initiative required unifying fragmented mobile clients and streamlining ordering-to-dispatch operations. Through role-based architecture consolidation (AaharCart) and companion ordering-dispatch workflows (NearTap and MAMA), the engineering team delivered a synchronized logistics and food commerce ecosystem.',
     challenge: {
@@ -519,7 +519,7 @@ export const caseStudiesData: CaseStudy[] = [
       { label: 'Dev Onboarding', value: 'Weeks → Mins' },
       { label: 'Rate Limiting', value: 'Sub-50ms Token-Bucket' },
     ],
-    heroImage: 'https://res.cloudinary.com/cauders/image/upload/v1792751015/Gemini_Generated_Image_ur1ee2ur1ee2ur1e_tdolpy.jpg',
+    heroImage: 'https://res.cloudinary.com/cauders/image/upload/f_auto,q_auto,w_1400/v1792751015/Gemini_Generated_Image_ur1ee2ur1ee2ur1e_tdolpy.jpg',
     overview:
       'Growing software ecosystems frequently struggle with fragmented API documentation, manual endpoint testing, and scattered authentication keys. This project engineered a centralized API marketplace and developer portal enabling teams to discover, test, authenticate, and integrate multiple backend APIs under strict governance and rate-limiting controls.',
     challenge: {
@@ -591,7 +591,7 @@ export const caseStudiesData: CaseStudy[] = [
       { label: 'Offline Caching', value: 'Local-First SQLite' },
       { label: 'State Sync', value: 'Asynchronous' },
     ],
-    heroImage: 'https://res.cloudinary.com/cauders/image/upload/v1792906816/Gemini_Generated_Image_ma12k1ma12k1ma12_ftm70g.jpg',
+    heroImage: 'https://res.cloudinary.com/cauders/image/upload/f_auto,q_auto,w_1400/v1792906816/Gemini_Generated_Image_ma12k1ma12k1ma12_ftm70g.jpg',
     overview:
       'A digital health startup required a mobile platform combining scientifically designed cognitive fitness exercises with social networking. The objective was to create an engaging experience that encouraged daily brain training, visualized user progress, and fostered community interaction across global leaderboards.',
     challenge: {
@@ -663,7 +663,7 @@ export const caseStudiesData: CaseStudy[] = [
       { label: 'Playback Blocks', value: 'Eliminated via Proxy' },
       { label: 'Video Ingestion', value: 'Edge Shielded' },
     ],
-    heroImage: 'https://res.cloudinary.com/cauders/image/upload/v1792912134/custom_ai_x7ljqa.jpg',
+    heroImage: 'https://res.cloudinary.com/cauders/image/upload/f_auto,q_auto,w_1400/v1792912134/custom_ai_x7ljqa.jpg',
     overview:
       'A community-driven digital media streaming project needed an ultra-fast, modern streaming web interface that developers and enthusiasts could easily self-host. Rather than maintaining heavy, cost-prohibitive dedicated video hosting clusters, the platform was engineered to route streaming feeds reliably through an authenticated reverse-proxy architecture on minimal cloud infrastructure.',
     challenge: {
@@ -735,7 +735,7 @@ export const caseStudiesData: CaseStudy[] = [
       { label: 'Digital Showroom', value: 'Interactive Galleries' },
       { label: 'Local Search', value: 'Geo-Targeted Schema' },
     ],
-    heroImage: 'https://res.cloudinary.com/cauders/image/upload/v1792770102/Build_Integrate_egvjcw.jpg',
+    heroImage: 'https://res.cloudinary.com/cauders/image/upload/f_auto,q_auto,w_1400/v1792770102/Build_Integrate_egvjcw.jpg',
     overview:
       'A full-service regional remodeling contractor specializing in high-end bathroom renovations and rapid 2-3 day acrylic wall transformations required a modern digital presence. The goal was to replace an outdated site with an automated digital showroom that builds credibility, showcases renovation craftsmanship, and captures qualified homeowner estimate requests.',
     challenge: {
